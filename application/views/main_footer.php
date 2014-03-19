@@ -1,6 +1,6 @@
 </body>
 <!-- End body -->
-<footer style="background-color:#6BBD44;">
+<footer id="footer" style="background-color:#6BBD44;">
 	<div class="container-fluid">
 		<div class="oficinas col-md-4" id="ofqro">
 			<p>
