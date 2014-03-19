@@ -8,7 +8,7 @@
 				Piso 9 Suite 912<br>
 				Col. Centro Sur <br>
 				Querétaro<br>
-				4422291861
+				442 229 1861
 	        </p>
 		</div>
 		<div class="oficinas col-md-4" id="ofmich">

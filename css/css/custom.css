@@ -21,3 +21,8 @@
 	margin-top:50px;
 	margin-bottom: 100px;
 }
+
+.row
+{
+	max-width: 100%;
+}
