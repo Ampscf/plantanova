@@ -1,4 +1,5 @@
 </body>
+<!-- End body -->
 <footer style="background-color:#6BBD44;">
 	<div class="container-fluid">
 		<div class="oficinas col-md-4" id="ofqro">
@@ -11,6 +12,7 @@
 				442 229 1861
 	        </p>
 		</div>
+		<!-- End ofqro -->
 		<div class="oficinas col-md-4" id="ofmich">
 			<p>
 				Oficinas en Michoacán<br> 
@@ -20,10 +22,13 @@
 				786 15 514 44
 			</p>
 		</div>
+		<!-- End ofmich -->
 	</div>
+	<!-- End container-fluid -->
 	<div class="copyright">
 		<p>Copyright PlantaNova 2014</p>
 	</div>
 </footer>
+<!-- End footer -->
 	
 </html>

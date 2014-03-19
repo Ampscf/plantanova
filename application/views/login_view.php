@@ -3,15 +3,16 @@
 		<div class="logo">
 			<img src="<?php echo base_url().'img/logo.png'; ?>" width="200px" height="80px">
 		</div>
+		<!-- End logo -->
 	</div>
+	<!-- End row -->
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Acceder </h3>
 				</div>
-
+				<!-- End panel-heading -->
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 					<div class="input-group input-group-lg">
 						<div class="input-group-addon">
@@ -19,8 +20,9 @@
 						</div>
                     	<input type="text" class="form-control" placeholder="Correo" name="username" id="username">
                 	</div>
-
-                	<div class="clear"></div>
+                	<!-- End input-group -->
+                	<div class="clear">
+                	</div>
 
 					<div class="input-group input-group-lg">
 						<div class="input-group-addon">
@@ -28,8 +30,9 @@
 						</div>
                     	<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
                 	</div>
+                	<!-- End input-group -->
 				</div>
-
+				<!-- End panel-body -->
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-2">
@@ -39,9 +42,14 @@
 							<button class="btn btn-success btn-block">Acceder</button>
 						</div>
 					</div>
+					<!-- End row -->
 				</div>
+				<!-- End panel-footer -->
 			</div>
+			<!-- End panel-default -->
 		</div>
+		<!-- End col-md-4 col-md-offset-4 -->
 	</div>
+	<!-- End row -->
 </div>
-	
+<!-- End page-container -->
