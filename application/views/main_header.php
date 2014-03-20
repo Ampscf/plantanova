@@ -13,7 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
 
 	</head>
+	<!-- End head -->
 	<body>
 		<div >
-			
 		</div>
+		<!-- div fantasma :p -->

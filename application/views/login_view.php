@@ -3,10 +3,11 @@
 		<div class="logo">
 			<img src="<?php echo base_url().'img/logo.png'; ?>" width="200px" height="80px">
 		</div>
+		<!-- End logo -->
 	</div>
+	<!-- End row -->
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Acceder </h3>
@@ -45,8 +46,10 @@
 				</form>
 				
 			</div>
-
+			<!-- End panel-default -->
 		</div>
+		<!-- End col-md-4 col-md-offset-4 -->
 	</div>
+	<!-- End row -->
 </div>
-	
+<!-- End page-container -->
