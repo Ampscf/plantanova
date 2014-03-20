@@ -11,37 +11,39 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Acceder </h3>
 				</div>
+	
+				<?php echo validation_errors(); ?>
+				<?php echo form_open('verify_login_controller'); ?>
+					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						<div class="input-group input-group-lg">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-user"></span>
+							</div>
+							<input type="text" class="form-control" placeholder="Correo" name="correo" id="correo">
+						</div>
 
-				<?php				
-				echo "<div class='panel-body' style='padding: 10px 10px 10px 10px;'>";
-					echo "<div class='input-group input-group-lg'>";
-						echo "<div class='input-group-addon'>";
-							echo "<span class='glyphicon glyphicon-user'></span>";
-						echo "</div>";
-                    	echo "<input type='text' class='form-control' placeholder='Correo' name='correo' id='correo'>";
-                	echo "</div>";
+						<div class="clear"></div>
 
-                	echo "<div class='clear'></div>";
+						<div class="input-group input-group-lg">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-eye-close"></span>
+							</div>
+							<input type="password" class="form-control" placeholder="Contraseña" name="contraseña" id="contraseña">
+						</div>
+					</div>
 
-					echo "<div class='input-group input-group-lg'>";
-						echo "<div class='input-group-addon'>";
-							echo "<span class='glyphicon glyphicon-eye-close'></span>";
-						echo "</div>";
-                    	echo "<input type='password' class='form-control' placeholder='Contraseña' name='contraseña' id='contraseña'>";
-                	echo "</div>";
-				echo "</div>";
-
-				echo "<div class='panel-footer'>";
-					echo "<div class='row'>";
-						echo "<div class='col-md-2'>";
-							echo "<button href='#' class='btn btn-link'>Recuperar contraseña</button>";
-						echo "</div>";
-						echo "<div class='col-md-3 col-md-offset-6'>";
-							echo "<button class='btn btn-success btn-block'>Acceder</button>";
-						echo "</div>";
-					echo "</div>";
-				echo "</div>";
-				?>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-2">
+								<button href="#" class="btn btn-link">Recuperar contraseña</button>
+							</div>
+							<div class="col-md-3 col-md-offset-6">
+								<input class="btn btn-success btn-block" type="submit" value="Acceder"/>
+							</div>
+						</div>
+					</div>
+				</form>
+				
 			</div>
 
 		</div>
