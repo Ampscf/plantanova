@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login_controller extends CI_Controller {
+class login_controller extends CI_Controller {
 
 	function __construct() {
 	   parent::__construct();
@@ -32,7 +32,7 @@ class Login_controller extends CI_Controller {
 	 
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_user');
-	 
+	 	
 		if($this->form_validation->run() == FALSE) 
 		{
 			$template['header'] = "main_header.php";
@@ -46,6 +46,8 @@ class Login_controller extends CI_Controller {
 			$template['header'] = "home_header.php";
 			$template['template'] = "home_view.php";
 			$template['footer'] = "main_footer.php";
+
+			$template['myinfo'] = $this->user_model->get_user_by_mail($this->input->post('email'));
 			//Go to private area
 			$this->load->view('main',$template);
 		}
