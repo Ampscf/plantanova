@@ -275,7 +275,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;
+                                                          /*Cambie el color de #FFF Irving Salmerón*/
+  background-color: #f4efef;
 }
 input,
 button,
@@ -3458,7 +3459,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+
 }
 .nav > li.disabled > a {
   color: #999999;

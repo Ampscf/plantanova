@@ -33,6 +33,10 @@
 					<p>Copyright PlantaNova 2014</p>
 				</div>
 			</footer><!-- End footer -->
+<<<<<<< HEAD
 		</div><!-- End wrapper -->
+=======
+		</div>
+>>>>>>> 4518851c4ce49b81aa8220f015a16e2fd8cc7af5
 	</body>
 </html>
