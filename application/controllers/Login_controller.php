@@ -50,7 +50,7 @@ class Login_controller extends CI_Controller {
 	 	if($user){
 	 		$sessionData = array(
 
-                    "id" => $user->id_usuario,
+                    "id" => $user->id_user,
                     "mail" => $user->mail,
                     "logged_in" => true
                 );

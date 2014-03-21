@@ -15,43 +15,31 @@
 	</head>
 	<!-- End head -->
 	<body>
-		<header class="" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a href="#" height="63px">
-						<img src="<?php echo base_url().'img/logo.png'; ?>" height="100%">
-					</a>
-				</div>
-				<!-- End logo -->
-				<div class="">
-			      	<ul class="nav navbar-nav">
-				        <li class="active">
-				        	<a href="#">Home</a>
-				        </li>
-				        <li>
-				        	<a href="#">Reports</a>
-				        </li>
-				        <li>
-				        	<a href="#">Requests</a>
-				        </li>
-			      	</ul>
-			      	<ul class="nav navbar-nav navbar-right">
-				        <div class="btn-group" style="margin-top:10px; margin-right:5px;">
-						    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						    	<?php echo $this->session->userdata('mail'); ?>
-						      	<span class="caret"></span>
-						    </button>
-						    <ul class="dropdown-menu">
-						      <li>
-						      	<a href="#">Account <span class="glyphicon glyphicon-user pull-right"></span></a>
-						      </li>
-						      <li role="presentation" class="divider"></li>
-						      <li>
-						      	<a href="#">Logout <span class="glyphicon glyphicon-off pull-right"></span></a>
-						      </li>
-						    </ul>
-						</div>
-				    </ul>
-			    </div><!-- /.navbar-collapse -->
+
+		<header role="navigation">
+			<div class="header-elements">
+				<a href="#">
+					<img class="logo-header" src="<?php echo base_url().'img/logo.png'; ?>">
+				</a>
 			</div>
+			<!-- End logo -->
+			<div class="header-elements pull-right">
+			        <div class="btn-group">
+					    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+					    	<?php echo $this->session->userdata('mail'); ?>
+					      	<span class="caret"></span>
+					    </button>
+					    <ul class="dropdown-menu">
+					      <li>
+					      	<a href="#">Account <span class="glyphicon glyphicon-user pull-right"></span></a>
+					      </li>
+					      <li role="presentation" class="divider"></li>
+					      <li>
+					      	<a href="#">Logout <span class="glyphicon glyphicon-off pull-right"></span></a>
+					      </li>
+					    </ul>
+					</div>
+			    
+		    </div><!-- /.navbar-collapse -->
+			
 		</header> <!-- End header -->

@@ -4,7 +4,7 @@
 		include_once($template);
 	}
 	else{
-		include_once('login_view');
+		include_once('login_view.php');
 	}
 	include_once($footer); 
 ?>

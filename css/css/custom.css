@@ -1,25 +1,20 @@
 /*Header bar 
 ---------------------------------------------------*/
-
-header
+.logo-header
 {
-	position: relative;
-	width:100%;
-	display:block;
-	z-index: 2000;
-	background-color:#e7f4e1;
-	margin-top: 0;
-	padding-bottom: 6px;
+	width:250px;
+	height: 100px;
+	margin-top: 15%;
 }
 
-.header-links
+.header-elements
 {
-	float:right;
-	position:relative;
-	margin:0;
-	
+	display: block;
+	float: left;
+	list-style: none;
+	padding: 0px;
+	margin-top: 10px;
 }
-
 /* Sticky footer styles
 -------------------------------------------------- */
 
@@ -42,7 +37,7 @@ footer {
 
 .oficinas
 {
-  text-align: center;
+  	text-align: center;
 	color: white;
 }
 

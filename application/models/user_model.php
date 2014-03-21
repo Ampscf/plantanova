@@ -2,12 +2,12 @@
 
 Class User_model extends CI_Model	{
 
-	function login($mail, $contraseña){
+	function login($mail, $pass){
 	
-		$this -> db -> select('id_usuario, mail, contrasena');
-		$this -> db -> from('t_usuario');
+		$this -> db -> select('id_user, mail, password');
+		$this -> db -> from('t_user');
 		$this -> db -> where ('mail', $mail);
-		$this -> db -> where ('contrasena', SHA1($contraseña));
+		$this -> db -> where ('password', SHA1($pass));
 		$this -> db -> limit(1);
 
 		$query = $this -> db -> get();
