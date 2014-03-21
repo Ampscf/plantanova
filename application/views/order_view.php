@@ -9,22 +9,20 @@
 	
 				<?php echo form_open('Login_controller/login'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						
 						<select class="form-control">
 							<option selected>Planta</option>
 						</select>
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-user"></span>
-							</div>
+						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Variedad" name="variedad" id="variedad">
 						</div>
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group-lg">						
 							<input type="text" class="form-control" placeholder="Porta Injerto" name="variedad" id="variedad">
 						</div>
 						
@@ -38,31 +36,31 @@
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group-lg">	
 							<input type="text" class="form-control" placeholder="Volumen" name="variedad" id="variedad">
 						</div>
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Fecha entrega" name="variedad" id="variedad">
 						</div>
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Tipo sustrato" name="variedad" id="variedad">
 						</div>
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Subtipo" name="variedad" id="variedad">
 						</div>
 						
 						<div class="clear"></div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Observaciones" name="variedad" id="variedad">
 						</div>
 						
@@ -74,7 +72,7 @@
 								<input class="btn btn-default btn-block" type="submit" value="Acceder"/>
 							</div>
 							<div class="col-md-3 col-md-offset-6">
-								<input class="btn btn-default btn-block" type="submit" value="Cancelar"/>
+								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
 							</div>
 						</div>
 					</div>
