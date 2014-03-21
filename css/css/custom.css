@@ -1,10 +1,15 @@
 /*Header bar 
 ---------------------------------------------------*/
+.header
+{
+	background-color: #b5dea1;
+}
+
 .logo-header
 {
-	width:250px;
-	height: 100px;
-	margin-top: 15%;
+	width:60%;
+	height: 100%;
+	padding: 5% 5% 5% 5%;
 }
 
 .header-elements
@@ -14,6 +19,15 @@
 	list-style: none;
 	padding: 0px;
 	margin-top: 10px;
+
+}
+
+.header-link
+{
+	color: #f0f8ec;
+	text-align: center;
+	font-size: larger;
+	margin-right: 50px;
 }
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -32,13 +46,13 @@ footer {
 .copyright
 {
 	text-align : center;
-	color: white;
+	color: #f0f8ec;
 }
 
 .oficinas
 {
   	text-align: center;
-	color: white;
+	color: #f0f8ec;
 }
 
 .clear
@@ -52,4 +66,10 @@ footer {
 	text-align:center;
 	margin-top:50px;
 	margin-bottom: 100px;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus
+{
+	background: transparent url('../../img/plantanovaiconchico.png') center top no-repeat;
 }
