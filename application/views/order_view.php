@@ -12,6 +12,9 @@
 						
 						<select class="form-control">
 							<option selected>Planta</option>
+							<?php foreach ($plants as $key) {
+								echo "<option>".$key->plant_name."</option>";
+							}?>
 						</select>
 						
 						<div class="clear"></div>
@@ -40,11 +43,16 @@
 							<input type="text" class="form-control" placeholder="Volumen" name="variedad" id="variedad">
 						</div>
 						
-						<div class="clear"></div>
-
-						<div class="input-group-lg">
+						<div class="clear"></div>	
+				
+						<div class="input-group-lg">							
 							<input type="text" class="form-control" placeholder="Fecha entrega" name="variedad" id="variedad">
 						</div>
+						
+						    <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+    <input class="span2" size="16" type="text" value="12-02-2012">
+    <span class="add-on"><i class="icon-th"></i></span>
+    </div>
 						
 						<div class="clear"></div>
 

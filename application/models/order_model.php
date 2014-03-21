@@ -2,23 +2,20 @@
 
 Class Order_model extends CI_Model	{
 
-	function add_order($mail, $pass){
+	function get_plants(){
 	
-		$this -> db -> select('id_user, mail, password');
-		$this -> db -> from('t_user');
-		$this -> db -> where ('mail', $mail);
-		$this -> db -> where ('password', SHA1($pass));
-		$this -> db -> limit(1);
+		$this -> db -> select('plant_name');
+		$this -> db -> from('t_plant');
 
 		$query = $this -> db -> get();
 
-		if($query->num_rows()==1) 
+		if($query->num_rows() > 0) 
 		{
-			return $query->row();
+			return $query->result();
 		} 
 		else 
 		{
-			return false;
+			return 0;
 		}
 	}
 
