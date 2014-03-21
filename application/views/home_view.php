@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 <div class="container">
-	<div class="row col-md-6 col-md-offset-3">
+	<div class=" col-md-6 col-md-offset-3">
 		<div class="panel panel-default">
-=======
-	<div class="row">
-		<!--<div class="panel panel-default">
->>>>>>> 2ae17a17204471bca762d1df15b5faea4bcea603
 			<div class="panel-heading">
 	    		<h3 class="panel-title">Mi Información</h3>
 	  		</div>
@@ -33,11 +28,6 @@
 					</tbody>
 				</table>
 			</div>
-<<<<<<< HEAD
 		</div>
 	</div>
 </div>
-=======
-		</div>-->
-	</div>
->>>>>>> 2ae17a17204471bca762d1df15b5faea4bcea603

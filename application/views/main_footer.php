@@ -33,6 +33,6 @@
 					<p>Copyright PlantaNova 2014</p>
 				</div>
 			</footer><!-- End footer -->
-		</div id="wrapper">
+		</div>
 	</body>
 </html>
