@@ -15,37 +15,38 @@
 	</head>
 	<!-- End head -->
 	<body>
-		<nav class="navbar header" role="navigation">
-		  	<div class="container-fluid">
-		    	<div class="col-md-12">
-		    		<a class="col-md-3 col-md-offset-1" href="#">
-						<img class="logo-header" src="<?php echo base_url().'img/logoparabanner.png'; ?>">
-					</a>
-					<li class="header-elements col-md-1" style="display:inline-block;">
-			        	<a class="header-link" href="#">Pedidos</a>
-			        </li>
-			        <li class="header-elements col-md-1" style="display:inline-block;">
-			        	<a class="header-link" href="#">Usuarios</a>
-			        </li>
-			        <div class="btn-group header-elements col-md-2 col-md-offset-6">
-			    		<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-			    			<?php echo $this->session->userdata('mail'); ?>
-			      			<span class="caret"></span>
-			    		</button>
-			    		<ul class="dropdown-menu">
-			      			<li>
-						      	<a href="#">Mi cuenta <span class="glyphicon glyphicon-user pull-right"></span></a>
-						    </li>
-			      			<li role="presentation" class="divider"></li>
-			      			<li>
-			      				<a href="#">Salir <span class="glyphicon glyphicon-off pull-right"></span></a>
-			      			</li>
-			    		</ul>
-					</div>
-		    	</div>
-			</div><!-- /.container-fluid -->
-		</nav>
-
+		<div id="wrapper">
+			<nav class="navbar header" role="navigation">
+			  	<div class="container-fluid">
+			    	<div class="col-md-12">
+			    		<a class="col-md-3 col-md-offset-1" href="#">
+							<img class="logo-header" src="<?php echo base_url().'img/logoparabanner.png'; ?>">
+						</a>
+						<li class="header-elements col-md-1" style="display:inline-block;">
+				        	<a class="header-link" href="#">Pedidos</a>
+				        </li>
+				        <li class="header-elements col-md-1" style="display:inline-block;">
+				        	<a class="header-link" href="#">Usuarios</a>
+				        </li>
+				        <div class="btn-group header-elements col-md-2 col-md-offset-6">
+				    		<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+				    			<?php echo $this->session->userdata('mail'); ?>
+				      			<span class="caret"></span>
+				    		</button>
+				    		<ul class="dropdown-menu">
+				      			<li>
+							      	<a href="#">Mi cuenta <span class="glyphicon glyphicon-user pull-right"></span></a>
+							    </li>
+				      			<li role="presentation" class="divider"></li>
+				      			<li>
+				      				<a href="#">Salir <span class="glyphicon glyphicon-off pull-right"></span></a>
+				      			</li>
+				    		</ul>
+						</div>
+			    	</div>
+				</div><!-- /.container-fluid -->
+			</nav>
+			<div id="content">
 
 		
 
