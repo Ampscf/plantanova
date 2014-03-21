@@ -1,6 +1,5 @@
-			</div>
-			<!-- End page-container -->
-			<footer id="footer">
+			</div><!-- End content -->
+			<footer>
 				<div class="container-fluid">
 					<div class="oficinas col-md-4" id="ofqro">
 						<p>
@@ -11,8 +10,7 @@
 							Querétaro<br>
 							442 229 1861
 				        </p>
-					</div>
-					<!-- End ofqro -->
+					</div><!-- End ofqro -->
 					<div class="oficinas col-md-4" id="ofmich">
 						<p>
 							Oficinas en Michoacán<br> 
@@ -21,8 +19,7 @@
 							Tuxpan<br>
 							786 15 514 44
 						</p>
-					</div>
-					<!-- End ofmich -->
+					</div><!-- End ofmich -->
 					<div class="oficinas col-md-4" id="cotizaciones">
 						<p>
 							<br>
@@ -30,14 +27,12 @@
 							Ventas y cotizaciones<br>
 							info@plantanova.com.mx
 						</p>
-					</div>
-					<!-- End ofcotizaciones -->
-				</div>
-				<!-- End container-fluid -->
+					</div><!-- End ofcotizaciones -->
+				</div><!-- End container-fluid -->
 				<div class="copyright">
 					<p>Copyright PlantaNova 2014</p>
 				</div>
-			</footer>
-			<!-- End footer -->
+			</footer><!-- End footer -->
+		</div id="wrapper">
 	</body>
 </html>
