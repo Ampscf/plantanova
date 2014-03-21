@@ -16,28 +16,30 @@
 	<body>
 		<div id="wrapper">
 			<header role="navigation">
-				<div class="header-elements">
-					<a href="#">
-						<img class="logo-header" src="<?php echo base_url().'img/logo.png'; ?>">
-					</a>
-				</div><!-- header-elements -->
-				<div class="header-elements pull-right">
-			        <div class="btn-group">
-					    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-					    	<?php echo $this->session->userdata('mail'); ?>
-					      	<span class="caret"></span>
-					    </button><!-- button -->
-					    <ul class="dropdown-menu">
-					    	<li>
-					      		<a href="#">Account <span class="glyphicon glyphicon-user pull-right"></span></a>
-					    	</li>
-					     	<li role="presentation" class="divider">
-					     	</li>
-					     	<li>
-					      		<a href="#">Logout <span class="glyphicon glyphicon-off pull-right"></span></a>
-					      	</li>
-					    </ul><!-- dropdown-menu -->
-					</div><!-- btn-group -->
-			    </div><!-- /.navbar-collapse -->
+				<div class="row">
+					<div class="header-elements">
+						<a href="#">
+							<img class="logo-header" src="<?php echo base_url().'img/logo.png'; ?>">
+						</a>
+					</div><!-- End header-elements -->
+					<div class="header-elements pull-right">
+				        <div class="btn-group">
+						    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+						    	<?php echo $this->session->userdata('mail'); ?>
+						      	<span class="caret"></span>
+						    </button><!-- End button -->
+						    <ul class="dropdown-menu">
+						    	<li>
+						      		<a href="#">Account <span class="glyphicon glyphicon-user pull-right"></span></a>
+						    	</li>
+						     	<li role="presentation" class="divider">
+						     	</li>
+						     	<li>
+						      		<a href="#">Logout <span class="glyphicon glyphicon-off pull-right"></span></a>
+						      	</li>
+						    </ul><!-- End dropdown-menu -->
+						</div><!-- End btn-group -->
+				    </div><!-- End /.navbar-collapse -->
+				</div><!-- End row -->
 			</header> <!-- End header -->
 			<div id="content">
