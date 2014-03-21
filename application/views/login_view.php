@@ -1,35 +1,30 @@
 <div class="page-container">
-	<div class="row">
-		<div class="logo">
-			<img src="<?php echo base_url().'img/logo.png'; ?>" width="200px" height="80px">
-		</div>
-		<!-- End logo -->
-	</div>
-	<!-- End row -->
+	
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"> Acceder </h3>
+					<h3 class="panel-title"> Log in </h3>
 				</div>
 	
-				<?php echo validation_errors(); ?>
-				<?php echo form_open('verify_login_controller'); ?>
+				<?php echo form_open('Login_controller/login'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						<?php echo form_error('email'); ?>
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Correo" name="correo" id="correo">
+							<input type="text" class="form-control" placeholder="E-mail" name="email" id="email" value="<?php echo set_value('email'); ?>">
 						</div>
 
 						<div class="clear"></div>
 
+						<?php echo form_error('password'); ?>
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-eye-close"></span>
 							</div>
-							<input type="password" class="form-control" placeholder="Contraseña" name="contraseña" id="contraseña">
+							<input type="password" class="form-control" placeholder="Password" name="password" id="password">
 						</div>
 					</div>
 

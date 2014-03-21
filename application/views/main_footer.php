@@ -1,6 +1,6 @@
 </body>
 <!-- End body -->
-<footer id="footer" style="background-color:#6BBD44;">
+<footer id="footer">
 	<div class="container-fluid">
 		<div class="oficinas col-md-4" id="ofqro">
 			<p>
@@ -23,6 +23,14 @@
 			</p>
 		</div>
 		<!-- End ofmich -->
+		<div class="oficinas col-md-4" id="cotizaciones">
+			<p>
+				<br>
+				<br>
+				Ventas y cotizaciones<br>
+				info@plantanova.com.mx
+			</p>
+		</div>
 	</div>
 	<!-- End container-fluid -->
 	<div class="copyright">
