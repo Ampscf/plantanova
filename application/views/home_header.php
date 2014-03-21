@@ -15,7 +15,6 @@
 	</head>
 	<!-- End head -->
 	<body>
-
 		<header role="navigation">
 			<div class="header-elements">
 				<a href="#">
@@ -43,3 +42,4 @@
 		    </div><!-- /.navbar-collapse -->
 			
 		</header> <!-- End header -->
+		<div id="page-container">

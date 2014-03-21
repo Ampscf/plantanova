@@ -15,10 +15,11 @@
 	</head>
 	<!-- End head -->
 	<body>
-		<div class="row">
-			<div class="logo">
-				<img src="<?php echo base_url().'img/logo.png'; ?>" width="200px" height="80px">
+		<div id="page-container">
+			<div class="row">
+				<div class="logo">
+					<img src="<?php echo base_url().'img/logo.png'; ?>" width="200px" height="80px">
+				</div>
+				<!-- End logo -->
 			</div>
-			<!-- End logo -->
-		</div>
-		<!-- End row -->
+			<!-- End row -->

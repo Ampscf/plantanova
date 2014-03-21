@@ -1,3 +1,10 @@
+/*All site
+---------------------------------------------------*/
+html, body
+{
+    height: 100%;
+}
+
 /*Header bar 
 ---------------------------------------------------*/
 .logo-header
@@ -15,20 +22,24 @@
 	padding: 0px;
 	margin-top: 10px;
 }
-/* Sticky footer styles
--------------------------------------------------- */
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  /*height: 170px;*/
-  background-color: #6BBD44;
+/* Container
+---------------------------------------------------*/
+.row
+{
+	width: 100%;
 }
 
 /* Footer
 -------------------------------------------------- */
+footer {
+	width: 100%;
+	background-color: #6BBD44;
+	display: block;
+	position: absolute;
+	bottom: 0;
+}
+
 .copyright
 {
 	text-align : center;
