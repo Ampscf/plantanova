@@ -23,15 +23,6 @@ class login_controller extends CI_Controller {
 		$template['footer'] = "main_footer.php";
 		$this->load->view('main',$template);
 	}
-	
-	public function order()
-	{
-		$template['header'] = "home_header.php";
-		$template['template'] = "order_view.php";
-		$template['footer'] = "main_footer.php";
-		//Go to private area
-		$this->load->view('main',$template);
-	}
 
 	function login() 
 	{
@@ -77,7 +68,7 @@ class login_controller extends CI_Controller {
             $this->session->set_userdata($sessionData);
 	 		return TRUE;
 	 	}
-	 	else{
+	 	else {
 	 		$this->form_validation->set_message('check_user', '%s or password are incorrect.');
 	 		return FALSE;
 	 	}

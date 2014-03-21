@@ -9,6 +9,8 @@
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url() . 'css/css/bootstrap.css'; ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/datepicker.css';?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/js/bootstrap-datepicker.js';?>">
 	</head><!-- End head -->
 	<body>
 		<div id="wrapper">
