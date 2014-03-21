@@ -10,6 +10,7 @@
 						<tr>
 							<th>
 								Nombre
+								<?php echo $this->session->userdata('logged_in'); ?>
 							</th>
 							<th>
 								Correo

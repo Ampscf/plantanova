@@ -46,7 +46,7 @@ footer {
 	float: left;
 	list-style: none;
 	padding: 0px;
-	margin-top: 10px;
+	margin-top: 15%;
 
 }
 
@@ -92,8 +92,8 @@ footer {
 	margin-bottom: 100px;
 }
 
-.nav > li > a:hover,
-.nav > li > a:focus
+li a:hover,
+li a:focus
 {
 	background: transparent url('../../img/plantanovaiconchico.png') center top no-repeat;
 }

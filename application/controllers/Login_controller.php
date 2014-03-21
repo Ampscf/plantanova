@@ -9,7 +9,15 @@ class login_controller extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->helper(array('form'));
+		$sessionData = array(
+
+            "id" => null,
+            "mail" => null,
+            "logged_in" => FALSE
+        );
+
+        $this->session->set_userdata($sessionData);
+
 		$template['header'] = "main_header.php";
 		$template['template'] = "login_view.php";
 		$template['footer'] = "main_footer.php";
@@ -61,10 +69,10 @@ class login_controller extends CI_Controller {
 	 	if($user){
 	 		$sessionData = array(
 
-                    "id" => $user->id_user,
-                    "mail" => $user->mail,
-                    "logged_in" => true
-                );
+                "id" => $user->id_user,
+                "mail" => $user->mail,
+                "logged_in" => TRUE
+            );
 
             $this->session->set_userdata($sessionData);
 	 		return TRUE;
@@ -73,6 +81,14 @@ class login_controller extends CI_Controller {
 	 		$this->form_validation->set_message('check_user', '%s or password are incorrect.');
 	 		return FALSE;
 	 	}
+	 }
+
+	 function logout()
+	 {
+	 	$user_out = $this->session->all_userdata();
+	 	$this->session->unset_userdata($user_out);
+	 	session_destroy();
+	 	redirect('Login_controller/index','refresh');
 	 }
 	
 }
