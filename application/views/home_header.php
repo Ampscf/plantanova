@@ -49,7 +49,7 @@
 					    		</button>
 					    		<ul class="dropdown-menu">
 					      			<li>
-					      				<?php echo anchor('Order_controller/index/', 'Pedidos <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
+					      				<?php echo anchor('#', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
 								    </li>
 					      			<li role="presentation" class="divider"></li>
 					      			<li>
