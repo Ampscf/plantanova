@@ -1,5 +1,4 @@
 <div class="page-container">
-	
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
@@ -49,10 +48,12 @@
 							<input type="text" class="form-control" placeholder="Fecha entrega" name="variedad" id="variedad">
 						</div>
 						
-						    <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-    <input class="span2" size="16" type="text" value="12-02-2012">
-    <span class="add-on"><i class="icon-th"></i></span>
-    </div>
+					    <div class="input-group input-group-lg">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-time"></span>
+							</div>
+							<input type="text" class="form-control" name="fecha" id="datepicker">
+						</div>
 						
 						<div class="clear"></div>
 
@@ -95,6 +96,8 @@
 	<!-- End row -->
 </div>
 <!-- End page-container -->
+
+
 
 
 
