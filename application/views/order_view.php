@@ -68,8 +68,9 @@
 						
 						<div class="clear"></div>
 
-						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Observaciones" name="variedad" id="variedad">
+						<div>
+							
+							<textarea class="form-control" rows="4">Comentarios</textarea> 
 						</div>
 						
 					</div>
