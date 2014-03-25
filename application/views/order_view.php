@@ -103,11 +103,3 @@
 	<!-- End row -->
 </div>
 <!-- End page-container -->
-
-
-
-
-
-
-
-

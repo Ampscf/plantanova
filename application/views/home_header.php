@@ -50,12 +50,12 @@
 						    </ul>
 							<ul class="nav navbar-nav">
 						        <li class="header-elements" style="display:inline-block;">
-						        	<?php echo anchor('', 'Semillas', 'class="header-link"'); ?>
+						        	<?php echo anchor('Order_controller/semillas', 'Semillas', 'class="header-link"'); ?>
 						        </li>
 						        <?php if($this->session->userdata('id_rol') == 1)
 						        { ?>
 							        <li class="header-elements" style="display:inline-block;">
-							        	<?php echo anchor('', 'Usuarios', 'class="header-link"'); ?>
+							        	<?php echo anchor('#', 'Usuarios', 'class="header-link"'); ?>
 							        </li>
 							    <?php } ?>
 						    </ul>
@@ -81,9 +81,3 @@
 				</div><!-- /.container-fluid -->
 			</nav>
 			<div id="content">
-
-		
-
-					
-			        	
-			        	
