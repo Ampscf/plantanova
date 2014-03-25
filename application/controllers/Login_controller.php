@@ -42,13 +42,7 @@ class login_controller extends CI_Controller {
 		}
 		else
 		{
-			$template['header'] = "home_header.php";
-			$template['template'] = "home_view.php";
-			$template['footer'] = "main_footer.php";
-
-			$template['myinfo'] = $this->user_model->get_user_by_mail($this->input->post('email'));
-			//Go to private area
-			$this->load->view('main',$template);
+			$this->home();
 		}
 	 }
 	 
@@ -83,7 +77,7 @@ class login_controller extends CI_Controller {
 	 		return TRUE;
 	 	}
 	 	else {
-	 		$this->form_validation->set_message('check_user', '%s or password are incorrect.');
+	 		$this->form_validation->set_message('check_user', 'El correo o %s son incorrectos.');
 	 		return FALSE;
 	 	}
 	 }

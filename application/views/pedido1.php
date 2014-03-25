@@ -2,7 +2,7 @@
 	<div class=" col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-	    		<h3 class="panel-title">Información del cliente</h3>
+	    		<h3 class="panel-title">Informacion del cliente</h3>
 	  		</div>
 			<div class="panel-body">
 				<table class="table">
@@ -15,13 +15,13 @@
 								Agricola
 							</th>	
 							<th>
-								Correo electrónico
+								Correo electronico
 							</th>
 							<th>
-								Teléfono
+								Telefono
 							</th>
 							<th>
-								Dirección
+								Direccion
 							</th>
 							<th>
 								Ciudad
@@ -30,7 +30,7 @@
 								Estado
 							</th>
 							<th>
-								Código postal
+								Codigo postal
 							</th>
 							<th>
 								RFC
@@ -40,12 +40,12 @@
 					<tbody>
 						<tr>
 							<td>Jorge Torres</td>
-							<td>Agricultores de Querétaro</td>
+							<td>Agricultores de Queretaro</td>
 							<td>cliente@cliente.com</td>
 							<td>4425634123</td>
 							<td>Av. Constituyentes #5</td>
-							<td>Querétaro</td>
-							<td>Querétaro</td>
+							<td>Queretaro</td>
+							<td>Queretaro</td>
 							<td>78128</td>
 							<td>ADQ910312OL8</td>
 						</tr>
@@ -59,7 +59,7 @@
 	<div class=" col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-	    		<h3 class="panel-title">Información del pedido</h3>
+	    		<h3 class="panel-title">Informacion del pedido</h3>
 	  		</div>
 			<div class="panel-body">
 				<table class="table">
@@ -97,7 +97,7 @@
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td>Sandía</td>
+							<td>Sandia</td>
 							<td>05/05/2014</td>
 							<td>PaiPai</td>
 							<td>Empower</td>
@@ -153,7 +153,7 @@
 
 			<div class="panel panel-default column-float column-clear">
 				<div class="panel-heading">
-					<h3 class="panel-title"> Germinación </h3>
+					<h3 class="panel-title"> Germinacion </h3>
 				</div>
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
