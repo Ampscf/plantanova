@@ -42,7 +42,7 @@
 							           	<?php if($this->session->userdata('id_rol') == 1)
 							           	{ ?>
 								            <li>
-								            	<?php echo anchor('order_controller/pedido1','Ver pedido'); ?>
+								            	<?php echo anchor('order_controller/admin','Ver pedidos'); ?>
 								            </li>
 								        <?php } ?>
 						            </ul>
