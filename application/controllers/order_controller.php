@@ -10,6 +10,7 @@ class Order_controller extends CI_Controller {
 			$template['template'] = "order_view.php";
 			$template['footer'] = "main_footer.php";
 			$template['plants'] = $this -> order_model -> get_plants();
+			$template['sustratum'] = $this -> order_model -> get_sustratum();
 			
 			$this->load->view('main',$template);
 		}
@@ -17,4 +18,26 @@ class Order_controller extends CI_Controller {
 			redirect('index_controller/index', 'refresh');
 		}
 	}
+	
+	//Funcion temporal
+	public function admin()
+	{
+	$template['header'] = "home_header.php";
+			$template['template'] = "admin_view.php";
+			$template['footer'] = "main_footer.php";
+			
+			$this->load->view('main',$template);
+	}
+	
+	//Función temporal
+		public function pedido1()
+	{
+	$template['header'] = "home_header.php";
+			$template['template'] = "pedido1.php";
+			$template['footer'] = "main_footer.php";
+			
+			$this->load->view('main',$template);
+	}
+	
+	
 }

@@ -6,7 +6,7 @@
 					<h3 class="panel-title"> Pedido </h3>
 				</div>
 	
-				<?php echo form_open('Login_controller/login'); ?>
+				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						
 						<select class="form-control">
@@ -25,7 +25,7 @@
 						<div class="clear"></div>
 
 						<div class="input-group-lg">						
-							<input type="text" class="form-control" placeholder="Porta Injerto" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Porta Injerto" name="portainjerto" id="portainjerto">
 						</div>
 						
 						<div class="clear"></div>
@@ -39,13 +39,13 @@
 						<div class="clear"></div>
 
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Volumen" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Volumen" name="volumen" id="volumen">
 						</div>
 						
 						<div class="clear"></div>	
 				
 						<div class="input-group-lg">							
-							<input type="text" class="form-control" placeholder="Fecha entrega" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Fecha entrega" name="fecha" id="fecha">
 						</div>
 						
 					    <div class="input-group input-group-lg">
@@ -57,9 +57,12 @@
 						
 						<div class="clear"></div>
 
-						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Tipo sustrato" name="variedad" id="variedad">
-						</div>
+						<select class="form-control">
+							<option selected>Sustrato</option>
+							<?php foreach ($sustratum as $key) {
+								echo "<option>".$key->sustrato_name."</option>";
+							}?>
+						</select>
 						
 						<div class="clear"></div>
 
@@ -79,7 +82,7 @@
 					<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-3">
-								<input class="btn btn-default btn-block" type="submit" value="Acceder"/>
+								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
 							</div>
 							<div class="col-md-3 col-md-offset-6">
 								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>

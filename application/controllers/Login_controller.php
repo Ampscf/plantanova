@@ -51,6 +51,18 @@ class login_controller extends CI_Controller {
 			$this->load->view('main',$template);
 		}
 	 }
+	 
+	 //Función temporal
+	 function home ()
+	 {
+		$template['header'] = "home_header.php";
+		$template['template'] = "home_view.php";
+			$template['footer'] = "main_footer.php";
+
+			$template['myinfo'] = $this->user_model->get_user_by_mail($this->input->post('email'));
+			
+			$this->load->view('main',$template);
+	 }
 
 	 function check_user()
 	 {
