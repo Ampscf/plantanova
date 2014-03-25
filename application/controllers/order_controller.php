@@ -39,18 +39,24 @@ class Order_controller extends CI_Controller {
 		
 		$this->load->view('main',$template);
 	}
-	
-	//Función temporal
-	public function pedidos()
+
+	public function pedido()
 	{
-			$template['header'] = "home_header.php";
-			$template['template'] = "pedido1.php";
-			$template['footer'] = "main_footer.php";
-			$template['id'] = $this->input->post('tipo');
-			
-			//$this->load->view('main',$template);
-			$this->load->view('tabla_pedio.php');
+		$template['header'] = "home_header.php";
+		$template['template'] = "pedido1.php";
+		$template['footer'] = "main_footer.php";
+		$this->load->view('main',$template);
 	}
+	
+	
+	public function estado_pedidos()
+	{
+		$view_data['tipo'] = $this->input->post('tipo');
+		$view_data['nombre'] = 'Irving';
+		$data = $this->load->view('tabla_pedido', $view_data, TRUE);
+		echo $data;
+	}
+
 	
 	//Función temporal
 	public function semillas()
@@ -63,13 +69,13 @@ class Order_controller extends CI_Controller {
 	}
 	
 	//Función temporal
-		public function pedido2()
+	public function pedido2()
 	{
-	$template['header'] = "home_header.php";
-			$template['template'] = "pedido2.php";
-			$template['footer'] = "main_footer.php";
+		$template['header'] = "home_header.php";
+		$template['template'] = "pedido2.php";
+		$template['footer'] = "main_footer.php";
 			
-			$this->load->view('main',$template);
+		$this->load->view('main',$template);
 	}
 
 	//Función temporal
