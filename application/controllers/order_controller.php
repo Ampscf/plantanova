@@ -53,6 +53,7 @@ class Order_controller extends CI_Controller {
 	{
 		$view_data['tipo'] = $this->input->post('tipo');
 		$view_data['nombre'] = 'Irving';
+		
 		$data = $this->load->view('tabla_pedido', $view_data, TRUE);
 		echo $data;
 	}

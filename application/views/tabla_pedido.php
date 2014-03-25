@@ -1,17 +1,17 @@
 <table class="table table-hover">
 	<tr>
-		<td><b> #Pedido </b></td>
-		<td><b> Fecha de entrega </b></td>
-		<td><b> Planta </b></td> 
-		<td><b> Categoria  </b></td>
-		<td><b> Cliente  </b></td>
+		<td class="col-md-1"><b> #Pedido </b></td>
+		<td class="col-md-1"><b> Fecha de entrega </b></td>
+		<td class="col-md-1"><b> Planta </b></td> 
+		<td class="col-md-1"><b> Categoria  </b></td>
+		<td class="col-md-1"><b> Cliente  </b></td>
 	</tr>
 	<tr>
-		<td><?php echo anchor('Order_controller/pedido/', '1');?></td>
-		<td>05/05/2014</td>
-		<td>Sandia</td>
-		<td>Orden</td>
-		<td>
+		<td class="col-md-1"><?php echo anchor('Order_controller/pedido/', '1');?></td>
+		<td class="col-md-1">05/05/2014</td>
+		<td class="col-md-1">Sandia</td>
+		<td class="col-md-1">Orden</td>
+		<td class="col-md-1">
 		<?php 
 			if(isset($tipo)){
 				echo $tipo;

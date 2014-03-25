@@ -31,7 +31,7 @@
 			    		<a class="col-md-3 col-md-offset-1" href="#">
 							<img class="logo-header" src="<?php echo base_url().'img/logoparabanner.png'; ?>">
 						</a>
-						<div class="row" style="padding-top:15px;">
+						<div class="row" style="padding-top:2%;">
 							<ul class="nav navbar-nav" style="margin-right:20px;">
 						        <li class="dropdown header-elements" styl="display:inline-block;">
 							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>

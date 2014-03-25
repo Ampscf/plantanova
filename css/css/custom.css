@@ -117,3 +117,8 @@ footer {
 	clear: right;
 	max-width: 40%;
 }
+
+textarea 
+{
+	resize:none;
+}

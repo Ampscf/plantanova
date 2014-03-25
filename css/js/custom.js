@@ -10,7 +10,7 @@
 				$(".tab-content").html(data);
 			},
 			failure:function(data){
-
+				
 			}
 		});
 		e.preventDefault();
