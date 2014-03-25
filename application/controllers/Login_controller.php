@@ -77,7 +77,7 @@ class login_controller extends CI_Controller {
 	 		return TRUE;
 	 	}
 	 	else {
-	 		$this->form_validation->set_message('check_user', '%s or password are incorrect.');
+	 		$this->form_validation->set_message('check_user', 'El correo o %s son incorrectos.');
 	 		return FALSE;
 	 	}
 	 }
