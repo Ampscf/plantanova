@@ -39,5 +39,15 @@ class Order_controller extends CI_Controller {
 			$this->load->view('main',$template);
 	}
 	
+	//Función temporal
+			public function semillas()
+	{
+			$template['header'] = "home_header.php";
+			$template['template'] = "semillas.php";
+			$template['footer'] = "main_footer.php";
+			
+			$this->load->view('main',$template);
+	}
+	
 	
 }
