@@ -9,6 +9,7 @@
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						
+						<label>Planta</label>
 						<select class="form-control">
 							<option selected>Planta</option>
 							<?php foreach ($plants as $key) {
@@ -18,12 +19,14 @@
 						
 						<div class="clear"></div>
 
+						<label>Variedad</label>
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Variedad" name="variedad" id="variedad">
 						</div>
 						
 						<div class="clear"></div>
 
+						<label>Porta Injerto</label>
 						<div class="input-group-lg">						
 							<input type="text" class="form-control" placeholder="Porta Injerto" name="portainjerto" id="portainjerto">
 						</div>

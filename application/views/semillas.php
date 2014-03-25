@@ -48,8 +48,8 @@
 						<div class="clear"></div>
 
 						<div>
-							
-							<textarea class="form-control" rows="4">Comentarios</textarea> 
+							<label>Comentarios</label>
+							<textarea class="form-control" rows="4"></textarea> 
 						</div>
 						
 					</div>
