@@ -39,5 +39,34 @@ class Order_controller extends CI_Controller {
 			$this->load->view('main',$template);
 	}
 	
+	//Función temporal
+		public function pedido2()
+	{
+	$template['header'] = "home_header.php";
+			$template['template'] = "pedido2.php";
+			$template['footer'] = "main_footer.php";
+			
+			$this->load->view('main',$template);
+	}
+
+	//Función temporal
+		public function pedido3()
+	{
+	$template['header'] = "home_header.php";
+			$template['template'] = "pedido3.php";
+			$template['footer'] = "main_footer.php";
+			
+			$this->load->view('main',$template);
+	}
+
+	//Función temporal
+		public function pedido4()
+	{
+	$template['header'] = "home_header.php";
+			$template['template'] = "pedido4.php";
+			$template['footer'] = "main_footer.php";
+			
+			$this->load->view('main',$template);
+	}
 	
 }

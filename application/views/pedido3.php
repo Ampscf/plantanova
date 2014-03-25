@@ -124,18 +124,18 @@
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="25000" name="cantidad" id="cantidad" disabled>
+							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">
 							<div class="input-group-addon" style="text-align: left;">
 								<span class="glyphicon glyphicon-time"> Fecha </span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="05 / 07 / 2014" disabled>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="20000" name="alcance" id="alcance disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -158,22 +158,22 @@
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="23000" name="cantidad" id="cantidad" disabled>
+							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">
 							<div class="input-group-addon" style="text-align: left;">
 								<span class="glyphicon glyphicon-time"> Fecha </span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="05 / 09 / 2014" disabled>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="20000" name="alcance" id="alcance disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="95%" name="viabilidad" id="viabilidad disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="Vibilidad" name="viabilidad" id="viabilidad disabledInput" disabled>
 						</div>
 					</div>
 					<div class="panel-footer">
