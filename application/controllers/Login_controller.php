@@ -57,11 +57,11 @@ class login_controller extends CI_Controller {
 	 {
 		$template['header'] = "home_header.php";
 		$template['template'] = "home_view.php";
-			$template['footer'] = "main_footer.php";
+		$template['footer'] = "main_footer.php";
 
-			$template['myinfo'] = $this->user_model->get_user_by_mail($this->input->post('email'));
+		$template['myinfo'] = $this->user_model->get_user_by_mail($this->input->post('email'));
 			
-			$this->load->view('main',$template);
+		$this->load->view('main',$template);
 	 }
 
 	 function check_user()
@@ -69,12 +69,14 @@ class login_controller extends CI_Controller {
 	 	$mail = $this->input->post('email');
 	 	$pass = $this->input->post('password');
 	 	$user = $this->user_model->login($mail,$pass);
+
 	 	if($user){
 	 		$sessionData = array(
 
                 "id" => $user->id_user,
                 "mail" => $user->mail,
-                "logged_in" => TRUE
+                "logged_in" => TRUE,
+                "id_rol" => $user->id_rol,
             );
 
             $this->session->set_userdata($sessionData);

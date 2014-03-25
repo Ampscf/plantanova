@@ -11,8 +11,6 @@
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url() . 'css/css/bootstrap.css'; ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/datepicker.css';?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/js/bootstrap-datepicker.js';?>">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
   		<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -37,9 +35,15 @@
 							<li class="header-elements" style="display:inline-block;">
 								<?php echo anchor('Order_controller/index/', 'Pedidos', 'class="header-link"'); ?>
 					        </li>
-					        <li class="header-elements" style="display:inline-block;">
-					        	<?php echo anchor('#', 'Usuarios', 'class="header-link"'); ?>
-					        </li>
+					        <?php if($this->session->userdata('id_rol') == 1)
+					        { ?>
+						        <li class="header-elements" style="display:inline-block;">
+						        	<?php echo anchor('', 'Semillas', 'class="header-link"'); ?>
+						        </li>
+						        <li class="header-elements" style="display:inline-block;">
+						        	<?php echo anchor('', 'Usuarios', 'class="header-link"'); ?>
+						        </li>
+						    <?php } ?>
 					    </ul>
 					    <ul class="nav navbar-nav navbar-right">
 					        <div class="btn-group header-elements col-md-2">
