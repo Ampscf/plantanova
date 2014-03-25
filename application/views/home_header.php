@@ -7,14 +7,14 @@
 		<title>Planta Nova</title>
 
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+		<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 		<link rel="stylesheet" href="<?php echo base_url() . 'css/css/bootstrap.css'; ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-  		<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<link rel="stylesheet" href="/resources/demos/style.css">
 
 		<script>
 			$(function() {
