@@ -1,17 +1,17 @@
 <div align="center">
-<h2>Pedidos en tránsito</h2>
+<h2>Pedidos en transito</h2>
 <table border="1" class="table">
 	<tr>
 		<td><b> #Pedido </b></td>
 		<td><b> Fecha de entrega </b></td>
 		<td><b> Planta </b></td> 
-		<td><b> Categoría  </b></td>
+		<td><b> Categoria  </b></td>
 		<td><b> Cliente  </b></td>
 	</tr>
 	<tr>
 		<td><?php echo anchor('Order_controller/pedido1/', '1');?></td>
 		<td>05/05/2014</td>
-		<td>Sandía</td>
+		<td>Sandia</td>
 		<td>Orden</td>
 		<td>Jorge Torres</td>
     </tr>
