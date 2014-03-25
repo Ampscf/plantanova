@@ -31,37 +31,52 @@
 			    		<a class="col-md-3 col-md-offset-1" href="#">
 							<img class="logo-header" src="<?php echo base_url().'img/logoparabanner.png'; ?>">
 						</a>
-						<ul class="nav navbar-nav">
-							<li class="header-elements" style="display:inline-block;">
-								<?php echo anchor('Order_controller/index/', 'Pedidos', 'class="header-link"'); ?>
-					        </li>
-					        <?php if($this->session->userdata('id_rol') == 1)
-					        { ?>
+						<div class="row" style="padding-top:15px;">
+							<ul class="nav navbar-nav" style="margin-right:20px;">
+						        <li class="dropdown header-elements" styl="display:inline-block;">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>
+							        <ul class="dropdown-menu">
+							           	<li>
+							        		<?php echo anchor('order_controller/index','Hacer pedido'); ?>
+							           	</li>
+							           	<?php if($this->session->userdata('id_rol') == 1)
+							           	{ ?>
+								            <li>
+								            	<?php echo anchor('order_controller/pedido1','Ver pedido'); ?>
+								            </li>
+								        <?php } ?>
+						            </ul>
+						        </li>
+						    </ul>
+							<ul class="nav navbar-nav">
 						        <li class="header-elements" style="display:inline-block;">
 						        	<?php echo anchor('', 'Semillas', 'class="header-link"'); ?>
 						        </li>
-						        <li class="header-elements" style="display:inline-block;">
-						        	<?php echo anchor('', 'Usuarios', 'class="header-link"'); ?>
-						        </li>
-						    <?php } ?>
-					    </ul>
-					    <ul class="nav navbar-nav navbar-right">
-					        <div class="btn-group header-elements col-md-2">
-					    		<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-					    			<?php echo $this->session->userdata('mail'); ?>
-					      			<span class="caret"></span>
-					    		</button>
-					    		<ul class="dropdown-menu">
-					      			<li>
-					      				<?php echo anchor('#', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
-								    </li>
-					      			<li role="presentation" class="divider"></li>
-					      			<li>
-					      				<?php echo anchor('Login_controller/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
-					      			</li>
-					    		</ul>
-							</div>
-						</ul>
+						        <?php if($this->session->userdata('id_rol') == 1)
+						        { ?>
+							        <li class="header-elements" style="display:inline-block;">
+							        	<?php echo anchor('', 'Usuarios', 'class="header-link"'); ?>
+							        </li>
+							    <?php } ?>
+						    </ul>
+						    <ul class="nav navbar-nav navbar-right">
+						        <div class="btn-group header-elements col-md-2">
+						    		<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+						    			<?php echo $this->session->userdata('mail'); ?>
+						      			<span class="caret"></span>
+						    		</button>
+						    		<ul class="dropdown-menu">
+						      			<li>
+						      				<?php echo anchor('#', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
+									    </li>
+						      			<li role="presentation" class="divider"></li>
+						      			<li>
+						      				<?php echo anchor('Login_controller/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
+						      			</li>
+						    		</ul>
+								</div>
+							</ul>
+						</div>
 			    	</div>
 				</div><!-- /.container-fluid -->
 			</nav>
