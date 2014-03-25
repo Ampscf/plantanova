@@ -97,3 +97,17 @@ li a:focus
 {
 	background: transparent url('../../img/plantanovaiconchico.png') center top no-repeat;
 }
+
+/* Columns
+-------------------------------------------------- */
+.column-float
+{
+	float: left;
+	max-width: 40%;
+}
+
+.column-clear
+{
+	clear: right;
+	max-width: 40%;
+}

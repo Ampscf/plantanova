@@ -54,8 +54,7 @@
 			</div>
 		</div>
 	</div>
-</div>
-
+</div><!-- End Container -->
 <div class="container">
 	<div class=" col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
@@ -112,37 +111,33 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div><!-- End Container -->
 
 <div class="page-container">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-default">
+		<div class="col-md-10 col-md-offset-1">
+			
+			<div class="panel panel-default column-float">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Siembra </h3>
 				</div>
-	
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
 						</div>
-						
 						<div class="clear"></div>
-
-						<div class="input-group-lg">						
-							<input type="text" class="form-control" placeholder="Fecha" name="portainjerto" id="portainjerto">
+						<div class="input-group-lg">
+							<div class="input-group-addon" style="text-align: left;">
+								<span class="glyphicon glyphicon-time"> Fecha </span>
+							</div>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
 						</div>
-						
 						<div class="clear"></div>
-
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="volumen" id="volumen">
+							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
 						</div>
-						
 					</div>
-
 					<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-3">
@@ -153,36 +148,34 @@
 							</div>
 						</div>
 					</div>
-				</form>
-				
-			</div>
-			<!-- End panel-default -->
-			<div class="panel panel-default">
+				</form><!-- End Siembra -->
+			</div><!-- End panel-default -->
+
+			<div class="panel panel-default column-float column-clear">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Germinación </h3>
 				</div>
-	
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
 						</div>
-						
 						<div class="clear"></div>
-
-						<div class="input-group-lg">						
-							<input type="text" class="form-control" placeholder="Fecha" name="portainjerto" id="portainjerto">
+						<div class="input-group-lg">
+							<div class="input-group-addon" style="text-align: left;">
+								<span class="glyphicon glyphicon-time"> Fecha </span>
+							</div>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
 						</div>
-						
 						<div class="clear"></div>
-
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="volumen" id="volumen">
+							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
 						</div>
-						
+						<div class="clear"></div>
+						<div class="input-group-lg">	
+							<input type="text" class="form-control" placeholder="Vibilidad" name="viabilidad" id="viabilidad disabledInput" disabled>
+						</div>
 					</div>
-
 					<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-3">
@@ -193,36 +186,30 @@
 							</div>
 						</div>
 					</div>
-				</form>
-				
-			</div>
-			<!-- End panel-default -->
-		<div class="panel panel-default">
+				</form><!-- End Germinacion -->
+			</div><!-- End panel-default -->
+
+			<div class="panel panel-default column-float">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Injerto </h3>
 				</div>
-	
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
 						</div>
-						
 						<div class="clear"></div>
-
-						<div class="input-group-lg">						
-							<input type="text" class="form-control" placeholder="Fecha" name="portainjerto" id="portainjerto">
+						<div class="input-group-lg">
+							<div class="input-group-addon" style="text-align: left;">
+								<span class="glyphicon glyphicon-time"> Fecha </span>
+							</div>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
 						</div>
-						
 						<div class="clear"></div>
-
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="volumen" id="volumen">
+							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
 						</div>
-						
 					</div>
-
 					<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-3">
@@ -233,76 +220,30 @@
 							</div>
 						</div>
 					</div>
-				</form>
-				
-			</div>
-			<!-- End panel-default -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"> Plantado </h3>
-				</div>
-	
-				<?php echo form_open('Login_controller/home'); ?>
-					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						
-						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="variedad" id="variedad">
-						</div>
-						
-						<div class="clear"></div>
+				</form><!-- End Injerto -->
+			</div><!-- End panel-default -->
 
-						<div class="input-group-lg">						
-							<input type="text" class="form-control" placeholder="Fecha" name="portainjerto" id="portainjerto">
-						</div>
-						
-						<div class="clear"></div>
-
-						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="volumen" id="volumen">
-						</div>
-						
-					</div>
-
-					<div class="panel-footer">
-						<div class="row">
-							<div class="col-md-3">
-								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
-							</div>
-							<div class="col-md-3 col-md-offset-6">
-								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
-							</div>
-						</div>
-					</div>
-				</form>
-				
-			</div>
-			<!-- End panel-default -->
-			<div class="panel panel-default">
+			<div class="panel panel-default column-float column-clear">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Transplante </h3>
 				</div>
-	
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="variedad" id="variedad">
+							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
 						</div>
-						
 						<div class="clear"></div>
-
-						<div class="input-group-lg">						
-							<input type="text" class="form-control" placeholder="Fecha" name="portainjerto" id="portainjerto">
+						<div class="input-group-lg">
+							<div class="input-group-addon" style="text-align: left;">
+								<span class="glyphicon glyphicon-time"> Fecha </span>
+							</div>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
 						</div>
-						
 						<div class="clear"></div>
-
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="volumen" id="volumen">
+							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
 						</div>
-						
 					</div>
-
 					<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-3">
@@ -313,13 +254,9 @@
 							</div>
 						</div>
 					</div>
-				</form>
-				
-			</div>
-			<!-- End panel-default -->
-		</div>		
-		<!-- End col-md-4 col-md-offset-4 -->
-	</div>
-	<!-- End row -->
-</div>
-<!-- End page-container -->
+				</form><!-- End Transplante -->
+			</div><!-- End panel-default -->
+
+		</div><!-- End col-md-10 col-md-offset-1-->
+	</div><!-- End row -->
+</div><!-- End page-container -->
