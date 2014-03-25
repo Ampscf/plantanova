@@ -49,7 +49,7 @@ class Order_controller extends CI_Controller {
 			$template['id'] = $this->input->post('tipo');
 			
 			//$this->load->view('main',$template);
-			$this->load->view('tabla_pedio.php');
+			//$this->load->view('tabla_pedio.php');
 	}
 	
 	//Función temporal

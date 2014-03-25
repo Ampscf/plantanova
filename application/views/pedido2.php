@@ -96,15 +96,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>1</td>
-							<td>Sandía</td>
-							<td>05/05/2014</td>
+							<td>2</td>
+							<td>Tomate</td>
+							<td>05/15/2014</td>
 							<td>PaiPai</td>
 							<td>Empower</td>
 							<td>1</td>
-							<td>20000</td>
-							<td>Peat moss</td>
-							<td>Charola 35 cavidades</td>
+							<td>40000</td>
+							<td>Lana de roca</td>
+							<td>Kiem Plug</td>
 						</tr>
 					</tbody>
 				</table>
@@ -117,25 +117,25 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			
-			<div class="panel panel-default column-float">
+			<div class="panel panel-default column-float col-md-offset-1">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Siembra </h3>
 				</div>
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
+							<input type="text" class="form-control" placeholder="51000" name="cantidad" id="cantidad" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">
 							<div class="input-group-addon" style="text-align: left;">
 								<span class="glyphicon glyphicon-time"> Fecha </span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="05 / 17 / 2014" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="40000" name="alcance" id="alcance disabledInput" disabled>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -151,29 +151,29 @@
 				</form><!-- End Siembra -->
 			</div><!-- End panel-default -->
 
-			<div class="panel panel-default column-float column-clear">
+			<div class="panel panel-default column-float column-clear col-md-offset-1">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Germinación </h3>
 				</div>
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
+							<input type="text" class="form-control" placeholder="44421" name="cantidad" id="cantidad" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">
 							<div class="input-group-addon" style="text-align: left;">
 								<span class="glyphicon glyphicon-time"> Fecha </span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="05 / 20 / 2014" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="40000" name="alcance" id="alcance disabledInput" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Vibilidad" name="viabilidad" id="viabilidad disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="94%" name="viabilidad" id="viabilidad disabledInput" disabled>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -189,25 +189,25 @@
 				</form><!-- End Germinacion -->
 			</div><!-- End panel-default -->
 
-			<div class="panel panel-default column-float">
+			<div class="panel panel-default column-float col-md-offset-1">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Injerto </h3>
 				</div>
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
+							<input type="text" class="form-control" placeholder="39179" name="cantidad" id="cantidad" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">
 							<div class="input-group-addon" style="text-align: left;">
 								<span class="glyphicon glyphicon-time"> Fecha </span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="05 / 25 / 2014" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="40000" name="alcance" id="alcance disabledInput" disabled>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -223,25 +223,59 @@
 				</form><!-- End Injerto -->
 			</div><!-- End panel-default -->
 
-			<div class="panel panel-default column-float column-clear">
+			<div class="panel panel-default column-float column-clear col-md-offset-1">
 				<div class="panel-heading">
-					<h3 class="panel-title"> Transplante </h3>
+					<h3 class="panel-title"> Pinchado </h3>
 				</div>
 				<?php echo form_open('Login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
+							<input type="text" class="form-control" placeholder="344890" name="cantidad" id="cantidad" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">
 							<div class="input-group-addon" style="text-align: left;">
 								<span class="glyphicon glyphicon-time"> Fecha </span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="05 / 30 / 2014" disabled>
 						</div>
 						<div class="clear"></div>
 						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
+							<input type="text" class="form-control" placeholder="40000" name="alcance" id="alcance disabledInput" disabled>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-3">
+								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
+							</div>
+							<div class="col-md-3 col-md-offset-6">
+								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
+							</div>
+						</div>
+					</div>
+				</form><!-- End Pinchado -->
+			</div><!-- End panel-default -->
+
+			<div class="panel panel-default column-float col-md-offset-1">
+				<div class="panel-heading">
+					<h3 class="panel-title"> Transplante </h3>
+				</div>
+				<?php echo form_open('Login_controller/home'); ?>
+					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						<div class="input-group-lg">
+							<input type="text" class="form-control" placeholder="312135" name="cantidad" id="cantidad" disabled>
+						</div>
+						<div class="clear"></div>
+						<div class="input-group-lg">
+							<div class="input-group-addon" style="text-align: left;">
+								<span class="glyphicon glyphicon-time"> Fecha </span>
+							</div>
+							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="06 / 05 / 2014" disabled>
+						</div>
+						<div class="clear"></div>
+						<div class="input-group-lg">	
+							<input type="text" class="form-control" placeholder="40000" name="alcance" id="alcance disabledInput" disabled>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -258,5 +292,32 @@
 			</div><!-- End panel-default -->
 
 		</div><!-- End col-md-10 col-md-offset-1-->
+
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default ">
+				<div class="panel-heading">
+					<h3 class="panel-title"> Observaciones </h3>
+				</div>
+				<?php echo form_open('Login_controller/home'); ?>
+					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						<div class="input-group-lg">
+							<textarea class="form-control" rows="3">El Cliente ya está informado del ancance del fase de injerto.</textarea>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-3">
+								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
+							</div>
+							<div class="col-md-3 col-md-offset-6">
+								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
+							</div>
+						</div>
+					</div>
+				</form><!-- End Observaciones -->
+			</div><!-- End panel-default -->
+		</div><!-- End col-md-8 col-md-offset-2 -->
+
 	</div><!-- End row -->
+
 </div><!-- End page-container -->

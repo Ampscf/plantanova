@@ -258,5 +258,31 @@
 			</div><!-- End panel-default -->
 
 		</div><!-- End col-md-10 col-md-offset-1-->
+
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default ">
+				<div class="panel-heading">
+					<h3 class="panel-title"> Observaciones </h3>
+				</div>
+				<?php echo form_open('Login_controller/home'); ?>
+					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						<div class="input-group-lg">
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-3">
+								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
+							</div>
+							<div class="col-md-3 col-md-offset-6">
+								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
+							</div>
+						</div>
+					</div>
+				</form><!-- End Observaciones -->
+			</div><!-- End panel-default -->
+		</div><!-- End col-md-8 col-md-offset-2 -->
+		
 	</div><!-- End row -->
 </div><!-- End page-container -->
