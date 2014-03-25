@@ -1,46 +1,24 @@
 <table class="table table-hover">
-	<tr>
-		<td class="col-md-1"><b> #Pedido </b></td>
-		<td class="col-md-1"><b> Fecha de entrega </b></td>
-		<td class="col-md-1"><b> Planta </b></td> 
-		<td class="col-md-1"><b> Categoria  </b></td>
-		<td class="col-md-1"><b> Cliente  </b></td>
-	</tr>
-	<tr>
-		<td class="col-md-1"><?php echo anchor('Order_controller/pedido/', '1');?></td>
-		<td class="col-md-1">05/05/2014</td>
-		<td class="col-md-1">Sandia</td>
-		<td class="col-md-1">Orden</td>
-		<td class="col-md-1">
-		<?php 
-			if(isset($tipo)){
-				echo $tipo;
-			}
-			else{
-				echo "Jorge Torresa";
-			}
-		?>
-		</td>
-	</tr>
-	<tr>
-		<td><?php echo anchor('Order_controller/pedido/', '2');?></td>
-		<td>10/12/2014</td>
-		<td>Tomate</td>
-		<td>Orden</td>
-		<td>Jorge Torres</td>
-	</tr>	
-	<tr>
-		<td><?php echo anchor('Order_controller/pedido/', '3');?></td>
-		<td>09/08/2014</td>
-		<td>Tomate</td>
-		<td>Orden</td>
-		<td>Jorge Torres</td>
-	</tr>
-	<tr>
-		<td><?php echo anchor('Order_controller/pedido/', '4');?></td>
-		<td>21/06/2014</td>
-		<td>Tomate</td>
-		<td>Orden</td>
-		<td>Jorge Torres</td>
-	</tr>
+	<thead>
+		<tr>
+			<th class="col-md-1">#Pedido</th>
+			<th class="col-md-1">Fecha Entrega</th>
+			<th class="col-md-1">Planta</th> 
+			<th class="col-md-1">Categoria</th>
+			<th class="col-md-1">Cliente</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($pedidos as $key) {
+			echo '<tr>';
+			echo '<td class="col-md-1">';
+			echo anchor("order_controller/pedido/", $key->id_order);
+			echo '</td>';
+			echo '<td class="col-md-1">' . $key->order_delivery . '</td>
+				<td class="col-md-1">' . $key->plant_name . '</td>
+				<td class="col-md-1">' . $key->category_name . '</td>
+				<td class="col-md-1">' . $key->cliente . '</td>';
+			echo '</tr>';
+		} ?>
+	</tbody>
 </table>

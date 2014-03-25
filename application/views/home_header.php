@@ -21,6 +21,9 @@
 				$( "#datepicker" ).datepicker();
 			});
 		</script>
+		<script>
+		     var base_url = '<?php echo base_url(); ?>';
+		</script>
 	</head>
 	<!-- End head -->
 	<body>
@@ -50,7 +53,7 @@
 						    </ul>
 							<ul class="nav navbar-nav">
 						        <li class="header-elements" style="display:inline-block;">
-						        	<?php echo anchor('Order_controller/semillas', 'Semillas', 'class="header-link"'); ?>
+						        	<?php echo anchor('order_controller/semillas', 'Semillas', 'class="header-link"'); ?>
 						        </li>
 						        <?php if($this->session->userdata('id_rol') == 1)
 						        { ?>

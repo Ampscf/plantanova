@@ -36,7 +36,8 @@ class Order_controller extends CI_Controller {
 		$template['header'] = "home_header.php";
 		$template['template'] = "admin_view.php";
 		$template['footer'] = "main_footer.php";
-		
+		$template['pedidos'] = $this->order_model->get_orders('nuevos');
+
 		$this->load->view('main',$template);
 	}
 
@@ -52,8 +53,8 @@ class Order_controller extends CI_Controller {
 	public function estado_pedidos()
 	{
 		$view_data['tipo'] = $this->input->post('tipo');
-		$view_data['nombre'] = 'Irving';
-		
+		$view_data['pedidos'] = $this->order_model->get_orders($view_data['tipo']);
+
 		$data = $this->load->view('tabla_pedido', $view_data, TRUE);
 		echo $data;
 	}

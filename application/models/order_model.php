@@ -57,6 +57,24 @@ Class Order_model extends CI_Model	{
 	
 	}
 
+	function get_orders($tipo)
+	{
+		switch($tipo)
+		{
+			case 'nuevos':
+				$result = $this->db->query('call s_order_new()');
+				break;
+			case 'proceso':
+				$result = $this->db->query('call s_order_process()');
+				break;
+			case 'completados':
+				$result = $this->db->query('call s_order_complete()');
+				break;
+		}
+
+		return $result->result();
+	}
+
   
 }
 

@@ -2,6 +2,7 @@
 	//Maneja el cambio de tabs para mostrar datos actualizados
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    var tipo = $(this).attr("href");
+	    alert(tipo);
 		$.ajax({
 			url: base_url + 'order_controller/estado_pedidos',
 			data: {'tipo':tipo},
