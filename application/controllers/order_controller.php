@@ -30,7 +30,7 @@ class Order_controller extends CI_Controller {
 	}
 	
 	//Función temporal
-	public function pedido1()
+	public function pedidos()
 	{
 			$template['header'] = "home_header.php";
 			$template['template'] = "pedido1.php";
@@ -40,7 +40,7 @@ class Order_controller extends CI_Controller {
 	}
 	
 	//Función temporal
-			public function semillas()
+	public function semillas()
 	{
 			$template['header'] = "home_header.php";
 			$template['template'] = "semillas.php";
