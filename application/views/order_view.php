@@ -33,6 +33,7 @@
 						
 						<div class="clear"></div>
 						
+						<label>Brazos</label>
 						<select class="form-control">
 							<option selected>Brazos</option>
 							<option>1</option>
@@ -41,16 +42,14 @@
 						
 						<div class="clear"></div>
 
+						<label>Volumen</label>
 						<div class="input-group-lg">	
 							<input type="text" class="form-control" placeholder="Volumen" name="volumen" id="volumen">
 						</div>
 						
 						<div class="clear"></div>	
 				
-						<div class="input-group-lg">							
-							<input type="text" class="form-control" placeholder="Fecha entrega" name="fecha" id="fecha">
-						</div>
-						
+						<label>Fecha</label>
 					    <div class="input-group input-group-lg">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-time"></span>
@@ -60,6 +59,7 @@
 						
 						<div class="clear"></div>
 
+						<label>Sustrato</label>
 						<select class="form-control">
 							<option selected>Sustrato</option>
 							<?php foreach ($sustratum as $key) {
@@ -69,6 +69,7 @@
 						
 						<div class="clear"></div>
 
+						<label>Subtipo</label>
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Subtipo" name="variedad" id="variedad">
 						</div>
@@ -76,8 +77,8 @@
 						<div class="clear"></div>
 
 						<div>
-							
-							<textarea class="form-control" rows="4">Comentarios</textarea> 
+							<label>Comentarios</label>
+							<textarea class="form-control" rows="4"></textarea> 
 						</div>
 						
 					</div>
