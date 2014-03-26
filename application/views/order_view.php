@@ -6,16 +6,18 @@
 					<h3 class="panel-title"> Pedido </h3>
 				</div>
 	
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						
-						<label>Planta</label>
-						<select class="form-control">
-							<option selected>Planta</option>
-							<?php foreach ($plants as $key) {
-								echo "<option>".$key->plant_name."</option>";
-							}?>
-						</select>
+						<div class="input-group-lg">
+							<label>Planta</label>
+							<select class="form-control">
+								<option selected>Planta</option>
+								<?php foreach ($plants as $key) {
+									echo "<option>".$key->plant_name."</option>";
+								}?>
+							</select>
+						</div>
 						
 						<div class="clear"></div>
 
@@ -33,22 +35,25 @@
 						
 						<div class="clear"></div>
 						
-						<label>Brazos</label>
-						<select class="form-control">
-							<option selected>Brazos</option>
-							<option>1</option>
-							<option>2</option>
-						</select>
+						<div class="input-group-lg">
+							<label>Brazos</label>
+							<select class="form-control">
+								<option selected>Brazos</option>
+								<option>1</option>
+								<option>2</option>
+							</select>
+						</div>
 						
 						<div class="clear"></div>
 
-						<label>Volumen</label>
-						<div class="input-group-lg">	
+						
+						<div class="input-group-lg">
+							<label>Volumen</label>
 							<input type="text" class="form-control" placeholder="Volumen" name="volumen" id="volumen">
 						</div>
 						
 						<div class="clear"></div>	
-				
+					
 						<label>Fecha</label>
 					    <div class="input-group input-group-lg">
 							<div class="input-group-addon">
@@ -59,13 +64,15 @@
 						
 						<div class="clear"></div>
 
-						<label>Sustrato</label>
-						<select class="form-control">
-							<option selected>Sustrato</option>
-							<?php foreach ($sustratum as $key) {
-								echo "<option>".$key->sustrato_name."</option>";
-							}?>
-						</select>
+						<div class="input-group-lg">
+							<label>Sustrato</label>
+							<select class="form-control">
+								<option selected>Sustrato</option>
+								<?php foreach ($sustratum as $key) {
+									echo "<option>".$key->sustrato_name."</option>";
+								}?>
+							</select>
+						</div>
 						
 						<div class="clear"></div>
 

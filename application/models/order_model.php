@@ -52,10 +52,12 @@ Class Order_model extends CI_Model	{
 	}
 	
 	
-	
-	function add_order() {
-	
+	function get_cliente($id_cliente)
+	{
+		$result = $this->db->query('call s_user(' . $id_cliente . ')');
+		return $result->row();
 	}
+
 
 	function get_orders($tipo)
 	{
@@ -71,7 +73,6 @@ Class Order_model extends CI_Model	{
 				$result = $this->db->query('call s_order_complete()');
 				break;
 		}
-
 		return $result->result();
 	}
 

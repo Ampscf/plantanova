@@ -4,7 +4,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title"> Log in </h3>
 			</div>
-			<?php echo form_open('Login_controller/login'); ?>
+			<?php echo form_open('login_controller/login'); ?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 					<?php echo form_error('email'); ?>
 					<div class="input-group input-group-lg">

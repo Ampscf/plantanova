@@ -1,5 +1,5 @@
 <div class="container">
-	<div class=" col-md-10 col-md-offset-1">
+	<div class=" col-md-12	">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 	    		<h3 class="panel-title">Informacion del cliente</h3>
@@ -8,46 +8,46 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>
+							<th class="col-md-1 text-center">
 								Nombre
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Agricola
 							</th>	
-							<th>
-								Correo electronico
+							<th class="col-md-1 text-center">
+								Correo
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Telefono
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Direccion
 							</th>
-							<th>
-								Ciudad
-							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Estado
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
+								Ciudad
+							</th>
+							<th class="col-md-1 text-center">
 								Codigo postal
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								RFC
 							</th>
 						</tr>	
 					</thead>
 					<tbody>
 						<tr>
-							<td>Jorge Torres</td>
-							<td>Agricultores de Queretaro</td>
-							<td>cliente@cliente.com</td>
-							<td>4425634123</td>
-							<td>Av. Constituyentes #5</td>
-							<td>Queretaro</td>
-							<td>Queretaro</td>
-							<td>78128</td>
-							<td>ADQ910312OL8</td>
+							<td><?php echo $cliente->cliente; ?></td>
+							<td><?php echo $cliente->farm_name; ?></td>
+							<td><?php echo $cliente->mail; ?></td>
+							<td><?php echo $cliente->phone; ?></td>
+							<td><?php echo $cliente->direccion; ?></td>
+							<td><?php echo $cliente->state_name; ?></td>
+							<td><?php echo $cliente->town_name; ?></td>
+							<td><?php echo $cliente->cp; ?></td>
+							<td><?php echo $cliente->rfc; ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -56,7 +56,7 @@
 	</div>
 </div><!-- End Container -->
 <div class="container">
-	<div class=" col-md-10 col-md-offset-1">
+	<div class=" col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 	    		<h3 class="panel-title">Informacion del pedido</h3>
@@ -65,31 +65,31 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>
+							<th class="col-md-1 text-center">
 								# de pedido
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Planta
 							</th>	
-							<th>
+							<th class="col-md-1 text-center">
 								Fecha de entrega
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Variedad
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Porta Injerto
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Brazos
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Vol. total
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Tipo sustrato
 							</th>
-							<th>
+							<th class="col-md-1 text-center">
 								Subtipo
 							</th>
 						</tr>	
@@ -121,7 +121,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Siembra </h3>
 				</div>
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="25000" name="cantidad" id="cantidad" disabled>
@@ -155,7 +155,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Germinacion </h3>
 				</div>
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="23000" name="cantidad" id="cantidad" disabled>
@@ -193,7 +193,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Injerto </h3>
 				</div>
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
@@ -227,7 +227,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Pinchado </h3>
 				</div>
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
@@ -261,7 +261,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Transplante </h3>
 				</div>
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
@@ -298,7 +298,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Observaciones </h3>
 				</div>
-				<?php echo form_open('Login_controller/home'); ?>
+				<?php echo form_open('login_controller/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<textarea class="form-control" rows="3" disabled>Alcance es mayor, tomaron del próximo orden.</br> 

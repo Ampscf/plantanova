@@ -87,7 +87,7 @@ class login_controller extends CI_Controller {
 	 	$user_out = $this->session->all_userdata();
 	 	$this->session->unset_userdata($user_out);
 	 	session_destroy();
-	 	redirect('Login_controller/index','refresh');
+	 	redirect('login_controller/index','refresh');
 	 }
 	
 }

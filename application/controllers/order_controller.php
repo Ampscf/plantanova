@@ -25,35 +25,35 @@ class Order_controller extends CI_Controller {
 		}
 	}
 	
-	//Funcion temporal
-	public function admin()
-	{
-		//Recibe el tipo de pedido que quiere: nuevo, proceso, completado
-		$tipo = $this->input->post('tipo');
-		//Falta hacer la consulta para regresar y mostrar los pedidos del tipo
 
+	public function orders_list()
+	{
+		$tipo = $this->input->post('tipo');
 
 		$template['header'] = "home_header.php";
 		$template['template'] = "admin_view.php";
 		$template['footer'] = "main_footer.php";
-		$template['pedidos'] = $this->order_model->get_orders('nuevos');
+		$template['orders'] = $this->order_model->get_orders('nuevos');
 
 		$this->load->view('main',$template);
 	}
+	
 
-	public function pedido()
+	public function order()
 	{
 		$template['header'] = "home_header.php";
-		$template['template'] = "pedido1.php";
+		$template['template'] = "pedido_view.php";
 		$template['footer'] = "main_footer.php";
+		$template['cliente'] = $this->order_model->get_cliente($this->uri->segment(3,0));
+
 		$this->load->view('main',$template);
 	}
 	
 	
-	public function estado_pedidos()
+	public function orders_state()
 	{
-		$view_data['tipo'] = $this->input->post('tipo');
-		$view_data['pedidos'] = $this->order_model->get_orders($view_data['tipo']);
+		$view_data['status'] = $this->input->post('tipo');
+		$view_data['orders'] = $this->order_model->get_orders($view_data['status']);
 
 		$data = $this->load->view('tabla_pedido', $view_data, TRUE);
 		echo $data;
@@ -61,43 +61,12 @@ class Order_controller extends CI_Controller {
 
 	
 	//Función temporal
-	public function semillas()
+	public function seeds()
 	{
 			$template['header'] = "home_header.php";
-			$template['template'] = "semillas.php";
+			$template['template'] = "semillas_view.php";
 			$template['footer'] = "main_footer.php";
 			
 			$this->load->view('main',$template);
 	}
-	
-	//Función temporal
-	public function pedido2()
-	{
-		$template['header'] = "home_header.php";
-		$template['template'] = "pedido2.php";
-		$template['footer'] = "main_footer.php";
-			
-		$this->load->view('main',$template);
-	}
-
-	//Función temporal
-		public function pedido3()
-	{
-	$template['header'] = "home_header.php";
-			$template['template'] = "pedido3.php";
-			$template['footer'] = "main_footer.php";
-			
-			$this->load->view('main',$template);
-	}
-
-	//Función temporal
-		public function pedido4()
-	{
-	$template['header'] = "home_header.php";
-			$template['template'] = "pedido4.php";
-			$template['footer'] = "main_footer.php";
-			
-			$this->load->view('main',$template);
-	}
-	
 }
