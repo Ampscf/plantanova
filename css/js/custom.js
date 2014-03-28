@@ -8,6 +8,9 @@
 			type: "POST",
 			success: function(data){
 				$(".tab-content").html(data);
+				/*var n = noty({text: 'Cambio exitoso de pestañá',
+					layout:'topCenter',
+					type:'information'});*/
 			},
 			failure:function(data){
 				
@@ -15,3 +18,23 @@
 		});
 		e.preventDefault();
 	 });
+
+
+	function get_subtype(value)
+	{
+		if($("#sustratum [value='-1']").length)
+		{
+			$("#sustratum [value='-1']").remove();
+		}
+		$.ajax({
+			url: base_url + 'order_controller/get_subtypes',
+			data: {'sustratum':value},
+			type: "POST",
+			success: function(data){
+				$("#subtype").html(data);
+			},
+			failure:function(data){
+				
+			}
+		});
+	}
