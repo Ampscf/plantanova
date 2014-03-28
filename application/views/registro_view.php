@@ -2,7 +2,7 @@
 	<div class="col-md-5 col-md-offset-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"> Log in </h3>
+				<h3 class="panel-title"> Registro </h3>
 			</div>
 			<?php echo form_open('login_controller/login'); ?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
@@ -25,16 +25,10 @@
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-2">
-							<button href="#" class="btn btn-link">Recuperar contraseÃ±a</button>
+							<button href="#" class="btn btn-link">Recuperar contraseña</button>
 						</div>
-						<div class="col-md-4 col-md-offset-2">
-							<?php  
-								$data = array(
-									'class'	=> 'btn btn-primary btn-block',
-									'name' => 'crear cuenta',
-								);
-								echo anchor('register_controller/index', 'Crear cuenta', $data);
-							?>
+						<div class="col-md-3 col-md-offset-3">
+							<input class="btn btn-primary btn-block" type="submit" value="Crear cuenta"/>
 						</div>
 						<div class="col-md-3 col-md-offset-1">
 							<input class="btn btn-success btn-block" type="submit" value="Acceder"/>
