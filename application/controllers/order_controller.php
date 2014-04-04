@@ -109,7 +109,7 @@ class Order_controller extends CI_Controller {
 	{	
 		$id_state = $this->input->post('id_state');
 		
-		$towns = $this->order_model->get_towns($id_state);
+		$towns = $this->order_model->get_town($id_state);
 		$result = "";
 		foreach ($towns as $key) 
 		{

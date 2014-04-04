@@ -130,7 +130,7 @@ Class Order_model extends CI_Model	{
 	
 	
 	//Obtiene un estado por id
-	function get_states($id_state)
+	function get_state($id_state)
 	{
 		$this->db->select('id_state,state_name');
 		$this->db->from('t_state');
@@ -168,7 +168,7 @@ Class Order_model extends CI_Model	{
 	
 	
 	//Obtiene las ciudades de un estado por el id_estado
-	function get_towns($id_state)
+	function get_town($id_state)
 	{
 		$this->db->select('id_town,town_name');
 		$this->db->from('t_town');
