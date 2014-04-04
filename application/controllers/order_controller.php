@@ -72,7 +72,7 @@ class Order_controller extends CI_Controller {
 	}
 	
 	//Changes de tabs and values for orders with state: New, Process, Finished
-	public function orders_state()
+	public function orders_status()
 	{
 		$view_data['status'] = $this->input->post('tipo');
 		$view_data['orders'] = $this->order_model->get_orders($view_data['status']);
@@ -85,11 +85,11 @@ class Order_controller extends CI_Controller {
 	//Función temporal
 	public function seeds()
 	{
-			$template['header'] = "home_header.php";
-			$template['template'] = "semillas_view.php";
-			$template['footer'] = "main_footer.php";
-			
-			$this->load->view('main',$template);
+		$template['header'] = "home_header.php";
+		$template['template'] = "semillas_view.php";
+		$template['footer'] = "main_footer.php";
+		
+		$this->load->view('main',$template);
 	}
 
 
@@ -101,6 +101,19 @@ class Order_controller extends CI_Controller {
 		foreach ($subtypes as $key) 
 		{
 			$result = $result . "<option value='" . $key->id_subtype . "'>" . $key->sustratum_name . "</option>";
+		}
+		echo $result;
+	}
+	
+	public function get_towns()
+	{	
+		$id_state = $this->input->post('id_state');
+		
+		$towns = $this->order_model->get_towns($id_state);
+		$result = "";
+		foreach ($towns as $key) 
+		{
+			$result = $result . "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
 		}
 		echo $result;
 	}

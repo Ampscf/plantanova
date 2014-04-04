@@ -3,7 +3,7 @@
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    var tipo = $(this).attr("href");
 		$.ajax({
-			url: base_url + 'order_controller/orders_state',
+			url: base_url + 'order_controller/orders_status',
 			data: {'tipo':tipo},
 			type: "POST",
 			success: function(data){
@@ -33,6 +33,26 @@
 			type: "POST",
 			success: function(data){
 				$("#subtype").html(data);
+			},
+			failure:function(data){
+				
+			}
+		});
+	}
+	
+	function get_towns($id_state)
+	{
+		if($("#state [value='-1']").length)
+		{
+			$("#state [value='-1']").remove();
+		}
+		
+		$.ajax({
+			url: base_url + 'order_controller/get_towns',
+			data: {'id_state':$id_state},
+			type: "POST",
+			success: function(data){
+				$("#town").html(data);
 			},
 			failure:function(data){
 				

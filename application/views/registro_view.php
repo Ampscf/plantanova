@@ -121,19 +121,34 @@
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-picture"></span>
+								<span class="glyphicon glyphicon-globe"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Ciudad" name="town" id="town" value="<?php echo set_value('town'); ?>">
-						</div><!-- End town -->
+							<select class="form-control" name="state" id="state" value="<?php echo set_value('state'); ?>" onchange="get_towns(this.value);">
+								<option value="-1" selected>---Estado---</option>
+								<?php 
+									foreach($states as $key)
+									{
+										echo "<option value='" . $key->id_state . "'>" . $key->state_name . "</option>";
+									}
+								?>
+							</select>
+						</div><!-- End state -->
 
 						<div class="clear"></div>
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-globe"></span>
+								<span class="glyphicon glyphicon-picture"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Estado" name="state" id="state" value="<?php echo set_value('state'); ?>">
-						</div><!-- End state -->
+							<select class="form-control" name="town" id="town" value="<?php echo set_value('town'); ?>">
+								<option selected>---Ciudad---</option>
+								<?php 
+									foreach($towns in $key)
+									{
+										echo "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
+									}
+								?>
+						</div><!-- End town -->
 					</div>
 
 				</div><!-- End panel-body -->

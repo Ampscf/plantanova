@@ -9,11 +9,15 @@ class register_controller extends CI_Controller {
 	
 	public function index()
 	{
+		$this->load->model('order_model');
 		//Carga la vista de registro de cliente
 		$template['header'] = "main_header.php";
 		$template['template'] = "registro_view.php";
 		$template['footer'] = "main_footer.php";
 		$template['action'] = "register";
+		
+		$template['states'] = $this->order_model->get_states();
+		$template['towns'] = $this->order_model->get_towns();
 			
 		$this->load->view('main',$template);
 	}
