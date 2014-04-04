@@ -148,6 +148,7 @@
 										echo "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
 									}
 								?>
+							</select>
 						</div><!-- End town -->
 					</div>
 
