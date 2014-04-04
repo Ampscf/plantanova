@@ -12,7 +12,7 @@ class Order_controller extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('order_model');
-
+		
 		if($this->session->userdata('logged_in'))
 		{
 			$template['header'] = "home_header.php";
@@ -29,35 +29,55 @@ class Order_controller extends CI_Controller {
 			redirect('index_controller/index', 'refresh');
 		}
 	}
+	
+	
+	//Checa si el tipo de solicitud es el que se necesita para evitar solicitudes malas
+	function check_request_method($_REQUEST,$tipo)
+	{
+		if($_SERVER['REQUEST_METHOD'] == $tipo)
+		{
+			return TRUE;
+		}
+		else
+		{
+			$message_403 = "No tienes los permisos para accesar.";
+			show_error($message_403 , 403 );
+		}
+	}
 
 	//Adds a new order
 	public function new_order()
 	{
-		$data['plant_name'] = $this->input->post('plant_name');
-		$data['variety'] = $this->input->post('variety');
-		$data['rootstock'] = $this->input->post('rootstock');
-		$data['branches'] = $this->input->post('branches');
-		$data['volume'] = $this->input->post('volume');
-		$data['datepicker'] = $this->input->post('datepicker');
-		$data['sustratum'] = $this->input->post('sustratum');
-		$data['subtype'] = $this->input->post('subtype');
-		$data['observations'] = $this->input->post('observations');
+		if(check_request_method($_REQUEST,"POST"))
+		{
+			$data['plant_name'] = $this->input->post('plant_name');
+			$data['variety'] = $this->input->post('variety');
+			$data['rootstock'] = $this->input->post('rootstock');
+			$data['branches'] = $this->input->post('branches');
+			$data['volume'] = $this->input->post('volume');
+			$data['datepicker'] = $this->input->post('datepicker');
+			$data['sustratum'] = $this->input->post('sustratum');
+			$data['subtype'] = $this->input->post('subtype');
+			$data['observations'] = $this->input->post('observations');
 
-		$this->order_model->new_order($data);
-		
+			$this->order_model->new_order($data);
+		}
 	}
 	
 	//Gets and shows the orders list for admin ordered in tabs by status
 	public function orders_list()
 	{
-		$tipo = $this->input->post('tipo');
+		if(check_request_method($_REQUEST,"POST"))
+		{
+			$tipo = $this->input->post('tipo');
 
-		$template['header'] = "home_header.php";
-		$template['template'] = "admin_view.php";
-		$template['footer'] = "main_footer.php";
-		$template['orders'] = $this->order_model->get_orders('nuevos');
+			$template['header'] = "home_header.php";
+			$template['template'] = "admin_view.php";
+			$template['footer'] = "main_footer.php";
+			$template['orders'] = $this->order_model->get_orders('nuevos');
 
-		$this->load->view('main',$template);
+			$this->load->view('main',$template);
+		}
 	}
 	
 	//Sends to individual order view
@@ -74,11 +94,14 @@ class Order_controller extends CI_Controller {
 	//Changes de tabs and values for orders with state: New, Process, Finished
 	public function orders_status()
 	{
-		$view_data['status'] = $this->input->post('tipo');
-		$view_data['orders'] = $this->order_model->get_orders($view_data['status']);
+		if(check_request_method($_REQUEST,"POST"))
+		{
+			$view_data['status'] = $this->input->post('tipo');
+			$view_data['orders'] = $this->order_model->get_orders($view_data['status']);
 
-		$data = $this->load->view('tabla_pedido', $view_data, TRUE);
-		echo $data;
+			$data = $this->load->view('tabla_pedido', $view_data, TRUE);
+			echo $data;
+		}
 	}
 
 	
@@ -95,26 +118,32 @@ class Order_controller extends CI_Controller {
 
 	public function get_subtypes()
 	{
-		$id_sustratum = $this->input->post('sustratum');
-		$subtypes = $this -> order_model -> get_sustratum_subtype($id_sustratum);
-		$result = "";
-		foreach ($subtypes as $key) 
+		if(check_request_method($_REQUEST,"POST"))
 		{
-			$result = $result . "<option value='" . $key->id_subtype . "'>" . $key->sustratum_name . "</option>";
+			$id_sustratum = $this->input->post('sustratum');
+			$subtypes = $this -> order_model -> get_sustratum_subtype($id_sustratum);
+			$result = "";
+			foreach ($subtypes as $key) 
+			{
+				$result = $result . "<option value='" . $key->id_subtype . "'>" . $key->sustratum_name . "</option>";
+			}
+			echo $result;
 		}
-		echo $result;
 	}
 	
 	public function get_towns()
 	{	
-		$id_state = $this->input->post('id_state');
-		
-		$towns = $this->order_model->get_town($id_state);
-		$result = "";
-		foreach ($towns as $key) 
+		if(check_request_method($_REQUEST,"POST"))
 		{
-			$result = $result . "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
+			$id_state = $this->input->post('id_state');
+		
+			$towns = $this->order_model->get_town($id_state);
+			$result = "";
+			foreach ($towns as $key) 
+			{
+				$result = $result . "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
+			}
+			echo $result;
 		}
-		echo $result;
 	}
 }

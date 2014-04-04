@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover" id="orders-table">
 	<thead>
 		<tr>
 			<th class="col-md-1">#Pedido</th>

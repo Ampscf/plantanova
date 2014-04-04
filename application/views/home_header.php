@@ -11,6 +11,7 @@
 		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.noty.packaged.min.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.dataTables.min.js'; ?>"></script>
 
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 		<link rel="stylesheet" href="<?php echo base_url() . 'css/css/bootstrap.css'; ?>">

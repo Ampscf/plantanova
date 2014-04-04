@@ -1,5 +1,5 @@
 
-	//Maneja el cambio de tabs para mostrar datos actualizados
+	//Maneja el cambio de tabs para mostrar datos actualizados de ordenes
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    var tipo = $(this).attr("href");
 		$.ajax({
@@ -19,8 +19,15 @@
 		});
 		e.preventDefault();
 	 });
-
-
+	
+	
+	//Inicializa el datatable para ordenado y busqueda
+	$("#orders-table").dataTable({
+		
+	});
+		
+	
+	//Obtiene los subtipos de sustrato para cargar dinamicamente el control select de semillas
 	function get_subtype(value)
 	{
 		if($("#sustratum [value='-1']").length)
@@ -40,6 +47,8 @@
 		});
 	}
 	
+	
+	//Obtiene las ciudades por estado dinamicamente para el control select de registro cliente
 	function get_towns($id_state)
 	{
 		if($("#state [value='-1']").length)
