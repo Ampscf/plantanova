@@ -143,7 +143,7 @@
 							<select class="form-control" name="town" id="town" value="<?php echo set_value('town'); ?>">
 								<option selected>---Ciudad---</option>
 								<?php 
-									foreach($towns in $key)
+									foreach($towns as $key)
 									{
 										echo "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
 									}
