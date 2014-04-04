@@ -2,12 +2,11 @@
 
 Class User_model extends CI_Model	{
 
-	function login($mail, $pass){
+	function login($mail){
 	
 		$this -> db -> select('id_user, mail, password,id_rol');
 		$this -> db -> from('t_user');
 		$this -> db -> where ('mail', $mail);
-		$this -> db -> where ('password', SHA1($pass));
 		$this -> db -> limit(1);
 
 		$query = $this -> db -> get();
@@ -32,6 +31,12 @@ Class User_model extends CI_Model	{
 		$query = $this -> db -> get();
 
 		return $query->row();
+	}
+
+	function insert_client_user($data)
+	{
+		$this->db->insert('t_user',$data);
+		return $this->db->affected_rows();
 	}
 	
   

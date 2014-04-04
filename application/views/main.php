@@ -7,7 +7,14 @@
 	else
 	{
 		include_once('main_header.php');
-		include_once('login_view.php');
+		if(isset($action))
+		{
+			include_once($template);
+		}
+		else
+		{
+			include_once('login_view.php');
+		}
 	}
 	include_once($footer); 
 ?>

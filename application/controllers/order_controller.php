@@ -44,6 +44,7 @@ class Order_controller extends CI_Controller {
 		$data['observations'] = $this->input->post('observations');
 
 		$this->order_model->new_order($data);
+		
 	}
 	
 	//Gets and shows the orders list for admin ordered in tabs by status
