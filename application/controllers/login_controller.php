@@ -60,7 +60,7 @@ class login_controller extends CI_Controller {
 
 	 function check_user()
 	 {
-	 	//$this->load->library('PasswordHash',array('iteration_count_log2' => 8, 'portable_hashes' => FALSE ), 'passHash');
+		//$this->load->library('PasswordHash',array('iteration_count_log2' => 8, 'portable_hashes' => FALSE ), 'passHash');
 	 	$this->load->library('PasswordHash');
 
 	 	$mail = $this->input->post('email');
