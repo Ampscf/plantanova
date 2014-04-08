@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class register_controller extends CI_Controller {
+class register extends CI_Controller {
 
 	function __construct() {
 	   parent::__construct();
@@ -25,7 +25,7 @@ class register_controller extends CI_Controller {
 	
 	
 	//Registra un usuario y lo redirecciona a la pagina de inicio para login	 
-	function register () 
+	function registered () 
 	{
 		$this->load->library('form_validation');
 	 	
@@ -69,7 +69,7 @@ class register_controller extends CI_Controller {
 			//Verifica si hubo una tupla modificada o agregada
 			if($this->user_model->insert_client_user($data) > 0 )
 			{
-				redirect('login_controller/index','refresh');
+				redirect('login/index','refresh');
 			}
 			else
 			{

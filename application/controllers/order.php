@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Order_controller extends CI_Controller {
+class order extends CI_Controller {
 
 	function __construct() {
 	   parent::__construct();
@@ -26,7 +26,7 @@ class Order_controller extends CI_Controller {
 		}
 		else
 		{
-			redirect('index_controller/index', 'refresh');
+			redirect('index/index', 'refresh');
 		}
 	}
 	
@@ -61,12 +61,12 @@ class Order_controller extends CI_Controller {
 	}
 	
 	//Sends to individual order view
-	public function order()
+	public function order_id()
 	{
 		$template['header'] = "home_header.php";
 		$template['template'] = "pedido_view.php";
 		$template['footer'] = "main_footer.php";
-		$template['cliente'] = $this->order_model->get_cliente($this->uri->segment(3,0));
+		$template['cliente'] = $this->order_model->get_cliente($this->uri->segment(2,0));
 
 		$this->load->view('main',$template);
 	}

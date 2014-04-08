@@ -6,7 +6,7 @@
 					<h3 class="panel-title"> Envio de semillas </h3>
 				</div>
 	
-				<?php echo form_open('login_controller/home'); ?>
+				<?php echo form_open('semillas'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						
 						<label># de orden</label>

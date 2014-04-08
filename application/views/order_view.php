@@ -1,5 +1,5 @@
 <div class="page-container">
-	<?php echo form_open('order_controler/new_order'); ?>
+	<?php echo form_open('pedidos/registro'); ?>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">

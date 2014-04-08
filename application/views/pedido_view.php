@@ -113,15 +113,15 @@
 	</div>
 </div><!-- End Container -->
 
-<div class="page-container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			
-			<div class="panel panel-default column-float col-md-offset-1">
+<div class="container">
+	<div class="col-md-12">
+		<div class="col-md-6">
+
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Siembra </h3>
 				</div>
-				<?php echo form_open('login_controller/home'); ?>
+				<?php echo form_open('login/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="25000" name="cantidad" id="cantidad" disabled>
@@ -150,12 +150,14 @@
 					</div>
 				</form><!-- End Siembra -->
 			</div><!-- End panel-default -->
+		</div> <!-- End col-md-6 -->
 
-			<div class="panel panel-default column-float column-clear col-md-offset-1">
+		<div class="col-md-6">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Germinacion </h3>
 				</div>
-				<?php echo form_open('login_controller/home'); ?>
+				<?php echo form_open('login/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="23000" name="cantidad" id="cantidad" disabled>
@@ -189,11 +191,16 @@
 				</form><!-- End Germinacion -->
 			</div><!-- End panel-default -->
 
-			<div class="panel panel-default column-float col-md-offset-1">
+		</div> <!-- End col-md-6 -->
+	</div> <!-- End col-md-12 -->
+
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Injerto </h3>
 				</div>
-				<?php echo form_open('login_controller/home'); ?>
+				<?php echo form_open('login/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
@@ -222,12 +229,14 @@
 					</div>
 				</form><!-- End Injerto -->
 			</div><!-- End panel-default -->
+		</div> <!-- End col-md-6 -->
 
-			<div class="panel panel-default column-float column-clear col-md-offset-1">
+		<div class="col-md-6">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Pinchado </h3>
 				</div>
-				<?php echo form_open('login_controller/home'); ?>
+				<?php echo form_open('login/home'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<div class="input-group-lg">
 							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
@@ -256,69 +265,73 @@
 					</div>
 				</form><!-- End Pinchado -->
 			</div><!-- End panel-default -->
+		</div> <!-- End col-md-6-->
 
-			<div class="panel panel-default column-float col-md-offset-1">
-				<div class="panel-heading">
-					<h3 class="panel-title"> Transplante </h3>
+	</div> <!-- End col-md-12 -->
+
+	<div class="col-md-6 col-md-offset-3">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"> Transplante </h3>
+			</div>
+			<?php echo form_open('login/home'); ?>
+				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+					<div class="input-group-lg">
+						<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
+					</div>
+					<div class="clear"></div>
+					<div class="input-group-lg">
+						<div class="input-group-addon" style="text-align: left;">
+							<span class="glyphicon glyphicon-time"> Fecha </span>
+						</div>
+						<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
+					</div>
+					<div class="clear"></div>
+					<div class="input-group-lg">	
+						<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
+					</div>
 				</div>
-				<?php echo form_open('login_controller/home'); ?>
-					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						<div class="input-group-lg">
-							<input type="text" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad">
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-md-3">
+							<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
 						</div>
-						<div class="clear"></div>
-						<div class="input-group-lg">
-							<div class="input-group-addon" style="text-align: left;">
-								<span class="glyphicon glyphicon-time"> Fecha </span>
-							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker" placeholder="mm / dd / aaaa">
-						</div>
-						<div class="clear"></div>
-						<div class="input-group-lg">	
-							<input type="text" class="form-control" placeholder="Alcance" name="alcance" id="alcance disabledInput" disabled>
+						<div class="col-md-3 col-md-offset-6">
+							<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
 						</div>
 					</div>
-					<div class="panel-footer">
-						<div class="row">
-							<div class="col-md-3">
-								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
-							</div>
-							<div class="col-md-3 col-md-offset-6">
-								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
-							</div>
-						</div>
-					</div>
-				</form><!-- End Transplante -->
-			</div><!-- End panel-default -->
-
-		</div><!-- End col-md-10 col-md-offset-1-->
-
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default ">
-				<div class="panel-heading">
-					<h3 class="panel-title"> Observaciones </h3>
 				</div>
-				<?php echo form_open('login_controller/home'); ?>
-					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						<div class="input-group-lg">
-							<textarea class="form-control" rows="3" disabled>Alcance es mayor, tomaron del próximo orden.</br> 
-							Embarque 9,024 Obsession y 3,528 SP4 plantas 28/1 CF 1393	se corrigió un error en el registro de la siembra 
-							del ortainjerto para Petite</textarea>
-						</div>
-					</div>
-					<div class="panel-footer">
-						<div class="row">
-							<div class="col-md-3">
-								<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
-							</div>
-							<div class="col-md-3 col-md-offset-6">
-								<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
-							</div>
-						</div>
-					</div>
-				</form><!-- End Observaciones -->
-			</div><!-- End panel-default -->
-		</div><!-- End col-md-8 col-md-offset-2 -->
+			</form><!-- End Transplante -->
+		</div><!-- End panel-default -->
 
-	</div><!-- End row -->
-</div><!-- End page-container -->
+	</div> <!-- End col-md-6 col-md-offset-3 -->
+
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"> Observaciones </h3>
+			</div>
+			<?php echo form_open('login/home'); ?>
+				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+					<div class="input-group-lg">
+						<textarea class="form-control" rows="5" disabled>
+							Observaciones del cliente
+						</textarea>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-md-3">
+							<input class="btn btn-default btn-block" type="submit" value="Aceptar"/>
+						</div>
+						<div class="col-md-3 col-md-offset-6">
+							<input class="btn btn-default btn-block" type="button" value="Cancelar"/>
+						</div>
+					</div>
+				</div>
+			</form><!-- End Observaciones -->
+		</div><!-- End panel-default -->
+	</div>
+
+</div><!-- End container -->

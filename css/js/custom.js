@@ -3,7 +3,7 @@
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    var tipo = $(this).attr("href");
 		$.ajax({
-			url: base_url + 'order_controller/orders_status',
+			url: base_url + 'order/orders_status',
 			data: {'tipo':tipo},
 			type: "POST",
 			success: function(data){
@@ -22,9 +22,9 @@
 	
 	
 	//Inicializa el datatable para ordenado y busqueda
-	$("#orders-table").dataTable({
+	// $("#orders-table").dataTable({
 		
-	});
+	// });
 		
 	
 	//Obtiene los subtipos de sustrato para cargar dinamicamente el control select de semillas
@@ -35,7 +35,7 @@
 			$("#sustratum [value='-1']").remove();
 		}
 		$.ajax({
-			url: base_url + 'order_controller/get_subtypes',
+			url: base_url + 'order/get_subtypes',
 			data: {'sustratum':value},
 			type: "POST",
 			success: function(data){
@@ -58,7 +58,7 @@
 		}
 		
 		$.ajax({
-			url: base_url + 'order_controller/get_towns',
+			url: base_url + 'order/get_towns',
 			data: {'id_state':$id_state},
 			type: "POST",
 			success: function(data){

@@ -1,10 +1,10 @@
 <div class="row">
-	<div class="col-md-5 col-md-offset-4">
+	<div class="col-md-4 col-md-offset-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"> Log in </h3>
 			</div>
-			<?php echo form_open('login_controller/login'); ?>
+			<?php echo form_open('inicio'); ?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 					<?php echo form_error('email'); ?>
 					<div class="input-group input-group-lg">
@@ -24,17 +24,17 @@
 				</div><!-- End panel-body -->
 				<div class="panel-footer">
 					<div class="row">
+						<div class="col-md-3 col-md-offset-1">
+							<input class="btn btn-success btn-block" type="submit" value="Acceder"/>
+						</div>
 						<div class="col-md-3 col-md-offset-3">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'crear cuenta',
 								);
-								echo anchor('register_controller/index', 'Crear cuenta', $data);
+								echo anchor('registro/nuevo', 'Crear cuenta', $data);
 							?>
-						</div>
-						<div class="col-md-3 col-md-offset-1">
-							<input class="btn btn-success btn-block" type="submit" value="Acceder"/>
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->

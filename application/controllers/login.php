@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class login_controller extends CI_Controller {
+class login extends CI_Controller {
 
 	function __construct() {
 	   parent::__construct();
@@ -26,9 +26,8 @@ class login_controller extends CI_Controller {
 	
 	
 	//Verifica informacion y entra a la pagina principal con una sesion
-	function login() 
+	function log_in() 
 	{
-		
 		//This method will have the credentials validation
 		$this->load->library('form_validation');
 	 
@@ -102,7 +101,7 @@ class login_controller extends CI_Controller {
 	 	$user_out = $this->session->all_userdata();
 	 	$this->session->unset_userdata($user_out);
 	 	session_destroy();
-	 	redirect('login_controller/index','refresh');
+	 	redirect('login/index','refresh');
 	 }
 	
 }
