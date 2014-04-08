@@ -25,44 +25,27 @@ class login_controller extends CI_Controller {
 	}
 	
 	
-	//Checa si el tipo de solicitud es el que se necesita para evitar solicitudes malas
-	function check_request_method($_REQUEST,$tipo)
-	{
-		if($_SERVER['REQUEST_METHOD'] == $tipo)
-		{
-			return TRUE;
-		}
-		else
-		{
-			$message_403 = "No tienes los permisos para accesar.";
-			show_error($message_403 , 403 );
-		}
-	}
-	
-	
 	//Verifica informacion y entra a la pagina principal con una sesion
 	function login() 
 	{
-		if(check_request_method($_REQUEST,"POST"))
+		
+		//This method will have the credentials validation
+		$this->load->library('form_validation');
+	 
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_user');
+	 	
+		if($this->form_validation->run() == FALSE) 
 		{
-			//This method will have the credentials validation
-			$this->load->library('form_validation');
-		 
-			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_user');
-		 	
-			if($this->form_validation->run() == FALSE) 
-			{
-				$template['header'] = "main_header.php";
-				$template['template'] = "login_view.php";
-				$template['footer'] = "main_footer.php";
-				//Field validation failed.  User redirected to login page
-				$this->load->view('main',$template);
-			}
-			else
-			{
-				$this->home();
-			}
+			$template['header'] = "main_header.php";
+			$template['template'] = "login_view.php";
+			$template['footer'] = "main_footer.php";
+			//Field validation failed.  User redirected to login page
+			$this->load->view('main',$template);
+		}
+		else
+		{
+			$this->home();
 		}
 	 }
 	 
