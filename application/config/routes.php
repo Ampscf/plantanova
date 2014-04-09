@@ -38,8 +38,25 @@
 |
 */
 
-$route['default_controller'] = "login_controller";
+$route['default_controller'] = "login";
 $route['404_override'] = '';
+
+$route['registro/nuevo'] = 'register/index';
+$route['registro'] = 'register/registered';
+
+$route['inicio'] = 'login/log_in';
+$route['salir'] = 'login/logout';
+
+$route['pedido/(:num)'] = 'order/order_id/$1';
+$route['pedidos/nuevo'] = 'order/index';
+$route['pedidos/registro'] = 'order/new_order';
+$route['pedidos'] = 'order/orders_list';
+
+$route['semillas/nuevo'] = 'order/seeds';
+$route['semillas'] = 'order/seeds'; // Debe cambiarse a la vista que registra las semillas y redirecciona
+
+$route['usuarios'] = 'login/log_in'; // Esta debe cambiarse a la vista de los usuarios
+$route['cuenta'] = 'login/log_in'; // Debe cambiarse a la vista que muestra informacion de la cuenta
 
 
 /* End of file routes.php */

@@ -42,12 +42,12 @@
 							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos <b class="caret"></b></a>
 							        <ul class="dropdown-menu">
 							           	<li>
-							        		<?php echo anchor('order_controller/index','Hacer pedido'); ?>
+							        		<?php echo anchor('pedidos/nuevo','Hacer pedido'); ?>
 							           	</li>
 							           	<?php if($this->session->userdata('id_rol') == 1)
 							           	{ ?>
 								            <li>
-								            	<?php echo anchor('order_controller/orders_list','Ver pedidos'); ?>
+								            	<?php echo anchor('pedidos','Ver pedidos'); ?>
 								            </li>
 								        <?php } ?>
 						            </ul>
@@ -55,12 +55,12 @@
 						    </ul>
 							<ul class="nav navbar-nav">
 						        <li class="header-elements" style="display:inline-block;">
-						        	<?php echo anchor('order_controller/seeds', 'Semillas', 'class="header-link"'); ?>
+						        	<?php echo anchor('semillas/nuevo', 'Semillas', 'class="header-link"'); ?>
 						        </li>
 						        <?php if($this->session->userdata('id_rol') == 1)
 						        { ?>
 							        <li class="header-elements" style="display:inline-block;">
-							        	<?php echo anchor('.', 'Usuarios', 'class="header-link"'); ?>
+							        	<?php echo anchor('usuarios', 'Usuarios', 'class="header-link"'); ?>
 							        </li>
 							    <?php } ?>
 						    </ul>
@@ -72,11 +72,11 @@
 						    		</button>
 						    		<ul class="dropdown-menu">
 						      			<li>
-						      				<?php echo anchor('#', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
+						      				<?php echo anchor('cuenta', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
 									    </li>
 						      			<li role="presentation" class="divider"></li>
 						      			<li>
-						      				<?php echo anchor('login_controller/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
+						      				<?php echo anchor('salir', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
 						      			</li>
 						    		</ul>
 								</div>

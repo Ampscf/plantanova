@@ -12,7 +12,7 @@
 		<?php foreach ($orders as $key) {
 			echo '<tr>';
 			echo '<td class="col-md-1">';
-			echo anchor("order_controller/order/".$key->id_user, $key->id_order);
+			echo anchor("pedido/".$key->id_user, $key->id_order);
 			echo '</td>';
 			echo '<td class="col-md-1">' . $key->order_delivery . '</td>
 				<td class="col-md-1">' . $key->plant_name . '</td>

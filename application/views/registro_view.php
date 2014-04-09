@@ -4,7 +4,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title"> Registro </h3>
 			</div>
-			<?php echo form_open('register_controller/register'); ?>
+			<?php echo form_open('registro'); ?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
 					<!-- first, last name mail password rfc phone cellphone -->
@@ -166,7 +166,7 @@
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Cancelar',
 								);
-								echo anchor('login_controller/index', 'Cancelar', $data);
+								echo anchor('inicio', 'Cancelar', $data);
 							?>
 						</div>
 					</div><!-- End row -->
