@@ -8,10 +8,6 @@
 			type: "POST",
 			success: function(data){
 				$(".tab-content").html(data);
-
-				// var n = noty({text: 'Cambio exitoso de pestañá',
-				// 	layout:'topCenter',
-				// 	type:'Success'});
 			},
 			failure:function(data){
 				
