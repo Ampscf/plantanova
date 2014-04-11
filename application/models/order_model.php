@@ -21,7 +21,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -39,7 +39,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -57,7 +57,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -76,7 +76,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -91,7 +91,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 
@@ -117,7 +117,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 
@@ -132,7 +132,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -150,7 +150,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -170,7 +170,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -188,7 +188,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 	
@@ -207,7 +207,7 @@ Class Order_model extends CI_Model	{
 		} 
 		else 
 		{
-			return 0;
+			return null;
 		}
 	}
 
