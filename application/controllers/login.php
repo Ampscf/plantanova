@@ -21,6 +21,7 @@ class login extends CI_Controller {
 		$template['header'] = "main_header.php";
 		$template['template'] = "login_view.php";
 		$template['footer'] = "main_footer.php";
+
 		$this->load->view('main',$template);
 	}
 	

@@ -64,3 +64,13 @@
 			}
 		});
 	}
+
+
+	function register_client(coment,typee,layoute)
+	{
+		var n = noty({
+			text: coment,
+			layout: layoute,
+			type:typee
+		});
+	}

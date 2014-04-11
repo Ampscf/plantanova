@@ -10,6 +10,7 @@
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url() . 'css/css/bootstrap.css'; ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.noty.packaged.min.js'; ?>"></script>
 		<script>
 		     var base_url = '<?php echo base_url(); ?>';
 		</script>
