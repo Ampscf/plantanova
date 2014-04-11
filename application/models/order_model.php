@@ -2,6 +2,11 @@
 
 Class Order_model extends CI_Model	{
 
+
+
+	//	SELECTS   //	//	SELECTS   //		//	SELECTS   //	//	SELECTS   //	//	SELECTS   //
+
+
 	//Obtiene las plantas del catalogode la base de datos
 	function get_plants(){
 	
@@ -79,8 +84,15 @@ Class Order_model extends CI_Model	{
 	//Obiene un cliente por su id
 	function get_cliente($id_cliente)
 	{
-		$result = $this->db->query('call s_user(' . $id_cliente . ')');
-		return $result->row();
+		$result = $this->db->query('call ps_user(' . $id_cliente . ')');
+		if($result->num_rows() > 0) 
+		{
+			return $result->row();
+		} 
+		else 
+		{
+			return 0;
+		}
 	}
 
 	
@@ -90,24 +102,38 @@ Class Order_model extends CI_Model	{
 		switch($tipo)
 		{
 			case 'nuevos':
-				$result = $this->db->query('call s_order_new()');
+				$result = $this->db->query('call ps_order_new()');
 				break;
 			case 'proceso':
-				$result = $this->db->query('call s_order_process()');
+				$result = $this->db->query('call ps_order_process()');
 				break;
 			case 'completados':
-				$result = $this->db->query('call s_order_complete()');
+				$result = $this->db->query('call ps_order_complete()');
 				break;
 		}
-		return $result->result();
+		if($result->num_rows() > 0) 
+		{
+			return $result->result();
+		} 
+		else 
+		{
+			return 0;
+		}
 	}
-	
-	
-	//Inserta una nueva orden
-	function new_order($order,$client_order)
+
+
+	//Obtiene detalles de las ordenes
+	function get_order($id_user,$id_order)
 	{
-		$this->db->insert('t_order',$order);
-		$this->db->insert('t_client_order',$client_order);
+		$result = $this->db->query('call ps_order(' . $id_user . ',' . $id_order . ')');
+		if($result->num_rows() > 0) 
+		{
+			return $result->row();
+		} 
+		else 
+		{
+			return 0;
+		}
 	}
 	
 	
@@ -184,6 +210,23 @@ Class Order_model extends CI_Model	{
 			return 0;
 		}
 	}
+
+	//	INSERTS //		//	INSERTS //	//	INSERTS //	//	INSERTS //	//	INSERTS //
+
+	//Inserta una nueva orden
+	function insert_order($order)
+	{
+		
+	}
+
+
+	//Inserta un nuevo cliente
+	function insert_client()
+	{
+		
+	}
+
+
   
 }
 

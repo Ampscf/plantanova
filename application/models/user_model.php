@@ -21,6 +21,14 @@ Class User_model extends CI_Model	{
 		}
 	}
 
+
+	function get_user_by_id($id)
+	{
+		$result = $this->db->query('call ps_user(' . $id . ')');
+		return $result->row();
+	}
+
+
 	function get_user_by_mail($mail)
 	{
 		$this -> db -> select('id_user,first_name,last_name,mail,state_name,farm_name,rfc,street,addr_number,colony');
