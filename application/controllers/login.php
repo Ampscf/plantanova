@@ -49,7 +49,7 @@ class login extends CI_Controller {
 		}
 	 }
 	 
-	 //Función temporal
+	 //Función que manda a la página principal una vez se loguea a la aplicación
 	 function home ()
 	 {
 		$template['header'] = "home_header.php";
@@ -61,6 +61,7 @@ class login extends CI_Controller {
 		$this->load->view('main',$template);
 	 }
 
+	 //Verificca que los datos de usuario introducidos coincidan con los de la base de datos
 	 function check_user()
 	 {
 		//$this->load->library('PasswordHash',array('iteration_count_log2' => 8, 'portable_hashes' => FALSE ), 'passHash');
@@ -97,6 +98,7 @@ class login extends CI_Controller {
 	 	}
 	 }
 
+	 //Destruye la sessión actual
 	 function logout()
 	 {
 	 	$user_out = $this->session->all_userdata();
