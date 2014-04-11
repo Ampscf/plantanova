@@ -69,6 +69,8 @@ class register extends CI_Controller {
 			//Verifica si hubo una tupla modificada o agregada
 			if($this->user_model->insert_client_user($data) > 0 )
 			{
+				unset($data);
+				$this->session->set_flashdata('nota','Su cuenta se ha creado, inicie sesión para comenzar.');
 				redirect('login/index','refresh');
 			}
 			else
