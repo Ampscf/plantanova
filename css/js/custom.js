@@ -51,7 +51,6 @@
 	//Obtiene las ciudades por estado dinamicamente para el control select de registro cliente
 	function get_towns($id_state)
 	{
-		alert($id_state);
 		if($("#state [value='-1']").length)
 		{
 			$("#state [value='-1']").remove();
