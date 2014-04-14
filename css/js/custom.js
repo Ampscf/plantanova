@@ -66,11 +66,29 @@
 	}
 
 
-	function register_client(coment,typee,layoute)
+	function register_client()
+	{
+		form = $("#registry");
+
+		$.ajax({
+			url: form.attr('action'),
+			data: form.serialize(),
+			type: form.attr('method'),
+			success: function(data){
+				notas(data,"success");
+			},
+			failure:function(data){
+				notas("Error en el registro","error")
+			}
+		});
+		
+	}
+
+	function notas(coment,typee)
 	{
 		var n = noty({
 			text: coment,
-			layout: layoute,
+			layout: "topCenter",
 			type:typee
 		});
 	}

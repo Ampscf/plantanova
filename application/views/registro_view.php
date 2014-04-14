@@ -4,7 +4,10 @@
 			<div class="panel-heading">
 				<h3 class="panel-title"> Registro </h3>
 			</div>
-			<?php echo form_open('registro'); ?>
+			<?php 
+				$attributes = array('id' => 'registry');
+				echo form_open('registro',$attributes); 
+			?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
 					<!-- first, last name mail password rfc phone cellphone -->
@@ -14,7 +17,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
+							<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>" required>
 						</div><!-- End first name -->
 
 						<div class="clear"></div>
@@ -23,12 +26,13 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>">
+							<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>" required>
 						</div><!-- End last name -->
 
 						<div class="clear"></div>
 
 						<div class="input-group input-group-lg">
+							<?php echo form_error('email'); ?>
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-envelope"></span>
 							</div>
@@ -38,6 +42,7 @@
 						<div class="clear"></div>
 
 						<div class="input-group input-group-lg">
+							<?php echo form_error('password'); ?>
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-eye-close"></span>
 							</div>
@@ -50,7 +55,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-tint"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>">
+							<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>" required>
 						</div><!-- End rfc -->
 
 						<div class="clear"></div>
@@ -59,7 +64,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-phone-alt"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
+							<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>" required>
 						</div><!-- End phone -->
 
 						<div class="clear"></div>
@@ -68,7 +73,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-phone"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>">
+							<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>" required>
 						</div><!-- End cellphone -->
 					</div>
 
@@ -78,7 +83,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-tree-deciduous"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Agrícola" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
+							<input type="text" class="form-control" placeholder="Agrícola" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>" required>
 						</div><!-- End farm name -->
 
 						<div class="clear"></div>
@@ -87,7 +92,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-road"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
+							<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>" required>
 						</div><!-- End street -->
 
 						<div class="clear"></div>
@@ -96,7 +101,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-home"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>">
+							<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>" required>
 						</div><!-- End address number -->
 
 						<div class="clear"></div>
@@ -105,7 +110,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-home"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>">
+							<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>" required>
 						</div><!-- End colony -->
 
 						<div class="clear"></div>
@@ -114,7 +119,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-barcode"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>">
+							<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>" required>
 						</div><!-- End cp -->
 
 						<div class="clear"></div>
@@ -154,12 +159,13 @@
 
 				</div><!-- End panel-body -->
 
+			</form><!-- End form -->
+
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
-							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta"/>
+							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta" onClick=""/>
 						</div>
-			</form><!-- End form -->
 						<div class="col-md-3 col-md-offset-4">
 							<?php  
 								$data = array(

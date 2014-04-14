@@ -9,6 +9,8 @@ class login extends CI_Controller {
 
 	public function index()
 	{
+		$template['cuenta'] = $this->session->flashdata('cuenta');
+
 		$sessionData = array(
 
             "id" => null,

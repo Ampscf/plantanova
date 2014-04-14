@@ -37,6 +37,7 @@ class register extends CI_Controller {
 		if($this->form_validation->run() == FALSE) 
 		{
 			//vuelve a la pagina de registro e imprime los errores
+			
 			$this->index();
 		}
 		//Los datos son correctos y se redirecciona para login
@@ -70,7 +71,7 @@ class register extends CI_Controller {
 			if($this->user_model->insert_client_user($data) > 0 )
 			{
 				unset($data);
-				$this->session->set_flashdata('nota','Su cuenta se ha creado, inicie sesión para comenzar.');
+				$this->session->set_flashdata('cuenta','Su cuenta se ha creado, inicie sesión para comenzar.');
 				redirect('login/index','refresh');
 			}
 			else
