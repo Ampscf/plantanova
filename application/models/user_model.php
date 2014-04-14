@@ -34,7 +34,7 @@ Class User_model extends CI_Model	{
 	//Obtiene al usuario por su mail
 	function get_user_by_mail($mail)
 	{
-		$this -> db -> select('id_user,first_name,last_name,mail,state_name,farm_name,rfc,street,addr_number,colony');
+		$this -> db -> select('id_user,first_name,last_name,mail,state_name,farm_name,rfc,street,addr_number,colony,phone,cellphone,cp');
 		$this -> db -> from('t_user');
 		$this -> db -> where ('mail', $mail);
 		$this -> db -> join('t_state','t_state.id_state = t_user.id_state');

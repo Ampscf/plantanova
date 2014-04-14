@@ -56,7 +56,7 @@ $route['semillas/nuevo'] = 'order/seeds';
 $route['semillas'] = 'order/seeds'; // Debe cambiarse a la vista que registra las semillas y redirecciona
 
 $route['usuarios'] = 'login/log_in'; // Esta debe cambiarse a la vista de los usuarios
-$route['cuenta'] = 'login/log_in'; // Debe cambiarse a la vista que muestra informacion de la cuenta
+$route['cuenta'] = 'user/index'; // Debe cambiarse a la vista que muestra informacion de la cuenta
 
 
 /* End of file routes.php */
