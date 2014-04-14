@@ -30,15 +30,16 @@ class register extends CI_Controller {
 		$this->load->library('form_validation');
 	 	
 	 	//Valida los campos que se reciben
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|is_unique[t_user.mail]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('rfc','RFC','is_unique[t_user.rfc]');
 
 		//Algunos datos no son correctos y se tiene que lenar de nuevo
 		if($this->form_validation->run() == FALSE) 
 		{
 			//vuelve a la pagina de registro e imprime los errores
-			
-			$this->index();
+			echo "Error";
+			redirect('registro/nuevo','refresh');
 		}
 		//Los datos son correctos y se redirecciona para login
 		else
@@ -48,7 +49,7 @@ class register extends CI_Controller {
 			$hash = $this->passwordhash->HashPassword($this->input->post('password'));
 			if ( strlen( $hash ) < 20 ) 
 			{
-				exit("Error al crear la cuenta");
+				exit("Error");
 			}
 
 			//Obtiene tdos los campos a guardar del usuario en un arreglo
@@ -72,12 +73,13 @@ class register extends CI_Controller {
 			if($this->user_model->insert_client_user($data) > 0 )
 			{
 				unset($data);
-				$this->session->set_flashdata('cuenta','Su cuenta se ha creado, inicie sesión para comenzar.');
-				redirect('login/index','refresh');
+				$data = $this->load->view('login_view.php',TRUE);
+				echo $data;
 			}
 			else
 			{
-				exit("Error al crear la cuenta");
+				unset($data);
+				echo "Error";
 			}
 		} 
 	}
