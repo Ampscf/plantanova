@@ -8,7 +8,7 @@ class order extends CI_Controller {
 	   $this->load->model('order_model','',TRUE);
 	}
 
-	//Sends the make order form
+	//Manda a la función para hacer ordenes
 	public function index()
 	{
 		$this->load->model('order_model');
@@ -31,7 +31,7 @@ class order extends CI_Controller {
 	}
 	
 
-	//Adds a new order
+	//Agrega una nueva orden a la bd
 	public function new_order()
 	{
 		$data['plant_name'] = $this->input->post('plant_name');
@@ -47,7 +47,7 @@ class order extends CI_Controller {
 		$this->order_model->new_order($data);
 	}
 	
-	//Gets and shows the orders list for admin ordered in tabs by status
+	//Obtieme y muestra las listas de órdenes al administradoor, ordenadas en pestañas y estatus
 	public function orders_list()
 	{
 		$tipo = $this->input->post('tipo');
@@ -60,7 +60,7 @@ class order extends CI_Controller {
 		$this->load->view('main',$template);
 	}
 	
-	//Sends to individual order view
+	//Manda a la vista de un pedido individual
 	public function order_id()
 	{
 		$template['header'] = "home_header.php";
@@ -71,7 +71,7 @@ class order extends CI_Controller {
 		$this->load->view('main',$template);
 	}
 	
-	//Changes de tabs and values for orders with state: New, Process, Finished
+	//Cambia las pestañas por ordenes con estado: Nuevo, en proceso o terminado
 	public function orders_status()
 	{
 		$view_data['status'] = $this->input->post('tipo');
@@ -82,7 +82,7 @@ class order extends CI_Controller {
 	}
 
 	
-	//Función temporal
+	//Formlario de envío de semmillas
 	public function seeds()
 	{
 		$template['header'] = "home_header.php";
@@ -93,6 +93,7 @@ class order extends CI_Controller {
 	}
 
 
+	//Obtiene los subtipos que pueden ir en las plantas
 	public function get_subtypes()
 	{
 		$id_sustratum = $this->input->post('sustratum');
@@ -105,6 +106,7 @@ class order extends CI_Controller {
 		echo $result;
 	}
 	
+	//Función que regresa todas las ciudades de México
 	public function get_towns()
 	{	
 		$id_state = $this->input->post('id_state');

@@ -66,6 +66,7 @@ class register extends CI_Controller {
 			$data['colony'] = $this->input->post('colony');
 			$data['id_town'] = $this->input->post('town');
 			$data['id_state'] = $this->input->post('state');
+			$data['cp'] = $this->input->post('cp');
 
 			//Verifica si hubo una tupla modificada o agregada
 			if($this->user_model->insert_client_user($data) > 0 )
