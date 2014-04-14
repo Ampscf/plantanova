@@ -44,7 +44,7 @@ class order extends CI_Controller {
 		$data['subtype'] = $this->input->post('subtype');
 		$data['observations'] = $this->input->post('observations');
 
-		$this->order_model->new_order($data);
+		$this->order_model->insert_order($data);
 	}
 	
 	//Obtieme y muestra las listas de órdenes al administradoor, ordenadas en pestañas y estatus

@@ -75,13 +75,19 @@
 			data: form.serialize(),
 			type: form.attr('method'),
 			success: function(data){
-				notas(data,"success");
+				if(data == "Error")
+				{
+					notas("Error en el registro.","error");
+				}
+				else{
+					$("#content").html(data);
+					notas("Cuenta registrada, inicie sesión para comenzar","success");
+				}
 			},
 			failure:function(data){
-				notas("Error en el registro","error")
+				notas("Error en el registro","error");
 			}
 		});
-		
 	}
 
 	function notas(coment,typee)
@@ -89,6 +95,6 @@
 		var n = noty({
 			text: coment,
 			layout: "topCenter",
-			type:typee
+			type: typee
 		});
 	}

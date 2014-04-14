@@ -17,7 +17,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>" required>
+							<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
 						</div><!-- End first name -->
 
 						<div class="clear"></div>
@@ -26,7 +26,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>" required>
+							<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>">
 						</div><!-- End last name -->
 
 						<div class="clear"></div>
@@ -55,7 +55,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-tint"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>" required>
+							<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>">
 						</div><!-- End rfc -->
 
 						<div class="clear"></div>
@@ -64,7 +64,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-phone-alt"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>" required>
+							<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
 						</div><!-- End phone -->
 
 						<div class="clear"></div>
@@ -73,7 +73,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-phone"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>" required>
+							<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>">
 						</div><!-- End cellphone -->
 					</div>
 
@@ -83,7 +83,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-tree-deciduous"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Agrícola" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>" required>
+							<input type="text" class="form-control" placeholder="Agrícola" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
 						</div><!-- End farm name -->
 
 						<div class="clear"></div>
@@ -92,7 +92,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-road"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>" required>
+							<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
 						</div><!-- End street -->
 
 						<div class="clear"></div>
@@ -101,7 +101,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-home"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>" required>
+							<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>">
 						</div><!-- End address number -->
 
 						<div class="clear"></div>
@@ -110,7 +110,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-home"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>" required>
+							<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>">
 						</div><!-- End colony -->
 
 						<div class="clear"></div>
@@ -119,7 +119,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-barcode"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>" required>
+							<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>">
 						</div><!-- End cp -->
 
 						<div class="clear"></div>
@@ -164,7 +164,7 @@
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
-							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta" onClick=""/>
+							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta" onClick="register_client();"/>
 						</div>
 						<div class="col-md-3 col-md-offset-4">
 							<?php  
