@@ -75,14 +75,16 @@
 			data: form.serialize(),
 			type: form.attr('method'),
 			success: function(data){
-				if(data == "Error")
-				{
-					notas("Error en el registro.","error");
-				}
-				else{
-					$("#content").html(data);
-					notas("Cuenta registrada, inicie sesión para comenzar","success");
-				}
+				errno = JSON.parse(data);
+
+				// if(data == "Error")
+				// {
+				// 	notas("Error en el registro.","error");
+				// }
+				// else{
+				// 	$("#content").html(data);
+				// 	notas("Cuenta registrada, inicie sesión para comenzar","success");
+				// }
 			},
 			failure:function(data){
 				notas("Error en el registro","error");
@@ -95,6 +97,7 @@
 		var n = noty({
 			text: coment,
 			layout: "topCenter",
-			type: typee
+			type: typee,
+			timeout: 3500
 		});
 	}

@@ -38,7 +38,10 @@ class register extends CI_Controller {
 		if($this->form_validation->run() == FALSE) 
 		{
 			//vuelve a la pagina de registro e imprime los errores
-			echo "Error";
+			$error['msj'] = "Error";
+			$error['errores'] = validation_errors();
+
+			echo json_encode($error);
 			redirect('registro/nuevo','refresh');
 		}
 		//Los datos son correctos y se redirecciona para login
