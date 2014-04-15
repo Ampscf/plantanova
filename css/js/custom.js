@@ -69,22 +69,22 @@
 	function register_client()
 	{
 		form = $("#registry");
-
 		$.ajax({
 			url: form.attr('action'),
 			data: form.serialize(),
 			type: form.attr('method'),
 			success: function(data){
 				errno = JSON.parse(data);
-
-				// if(data == "Error")
-				// {
-				// 	notas("Error en el registro.","error");
-				// }
-				// else{
-				// 	$("#content").html(data);
-				// 	notas("Cuenta registrada, inicie sesión para comenzar","success");
-				// }
+				if(errno.msj == "Error")
+				{
+					$("#content").html(errno.template);
+					notas(errno.errores,"error");
+				}
+				else
+				{
+					$("#content").html(errno.template);
+					notas("Cuenta registrada, inicie sesión para comenzar","success");
+				}
 			},
 			failure:function(data){
 				notas("Error en el registro","error");

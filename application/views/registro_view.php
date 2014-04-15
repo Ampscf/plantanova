@@ -19,6 +19,7 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
 						</div><!-- End first name -->
+						<?php echo form_error('first_name'); ?>
 
 						<div class="clear"></div>
 
@@ -28,26 +29,28 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>">
 						</div><!-- End last name -->
+						<?php echo form_error('last_name'); ?>
 
 						<div class="clear"></div>
 
 						<div class="input-group input-group-lg">
-							<?php echo form_error('email'); ?>
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-envelope"></span>
 							</div>
 							<input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email" value="<?php echo set_value('email'); ?>">
 						</div><!-- End email -->
+						<?php echo form_error('email'); ?>
 
 						<div class="clear"></div>
 
 						<div class="input-group input-group-lg">
-							<?php echo form_error('password'); ?>
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-eye-close"></span>
 							</div>
 							<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
+
 						</div><!-- End password -->
+						<?php echo form_error('password'); ?>
 
 						<div class="clear"></div>
 
@@ -57,6 +60,7 @@
 							</div>
 							<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>">
 						</div><!-- End rfc -->
+						<?php echo form_error('rfc'); ?>
 
 						<div class="clear"></div>
 
@@ -66,6 +70,7 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
 						</div><!-- End phone -->
+						<?php echo form_error('phone'); ?>
 
 						<div class="clear"></div>
 
@@ -75,7 +80,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>">
 						</div><!-- End cellphone -->
+						<?php echo form_error('cellphone'); ?>
 					</div>
+				
 
 					<!-- farm name street addr number colony cp town state -->
 					<div class="col-md-6">
@@ -85,8 +92,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Agrícola" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
 						</div><!-- End farm name -->
+						<?php echo form_error('farm_name'); ?>
 
-						<div class="clear"></div>
+						<div class="clear"></div>						
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
@@ -94,8 +102,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
 						</div><!-- End street -->
+						<?php echo form_error('street'); ?>
 
-						<div class="clear"></div>
+						<div class="clear"></div>						
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
@@ -103,8 +112,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>">
 						</div><!-- End address number -->
+						<?php echo form_error('addr_number'); ?>
 
-						<div class="clear"></div>
+						<div class="clear"></div>						
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
@@ -112,8 +122,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>">
 						</div><!-- End colony -->
+						<?php echo form_error('colony'); ?>
 
-						<div class="clear"></div>
+						<div class="clear"></div>						
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
@@ -121,23 +132,25 @@
 							</div>
 							<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>">
 						</div><!-- End cp -->
-
-						<div class="clear"></div>
+						<?php echo form_error('cp'); ?>
+						
+						<div class="clear"></div>						
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-globe"></span>
 							</div>
-							<select class="form-control" name="state" id="state" value="<?php echo set_value('state'); ?>" onchange="get_towns(this.value);">
+							<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
 								<option value="-1" selected>---Estado---</option>
 								<?php 
 									foreach($states as $key)
 									{
-										echo "<option value='" . $key->id_state . "'>" . $key->state_name . "</option>";
+										echo "<option value='" . $key->id_state . "' set_select('state','".$key->id_state."')>" . $key->state_name . "</option>";
 									}
 								?>
 							</select>
 						</div><!-- End state -->
+						<?php echo form_error('state'); ?>						
 
 						<div class="clear"></div>
 
@@ -145,12 +158,12 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-picture"></span>
 							</div>
-							<select class="form-control" name="town" id="town" value="<?php echo set_value('town'); ?>">
+							<select class="form-control" name="town" id="town">
 								<option selected>---Ciudad---</option>
 								<?php 
 									foreach($towns as $key)
 									{
-										echo "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
+										echo "<option value='" . $key->id_town . "' set_select('town','".$key->id_town."') >" . $key->town_name . "</option>";
 									}
 								?>
 							</select>

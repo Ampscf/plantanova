@@ -42,7 +42,7 @@
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-time"></span>
 							</div>
-							<input type="text" class="form-control" name="fecha" id="datepicker">
+							<input type="text" class="form-control" name="fecha" id="fecha">
 						</div>
 
 						<div class="clear"></div>

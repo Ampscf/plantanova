@@ -19,7 +19,7 @@
 						<div class="input-group-addon">
 							<span class="glyphicon glyphicon-eye-close"></span>
 						</div>
-						<input type="password" class="form-control" placeholder="Password" name="password" id="password">
+						<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
 					</div><!-- End password -->
 				</div><!-- End panel-body -->
 				<div class="panel-footer">
@@ -27,7 +27,7 @@
 						<div class="col-md-3 col-md-offset-1">
 							<input class="btn btn-success btn-block" type="submit" value="Acceder"/>
 						</div>
-						<div class="col-md-3 col-md-offset-3">
+						<div class="col-md-3 col-md-offset-4">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',

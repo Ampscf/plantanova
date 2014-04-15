@@ -25,6 +25,11 @@ footer {
 	left:0;
 }
 
+.error
+{
+	color: #ce2d2d;
+}
+
 /*Header bar 
 ---------------------------------------------------*/
 .header

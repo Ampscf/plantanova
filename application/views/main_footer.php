@@ -8,6 +8,4 @@
 			</footer><!-- End footer -->
 		</div><!-- End wrapper -->
 	</body>
-	
-	<script type="text/javascript" src="<?php echo base_url().'css/js/custom.js'; ?>"></script>
 </html>
