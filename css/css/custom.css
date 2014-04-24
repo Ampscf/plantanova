@@ -1,16 +1,32 @@
-.footer 
+/*Establece propiedades del footer*/
+footer 
 {
 	position:absolute;
 	bottom:0;
-	left:0;
 }
 
+/* Centra el texto de footer de copyright */
 .copyright
 {
 	text-align: center;
 }
 
+/* Textarea que no cambian de tamaño */
 textarea 
 {
 	resize:none;
+}
+
+/* Sirve para los mensajes de error de validaciones de codeigniter*/
+.error
+{
+	color: #ce2d2d;
+}
+
+/*Logo que va en la pagina de login para dar formato de espaciado*/
+.logo
+{
+	text-align:center;
+	margin-top:50px;
+	margin-bottom: 100px;
 }

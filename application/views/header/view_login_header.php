@@ -21,10 +21,11 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
 </head>
 <body>
-	<div id="container-fluid">
-		<div class="row">
-			<div class="col-sm-4 col-md-4 col-md-offset-4 text-center">
-				<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
+	<div id="wrapper">
+		<div id="container">
+			<div class="row">
+				<div class="col-sm-4 col-md-4 col-md-offset-4 text-center logo">
+					<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
+				</div>
 			</div>
 		</div>
-	</div>
