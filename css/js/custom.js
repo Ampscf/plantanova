@@ -1,4 +1,6 @@
 
+	$("#tabla-pedidos").dataTable();
+
 	//Maneja el cambio de tabs para mostrar datos actualizados de ordenes
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    var tipo = $(this).attr("href");

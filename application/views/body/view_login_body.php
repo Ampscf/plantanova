@@ -5,10 +5,10 @@
 				<div class="panel-heading">
 					<h3 class="panel-title"> Inicio de sesión </h3>
 				</div>
-				<?php echo form_open(''); ?>
+				<?php echo form_open('principal/log_in'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+						<?php echo form_error('password'); ?>
 						<div class="input-group input-group-lg">
-							<?php echo form_error('password'); ?>
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
