@@ -1,10 +1,10 @@
-
-				<footer>
+			<footer>
+				<div class="row">
 					<div class="copyright">
-						<p>Copyright PlantaNova 2014</p>
+						<p>Copyright PlantaNova <?php echo date('Y'); ?></p>
 					</div>
-				</footer><!-- End footer -->
-			</div> <!--End container -->
+				</div>
+			</footer><!-- End footer -->
 		</div> <!-- End wrapper -->
 	</body>
 </html>
