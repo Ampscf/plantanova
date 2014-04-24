@@ -1,9 +1,7 @@
-		<footer>
-			<div class="row">
-				<div class="copyright">
-					<p>Copyright PlantaNova 2014</p>
-				</div>
+		<div class="footer">
+			<div class="copyright">
+				<p>Copyright PlantaNova 2014</p>
 			</div>
-		</footer><!-- End footer -->	
+		</div><!-- End footer -->	
 	</body>
 </html>
