@@ -1,16 +1,36 @@
+.wrapper{
+	min-height: 100%;
+	position: relative;
+	margin: 0 auto;
+}
+
 footer {
-	position:absolute;
-	bottom:0;
-	left:0;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
 	text-align: center;
 }
 
-.copyright
-{
+.copyright {
 	text-align: center;
 }
 
-textarea 
-{
+textarea {
 	resize:none;
+}
+
+.clear {
+    margin-top: 20px;
+    clear: both;
+}
+
+.img-header {
+	margin-top: 70px;
+	margin-bottom: 200px;
+}
+
+.panel-heading {
+	background-color: #F5F5F5;
+	border-bottom: 1px solid #DDD;
 }
