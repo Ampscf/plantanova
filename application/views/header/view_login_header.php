@@ -8,17 +8,12 @@
 	<title>Plantanova</title>
 
 	<!-- Scripts -->
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<!-- Tema opcional -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-	<!-- Bootstrap JavaScript -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
 	<!-- Customs -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
+	
 </head>
 <body>
 	<div id="wrapper">

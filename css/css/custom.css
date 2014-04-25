@@ -1,8 +1,26 @@
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+	width:auto;
+}
+#wrapper {
+	min-height:100%;
+	width:auto;
+	position:relative;
+}
+#content {
+	padding:10px;
+	padding-bottom:50px;   /* Height of the footer element */
+}
+
 /*Establece propiedades del footer*/
 footer 
 {
-	width: 100%;
+	width: 99%;
 	position:absolute;
+	display:block;
 	bottom:0;
 }
 

@@ -38,7 +38,7 @@ Class model_user extends CI_Model	{
 		$this -> db -> from('t_user');
 		$this -> db -> where ('mail', $mail);
 		
-		$query = $this -> db -> get();
+		$query = $this->db->get();
 
 		return $query->row();
 	}

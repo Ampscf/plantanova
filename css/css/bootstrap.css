@@ -5,6 +5,9 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
+/*Bitacora de modificaciones
+IRVING 3970 tansparent por #E7E6E6*/
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -3703,6 +3706,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .container-fluid > .navbar-collapse {
     margin-right: 0;
     margin-left: 0;
+    padding: 0px 100px 0px 100px;
   }
 }
 .navbar-static-top {
@@ -3810,6 +3814,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-nav .open .dropdown-menu > li > a:focus {
     background-image: none;
+    background: #E7E6E6;
   }
 }
 @media (min-width: 768px) {
@@ -3958,12 +3963,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #333;
-  background-color: transparent;
+  background-color: #E7E6E6;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555;
+  /* IRVING MODIFIQUE transparent por #E7E6E6*/
   background-color: #e7e7e7;
 }
 .navbar-default .navbar-nav > .disabled > a,
