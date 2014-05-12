@@ -44,7 +44,7 @@ Class model_user extends CI_Model	{
 	}
 	
 	
-	//Agrega a un usuario nuevo a la base de datos
+	//Agrega a un usuario nuevo a la base de datos, $data es un arreglo que contiene todos los datos necesarios
 	function insert_client_user($data)
 	{
 		$this->db->insert('t_user',$data);

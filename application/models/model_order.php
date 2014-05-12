@@ -26,7 +26,7 @@ Class model_order extends CI_Model
 			case 4:
 				$result = $this->db->query('call ps_order_status(' . $status . ')');
 				break;
-			//Obtiene todas las ordenes existentes
+			//Obtiene todas las ordenes existentes cuando $status tiene un valor diferente a los casos anteriores
 			default:
 				$result = $this->db->query('call ps_order_all()');
 				break;

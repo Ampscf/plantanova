@@ -1,0 +1,34 @@
+Este documento contiene la estructura utilizada en el sistema Plantanova.
+
+Nombres archivos en general:Todos los archivos se nombran usando solamente minúsculas para evitar problemas con el servidor.
+Nombres controladores: Todos los controladores se nombran con palabras simples y descriptivas ya que este nombre aparece en la URL.
+Nombres modelos: Todos los modelos se nombran con el estándar: model_nombre.php(nombre debe ser descriptivo a las funciones que realiza el modelo).
+Nombres vistas: Toda las vistas se nombran de la siguiente forma:
+	-view_[rol_][nombre_](header|body|footer).php
+	-los elementos dentro de [] son opcionales, el rol puede ser admin, el nombre puede referirse a la funcion que realiza como ordenes o login.
+	-los elementos dentro de () significa que debe ir uno de los tres indicando que parte es y en que carpeta está.
+Nombres funciones controladores: Las funciones se nombran en minúsculas y usan nombres descriptivos a su funcionalidad, si tienen dos o más palabras se separan por '_'.
+Nombres funciones modelos: Las funciones se nombran de la siguiente forma:
+	-Obtener datos:
+		-get_(nombre de lo que obtiene)_[by_parameter]
+		-ejemplo de [by_parameter]: get_user_by_id.
+	-Insertar datos:
+		-insert_(nombre de lo que inserta eg. user,order,etc.). 
+	-Cambiar datos:
+		-update_(nombre de lo que actualiza).
+
+Estructura de documentos(Codeigniter 2.1.4):
+	-plantanova/application/controllers/: Contiene los controladores del sistema, es decir, los archivos que manejan la interaccion de vistas con base de datos.
+	-plantanova/application/models/: Contiene los modelos del sistema, es decir, los archivos que manejan la interaccion con la base de datos.
+	-plantanova/applicacion/views/: Contiene las carpetas para vistas.
+		-../main.php: Es el archivo a través del cual se cargan las vistas para mantener una estructura flexible, es decir se le manda el nombre del header,body y 				footer desde el controlador y este archivo los carga por separado, de igual forma aqui se checan los permisos de acuerdo al rol.
+		-../header/: Contiene las vistas de encabezados del sistema.
+		-../body/: Contiene las vistas del cuerpo de página del sistema.
+		-../footer/: Contiene los pies de página del sistema.
+		-../extra/: Contiene vistas extras como tablas o cosas genéricas(en especial para uso de AJAX).
+	-plantanova/css/css/: Contiene todos los archivos de estilo del sistema.
+	-plantanova/css/fonts/: Contiene todos los archivos de fuentes que utiliza el sistema.
+	-plantanova/css/js/: Contiene todos los archivos javascript que utiliza el sistema.
+	-plantanova/img/: Contiene las imagenes utilizadas a lo largo del sistema(logos, etc.).
+Plugins utilizados: 
+	-plantanova/application/libraries/PasswordHash.php: http://www.openwall.com/phpass/

@@ -14,7 +14,8 @@ class Principal extends CI_Controller {
 
             "id" => null,
             "mail" => null,
-            "logged_in" => FALSE
+            "logged_in" => FALSE,
+            "id_rol" => 0
         );
 
         $this->session->set_userdata($sessionData);
@@ -30,7 +31,7 @@ class Principal extends CI_Controller {
 	//Verifica informacion y entra a la pagina principal con una sesion
 	function log_in() 
 	{
-		//This method will have the credentials validation
+		//Carga la libreria de validación de campos
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 	 
@@ -42,12 +43,12 @@ class Principal extends CI_Controller {
 			$template['header'] = "header/view_login_header.php";
 			$template['body'] = "body/view_login_body.php";
 			$template['footer'] = "footer/view_footer.php";
-			//Error en el inicio de sesión devuelve a la pagina de inicio
+			//Error en el inicio de sesión devuelve a la pagina de log in
 			$this->load->view('main',$template);
 		}
 		else
 		{
-			//Manda a la pagina principal que contiene la lista de pedidos para Administradores de plantanova
+			//Manda a la pagina principal del rol que inicia sesión
 			$template['header'] = 'header/view_admin_header.php';
 			$template['body'] = 'body/view_admin_body.php';
 			$template['footer'] = "footer/view_footer.php";
@@ -63,23 +64,27 @@ class Principal extends CI_Controller {
 	 //Verifica que los datos de usuario introducidos coincidan con los de la base de datos
 	 function check_user()
 	 {
+	 	//Carga libreria para encriptar password
 	 	$this->load->library('PasswordHash');
 
 	 	$mail = $this->input->post('email');
 	 	$pass = $this->input->post('password');
+	 	//Obtiene al usuario por su email
 	 	$user = $this->model_user->login($mail);
 
+	 	//Verifica que exista el usuario
 	 	if($user)
 	 	{
+	 		//Verifica que el password dado y el de la base de datos sean iguales despues de la encripción
 	 		if($this->passwordhash->CheckPassword($pass,$user->password))
 	 		{
+	 			//Establece los datos de sesión
 	 			$sessionData = array(
 	                "id" => $user->id_user,
 	                "mail" => $user->mail,
 	                "logged_in" => TRUE,
 	                "id_rol" => $user->id_rol,
 	            );
-
 	            $this->session->set_userdata($sessionData);
 		 		return TRUE;
 	 		}
@@ -94,7 +99,7 @@ class Principal extends CI_Controller {
 	 	}
 	 }
 
-	 //Destruye la sessión actual
+	 //Destruye la sessión actual y regresa a página de login
 	 function logout()
 	 {
 	 	$user_out = $this->session->all_userdata();
