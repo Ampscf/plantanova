@@ -11,7 +11,6 @@ class Principal extends CI_Controller {
 	public function index()
 	{
 		$sessionData = array(
-
             "id" => null,
             "mail" => null,
             "logged_in" => FALSE,

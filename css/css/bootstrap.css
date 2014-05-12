@@ -7,7 +7,8 @@
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
 /*Bitacora de modificaciones
-IRVING 3970 tansparent por #E7E6E6*/
+IRVING 3970 tansparent por #E7E6E6
+IRVING 3566 Agregue tabs verticales*/
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -3563,6 +3564,45 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-bottom-color: #fff;
   }
 }
+/*Agregue el fragmento de estilo para tabs verticales*/
+.tabs-left, .tabs-right {
+    border-bottom: none;
+    padding-top: 2px;
+}
+.tabs-left {
+    border-right: 1px solid #ddd;
+}
+.tabs-right {
+    border-left: 1px solid #ddd;
+}
+.tabs-left>li, .tabs-right>li {
+    float: none;
+    margin-bottom: 2px;
+}
+.tabs-left>li {
+    margin-right: -1px;
+}
+.tabs-right>li {
+    margin-left: -1px;
+}
+.tabs-left>li.active>a, .tabs-left>li.active>a:hover, .tabs-left>li.active>a:focus {
+    border-bottom-color: #ddd;
+    border-right-color: transparent;
+}
+.tabs-right>li.active>a, .tabs-right>li.active>a:hover, .tabs-right>li.active>a:focus {
+    border-bottom: 1px solid #ddd;
+    border-left-color: transparent;
+}
+.tabs-left>li>a {
+    border-radius: 4px 0 0 4px;
+    margin-right: 0;
+    display:block;
+}
+.tabs-right>li>a {
+    border-radius: 0 4px 4px 0;
+    margin-right: 0;
+}
+/*Aqui terminan tabs verticals*/
 .nav-pills > li {
   float: left;
 }

@@ -31,4 +31,7 @@ Estructura de documentos(Codeigniter 2.1.4):
 	-plantanova/css/js/: Contiene todos los archivos javascript que utiliza el sistema.
 	-plantanova/img/: Contiene las imagenes utilizadas a lo largo del sistema(logos, etc.).
 Plugins utilizados: 
-	-plantanova/application/libraries/PasswordHash.php: http://www.openwall.com/phpass/
+	-plantanova/application/libraries/PasswordHash.php: Es un archivo que contiene una forma de encriptar y desencriptar de forma segura las contraseñas para más 			información http://www.openwall.com/phpass/
+	-plantanova/css/js/jquery.dataTables.min.js: plugin de javascript para cambiar las tablas a datatables y tener barra de búsqueda y ordenado de columnas.
+	-plantanova/css/js/TableTools.js: Agregue la funcionalidad de botones para exportar datos de tablas a Excel, PDF o impresión, requiere de plantanova/css/js/		ZeroClipboard.js y también requiere la carpeta plantanova/media/swf pues son los modelos que toma para exportar a Excel y PDF.
+	-plantanova/css/js/custom.js: Contine funciones que utilizamos para hacer llamadas AJAX o la configuracion del DataTable.
