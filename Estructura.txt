@@ -1,4 +1,4 @@
-Este documento contiene la estructura utilizada en el sistema Plantanova.
+****************Este documento contiene la estructura utilizada en el sistema Plantanova.
 
 Nombres archivos en general:Todos los archivos se nombran usando solamente minúsculas para evitar problemas con el servidor.
 Nombres controladores: Todos los controladores se nombran con palabras simples y descriptivas ya que este nombre aparece en la URL.
@@ -17,7 +17,7 @@ Nombres funciones modelos: Las funciones se nombran de la siguiente forma:
 	-Cambiar datos:
 		-update_(nombre de lo que actualiza).
 
-Estructura de documentos(Codeigniter 2.1.4):
+****************Estructura de documentos(Codeigniter 2.1.4):****************
 	-plantanova/application/controllers/: Contiene los controladores del sistema, es decir, los archivos que manejan la interaccion de vistas con base de datos.
 	-plantanova/application/models/: Contiene los modelos del sistema, es decir, los archivos que manejan la interaccion con la base de datos.
 	-plantanova/applicacion/views/: Contiene las carpetas para vistas.
@@ -35,3 +35,21 @@ Plugins utilizados:
 	-plantanova/css/js/jquery.dataTables.min.js: plugin de javascript para cambiar las tablas a datatables y tener barra de búsqueda y ordenado de columnas.
 	-plantanova/css/js/TableTools.js: Agregue la funcionalidad de botones para exportar datos de tablas a Excel, PDF o impresión, requiere de plantanova/css/js/		ZeroClipboard.js y también requiere la carpeta plantanova/media/swf pues son los modelos que toma para exportar a Excel y PDF.
 	-plantanova/css/js/custom.js: Contine funciones que utilizamos para hacer llamadas AJAX o la configuracion del DataTable.
+
+****************Manejo del Repositorio:****************
+	-Branches:
+		-Irving : Era el branch en el que yo trabajaba para despues unirlo a master.
+		-master : Es el branch principal, no se deberia de trabajar sobre el, mas bien solo unirle las partes que esten terminadas en otros branches.
+		-Viejo : Contiene la propuesta pasada, solo esta ahi a manera de información por si se requiere reutilizar alguna funcionalidad pero no se trabaja ahi.
+	-Comandos : 
+		-git checkout -b <new branch> origin/<new branch to follow>
+		-git pull origin <branch to pull> : Baja <branch to pull> al branch actual local.
+		-git push origin <branch to update> : Sube el branch local(origin) a <branch to update>.
+		-git branch -a : Muestra todos los branches locales y remotos.
+		-git checkout <move to this branch> : Se cambia de branch.
+		-git fetch : Trae los datos del repositorio pero no junta nada solo te enteras.
+		-http://rogerdudler.github.io/git-guide/index.es.html
+		-Manuales de muchos lenguajes : http://www.stumbleupon.com/su/ALg3NT/overapi.com/
+		-Manual de Bootstrap 3 : http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
+		-Tutoriales CSS3 : http://www.desarrolloweb.com/manuales/css3.html
+
