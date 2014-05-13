@@ -89,11 +89,13 @@ class Principal extends CI_Controller {
 	 		}
 	 		else
 	 		{
+	 			$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
 	 			return FALSE;
 	 		}
 	 	}
 	 	else 
 	 	{
+	 		$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
 	 		return FALSE;
 	 	}
 	 }
@@ -104,6 +106,6 @@ class Principal extends CI_Controller {
 	 	$user_out = $this->session->all_userdata();
 	 	$this->session->unset_userdata($user_out);
 	 	session_destroy();
-	 	redirect('Principal/index','refresh');
+	 	redirect('principal/index','refresh');
 	 }
 }

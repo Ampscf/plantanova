@@ -53,7 +53,7 @@
 									    </li>
 						      			<li role="presentation" class="divider"></li>
 						      			<li>
-						      				<?php echo anchor('salir', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
+						      				<?php echo anchor('principal/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
 						      			</li>
 									</ul>
 								</li>

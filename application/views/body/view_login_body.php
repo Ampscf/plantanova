@@ -7,7 +7,9 @@
 				</div>
 				<?php echo form_open('principal/log_in'); ?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-						<?php echo form_error('password'); ?>
+						<div class="text-center">
+							<?php echo form_error('password'); ?>
+						</div>
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
