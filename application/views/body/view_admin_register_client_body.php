@@ -2,7 +2,7 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><span class="glyphicon glyphicon-list-alt"></span> Datos Empresa </h3>
+				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Registro Nuevo Cliente </h3>
 			</div>
 			<?php 
 				$attributes = array('id' => 'registry');
@@ -11,7 +11,15 @@
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
 					<!-- farm name, street, addr number, colony, cp, state, city, phone, social reason, rfc -->
-					<div class="col-md-6">
+					<div class="col-md-12">
+
+						<div class="clear">&nbsp</div>
+
+						<div class="col-md-12">
+							<h3><span class="glyphicon glyphicon-list-alt"></span> Datos Empresa</h3>
+						</div>
+
+						<div class="clear">&nbsp</div>
 
 						<input type="hidden" name="rol" id="rol" value="2" />
 
@@ -20,24 +28,12 @@
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-tree-deciduous"></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Agrícola" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
+								<input type="text" class="form-control" placeholder="Empresa" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
 							</div><!-- End farm name -->
 							<?php echo form_error('farm_name'); ?>
 
-							<div class="clear"></div>
+							<div class="clear">&nbsp</div>
 
-							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-road"></span>
-								</div>
-								<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
-							</div><!-- End street -->
-							<?php echo form_error('street'); ?>
-						</div>
-
-						<div class="clear"></div>						
-
-						<div class="col-md-6">
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-home"></span>
@@ -46,20 +42,8 @@
 							</div><!-- End address number -->
 							<?php echo form_error('addr_number'); ?>
 
-							<div class="clear"></div>						
+							<div class="clear">&nbsp</div>
 
-							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-home"></span>
-								</div>
-								<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>">
-							</div><!-- End colony -->
-							<?php echo form_error('colony'); ?>
-						</div>
-
-						<div class="clear"></div>						
-
-						<div class="col-md-6">
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-barcode"></span>
@@ -67,8 +51,8 @@
 								<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>">
 							</div><!-- End cp -->
 							<?php echo form_error('cp'); ?>
-							
-							<div class="clear"></div>						
+
+							<div class="clear">&nbsp</div>
 
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
@@ -85,11 +69,50 @@
 								</select>
 							</div><!-- End state -->
 							<?php echo form_error('state'); ?>	
-						</div>					
 
-						<div class="clear"></div>
+							<div class="clear">&nbsp</div>
+
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-qrcode"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Razón Social" name="social_reason" id="social_reason" value="<?php echo set_value('social_reason'); ?>">
+							</div><!-- End social reason -->
+							<?php echo form_error('social_reason'); ?>
+						</div>						
 
 						<div class="col-md-6">
+							
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-road"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
+							</div><!-- End street -->
+							<?php echo form_error('street'); ?>
+
+							<div class="clear">&nbsp</div>
+													
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-home"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>">
+							</div><!-- End colony -->
+							<?php echo form_error('colony'); ?>
+
+							<div class="clear">&nbsp</div>
+
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-phone-alt"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Teléfono empresa" name="company_phone" id="company_phone" value="<?php echo set_value('company_phone'); ?>">
+							</div><!-- End company_phone -->
+							<?php echo form_error('company_phone'); ?>
+
+							<div class="clear">&nbsp</div>
+
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-picture"></span>
@@ -105,29 +128,7 @@
 								</select>
 							</div><!-- End town -->
 
-							<div class="clear"></div>
-
-							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-phone-alt"></span>
-								</div>
-								<input type="text" class="form-control" placeholder="Teléfono" name="company_phone" id="company_phone" value="<?php echo set_value('company_phone'); ?>">
-							</div><!-- End phone -->
-							<?php echo form_error('company_phone'); ?>
-						</div>
-
-						<div class="clear"></div>
-
-						<div class="col-md-6">
-							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-qrcode"></span>
-								</div>
-								<input type="text" class="form-control" placeholder="Razón Social" name="social_reason" id="social_reason" value="<?php echo set_value('social_reason'); ?>">
-							</div><!-- End social reason -->
-							<?php echo form_error('social_reason'); ?>
-
-							<div class="clear"></div>
+							<div class="clear">&nbsp</div>
 
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
@@ -136,63 +137,75 @@
 								<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>">
 							</div><!-- End rfc -->
 							<?php echo form_error('rfc'); ?>
-						</div>
-						
+						</div>					
+
 					</div>
 				
 
 					<!-- Company representant:  Name, last name, phone, cellphone, email -->
-					<div class="col-md-6">
+					<div class="col-md-12">
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-user"></span>
-							</div>
-							<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
-						</div><!-- End first name -->
-						<?php echo form_error('first_name'); ?>
+						<div class="clear">&nbsp</div>
 
-						<div class="clear"></div>
+						<div class="col-md-12">
+							<h3><span class="glyphicon glyphicon-user"></span> Representante de la empresa</h3>
+						</div>
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-user"></span>
-							</div>
-							<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>">
-						</div><!-- End last name -->
-						<?php echo form_error('last_name'); ?>
+						<div class="clear">&nbsp</div>
 
-						<div class="clear"></div>
+						<div class="col-md-6">
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-user"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
+							</div><!-- End first name -->
+							<?php echo form_error('first_name'); ?>
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-phone-alt"></span>
-							</div>
-							<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
-						</div><!-- End phone -->
-						<?php echo form_error('phone'); ?>
+							<div class="clear">&nbsp</div>
 
-						<div class="clear"></div>
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-phone-alt"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
+							</div><!-- End phone -->
+							<?php echo form_error('phone'); ?>
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-phone"></span>
-							</div>
-							<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>">
-						</div><!-- End cellphone -->
-						<?php echo form_error('cellphone'); ?>
+							<div class="clear">&nbsp</div>
 
-						<div class="clear"></div>
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-envelope"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email" value="<?php echo set_value('email'); ?>">
+							</div><!-- End email -->
+							<?php echo form_error('email'); ?>	
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-envelope"></span>
-							</div>
-							<input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email" value="<?php echo set_value('email'); ?>">
-						</div><!-- End email -->
-						<?php echo form_error('email'); ?>						
+						</div>
 
-						<!-- <div class="clear"></div>	
+						<div class="col-md-6">
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-user"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>">
+							</div><!-- End last name -->
+							<?php echo form_error('last_name'); ?>
+
+							<div class="clear">&nbsp</div>
+
+							<div class="input-group input-group-lg">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-phone"></span>
+								</div>
+								<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>">
+							</div><!-- End cellphone -->
+							<?php echo form_error('cellphone'); ?>
+						</div>
+											
+
+						<!-- <div class="clear">&nbsp</div>	
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
@@ -200,8 +213,7 @@
 							</div>
 							<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
 
-						</div><!-- End password -->
-						<?php //echo form_error('password'); ?>
+						</div> End password -->
 					</div>
 
 				</div><!-- End panel-body -->

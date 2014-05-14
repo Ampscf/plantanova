@@ -34,7 +34,7 @@
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    var tipo = $(this).attr("href");
 		$.ajax({
-			url: base_url + 'order/orders_status',
+			url: site_url + 'order/orders_status',
 			data: {'tipo':tipo},
 			type: "POST",
 			success: function(data){
@@ -56,7 +56,7 @@
 			$("#sustratum [value='-1']").remove();
 		}
 		$.ajax({
-			url: base_url + 'order/get_subtypes',
+			url: site_url + 'order/get_subtypes',
 			data: {'sustratum':value},
 			type: "POST",
 			success: function(data){
@@ -78,7 +78,7 @@
 		}
 		
 		$.ajax({
-			url: base_url + 'admin/get_towns',
+			url: site_url + 'admin/get_towns',
 			data: {'id_state':$id_state},
 			type: "POST",
 			success: function(data){
@@ -94,6 +94,7 @@
 	function register_client()
 	{
 		form = $("#registry");
+		alert(form.serialize());
 		$.ajax({
 			url: form.attr('action'),
 			data: form.serialize(),
@@ -108,7 +109,7 @@
 				else
 				{
 					$("#content").html(errno.template);
-					notas("Cuenta registrada, inicie sesión para comenzar","success");
+					notas("Cuenta registrada!.","success");
 				}
 			},
 			failure:function(data){

@@ -14,7 +14,6 @@ class Order extends CI_Controller {
 		$template['body'] = 'body/view_admin_body.php';
 		$template['footer'] = "footer/view_footer.php";
 		//Manda los datos necesarios para cargar los pedidos y datos del usuario
-		$template['usuario'] = $this->model_user->get_admin_by_mail($this->session->userdata('mail'));
 		$template['pedidos'] = $this->model_order->get_orders('99');
 
 		$this->load->view('main',$template);

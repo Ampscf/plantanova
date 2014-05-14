@@ -16,9 +16,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/TableTools.css';?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/styles.css';?>"/>
-	<script type="text/javascript">
-		var base_url = '<?php echo base_url(); ?>';
-	</script>
 </head>
 <body>
 	<div id="wrapper">
