@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Principal extends CI_Controller {
+class Admin extends CI_Controller {
 
 	function __construct() {
 	   parent::__construct();
@@ -19,7 +19,6 @@ class Principal extends CI_Controller {
 
 		$this->load->view('main',$template);
 	}
-
 
 	//Manda la forma para el registro del cliente enviandole la lista de estados
 	public function register_client_form()
@@ -53,5 +52,14 @@ class Principal extends CI_Controller {
 			$result = $result . "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
 		}
 		echo $result;
+	}
+	
+	public function load_companies()
+	{
+		$template['header'] = "header/view_login_header.php";
+		$template['body'] = "body/view_companies.php";
+		$template['footer'] = "footer/view_footer.php";
+		
+		$this->load->view('main', $template);
 	}
 }
