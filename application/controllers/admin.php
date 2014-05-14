@@ -93,16 +93,15 @@ class Admin extends CI_Controller {
 			$data['cellphone'] = $this->input->post('cellphone');
 			$data['farm_name'] = $this->input->post('farm_name');
 			$data['street'] = $this->input->post('street');
-			$data['addr_number'] = $this->input->post('addr_number');
+			$data['address_number'] = $this->input->post('addr_number');
 			$data['colony'] = $this->input->post('colony');
 			$data['id_town'] = $this->input->post('town');
-			$data['id_state'] = $this->input->post('state');
 			$data['cp'] = $this->input->post('cp');
 			$data['social_reason'] = $this->input->post('social_reason');
-			$data['company_name'] = $this->input->post('company_name');
+			$data['company_phone'] = $this->input->post('company_phone');
 
 			//Verifica si hubo una tupla modificada o agregada
-			if($this->user_model->insert_client_user($data) > 0 )
+			if($this->model_user->insert_client_user($data) > 0 )
 			{
 				unset($data);
 				$data['msj'] = "Exito";
