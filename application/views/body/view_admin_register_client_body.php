@@ -189,7 +189,7 @@
 							<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
 
 						</div><!-- End password -->
-						<?php //echo form_error('password'); ?> -->
+						<?php //echo form_error('password'); ?>
 					</div>
 
 				</div><!-- End panel-body -->

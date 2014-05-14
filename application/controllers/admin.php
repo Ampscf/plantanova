@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 	public function register_client_form()
 	{
 		$template['header'] = "header/view_admin_header.php";
-		$template['template'] = "body/view_admin_register_client_body.php";
+		$template['body'] = "body/view_admin_register_client_body.php";
 		$template['footer'] = "footer/view_footer.php";
 		
 		$template['states'] = $this->model_order->get_states();
