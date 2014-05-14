@@ -137,6 +137,7 @@
 							</div><!-- End rfc -->
 							<?php echo form_error('rfc'); ?>
 						</div>
+						
 					</div>
 				
 
