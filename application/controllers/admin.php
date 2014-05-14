@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
 	
 	public function load_companies()
 	{
-		$template['header'] = "header/view_login_header.php";
+		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/view_companies.php";
 		$template['footer'] = "footer/view_footer.php";
 		
