@@ -11,16 +11,18 @@
 	</thead>
 	<tbody>
 		<?php 
+		if(isset($pedidos))
+		{
 			foreach ($pedidos as $key) 
 			{
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
-				echo "<td>" . $key->date_delivery . "</td>";
+				echo "<td>" . $key->order_date_delivery . "</td>";
 				echo "<td>" . $key->status_name . "</td>";
 				echo "<td>" . $key->cliente . "</td>";
 				echo "<td>" . $key->category_name . "</td>";
 				echo "<td>" . $key->plant_name . "</td>";
-				echo "<td>" . $key->volume . "</td>";
+				echo "<td>" . $key->total_volume . "</td>";
 				echo "<td>";?>
 					<a class="btn btn-default"
 	                    rel="tooltip"
@@ -42,6 +44,7 @@
 				echo "</td>";
 				echo "</tr>";
 			}
+		}
 		?>
 	</tbody>
 </table>

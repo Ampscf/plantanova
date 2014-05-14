@@ -48,14 +48,7 @@ class Principal extends CI_Controller {
 		else
 		{
 			//Manda a la pagina principal del rol que inicia sesión
-			$template['header'] = 'header/view_admin_header.php';
-			$template['body'] = 'body/view_admin_body.php';
-			$template['footer'] = "footer/view_footer.php";
-			//Manda los datos necesarios para cargar los pedidos y datos del usuario
-			$template['usuario'] = $this->model_user->get_admin_by_mail($this->session->userdata('mail'));
-			$template['pedidos'] = $this->model_order->get_orders('99');
-
-			$this->load->view('main',$template);
+			redirect('order/index','refresh');
 		}
 	 }
 
@@ -65,6 +58,9 @@ class Principal extends CI_Controller {
 	 {
 	 	//Carga libreria para encriptar password
 	 	$this->load->library('PasswordHash');
+		//Genera un password bcrypt del input
+		//$hash = $this->passwordhash->HashPassword($this->input->post('password'));
+		//echo $hash;
 
 	 	$mail = $this->input->post('email');
 	 	$pass = $this->input->post('password');
