@@ -114,6 +114,80 @@ Class model_order extends CI_Model
 			return null;
 		}
 	}
+
+	//Obtiene todos los estados del pais
+	function get_states()
+	{
+		$this->db->select('id_state,state_name');
+		$this->db->from('t_state');
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+	
+	
+	//Obtiene un estado por id
+	function get_state($id_state)
+	{
+		$this->db->select('id_state,state_name');
+		$this->db->from('t_state');
+		$this->db->where('id_state',$id_state);
+		
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+	
+	
+	//Obtiene todas las ciudades
+	function get_towns()
+	{
+		$this->db->select('id_town,id_state,key_town,town_name');
+		$this->db->from('t_town');
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+	
+	
+	//Obtiene las ciudades de un estado por el id_estado
+	function get_town($id_state)
+	{
+		$this->db->select('id_town,town_name');
+		$this->db->from('t_town');
+		$this->db->where('id_state',$id_state);
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
 }
 
 ?>

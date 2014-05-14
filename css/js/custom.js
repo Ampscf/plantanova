@@ -78,7 +78,7 @@
 		}
 		
 		$.ajax({
-			url: base_url + 'order/get_towns',
+			url: base_url + 'admin/get_towns',
 			data: {'id_state':$id_state},
 			type: "POST",
 			success: function(data){

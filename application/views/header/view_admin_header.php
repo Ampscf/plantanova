@@ -39,9 +39,9 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav nav-justified">
-								<li class="active"><a href="#">Ver pedidos</a></li>
-								<li><?php echo anchor('','Hacer pedido'); ?></li>
-								<li><?php echo anchor('.','Clientes'); ?></li>
+								<li class="active"><?php echo anchor('order/index','Ver pedidos'); ?></li>
+								<li><?php echo anchor('order/register_order_form','Hacer pedido'); ?></li>
+								<li><?php echo anchor('admin/register_client_form','Clientes'); ?></li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 										<?php echo $this->session->userdata('mail'); ?>
@@ -49,7 +49,7 @@
 						      		</a>
 									<ul class="dropdown-menu">
 										<li>
-						      				<?php echo anchor('cuenta', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
+						      				<?php echo anchor('admin/my_acount_form', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
 									    </li>
 						      			<li role="presentation" class="divider"></li>
 						      			<li>
