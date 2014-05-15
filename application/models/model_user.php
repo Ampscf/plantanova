@@ -21,6 +21,25 @@ Class model_user extends CI_Model	{
 			return false;
 		}
 	}
+	
+	//Obtiene los datos de todos los usuarios de la base de datos que no son administradores, es decir, los clientes
+	function get_clients()
+	{
+		$this -> db -> select('id_user, farm_name, rfc, first_name, last_name');
+		$this -> db -> from('t_user');
+		$this -> db -> where('id_rol', 2);
+		
+		$query = $this -> db -> get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
 
 
 	//Obtiene al administrador por el id

@@ -231,7 +231,7 @@
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Cancelar',
 								);
-								echo anchor('inicio', 'Cancelar', $data);
+								echo anchor('admin/list_clients', 'Cancelar', $data);
 							?>
 						</div>
 					</div><!-- End row -->

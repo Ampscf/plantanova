@@ -18,6 +18,18 @@ class Admin extends CI_Controller {
 
 		$this->load->view('main',$template);
 	}
+	
+	//Manda a la forma que contiene la lista de todos los registros de los usuarios
+	public function list_clients() 
+	{
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_companies.php';
+		$template['footer'] = "footer/view_footer.php";
+		//Manda los datos necesarios para cargar la lista de los usuarios del sistema
+		$template['users'] = $this->model_user->get_clients();
+		
+		$this->load->view('main',$template);
+	}
 
 	//Manda la forma para el registro del cliente enviandole la lista de estados
 	public function register_client_form()
@@ -143,14 +155,5 @@ class Admin extends CI_Controller {
 			$result = $result . "<option value='" . $key->id_town . "'>" . $key->town_name . "</option>";
 		}
 		echo $result;
-	}
-	
-	public function load_companies()
-	{
-		$template['header'] = "header/view_admin_header.php";
-		$template['body'] = "body/view_companies.php";
-		$template['footer'] = "footer/view_footer.php";
-		
-		$this->load->view('main', $template);
 	}
 }
