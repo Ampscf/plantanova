@@ -94,7 +94,6 @@
 	function register_client()
 	{
 		form = $("#registry");
-		alert(form.serialize());
 		$.ajax({
 			url: form.attr('action'),
 			data: form.serialize(),
