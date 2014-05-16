@@ -42,10 +42,10 @@ Class model_user extends CI_Model	{
 	}
 
 	//Modifica la información sobre un cliente, en caso de que se quiera modificar o actualizar su información
-	function update_client($id, $data)
+	function update_client($id)
 	{
 		$this -> db -> where('id', $id);
-		$this -> db -> update('t_user', $data);
+		$this -> db -> update('t_user', );
 	}
 
 

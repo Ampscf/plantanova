@@ -1,7 +1,7 @@
 			<footer>
 				<div class="row">
 					<div class="copyright">
-						<p>PlantaNova <?php echo date('Y'); ?></p>
+						<p>@PlantaNova <?php echo date('Y'); ?></p>
 					</div>
 				</div>
 			</footer><!-- End footer -->
