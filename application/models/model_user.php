@@ -62,7 +62,7 @@ Class model_user extends CI_Model	{
 	}
 
 	//Modifica la informaci�n sobre un cliente, en caso de que se quiera modificar o actualizar su informaci�n
-	function update_client($id, $town, $first_name, $last_name, $mail, $social, $rfc, $farm, $phone, $cellphone, $company_phone, $street, $num_add, $colony, $cp)
+	/*function update_client($id, $town, $first_name, $last_name, $mail, $social, $rfc, $farm, $phone, $cellphone, $company_phone, $street, $num_add, $colony, $cp)
 	{
 		$data = array (
 			'id_user' => $id,
@@ -79,11 +79,11 @@ Class model_user extends CI_Model	{
 			'street' => $street,
 			'address_number' => $num_add,
 			'colony' => $colony,
-			'cp' => $cp
+			'cp' => $cp,
  		)
 		$this -> db -> where('id', $id);
 		$this -> db -> update('t_user', $data);
-	}
+	}*/
 
 
 	//Obtiene al administrador por el id
