@@ -41,9 +41,46 @@ Class model_user extends CI_Model	{
 		}
 	}
 
-	//Modifica la información sobre un cliente, en caso de que se quiera modificar o actualizar su información
-	function update_client($id, $data)
+	//Obtiene los datos de un ï¿½nico cliente de la base de datos para poder ser utilizado
+	function get_client($id)
 	{
+		$this -> db -> select('id_user', 'id_town', 'first_name', 'last_name', 'mail', 'social_reason', 'rfc', 'farm_name', 'phone', 'cellphone', 'company_phone', 'street', 'address_number', 'colony', 'cp');
+		$this -> db -> from('t_user');
+		$this -> db -> where('id_rol', $id);
+		$this -> db -> limit(1);
+
+		$query = $this -> db -> get();
+
+		if($query->num_rows()==1) 
+		{
+			return $query->row();
+		} 
+		else 
+		{
+			return false;
+		}
+	}
+
+	//Modifica la informaciï¿½n sobre un cliente, en caso de que se quiera modificar o actualizar su informaciï¿½n
+	function update_client($id, $town, $first_name, $last_name, $mail, $social, $rfc, $farm, $phone, $cellphone, $company_phone, $street, $num_add, $colony, $cp)
+	{
+		$data = array (
+			'id_user' => $id,
+			'id_town' => $town,
+			'first_name' => $first_name,
+			'last_name' => $last_name,
+			'mail' => $mail,
+			'social_reason' => $social,
+			'rfc' => $rfc,
+			'farm_name' => $farm,	
+			'phone' => $phone,
+			'cellphone'	=> $cellphone,
+			'company_phone'=> $company_phone,
+			'street' => $street,
+			'address_number' => $num_add,
+			'colony' => $colony,
+			'cp' => $cp
+ 		)
 		$this -> db -> where('id', $id);
 		$this -> db -> update('t_user', $data);
 	}
