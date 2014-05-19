@@ -20,22 +20,40 @@
 				echo "<td>" . $key->first_name . "</td>";
 				echo "<td>" . $key->last_name . "</td>";
 				echo "<td>";?>
+				
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Modificar"
 	                    onClick="modify_order(<?php echo $key->id_user; ?>);">
 	                    <i class="fa fa-edit"></i>
-	                </a> 
-	                <a class="btn btn-default"
-	                    title="Eliminar"
-	                    data-toggle="popover"
-	                    data-placement="top"
-	                    data-title="Confirmar"
-	                    data-html="true"
-	                    data-content="<a class='btn btn-primary' data-dismiss='popover' onClick='delete_order(<?php echo $key->id_user; ?>);'>Si</a> <a class='btn btn-default' data-dismiss='popover'>No</a>">
-	                    <i class="fa fa-times"></i>
 	                </a>
+					 
+	                <a href="#myModal<?php echo $key->id_user; ?>" class="btn btn-default"
+	                    title="Eliminar"
+	                    data-toggle="modal">
+						<i class="fa fa-times"></i>
+	                </a>
+					
+					<div id="myModal<?php echo $key->id_user; ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Confirmación</h4>
+                				</div>
+                				<div class="modal-body">
+                    				<p>¿Estás seguro de querer eliminar a la empresa <?php echo $key->farm_name; ?>?</p>
+                				</div>
+                				<div class="modal-footer">
+									<?php echo form_open('admin/delete_client'); ?>
+                    					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_user; ?>">Confirmar</button>
+                					</form>
+								</div>
+            				</div>
+        				</div>
+    				</div>
 		<?php 
 				echo "</td>";
 				echo "</tr>";

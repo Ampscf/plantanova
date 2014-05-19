@@ -49,3 +49,13 @@ textarea
 	margin-top:50px;
 	margin-bottom: 100px;
 }
+
+.modal-content
+{
+	margin-top:35%;
+}
+
+.modal-body
+{
+	padding: 26px !important;
+}

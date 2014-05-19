@@ -130,6 +130,19 @@ class Admin extends CI_Controller {
 			}
 		} 
 	}
+	
+	function delete_client()
+	{
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this -> model_user -> delete_client($llave);
+		redirect("admin/list_clients", "refresh");
+	}
 
 
 	//Verifica que el usuario haya seleccionado algún estado al registrarse

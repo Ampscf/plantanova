@@ -28,6 +28,7 @@ Class model_user extends CI_Model	{
 		$this -> db -> select('id_user, farm_name, rfc, first_name, last_name');
 		$this -> db -> from('t_user');
 		$this -> db -> where('id_rol', 2);
+		$this -> db -> where('active', 0);
 		
 		$query = $this -> db -> get();
 		
@@ -84,6 +85,14 @@ Class model_user extends CI_Model	{
 		$this -> db -> where('id', $id);
 		$this -> db -> update('t_user', $data);
 	}*/
+	
+	//Función para cambiar el estatus de visibilidad de un cliente
+	function delete_client($id)
+	{
+		$data = array('active' => 1);
+		$this -> db -> where('id_user', $id);
+		$this -> db -> update('t_user', $data);	
+	}
 
 
 	//Obtiene al administrador por el id
