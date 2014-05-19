@@ -53,3 +53,6 @@ Plugins utilizados:
 		-Manual de Bootstrap 3 : http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
 		-Tutoriales CSS3 : http://www.desarrolloweb.com/manuales/css3.html
 
+Tutorial de bootstrap
+http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
+
