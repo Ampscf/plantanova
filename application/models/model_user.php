@@ -54,6 +54,7 @@ Class model_user extends CI_Model	{
 
 		if($query->num_rows()==1) 
 		{
+			
 			return $query->row();
 		} 
 		else 
@@ -61,6 +62,13 @@ Class model_user extends CI_Model	{
 			return false;
 		}
 	}
+
+	function obtenerCliente($id){
+			$this->db->where('id_user',$id);
+			$query=$this->db->get('t_user');
+			if($query->num_rows()>0) return $query;
+			else return false;
+		}
 
 	//Modifica la informaci�n sobre un cliente, en caso de que se quiera modificar o actualizar su informaci�n
 	/*function update_client($id, $town, $first_name, $last_name, $mail, $social, $rfc, $farm, $phone, $cellphone, $company_phone, $street, $num_add, $colony, $cp)
@@ -120,6 +128,13 @@ Class model_user extends CI_Model	{
 	function insert_client_user($data)
 	{
 		$this->db->insert('t_user',$data);
+		return $this->db->affected_rows();
+	}
+
+	function update_client_user($id_user,$data)
+	{
+		$this->db->where('id_user',$id_user);
+		$this->db->update('t_user',$data);
 		return $this->db->affected_rows();
 	}
 }

@@ -25,9 +25,11 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Modificar"
-	                    onClick="modify_order(<?php echo $key->id_user; ?>);">
+	                   href="edit/<?php echo $key->id_user ?>">
 	                    <i class="fa fa-edit"></i>
+	                   
 	                </a>
+	                 
 					 
 	                <a href="#myModal<?php echo $key->id_user; ?>" class="btn btn-default"
 	                    title="Eliminar"
