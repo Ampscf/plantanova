@@ -25,7 +25,7 @@
 				$id_town = $client->result()[0]->id_town;
 				echo $id_town;
 
-				$attributes = array('id' => 'registry');
+				$attributes = array('id' => 'update');
 				echo form_open('admin/update_client/'.$id_user,$attributes); 
 
 			?>
@@ -41,8 +41,6 @@
 						</div>
 
 						<div class="clear">&nbsp</div>
-
-						<input type="hidden" name="rol" id="rol" value="2" />
 
 						<div class="col-md-6">
 							<div class="input-group input-group-lg">
@@ -239,12 +237,12 @@
 
 				</div><!-- End panel-body -->
 
-			</form><!-- End form -->
+			<? echo form_close() ?><!-- End form -->
 
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
-							<input class="btn btn-success btn-block" type="submit" value="Editar Cuenta" onClick="register_client();"/>
+							<input class="btn btn-success btn-block" type="submit" value="Editar Cuenta" onClick="update_client();"/>
 						</div>
 						<div class="col-md-3 col-md-offset-4">
 							<?php  
