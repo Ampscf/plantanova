@@ -40,10 +40,30 @@ Class model_order extends CI_Model
 			return null;
 		}
 	}
+	
+	function get_companies_drop()
+	{
+		$this -> db -> select('id_user,farm_name');
+		$this -> db -> from('t_user');
+		$this -> db -> where('id_rol', 2);
+		$this -> db -> where('active', 0);
+		
+		$query = $this -> db -> get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
 
 
 	//Obtiene las plantas del catalogode la base de datos
-	function get_plants(){
+	function get_plants()
+	{
 	
 		$this -> db -> select('id_plant,plant_name');
 		$this -> db -> from('t_plant');
@@ -62,7 +82,8 @@ Class model_order extends CI_Model
 	
 	
 	//Obtiene los sustratos de la base de datos
-	function get_sustratum(){
+	function get_sustratum()
+	{
 		$this -> db -> select('id_sustratum,sustrato_name');
 		$this -> db -> from('t_sustratum');
 
@@ -79,7 +100,8 @@ Class model_order extends CI_Model
 	}
 	
 	//Obtiene los subtipos de sustratos
-	function get_sustratum_subtype($sustratum){
+	function get_sustratum_subtype($sustratum)
+	{
 		$this -> db -> select('id_subtype,sustratum_name');
 		$this -> db -> from('t_sustratum_subtype');
 		$this -> db -> where('id_sustratum',$sustratum);
