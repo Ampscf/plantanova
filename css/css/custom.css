@@ -57,5 +57,11 @@ textarea
 
 .modal-body
 {
-	padding: 26px !important;
+	padding:26px !important;
+}
+
+.tab-content
+{
+	padding-top: 30px;
+	padding-left: 10px;
 }

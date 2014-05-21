@@ -89,6 +89,18 @@
 			}
 		});
 	}
+	
+	//Obtiene los datos de una empresa
+	function get_companie_info($id_user)
+	{
+		if($("#companies [value='-1']").length)
+		{
+			$("#companies [value='-1']").remove();
+		}
+		$.ajax({
+			url: site_url + '',	
+		});
+	}
 
 
 	function register_client()
