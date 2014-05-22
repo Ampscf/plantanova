@@ -132,6 +132,7 @@ class Admin extends CI_Controller {
 		} 
 	}
 	
+	//funcion que edita un cliente
 	function update_client() 
 	{
 		$datos['states'] = $this->model_order->get_states();
@@ -141,7 +142,6 @@ class Admin extends CI_Controller {
 	 	
 	 	//Valida los campos que se reciben
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
-		// $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('first_name','Nombre','required|xss_clean');
 		$this->form_validation->set_rules('last_name','Apellido','required|xss_clean');
 		$this->form_validation->set_rules('rfc','RFC','required|xss_clean');
@@ -158,35 +158,18 @@ class Admin extends CI_Controller {
 
 		//Algunos datos no son correctos y se tiene que lenar de nuevo
 		if($this->form_validation->run() == FALSE) 
-		{
-
-			
+		{		
 			//vuelve a la pagina de registro e imprime los errores
 			
 			$error['msj'] = "Error";
 			$error['errores'] = "Hay errores en la forma";
-			$error['template'] = $this->edit();
-			json_encode($error);
+			$error['template'] = $this->load->view('body/view_admin_edit_client_body_empty',$datos,TRUE);
+			echo json_encode($error);
 
 		}
 		//Los datos son correctos y se redirecciona para login
 		else
-		{
-			//$this->load->library('PasswordHash');
-			//Genera un password bcrypt del input
-			//$hash = $this->passwordhash->HashPassword($this->input->post('password'));
-			// if ( strlen( $hash ) < 20 ) 
-			// {
-			// 	$error['msj'] = "Error";
-			// 	$error['errores'] = "Error al encriptar contraseña";
-			// 	$error['template'] = $this->load->view('view_admin_register_client_body',$datos,TRUE);
-			// 	echo json_encode($error);
-			// 	exit();
-			// }
-
-			//Obtiene tdos los campos a guardar del usuario en un arreglo
-			
-			
+		{			
 			$data['first_name'] = $this->input->post('first_name');
 			$data['last_name'] = $this->input->post('last_name');
 			$data['mail'] = $this->input->post('email');
@@ -208,7 +191,7 @@ class Admin extends CI_Controller {
 			{
 				unset($data);
 				$data['msj'] = "Exito";
-				$data['template'] = $this->edit();
+				$data['template'] = $this->load->view('body/view_admin_edit_client_body_empty',$datos,TRUE);
 				echo json_encode($data);
 			}
 			else
@@ -216,7 +199,7 @@ class Admin extends CI_Controller {
 				unset($data);
 				$error['msj'] = "Error";
 				$error['errores'] = "Error al guardar al usuario";
-				$error['template'] = $this->edit();
+				$error['template'] = $this->load->view('body/view_admin_edit_client_body_empty',$datos,TRUE);
 				echo json_encode($error);
 			}
 		} 
@@ -265,7 +248,7 @@ class Admin extends CI_Controller {
 	function edit(){
 		$id = $this->uri->segment(3);
 		$template['client']=$this->model_user->obtenerCliente($id);
-		
+		//$template['town']=$this->model_order->get_town('id_town');
 		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/view_admin_edit_client_body.php";
 		$template['footer'] = "footer/view_footer.php";

@@ -189,7 +189,7 @@
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-user"></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('first_name'); ?>">
+								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('last_name'); ?>">
 							</div><!-- End last name -->
 							<?php echo form_error('last_name'); ?>
 
