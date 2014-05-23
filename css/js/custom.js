@@ -112,7 +112,7 @@
 
 	$(document).ready(function() {
 		$("#page1").click(function(){
-			$('#result').load(site_url + 'order/load_first_step');
+			$('#result').load(site_url + 'order/load_second_step');
 		});
 	
 		$("#page0").click(function(){
