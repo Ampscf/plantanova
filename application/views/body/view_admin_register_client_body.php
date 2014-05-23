@@ -58,7 +58,7 @@
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-globe"></span>
 								</div>
-								<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
+								<select class="form-control" name="state" id="state" >
 									<option value="-1" selected>---Selecciona un estado---</option>
 									<?php 
 										foreach($states as $key)

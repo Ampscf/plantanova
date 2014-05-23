@@ -110,25 +110,40 @@
 		});
 	}*/
 
-	$(document).ready(function() {
+	
 		$("#page1").click(function(){
-			$('#result').load(site_url + 'order/load_first_step');
+			alert("simon");
+			$('#result').load('load_first_step');
 		});
 	
 		$("#page0").click(function(){
-		   	//alert("Si está manando alerts!");
-			$('#result').load(site_url + 'order/load_zero_step');
+		   	alert("Si está manando alerts!");
+			$('#result').load('load_order_step');
 		});
 			
 		$("#page2").click(function(){
-			//alert("Si está manando alerts!");
-		   	$('#result').load(site_url + 'order/load_second_step #result > *');
+			alert("Si está manando alerts!");
+		   	//$('#result').load(site_url + 'order/load_second_step #result > *');
 		});
 	
+		//obtiene la posicion de las compañias y manda el valor al controlador para cargarlo despues
 		$("#companies").change(function(event) {
-            $("#p1").load(site_url + 'order/get_companie_info');
+			
+		 	var posicion=document.getElementById('companies').options.selectedIndex;
+           
+           $.ajax({
+			url: site_url + 'order/get_companie_info',
+			data: {'id_companie':+posicion},
+			type: "POST",
+			success: function(data){
+				$("#p1").html(data);
+			},
+			failure:function(data){
+				alert("fallo");
+			}
+			});
         });
-     });
+    
 
 	function register_client()
 	{

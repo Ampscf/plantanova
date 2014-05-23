@@ -13,7 +13,37 @@
 					</div>	
 					
 					<div class="panel-body">					
-						<h1>Contenido para cliente<h1>
+						<h2>Nueva Orden</h2>
+						<div class="tab-content">
+							<div class="tab-pane active" id="cliente">
+							 	<p>* Seleccione la empresa</p>
+								<select class="form-control" name="companies" id="companies" >
+									<option value="-1" selected>---Selecciona una empresa---</option>
+										<?php 
+											foreach($companies as $key)
+											{
+												echo "<option value='" . $key->id_user . "' set_select('companies','".$key->id_user."')>" . $key->farm_name . "</option>";
+											}
+										?>
+								</select>
+								<div id="p1"></div> 
+								
+							</div><!-- @end #cliente -->
+							 
+							<div class="tab-pane" id="orden">
+	            				<p>*Cuenta con órdenes pendientes antees de registrar una nueva orden puede seleccionar la orden pendiente que desee editar</p>
+								<span class="glyphicon glyphicon-time"> ÓRDENES PENDIENTES</span>
+	          				</div><!-- @end #orden -->
+							
+							<div class="tab-pane" id="desglose">
+	            				<h1>Contenido del desglose</h1>
+	          				</div><!-- @end #desglose -->
+							
+							<div class="tab-pane" id="resumen">
+	            				<h1>Contenido del resumen</h1>
+	          				</div><!-- @end #resumen -->
+							
+						</div><!-- @end .tab-content -->
 					</div>
 					
 					<div class="panel-footer">

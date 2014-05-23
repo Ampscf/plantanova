@@ -25,13 +25,8 @@
 									?>
 							</select>
 							
-							<p id="p1">Nombre Completo:</p> 
-							<p>Correo Electrónico:</p>
-							<p>Teléfono:</p>
-							<p>Calle/Colonia:</p>
-							<p>Número #:</p>
-							<p>Código Postal:</p>
-							<p>Razón Social:</p>
+							<div id="p1"></div> 
+							
 							<div class="panel-footer">
 								<a href="#orden" class="btn btn-default ">Siguiente</a>					
 							</div><!-- End panel-footer -->
