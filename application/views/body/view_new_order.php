@@ -15,7 +15,7 @@
 						<div class="tab-pane active" id="cliente">
 						 	<p>* Seleccione la empresa</p>
 							
-							<select class="form-control" name="companies" id="companies" onchange="get_companie_info(this.value);">
+							<select class="form-control" name="companies" id="companies">
 								<option value="-1" selected>---Selecciona una empresa---</option>
 									<?php 
 										foreach($companies as $key)
@@ -25,7 +25,7 @@
 									?>
 							</select>
 							
-							<p>Nombre Completo:</p> 
+							<p id="p1">Nombre Completo:</p> 
 							<p>Correo Electrónico:</p>
 							<p>Teléfono:</p>
 							<p>Calle/Colonia:</p>

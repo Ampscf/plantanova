@@ -29,6 +29,19 @@ class Order extends CI_Controller {
 		return form_dropdown('companies', $companies);
 	}
 	
+	public function get_companie_info()
+	{	
+		$id_companie = $this->input->post('id_user');
+		
+		$info = $this->model_user->get_client($id_companie);
+		$result = "";
+		foreach ($info as $key) 
+		{
+			$result = $result . "<p>" . $key->first_name . "</p>";
+		}
+		echo $result;
+	}
+	
 	//Muestra el formulario de registro de pedidos
 	public function register_order_form()
 	{
@@ -38,5 +51,30 @@ class Order extends CI_Controller {
 		$template['companies'] = $this->model_order->get_companies_drop();
 		
 		$this->load->view('main',$template);
+	}
+	
+	
+	public function carga_ordenes(){
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_orders.php';
+		$template['footer'] = "footer/view_footer.php";
+		
+		$this->load->view('main',$template);	
+		
+	}
+	
+	public function load_zero_step()
+	{
+		$this->load->view('body/view_orders.php');
+	}
+	
+	public function load_first_step()
+	{
+		$this->load->view('body/view_order_first.php');
+	}
+	
+	public function load_second_step()
+	{
+		$this->load->view('body/view_order_second.php');
 	}
 }

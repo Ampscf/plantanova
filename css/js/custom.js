@@ -91,17 +91,44 @@
 	}
 	
 	//Obtiene los datos de una empresa
-	function get_companie_info($id_user)
+	/*function get_companie_info($id_user)
 	{
 		if($("#companies [value='-1']").length)
 		{
 			$("#companies [value='-1']").remove();
 		}
 		$.ajax({
-			url: site_url + '',	
+			url: site_url + 'order/get_companie_info',
+			data: "fafavvgf",
+			type: "POST",
+			sucess: function(data){
+				$("#p1").load(data);	
+			},
+			failure:function(data){
+				
+			}
 		});
-	}
+	}*/
 
+	$(document).ready(function() {
+		$("#page1").click(function(){
+			$('#result').load(site_url + 'order/load_first_step');
+		});
+	
+		$("#page0").click(function(){
+		   	alert("Si está manando alerts!");
+			//$('#result').load(site_url + 'order/load_zero_step');
+		});
+			
+		$("#page2").click(function(){
+			alert("Si está manando alerts!");
+		   	//$('#result').load(site_url + 'order/load_second_step');
+		});
+	
+		$("#companies").change(function(event) {
+            $("#p1").load(site_url + 'order/get_companie_info');
+        });
+     });
 
 	function register_client()
 	{
