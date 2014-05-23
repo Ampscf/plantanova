@@ -204,16 +204,6 @@
 							<?php echo form_error('cellphone'); ?>
 						</div>
 											
-
-						<!-- <div class="clear">&nbsp</div>	
-
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-eye-close"></span>
-							</div>
-							<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
-
-						</div> End password -->
 					</div>
 
 				</div><!-- End panel-body -->
