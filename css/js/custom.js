@@ -116,13 +116,13 @@
 		});
 	
 		$("#page0").click(function(){
-		   	alert("Si está manando alerts!");
-			//$('#result').load(site_url + 'order/load_zero_step');
+		   	//alert("Si está manando alerts!");
+			$('#result').load(site_url + 'order/load_zero_step');
 		});
 			
 		$("#page2").click(function(){
-			alert("Si está manando alerts!");
-		   	//$('#result').load(site_url + 'order/load_second_step');
+			//alert("Si está manando alerts!");
+		   	$('#result').load(site_url + 'order/load_second_step #result > *');
 		});
 	
 		$("#companies").change(function(event) {

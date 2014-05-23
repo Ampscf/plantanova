@@ -7,8 +7,20 @@
 	</ul>
 </div>	
 				
-<div class="panel-body">					
-	<h2>*Ingresar orden nueva<h2>
+<div class="panel-body" style="padding: 10px 10px 10px 10px;">					
+	<div class="col-md-12">
+		<h2>*Ingresar orden nueva<h2>
+		<div class="clear">&nbsp</div>
+		<div class="col-md-6">
+			<div class="input-group input-group-lg">
+				<div class="input-group-addon">
+					<span class="glyphicon glyphicon-tree-deciduous"></span>
+				</div>
+				<input type="text" class="form-control" placeholder="Empresa" name="farm_name" id="farm_name" value="">
+			</div><!-- End farm name -->
+
+		</div>
+	</div>	
 </div>
 					
 <div class="panel-footer">
