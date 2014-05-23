@@ -210,6 +210,23 @@ Class model_order extends CI_Model
 			return null;
 		}
 	}
+//obtiene las ciudades deacuerdo al id_state
+	function get_towns_id($id_state)
+	{
+		$this->db->select('id_town,id_state,key_town,town_name');
+		$this->db->from('t_town');
+		$this->db->where('id_state',$id_state);
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}	
 	
 	
 	//Obtiene las ciudades de un estado por el id_estado

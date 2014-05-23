@@ -17,7 +17,10 @@
 				$state=$this->model_order->get_state_id($id_state);
 				$state_name=$state->result()[0]->state_name;
 				$id_state=$state->result()[0]->id_state;
-				
+
+				//obtiene solo las ciudades del estado selecionado en un principio
+				$towns_id=$this->model_order->get_towns_id($id_state);
+
 				$attributes = array('id' => 'update');
 				echo form_open('admin/update_client/'.$this->uri->segment(3),$attributes);
 
@@ -135,7 +138,7 @@
 								<select class="form-control" name="town" id="town">
 									<option selected value="<?php echo $id_town; ?>"><?php echo $town_name; ?></option>
 									<?php 
-										foreach($towns as $key)
+										foreach($towns_id as $key)
 										{
 											echo "<option value='" . $key->id_town . "' set_select('town','".$key->id_town."') >" . $key->town_name . "</option>";
 										}

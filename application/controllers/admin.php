@@ -248,7 +248,6 @@ class Admin extends CI_Controller {
 	function edit(){
 		$id = $this->uri->segment(3);
 		$template['client']=$this->model_user->obtenerCliente($id);
-		//$template['town']=$this->model_order->get_town('id_town');
 		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/view_admin_edit_client_body.php";
 		$template['footer'] = "footer/view_footer.php";
