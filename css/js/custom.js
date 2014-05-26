@@ -131,7 +131,7 @@
 		//obtiene la posicion de las compañias y manda el valor al controlador para cargarlo despues
 		$("#companies").change(function(event) {
 			
-		 	var posicion=document.getElementById('companies').options.selectedIndex;
+		 	var posicion=document.getElementById('companies').value;
            
            $.ajax({
 			url: site_url + 'order/get_companie_info',
