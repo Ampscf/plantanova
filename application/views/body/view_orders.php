@@ -38,8 +38,7 @@
 					<div class="panel-footer">
 					    <ul class="pager">
 							<li class="previous disabled"><a href="#">&larr; Anterior</a></li>
-					        <li id="p" class="next"><a href="#">Siguiente &rarr;</a></li>
-					        <input type="submit" value="Siguiente">
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;">
 					    </ul>
 					</div>
 				<?php echo form_close();?>

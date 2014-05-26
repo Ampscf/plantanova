@@ -12,21 +12,21 @@
 						</ul>
 					</div>	
 					<?php
-						$attributes = array('id' => 'form_pending_order');
-						echo form_open('order/pending_order',$attributes);
+						$attributes = array('id' => 'form_pending_order_next_before');
+						echo form_open('order/pending_order_next_before',$attributes);
 					?>
 					<div class="panel-body">					
 						<div >
-							
+							<input type="hidden" value="<?php echo $id_company;?>" id="id_company" name="id_company">
 							<?php include_once('application/views/extra/tabla_orden_pendiente.php'); ?>
 						</div>
 					</div>
 					
 					<div class="panel-footer">
 					    <ul class="pager">
-							<li class="previous disabled"><a href="#">&larr; Anterior</a></li>
-					        <li id="p" class="next"><a href="#">Siguiente &rarr;</a></li>
-					        <input type="submit" value="Siguiente">
+					        <input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before">
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next">
+					        
 					    </ul>
 					</div>
 				<?php echo form_close();?>

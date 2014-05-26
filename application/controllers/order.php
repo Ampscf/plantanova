@@ -101,15 +101,41 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);	
 	}
 
+	//carga las ordenes pendientes
 	public function pending_order(){
 		$a=$this->input->post();
 		$id_client=$a['companies'];
+		$template['id_company']=$id_client;
 		$template['pending_order']=$this->model_order->get_pending_oreder($id_client);
+		
+		//verifica si tiene ordenes pendientes
+		if($this->model_order->get_pending_oreder($id_client)!=false){
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_pending_orders.php';
 		$template['footer'] = "footer/view_footer.php";
 
 		$this->load->view('main',$template);
+		}
+		else{
+			$template['id_company']=$id_client;
+			$template['body']=$this->load_first_step();
+			
+		}
 
 	}
+
+	//funcion para valorar a donde dirigirse en la orden pendiente atras o adelante
+	public function pending_order_next_before(){
+		if(!empty($this->input->post('next'))){
+			$a=$this->input->post();
+			$id_client=$a['id_company'];
+			$template['id_company']=$id_client;
+			$template['body']=$this->load_first_step();
+		}
+		else if(!empty($this->input->post('before'))){
+			$this->carga_ordenes();
+		}
+	}
+
+	
 }

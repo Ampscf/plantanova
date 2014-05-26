@@ -265,6 +265,7 @@ Class model_order extends CI_Model
 		}
 	}
 
+	//obtiene las ordenes pendientes deacuerdo al id del cliente
 	function get_pending_oreder($id){
 		
 		$this->db->where('id_client',$id);
@@ -274,7 +275,7 @@ Class model_order extends CI_Model
 			{
 				return $query->result();
 			} 
-			else return null;
+			else return false;
 	}
 
 	//obtiene el tipo de planta de acuerdo al id de planta
@@ -287,7 +288,7 @@ Class model_order extends CI_Model
 			{
 				return $query;
 			} 
-			else return null;
+			else return false;
 	}
 
 	//obtiene el tipo de categoria deacuerdo al id de categoria
@@ -300,7 +301,7 @@ Class model_order extends CI_Model
 			{
 				return $query;
 			} 
-			else return null;
+			else return false;
 	}
 }
 
