@@ -81,7 +81,11 @@ class Order extends CI_Controller {
 	
 	public function load_first_step()
 	{
-		$this->load->view('body/view_order_first.php');
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_first.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);	
 	}
 	
 	public function load_second_step()
