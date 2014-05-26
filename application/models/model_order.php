@@ -84,7 +84,7 @@ Class model_order extends CI_Model
 	//Obtiene los sustratos de la base de datos
 	function get_sustratum()
 	{
-		$this -> db -> select('id_sustratum,sustrato_name');
+		$this -> db -> select('id_sustratum,sustratum_name');
 		$this -> db -> from('t_sustratum');
 
 		$query = $this -> db -> get();

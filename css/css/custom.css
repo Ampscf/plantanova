@@ -78,7 +78,7 @@ textarea
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .nav-tabs > .dropdown.active.open > a:hover
 {
-    border-color: -moz-use-text-color -moz-use-text-color #6BBD44 !important;
+    border-color: #6BBD44 !important;
 	background: none repeat scroll 0% 0% #F1F1F1 !important;
 }
 

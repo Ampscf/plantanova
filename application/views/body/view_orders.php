@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div id="result"><!-- Div de mucha importancia, puesto que de aquí se jala el ajax, lo que esté adentro es lo que se va a refrescar -->
+				<div id="result">
 					<div class="panel-header">				
 						<ul class="nav nav-tabs">
 							<li class="active"><a>Cliente</a></li>
@@ -32,20 +32,6 @@
 								<div id="p1"></div> 
 								
 							</div><!-- @end #cliente -->
-							 
-							<div class="tab-pane" id="orden">
-	            				<p>*Cuenta con órdenes pendientes antees de registrar una nueva orden puede seleccionar la orden pendiente que desee editar</p>
-								<span class="glyphicon glyphicon-time"> ÓRDENES PENDIENTES</span>
-	          				</div><!-- @end #orden -->
-							
-							<div class="tab-pane" id="desglose">
-	            				<h1>Contenido del desglose</h1>
-	          				</div><!-- @end #desglose -->
-							
-							<div class="tab-pane" id="resumen">
-	            				<h1>Contenido del resumen</h1>
-	          				</div><!-- @end #resumen -->
-							
 						</div><!-- @end .tab-content -->
 					</div>
 					

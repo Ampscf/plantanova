@@ -37,7 +37,7 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav nav-justified">
 								<li class="active"><?php echo anchor('order/index','Ver pedidos'); ?></li>
-								<li><?php echo anchor('order/register_order_form','Hacer pedido'); ?></li>
+								<li><?php echo anchor('order/carga_ordenes','Hacer pedido'); ?></li>
 								<li><?php echo anchor('admin/list_clients','Clientes'); ?></li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">

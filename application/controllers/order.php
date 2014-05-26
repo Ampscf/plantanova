@@ -64,18 +64,7 @@ class Order extends CI_Controller {
 		
 	}
 	
-	//Muestra el formulario de registro de pedidos
-	public function register_order_form()
-	{
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_new_order.php';
-		$template['footer'] = "footer/view_footer.php";
-		$template['companies'] = $this->model_order->get_companies_drop();
-		
-		$this->load->view('main',$template);
-	}
-	
-	
+	//Muestra el formulario para empezar a ordenar	
 	public function carga_ordenes(){
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_orders.php';
@@ -93,12 +82,23 @@ class Order extends CI_Controller {
 	
 	public function load_first_step()
 	{
-		$this->load->view('body/view_order_first.php');
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_first.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['plants'] = $this->model_order->get_plants();
+		$template['categories'] = $this->model_order->get_categories();
+
+		$this->load->view('main',$template);	
 	}
 	
 	public function load_second_step()
 	{
-		$this->load->view('body/view_order_second.php');
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_second.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['sustratum'] = $this->model_order->get_sustratum();
+		
+		$this->load->view('main',$template);	
 	}
 
 	public function pending_order(){

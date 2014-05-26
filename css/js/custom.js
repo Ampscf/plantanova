@@ -90,6 +90,14 @@
 		});
 	}
 	
+	function takeoff_cat_value()
+	{
+		if($("#category [value='-1']").length)
+		{
+			$("#category [value='-1']").remove();
+		}
+	}
+	
 	//Obtiene los datos de una empresa
 	/*function get_companie_info($id_user)
 	{
@@ -112,10 +120,7 @@
 
 	
 		$("#page1").click(function(){
-
-
 			$('#result').load(site_url + 'order/load_second_step');
-
 		});
 	
 		$("#page0").click(function(){
