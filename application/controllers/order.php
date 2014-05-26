@@ -63,18 +63,7 @@ class Order extends CI_Controller {
 		
 	}
 	
-	//Muestra el formulario de registro de pedidos
-	public function register_order_form()
-	{
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_new_order.php';
-		$template['footer'] = "footer/view_footer.php";
-		$template['companies'] = $this->model_order->get_companies_drop();
-		
-		$this->load->view('main',$template);
-	}
-	
-	
+	//Muestra el formulario para empezar a ordenar	
 	public function carga_ordenes(){
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_orders.php';
