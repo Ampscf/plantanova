@@ -84,12 +84,19 @@ class Order extends CI_Controller {
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_first.php';
 		$template['footer'] = "footer/view_footer.php";
+		$template['plants'] = $this->model_order->get_plants();
+		$template['categories'] = $this->model_order->get_categories();
 
 		$this->load->view('main',$template);	
 	}
 	
 	public function load_second_step()
 	{
-		$this->load->view('body/view_order_second.php');
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_second.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['sustratum'] = $this->model_order->get_sustratum();
+		
+		$this->load->view('main',$template);	
 	}
 }

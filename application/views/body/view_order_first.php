@@ -28,6 +28,12 @@
 									<p>Tipo de Cultivo</p>
 									<select class="form-control" name="plant" id="plant">
 										<option value="-1" selected>---Selecciona un cultivo---</option>
+										<?php 
+										foreach($plants as $key)
+										{
+											echo "<option value='" . $key->id_plant . "' set_select('state','".$key->id_plant."')>" . $key->plant_name . "</option>";
+										}
+										?>
 									</select>
 								</div><!-- End Plant -->							
 							
@@ -45,7 +51,13 @@
 								<div class="input-group input-group-lg">
 									<p>Categoría</p>
 									<select class="form-control" name="category" id="category">
-										<option selected>---Selecciona una categoría---</option>								
+										<option value="-1" selected>---Selecciona una categoría---</option>
+										<?php 
+										foreach($categories as $key)
+										{
+											echo "<option value='" . $key->id_category . "' set_select('state','".$key->id_category."')>" . $key->category_name . "</option>";
+										}
+										?>								
 									</select>
 								</div><!-- End Category -->
 							
