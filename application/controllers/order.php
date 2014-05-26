@@ -29,6 +29,7 @@ class Order extends CI_Controller {
 		return form_dropdown('companies', $companies);
 	}
 	
+	//obtener la informacion de las compañia e imprimirla
 	public function get_companie_info()
 	{	
 		
@@ -98,5 +99,17 @@ class Order extends CI_Controller {
 	public function load_second_step()
 	{
 		$this->load->view('body/view_order_second.php');
+	}
+
+	public function pending_order(){
+		$a=$this->input->post();
+		$id_client=$a['companies'];
+		$template['pending_order']=$this->model_order->get_pending_oreder($id_client);
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_pending_orders.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);
+
 	}
 }

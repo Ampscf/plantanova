@@ -11,7 +11,10 @@
 							<li><a>Resumen</a></li>
 						</ul>
 					</div>	
-					
+					<?php
+						$attributes = array('id' => 'form_pending_order');
+						echo form_open('order/pending_order',$attributes);
+					?>
 					<div class="panel-body">					
 						<h2>Nueva Orden</h2>
 						<div class="tab-content">
@@ -49,10 +52,11 @@
 					<div class="panel-footer">
 					    <ul class="pager">
 							<li class="previous disabled"><a href="#">&larr; Anterior</a></li>
-					        <li id="page1" class="next"><a href="#">Siguiente &rarr;</a></li>
+					        <li id="p" class="next"><a href="#">Siguiente &rarr;</a></li>
+					        <input type="submit" value="Siguiente">
 					    </ul>
 					</div>
-				
+				<?php echo form_close();?>
 				</div><!-- @end .result -->
 			</div>
       	</div><!-- @end .span12 -->

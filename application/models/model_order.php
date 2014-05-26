@@ -264,6 +264,44 @@ Class model_order extends CI_Model
 			return null;
 		}
 	}
+
+	function get_pending_oreder($id){
+		
+		$this->db->where('id_client',$id);
+		$query=$this->db->get('t_order');
+			
+			if($query->num_rows()>0)
+			{
+				return $query->result();
+			} 
+			else return null;
+	}
+
+	//obtiene el tipo de planta de acuerdo al id de planta
+	function get_plant($id_plant){
+		
+		$this->db->where('id_plant',$id_plant);
+		$query=$this->db->get('t_plant');
+			
+			if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return null;
+	}
+
+	//obtiene el tipo de categoria deacuerdo al id de categoria
+	function get_category($id_category){
+		
+		$this->db->where('id_category',$id_category);
+		$query=$this->db->get('t_category');
+			
+			if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return null;
+	}
 }
 
 ?>
