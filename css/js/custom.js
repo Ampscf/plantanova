@@ -112,8 +112,12 @@
 
 	
 		$("#page1").click(function(){
+<<<<<<< HEAD
 			alert("simon");
 			$('#result').load('load_first_step');
+=======
+			$('#result').load(site_url + 'order/load_second_step');
+>>>>>>> 72198fc68d89c4b67ab6b7fbe7e5ffab9739bd58
 		});
 	
 		$("#page0").click(function(){
