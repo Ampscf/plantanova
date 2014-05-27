@@ -80,23 +80,25 @@ class Order extends CI_Controller {
 		$this->load->view('body/view_orders.php');
 	}
 	
-	public function load_first_step()
+	public function load_first_step($id)
 	{
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_first.php';
 		$template['footer'] = "footer/view_footer.php";
 		$template['plants'] = $this->model_order->get_plants();
 		$template['categories'] = $this->model_order->get_categories();
+		$template['id_company']=$id;
 
 		$this->load->view('main',$template);	
 	}
 	
-	public function load_second_step()
+	public function load_second_step($id)
 	{
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_second.php';
 		$template['footer'] = "footer/view_footer.php";
 		$template['sustratum'] = $this->model_order->get_sustratum();
+		$template['id_company']=$id;
 		
 		$this->load->view('main',$template);	
 	}
@@ -117,8 +119,7 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);
 		}
 		else{
-			$template['id_company']=$id_client;
-			$template['body']=$this->load_first_step();
+			$template['body']=$this->load_first_step($id_client);
 			
 		}
 
@@ -129,19 +130,24 @@ class Order extends CI_Controller {
 		if(!empty($this->input->post('next'))){
 			$a=$this->input->post();
 			$id_client=$a['id_company'];
-			$template['id_company']=$id_client;
-			$template['header'] = 'header/view_admin_header.php';
-			$template['body'] = 'body/view_order_first.php';
-			$template['footer'] = "footer/view_footer.php";
-			$template['plants'] = $this->model_order->get_plants();
-			$template['categories'] = $this->model_order->get_categories();
-
-			$this->load->view('main',$template);	
+			$template['body']=$this->load_first_step($id_client);
+			
 		}
 		else if(!empty($this->input->post('before'))){
 			$this->carga_ordenes();
 		}
 	}
 
+	public function pending_order_first_next_before(){
+		if(!empty($this->input->post('next'))){
+			$a=$this->input->post();
+			$id_client=$a['id_company'];
+			$template['body']=$this->load_second_step($id_client);
+			
+		}
+		else if(!empty($this->input->post('before'))){
+			$template['body']=$this->load_first_step($id_client);;
+		}
+	}
 	
 }
