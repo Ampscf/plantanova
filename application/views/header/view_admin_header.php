@@ -43,7 +43,7 @@
 					<div class="container">
 						<div class="navbar-header">
 							<a class="navbar-brand" href="#">
-								<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" style="height:30px; width:auto;"/>
+								<img src="<?php echo base_url() . '/img/logo2.jpg'; ?>" alt="Logotipo" style="height:30px; width:auto;"/>
 							</a>
 							<!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>

@@ -24,7 +24,7 @@
 
 						<div class="input-group input-group-lg">
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-eye-close"></span>
+								<i class="fa fa-lock"></i>
 							</div>
 							<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
 						</div><!-- End password -->

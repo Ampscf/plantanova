@@ -14,6 +14,8 @@
 	<!-- Customs -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/custom.css';?>">
 	
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+
 </head>
 <body>
 	<div id="wrapper">
