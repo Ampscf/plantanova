@@ -13,6 +13,11 @@
 				</div>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
+						<?php 
+						$attributes = array('id' => 'form_pending_order_first_next_before');
+						echo form_open('order/pending_order_first_next_before',$attributes);
+						?>
+
 						<!-- farm name, street, addr number, colony, cp, state, city, phone, social reason, rfc -->
 						<div class="col-md-12">
 							<div class="clear">&nbsp</div>
@@ -25,7 +30,9 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<!--<input value="<?php echo $id_company;?>">-->
+
+									<input value="<?php echo $id_company;?>" id="id_company" name="id_company">
+
 									<p>Tipo de Cultivo</p>
 									<select class="form-control" name="plant" id="plant">
 										<option value="-1" selected>---Selecciona un cultivo---</option>
@@ -84,10 +91,11 @@
 
 					<div class="panel-footer">						
 						<ul class="pager">
-							<li id="page0" class="previous"><a href="#">&larr; Anterior</a></li>
-					    	<li id="page2" class="next"><a href="#">Siguiente &rarr;</a></li>
+							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before">
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next">
 						</ul>	
 					</div><!-- End panel-footer -->
+					<?php echo form_close();?>
 				</div><!-- @end .result -->
 			</div>
       	</div><!-- @end .span12 -->
