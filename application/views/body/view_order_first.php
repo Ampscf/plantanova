@@ -25,6 +25,7 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
+									<input value="<?php echo $id_company;?>">
 									<p>Tipo de Cultivo</p>
 									<select class="form-control" name="plant" id="plant">
 										<option value="-1" selected>---Selecciona un cultivo---</option>

@@ -130,7 +130,13 @@ class Order extends CI_Controller {
 			$a=$this->input->post();
 			$id_client=$a['id_company'];
 			$template['id_company']=$id_client;
-			$template['body']=$this->load_first_step();
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_order_first.php';
+			$template['footer'] = "footer/view_footer.php";
+			$template['plants'] = $this->model_order->get_plants();
+			$template['categories'] = $this->model_order->get_categories();
+
+			$this->load->view('main',$template);	
 		}
 		else if(!empty($this->input->post('before'))){
 			$this->carga_ordenes();
