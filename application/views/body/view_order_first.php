@@ -30,7 +30,9 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
+
 									<input value="<?php echo $id_company;?>" id="id_company" name="id_company">
+
 									<p>Tipo de Cultivo</p>
 									<select class="form-control" name="plant" id="plant">
 										<option value="-1" selected>---Selecciona un cultivo---</option>
@@ -46,7 +48,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Fecha de entrega</p>
-									<input type="text" class="form-control" placeholder="Fecha" name="date" id="date" value="">
+									<p><input type="text" class="form-control" placeholder="Fecha" id="datepicker"></p>
 								</div><!-- End Date -->							
 							
 							</div>						
