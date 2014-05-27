@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	   parent::__construct();
 	   	$this->load->model('model_user','',TRUE);
 	   	$this->load->model('model_order','',TRUE);
+	   	$this->load->helper('url');
 		
 	}
 
@@ -120,6 +121,8 @@ class Admin extends CI_Controller {
 				$data['msj'] = "Exito";
 				$data['template'] = $this->load->view('body/view_admin_register_client_body',$datos,TRUE);
 				echo json_encode($data);
+
+				
 			}
 			else
 			{
