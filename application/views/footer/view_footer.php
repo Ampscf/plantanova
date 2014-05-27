@@ -23,6 +23,11 @@
 			var base_url = '<?php echo base_url(); ?>';
 		</script>
 		<script type="text/javascript" src="<?php echo base_url() . 'css/js/custom.js'; ?>"></script>
+			<script>
+		$(function() {
+			$( "#fecha" ).datepicker();
+		});
+	</script>
 		<!-- END SCRIPTS -->
 	</body>
 </html>

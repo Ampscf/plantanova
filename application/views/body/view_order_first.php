@@ -41,7 +41,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Fecha de entrega</p>
-									<input type="text" class="form-control" placeholder="Fecha" name="date" id="date" value="">
+									<input type="text" name="fecha" id="fecha">
 								</div><!-- End Date -->							
 							
 							</div>						
