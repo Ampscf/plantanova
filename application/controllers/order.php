@@ -174,20 +174,81 @@ class Order extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		
 		//Valida que los campos que se reciban esten llenos
-		$this->form_validation->set_rules('plant', 'cultivo', 'required|xss_clean');
+		$this->form_validation->set_rules('plant', 'cultivo', 'required|xss_clean|callback_sel_plant');
 		$this->form_validation->set_rules('datepicker', 'fecha', 'required|xss_clean');
 		$this->form_validation->set_rules('arms', 'brazos', 'required|xss_clean');
-		$this->form_validation->set_rules('category', 'categoria', 'required|xss_clean');
+		$this->form_validation->set_rules('category', 'categoria', 'required|xss_clean|callback_sel_category');
 		$this->form_validation->set_rules('volume', 'volumen', 'required|xss_clean');
 		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
 		if(!empty($this->input->post('next'))){
-			$template['body']=$this->load_second_step($id_client);
+			if($this->form_validation->run() == FALSE) 
+			{
+				//vuelve a la pagina de registro e imprime los errores
+				$error['msj'] = "Error";
+				$error['errores'] = "Hay errores en la forma";
+				$error['template'] = $this->load_first_step($id_client);
+				echo json_encode($error);
+
+			}
+			else{
+				$data['id_status'] = 4;
+				$data['id_plant'] = $this->input->post('plant');
+				$data['id_category'] = $this->input->post('category');
+				$data['id_user'] =$this->session->userdata('id');
+				$data['id_client'] = $id_client;
+				$fecha=$this->input->post('datepicker');
+				$data['order_date_delivery'] = date("Y-m-d H:i:s", strtotime($fecha));
+				$data['total_volume'] = $this->input->post('volume');
+				$data['branch_number'] = $this->input->post('arms');
+				$data['tutoring'] = $this->input->post('tutoring');
+
+				if($this->model_order->add_order($data) > 0 )
+				{
+					unset($data);
+					$data['msj'] = "Exito";
+					$data['template'] = $this->load_second_step($id_client);
+					echo json_encode($data);
+
+					//$template['body']=$this->load_second_step($id_client);
+				
+				}
+				else
+				{
+					unset($data);
+					$error['msj'] = "Error";
+					$error['errores'] = "Error al guardar al usuario";
+					$error['template'] = $this->load_first_step($id_client);
+					echo json_encode($error);
+				}
+			
+			}
+			
 			
 		}
 		else if(!empty($this->input->post('before'))){
 			$template['body']=$this->pending_order_two($id_client);;
 		}
+	}
+
+	function sel_plant()
+	{
+		if($this->input->post('plant') == "-1")
+		{
+			$this->form_validation->set_message('sel_plant', 'Selecciona un %s.');
+			return FALSE;
+		}
+		return TRUE;
+	}
+
+	function sel_category()
+	{
+		if($this->input->post('category') == "-1")
+		{
+			$this->form_validation->set_message('sel_category', 'Selecciona una %s.');
+			return FALSE;
+		}
+		return TRUE;
 	}
 
 }

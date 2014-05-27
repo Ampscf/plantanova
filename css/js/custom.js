@@ -119,20 +119,7 @@
 	}*/
 
 	
-		$("#page1").click(function(){
-			$('#result').load(site_url + 'order/load_second_step');
-		});
-	
-		$("#page0").click(function(){
-		   	alert("Si está manando alerts!");
-			$('#result').load('load_order_step');
-		});
-			
-		$("#page2").click(function(){
-			alert("Si está manando alerts!");
-		   	//$('#result').load(site_url + 'order/load_second_step #result > *');
-		});
-	
+		
 		//obtiene la posicion de las compañias y manda el valor al controlador para cargarlo despues
 		$("#companies").change(function(event) {
 			
@@ -199,6 +186,32 @@
 					$("#content").html(errno.template);
 					notas("Cuenta registrada!.","success");
 					window.location ="../list_clients";
+				}
+			},
+			failure:function(data){
+				notas("Error en el registro","error");
+			}
+		});
+	}
+
+	function register_order()
+	{
+		form = $("#form_pending_order_first_next_before");
+		$.ajax({
+			url: form.attr('action'),
+			data: form.serialize(),
+			type: form.attr('method'),
+			success: function(data){
+				errno = JSON.parse(data);
+				if(errno.msj == "Error")
+				{
+					$("#content").html(errno.template);
+					notas(errno.errores,"error");
+				}
+				else
+				{
+					$("#content").html(errno.template);
+					notas("Cuenta registrada!.","success");
 				}
 			},
 			failure:function(data){

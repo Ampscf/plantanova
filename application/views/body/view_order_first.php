@@ -15,7 +15,7 @@
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
 						<?php 
-						$attributes = array('id' => 'form_pending_order_first_next_before');
+						$attributes = array('id' => 'form_pending_order_first_next_before','name' => 'form_pending_order_first_next_before');
 						echo form_open('order/pending_order_first_next_before',$attributes);
 						?>
 
@@ -44,13 +44,15 @@
 										}
 										?>
 									</select>
-								</div><!-- End Plant -->							
+								</div><!-- End Plant -->
+								<?php echo form_error('plant'); ?>							
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Fecha de entrega</p>
 									<p><input type="text" class="form-control" placeholder="Fecha" id="datepicker" name="datepicker"></p>
 								</div><!-- End Date -->
+								<?php echo form_error('datepicker'); ?>
 								
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
@@ -59,7 +61,8 @@
 										<option value="2" selected>2</option>
 										<option value="1">1</option>
 									</select>	
-								</div><!-- End Arms -->								
+								</div><!-- End Arms -->	
+								<?php echo form_error('arms'); ?>							
 							
 							</div>						
 
@@ -78,13 +81,13 @@
 										?>								
 									</select>
 								</div><!-- End Category -->
-							
+								<?php echo form_error('category'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Volumen</p>
 									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="">
 								</div><!-- End Volume -->
-								
+								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Tutoreo</p>
@@ -93,7 +96,7 @@
 											<option value="1" selected>Si</option>
 										</select>
 								</div><!-- End Tutoring -->
-						
+							<?php echo form_error('tutoring'); ?>
 							</div>
 						
 							<div class="col-md-12">
@@ -110,8 +113,8 @@
 
 					<div class="panel-footer">						
 						<ul class="pager">
-							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before">
-					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next">
+							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" onClick='register_order();'/>
 						</ul>	
 					</div><!-- End panel-footer -->
 					<?php echo form_close();?>
