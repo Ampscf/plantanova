@@ -170,6 +170,16 @@ class Order extends CI_Controller {
 	public function pending_order_first_next_before(){
 		$a=$this->input->post();
 		$id_client=$a['id_company'];
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		
+		//Valida que los campos que se reciban esten llenos
+		$this->form_validation->set_rules('plant', 'cultivo', 'required|xss_clean');
+		$this->form_validation->set_rules('datepicker', 'fecha', 'required|xss_clean');
+		$this->form_validation->set_rules('arms', 'brazos', 'required|xss_clean');
+		$this->form_validation->set_rules('category', 'categoria', 'required|xss_clean');
+		$this->form_validation->set_rules('volume', 'volumen', 'required|xss_clean');
+		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
 		if(!empty($this->input->post('next'))){
 			$template['body']=$this->load_second_step($id_client);
@@ -179,6 +189,5 @@ class Order extends CI_Controller {
 			$template['body']=$this->pending_order_two($id_client);;
 		}
 	}
-	
 
 }

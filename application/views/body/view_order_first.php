@@ -49,7 +49,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Fecha de entrega</p>
-									<p><input type="text" class="form-control" placeholder="Fecha" id="datepicker"></p>
+									<p><input type="text" class="form-control" placeholder="Fecha" id="datepicker" name="datepicker"></p>
 								</div><!-- End Date -->
 								
 								<div class="clear">&nbsp</div>
