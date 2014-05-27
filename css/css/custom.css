@@ -91,3 +91,14 @@ textarea
 {
 	border: 0px solid rgba(0, 0, 0, 0.5) !important;	
 }
+
+.hasDatepicker
+{
+	height: 46px !important;
+	font-size: 18px !important;
+}
+
+.ui-datepicker .ui-widget-header
+{
+	background: none repeat scroll 0% 0% #6BBD44 !important;
+}

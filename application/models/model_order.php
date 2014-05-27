@@ -279,7 +279,8 @@ Class model_order extends CI_Model
 	}
 
 	//obtiene el tipo de planta de acuerdo al id de planta
-	function get_plant($id_plant){
+	function get_plant($id_plant)
+	{
 		
 		$this->db->where('id_plant',$id_plant);
 		$query=$this->db->get('t_plant');
@@ -292,7 +293,8 @@ Class model_order extends CI_Model
 	}
 
 	//obtiene el tipo de categoria deacuerdo al id de categoria
-	function get_category($id_category){
+	function get_category($id_category)
+	{
 		
 		$this->db->where('id_category',$id_category);
 		$query=$this->db->get('t_category');
@@ -302,6 +304,13 @@ Class model_order extends CI_Model
 				return $query;
 			} 
 			else return false;
+	}
+	
+	//Agrega pedidos a la base de datos en estatus pendiente
+	function add_order($data)
+	{
+		$this->db->insert('t_order', $data);
+		return $this->db->affected_rows();
 	}
 }
 

@@ -45,9 +45,9 @@ Class model_user extends CI_Model	{
 	//Obtiene los datos de un �nico cliente de la base de datos para poder ser utilizado
 	function get_client($id)
 	{
-		$this -> db -> select('id_user', 'id_town', 'first_name', 'last_name', 'mail', 'social_reason', 'rfc', 'farm_name', 'phone', 'cellphone', 'company_phone', 'street', 'address_number', 'colony', 'cp');
+		$this -> db -> select('farm_name');
 		$this -> db -> from('t_user');
-		$this -> db -> where('id_rol', $id);
+		$this -> db -> where('id_user', $id);
 		$this -> db -> limit(1);
 
 		$query = $this -> db -> get();
