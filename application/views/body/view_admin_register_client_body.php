@@ -26,7 +26,7 @@
 						<div class="col-md-6">
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-tree-deciduous"></span>
+									<i class="fa fa-building"></i>	
 								</div>
 								<input type="text" class="form-control" placeholder="Empresa" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
 							</div><!-- End farm name -->
@@ -36,7 +36,7 @@
 
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-home"></span>
+									<i class="fa fa-home"></i>
 								</div>
 								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>">
 							</div><!-- End address number -->
@@ -46,7 +46,7 @@
 
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-barcode"></span>
+									<i class="fa fa-envelope"></i>
 								</div>
 								<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo set_value('cp'); ?>">
 							</div><!-- End cp -->
@@ -74,7 +74,7 @@
 
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-qrcode"></span>
+									<i class="fa fa-ellipsis-h"></i>
 								</div>
 								<input type="text" class="form-control" placeholder="Razón Social" name="social_reason" id="social_reason" value="<?php echo set_value('social_reason'); ?>">
 							</div><!-- End social reason -->
@@ -85,7 +85,7 @@
 							
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-road"></span>
+									<i class="fa fa-home"></i>
 								</div>
 								<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
 							</div><!-- End street -->
@@ -95,7 +95,7 @@
 													
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-home"></span>
+									<i class="fa fa-home"></i>
 								</div>
 								<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo set_value('colony'); ?>">
 							</div><!-- End colony -->
@@ -132,7 +132,7 @@
 
 							<div class="input-group input-group-lg">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-tint"></span>
+									<i class="fa fa-ellipsis-h"></i>
 								</div>
 								<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo set_value('rfc'); ?>">
 							</div><!-- End rfc -->

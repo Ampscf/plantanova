@@ -4,7 +4,7 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="table-responsive">
-							<p type="button" class="btn btn-success btn-lg"><?php echo anchor('admin/register_client_form','Agregar Nuevo'); ?></p>
+							<?php echo anchor('admin/register_client_form','Agregar Nuevo', 'class="btn btn-success"'); ?>
 							<?php include_once('application/views/extra/tabla_empresa.php'); ?>
 						</div>
 					</div>
