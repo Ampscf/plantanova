@@ -92,6 +92,7 @@ class Order extends CI_Controller {
 		$template['plants'] = $this->model_order->get_plants();
 		$template['categories'] = $this->model_order->get_categories();
 		$template['id_company']=$id;
+		$template['company']=$this->model_user->get_client($id);
 
 		$this->load->view('main',$template);	
 	}

@@ -9,6 +9,7 @@
 						<li class="active"><a>Orden</a></li>
 						<li><a>Desglose</a></li>
 						<li><a>Resumen</a></li>
+						<li style="position: relative; left:50%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
 					</ul>
 				</div>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
@@ -25,13 +26,13 @@
 								<h3><span class="glyphicon glyphicon-list-alt"></span> Nuevo Pedido</h3>
 							</div>
 
+							<input type="hidden" value="<?php echo $id_company;?>" id="id_company" name="id_company">
+							
 							<div class="clear">&nbsp</div>
 							<div class="col-md-6">
 							
 								<div class="clear">&nbsp</div>
-								<div class="input-group input-group-lg">
-
-									<input value="<?php echo $id_company;?>" id="id_company" name="id_company">
+								<div class="input-group input-group-lg">									
 
 									<p>Tipo de Cultivo</p>
 									<select class="form-control" name="plant" id="plant">
@@ -49,7 +50,16 @@
 								<div class="input-group input-group-lg">
 									<p>Fecha de entrega</p>
 									<p><input type="text" class="form-control" placeholder="Fecha" id="datepicker"></p>
-								</div><!-- End Date -->							
+								</div><!-- End Date -->
+								
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<p>Brazos</p>
+									<select class="form-control" name="arms" id="arms">
+										<option value="2" selected>2</option>
+										<option value="1">1</option>
+									</select>	
+								</div><!-- End Arms -->								
 							
 							</div>						
 
@@ -74,6 +84,15 @@
 									<p>Volumen</p>
 									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="">
 								</div><!-- End Volume -->
+								
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<p>Tutoreo</p>
+										<select class="form-control" name="tutoring" id="tutoring">
+											<option value="0" selected>No</option>
+											<option value="1" selected>Si</option>
+										</select>
+								</div><!-- End Tutoring -->
 						
 							</div>
 						
