@@ -20,7 +20,7 @@
 						<div class="tab-content">
 							<div class="tab-pane active" id="cliente">
 							 	<p>* Seleccione la empresa</p>
-								<select class="form-control" name="companies" id="companies" >
+								<select class="form-control" name="companies" id="companies" style="width: 300px;">
 									<option value="-1" selected>---Selecciona una empresa---</option>
 										<?php 
 											foreach($companies as $key)
@@ -29,6 +29,7 @@
 											}
 										?>
 								</select>
+
 								<div id="p1"></div> 
 								
 							</div><!-- @end #cliente -->

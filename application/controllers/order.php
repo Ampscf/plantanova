@@ -48,14 +48,18 @@ class Order extends CI_Controller {
 		$cp=$comp->result()[0]->cp;
 		$social_reason=$comp->result()[0]->social_reason;
 
-
-		echo "<p><b>Nombre Completo:</b> ",$first_name," ",$last_name,"</p>";
-		echo "<p><b>Correo electronico: </b>",$mail,"</p>";
-		echo "<p><b>Telefono:</b> ",$phone,"</p>";
+		echo "<br>";
+		echo "<p><b>Razón Social:</b> ",$social_reason,"</p>";
 		echo "<p><b>Calle/Colonia:</b> ",$street,",",$colony,"</p>";
 		echo "<p><b>Numero: </b>",$address_number,"</p>";
 		echo "<p><b>C.P.:</b> ",$cp,"</p>";
-		echo "<p><b>Razón Social:</b> ",$social_reason,"</p>";
+		echo "<p><b>Telefono:</b> ",$phone,"</p>";
+		echo "<p><b>Nombre Completo:</b> ",$first_name," ",$last_name,"</p>";
+		echo "<p><b>Correo electronico: </b>",$mail,"</p>";
+		
+		
+		
+		
 
 		}else{
 			echo "";
@@ -105,6 +109,7 @@ class Order extends CI_Controller {
 
 	//carga las ordenes pendientes
 	public function pending_order(){
+		
 		$a=$this->input->post();
 		$id_client=$a['companies'];
 		$template['id_company']=$id_client;
@@ -125,6 +130,27 @@ class Order extends CI_Controller {
 
 	}
 
+	public function pending_order_two($id){
+		
+		$id_client=$id;
+		$template['id_company']=$id_client;
+		$template['pending_order']=$this->model_order->get_pending_oreder($id_client);
+		
+		//verifica si tiene ordenes pendientes
+		if($this->model_order->get_pending_oreder($id_client)!=false){
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_pending_orders.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);
+		}
+		else{
+			$template['body']=$this->carga_ordenes();
+			
+		}
+
+	}
+
 	//funcion para valorar a donde dirigirse en la orden pendiente atras o adelante
 	public function pending_order_next_before(){
 		if(!empty($this->input->post('next'))){
@@ -139,15 +165,17 @@ class Order extends CI_Controller {
 	}
 
 	public function pending_order_first_next_before(){
+		$a=$this->input->post();
+		$id_client=$a['id_company'];
+		
 		if(!empty($this->input->post('next'))){
-			$a=$this->input->post();
-			$id_client=$a['id_company'];
 			$template['body']=$this->load_second_step($id_client);
 			
 		}
 		else if(!empty($this->input->post('before'))){
-			$template['body']=$this->load_first_step($id_client);;
+			$template['body']=$this->pending_order_two($id_client);;
 		}
 	}
 	
+
 }
