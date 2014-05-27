@@ -10,6 +10,7 @@
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		
 		<script src="<?php echo base_url() . 'css/js/bootstrap.min.js'; ?>"></script>
 		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.dataTables.min.js'; ?>"></script>
@@ -23,11 +24,6 @@
 			var base_url = '<?php echo base_url(); ?>';
 		</script>
 		<script type="text/javascript" src="<?php echo base_url() . 'css/js/custom.js'; ?>"></script>
-			<script>
-		$(function() {
-			$( "#fecha" ).datepicker();
-		});
-	</script>
 		<!-- END SCRIPTS -->
 	</body>
 </html>
