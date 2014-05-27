@@ -114,19 +114,20 @@ class Order extends CI_Controller {
 		$id_client=$a['companies'];
 		$template['id_company']=$id_client;
 		$template['pending_order']=$this->model_order->get_pending_oreder($id_client);
-		
-		//verifica si tiene ordenes pendientes
-		if($this->model_order->get_pending_oreder($id_client)!=false){
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_pending_orders.php';
-		$template['footer'] = "footer/view_footer.php";
+		if($id_client > 0){
+			//verifica si tiene ordenes pendientes
+			if($this->model_order->get_pending_oreder($id_client)!=false){
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_pending_orders.php';
+			$template['footer'] = "footer/view_footer.php";
 
-		$this->load->view('main',$template);
-		}
-		else{
-			$template['body']=$this->load_first_step($id_client);
-			
-		}
+			$this->load->view('main',$template);
+			}
+			else{
+				$template['body']=$this->load_first_step($id_client);
+				
+			}
+		}else $this->carga_ordenes();
 
 	}
 
@@ -135,19 +136,20 @@ class Order extends CI_Controller {
 		$id_client=$id;
 		$template['id_company']=$id_client;
 		$template['pending_order']=$this->model_order->get_pending_oreder($id_client);
-		
-		//verifica si tiene ordenes pendientes
-		if($this->model_order->get_pending_oreder($id_client)!=false){
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_pending_orders.php';
-		$template['footer'] = "footer/view_footer.php";
+		if($id_client > 0){
+			//verifica si tiene ordenes pendientes
+			if($this->model_order->get_pending_oreder($id_client)!=false){
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_pending_orders.php';
+			$template['footer'] = "footer/view_footer.php";
 
-		$this->load->view('main',$template);
-		}
-		else{
-			$template['body']=$this->carga_ordenes();
-			
-		}
+			$this->load->view('main',$template);
+			}
+			else{
+				$template['body']=$this->carga_ordenes();
+				
+			}
+		}else $this->carga_ordenes();
 
 	}
 
