@@ -99,6 +99,24 @@ Class model_order extends CI_Model
 		}
 	}
 	
+	//Obtiene todos los subtipos
+	function get_subtypes()
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('t_subtype');
+
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+	
 	//Obtiene los subtipos de sustratos
 	function get_sustratum_subtype($sustratum)
 	{
@@ -278,6 +296,12 @@ Class model_order extends CI_Model
 				return $query->result();
 			} 
 			else return false;
+	}
+	
+	function add_breakdown($data)
+	{
+		$this->db->insert('t_breakdown', $data);
+		return $this->db->affected_rows();
 	}
 	
 	//Obtiene los datos del desglose de un pedido
