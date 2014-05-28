@@ -119,6 +119,8 @@
 	}*/
 
 	
+
+	
 		
 		//obtiene la posicion de las compañias y manda el valor al controlador para cargarlo despues
 		$("#companies").change(function(event) {
@@ -194,33 +196,6 @@
 		});
 	}
 
-	function register_order()
-	{
-		
-		form = $("#form_pending_order_first_next_before");
-		$.ajax({
-			url: form.attr('action'),
-			data: form.serialize(),
-			type: form.attr('method'),
-			success: function(data){
-				errno = JSON.parse(data);
-				if(errno.msj == "Error")
-				{
-					//$("#content").html(errno.template);
-					notas(errno.errores,"error");
-				}
-				else
-				{
-					//$("#content").html(errno.template);
-					notas("Cuenta registrada!.","success");
-				}
-			},
-			failure:function(data){
-				notas("Error en el registro","error");
-			}
-		});
-
-	}
 
 	function notas(coment,typee)
 	{

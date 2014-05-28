@@ -328,7 +328,21 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	//agrega el comenteario de la orden
+	function update_order($id_order,$data)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_order', $data);
+		return $this->db->affected_rows();
+	}
+
+	function update_coment_oreder($id_order,$datas)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_order_comments', $datas);
+		return $this->db->affected_rows();
+	}
+
+	//agrega comenteario de la orden
 	function add_coment_oreder($datas){
 		$this->db->select_max('id_order');
 		$query = $this->db->get('t_order');
@@ -340,6 +354,36 @@ Class model_order extends CI_Model
 		}
 
 		
+	}
+
+	function get_id_order(){
+		$this->db->select_max('id_order');
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return false;
+	}
+
+	function get_order_id_order($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return false;
+	}
+
+	function get_order_comment($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_order_comments');
+		if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return false;
 	}
 }
 

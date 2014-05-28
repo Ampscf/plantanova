@@ -14,9 +14,14 @@
 					</div>	
 									
 					<div class="panel-body">
+						<?php 
+						$attributes = array('id' => 'update','name' => 'update');
+						echo form_open('order/pending_order_second_next_before',$attributes);
+						?>
 						<div class="col-md-12">
 							<h1>Contenido para desglose<h1>
 						</div>
+						<input type="hidden" value="<?php echo $id_order->result()[0]->id_order;?>" id="id_order" name="id_order">
 						<div class="clear">&nbsp</div>
 						<div class="col-md-12">
 							<h3><span class="glyphicon glyphicon-list-alt"></span>Datos de la orden</h3>
@@ -122,10 +127,11 @@
 									
 					<div class="panel-footer">
 						<ul class="pager">
-							<li id="page1" class="previous"><a href="#">&larr; Anterior</a></li>
-							<li id="page3" class="next"><a href="#">Siguiente &rarr;</a></li>
+							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" />
 						</ul>
 					</div>
+					<?php echo form_close();?>
 				</div><!-- @end .result -->
 			</div>
       	</div><!-- @end .span12 -->
