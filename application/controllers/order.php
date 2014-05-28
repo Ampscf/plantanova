@@ -175,20 +175,18 @@ class Order extends CI_Controller {
 		
 		//Valida que los campos que se reciban esten llenos
 		$this->form_validation->set_rules('plant', 'cultivo', 'required|xss_clean|callback_sel_plant');
-		$this->form_validation->set_rules('datepicker', 'fecha', 'required|xss_clean');
+		$this->form_validation->set_rules('datepicker', 'fecha', 'required|xss_clean|callback_sel_date');
 		$this->form_validation->set_rules('arms', 'brazos', 'required|xss_clean');
 		$this->form_validation->set_rules('category', 'categoria', 'required|xss_clean|callback_sel_category');
-		$this->form_validation->set_rules('volume', 'volumen', 'required|xss_clean');
+		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
 		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
 		if(!empty($this->input->post('next'))){
 			if($this->form_validation->run() == FALSE) 
 			{
 				//vuelve a la pagina de registro e imprime los errores
-				$error['msj'] = "Error";
-				$error['errores'] = "Hay errores en la forma";
-				$error['template'] = $this->load_first_step($id_client);
-				echo json_encode($error);
+				$this->load_first_step($id_client);
+				
 
 			}
 			else{
@@ -202,13 +200,19 @@ class Order extends CI_Controller {
 				$data['total_volume'] = $this->input->post('volume');
 				$data['branch_number'] = $this->input->post('arms');
 				$data['tutoring'] = $this->input->post('tutoring');
+				$datas=$this->input->post('comment');
 
 				if($this->model_order->add_order($data) > 0 )
 				{
+					if($datas>0){
+					$this->model_order->add_coment_oreder($datas);
+					}
 					unset($data);
 					$data['msj'] = "Exito";
 					$data['template'] = $this->load_second_step($id_client);
 					echo json_encode($data);
+
+
 
 					//$template['body']=$this->load_second_step($id_client);
 				
@@ -251,4 +255,16 @@ class Order extends CI_Controller {
 		return TRUE;
 	}
 
+	function sel_date()
+	{
+		$fecha=$this->input->post('datepicker');
+		$date= date("Y-m-d H:i:s", strtotime($fecha));
+		$cdate=date("Y-m-d H:i:s");
+		if($cdate > $date)
+		{
+			$this->form_validation->set_message('sel_date', 'La %s seleccionada es menor al dia de hoy.');
+			return FALSE;
+		}
+		return TRUE;
+	}
 }

@@ -312,6 +312,21 @@ Class model_order extends CI_Model
 		$this->db->insert('t_order', $data);
 		return $this->db->affected_rows();
 	}
+
+	//agrega el comenteario de la orden
+	function add_coment_oreder($datas){
+		$this->db->select_max('id_order');
+		$query = $this->db->get('t_order');
+		foreach ($query->result() as $row)
+		{
+		   $datos=array('id_order' =>$row->id_order ,
+					'comment_description'=>$datas);
+			$this->db->insert('t_order_comments',$datos);
+		}
+
+		
+	}
 }
+
 
 ?>

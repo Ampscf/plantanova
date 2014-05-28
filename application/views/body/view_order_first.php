@@ -13,9 +13,8 @@
 					</ul>
 				</div>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
-
 						<?php 
-						$attributes = array('id' => 'form_pending_order_first_next_before','name' => 'form_pending_order_first_next_before');
+						$attributes = array('id' => 'update','name' => 'update');
 						echo form_open('order/pending_order_first_next_before',$attributes);
 						?>
 
@@ -50,7 +49,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Fecha de entrega</p>
-									<p><input type="text" class="form-control" placeholder="Fecha" id="datepicker" name="datepicker"></p>
+									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								
@@ -103,7 +102,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Comentarios</p>
-									<textarea class="form-control" rows="4" style="height: auto;"></textarea>								
+									<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>								
 								</div><!-- End Comments -->
 							</div>					
 
@@ -114,7 +113,7 @@
 					<div class="panel-footer">						
 						<ul class="pager">
 							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
-					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" onClick='register_order();'/>
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" onClick='update_client();'/>
 						</ul>	
 					</div><!-- End panel-footer -->
 					<?php echo form_close();?>

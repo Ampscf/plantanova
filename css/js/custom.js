@@ -196,6 +196,7 @@
 
 	function register_order()
 	{
+		
 		form = $("#form_pending_order_first_next_before");
 		$.ajax({
 			url: form.attr('action'),
@@ -205,12 +206,12 @@
 				errno = JSON.parse(data);
 				if(errno.msj == "Error")
 				{
-					$("#content").html(errno.template);
+					//$("#content").html(errno.template);
 					notas(errno.errores,"error");
 				}
 				else
 				{
-					$("#content").html(errno.template);
+					//$("#content").html(errno.template);
 					notas("Cuenta registrada!.","success");
 				}
 			},
@@ -218,6 +219,7 @@
 				notas("Error en el registro","error");
 			}
 		});
+
 	}
 
 	function notas(coment,typee)
