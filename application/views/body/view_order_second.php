@@ -9,6 +9,7 @@
 							<li><a>Orden</a></li>
 							<li class="active"><a>Desglose</a></li>
 							<li><a>Resumen</a></li>
+							<li style="position: relative; left:50%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
 						</ul>
 					</div>	
 									
@@ -23,14 +24,14 @@
 						
 						<div class="col-md-6">
 								<div class="input-group input-group-lg">
-									<p>Fecha: <?php echo "var";?></p>
+									<p>Fecha: <?php echo $fecha?></p>
 								</div><!-- End Plant -->
 								
 								<div class="input-group input-group-lg">
-									<p>Tipo de cultivo: <?php echo "var";?></p>
+									<p>Tipo de cultivo: <?php echo $planta->result()[0]->plant_name;?></p>
 								</div><!-- End Cultivo -->
 								<div class="input-group input-group-lg">
-									<p>Volumen Total: <?php echo "var";?></p>
+									<p>Volumen Total: <?php echo $volumen;?></p>
 								</div><!-- End Volumen -->
 						
 						</div>
@@ -39,7 +40,7 @@
 							
 							<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Categoría: <?php echo "var";?></p>
+									<p>Categoría: <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->
 								<div class="input-group input-group-lg">
 									<p>Volumen restante: <?php echo "var";?></p>
@@ -58,6 +59,16 @@
 									<a href="#myModal" class="btn btn-default" data-toggle="modal">+Agregar</a>
 								</div><!-- End Desglose -->					
 						</div>
+						
+						<!-- Tabla desglose -->
+						<table>
+							<th>Sustrato</th>
+							<th>Subtipo</th>
+							<th>Variedad</th>
+							<th>PortaInjerto</th>
+							<th>Volumen</th>
+							<th>Borrar</th>
+						</table>
 						
 					    <!-- Modal HTML -->
 					    <div id="myModal" class="modal fade">

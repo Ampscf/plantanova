@@ -97,13 +97,18 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);	
 	}
 	
-	public function load_second_step($id)
+	public function load_second_step($id, $fecha, $idplant, $voltot, $categ)
 	{
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_second.php';
 		$template['footer'] = "footer/view_footer.php";
 		$template['sustratum'] = $this->model_order->get_sustratum();
 		$template['id_company']=$id;
+		$template['company']=$this->model_user->get_client($id);
+		$template['fecha']=$fecha;
+		$template['planta']=$this->model_order->get_plant($idplant);
+		$template['volumen']=$voltot;
+		$template['categoria']=$this->model_order->get_category($categ); 
 		
 		$this->load->view('main',$template);	
 	}
@@ -200,7 +205,13 @@ class Order extends CI_Controller {
 				$data['total_volume'] = $this->input->post('volume');
 				$data['branch_number'] = $this->input->post('arms');
 				$data['tutoring'] = $this->input->post('tutoring');
+
 				$datas=$this->input->post('comment');
+
+				$idplant=$data['id_plant'];
+				$voltot=$data['total_volume'];
+				$categ=$data['id_category'];
+
 
 				if($this->model_order->add_order($data) > 0 )
 				{
@@ -209,7 +220,7 @@ class Order extends CI_Controller {
 					}
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client);
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
 					echo json_encode($data);
 
 
