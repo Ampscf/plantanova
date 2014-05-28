@@ -102,8 +102,8 @@ Class model_order extends CI_Model
 	//Obtiene los subtipos de sustratos
 	function get_sustratum_subtype($sustratum)
 	{
-		$this -> db -> select('id_subtype,sustratum_name');
-		$this -> db -> from('t_sustratum_subtype');
+		$this -> db -> select('id_subtype, subtype_name');
+		$this -> db -> from('t_subtype');
 		$this -> db -> where('id_sustratum',$sustratum);
 
 		$query = $this -> db -> get();
@@ -266,15 +266,30 @@ Class model_order extends CI_Model
 	}
 
 	//obtiene las ordenes pendientes deacuerdo al id del cliente
-	function get_pending_oreder($id){
+	function get_pending_oreder($id)
+	{
 		
 		$this->db->where('id_client',$id);
+		$this->db->where('id_status', 4);
 		$query=$this->db->get('t_order');
 			
 			if($query->num_rows()>0)
 			{
 				return $query->result();
 			} 
+			else return false;
+	}
+	
+	//Obtiene los datos del desglose de un pedido
+	function get_breakdown($id)
+	{
+		$this->db->where('id_order',$id);
+		$query=$this->db->get('t_breakdown');
+		
+			if($query->num_rows()>0)
+			{
+				return $query->result();
+			}
 			else return false;
 	}
 
