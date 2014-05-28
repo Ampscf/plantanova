@@ -103,6 +103,7 @@ class Order extends CI_Controller {
 		$template['body'] = 'body/view_order_second.php';
 		$template['footer'] = "footer/view_footer.php";
 		$template['sustratum'] = $this->model_order->get_sustratum();
+		$template['subtype'] = $this->model_order->get_subtypes();
 		$template['id_company']=$id;
 		$template['company']=$this->model_user->get_client($id);
 		$template['fecha']=$fecha;
@@ -130,8 +131,7 @@ class Order extends CI_Controller {
 			$this->load->view('main',$template);
 			}
 			else{
-				$template['body']=$this->load_first_step($id_client);
-				
+				$template['body']=$this->load_first_step($id_client);				
 			}
 		}else $this->carga_ordenes();
 

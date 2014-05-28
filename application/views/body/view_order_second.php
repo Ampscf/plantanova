@@ -68,6 +68,15 @@
 							<th>PortaInjerto</th>
 							<th>Volumen</th>
 							<th>Borrar</th>
+							
+							<tbody>
+								<?php
+								if(isset($desgloses))
+								{
+								
+								}
+								?>
+							</tbody>
 						</table>
 						
 					    <!-- Modal HTML -->
@@ -86,7 +95,7 @@
 												<?php 
 													foreach($sustratum as $key)
 													{
-														echo "<option value='" . $key->id_id_sustratum . "' set_select('state','".$key->id_id_sustratum."')>" . $key->sustratum_name . "</option>";
+														echo "<option value='" . $key->id_sustratum . "' set_select('sustratum','".$key->id_sustratum."')>" . $key->sustratum_name . "</option>";
 													}
 												?>	
 											</select>
@@ -95,6 +104,12 @@
 											<p>Subtipo</p>
 											<select class="form-control" name="plant" id="plant">
 												<option value="-1" selected>---Selecciona un Subtipo---</option>
+												<?php 
+													foreach($subtype as $key)
+													{
+														echo "<option value='" . $key->id_subtype . "' set_select('subtype','".$key->id_subtype."')>" . $key->subtype_name . "</option>";
+													}
+												?>
 											</select>
 										</div><!-- End Subtipo -->
 										<div class="input-group">
