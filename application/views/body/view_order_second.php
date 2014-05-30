@@ -10,6 +10,7 @@
 							<li class="active"><a>Desglose</a></li>
 							<li><a>Resumen</a></li>
 							<li style="position: relative; left:50%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
+
 						</ul>
 					</div>	
 									
@@ -18,6 +19,11 @@
 						$attributes = array('id' => 'update','name' => 'update');
 						echo form_open('order/pending_order_second_next_before',$attributes);
 						?>
+						<input type="hidden" id="id_company" name="id_company" value="<?php echo $id_company; ?>">
+						<input type="hidden" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
+						<input type="hidden" id="voltot" name="voltot" value="<?php echo $volumen; ?>">
+						<input type="hidden" id="category" name="category" value="<?php echo $categ; ?>">
+						<input type="hidden" id="id_plant" name="id_plant" value="<?php echo $id_plant; ?>">
 						<div class="col-md-12">
 							<h1>Contenido para desglose<h1>
 						</div>
@@ -48,7 +54,8 @@
 									<p>Categoría: <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->
 								<div class="input-group input-group-lg">
-									<p>Volumen restante: <?php echo "var";?></p>
+									<?php $restante=$volumen - $suma_volumen->result()[0]->volume;?>
+									<p>Volumen restante: <?php echo $restante;?></p>
 								</div><!-- End Plant -->						
 						</div>
 						
@@ -76,9 +83,35 @@
 							
 							<tbody>
 								<?php
-								if(isset($desgloses))
+								if(isset($breakdown))
 								{
-								
+									foreach ($breakdown as $key) 
+									{ 
+										$subtype_a=$this->model_order->get_id_sustratum($key->id_subtype);
+										$subtype_name_a=$subtype_a->result()[0]->subtype_name;
+										$sustratum_a=$this->model_order->get_sustratum_id($subtype_a->result()[0]->id_sustratum);
+										$sustratum_name_a=$sustratum_a->result()[0]->sustratum_name;
+										$variety_a=$this->model_order->get_variety_id($key->id_variety);
+										$variety_name_a=$variety_a->result()[0]->variety_name;
+										$rootstock_a=$this->model_order->get_rootstock_id($key->id_rootstock);
+										$rootstock_name_a=$rootstock_a->result()[0]->rootstock_name;
+										echo "<tr>";
+										echo "<td>" . $sustratum_name_a . "</td>";
+										echo "<td>" . $subtype_name_a . "</td>";
+										echo "<td>" . $variety_name_a . "</td>";
+										echo "<td>" . $rootstock_name_a . "</td>";
+										echo "<td>" . $key->volume . "</td>";
+										echo "<td>"?>
+										<a href="#" class="btn btn-default"
+						                    title="Eliminar"
+						                    data-toggle="modal">
+											<i class="fa fa-times"></i>
+						                </a><?php
+										echo "</td>";
+										echo "</tr>";
+
+									}
+														
 								}
 								?>
 							</tbody>
@@ -86,7 +119,7 @@
 						
 					    <!-- Modal HTML -->
 					    <div id="myModal" class="modal fade">
-					        <div class="modal-dialog">
+					    	<div class="modal-dialog">
 					            <div class="modal-content">
 					                <div class="modal-header">
 					                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -95,7 +128,7 @@
 					                <div class="modal-body">										
 										<div class="input-group">
 											<p>Sustrato</p>
-											<select class="form-control" name="plant" id="plant">
+											<select class="form-control" name="sustratum" id="sustratum" onchange="get_subtype(this.value);">
 												<option value="-1" selected>---Selecciona un Sustrato---</option>
 												<?php 
 													foreach($sustratum as $key)
@@ -107,7 +140,7 @@
 										</div><!-- End Sustrato -->
 										<div class="input-group">
 											<p>Subtipo</p>
-											<select class="form-control" name="plant" id="plant">
+											<select class="form-control" name="subtype" id="subtype">
 												<option value="-1" selected>---Selecciona un Subtipo---</option>
 												<?php 
 													foreach($subtype as $key)
@@ -119,11 +152,27 @@
 										</div><!-- End Subtipo -->
 										<div class="input-group">
 											<p>Variedad</p>
-											<input type="text" class="form-control" placeholder="Variedad" name="variety" id="variety" value="">
+											<select class="form-control" name="variety" id="variety">
+												<option value="-1" selected>---Selecciona una Variedad---</option>
+												<?php 
+													foreach($variety as $key)
+													{
+														echo "<option value='" . $key->id_variety . "' set_select('sustratum','".$key->id_variety."')>" . $key->variety_name . "</option>";
+													}
+												?>	
+											</select>
 										</div><!-- End Variedad -->
 										<div class="input-group">
 											<p>PortaInjerto</p>
-											<input type="text" class="form-control" placeholder="PortaInjerto" name="rootstock" id="rootstock" value="">
+											<select class="form-control" name="rootstock" id="rootstock">
+												<option value="-1" selected>---Selecciona un PortaIngerto---</option>
+												<?php 
+													foreach($rootstock as $key)
+													{
+														echo "<option value='" . $key->id_rootstock . "' set_select('sustratum','".$key->id_rootstock."')>" . $key->rootstock_name . "</option>";
+													}
+												?>	
+											</select>
 										</div><!-- End PortaInjerto -->										
 										<div class="input-group">
 											<p>Volumen</p>
@@ -132,7 +181,7 @@
 					                </div>
 					                <div class="modal-footer">
 					                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					                    <button type="button" class="btn btn-success">Guardar</button>
+					                    <input type="submit" class="btn btn-success" id="save" name="save" value="Guardar"></button>
 					                </div>
 					            </div>
 					        </div>
@@ -143,7 +192,7 @@
 					<div class="panel-footer">
 						<ul class="pager">
 							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
-					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" />
+					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
 						</ul>
 					</div>
 					<?php echo form_close();?>

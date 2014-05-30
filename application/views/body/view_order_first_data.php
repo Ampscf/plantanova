@@ -25,8 +25,6 @@
 				$category_name=$this->model_order->get_category($id_category);
 
 				$comment=$order_comment->result()[0]->comment_description;
-				
-
 				?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<?php 

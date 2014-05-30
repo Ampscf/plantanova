@@ -100,25 +100,34 @@ class Order extends CI_Controller {
 		$template['footer'] = "footer/view_footer.php";
 		$template['sustratum'] = $this->model_order->get_sustratum();
 		$template['subtype'] = $this->model_order->get_subtypes();
+		$template['variety'] = $this->model_order->get_variety();
+		$template['rootstock'] = $this->model_order->get_rootstock();
 		$template['id_company']=$id;
 		$template['company']=$this->model_user->get_client($id);
 		$template['fecha']=$fecha;
+		$template['id_plant']=$idplant;
 		$template['planta']=$this->model_order->get_plant($idplant);
 		$template['volumen']=$voltot;
+		$template['categ']=$categ;
 		$template['categoria']=$this->model_order->get_category($categ); 
 		$template['id_order']=$this->model_order->get_id_order();
+		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
+		$template['suma_volumen']=$this->model_order->suma_volumen();
+
 		
 		$this->load->view('main',$template);	
 	}
 
 	function pending_order_second_next_before(){
+		$id_order=$this->input->post('id_order');
 		if(!empty($this->input->post('next'))){
 			
 			
 		}
 		else if(!empty($this->input->post('before'))){
-			$id_order=$this->input->post('id_order');
+			
 			$template['order']=$this->model_order->get_order_id_order($id_order);
+			$co=$this->model_order->get_order_comment($id_order);
 			$template['order_comment']=$this->model_order->get_order_comment($id_order);
 			
 
@@ -130,9 +139,29 @@ class Order extends CI_Controller {
 			
 			$template['company']=$this->model_user->get_client($template['order']->result()[0]->id_client);
 
-		$this->load->view('main',$template);	
+			$this->load->view('main',$template);	
 
+		}else if(!empty($this->input->post('save'))){
+
+		$idplant=$this->input->post('id_plant');
+		$voltot=$this->input->post('voltot');
+		$categ=$this->input->post('category');
+		$id=$this->input->post('id_company');
+		$fecha=$this->input->post('fecha');
+
+		$data['id_order']=$id_order;
+		$data['id_subtype']=$this->input->post('subtype');
+		$data['id_variety']=$this->input->post('variety');
+		$data['id_rootstock']=$this->input->post('rootstock');
+		$data['volume']=$this->input->post("volume");
+
+		if($this->model_order->insert_breakdown($data)>0){
+			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
 		}
+
+		
+
+	}
 	}
 
 	//carga las ordenes pendientes
@@ -369,4 +398,34 @@ class Order extends CI_Controller {
 		}
 		return TRUE;
 	}
+
+	//AJAX:Función que regresa todas las ciudades de un estado
+	public function get_subtype()
+	{	
+		$id_sustratum = $this->input->post('sustratum');
+		echo $id_sustratum;
+	
+		$subtype = $this->model_order->get_sustratum_subtype($id_sustratum);
+		$result = "";
+		foreach ($subtype as $key) 
+		{
+			$result = $result . "<option value='" . $key->id_subtype . "'>" . $key->subtype_name . "</option>";
+		}
+		echo $result;
+	}
+
+	function insert_breakdown()
+	{
+		$data['id_sustratum']=$this->input->post('sustratum');
+		$data['id_subtype']==$this->input->post('subtype');
+		$data['id_variety']==$this->input->post('variety');
+		$data['id_rootstock']==$this->input->post('id_rootstock');
+		$data['volume']==$this->input->post("volume");
+
+		$this->model_order->insert_breakdown($data);
+	
+	}
+
+
+
 }

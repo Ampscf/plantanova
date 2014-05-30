@@ -49,15 +49,15 @@
 		
 	
 	//Obtiene los subtipos de sustrato para cargar dinamicamente el control select de semillas
-	function get_subtype(value)
+	function get_subtype($id_sustratum)
 	{
 		if($("#sustratum [value='-1']").length)
 		{
 			$("#sustratum [value='-1']").remove();
 		}
 		$.ajax({
-			url: site_url + 'order/get_subtypes',
-			data: {'sustratum':value},
+			url: site_url + 'order/get_subtype',
+			data: {'sustratum':$id_sustratum},
 			type: "POST",
 			success: function(data){
 				$("#subtype").html(data);
@@ -205,4 +205,25 @@
 			type: typee,
 			timeout: 3500
 		});
+	}
+
+	function insert_breakdown(){
+		 
+		var sustratum=document.getElementById("sustratum").value;
+		var subtype=document.getElementById("subtype").value;
+		var variety=document.getElementById("variety").value;
+		var rootstock=document.getElementById("rootstock").value;
+		var volume=document.getElementById("volume").value;
+
+		 $.ajax({
+			url: site_url + 'order/insert_breakdown',
+			data: {'id_sustratum':+sustratum},
+			type: "POST",
+			success: function(data){
+				alert(data);
+			},
+			failure:function(data){
+				alert("fallo");
+			}
+			});
 	}

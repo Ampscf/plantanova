@@ -98,7 +98,114 @@ Class model_order extends CI_Model
 			return null;
 		}
 	}
+
+	//Obtiene los sustratos de la base de datos
+	function get_sustratum_id($id_sustratum)
+	{
+		$this -> db -> select('id_sustratum,sustratum_name');
+		$this -> db -> from('t_sustratum');
+		$this -> db -> where('id_sustratum', $id_sustratum);
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query;
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+
+	//Obtiene los sustratos deacuerdo al subtipo de la base de datos
+	function get_id_sustratum($id_subtype)
+	{
+		$this -> db -> select('id_sustratum,subtype_name');
+		$this -> db -> from('t_subtype');
+		$this -> db -> where('id_subtype', $id_subtype);
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query;
+		} 
+		else 
+		{
+			return null;
+		}
+	}
 	
+	//Obtiene todos las variedades
+	function get_variety()
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('t_variety');
+
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+	//Obtiene todos las variedades deacuardo al id
+	function get_variety_id($id_variety)
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('t_variety');
+		$this -> db -> where('id_variety',$id_variety);
+
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query;
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+	//Obtiene todos los portaingertos
+	function get_rootstock()
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('t_rootstock');
+
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+	}
+
+	//Obtiene todos los portaingertos deacuerdo al id
+	function get_rootstock_id($id_rootstock)
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('t_rootstock');
+		$this -> db -> where('id_rootstock', $id_rootstock);
+
+		$query = $this -> db -> get();
+
+		if($query->num_rows() > 0) 
+		{
+			return $query;
+		} 
+		else 
+		{
+			return null;
+		}
+	}
 	//Obtiene todos los subtipos
 	function get_subtypes()
 	{
@@ -118,11 +225,11 @@ Class model_order extends CI_Model
 	}
 	
 	//Obtiene los subtipos de sustratos
-	function get_sustratum_subtype($sustratum)
+	function get_sustratum_subtype($id_sustratum)
 	{
 		$this -> db -> select('id_subtype, subtype_name');
 		$this -> db -> from('t_subtype');
-		$this -> db -> where('id_sustratum',$sustratum);
+		$this -> db -> where('id_sustratum',$id_sustratum);
 
 		$query = $this -> db -> get();
 
@@ -407,8 +514,28 @@ Class model_order extends CI_Model
 			{
 				return $query;
 			} 
-			else return false;
+			else return null;
 	}
+
+	function insert_breakdown($data){
+		$this->db->insert('t_breakdown',$data);
+		return $this->db->affected_rows();
+	}
+
+	function suma_volumen(){
+		
+		$this->db->select_sum('volume');
+		$query = $this->db->get('t_breakdown');
+		if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return null;
+	}
+
+
+
+
 }
 
 
