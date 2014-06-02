@@ -83,7 +83,7 @@
 							
 							<tbody>
 								<?php
-								if(isset($breakdown))
+								if(is_array($breakdown))
 								{
 									foreach ($breakdown as $key) 
 									{ 

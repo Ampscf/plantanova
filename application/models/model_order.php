@@ -468,8 +468,9 @@ Class model_order extends CI_Model
 
 	function update_coment_oreder($id_order,$datas)
 	{
+		$data= array('comment_description' =>$datas );
 		$this->db->where('id_order',$id_order);
-		$this->db->update('t_order_comments', $datas);
+		$this->db->update('t_order_comments', $data);
 		return $this->db->affected_rows();
 	}
 
@@ -514,7 +515,7 @@ Class model_order extends CI_Model
 			{
 				return $query;
 			} 
-			else return null;
+			else return $query;
 	}
 
 	function insert_breakdown($data){
