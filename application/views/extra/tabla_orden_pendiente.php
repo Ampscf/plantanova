@@ -31,7 +31,7 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Modificar"
-	                   href="edit/<?php echo $key->id_user ?>">
+	                   href="load_second_step_two/<?php echo $key->id_order ?>">
 	                    <i class="fa fa-edit"></i>
 	                   
 	                </a>
@@ -51,13 +51,12 @@
                 				</div>
                 				<div class="modal-body">
                     				<p>¿Estás seguro de querer eliminar a la orden <?php echo $key->id_order; ?>?</p>
-                					<input  id="id_order" name="id_order" value="<?php echo $key->id_order; ?>">
                 				</div>
                 				<div class="modal-footer">
-									
+									<?php echo form_open('order/delete_order'); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<input type="submit" class="btn btn-success" name="delete" id="delete">
-                					
+                    					<input type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">
+                					</form>
 								</div>
             				</div>
         				</div>

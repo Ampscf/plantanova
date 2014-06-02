@@ -12,17 +12,18 @@
 							<li style="position: relative; left:50%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
 						</ul>
 					</div>	
+					
+					<div class="panel-body">					
+						<div >
+							<?php include_once('application/views/extra/tabla_orden_pendiente.php'); ?>
+						</div>
+					</div>
 					<?php
 						$attributes = array('id' => 'form_pending_order_next_before');
 						echo form_open('order/pending_order_next_before',$attributes);
 					?>
-					<div class="panel-body">					
-						<div >
-							<input type="hidden" value="<?php echo $id_company;?>" id="id_company" name="id_company">
-							<?php include_once('application/views/extra/tabla_orden_pendiente.php'); ?>
-						</div>
-					</div>
-					
+					<input type="hidden" value="<?php echo $id_company;?>" id="id_company" name="id_company">
+							
 					<div class="panel-footer">
 					    <ul class="pager">
 					        <input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before">

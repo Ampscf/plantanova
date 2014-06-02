@@ -118,6 +118,33 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);	
 	}
 
+	public function load_second_step_two()
+	{
+		//$id, $fecha, $idplant, $voltot, $categ
+		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_second.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['sustratum'] = $this->model_order->get_sustratum();
+		$template['subtype'] = $this->model_order->get_subtypes();
+		$template['variety'] = $this->model_order->get_variety();
+		$template['rootstock'] = $this->model_order->get_rootstock();
+		$template['id_company']=$order->result()[0]->id_client;
+		$template['company']=$this->model_user->get_client($order->result()[0]->id_client);
+		$template['fecha']=$order->result()[0]->order_date_submit;
+		$template['id_plant']=$order->result()[0]->id_plant;
+		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
+		$template['volumen']=$order->result()[0]->total_volume;
+		$template['categ']=$order->result()[0]->id_category;
+		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category); 
+		$template['id_order']=$this->model_order->get_id_order();
+		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
+		$template['suma_volumen']=$this->model_order->suma_volumen($template['id_order']->result()[0]->id_order);
+
+		
+		$this->load->view('main',$template);	
+	}
+
 	function pending_order_second_next_before(){
 		$id_order=$this->input->post('id_order');
 		if(!empty($this->input->post('next'))){
@@ -234,26 +261,20 @@ class Order extends CI_Controller {
 		else if(!empty($this->input->post('before'))){
 			$this->carga_ordenes();
 		}
-		else if(!empty($this->input->post('delete'))){
-			
-			foreach ($_POST as $key => $value) 
-			{
-				echo "$key=$value";
-				if(is_int($key))
-				{
-					$llave=$key;
-					echo $llave;
-				}
-			}
-			//$this -> model_order -> delete_order($llave);
-
-			echo "string";
-		}
+		
 	}
 
 	function delete_order()
 	{
-		
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this -> model_order -> delete_order($llave);
+		redirect("order/pending", "refresh");
 	}
 
 	public function pending_order_first_next_before(){
