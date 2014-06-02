@@ -127,7 +127,7 @@ class Order extends CI_Controller {
 		else if(!empty($this->input->post('before'))){
 			
 			$template['order']=$this->model_order->get_order_id_order($id_order);
-			$co=$this->model_order->get_order_comment($id_order);
+			//$co=$this->model_order->get_order_comment($id_order);
 			$template['order_comment']=$this->model_order->get_order_comment($id_order);
 			
 
@@ -148,14 +148,11 @@ class Order extends CI_Controller {
 		$categ=$this->input->post('category');
 		$id=$this->input->post('id_company');
 		$fecha=$this->input->post('fecha');
-		
-		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
 		$data['id_order']=$id_order;
 		$data['id_subtype']=$this->input->post('subtype');
-		$data['variety']=$this->input->post('variety');
-		$data['rootstock']=$this->input->post('rootstock');
+		$data['id_variety']=$this->input->post('variety');
+		$data['id_rootstock']=$this->input->post('rootstock');
 		$data['volume']=$this->input->post("volume");
 
 		if($this->model_order->insert_breakdown($data)>0){
@@ -228,8 +225,18 @@ class Order extends CI_Controller {
 		}
 		else if(!empty($this->input->post('delete'))){
 			
-			$llave=$this->input->post('id_order');
-			$this->model_order-> delete_order($llave);
+			foreach ($_POST as $key => $value) 
+			{
+				echo "$key=$value";
+				if(is_int($key))
+				{
+					$llave=$key;
+					echo $llave;
+				}
+			}
+			//$this -> model_order -> delete_order($llave);
+
+			echo "string";
 		}
 	}
 
@@ -281,9 +288,9 @@ class Order extends CI_Controller {
 					
 				if($this->model_order->add_order($data) > 0 )
 				{
-					if($datas!=""){
+					
 						$this->model_order->add_coment_oreder($datas);
-					}
+					
 					unset($data);
 					$data['msj'] = "Exito";
 					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
@@ -343,7 +350,7 @@ class Order extends CI_Controller {
 				$data['branch_number'] = $this->input->post('arms');
 				$data['tutoring'] = $this->input->post('tutoring');
 
-				$datas['comment_description']=$this->input->post('comment');
+				$datas=$this->input->post('comment');
 
 				$idplant=$data['id_plant'];
 				$voltot=$data['total_volume'];
@@ -363,6 +370,7 @@ class Order extends CI_Controller {
 				}
 				else
 				{
+					$this->model_order->update_coment_oreder($id_order,$datas);
 					unset($data);
 					$error['msj'] = "Error";
 					$error['errores'] = "Error al guardar al usuario";

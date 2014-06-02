@@ -56,7 +56,7 @@
                 				<div class="modal-footer">
 									
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="delete" id="delete">Confirmar</button>
+                    					<input type="submit" class="btn btn-success" name="delete" id="delete">
                 					
 								</div>
             				</div>

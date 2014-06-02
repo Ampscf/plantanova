@@ -534,11 +534,9 @@ Class model_order extends CI_Model
 			else return null;
 	}
 
-	function delete_order($llave)
+	function delete_order($id)
 	{
-		$this->db->where('id_order', $llave);
-		$this->db->delete('t_order'); 
-		return $this->db->affected_rows();
+		$this->db->delete('t_order', array('id_order' => $id)); 
 	}
 
 
