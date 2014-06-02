@@ -541,8 +541,11 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-
-
+	function delete_breakdown($id)
+	{
+		$this->db->where('id_breakdown',$id);
+		$this->db->delete('t_breakdown');
+	}
 
 }
 
