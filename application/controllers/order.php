@@ -226,6 +226,16 @@ class Order extends CI_Controller {
 		else if(!empty($this->input->post('before'))){
 			$this->carga_ordenes();
 		}
+		else if(!empty($this->input->post('delete'))){
+			
+			$llave=$this->input->post('id_order');
+			$this->model_order-> delete_order($llave);
+		}
+	}
+
+	function delete_order()
+	{
+		
 	}
 
 	public function pending_order_first_next_before(){
@@ -428,6 +438,8 @@ class Order extends CI_Controller {
 		$this->model_order->insert_breakdown($data);
 	
 	}
+
+	
 
 
 
