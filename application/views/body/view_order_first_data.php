@@ -24,7 +24,11 @@
 				$plant_name=$this->model_order->get_plant($id_plant);
 				$category_name=$this->model_order->get_category($id_category);
 
+				if(isset($order_comment->result()[0]->comment_description)){
 				$comment=$order_comment->result()[0]->comment_description;
+				}else{
+					$comment="";
+				}
 				?>
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 						<?php 

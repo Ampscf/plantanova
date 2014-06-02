@@ -127,7 +127,7 @@ class Order extends CI_Controller {
 		else if(!empty($this->input->post('before'))){
 			
 			$template['order']=$this->model_order->get_order_id_order($id_order);
-			$co=$this->model_order->get_order_comment($id_order);
+			//$co=$this->model_order->get_order_comment($id_order);
 			$template['order_comment']=$this->model_order->get_order_comment($id_order);
 			
 
@@ -271,9 +271,9 @@ class Order extends CI_Controller {
 					
 				if($this->model_order->add_order($data) > 0 )
 				{
-					if($datas!=""){
+					
 						$this->model_order->add_coment_oreder($datas);
-					}
+					
 					unset($data);
 					$data['msj'] = "Exito";
 					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
@@ -333,7 +333,7 @@ class Order extends CI_Controller {
 				$data['branch_number'] = $this->input->post('arms');
 				$data['tutoring'] = $this->input->post('tutoring');
 
-				$datas['comment_description']=$this->input->post('comment');
+				$datas=$this->input->post('comment');
 
 				$idplant=$data['id_plant'];
 				$voltot=$data['total_volume'];
@@ -353,6 +353,7 @@ class Order extends CI_Controller {
 				}
 				else
 				{
+					$this->model_order->update_coment_oreder($id_order,$datas);
 					unset($data);
 					$error['msj'] = "Error";
 					$error['errores'] = "Error al guardar al usuario";
