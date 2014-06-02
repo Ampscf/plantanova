@@ -153,22 +153,28 @@ class Order extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		
-		$this->form_validation->set_rules('sustratum','Sustrato','required|xss_clean');
-		$this->form_validation->set_rules('subtype','Subtipo','required|xss_clean');
+		$this->form_validation->set_rules('sustratum','Sustrato','required|xss_clean|callback_sel_sustrato');
+		$this->form_validation->set_rules('subtype','Subtipo','required|xss_clean|callback_sel_subtipo');
 		$this->form_validation->set_rules('variety','Variedad','required|xss_clean');
 		$this->form_validation->set_rules('rootstock','PortaInjerto','required|xss_clean');
 		$this->form_validation->set_rules('volume','Volumen','required|numeric|xss_clean');
-
-
-		$data['id_order']=$id_order;
-		$data['id_subtype']=$this->input->post('subtype');
-		$data['id_variety']=$this->input->post('variety');
-		$data['id_rootstock']=$this->input->post('rootstock');
-		$data['volume']=$this->input->post("volume");
-
-		if($this->model_order->insert_breakdown($data)>0){
+		
+		
+		if($this->form_validation->run() == FALSE) 
+		{
 			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
+		} else {
+			$data['id_order']=$id_order;
+			$data['id_subtype']=$this->input->post('subtype');
+			$data['variety']=$this->input->post('variety');
+			$data['rootstock']=$this->input->post('rootstock');
+			$data['volume']=$this->input->post("volume");
+
+			if($this->model_order->insert_breakdown($data)>0){
+				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
+			}
 		}
+	
 
 		
 
@@ -470,6 +476,24 @@ class Order extends CI_Controller {
 		$this -> model_order -> delete_breakdown($llave);
 		redirect("order/pending_order_second_next_before", "refresh");
 	}
-
-
+	
+	public function sel_sustrato()
+	{
+		if($this->input->post('sustratum') == "-1")
+		{
+			$this->form_validation->set_message('sel_sustrato', 'Selecciona un %s.');
+			return FALSE;
+		}
+		return TRUE;
+	}
+	
+	public function sel_subtipo()
+	{
+		if($this->input->post('subtype') == "-1")
+		{
+			$this->form_validation->set_message('sel_subtipo', 'Selecciona un %s.');
+			return FALSE;
+		}
+		return TRUE;
+	}
 }

@@ -91,10 +91,6 @@
 										$subtype_name_a=$subtype_a->result()[0]->subtype_name;
 										$sustratum_a=$this->model_order->get_sustratum_id($subtype_a->result()[0]->id_sustratum);
 										$sustratum_name_a=$sustratum_a->result()[0]->sustratum_name;
-										//$variety_a=$this->model_order->get_variety_id($key->id_variety);
-										//$variety_name_a=$variety_a->result()[0]->variety_name;
-										//$rootstock_a=$this->model_order->get_rootstock_id($key->id_rootstock);
-										//$rootstock_name_a=$rootstock_a->result()[0]->rootstock_name;
 										echo "<tr>";
 										echo "<td>" . $sustratum_name_a . "</td>";
 										echo "<td>" . $subtype_name_a . "</td>";
@@ -123,7 +119,7 @@
 														<?php echo form_open('order/delete_breakdown'); ?>
 									                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 									                    	<button type="button" class="btn btn-success" name="<?php echo $key->id_breakdown;?>">Confirmar</button>
-														</form>
+														<?php echo form_close();?>
 									                </div>
 									            </div>
 									        </div>
