@@ -83,7 +83,7 @@
 							
 							<tbody>
 								<?php
-								if(is_array($breakdown))
+								if(isset($breakdown))
 								{
 									foreach ($breakdown as $key) 
 									{ 
@@ -91,15 +91,15 @@
 										$subtype_name_a=$subtype_a->result()[0]->subtype_name;
 										$sustratum_a=$this->model_order->get_sustratum_id($subtype_a->result()[0]->id_sustratum);
 										$sustratum_name_a=$sustratum_a->result()[0]->sustratum_name;
-										$variety_a=$this->model_order->get_variety_id($key->id_variety);
-										$variety_name_a=$variety_a->result()[0]->variety_name;
-										$rootstock_a=$this->model_order->get_rootstock_id($key->id_rootstock);
-										$rootstock_name_a=$rootstock_a->result()[0]->rootstock_name;
+										//$variety_a=$this->model_order->get_variety_id($key->id_variety);
+										//$variety_name_a=$variety_a->result()[0]->variety_name;
+										//$rootstock_a=$this->model_order->get_rootstock_id($key->id_rootstock);
+										//$rootstock_name_a=$rootstock_a->result()[0]->rootstock_name;
 										echo "<tr>";
 										echo "<td>" . $sustratum_name_a . "</td>";
 										echo "<td>" . $subtype_name_a . "</td>";
-										echo "<td>" . $variety_name_a . "</td>";
-										echo "<td>" . $rootstock_name_a . "</td>";
+										echo "<td>" . $key->variety . "</td>";
+										echo "<td>" . $key->rootstock . "</td>";
 										echo "<td>" . $key->volume . "</td>";
 										echo "<td>"?>
 										<a href="#" class="btn btn-default"
