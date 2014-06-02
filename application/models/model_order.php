@@ -522,8 +522,8 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	function suma_volumen(){
-		
+	function suma_volumen($id_order){
+		$this->db->where('id_order',$id_order);
 		$this->db->select_sum('volume');
 		$query = $this->db->get('t_breakdown');
 		if($query->num_rows()>0)

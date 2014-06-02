@@ -112,7 +112,7 @@ class Order extends CI_Controller {
 		$template['categoria']=$this->model_order->get_category($categ); 
 		$template['id_order']=$this->model_order->get_id_order();
 		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
-		$template['suma_volumen']=$this->model_order->suma_volumen();
+		$template['suma_volumen']=$this->model_order->suma_volumen($template['id_order']->result()[0]->id_order);
 
 		
 		$this->load->view('main',$template);	
