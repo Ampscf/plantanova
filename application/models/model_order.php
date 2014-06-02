@@ -539,8 +539,11 @@ Class model_order extends CI_Model
 		$this->db->delete('t_order', array('id_order' => $id)); 
 	}
 
-
-
+	function delete_breakdown($id)
+	{
+		$this->db->where('id_breakdown',$id);
+		$this->db->delete('t_breakdown');
+	}
 
 }
 

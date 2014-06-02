@@ -149,6 +149,17 @@ class Order extends CI_Controller {
 		$id=$this->input->post('id_company');
 		$fecha=$this->input->post('fecha');
 
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		
+		$this->form_validation->set_rules('sustratum','Sustrato','required|xss_clean');
+		$this->form_validation->set_rules('subtype','Subtipo','required|xss_clean');
+		$this->form_validation->set_rules('variety','Variedad','required|xss_clean');
+		$this->form_validation->set_rules('rootstock','PortaInjerto','required|xss_clean');
+		$this->form_validation->set_rules('volume','Volumen','required|numeric|xss_clean');
+
+
 		$data['id_order']=$id_order;
 		$data['id_subtype']=$this->input->post('subtype');
 		$data['id_variety']=$this->input->post('variety');
@@ -446,9 +457,19 @@ class Order extends CI_Controller {
 		$this->model_order->insert_breakdown($data);
 	
 	}
-
 	
-
+	public function delete_breakdown()
+	{
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this -> model_order -> delete_breakdown($llave);
+		redirect("order/pending_order_second_next_before", "refresh");
+	}
 
 
 }

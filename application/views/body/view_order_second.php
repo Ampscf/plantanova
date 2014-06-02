@@ -83,7 +83,7 @@
 							
 							<tbody>
 								<?php
-								if(isset($breakdown))
+								if(is_array($breakdown))
 								{
 									foreach ($breakdown as $key) 
 									{ 
@@ -102,11 +102,34 @@
 										echo "<td>" . $key->rootstock . "</td>";
 										echo "<td>" . $key->volume . "</td>";
 										echo "<td>"?>
-										<a href="#" class="btn btn-default"
+										<a href="#delModal" class="btn btn-default"
 						                    title="Eliminar"
 						                    data-toggle="modal">
 											<i class="fa fa-times"></i>
-						                </a><?php
+						                </a>
+										
+										<!-- Modal para eliminar -->
+									    <div id="delModal" class="modal fade">
+									        <div class="modal-dialog">
+									            <div class="modal-content">
+									                <div class="modal-header">
+									                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									                    <h4 class="modal-title">Confirmación</h4>
+									                </div>
+									                <div class="modal-body">
+									                    <p>¿Estás seguro de querer eliminar este desglose?</p>
+									                </div>
+									                <div class="modal-footer">
+														<?php echo form_open('order/delete_breakdown'); ?>
+									                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									                    	<button type="button" class="btn btn-success" name="<?php echo $key->id_breakdown;?>">Confirmar</button>
+														</form>
+									                </div>
+									            </div>
+									        </div>
+									    </div>
+										
+										<?php
 										echo "</td>";
 										echo "</tr>";
 
@@ -138,6 +161,7 @@
 												?>	
 											</select>
 										</div><!-- End Sustrato -->
+										<?php echo form_error('sustratum'); ?>
 										<div class="input-group">
 											<p>Subtipo</p>
 											<select class="form-control" name="subtype" id="subtype">
@@ -150,34 +174,22 @@
 												?>
 											</select>
 										</div><!-- End Subtipo -->
+										<?php echo form_error('subtype'); ?>
 										<div class="input-group">
 											<p>Variedad</p>
-											<select class="form-control" name="variety" id="variety">
-												<option value="-1" selected>---Selecciona una Variedad---</option>
-												<?php 
-													foreach($variety as $key)
-													{
-														echo "<option value='" . $key->id_variety . "' set_select('sustratum','".$key->id_variety."')>" . $key->variety_name . "</option>";
-													}
-												?>	
-											</select>
+											<input type="text" class="form-control" placeholder="Variedad" name="variety" id="variety" value="">
 										</div><!-- End Variedad -->
+										<?php echo form_error('variety'); ?>
 										<div class="input-group">
 											<p>PortaInjerto</p>
-											<select class="form-control" name="rootstock" id="rootstock">
-												<option value="-1" selected>---Selecciona un PortaIngerto---</option>
-												<?php 
-													foreach($rootstock as $key)
-													{
-														echo "<option value='" . $key->id_rootstock . "' set_select('sustratum','".$key->id_rootstock."')>" . $key->rootstock_name . "</option>";
-													}
-												?>	
-											</select>
-										</div><!-- End PortaInjerto -->										
+											<input type="text" class="form-control" placeholder="PortaInjerto" name="rootstock" id="rootstock" value="">
+										</div><!-- End PortaInjerto -->
+										<?php echo form_error('rootstock'); ?>										
 										<div class="input-group">
 											<p>Volumen</p>
 											<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="">
-										</div><!-- End Volumen -->						
+										</div><!-- End Volumen -->
+										<?php echo form_error('volume'); ?>						
 					                </div>
 					                <div class="modal-footer">
 					                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
