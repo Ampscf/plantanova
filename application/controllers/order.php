@@ -148,6 +148,9 @@ class Order extends CI_Controller {
 		$categ=$this->input->post('category');
 		$id=$this->input->post('id_company');
 		$fecha=$this->input->post('fecha');
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
 		$data['id_order']=$id_order;
 		$data['id_subtype']=$this->input->post('subtype');
