@@ -119,7 +119,7 @@
 														<?php echo form_open('order/delete_breakdown'); ?>
 									                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 									                    	<button type="button" class="btn btn-success" name="<?php echo $key->id_breakdown;?>">Confirmar</button>
-														<?php echo form_close();?>
+														<!--<?php //echo form_close();?>-->
 									                </div>
 									            </div>
 									        </div>

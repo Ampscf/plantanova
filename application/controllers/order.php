@@ -137,9 +137,9 @@ class Order extends CI_Controller {
 		$template['volumen']=$order->result()[0]->total_volume;
 		$template['categ']=$order->result()[0]->id_category;
 		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category); 
-		$template['id_order']=$this->model_order->get_id_order();
-		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
-		$template['suma_volumen']=$this->model_order->suma_volumen($template['id_order']->result()[0]->id_order);
+		$template['id_order']=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
+		$template['suma_volumen']=$this->model_order->suma_volumen($this->uri->segment(3));
 
 		
 		$this->load->view('main',$template);	
@@ -154,7 +154,7 @@ class Order extends CI_Controller {
 		else if(!empty($this->input->post('before'))){
 			
 			$template['order']=$this->model_order->get_order_id_order($id_order);
-			//$co=$this->model_order->get_order_comment($id_order);
+			$co=$this->model_order->get_order_comment($id_order);
 			$template['order_comment']=$this->model_order->get_order_comment($id_order);
 			
 
