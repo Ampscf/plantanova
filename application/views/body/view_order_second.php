@@ -31,7 +31,7 @@
 						
 						<div class="col-md-6">
 								<div class="input-group input-group-lg">
-									<p>Fecha: <?php echo $fecha?></p>
+									<p>Fecha: <?php echo date("Y-m-d",strtotime($fecha))?></p>
 								</div><!-- End Plant -->
 								
 								<div class="input-group input-group-lg">
