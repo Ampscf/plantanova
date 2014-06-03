@@ -15,19 +15,11 @@
 					</div>	
 									
 					<div class="panel-body">
-						<?php 
-						$attributes = array('id' => 'update','name' => 'update');
-						echo form_open('order/pending_order_second_next_before',$attributes);
-						?>
-						<input type="hidden" id="id_company" name="id_company" value="<?php echo $id_company; ?>">
-						<input type="hidden" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
-						<input type="hidden" id="voltot" name="voltot" value="<?php echo $volumen; ?>">
-						<input type="hidden" id="category" name="category" value="<?php echo $categ; ?>">
-						<input type="hidden" id="id_plant" name="id_plant" value="<?php echo $id_plant; ?>">
+						
+
 						<div class="col-md-12">
 							<h1>Contenido para desglose<h1>
 						</div>
-						<input type="hidden" value="<?php echo $id_order->result()[0]->id_order;?>" id="id_order" name="id_order">
 						<div class="clear">&nbsp</div>
 						<div class="col-md-12">
 							<h3><span class="glyphicon glyphicon-list-alt"></span>Datos de la orden</h3>
@@ -116,10 +108,10 @@
 									                    <p>¿Estás seguro de querer eliminar este desglose?</p>
 									                </div>
 									                <div class="modal-footer">
-														<?php echo form_open('order/delete_breakdown'); ?>
+														<?php echo form_open('order/delete_breakdown/'.$id_order->result()[0]->id_order); ?>
 									                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-									                    	<button type="button" class="btn btn-success" name="<?php echo $key->id_breakdown;?>">Confirmar</button>
-														<!--<?php //echo form_close();?>-->
+									                    	<button type="submit" class="btn btn-success" name="<?php echo $key->id_breakdown;?>">Confirmar</button>
+														<?php echo form_close();?>
 									                </div>
 									            </div>
 									        </div>
@@ -135,7 +127,10 @@
 								?>
 							</tbody>
 						</table>
-						
+						<?php 
+						$attributes = array('id' => 'update','name' => 'update');
+						echo form_open('order/pending_order_second_next_before',$attributes);
+						?>
 					    <!-- Modal HTML -->
 					    <div id="myModal" class="modal fade">
 					    	<div class="modal-dialog">
@@ -199,8 +194,16 @@
 									
 					<div class="panel-footer">
 						<ul class="pager">
-							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
-					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
+							
+						<input type="hidden" id="id_company" name="id_company" value="<?php echo $id_company; ?>">
+						<input type="hidden" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
+						<input type="hidden" id="voltot" name="voltot" value="<?php echo $volumen; ?>">
+						<input type="hidden" id="category" name="category" value="<?php echo $categ; ?>">
+						<input type="hidden" id="id_plant" name="id_plant" value="<?php echo $id_plant; ?>">
+						<input type="hidden"  id="id_order" name="id_order" value="<?php echo $id_order->result()[0]->id_order;?>">
+						
+						<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
+					    <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
 						</ul>
 					</div>
 					<?php echo form_close();?>
