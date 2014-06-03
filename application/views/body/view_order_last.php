@@ -141,7 +141,7 @@
 							?>
 							<input type="hidden" id="id_order" name="id_order" value="<?php echo $order->result()[0]->id_order; ?>">
 							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
-					        <input type="submit" value="Agregar &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
+					        <input type="submit" value="Agregar" class="btn btn-success" style="float: right;" id="next" name="next"/>
 							<?php form_close(); ?>
 						</ul>
 					</div><!-- fin panel footer -->	
