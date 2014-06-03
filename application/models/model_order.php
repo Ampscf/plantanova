@@ -544,6 +544,16 @@ Class model_order extends CI_Model
 		$this->db->where('id_breakdown',$id);
 		$this->db->delete('t_breakdown');
 	}
+	
+	//funcion que cambia el estatus del pedido a nuevo
+	function submit_order($id)
+	{
+		$data = array(
+			'id_status' => 1;
+		);
+		$this->db->where('id_order',$id);
+		$this->db->update('t_order', $data);
+	}
 
 }
 
