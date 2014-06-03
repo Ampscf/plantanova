@@ -139,7 +139,7 @@
 							
 							echo form_open('order/order_last_next_before');
 							?>
-							<input type="hidden" id="id_order" name="id_order" value="<?php echo $order; ?>">
+							<input type="hidden" id="id_order" name="id_order" value="<?php echo $order->result()[0]->id_order; ?>">
 							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
 					        <input type="submit" value="Agregar &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
 							<?php form_close(); ?>
