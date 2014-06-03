@@ -178,7 +178,7 @@ class Order extends CI_Controller {
 
 		
 		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<div class="alert alert-danger"> <a href="#" class="close" data-dismiss="alert">&times;</a>', '</div>');
 		
 		$this->form_validation->set_rules('sustratum','Sustrato','required|xss_clean|callback_sel_sustrato');
 		$this->form_validation->set_rules('subtype','Subtipo','required|xss_clean|callback_sel_subtipo');
