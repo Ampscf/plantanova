@@ -148,7 +148,12 @@ class Order extends CI_Controller {
 	function pending_order_second_next_before(){
 		$id_order=$this->input->post('id_order');
 		if(!empty($this->input->post('next'))){
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_order_last.php';
+			$template['footer'] = "footer/view_footer.php";
+			$template['order'] = $id_order;
 			
+			$this->load->view('main',$template);
 			
 		}
 		else if(!empty($this->input->post('before'))){
@@ -516,5 +521,14 @@ class Order extends CI_Controller {
 			return FALSE;
 		}
 		return TRUE;
+	}
+	
+	public function temporal()
+	{
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_last.php';
+		$template['footer'] = "footer/view_footer.php";
+		
+		$this->load->view('main',$template);
 	}
 }
