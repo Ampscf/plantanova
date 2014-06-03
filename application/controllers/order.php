@@ -147,17 +147,24 @@ class Order extends CI_Controller {
 
 	function pending_order_second_next_before(){
 		$id_order=$this->input->post('id_order');
+		$restante=$this->input->post('restante');
 		if(!empty($this->input->post('next'))){
-			$template['header'] = 'header/view_admin_header.php';
-			$template['body'] = 'body/view_order_last.php';
-			$template['footer'] = "footer/view_footer.php";
-			$template['order']=$this->model_order->get_order_id_order($id_order);
-			$template['company']=$this->model_user->obtenerCliente($template['order']->result()[0]->id_client);
-			$template['plant']=$this->model_order->get_plant($template['order']->result()[0]->id_plant);
-			$template['category']=$this->model_order->get_category($template['order']->result()[0]->id_category);
-			$template['breakdown']=$this->model_order->get_breakdown($id_order);
 			
-			$this->load->view('main',$template);
+			
+			
+				$template['header'] = 'header/view_admin_header.php';
+				$template['body'] = 'body/view_order_last.php';
+				$template['footer'] = "footer/view_footer.php";
+				$template['order']=$this->model_order->get_order_id_order($id_order);
+				$template['company']=$this->model_user->obtenerCliente($template['order']->result()[0]->id_client);
+				$template['plant']=$this->model_order->get_plant($template['order']->result()[0]->id_plant);
+				$template['category']=$this->model_order->get_category($template['order']->result()[0]->id_category);
+				$template['breakdown']=$this->model_order->get_breakdown($id_order);
+				$template['restante']=$restante;
+			
+				$this->load->view('main',$template);
+			
+			
 			
 		}
 		else if(!empty($this->input->post('before'))){

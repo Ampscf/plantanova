@@ -84,7 +84,7 @@
 						
 						<div class="col-md-6">
 							<div class="input-group input-group-lg">
-								<p>Volumen restante: <?php echo 'var';?></p>
+								<p>Volumen restante: <?php echo $restante; ?></p>
 							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">

@@ -205,7 +205,8 @@
 						<input type="hidden" id="category" name="category" value="<?php echo $categ; ?>">
 						<input type="hidden" id="id_plant" name="id_plant" value="<?php echo $id_plant; ?>">
 						<input type="hidden"  id="id_order" name="id_order" value="<?php echo $id_order->result()[0]->id_order;?>">
-						
+						<input type="hidden" id="restante" name="restante" value="<?php echo $restante; ?>">
+
 						<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
 					    <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
 						</ul>
