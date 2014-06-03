@@ -549,7 +549,7 @@ Class model_order extends CI_Model
 	function submit_order($id)
 	{
 		$data = array(
-			'id_status' => 1;
+			'id_status' => 1
 		);
 		$this->db->where('id_order',$id);
 		$this->db->update('t_order', $data);
