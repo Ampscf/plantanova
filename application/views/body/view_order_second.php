@@ -27,6 +27,7 @@
 						<div class="col-md-12">
 							<h1>Contenido para desglose<h1>
 						</div>
+						<?php echo validation_errors(); ?>
 						<input type="hidden" value="<?php echo $id_order->result()[0]->id_order;?>" id="id_order" name="id_order">
 						<div class="clear">&nbsp</div>
 						<div class="col-md-12">
@@ -157,7 +158,7 @@
 												?>	
 											</select>
 										</div><!-- End Sustrato -->
-										<?php echo form_error('sustratum'); ?>
+										<!--<?php echo form_error('sustratum'); ?>-->
 										<div class="input-group">
 											<p>Subtipo</p>
 											<select class="form-control" name="subtype" id="subtype">
@@ -170,22 +171,22 @@
 												?>
 											</select>
 										</div><!-- End Subtipo -->
-										<?php echo form_error('subtype'); ?>
+										<!--<?php echo form_error('subtype'); ?>-->
 										<div class="input-group">
 											<p>Variedad</p>
 											<input type="text" class="form-control" placeholder="Variedad" name="variety" id="variety" value="">
 										</div><!-- End Variedad -->
-										<?php echo form_error('variety'); ?>
+										<!--<?php echo form_error('variety'); ?>-->
 										<div class="input-group">
 											<p>PortaInjerto</p>
 											<input type="text" class="form-control" placeholder="PortaInjerto" name="rootstock" id="rootstock" value="">
 										</div><!-- End PortaInjerto -->
-										<?php echo form_error('rootstock'); ?>										
+										<!--<?php echo form_error('rootstock'); ?>-->										
 										<div class="input-group">
 											<p>Volumen</p>
 											<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="">
 										</div><!-- End Volumen -->
-										<?php echo form_error('volume'); ?>						
+										<!--<?php echo form_error('volume'); ?>-->					
 					                </div>
 					                <div class="modal-footer">
 					                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
