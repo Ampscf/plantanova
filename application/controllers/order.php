@@ -151,16 +151,14 @@ class Order extends CI_Controller {
 		if(!empty($this->input->post('next'))){
 
 			if($restante>0){
+				
 				?><script languaje="javacript">
-				 alert('alert');
+				 alert('El Volumen Restante es Mayor al Volumen Total');
+				location.href='load_second_step_two/<?php echo $id_order; ?>';
 				</script>
 				<?php
-				$idplant=$this->input->post('id_plant');
-				$voltot=$this->input->post('voltot');
-				$categ=$this->input->post('category');
-				$id=$this->input->post('id_company');
-				$fecha=$this->input->post('fecha');
-				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
+				
+				
 				
 			}else{
 				$template['header'] = 'header/view_admin_header.php';
@@ -175,7 +173,6 @@ class Order extends CI_Controller {
 			
 				$this->load->view('main',$template);
 			}
-			
 			
 		}
 		else if(!empty($this->input->post('before'))){
@@ -216,7 +213,7 @@ class Order extends CI_Controller {
 		
 		if($this->form_validation->run() == FALSE) 
 		{
-			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
+			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
 		} else {
 			$data['id_order']=$id_order;
 			$data['id_subtype']=$this->input->post('subtype');
@@ -225,7 +222,7 @@ class Order extends CI_Controller {
 			$data['volume']=$this->input->post("volume");
 
 			if($this->model_order->insert_breakdown($data)>0){
-				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
+				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
 			}
 		}
 	
@@ -233,11 +230,15 @@ class Order extends CI_Controller {
 	}
 
 	public function order_last_next_before(){
+		$id_order=$this->input->post('id_order');
 		if(!empty($this->input->post('next'))){
+			
+			$this->model_order->submit_order($id_order);
+			redirect("order/index");
 
 		}
 		if(!empty($this->input->post('before'))){
-			$id_order=$this->input->post('id_order');
+			
 			redirect("order/load_second_step_two/".$id_order);
 		}
 	}
@@ -314,7 +315,10 @@ class Order extends CI_Controller {
 			}
 		}
 		$this -> model_order -> delete_order($llave);
-		redirect("order/pending_order", "refresh");
+		$this -> model_order -> delete_order_comment($llave);
+		$id_client=$this->input->post('id_client');
+		$this->pending_order_two($id_client);
+		//redirect("order/pending_order_two");
 	}
 
 	public function pending_order_first_next_before(){
@@ -358,13 +362,13 @@ class Order extends CI_Controller {
 				$categ=$data['id_category'];
 
 
-				$id_order=$this->model_order->get_id_order();					
+								
 				if($this->model_order->add_order($data) > 0 )
 				{	
 					$this->model_order->add_coment_oreder($datas);		
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order->result()[0]->id_order);				
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);				
 				}
 				else
 				{
@@ -432,7 +436,7 @@ class Order extends CI_Controller {
 					$this->model_order->update_coment_oreder($id_order,$datas);
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order);
 				
 
 				}
@@ -442,7 +446,7 @@ class Order extends CI_Controller {
 					unset($data);
 					$error['msj'] = "Error";
 					$error['errores'] = "Error al guardar al usuario";
-					$error['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
+					$error['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order);
 				
 				}
 			

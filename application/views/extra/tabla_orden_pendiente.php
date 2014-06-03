@@ -54,8 +54,9 @@
                 				</div>
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order'); ?>
+									<input type="hidden" id="id_client" name="id_client" value=" <?php echo $id_company; ?>">
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<input type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">
+                    					<input type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>" value="Eliminar">
                 					</form>
 								</div>
             				</div>

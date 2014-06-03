@@ -23,6 +23,7 @@
 						echo form_open('order/pending_order_next_before',$attributes);
 					?>
 					<input type="hidden" value="<?php echo $id_company;?>" id="id_company" name="id_company">
+					<input type="hidden" value="<?php echo $id_company;?>" id="companies" name="companies">
 							
 					<div class="panel-footer">
 					    <ul class="pager">
