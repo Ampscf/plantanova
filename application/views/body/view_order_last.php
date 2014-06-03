@@ -135,8 +135,14 @@
 									
 					<div class="panel-footer">
 						<ul class="pager">
+							<?php 
+							
+							echo form_open('order/order_last_next_before');
+							?>
+							<input type="hidden" id="id_order" name="id_order" value="<?php echo $order; ?>">
 							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
 					        <input type="submit" value="Agregar &rarr;" class="btn btn-default" style="float: right;" id="next" name="next"/>
+							<?php form_close(); ?>
 						</ul>
 					</div><!-- fin panel footer -->	
 					
@@ -144,4 +150,3 @@
 			</div>
       	</div><!-- @end .span12 -->
 	</div><!-- @end .row -->
-</div><!-- @end .container -->

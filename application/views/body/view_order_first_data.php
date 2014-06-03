@@ -115,12 +115,12 @@
 								<div class="input-group input-group-lg">
 									<p>Tutoreo</p>
 										<select class="form-control" name="tutoring" id="tutoring">
-											<?php if($tutoring==0){?>
-											<option value="0" selected>No</option>
-											<option value="1">Si</option>
+											<?php if($tutoring=="No"){?>
+											<option value="No" selected>No</option>
+											<option value="Si">Si</option>
 											<?php }else{?>
-											<option value="1" selected>Si</option>
-											<option value="0" >No</option>
+											<option value="Si" selected>Si</option>
+											<option value="No" >No</option>
 											<?php } ?>
 											
 											
