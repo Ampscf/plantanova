@@ -91,8 +91,8 @@
 								<div class="input-group input-group-lg">
 									<p>Tutoreo</p>
 										<select class="form-control" name="tutoring" id="tutoring">
-											<option value="0" selected>No</option>
-											<option value="1" selected>Si</option>
+											<option value="No" selected>No</option>
+											<option value="Si" >Si</option>
 										</select>
 								</div><!-- End Tutoring -->
 							<?php echo form_error('tutoring'); ?>

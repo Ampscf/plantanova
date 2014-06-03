@@ -207,10 +207,17 @@ class Order extends CI_Controller {
 			}
 		}
 	
-
-		
-
 	}
+	}
+
+	public function order_last_next_before(){
+		if(!empty($this->input->post('next'))){
+
+		}
+		if(!empty($this->input->post('before'))){
+			$id_order=$this->input->post('id_order');
+			redirect("order/load_second_step_two/".$id_order);
+		}
 	}
 
 	//carga las ordenes pendientes
@@ -285,12 +292,12 @@ class Order extends CI_Controller {
 			}
 		}
 		$this -> model_order -> delete_order($llave);
-		redirect("order/pending", "refresh");
+		redirect("order/pending_order", "refresh");
 	}
 
 	public function pending_order_first_next_before(){
 		$a=$this->input->post();
-		$id_client=$a['id_company'];
+		$id_client=$this->input->post('id_company');
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		
@@ -328,7 +335,7 @@ class Order extends CI_Controller {
 				$voltot=$data['total_volume'];
 				$categ=$data['id_category'];
 
-				$id_order=$this->input->post('id_order');
+				$id_order=$this->model_order->get_id_order();
 					
 				if($this->model_order->add_order($data) > 0 )
 				{
@@ -337,7 +344,7 @@ class Order extends CI_Controller {
 					
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order);
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order->result()[0]->id_order);
 					
 
 				}
