@@ -149,9 +149,20 @@ class Order extends CI_Controller {
 		$id_order=$this->input->post('id_order');
 		$restante=$this->input->post('restante');
 		if(!empty($this->input->post('next'))){
-			
-			
-			
+
+			if($restante>0){
+				?><script languaje="javacript">
+				 alert('alert');
+				</script>
+				<?php
+				$idplant=$this->input->post('id_plant');
+				$voltot=$this->input->post('voltot');
+				$categ=$this->input->post('category');
+				$id=$this->input->post('id_company');
+				$fecha=$this->input->post('fecha');
+				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
+				
+			}else{
 				$template['header'] = 'header/view_admin_header.php';
 				$template['body'] = 'body/view_order_last.php';
 				$template['footer'] = "footer/view_footer.php";
@@ -163,7 +174,7 @@ class Order extends CI_Controller {
 				$template['restante']=$restante;
 			
 				$this->load->view('main',$template);
-			
+			}
 			
 			
 		}
