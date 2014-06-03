@@ -93,7 +93,7 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);	
 	}
 	
-	public function load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order)
+	public function load_second_step($id, $fecha, $idplant, $voltot, $categ)
 	{
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_second.php';
@@ -110,9 +110,9 @@ class Order extends CI_Controller {
 		$template['volumen']=$voltot;
 		$template['categ']=$categ;
 		$template['categoria']=$this->model_order->get_category($categ); 
-		$template['id_order']=$this->model_order->get_order_id_order($id_order);
-		$template['breakdown']=$this->model_order->get_breakdown($id_order);
-		$template['suma_volumen']=$this->model_order->suma_volumen($id_order);
+		$template['id_order']=$this->model_order->get_id_order();
+		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
+		$template['suma_volumen']=$this->model_order->suma_volumen($template['id_order']->result()[0]->id_order);
 
 		
 		$this->load->view('main',$template);	
@@ -151,7 +151,11 @@ class Order extends CI_Controller {
 			$template['header'] = 'header/view_admin_header.php';
 			$template['body'] = 'body/view_order_last.php';
 			$template['footer'] = "footer/view_footer.php";
-			$template['order'] = $id_order;
+			$template['order']=$this->model_order->get_order_id_order($id_order);
+			$template['company']=$this->model_user->obtenerCliente($template['order']->result()[0]->id_client);
+			$template['plant']=$this->model_order->get_plant($template['order']->result()[0]->id_plant);
+			$template['category']=$this->model_order->get_category($template['order']->result()[0]->id_category);
+			$template['breakdown']=$this->model_order->get_breakdown($id_order);
 			
 			$this->load->view('main',$template);
 			
@@ -194,7 +198,7 @@ class Order extends CI_Controller {
 		
 		if($this->form_validation->run() == FALSE) 
 		{
-			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
+			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
 		} else {
 			$data['id_order']=$id_order;
 			$data['id_subtype']=$this->input->post('subtype');
@@ -203,7 +207,7 @@ class Order extends CI_Controller {
 			$data['volume']=$this->input->post("volume");
 
 			if($this->model_order->insert_breakdown($data)>0){
-				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
+				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ);
 			}
 		}
 	
@@ -328,16 +332,15 @@ class Order extends CI_Controller {
 				$voltot=$data['total_volume'];
 				$categ=$data['id_category'];
 
-				$id_order=$this->input->post('id_order');
 					
 				if($this->model_order->add_order($data) > 0 )
 				{
 					
-					$this->model_order->add_coment_oreder($datas);
+						$this->model_order->add_coment_oreder($datas);
 					
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order);
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
 					
 
 				}
@@ -408,7 +411,7 @@ class Order extends CI_Controller {
 					$this->model_order->update_coment_oreder($id_order,$datas);
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order);
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
 				
 
 				}
@@ -418,7 +421,7 @@ class Order extends CI_Controller {
 					unset($data);
 					$error['msj'] = "Error";
 					$error['errores'] = "Error al guardar al usuario";
-					$error['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order);
+					$error['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);
 				
 				}
 			
@@ -496,12 +499,12 @@ class Order extends CI_Controller {
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
-			{	
+			{
 				$llave=$key;
 			}
 		}
 		$this -> model_order -> delete_breakdown($llave);
-		redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+		redirect("order/pending_order_second_next_before", "refresh");
 	}
 	
 	public function sel_sustrato()
