@@ -26,10 +26,10 @@
 
 						<div class="clear">&nbsp</div>
 						<div class="col-md-12">
-							<h3><span class="glyphicon glyphicon-list-alt"></span>Datos de la orden</h3>
+							<h2><span class="glyphicon glyphicon-list-alt"></span> &nbsp; Datos de la orden</h2>
 						</div>
 						
-						<div class="col-md-6">
+						<div class="col-md-6" style="width: 32%;">
 								<div class="input-group input-group-lg">
 									<p>Fecha: <?php echo date("Y-m-d",strtotime($fecha))?></p>
 								</div><!-- End Plant -->
@@ -58,13 +58,16 @@
 						<div class="clear">&nbsp</div>
 						<div class="col-md-9">					
 								<div class="input-group input-group-lg">
-									<p>*Desglose de la orden:</p>
+									</p>
+									<p><b>*Desglose de la orden:</b></p>
+								</br>
 								</div><!-- End Desglose -->					
 						</div>
 						
 						<div class="col-md-3">					
 								<div class="input-group input-group-lg">
-									<a href="#myModal" class="btn btn-default" data-toggle="modal">+Agregar</a>
+									<a href="#myModal" class="btn btn-default" data-toggle="modal" style="margin-left: 71px;">+Agregar</a>
+									
 								</div><!-- End Desglose -->					
 						</div>
 						

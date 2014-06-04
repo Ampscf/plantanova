@@ -1,6 +1,6 @@
 <table class="table table-hover" id="tabla-empresa">
 	<thead>
-		<th class="col-md-1"># Cliente</th>
+		<th class="col-md-1" style="width:68px;"># Cliente</th>
 		<th>Empresa</th>
 		<th>RFC</th>
 		<th>Nombre</th>

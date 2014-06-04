@@ -39,10 +39,10 @@
 <body>
 	<div id="wrapper">
 		<!-- Contenedor para el encabezado de la pagina o la barra de encabezado -->
-				<nav class="navbar navbar-default" role="navigation">
+				<nav class="navbar navbar-default" role="navigation" style="min-height: 30px;padding-left: 30px;">
 					<div class="container">
 						<div class="navbar-header">
-							<a class="navbar-brand" href="#">
+							<a class="navbar-brand" href="#" style="height: 40px; padding: 5px;">
 								<img src="<?php echo base_url() . '/img/logo2.jpg'; ?>" alt="Logotipo" style="height:30px; width:auto;"/>
 							</a>
 							<!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

@@ -21,10 +21,10 @@
 						
 						<div class="clear">&nbsp</div>		
 						<div class="col-md-12">
-							<h4>*Datos del cliente</h4>
+							<h4><b>*Datos del cliente</b></h4>
 						</div>
 						
-						<div class="col-md-6">
+						<div class="col-md-6" style="width: 39%;">
 							<div class="input-group input-group-lg">
 								<p>Nombre Completo: <?php echo $company->result()[0]->first_name . " " . $company->result()[0]->last_name;?></p>
 							</div><!-- End Plant -->
@@ -60,10 +60,10 @@
 						
 						<div class="clear">&nbsp</div>		
 						<div class="col-md-12">
-							<h4>*Datos del pedido</h4>
+							<h4><b>*Datos del pedido</b></h4>
 						</div>
 						
-						<div class="col-md-6">
+						<div class="col-md-6"style="width: 39%;">
 							<div class="input-group input-group-lg">
 								<p>Fecha: <?php echo date("y-m-d", strtotime($order->result()[0]->order_date_delivery));?></p>
 							</div><!-- End Plant -->
@@ -98,7 +98,8 @@
 						
 						<div class="clear">&nbsp</div>					
 						<div class="input-group input-group-lg">
-							<h4>*Desglose de la orden:</h4>
+							<h4><b>*Desglose de la orden:</b></h4>
+						</p>
 						</div><!-- End Desglose -->					
 						
 						<table>

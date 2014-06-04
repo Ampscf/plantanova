@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6 col-md-offset-3" style="margin-left: 32%; width: 35%;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Inicio de sesión </h3>

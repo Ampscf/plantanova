@@ -40,7 +40,7 @@
 						<div class="col-md-12">
 							<div class="clear">&nbsp</div>
 							<div class="col-md-12">
-								<h3><span class="glyphicon glyphicon-list-alt"></span> Nuevo Pedido</h3>
+								<h2><span class="glyphicon glyphicon-list-alt"></span> Nuevo Pedido</h2>
 								<input type="hidden" value="<?php echo $id_client=$order->result()[0]->id_client;?>" id="id_company" name="id_company">
 								<input type="hidden" value="<?php echo $id_order=$order->result()[0]->id_order;?>" id="id_order" name="id_order">
 							</div>							
@@ -50,7 +50,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">									
 
-									<p>Tipo de Cultivo</p>
+									<h3>Tipo de Cultivo</h3>
 									<select class="form-control" name="plant" id="plant">
 										<option value="<?php echo $id_plant;?>" selected><?php echo $plant_name=$plant_name->result()[0]->plant_name; ?></option>
 										<?php 
@@ -65,14 +65,14 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Fecha de entrega</p>
+									<h3>Fecha de entrega</h3>
 									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly value="<?php echo $date;?>"></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Brazos</p>
+									<h3>Brazos</h3>
 									<select class="form-control" name="arms" id="arms">
 										<?php if($branch_number==2){?>
 											<option value="2" selected>2</option>
@@ -93,7 +93,7 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Categoría</p>
+									<h3>Categoría</h3>
 									<select class="form-control" name="category" id="category">
 										<option value="<?php echo $id_category;?>" selected><?php echo $category_name=$category_name->result()[0]->category_name; ?></option>
 										<?php 
@@ -107,13 +107,13 @@
 								<?php echo form_error('category'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Volumen</p>
+									<h3>Volumen</h3>
 									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="<?php echo $volume;?>">
 								</div><!-- End Volume -->
 								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Tutoreo</p>
+									<h3>Tutoreo</h3>
 										<select class="form-control" name="tutoring" id="tutoring">
 											<?php if($tutoring=="No"){?>
 											<option value="No" selected>No</option>

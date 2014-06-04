@@ -1,11 +1,11 @@
 <table  id="tabla-">
 	
-		<th class="col-md-1"># Orden</th>
+		<th># Orden</th>
 		<th>Tipo Cultivo</th>
 		<th>Categoria</th>
 		<th>Volumen</th>
 		<th>Fecha de Pedido</th>
-		<th>Editar</th>
+		<th>Editar/Eliminar</th>
 	
 	<tbody>
 		<?php 

@@ -5,6 +5,13 @@ body {
 	height:100%;
 	width:auto;
 }
+
+th {
+width: 130px;
+text-align: center;
+}
+
+
 #wrapper {
 	min-height:100%;
 	width:auto;

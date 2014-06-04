@@ -22,7 +22,7 @@
 						<div class="col-md-12">
 							<div class="clear">&nbsp</div>
 							<div class="col-md-12">
-								<h3><span class="glyphicon glyphicon-list-alt"></span> Nuevo Pedido</h3>
+								<h2><span class="glyphicon glyphicon-list-alt"></span> Nuevo Pedido</h2>
 							</div>
 
 							<input type="hidden" value="<?php echo $id_company;?>" id="id_company" name="id_company">
@@ -33,7 +33,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">									
 
-									<p>Tipo de Cultivo</p>
+									<h3>Tipo de Cultivo</h3>
 									<select class="form-control" name="plant" id="plant">
 										<option value="-1" selected>---Selecciona un cultivo---</option>
 										<?php 
@@ -48,14 +48,14 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Fecha de entrega</p>
+									<h3>Fecha de entrega</h3>
 									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Brazos</p>
+									<h3>Brazos</h3>
 									<select class="form-control" name="arms" id="arms">
 										<option value="2" selected>2</option>
 										<option value="1">1</option>
@@ -69,7 +69,7 @@
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Categoría</p>
+									<h3>Categoría</h3>
 									<select class="form-control" name="category" id="category">
 										<option value="-1" selected>---Selecciona una categoría---</option>
 										<?php 
@@ -83,13 +83,13 @@
 								<?php echo form_error('category'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Volumen</p>
+									<h3>Volumen</h3>
 									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="">
 								</div><!-- End Volume -->
 								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Tutoreo</p>
+									<h3>Tutoreo</h3>
 										<select class="form-control" name="tutoring" id="tutoring">
 											<option value="No" selected>No</option>
 											<option value="Si" >Si</option>
@@ -101,7 +101,7 @@
 							<div class="col-md-12">
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
-									<p>Comentarios</p>
+									<h3>Comentarios</h3>
 									<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>								
 								</div><!-- End Comments -->
 							</div>					
