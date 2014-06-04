@@ -93,7 +93,7 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);	
 	}
 	
-	public function load_second_step($id, $fecha, $idplant, $voltot, $categ)
+	public function load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order)
 	{
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_second.php';
@@ -110,7 +110,7 @@ class Order extends CI_Controller {
 		$template['volumen']=$voltot;
 		$template['categ']=$categ;
 		$template['categoria']=$this->model_order->get_category($categ); 
-		$template['id_order']=$this->model_order->get_id_order();
+		$template['id_order']=$this->model_order->get_order_id_order($id_order);
 		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
 		$template['suma_volumen']=$this->model_order->suma_volumen($template['id_order']->result()[0]->id_order);
 
@@ -364,11 +364,11 @@ class Order extends CI_Controller {
 
 								
 				if($this->model_order->add_order($data) > 0 )
-				{	
+				{	$id_order=$this->model_order->get_id_order();
 					$this->model_order->add_coment_oreder($datas);		
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ);				
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order->result()[0]->id_order);				
 				}
 				else
 				{
@@ -436,7 +436,7 @@ class Order extends CI_Controller {
 					$this->model_order->update_coment_oreder($id_order,$datas);
 					unset($data);
 					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order);
+					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order);
 				
 
 				}
