@@ -261,4 +261,9 @@ class Admin extends CI_Controller {
 		$this->load->view('main',$template);
 		
 	}
+	
+	function carga_tabla()
+	{
+		$this->load->view("extra/tabla_empresa.php");
+	}
 }

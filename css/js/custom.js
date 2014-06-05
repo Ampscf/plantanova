@@ -46,6 +46,13 @@
 		});
 		e.preventDefault();
 	 });
+
+	$("#proceso").click(function(event) {
+			$('#nuevo').removeClass('active');
+			$('#embarcado').removeClass('active');
+			$('#proceso').addClass('active');
+            $("#area").load(site_url + '');
+    });
 		
 	
 	//Obtiene los subtipos de sustrato para cargar dinamicamente el control select de semillas
