@@ -227,3 +227,24 @@
 			}
 			});
 	}
+	
+	function changeClass()
+	{
+		$('#nuevo').removeClass('active');
+		$('#embarcado').removeClass('active');
+		$('#proceso').addClass('active');
+	}
+	
+	function changeClass2()
+	{
+		$('#nuevo').addClass('active');
+		$('#embarcado').removeClass('active');
+		$('#proceso').removeClass('active');
+	}
+	
+	function changeClass3()
+	{
+		$('#nuevo').removeClass('active');
+		$('#embarcado').addClass('active');
+		$('#proceso').removeClass('active');
+	}
