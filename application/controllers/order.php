@@ -526,10 +526,11 @@ class Order extends CI_Controller {
             if(is_int($key))
             {    
                 $llave=$key;
+
             }
         }
-        $this -> model_order -> delete_breakdown($llave);
-        redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+       $this -> model_order -> delete_breakdown($llave);
+       redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
     }
 	
 	public function sel_sustrato()

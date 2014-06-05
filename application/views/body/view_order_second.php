@@ -97,19 +97,19 @@
 										echo "<td>" . $key->rootstock . "</td>";
 										echo "<td>" . $key->volume . "</td>";
 										echo "<td>"?>
-										<a href="#delModal" class="btn btn-default"
+										<a href="#delModal<?php echo $key->id_breakdown;?>" class="btn btn-default"
 						                    title="Eliminar"
 						                    data-toggle="modal">
 											<i class="fa fa-times"></i>
 						                </a>
 										
 										<!-- Modal para eliminar -->
-									    <div id="delModal" class="modal fade">
+									    <div id="delModal<?php echo $key->id_breakdown;?>" class="modal fade">
 									        <div class="modal-dialog">
 									            <div class="modal-content">
 									                <div class="modal-header">
 									                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									                    <h4 class="modal-title">Confirmación</h4>
+									                    <h4 class="modal-title">Confirmación </h4>
 									                </div>
 									                <div class="modal-body">
 									                    <p>¿Estás seguro de querer eliminar este desglose?</p>
