@@ -47,10 +47,25 @@
 		e.preventDefault();
 	 });
 
+	//Funciones para cambiar las ventanas de los pedidos y marcar la ventana activa
+	$("#nuevo").click(function(event) {
+			$('#nuevo').addClass('active');
+			$('#embarcado').removeClass('active');
+			$('#proceso').removeClass('active');
+            $("#area").load(site_url + '');
+    });
+
 	$("#proceso").click(function(event) {
 			$('#nuevo').removeClass('active');
 			$('#embarcado').removeClass('active');
 			$('#proceso').addClass('active');
+            $("#area").load(site_url + '');
+    });
+
+	$("#embarcado").click(function(event) {
+			$('#nuevo').removeClass('active');
+			$('#embarcado').addClass('active');
+			$('#proceso').removeClass('active');
             $("#area").load(site_url + '');
     });
 		
@@ -104,29 +119,6 @@
 			$("#category [value='-1']").remove();
 		}
 	}
-	
-	//Obtiene los datos de una empresa
-	/*function get_companie_info($id_user)
-	{
-		if($("#companies [value='-1']").length)
-		{
-			$("#companies [value='-1']").remove();
-		}
-		$.ajax({
-			url: site_url + 'order/get_companie_info',
-			data: "fafavvgf",
-			type: "POST",
-			sucess: function(data){
-				$("#p1").load(data);	
-			},
-			failure:function(data){
-				
-			}
-		});
-	}*/
-
-	
-
 	
 		
 		//obtiene la posicion de las compañias y manda el valor al controlador para cargarlo despues
@@ -233,25 +225,4 @@
 				alert("fallo");
 			}
 			});
-	}
-	
-	function changeClass()
-	{
-		$('#nuevo').removeClass('active');
-		$('#embarcado').removeClass('active');
-		$('#proceso').addClass('active');
-	}
-	
-	function changeClass2()
-	{
-		$('#nuevo').addClass('active');
-		$('#embarcado').removeClass('active');
-		$('#proceso').removeClass('active');
-	}
-	
-	function changeClass3()
-	{
-		$('#nuevo').removeClass('active');
-		$('#embarcado').addClass('active');
-		$('#proceso').removeClass('active');
 	}
