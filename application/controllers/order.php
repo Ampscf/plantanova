@@ -148,7 +148,7 @@ class Order extends CI_Controller {
 	function pending_order_second_next_before(){
 		$id_order=$this->input->post('id_order');
 		$restante=$this->input->post('restante');
-		if(!empty($this->input->post('next'))){
+		if($this->input->post('next')){
 
 			if($restante>0){
 				
@@ -175,7 +175,7 @@ class Order extends CI_Controller {
 			}
 			
 		}
-		else if(!empty($this->input->post('before'))){
+		else if($this->input->post('before')){
 			
 			$template['order']=$this->model_order->get_order_id_order($id_order);
 			$co=$this->model_order->get_order_comment($id_order);
@@ -192,7 +192,7 @@ class Order extends CI_Controller {
 
 			$this->load->view('main',$template);	
 
-		}else if(!empty($this->input->post('save'))){
+		}else if($this->input->post('save')){
 
 		$idplant=$this->input->post('id_plant');
 		$voltot=$this->input->post('voltot');
@@ -231,13 +231,13 @@ class Order extends CI_Controller {
 
 	public function order_last_next_before(){
 		$id_order=$this->input->post('id_order');
-		if(!empty($this->input->post('next'))){
+		if($this->input->post('next')){
 			
 			$this->model_order->submit_order($id_order);
 			redirect("order/index");
 
 		}
-		if(!empty($this->input->post('before'))){
+		if($this->input->post('before')){
 			
 			redirect("order/load_second_step_two/".$id_order);
 		}
@@ -293,13 +293,13 @@ class Order extends CI_Controller {
 
 	//funcion para valorar a donde dirigirse en la orden pendiente atras o adelante
 	public function pending_order_next_before(){
-		if(!empty($this->input->post('next'))){
+		if($this->input->post('next')){
 			$a=$this->input->post();
 			$id_client=$a['id_company'];
 			$template['body']=$this->load_first_step($id_client);
 			
 		}
-		else if(!empty($this->input->post('before'))){
+		else if($this->input->post('before')){
 			$this->carga_ordenes();
 		}
 		
@@ -321,6 +321,22 @@ class Order extends CI_Controller {
 		//redirect("order/pending_order_two");
 	}
 
+	function delete_order_pedido()
+	{
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this -> model_order -> delete_order($llave);
+		$this -> model_order -> delete_order_comment($llave);
+		$id_client=$this->input->post('id_client');
+		$this->index();
+		//redirect("order/pending_order_two");
+	}
+
 	public function pending_order_first_next_before(){
 		$a=$this->input->post();
 		$id_client=$this->input->post('id_company');
@@ -335,7 +351,7 @@ class Order extends CI_Controller {
 		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
 		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
-		if(!empty($this->input->post('next'))){
+		if($this->input->post('next')){
 			if($this->form_validation->run() == FALSE) 
 			{
 				//vuelve a la pagina de registro e imprime los errores
@@ -382,7 +398,7 @@ class Order extends CI_Controller {
 			
 			
 		}
-		else if(!empty($this->input->post('before'))){
+		else if($this->input->post('before')){
 			$template['body']=$this->pending_order_two($id_client);
 			
 		}
@@ -402,7 +418,7 @@ class Order extends CI_Controller {
 		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
 		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
-		if(!empty($this->input->post('next'))){
+		if($this->input->post('next')){
 			if($this->form_validation->run() == FALSE) 
 			{
 				//vuelve a la pagina de registro e imprime los errores
@@ -454,7 +470,7 @@ class Order extends CI_Controller {
 			
 			
 		}
-		else if(!empty($this->input->post('before'))){
+		else if($this->input->post('before')){
 			$template['body']=$this->pending_order_two($id_client);
 			
 		}
@@ -560,5 +576,9 @@ class Order extends CI_Controller {
 		$template['footer'] = "footer/view_footer.php";
 		
 		$this->load->view('main',$template);
+	}
+
+	function edit_order(){
+		$this->load_second_step_two();
 	}
 }
