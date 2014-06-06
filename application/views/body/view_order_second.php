@@ -66,7 +66,7 @@
 						
 						<div class="col-md-3">					
 								<div class="input-group input-group-lg">
-									<a href="#myModal" class="btn btn-default" data-toggle="modal" style="margin-left: 71px;">+Agregar</a>
+									<a href="#myModal" class="btn btn-success" data-toggle="modal" style="margin-left: 71px;">+Agregar</a>
 									
 								</div><!-- End Desglose -->					
 						</div>

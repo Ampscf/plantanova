@@ -6,9 +6,12 @@ body {
 	width:auto;
 }
 
+/*Estilo del header de la tabla*/
 th {
-width: 130px;
-text-align: center;
+	width: 130px;
+	text-align: center;
+	border-bottom: 1px solid;
+	border-top: 1px solid;
 }
 
 
