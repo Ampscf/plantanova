@@ -58,6 +58,7 @@
 								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/index','Ver pedidos'); ?></li>
 								<li style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido'); ?></li>
 								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 										<?php echo $this->session->userdata('mail'); ?>
