@@ -44,6 +44,6 @@ Class model_seeds extends CI_Model
 		$this->db->delete('t_seeds');	
 	}
 }
->>>>>>> 1f688384b2300fcc47990c22c11853fe93dec26f
+
 
 ?>

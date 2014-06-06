@@ -157,6 +157,7 @@
 				{
 					$("#content").html(errno.template);
 					notas("Cuenta registrada!.","success");
+					window.location ="list_clients";
 					
 				}
 			},

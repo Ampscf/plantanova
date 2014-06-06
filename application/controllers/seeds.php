@@ -31,12 +31,12 @@ class Seeds extends CI_Controller {
 	//Registra un usuario 
 	function register_seeds() 
 	{
-		$datos['order']=$this->model_seeds-> get_orders();
+		$datos['order']=$this->model_seeds->get_orders();
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 	 	
 	 	//Valida los campos que se reciben
-		$this->form_validation->set_rules('id_order','Orden','required|xss_clean');
+		$this->form_validation->set_rules('id_order','Orden','required|xss_clean|callback_sel_order');
 		$this->form_validation->set_rules('seed_name','Nombre','required|xss_clean');
 		$this->form_validation->set_rules('batch','Tipo','required|xss_clean');
 		$this->form_validation->set_rules('volume','Cantidad','required|numeric|xss_clean');
@@ -80,7 +80,8 @@ class Seeds extends CI_Controller {
 				$error['template'] = $this->load->view('body/view_seeds_register',$datos,TRUE);
 				echo json_encode($error);
 			}
-		} 
+		}
+	} 
 
 	
 	public function delete_seed()
@@ -95,6 +96,15 @@ class Seeds extends CI_Controller {
 		$this -> model_seeds -> delete_seeds($llave);
 		redirect("seeds/index", "refresh");
 
+	}
+
+	function sel_order(){
+		if($this->input->post('id_order') == "-1")
+		{
+			$this->form_validation->set_message('sel_order', 'Selecciona una %s.');
+			return FALSE;
+		}
+		return TRUE;
 	}
 }
 
