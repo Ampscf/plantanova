@@ -33,15 +33,49 @@ Class model_breakdown extends CI_Model
 	function get_finish_orders()
 	{
 		$this->db->where('id_status',3);
-		$this->db->get('t_order');
+		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
 		{
-			return $uqery->result();
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_user($id){
+		$this->db->where('id_user',$id);
+		$query=$this->db->get('t_user');
+
+		if($query->num_rows()>0)
+		{
+			return $query->result();
 		}
 		else return false;
 	}
 	
+	function get_category($id){
+		$this->db->where('id_category',$id);
+		$query=$this->db->get('t_category');
+
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_plant($id){
+		$this->db->where('id_plant',$id);
+		$query=$this->db->get('t_plant');
+
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+
 }
 	
 ?>

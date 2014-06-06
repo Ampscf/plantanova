@@ -6,6 +6,7 @@ class Order extends CI_Controller {
 	   parent::__construct();
 	   $this->load->model('model_user','',TRUE);
 	   $this->load->model('model_order','',TRUE);
+	   $this->load->model('model_breakdown','',TRUE);
 	}
 
 	public function index()
@@ -14,7 +15,7 @@ class Order extends CI_Controller {
 		$template['body'] = 'body/view_admin_body.php';
 		$template['footer'] = "footer/view_footer.php";
 		//Manda los datos necesarios para cargar los pedidos y datos del usuario
-		$template['pedidos'] = $this->model_order->get_orders('99');
+		$template['pedidos'] = $this->model_breakdown->get_new_orders();
 
 		$this->load->view('main',$template);
 	}

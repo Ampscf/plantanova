@@ -52,21 +52,21 @@
 			$('#nuevo').addClass('active');
 			$('#embarcado').removeClass('active');
 			$('#proceso').removeClass('active');
-            $("#area").load(site_url + '');
+            $("#area").load(site_url + 'breakdown/pedido_nuevo');
     });
 
 	$("#proceso").click(function(event) {
 			$('#nuevo').removeClass('active');
 			$('#embarcado').removeClass('active');
 			$('#proceso').addClass('active');
-            $("#area").load(site_url + '');
+            $("#area").load(site_url + 'breakdown/pedido_proceso');
     });
 
 	$("#embarcado").click(function(event) {
 			$('#nuevo').removeClass('active');
 			$('#embarcado').addClass('active');
 			$('#proceso').removeClass('active');
-            $("#area").load(site_url + '');
+            $("#area").load(site_url + 'breakdown/pedido_embarcado');
     });
 		
 	

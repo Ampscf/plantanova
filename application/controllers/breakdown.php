@@ -17,4 +17,22 @@ class Breakdown extends CI_Controller {
 
 		$this->load->view('main',$template);
 	}
+
+	public function pedido_nuevo(){
+		
+		$template['pedidos'] = $this->model_breakdown->get_new_orders();
+		$this->load->view("extra/tabla_pedido_nuevo",$template);
+	}
+
+	public function pedido_proceso(){
+		$template['pedidos_proceso'] = $this->model_breakdown->get_process_orders();
+		$this->load->view("extra/tabla_pedido_proceso",$template);
+	}
+
+	public function pedido_embarcado(){
+		$template['pedidos_embarcados'] = $this->model_breakdown->get_finish_orders();
+		$this->load->view("extra/tabla_pedido_embarcado",$template);
+
+		
+	}
 }
