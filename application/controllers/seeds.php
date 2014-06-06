@@ -11,12 +11,13 @@ class Seeds extends CI_Controller {
 
 	public function index(){
 		$template['header'] = "header/view_admin_header.php";
-		$template['body'] = "body/view_admin_register_client_body.php";
+		$template['body'] = "body/view_seeds.php";
 		$template['footer'] = "footer/view_footer.php";
-		
+		$template['seeds'] = $this->model_seeds->get_seeds_lists();
 			
 		$this->load->view('main',$template);
 	}
+
 
 	public function register_seeds_form(){
 		$template['header'] = "header/view_admin_header.php";
@@ -80,6 +81,20 @@ class Seeds extends CI_Controller {
 				echo json_encode($error);
 			}
 		} 
+
+	
+	public function delete_seed()
+	{
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this -> model_seeds -> delete_seeds($llave);
+		redirect("seeds/index", "refresh");
+
 	}
 }
 
