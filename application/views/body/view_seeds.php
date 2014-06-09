@@ -4,7 +4,7 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="table-responsive">
-							<?php echo anchor('admin/register_client_form','Agregar Nuevo', 'class="btn btn-success"'); ?>
+							<?php echo anchor('seeds/register_seeds_form','Agregar Nuevo', 'class="btn btn-success"'); ?>
 							<?php include_once('application/views/extra/tabla_semillas.php'); ?>
 						</div>
 					</div>

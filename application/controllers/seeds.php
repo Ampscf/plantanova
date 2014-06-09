@@ -80,7 +80,7 @@ class Seeds extends CI_Controller {
 				$error['template'] = $this->load->view('body/view_seeds_register',$datos,TRUE);
 				echo json_encode($error);
 			}
-		}
+		}	
 	} 
 
 	
@@ -107,5 +107,5 @@ class Seeds extends CI_Controller {
 		return TRUE;
 	}
 }
-
+	
 ?>
