@@ -112,3 +112,16 @@ textarea
 {
 	background: none repeat scroll 0% 0% #6BBD44 !important;
 }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	background-color: #6BBD44 !important;
+}
+
+.nav-pills > li > a {
+	border-radius: 0px !important;
+}
+
+/*Estilo de las pestañas para ordenes nuevas*/
+.order-navs {
+	border-bottom: 1px solid;
+}
