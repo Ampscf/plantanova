@@ -3,11 +3,11 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
 					
-					<div class="">
+					<div class="order-navs">
 					<ul class="nav nav-pills">
-						<li id="nuevo" class="active"><a href="#">Nuevos</a></li>
-						<li id="proceso"><a href="#">En proceso</a></li>
-						<li id="embarcado"><a href="#">Embarcados</a></li>
+						<li class="active"><?php echo anchor('breakdown/index', 'Nuevos') ?></li>
+						<li><?php echo anchor('breakdown/pedido_proceso', 'En proceso') ?></li>
+						<li><?php echo anchor('breakdown/pedido_embarcado', 'Embarcados') ?></li>
 					</ul>
 					</div>
 					
