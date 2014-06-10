@@ -17,7 +17,8 @@
 			{
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
-				echo "<td>" . $key->order_date_delivery . "</td>";
+				
+				echo "<td>" . date("Y-m-d",strtotime($key->order_date_delivery)) . "</td>";
 				echo "<td>Completados</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";

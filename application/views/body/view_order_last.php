@@ -6,10 +6,13 @@
 					<div class="panel-header">				
 						<ul class="nav nav-tabs">
 							<li><a>Cliente</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Orden</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Desglose</a></li>
+							<li><a>&rarr;</a></li>
 							<li class="active"><a>Resumen</a></li>
-							<li style="position: relative; left:50%;"><a>Cliente: <?php echo $company->result()[0]->farm_name ?></a></li>
+							<li style="position: relative; left:35%;"><a>Cliente: <?php echo $company->result()[0]->farm_name ?></a></li>
 						</ul>
 					</div>	
 									

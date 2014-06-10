@@ -63,7 +63,7 @@
 							<?php echo form_error('volume'); ?>
 
 							<div class="clear">&nbsp</div>
-							<h3>Tipo</h3>
+							<h3>Variedad / Portainjerto</h3>
 							<div class="input-group input-group-lg">
 								<select class="form-control" name="type" id="type">
 									<?php if ($seed->result()[0]->type=="Variedad"){?>

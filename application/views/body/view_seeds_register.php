@@ -22,10 +22,9 @@
 						<div class="clear">&nbsp</div>
 
 						<div class="col-md-6">
+							<h3># Orden</h3>
 							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-globe"></span>
-								</div>
+								
 								<select class="form-control" name="id_order" id="id_order" onchange="get_order(this.value);">
 									<option value="-1" selected>---Selecciona una Orden---</option>
 									<?php 
@@ -40,41 +39,34 @@
 
 							<div class="clear">&nbsp</div>
 
-							
+							<h3>Nombre</h3>
 							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<i class="fa fa-home"></i>
-								</div>
+								
 								<input type="text" class="form-control" placeholder="Nombre" name="seed_name" id="seed_name" value="<?php echo set_value('seed_name'); ?>">
 							</div><!-- End address number -->
 							<?php echo form_error('seed_name'); ?>
 
 							<div class="clear">&nbsp</div>
-
+							<h3>Lote</h3>
 							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<i class="fa fa-home"></i>
-								</div>
+								
 								<input type="text" class="form-control" placeholder="Lote" name="batch" id="batch" value="<?php echo set_value('batch'); ?>">
 							</div><!-- End street -->
 							<?php echo form_error('batch'); ?>
 						</div>						
 
 						<div class="col-md-6">
+							<h3>Cantidad</h3>
 							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<i class="fa fa-envelope"></i>
-								</div>
+								
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume" value="<?php echo set_value('volume'); ?>">
 							</div><!-- End cp -->
 							<?php echo form_error('volume'); ?>
 
 							<div class="clear">&nbsp</div>
-
+							<h3>Variedad / Portainjerto</h3>
 							<div class="input-group input-group-lg">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-picture"></span>
-								</div>
+								
 								<select class="form-control" name="type" id="type">
 									<option selected>Variedad</option>
 									<option >Portainjerto</option>

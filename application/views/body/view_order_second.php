@@ -1,3 +1,4 @@
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -6,10 +7,13 @@
 					<div class="panel-header">				
 						<ul class="nav nav-tabs">
 							<li><a>Cliente</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Orden</a></li>
+							<li><a>&rarr;</a></li>
 							<li class="active"><a>Desglose</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Resumen</a></li>
-							<li style="position: relative; left:50%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
+							<li style="position: relative; left:35%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
 
 						</ul>
 					</div>	

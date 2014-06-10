@@ -154,7 +154,7 @@ class Order extends CI_Controller {
 			if($restante>0){
 				
 				?><script languaje="javacript">
-				 alert('AÚN SE CUENTA CON VOLUMEN RESTANTE');
+				 alert('A'+'\u00da'+'N SE CUENTA CON VOLUMEN RESTANTE');
 				location.href='load_second_step_two/<?php echo $id_order; ?>';
 				</script>
 				<?php

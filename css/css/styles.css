@@ -2671,7 +2671,7 @@ div.tagsinput div {
   margin: 0px 5px;
 }
 .dataTables_filter {
-  width: 50%;
+  width: 100%;
   float: right;
   padding-left: 5px;
   padding: 10px 5px;

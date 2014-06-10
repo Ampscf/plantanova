@@ -6,8 +6,11 @@
 					<div class="panel-header">				
 						<ul class="nav nav-tabs">
 							<li class="active"><a>Cliente</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Orden</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Desglose</a></li>
+							<li><a>&rarr;</a></li>
 							<li><a>Resumen</a></li>
 						</ul>
 					</div>	

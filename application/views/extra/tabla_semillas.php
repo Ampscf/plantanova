@@ -1,6 +1,6 @@
 <table class="table table-hover" id="tabla-empresa">
 	<thead>
-		<th class="col-md-1" style="width:68px;">Fecha</th>
+		<th class="col-md-1" style="width: 100px;">Fecha</th>
 		<th>Empresa</th>
 		<th>Cantidad</th>
 		<th>Nombre</th>
@@ -16,7 +16,7 @@
 			foreach ($seeds as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->seeds_date . "</td>";
+				echo "<td>" . date("Y-m-d",strtotime($key->seeds_date)) . "</td>";
 				echo "<td>" . $key->farm_name . "</td>";
 				echo "<td>" . $key->volume . "</td>";
 				echo "<td>" . $key->seed_name . "</td>";
@@ -29,7 +29,7 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Modificar"
-	                   href="edit_seeds/<?php echo $key->id_seed; ?>">
+	                    href="edit_seeds/<?php echo $key->id_seed; ?>">
 	                    <i class="fa fa-edit"></i>
 	                   
 	                </a>
