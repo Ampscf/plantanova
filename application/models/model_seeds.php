@@ -43,7 +43,26 @@ Class model_seeds extends CI_Model
 		$this->db->where('id_seed',$id);
 		$this->db->delete('t_seeds');	
 	}
+
+	function get_seed_id($id){
+		$this->db->where('id_seed',$id);
+		$query=$this->db->get('t_seeds');
+		if($query->num_rows()>0){
+			
+			return $query;
+
+		}else{
+			return false;
+		}
+	}
+
+	function update_seed($id_seed,$data)
+	{
+		$this->db->where('id_seed',$id_seed);
+		$this->db->update('t_seeds', $data);
+		return $this->db->affected_rows();
+	}
+
+
 }
-
-
 ?>

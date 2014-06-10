@@ -29,7 +29,7 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Modificar"
-	                   href="edit/<?php echo $key->id_seed; ?>">
+	                   href="edit_seeds/<?php echo $key->id_seed; ?>">
 	                    <i class="fa fa-edit"></i>
 	                   
 	                </a>

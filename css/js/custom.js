@@ -157,12 +157,40 @@
 				{
 					$("#content").html(errno.template);
 					notas("Cuenta registrada!.","success");
-					window.location ="list_clients";
+					window.location ="seeds/index";
 					
 				}
 			},
 			failure:function(data){
 				notas("Error en el registro","error");
+			}
+		});
+	}
+
+	function updateseeds()
+	{
+		form = $("#update_seeds");
+		$.ajax({
+			url: form.attr('action'),
+			data: form.serialize(),
+			type: form.attr('method'),
+			success: function(data){
+				errno = JSON.parse(data);
+				if(errno.msj == "Error")
+				{
+					$("#content").html(errno.template);
+					notas(errno.errores,"error");
+				}
+				else
+				{
+					$("#content").html(errno.template);
+					notas("Cuenta editada!.","success");
+					window.location ="../index";
+				}
+			},
+			failure:function(data){
+				notas("Error en el registro","error");
+
 			}
 		});
 	}
