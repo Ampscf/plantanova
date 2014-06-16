@@ -539,6 +539,12 @@ Class model_order extends CI_Model
 		$this->db->delete('t_order', array('id_order' => $id)); 
 	}
 
+	function delete_sowing($id)
+	{
+		$this->db->where('id_sowing',$id);
+		$this->db->delete('t_sowing');
+	}
+
 	function delete_order_comment($id)
 	{
 		$this->db->delete('t_order_comments', array('id_order' => $id)); 
@@ -559,6 +565,24 @@ Class model_order extends CI_Model
 		$this->db->where('id_order',$id);
 		$this->db->update('t_order', $data);
 	}
+
+	function add_sowing($datos)
+	{
+		$this->db->insert('t_sowing', $datos);
+		return $this->db->affected_rows();
+	}
+
+	function get_sowing($datos){
+		$this->db->where('id_order',$datos);
+		$query=$this->db->get('t_sowing');
+		
+			if($query->num_rows()>0)
+			{
+				return $query->result();
+			}
+			else return false;
+	}
+
 
 }
 

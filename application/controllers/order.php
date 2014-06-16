@@ -579,7 +579,51 @@ class Order extends CI_Controller {
 		$this->load->view('main',$template);
 	}
 
-	function edit_order(){
-		$this->load_second_step_two();
+	public function edit_order(){
+		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_sowing.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['id_company']=$order->result()[0]->id_client;
+		$template['company']=$this->model_user->get_client($order->result()[0]->id_client);
+		$template['fecha']=$order->result()[0]->order_date_submit;
+		$template['id_plant']=$order->result()[0]->id_plant;
+		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
+		$template['volumen']=$order->result()[0]->total_volume;
+		$template['categ']=$order->result()[0]->id_category;
+		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category); 
+		$template['id_order']=$this->uri->segment(3);
+		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
+		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
+		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+
+
+
+		$this->load->view('main',$template);	
 	}
+
+	public function insert_sowing(){
+		$datos['id_breakdown']=$this->input->post('breakdown');
+		$datos['volume']=$this->input->post('volume');
+		$datos['comment']=$this->input->post('comment');
+		$datos['id_order']=$this->uri->segment(3);
+
+		$this->model_order->add_sowing($datos);
+		redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+
+	}
+
+	public function delete_sowing()
+    {
+        foreach ($_POST as $key => $value)
+        {
+            if(is_int($key))
+            {    
+                $llave=$key;
+
+            }
+        }
+       $this->model_order-> delete_sowing($llave);
+       redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+    }
 }
