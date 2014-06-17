@@ -137,7 +137,10 @@
 					
 				</div>
 			<div>
-			
+			<?php 
+			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');
+			echo form_open('breakdown/insert_germination/'.$this->uri->segment(3),$attributes); 
+			?>
 			<div id="myModal" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
@@ -148,13 +151,13 @@
                 		<div class="modal-body">
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
-								<select class="form-control" name="breakdown" id="breakdown" >
+								<select class="form-control" name="breakdown_germination" id="breakdown_germination" >
 									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
 										<?php 
-											/*foreach($breakdown as $key)
+											foreach($breakdown as $key)
 											{
 												echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
-											}*/
+											}
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
@@ -172,74 +175,288 @@
 							</div><!-- End Alcance -->	                    		
                 		</div>
                 		<div class="modal-footer">
-							<?php echo form_open('order/delete_sowing/'.$this->uri->segment(3)); ?>
-                    			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     			<button type="submit" class="btn btn-success" name="">Confirmar</button>
                 			</form>
+                			<script>
+					    
+						$("#insert_germination").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+								viability: {
+									required: true,
+									number: true
+								},
+								breakdown_germination: {
+						            selectcheck: true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                viability: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("selectcheck", selectcheck, "Selecciona una Variedad/Portainjerto");
+
+						function selectcheck(){
+							if (document.getElementById('breakdown_germination').value < 0){
+								return false;
+							}else return true;
+						}
+
+							
+						</script>
 						</div>
             		</div>
         		</div>
     		</div>
 			
+			<?php 
+			$attributes = array('id' => 'insert_graft','name'=>'insert_graft');
+			echo form_open('breakdown/insert_graft/'.$this->uri->segment(3),$attributes); 
+			?>
 			<div id="myModal1" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
                     		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    		<h4 class="modal-title">Germinación</h4>
+                    		<h4 class="modal-title">Injerto</h4>
                 		</div>
                 		<div class="modal-body">
-                    		<p>¿Estás seguro de querer eliminar este registro?</p>
+							<div class="input-group">
+								<p>Variedad/Portainjerto</p>
+								<select class="form-control" name="breakdown_graft" id="breakdown_graft" >
+									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+										<?php 
+											foreach($breakdown as $key)
+											{
+												echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
+											}
+										?>	
+								</select>
+							</div><!-- End Cantidad -->
+							<div class="input-group">
+								<p>Cantidad</p>
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+							</div><!-- End Cantidad -->	
+							<div class="input-group">
+								<!--<p>Viabilidad</p>
+								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">
+							</div><!-- End Viabilidad -->
+							<div class="input-group">
+								<p>Comentario</p>
+								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
+							</div><!-- End Alcance -->	                    		
                 		</div>
                 		<div class="modal-footer">
-							<?php echo form_open('order/delete_sowing/'.$this->uri->segment(3)); ?>
-                    			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     			<button type="submit" class="btn btn-success" name="">Confirmar</button>
                 			</form>
+                			<script>
+					    
+						$("#insert_graft").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+								breakdown_graft: {
+						            selectcheck_graft: true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                viability: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("selectcheck_graft", selectcheck_graft, "Selecciona una Variedad/Portainjerto");
+
+						function selectcheck_graft(){
+							if (document.getElementById('breakdown_graft').value < 0){
+								return false;
+							}else return true;
+						}
+						</script>
 						</div>
             		</div>
         		</div>
     		</div>
+    	</div>
 			
-			<div id="myModa2" class="modal fade">
+			<?php 
+			$attributes = array('id' => 'insert_planted','name'=>'insert_planted');
+			echo form_open('breakdown/insert_planted/'.$this->uri->segment(3),$attributes); 
+			?>
+			<div id="myModal2" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
                     		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    		<h4 class="modal-title">Germinación</h4>
+                    		<h4 class="modal-title">Injerto</h4>
                 		</div>
                 		<div class="modal-body">
-                    		<p>¿Estás seguro de querer eliminar este registro?</p>
+							<div class="input-group">
+								<p>Variedad/Portainjerto</p>
+								<select class="form-control" name="breakdown_planted" id="breakdown_planted" >
+									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+										<?php 
+											foreach($breakdown as $key)
+											{
+												echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
+											}
+										?>	
+								</select>
+							</div><!-- End Cantidad -->
+							<div class="input-group">
+								<p>Cantidad</p>
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+							</div><!-- End Cantidad -->	
+							<div class="input-group">
+								<!--<p>Viabilidad</p>
+								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">
+							</div><!-- End Viabilidad -->
+							<div class="input-group">
+								<p>Comentario</p>
+								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
+							</div><!-- End Alcance -->	                    		
                 		</div>
                 		<div class="modal-footer">
-							<?php echo form_open('order/delete_sowing/'.$this->uri->segment(3)); ?>
-                    			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     			<button type="submit" class="btn btn-success" name="">Confirmar</button>
                 			</form>
+                			<script>
+					    
+						$("#insert_planted").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+								breakdown_planted: {
+						            selectcheck_planted: true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                viability: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("selectcheck_planted", selectcheck_planted, "Selecciona una Variedad/Portainjerto");
+
+						function selectcheck_planted(){
+							if (document.getElementById('breakdown_planted').value < 0){
+								return false;
+							}else return true;
+						}
+						</script>
 						</div>
             		</div>
         		</div>
     		</div>
+    	</div>
 			
-			<div id="myModa3" class="modal fade">
+			<?php 
+			$attributes = array('id' => 'insert_transplant','name'=>'insert_transplant');
+			echo form_open('breakdown/insert_transplant/'.$this->uri->segment(3),$attributes); 
+			?>
+			<div id="myModal3" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
                     		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    		<h4 class="modal-title">Germinación</h4>
+                    		<h4 class="modal-title">Injerto</h4>
                 		</div>
                 		<div class="modal-body">
-                    		<p>¿Estás seguro de querer eliminar este registro?</p>
+							<div class="input-group">
+								<p>Variedad/Portainjerto</p>
+								<select class="form-control" name="breakdown_transplant" id="breakdown_transplant" >
+									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+										<?php 
+											foreach($breakdown as $key)
+											{
+												echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
+											}
+										?>	
+								</select>
+							</div><!-- End Cantidad -->
+							<div class="input-group">
+								<p>Cantidad</p>
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+							</div><!-- End Cantidad -->	
+							<div class="input-group">
+								<!--<p>Viabilidad</p>
+								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">
+							</div><!-- End Viabilidad -->
+							<div class="input-group">
+								<p>Comentario</p>
+								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
+							</div><!-- End Alcance -->	                    		
                 		</div>
                 		<div class="modal-footer">
-							<?php echo form_open('order/delete_sowing/'.$this->uri->segment(3)); ?>
-                    			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     			<button type="submit" class="btn btn-success" name="">Confirmar</button>
                 			</form>
+                			<script>
+					    
+						$("#insert_transplant").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+								breakdown_transplant: {
+						            selectcheck_transplant: true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                viability: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("selectcheck_transplant", selectcheck_transplant, "Selecciona una Variedad/Portainjerto");
+
+						function selectcheck_transplant(){
+							if (document.getElementById('breakdown_transplant').value < 0){
+								return false;
+							}else return true;
+						}
+						</script>
 						</div>
             		</div>
         		</div>
     		</div>
+    	</div>
 		
 		</div>
 	</div>

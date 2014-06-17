@@ -60,8 +60,48 @@ class Breakdown extends CI_Controller {
 		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category);
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
-		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['germination'] = $this->model_breakdown->get_germination($template['breakdown'][0]->id_breakdown);
+		$template['graft'] = $this->model_breakdown->get_graft($template['breakdown'][0]->id_breakdown);
 		
 		$this->load->view("main",$template);
 	}
+
+	public function insert_germination(){
+		$datos['id_breakdown']=$this->input->post('breakdown');
+		$datos['volume']=$this->input->post('volume');
+		$datos['viability']=$this->input->post('viability');
+		$datos['comment']=$this->input->post('comment');
+		$datos['id_process_type']='2';
+		//$datos['id_order']=$this->uri->segment(3);
+
+		$this->model_breakdown->add_germination($datos);
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+
+	}
+	public function insert_graft(){
+		$datos['id_breakdown']=$this->input->post('breakdown');
+		$datos['volume']=$this->input->post('volume');
+		//$datos['viability']=$this->input->post('viability');
+		$datos['comment']=$this->input->post('comment');
+		$datos['id_process_type']='3';
+		//$datos['id_order']=$this->uri->segment(3);
+
+		$this->model_breakdown->add_germination($datos);
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+
+	}
+
+	public function delete_process()
+    {
+        foreach ($_POST as $key => $value)
+        {
+            if(is_int($key))
+            {    
+                $llave=$key;
+
+            }
+        }
+       $this->model_breakdown-> delete_process($llave);
+       redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+    }
 }		
