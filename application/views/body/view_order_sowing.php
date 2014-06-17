@@ -105,7 +105,8 @@
 										</div><!-- End Cantidad -->
 										<div class="input-group">
 											<p>Comentario</p>
-											<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										</div><!-- End Alcance -->				
+											<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
+										</div><!-- End Alcance -->				
 					                </div>
 					                <div class="modal-footer">
 					                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
