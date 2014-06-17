@@ -54,14 +54,15 @@
 								<div class="input-group input-group-lg">
 									<p><b>Tipo de cultivo:</b> <?php echo $planta->result()[0]->plant_name;?></p>
 								</div><!-- End Cultivo -->
-								<div class="input-group input-group-lg">
-									<p><b>Volumen de Pedido:</b> <?php echo $volumen;?></p>
-								</div><!-- End Volumen -->
+								
 								<div class="input-group input-group-lg">
 									<p><b>Categoría:</b> <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->
 								<div class="input-group input-group-lg">
-									<p><b>Volumen Total:</b> <?php echo $suma->result()[0]->volume;?></p>
+									<p><b>Volumen de Pedido:</b> <?php echo $volumen;?></p>
+								</div><!-- End Volumen -->
+								<div class="input-group input-group-lg">
+									<p><b>Volumen Total de Siembra:</b> <?php echo $suma->result()[0]->volume;?></p>
 								</div><!-- End Plant -->						
 						</div>
 
