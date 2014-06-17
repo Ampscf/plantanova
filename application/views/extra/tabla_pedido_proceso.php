@@ -31,7 +31,7 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Modificar"
-	                   href="edit_order/<?php echo $key->id_order; ?>">
+	                   	href="process/<?php echo $key->id_order; ?>">
 	                    <i class="fa fa-edit"></i>
 	                </a>
 
