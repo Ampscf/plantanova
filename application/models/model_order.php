@@ -583,6 +583,25 @@ Class model_order extends CI_Model
 			else return false;
 	}
 
+	function suma_volumen_sowing($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->select_sum('volume');
+		$query = $this->db->get('t_sowing');
+		if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return null;
+	}
+
+	function update_status($id_order){
+		$this->db->where('id_order',$id_order);
+		$data = array(
+               'id_status' => '2'
+        		);
+		$this->db->update('t_order',$data);
+		return $this->db->affected_rows();
+	}
 
 }
 

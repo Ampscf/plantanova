@@ -15,7 +15,37 @@
 				echo "<td>" . date("Y-m-d",strtotime($key->sowing_date)) . "</td>";
 				$breakdownn=$this->model_order->get_breakdown($this->uri->segment(3));
 				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
-				echo "<td>" . $key->comment . "</td>";
+				if($key->comment != null){
+				echo "<td>" ?>
+
+					<a href="#myModal2<?php echo $key->id_sowing; ?>" class="btn btn-default"
+	                    title="Comentario"
+	                    data-toggle="modal">
+						<i class="fa fa-edit"></i>
+	                </a>
+					
+					<div id="myModal2<?php echo $key->id_sowing;  ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Comentario</h4>
+                				</div>
+                				<div class="modal-body">
+                    				<p><?php echo $key->comment;?></p>
+                				</div>
+                				<div class="modal-footer">
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    			</div>
+            				</div>
+        				</div>
+    				</div>
+    			
+    			<?php
+    			}else{
+    			echo "<td>";
+    			} 
+    			echo "</td>";
 				echo "<td>";?>
 				
 					<a href="#myModal<?php echo $key->id_sowing; ?>" class="btn btn-default"
