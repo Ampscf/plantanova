@@ -596,6 +596,7 @@ class Order extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['suma']=$this->model_order->suma_volumen_sowing('141');
 
 
 
@@ -625,5 +626,13 @@ class Order extends CI_Controller {
         }
        $this->model_order-> delete_sowing($llave);
        redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+    }
+
+    public function finish_sowing(){
+    	$id_order=$this->input->post('id_order');
+    	$this->model_order->update_status($id_order);
+    	redirect("order/index", "refresh");
+
+
     }
 }

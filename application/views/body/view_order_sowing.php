@@ -35,9 +35,7 @@
 								<div class="input-group input-group-lg">
 									<p><b>C.P:</b> <?php echo $client->result()[0]->cp;?></p>
 								</div><!-- End cp -->
-								<div class="input-group input-group-lg">
-									<p><b>Razon Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
-								</div><!-- End Razon social -->
+								
 
 
 						
@@ -47,6 +45,9 @@
 							
 							<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
+									<p><b>Razon Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
+								</div><!-- End Razon social -->
+								<div class="input-group input-group-lg">
 									<p><b>Fecha:</b> <?php echo date("Y-m-d",strtotime($fecha))?></p>
 								</div><!-- End Plant -->
 								
@@ -54,14 +55,13 @@
 									<p><b>Tipo de cultivo:</b> <?php echo $planta->result()[0]->plant_name;?></p>
 								</div><!-- End Cultivo -->
 								<div class="input-group input-group-lg">
-									<p><b>Volumen Total:</b> <?php echo $volumen;?></p>
+									<p><b>Volumen de Pedido:</b> <?php echo $volumen;?></p>
 								</div><!-- End Volumen -->
 								<div class="input-group input-group-lg">
 									<p><b>Categoría:</b> <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->
 								<div class="input-group input-group-lg">
-									<?php $restante="var"?>
-									<p><b>Volumen restante:</b> <?php echo $restante;?></p>
+									<p><b>Volumen Total:</b> <?php echo $suma->result()[0]->volume;?></p>
 								</div><!-- End Plant -->						
 						</div>
 
@@ -75,7 +75,8 @@
 
 						<!-- Modal HTML -->
 						<?php 
-						echo form_open('order/insert_sowing/'.$this->uri->segment(3)); 
+						$attributes = array('id' => 'insert_sowing','name'=>'insert_sowing');
+						echo form_open('order/insert_sowing/'.$this->uri->segment(3),$attributes); 
 						?>
 					    <div id="myModal" class="modal fade">
 					    	<div class="modal-dialog">
@@ -114,6 +115,38 @@
 					        </div>
 					    </div>
 					    </form><!--endform1-->
+
+					    <script>
+					    
+						$("#insert_sowing").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+								breakdown: {
+						            selectcheck: true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("selectcheck", selectcheck, "Selecciona una Variedad/Portainjerto");
+
+						function selectcheck(){
+							if (document.getElementById('breakdown').value < 0){
+								return false;
+							}else return true;
+						}
+
+							
+						</script>		
+			
 										
 								
 						<div class="table-responsive" id="area">
@@ -124,16 +157,20 @@
 									
 					<div class="panel-footer">
 						<div class="row">
-							<div class="col-md-3 col-md-offset-1">
-								<input class="btn btn-success btn-block" type="submit" value="Guardar"/>
-							</div>
+							<?php echo form_open('order/finish_sowing'); ?>
+								<div class="col-md-3 col-md-offset-1">
+									<input type="hidden" id='id_order' name='id_order' value="<?php echo $id_order?>">
+									<input class="btn btn-success btn-block" type="submit" value="Terminar"/>
+									
+								</div>
+							</form>
 							<div class="col-md-3 col-md-offset-4">
 								<?php  
 									$data = array(
 										'class'	=> 'btn btn-primary btn-block',
-										'name' => 'Cancelar',
+										'name' => 'Regresar',
 									);
-									echo anchor('admin/list_clients', 'Cancelar', $data);
+									echo anchor('order/index', 'Regresar', $data);
 								?>
 							</div>
 						</div><!-- End row -->					
