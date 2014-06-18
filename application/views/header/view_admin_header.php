@@ -24,6 +24,8 @@
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>	
 	<script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
 	<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
+
+	
 	
 		
 	

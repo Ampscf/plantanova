@@ -32,6 +32,7 @@ class Breakdown extends CI_Controller {
 		$template['body'] = 'body/view_admin_body_process.php';
 		$template['footer'] = "footer/view_footer.php";
 		$template['pedidos_proceso'] = $this->model_breakdown->get_process_orders();
+		$template['pedidos_proceso_germination'] = $this->model_breakdown->get_process_germination();
 		$this->load->view("main",$template);
 	}
 
@@ -127,11 +128,6 @@ class Breakdown extends CI_Controller {
        $this->model_breakdown-> delete_process($llave);
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
-<<<<<<< HEAD
-
-    
-
-=======
 	
 	public function finish_order()
 	{
@@ -143,5 +139,4 @@ class Breakdown extends CI_Controller {
 		}
 		
 	}
->>>>>>> 16f61f8186f4113883cf10dd66c36abd4ea76270
 }		

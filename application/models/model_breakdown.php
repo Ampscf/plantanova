@@ -153,6 +153,31 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function get_process_germination()
+	{
+		$this->db->where('id_process_type',1);
+		$query=$this->db->get('t_process');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_order_id_breakdown($id_breakdown)
+	{
+		$this->db->where('id_breakdown',$id_breakdown);
+		$query=$this->db->get('t_breakdown');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+	
+
 }
 	
 ?>

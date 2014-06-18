@@ -1,3 +1,14 @@
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/css/TableTools.css';?>"/>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.dataTables.min.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/TableTools.js'; ?>"></script>	
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/ZeroClipboard.js'; ?>"></script>	
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.noty.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/layouts/topCenter.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/themes/default.js'; ?>"></script>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
@@ -21,27 +32,27 @@
 					       
 						</ul>
 						<div id="area" >
-								<?php echo "0";?>
+								<?php echo "Proceso";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div class="first" style="display:none;">
-							<?php echo "1";?>
+							<?php echo "Proceso";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div class="second" style="display:none;">
-							<?php echo "2";?>
-							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+							<?php echo "Germinacion";?>
+							<?php include('application/views/extra/tabla_pedido_proceso_germinacion.php'); ?>
 						</div>
 						<div class="third" style="display:none;">
-							<?php echo "3";?>
+							<?php echo "Injerto";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div class="fourth" style="display:none;">
-							<?php echo "4";?>
+							<?php echo "Plantado";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div class="fifth" style="display:none;">
-							<?php echo "5";?>
+							<?php echo "Transplante";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<script>
