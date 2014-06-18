@@ -104,4 +104,7 @@ class Breakdown extends CI_Controller {
        $this->model_breakdown-> delete_process($llave);
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
+
+    
+
 }		

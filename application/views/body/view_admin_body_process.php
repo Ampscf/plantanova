@@ -12,9 +12,44 @@
 					</div>
 					
 					<div class="panel-body">
-						<div class="table-responsive" id="area">
-							<?php include_once('application/views/extra/tabla_pedido_proceso.php'); ?>
+						<ul class="breadcrumb">
+					        <li><a href="#" class="some" rel="first">Proceso</a></li>
+					        <li><a href="#" class="some" rel="second">Germinacion</a> <span class="divider"></span></li>
+					        <li><a href="#" class="some" rel="third">Injerto</a> <span class="divider"></span></li>
+					        <li><a href="#" class="some" rel="fourth">Plantado</a> <span class="divider"></span></li>
+					        <li><a href="#" class="some" rel="fifth">Transplante</a> <span class="divider"></span></li>
+					       
+						</ul>
+						<div id="area" >
+								<?php echo "0";?>
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
+						<div class="first" style="display:none;">
+							<?php echo "1";?>
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+						</div>
+						<div class="second" style="display:none;">
+							<?php echo "2";?>
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+						</div>
+						<div class="third" style="display:none;">
+							<?php echo "3";?>
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+						</div>
+						<div class="fourth" style="display:none;">
+							<?php echo "4";?>
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+						</div>
+						<div class="fifth" style="display:none;">
+							<?php echo "5";?>
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+						</div>
+						<script>
+						
+						$(".some").click(function() {  
+						  $("#area").html($("." + $(this).attr('rel')).html());
+						});
+						</script>
 					</div>
 				</div>
 			</div>
