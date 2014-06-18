@@ -62,6 +62,8 @@ class Breakdown extends CI_Controller {
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
 		$template['germination'] = $this->model_breakdown->get_germination($template['breakdown'][0]->id_breakdown);
 		$template['graft'] = $this->model_breakdown->get_graft($template['breakdown'][0]->id_breakdown);
+		$template['planted']= $this->model_breakdown->get_planted($template['breakdown'][0]->id_breakdown);
+		$template['transplant']= $this->model_breakdown->get_transplant($template['breakdown'][0]->id_breakdown);
 		
 		$this->load->view("main",$template);
 	}
@@ -71,7 +73,7 @@ class Breakdown extends CI_Controller {
 		$datos['volume']=$this->input->post('volume');
 		$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
-		$datos['id_process_type']='2';
+		$datos['id_process_type']='1';
 		//$datos['id_order']=$this->uri->segment(3);
 
 		$this->model_breakdown->add_germination($datos);
@@ -83,14 +85,35 @@ class Breakdown extends CI_Controller {
 		$datos['volume']=$this->input->post('volume');
 		//$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
-		$datos['id_process_type']='3';
+		$datos['id_process_type']='2';
 		//$datos['id_order']=$this->uri->segment(3);
 
 		$this->model_breakdown->add_germination($datos);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
-
+	}
+	
+	public function insert_planted()
+	{
+		$datos['id_breakdown']=$this->input->post('breakdown_planted');
+		$datos['volume']=$this->input->post('volume');
+		$datos['comment']=$this->input->post('comment');
+		$datos['id_process_type']='3';
+		
+		$this->model_breakdown->add_planted($datos);
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 
+	public function insert_transplant()
+	{
+		$datos['id_breakdown']=$this->input->post('breakdown_transplant');
+		$datos['volume']=$this->input->post('volume');
+		$datos['comment']=$this->input->post('comment');
+		$datos['id_process_type']='4';
+		
+		$this->model_breakdown->add_transplant($datos);
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");	
+	}
+	
 	public function delete_process()
     {
         foreach ($_POST as $key => $value)
@@ -104,7 +127,21 @@ class Breakdown extends CI_Controller {
        $this->model_breakdown-> delete_process($llave);
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
+<<<<<<< HEAD
 
     
 
+=======
+	
+	public function finish_order()
+	{
+		$data['id_status']='3';
+		$a = $this->uri->segment(3);
+		if($this->model_breakdown->update_order($a,$data)>0)
+		{
+			redirect("breakdown/pedido_embarcado", "refresh");
+		}
+		
+	}
+>>>>>>> 16f61f8186f4113883cf10dd66c36abd4ea76270
 }		
