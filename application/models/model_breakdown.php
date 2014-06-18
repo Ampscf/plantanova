@@ -81,13 +81,31 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();
 	}
 	
-	function add_planted($data)
+	function add_planted($datos)
 	{
-		$this->db->isert('t_process',$datos);
+		$this->db->insert('t_process',$datos);
+		return $this->db->affected_rows();
+	}
+	
+	function add_transplant($datos)
+	{
+		$this->db->insert('t_process', $datos);
 		return $this->db->affected_rows();
 	}
 
 	function get_germination($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type','1');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0)
+			{
+				return $query->result();
+			}
+			else return false;
+
+	}
+
+	function get_graft($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type','2');
 		$query=$this->db->get('t_process');
@@ -96,26 +114,43 @@ Class model_breakdown extends CI_Model
 				return $query->result();
 			}
 			else return false;
-
 	}
-
-
-	function get_graft($id_breakdown){
+	
+	function get_planted($id_breakdown)
+	{
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type','3');
 		$query=$this->db->get('t_process');
 		if($query->num_rows()>0)
-			{
-				return $query->result();
-			}
-			else return false;
-
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+	
+	function get_transplant($id_breakdown)
+	{
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type','4');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
 	}
 
 	function delete_process($id)
 	{
 		$this->db->where('id_process',$id);
 		$this->db->delete('t_process');
+	}
+	
+	function update_order($id_order,$data)
+	{
+		$this->db->where('id_order', $id_order);
+		$this->db->update('t_order', $data);
+		return $this->db->affected_rows();
 	}
 
 }

@@ -17,9 +17,9 @@
 				echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
 				$breakdownn=$this->model_order->get_breakdown($this->uri->segment(3));
 				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
-				if($key->comment != null){
 				echo "<td></td>";
 				echo "<td>" . $key->viability . "</td>";
+				if($key->comment != null){
 				echo "<td>" ?>
 
 					<a href="#myModal2<?php echo $key->id_process; ?>" class="btn btn-default"

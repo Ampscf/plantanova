@@ -136,6 +136,12 @@
 					</div>
 					
 				</div>
+				<div>
+				<?php echo form_open('breakdown/finish_order/'.$this->uri->segment(3))?>
+					<button type="submit" class="btn btn-success" name="" style="margin-left: 30%; margin-right: 20%;">Guardar</button>
+					<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary"');?>
+				</form>
+				</div>
 			<div>
 			<?php 
 			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');
@@ -377,7 +383,7 @@
             		</div>
         		</div>
     		</div>
-    	</div>
+		</div>
 			
 			<?php 
 			$attributes = array('id' => 'insert_transplant','name'=>'insert_transplant');
