@@ -67,7 +67,7 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function insert_germination(){
-		$datos['id_breakdown']=$this->input->post('breakdown');
+		$datos['id_breakdown']=$this->input->post('breakdown_germination');
 		$datos['volume']=$this->input->post('volume');
 		$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
@@ -79,7 +79,7 @@ class Breakdown extends CI_Controller {
 
 	}
 	public function insert_graft(){
-		$datos['id_breakdown']=$this->input->post('breakdown');
+		$datos['id_breakdown']=$this->input->post('breakdown_graft');
 		$datos['volume']=$this->input->post('volume');
 		//$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
