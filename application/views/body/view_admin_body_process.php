@@ -35,7 +35,7 @@
 								<?php echo "Proceso";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
-						<div class="first" style="display:none;">
+						<div class="first" id="first" style="display:none;">
 							<?php echo "Proceso";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
@@ -55,11 +55,15 @@
 							<?php echo "Transplante";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_transplante.php'); ?>
 						</div>
-						<script>
+							
+
+						<script type="text/javascript">
 						
 						$(".some").click(function() {  
 						  $("#area").html($("." + $(this).attr('rel')).html());
+
 						});
+
 						</script>
 					</div>
 				</div>
