@@ -48,7 +48,7 @@
 							<?php include('application/views/extra/tabla_pedido_proceso_injerto.php'); ?>
 						</div>
 						<div class="fourth" style="display:none;">
-							<?php echo "Plantado";?>
+							<?php echo "Pinchado";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_pinchado.php'); ?>
 						</div>
 						<div class="fifth" style="display:none;">
