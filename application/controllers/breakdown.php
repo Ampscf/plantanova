@@ -33,6 +33,9 @@ class Breakdown extends CI_Controller {
 		$template['footer'] = "footer/view_footer.php";
 		$template['pedidos_proceso'] = $this->model_breakdown->get_process_orders();
 		$template['pedidos_proceso_germination'] = $this->model_breakdown->get_process_germination();
+		$template['pedidos_proceso_graft'] = $this->model_breakdown->get_process_graft();
+		$template['pedidos_proceso_punch'] = $this->model_breakdown->get_process_punch();
+		$template['pedidos_proceso_transplant'] = $this->model_breakdown->get_process_transplant();
 		$this->load->view("main",$template);
 	}
 
@@ -61,10 +64,10 @@ class Breakdown extends CI_Controller {
 		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category);
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
-		$template['germination'] = $this->model_breakdown->get_germination($template['breakdown'][0]->id_breakdown);
-		$template['graft'] = $this->model_breakdown->get_graft($template['breakdown'][0]->id_breakdown);
-		$template['planted']= $this->model_breakdown->get_planted($template['breakdown'][0]->id_breakdown);
-		$template['transplant']= $this->model_breakdown->get_transplant($template['breakdown'][0]->id_breakdown);
+		$template['germination'] = $this->model_breakdown->get_germination($this->uri->segment(3));
+		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
+		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
+		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
 		
 		$this->load->view("main",$template);
 	}
@@ -93,14 +96,14 @@ class Breakdown extends CI_Controller {
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 	
-	public function insert_planted()
+	public function insert_punch()
 	{
-		$datos['id_breakdown']=$this->input->post('breakdown_planted');
+		$datos['id_breakdown']=$this->input->post('breakdown_punch');
 		$datos['volume']=$this->input->post('volume');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='3';
 		
-		$this->model_breakdown->add_planted($datos);
+		$this->model_breakdown->add_punch($datos);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 

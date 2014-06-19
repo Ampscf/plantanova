@@ -596,7 +596,7 @@ class Order extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
-		$template['suma']=$this->model_order->suma_volumen_sowing($template['breakdown'][0]->id_breakdown);
+		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
 
 
 

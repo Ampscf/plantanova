@@ -424,6 +424,19 @@ Class model_order extends CI_Model
 			else return false;
 	}
 
+	function get_breakdown_id_breakdown($id_breakdown)
+	{
+		$this->db->where('id_breakdown',$id_breakdown);
+		$query=$this->db->get('t_breakdown');
+		
+			if($query->num_rows()>0)
+			{
+				return $query->result();
+			}
+			else return false;
+	}
+	
+
 	//obtiene el tipo de planta de acuerdo al id de planta
 	function get_plant($id_plant)
 	{
@@ -583,8 +596,8 @@ Class model_order extends CI_Model
 			else return false;
 	}
 
-	function suma_volumen_sowing($id_breakdown){
-		$this->db->where('id_breakdown',$id_breakdown);
+	function suma_volumen_sowing($id_order){
+		$this->db->where('id_order',$id_order);
 		$this->db->select_sum('volume');
 		$query = $this->db->get('t_sowing');
 		if($query->num_rows()>0)

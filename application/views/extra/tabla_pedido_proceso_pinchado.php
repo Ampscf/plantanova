@@ -5,14 +5,14 @@
 	<th>Fecha</th>
 	<th>Variedad/Portainjerto</th>
 	<th>Alcance</th>
-	<th>Viabilidad</th>
 	<th>Comentario</th>
 </thead>
-<tbody>
+	
+	<tbody>
 	<?php 
-		if(is_array($pedidos_proceso_germination))
+		if(is_array($pedidos_proceso_punch))
 		{
-			foreach ($pedidos_proceso_germination as $key) 
+			foreach ($pedidos_proceso_punch as $key) 
 			{
 				echo "<tr>";
 				$order=$this->model_breakdown->get_order_id_breakdown($key->id_breakdown);
@@ -22,7 +22,6 @@
 				$breakdownn=$this->model_order->get_breakdown($this->uri->segment(3));
 				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
 				echo "<td></td>";
-				echo "<td>" . $key->viability . "</td>";
 				if($key->comment != null){
 				echo "<td>" ?>
 
@@ -58,5 +57,5 @@
 			}
 		}
 		?>
-</tbody>
+	</tbody>
 </table>

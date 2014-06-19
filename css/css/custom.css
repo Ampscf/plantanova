@@ -125,3 +125,7 @@ textarea
 .order-navs {
 	border-bottom: 1px solid;
 }
+
+.breadcrumb {
+  border-top: 0px;
+}

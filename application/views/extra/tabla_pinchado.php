@@ -1,30 +1,32 @@
 <table class="table table-hover" id="tabla-empresa">
-		<th>Cantidad</th>
-		<th>Fecha</th>
-		<th>Variedad/Portainjerto</th>
-		<th>Comentario</th>
-		<th>Eliminar</th>
+	<th>Cantidad</th>
+	<th>Fecha</th>
+	<th>Variedad/Portainjerto</th>
+	<th>Alcance</th>
+	<th>Comentario</th>
+	<th>Eliminar</th>
 	
-		<?php 
-		if(is_array($sowing))
+	<?php 
+		if(is_array($punch))
 		{
-			foreach ($sowing as $key) 
+			foreach ($punch as $key) 
 			{
 				echo "<tr>";
 				echo "<td>" . $key->volume . "</td>";
-				echo "<td>" . date("Y-m-d",strtotime($key->sowing_date)) . "</td>";
-				$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
+				echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
+				$breakdownn=$this->model_order->get_breakdown($this->uri->segment(3));
 				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
+				echo "<td></td>";
 				if($key->comment != null){
 				echo "<td>" ?>
 
-					<a href="#myModal2<?php echo $key->id_sowing; ?>" class="btn btn-default"
+					<a href="#myModal2<?php echo $key->id_process; ?>" class="btn btn-default"
 	                    title="Comentario"
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
 	                </a>
 					
-					<div id="myModal2<?php echo $key->id_sowing;  ?>" class="modal fade">
+					<div id="myModal2<?php echo $key->id_process;  ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
                 				<div class="modal-header">
@@ -48,13 +50,13 @@
     			echo "</td>";
 				echo "<td>";?>
 				
-					<a href="#myModal<?php echo $key->id_sowing; ?>" class="btn btn-default"
+					<a href="#myModal<?php echo $key->id_process; ?>" class="btn btn-default"
 	                    title="Eliminar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>
 	                </a>
 					
-					<div id="myModal<?php echo $key->id_sowing; ?>" class="modal fade">
+					<div id="myModal<?php echo $key->id_process; ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
                 				<div class="modal-header">
@@ -65,9 +67,9 @@
                     				<p>¿Estás seguro de querer eliminar este registro?</p>
                 				</div>
                 				<div class="modal-footer">
-									<?php echo form_open('order/delete_sowing/'.$this->uri->segment(3)); ?>
+									<?php echo form_open('breakdown/delete_process/'.$this->uri->segment(3)); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_sowing; ?>">Confirmar</button>
+                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_process; ?>">Confirmar</button>
                 					</form><!--endform2-->
 								</div>
             				</div>
@@ -79,5 +81,4 @@
 			}
 		}
 		?>
-	
 </table>

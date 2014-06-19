@@ -27,7 +27,7 @@
 					        <li><a href="#" class="some" rel="first">Proceso</a></li>
 					        <li><a href="#" class="some" rel="second">Germinacion</a> <span class="divider"></span></li>
 					        <li><a href="#" class="some" rel="third">Injerto</a> <span class="divider"></span></li>
-					        <li><a href="#" class="some" rel="fourth">Plantado</a> <span class="divider"></span></li>
+					        <li><a href="#" class="some" rel="fourth">Pinchado</a> <span class="divider"></span></li>
 					        <li><a href="#" class="some" rel="fifth">Transplante</a> <span class="divider"></span></li>
 					       
 						</ul>
@@ -45,15 +45,15 @@
 						</div>
 						<div class="third" style="display:none;">
 							<?php echo "Injerto";?>
-							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+							<?php include('application/views/extra/tabla_pedido_proceso_injerto.php'); ?>
 						</div>
 						<div class="fourth" style="display:none;">
 							<?php echo "Plantado";?>
-							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+							<?php include('application/views/extra/tabla_pedido_proceso_pinchado.php'); ?>
 						</div>
 						<div class="fifth" style="display:none;">
 							<?php echo "Transplante";?>
-							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+							<?php include('application/views/extra/tabla_pedido_proceso_transplante.php'); ?>
 						</div>
 						<script>
 						

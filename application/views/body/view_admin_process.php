@@ -110,14 +110,14 @@
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
 						<div class="col-md-10">	
-							<h4>Plantado</h4>
+							<h4>Pinchado</h4>
 						</div>
 						<div class="col-md-2">
 							<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
-							<?php include_once('application/views/extra/tabla_plantado.php'); ?>
+							<?php include_once('application/views/extra/tabla_pinchado.php'); ?>
 						</div>
 					</div>
 					
@@ -307,20 +307,20 @@
     	</div>
 			
 			<?php 
-			$attributes = array('id' => 'insert_planted','name'=>'insert_planted');
-			echo form_open('breakdown/insert_planted/'.$this->uri->segment(3),$attributes); 
+			$attributes = array('id' => 'insert_punch','name'=>'insert_punch');
+			echo form_open('breakdown/insert_punch/'.$this->uri->segment(3),$attributes); 
 			?>
 			<div id="myModal2" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
                     		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    		<h4 class="modal-title">Injerto</h4>
+                    		<h4 class="modal-title">Pinchado</h4>
                 		</div>
                 		<div class="modal-body">
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
-								<select class="form-control" name="breakdown_planted" id="breakdown_planted" >
+								<select class="form-control" name="breakdown_punch" id="breakdown_punch" >
 									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
 										<?php 
 											foreach($breakdown as $key)
@@ -349,14 +349,14 @@
                 			</form>
                 			<script>
 					    
-						$("#insert_planted").validate({
+						$("#insert_punch").validate({
 							rules: {
 								volume: {
 									required: true,
 									number: true
 								},
-								breakdown_planted: {
-						            selectcheck_planted: true
+								breakdown_punch: {
+						            selectcheck_punch: true
 						        }
 							},
 							messages: {
@@ -371,10 +371,10 @@
 						  	}
 						});
 
-						$.validator.addMethod("selectcheck_planted", selectcheck_planted, "Selecciona una Variedad/Portainjerto");
+						$.validator.addMethod("selectcheck_punch", selectcheck_punch, "Selecciona una Variedad/Portainjerto");
 
-						function selectcheck_planted(){
-							if (document.getElementById('breakdown_planted').value < 0){
+						function selectcheck_punch(){
+							if (document.getElementById('breakdown_punch').value < 0){
 								return false;
 							}else return true;
 						}
@@ -394,7 +394,7 @@
             		<div class="modal-content">
                 		<div class="modal-header">
                     		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    		<h4 class="modal-title">Injerto</h4>
+                    		<h4 class="modal-title">Transplante</h4>
                 		</div>
                 		<div class="modal-body">
 							<div class="input-group">

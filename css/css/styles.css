@@ -713,7 +713,6 @@ div .widget-info:last-child {
   -webkit-border-radius: 0px;
   border-radius: 0px;
   background: transparent;
-  border-top: 1px solid #e5e5e5;
   padding: 10px 25px;
 }
 .breadcrumb li a {

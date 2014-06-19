@@ -1,17 +1,22 @@
 <table class="table table-hover" id="tabla-empresa">
+<thead>
+	<th># Pedido</th>
 	<th>Cantidad</th>
 	<th>Fecha</th>
 	<th>Variedad/Portainjerto</th>
 	<th>Alcance</th>
 	<th>Comentario</th>
-	<th>Eliminar</th>
+</thead>
 	
+	<tbody>
 	<?php 
-		if(is_array($planted))
+		if(is_array($pedidos_proceso_transplant))
 		{
-			foreach ($planted as $key) 
+			foreach ($pedidos_proceso_transplant as $key) 
 			{
 				echo "<tr>";
+				$order=$this->model_breakdown->get_order_id_breakdown($key->id_breakdown);
+				echo "<td>" . $order[0]->id_order . "</td>";
 				echo "<td>" . $key->volume . "</td>";
 				echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
 				$breakdownn=$this->model_order->get_breakdown($this->uri->segment(3));
@@ -48,37 +53,9 @@
     			echo "<td>";
     			} 
     			echo "</td>";
-				echo "<td>";?>
-				
-					<a href="#myModal<?php echo $key->id_process; ?>" class="btn btn-default"
-	                    title="Eliminar"
-	                    data-toggle="modal">
-						<i class="fa fa-times"></i>
-	                </a>
-					
-					<div id="myModal<?php echo $key->id_process; ?>" class="modal fade">
-        				<div class="modal-dialog">
-            				<div class="modal-content">
-                				<div class="modal-header">
-                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    				<h4 class="modal-title">Confirmación</h4>
-                				</div>
-                				<div class="modal-body">
-                    				<p>¿Estás seguro de querer eliminar este registro?</p>
-                				</div>
-                				<div class="modal-footer">
-									<?php echo form_open('breakdown/delete_process/'.$this->uri->segment(3)); ?>
-                    					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_process; ?>">Confirmar</button>
-                					</form><!--endform2-->
-								</div>
-            				</div>
-        				</div>
-    				</div>
-		<?php 
-				echo "</td>";
 				echo "</tr>";
 			}
 		}
 		?>
+	</tbody>
 </table>
