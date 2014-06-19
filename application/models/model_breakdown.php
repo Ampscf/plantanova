@@ -177,6 +177,36 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 	
+	function fill_sowing($id_order)
+	{
+		$data = array(
+			'id_order' => $id_order,
+			'sowing' => 0,
+			'germination' => 0,
+			'graft' => 0,
+			'punch' => 0,
+			'transplant' => 0,
+		);
+		$this->db->insert('t_total', $data);
+		return $this->db->affected_rows();
+	}
+	
+	function update_total_sowing($id_total, $id_order, $id_breakdown)
+	{
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->select_sum('volume');
+		$query->$this->db->get('t_sowing');
+		$data = array(
+			'sowing' => $query->result()[0]
+		);
+		if($query->num_rows()>0)
+		{
+			$this->db->where('id_total', $id_total);
+			$this->db->update('t_total', $data);
+			return $this->db->affected_rows();
+		} 
+		else return null;
+	}	
 
 }
 	
