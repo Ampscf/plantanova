@@ -158,13 +158,13 @@
 									
 					<div class="panel-footer">
 						<div class="row">
-							<?php echo form_open('order/finish_sowing'); ?>
+							<!--<?php// echo form_open('order/finish_sowing'); ?>
 								<div class="col-md-3 col-md-offset-1">
 									<input type="hidden" id='id_order' name='id_order' value="<?php echo $id_order?>">
 									<input class="btn btn-success btn-block" type="submit" value="Terminar"/>
 									
 								</div>
-							</form>
+							</form>-->
 							<div class="col-md-3 col-md-offset-4">
 								<?php  
 									$data = array(

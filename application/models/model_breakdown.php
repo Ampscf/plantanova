@@ -19,7 +19,8 @@ Class model_breakdown extends CI_Model
 	//Obtiene las ordenes que tienen un estatus de en proceso
 	function get_process_orders()
 	{
-		$this->db->where('id_status',2);
+		$this->db->where('id_status',"2");
+		$this->db->or_where('id_status',"5");
 		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
@@ -241,6 +242,19 @@ Class model_breakdown extends CI_Model
 		} 
 	}
 
+	function get_process_sowing()
+	{
+		$this->db->where('id_status',5);
+
+		$query=$this->db->get('t_order');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		} 
+		else return false;
+	}
+
 	function get_order_id_breakdown($id_breakdown)
 	{
 		$this->db->where('id_breakdown',$id_breakdown);
@@ -284,6 +298,8 @@ Class model_breakdown extends CI_Model
 		} 
 		else return null;
 	}	
+
+	
 
 
 }

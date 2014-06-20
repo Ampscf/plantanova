@@ -23,7 +23,7 @@
 					<a href="#myModal2<?php echo $key->id_process; ?>" class="btn btn-default"
 	                    title="Comentario"
 	                    data-toggle="modal">
-						<i class="fa fa-edit"></i>
+						<i class="fa fa-comment-o"></i>
 	                </a>
 					
 					<div id="myModal2<?php echo $key->id_process;  ?>" class="modal fade">

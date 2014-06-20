@@ -36,6 +36,7 @@ class Breakdown extends CI_Controller {
 		$template['pedidos_proceso_graft'] = $this->model_breakdown->get_process_graft();
 		$template['pedidos_proceso_punch'] = $this->model_breakdown->get_process_punch();
 		$template['pedidos_proceso_transplant'] = $this->model_breakdown->get_process_transplant();
+		$template['pedidos_proceso_sowing'] = $this->model_breakdown->get_process_sowing();
 		$this->load->view("main",$template);
 	}
 

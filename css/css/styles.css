@@ -4,7 +4,10 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,cyrillic-ext);
 @import "../js/jquery-ui.min.css";
 @import "bootstrap.css";
-
+.DTTT_button embed {
+    width: 50px;
+    height: 24px;
+}
 .box-vertical {
   display: -webkit-box;
   display: -moz-box;
@@ -735,7 +738,7 @@ div .widget-info:last-child {
   font-weight: 400;
 }
 .breadcrumb > li + li:before {
-  content: "\f105";
+  content: "\002F";
   font-family: "FontAwesome";
   padding: 0px 7px 0px 5px;
 }

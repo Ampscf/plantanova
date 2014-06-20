@@ -611,6 +611,7 @@ class Order extends CI_Controller {
 		$datos['id_order']=$this->uri->segment(3);
 
 		$this->model_order->add_sowing($datos);
+		$this->model_order->update_status($this->uri->segment(3));
 		redirect("order/edit_order/".$this->uri->segment(3), "refresh");
 
 	}
@@ -629,11 +630,11 @@ class Order extends CI_Controller {
        redirect("order/edit_order/".$this->uri->segment(3), "refresh");
     }
 
-    public function finish_sowing(){
+    /*public function finish_sowing(){
     	$id_order=$this->input->post('id_order');
     	$this->model_order->update_status($id_order);
     	redirect("order/index", "refresh");
 
 
-    }
+    }*/
 }

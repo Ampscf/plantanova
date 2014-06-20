@@ -2398,7 +2398,7 @@ TableTools.classes_themeroller = {
  * @namespace TableTools default settings for initialisation
  */
 TableTools.DEFAULTS = {
-	"sSwfPath":        "media/swf/copy_csv_xls_pdf.swf",
+	"sSwfPath":        "http://localhost/plantanova/media/swf/copy_csv_xls_pdf.swf",
 	"sRowSelect":      "none",
 	"sSelectedClass":  null,
 	"fnPreRowSelect":  null,
@@ -2473,3 +2473,5 @@ else
 $.fn.DataTable.TableTools = TableTools;
 
 })(jQuery, window, document);
+
+ 

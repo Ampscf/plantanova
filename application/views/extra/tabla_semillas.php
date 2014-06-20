@@ -30,7 +30,7 @@
 	                    data-placement="top"
 	                    title="Modificar"
 	                    href="edit_seeds/<?php echo $key->id_seed; ?>">
-	                    <i class="fa fa-edit"></i>
+	                    <i class="fa fa-comment-o"></i>
 	                   
 	                </a>
 	                 
