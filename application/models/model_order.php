@@ -610,7 +610,7 @@ Class model_order extends CI_Model
 	function update_status($id_order){
 		$this->db->where('id_order',$id_order);
 		$data = array(
-               'id_status' => '5'
+               'id_status' => '2'
         		);
 		$this->db->update('t_order',$data);
 		return $this->db->affected_rows();

@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 		<?php 
-		if(isset($pedidos))
+		if(is_array($pedidos))
 		{
 			foreach ($pedidos as $key) 
 			{

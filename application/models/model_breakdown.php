@@ -20,7 +20,6 @@ Class model_breakdown extends CI_Model
 	function get_process_orders()
 	{
 		$this->db->where('id_status',"2");
-		$this->db->or_where('id_status',"5");
 		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
@@ -244,7 +243,7 @@ Class model_breakdown extends CI_Model
 
 	function get_process_sowing()
 	{
-		$this->db->where('id_status',5);
+		$this->db->where('id_status',2);
 
 		$query=$this->db->get('t_order');
 		
