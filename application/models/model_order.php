@@ -637,6 +637,17 @@ Class model_order extends CI_Model
 		$this->db->update('t_total', $data);
 		return $this->db->affected_rows();
 	}
+
+	function get_volume_sowing($id){
+		$this->db->select('volume');
+		$this->db->where('id_sowing',$id);
+		$query=$this->db->get('t_sowing');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
 	
 	function get_total_germ()
 	{

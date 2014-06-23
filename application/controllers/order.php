@@ -636,6 +636,13 @@ class Order extends CI_Controller {
 
             }
         }
+   
+    	$volume=$this->model_order->get_volume_sowing($llave); 
+    	$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
+		$total_plant=$total_sowing->sowing;
+		$total_vol=$total_plant - $volume[0]->volume;
+		$this->model_order->update_total_sowing($this->uri->segment(3), $total_vol);
+
        $this->model_order-> delete_sowing($llave);
        redirect("order/edit_order/".$this->uri->segment(3), "refresh");
     }
