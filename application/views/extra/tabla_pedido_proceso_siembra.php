@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 		<?php 
-		if(isset($pedidos_proceso_sowing))
+		if(is_array($pedidos_proceso_sowing))
 		{
 			foreach ($pedidos_proceso_sowing as $key) 
 			{
