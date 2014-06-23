@@ -92,7 +92,7 @@
 							<?php include_once('application/views/extra/tabla_germinacion.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Total:</b> <?php echo $total_germ->germination;?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
@@ -112,7 +112,7 @@
 							<?php include_once('application/views/extra/tabla_injerto.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Total:</b> <?php echo $total_graft->graft;?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
@@ -132,7 +132,7 @@
 							<?php include_once('application/views/extra/tabla_pinchado.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Total:</b> <?php echo $total_punch->punch;?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
@@ -152,7 +152,7 @@
 							<?php include_once('application/views/extra/tabla_transplante.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Total:</b> <?php echo $total_transplant->transplant;?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>

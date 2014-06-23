@@ -63,7 +63,6 @@
 								</div><!-- End Volumen -->
 								<div class="input-group input-group-lg">
 									<p><b>Volumen Total de Siembra:</b> <?php echo $suma->result()[0]->volume;?></p>
-									<p><?php echo $total_plant; ?></p>
 								</div><!-- End Plant -->						
 						</div>
 

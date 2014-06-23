@@ -71,12 +71,19 @@ class Breakdown extends CI_Controller {
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
 		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
-
+		$template['total_germ']=$this->model_order->get_total_germ($this->uri->segment(3));
+		$template['total_graft']=$this->model_order->get_total_graft($this->uri->segment(3));
+		$template['total_punch']=$this->model_order->get_total_punch($this->uri->segment(3));
+		$template['total_transplant']=$this->model_order->get_total_transplant($this->uri->segment(3));
 		
 		$this->load->view("main",$template);
 	}
 
 	public function insert_germination(){
+		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
+		$total_germ=$total_germination->germination;
+		$volume=$this->input->post('volume');
+		$total_vol=$total_germ+$volume;	
 		$datos['id_breakdown']=$this->input->post('breakdown_germination');
 		$datos['volume']=$this->input->post('volume');
 		$datos['viability']=$this->input->post('viability');
@@ -85,10 +92,15 @@ class Breakdown extends CI_Controller {
 		//$datos['id_order']=$this->uri->segment(3);
 
 		$this->model_breakdown->add_germination($datos);
+		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 
 	}
 	public function insert_graft(){
+		$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
+		$total_graf=$total_graft->graft;
+		$volume=$this->input->post('volume');
+		$total_vol=$total_graf+$volume;	
 		$datos['id_breakdown']=$this->input->post('breakdown_graft');
 		$datos['volume']=$this->input->post('volume');
 		//$datos['viability']=$this->input->post('viability');
@@ -97,28 +109,39 @@ class Breakdown extends CI_Controller {
 		//$datos['id_order']=$this->uri->segment(3);
 
 		$this->model_breakdown->add_germination($datos);
+		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 	
 	public function insert_punch()
 	{
+		$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
+		$total_punsh=$total_punch->punch;
+		$volume=$this->input->post('volume');
+		$total_vol=$total_punsh+$volume;	
 		$datos['id_breakdown']=$this->input->post('breakdown_punch');
 		$datos['volume']=$this->input->post('volume');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='3';
 		
 		$this->model_breakdown->add_punch($datos);
+		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 
 	public function insert_transplant()
 	{
+		$total_transplant=$this->model_order->get_total_transplant($this->uri->segment(3));
+		$total_trans=$total_transplant->transplant;
+		$volume=$this->input->post('volume');
+		$total_vol=$total_trans+$volume;
 		$datos['id_breakdown']=$this->input->post('breakdown_transplant');
 		$datos['volume']=$this->input->post('volume');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='4';
 		
 		$this->model_breakdown->add_transplant($datos);
+		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);	
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");	
 	}
 	

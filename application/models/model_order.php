@@ -638,24 +638,92 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 	
-	function get_total_germ()
+	function get_total_germ($id_order)
 	{
-		
+		$this->db->select('germination');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;	
 	}
 
-	function get_total_graft()
+	function update_total_germination($id_order, $germ)
 	{
-		
+		$data = array (
+			'germination' => $germ
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
 	}
 	
-	function get_total_punch()
+	function get_total_graft($id_order)
 	{
-		
+		$this->db->select('graft');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;
 	}
 	
-	function get_total_transplant()
+	function update_total_graft($id_order, $graft)
 	{
-		
+		$data = array (
+			'graft' => $graft
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
+	}
+	
+	function get_total_punch($id_order)
+	{
+		$this->db->select('punch');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;
+	}
+	
+	function update_total_punch($id_order, $punch)
+	{
+		$data = array (
+			'punch' => $punch
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
+	}
+	
+	function get_total_transplant($id_order)
+	{
+		$this->db->select('transplant');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;
+	}
+	
+	function update_total_transplant($id_order, $transplant)
+	{
+		$data = array (
+			'transplant' => $transplant
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
 	}
 }
 ?>
