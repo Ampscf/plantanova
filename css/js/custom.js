@@ -157,7 +157,7 @@
 				{
 					$("#content").html(errno.template);
 					notas("Cuenta registrada!.","success");
-					window.location ="seeds/index";
+					window.location ="../seeds/index";
 					
 				}
 			},
