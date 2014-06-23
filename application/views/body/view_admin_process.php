@@ -95,7 +95,7 @@
 							<labbel><b>Total:</b> <?php echo $total_germ->germination;?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Alcance:</b> <?php echo $alcance_germinacion."%";?></labbel>
 						</div>
 					</div>
 					
@@ -115,7 +115,7 @@
 							<labbel><b>Total:</b> <?php echo $total_graft->graft;?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Alcance:</b> <?php echo $alcance_injerto."%";?></labbel>
 						</div>
 					</div>
 					
@@ -135,7 +135,7 @@
 							<labbel><b>Total:</b> <?php echo $total_punch->punch;?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Alcance:</b> <?php echo $alcance_pinchado."%";?></labbel>
 						</div>
 					</div>
 					
@@ -155,7 +155,7 @@
 							<labbel><b>Total:</b> <?php echo $total_transplant->transplant;?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo 'var';?></labbel>
+							<labbel><b>Alcance:</b> <?php echo $alcance_transplante."%";?></labbel>
 						</div>
 					</div>
 					

@@ -75,6 +75,10 @@ class Breakdown extends CI_Controller {
 		$template['total_graft']=$this->model_order->get_total_graft($this->uri->segment(3));
 		$template['total_punch']=$this->model_order->get_total_punch($this->uri->segment(3));
 		$template['total_transplant']=$this->model_order->get_total_transplant($this->uri->segment(3));
+		$template['alcance_germinacion']=(($template['total_germ']->germination/$order->result()[0]->total_volume)-1) * 100;
+		$template['alcance_injerto']=(($template['total_graft']->graft/$order->result()[0]->total_volume)-1) * 100;
+		$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
+		$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
 		
 		$this->load->view("main",$template);
 	}
@@ -145,7 +149,7 @@ class Breakdown extends CI_Controller {
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");	
 	}
 	
-	public function delete_process()
+	public function delete_germination()
     {
         foreach ($_POST as $key => $value)
         {
@@ -155,10 +159,80 @@ class Breakdown extends CI_Controller {
 
             }
         }
+
+        $volume=$this->model_breakdown->get_volume_process($llave); 
+    	$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
+		$total_germ=$total_germination->germination;
+		$total_vol=$total_germ - $volume[0]->volume;
+		
+		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
+
        $this->model_breakdown-> delete_process($llave);
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
-	
+
+    public function delete_graft()
+    {
+        foreach ($_POST as $key => $value)
+        {
+            if(is_int($key))
+            {    
+                $llave=$key;
+
+            }
+        }
+
+        $volume=$this->model_breakdown->get_volume_process($llave); 
+    	$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
+		$total_graf=$total_graft->graft;
+		$total_vol=$total_graf - $volume[0]->volume;
+		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
+
+       	$this->model_breakdown-> delete_process($llave);
+       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+    }
+
+    public function delete_punch()
+    {
+        foreach ($_POST as $key => $value)
+        {
+            if(is_int($key))
+            {    
+                $llave=$key;
+
+            }
+        }
+
+        $volume=$this->model_breakdown->get_volume_process($llave); 
+    	$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
+		$total_punsh=$total_punch->punch;
+		$total_vol=$total_punsh - $volume[0]->volume;
+		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
+
+       $this->model_breakdown-> delete_process($llave);
+       redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+    }
+
+    public function delete_transplant()
+    {
+        foreach ($_POST as $key => $value)
+        {
+            if(is_int($key))
+            {    
+                $llave=$key;
+
+            }
+        }
+
+        $volume=$this->model_breakdown->get_volume_process($llave); 
+    	$total_transplant=$this->model_order->get_total_transplant($this->uri->segment(3));
+		$total_trans=$total_transplant->transplant;
+		$total_vol=$total_trans - $volume[0]->volume;
+		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);
+
+      	$this->model_breakdown-> delete_process($llave);
+       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+    }
 	public function finish_order()
 	{
 		$data['id_status']='3';

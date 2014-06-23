@@ -65,7 +65,7 @@
                     				<p>¿Estás seguro de querer eliminar este registro?</p>
                 				</div>
                 				<div class="modal-footer">
-									<?php echo form_open('breakdown/delete_process/'.$this->uri->segment(3)); ?>
+									<?php echo form_open('breakdown/delete_transplant/'.$this->uri->segment(3)); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     					<button type="submit" class="btn btn-success" name="<?php echo $key->id_process; ?>">Confirmar</button>
                 					</form><!--endform2-->

@@ -312,9 +312,17 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}	
 
+	function get_volume_process($id){
+		$this->db->select('volume');
+		$this->db->where('id_process',$id);
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
 	
-
-
 }
 	
 ?>
