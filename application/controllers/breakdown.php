@@ -51,6 +51,7 @@ class Breakdown extends CI_Controller {
 	public function process()
 	{
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_process.php';
 		$template['footer'] = 'footer/view_footer.php';
@@ -64,11 +65,12 @@ class Breakdown extends CI_Controller {
 		$template['categ']=$order->result()[0]->id_category;
 		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category);
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
-		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
+		$template['breakdown']=$breakdown;
 		$template['germination'] = $this->model_breakdown->get_germination($this->uri->segment(3));
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
+		//$template['total_germ']=$this->model_breakdown->get_all_germination();
 		
 		$this->load->view("main",$template);
 	}

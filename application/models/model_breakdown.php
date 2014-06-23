@@ -297,6 +297,19 @@ Class model_breakdown extends CI_Model
 			return $this->db->affected_rows();
 		} 
 		else return null;
+	}
+	
+	function get_all_germination($id_breakdown)
+	{
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type', 1);
+		$this->db->select_sum('volume');
+		$query->$this->db->get('t_process');
+		if($query->num_rows()>0)
+		{
+			return $query->result()[0];
+		}
+		else return false;
 	}	
 
 	
