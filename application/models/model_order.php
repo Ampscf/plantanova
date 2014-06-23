@@ -615,6 +615,47 @@ Class model_order extends CI_Model
 		$this->db->update('t_order',$data);
 		return $this->db->affected_rows();
 	}
+	
+	function get_total_sowing($id_order)
+	{
+		$this->db->select('sowing');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;
+	}
+	
+	function update_total_sowing($id_order, $sowing)
+	{
+		$data = array (
+			'sowing' => $sowing
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
+	}
+	
+	function get_total_germ()
+	{
+		
+	}
 
+	function get_total_graft()
+	{
+		
+	}
+	
+	function get_total_punch()
+	{
+		
+	}
+	
+	function get_total_transplant()
+	{
+		
+	}
 }
 ?>

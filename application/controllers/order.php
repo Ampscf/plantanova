@@ -582,6 +582,7 @@ class Order extends CI_Controller {
 
 	public function edit_order(){
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_sowing.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -598,19 +599,27 @@ class Order extends CI_Controller {
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
 		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
-
+		$template['total_plant']=$total_sowing->sowing;	
 
 
 		$this->load->view('main',$template);	
 	}
 
-	public function insert_sowing(){
+	public function insert_sowing()
+	{
+		$order=$this->uri->segment(3);
+		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
+		$total_plant=$total_sowing->sowing;
+		$volume=$this->input->post('volume');
+		$total_vol=$total_plant+$volume;	
 		$datos['id_breakdown']=$this->input->post('breakdown');
-		$datos['volume']=$this->input->post('volume');
+		$datos['volume']=$volume;
 		$datos['comment']=$this->input->post('comment');
-		$datos['id_order']=$this->uri->segment(3);
-
+		$datos['id_order']=$order;
+		
+		
 		$this->model_order->add_sowing($datos);
+		$this->model_order->update_total_sowing($order, $total_vol);
 		$this->model_order->update_status($this->uri->segment(3));
 		redirect("order/edit_order/".$this->uri->segment(3), "refresh");
 
@@ -618,6 +627,7 @@ class Order extends CI_Controller {
 
 	public function delete_sowing()
     {
+		
         foreach ($_POST as $key => $value)
         {
             if(is_int($key))
