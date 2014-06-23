@@ -5,8 +5,8 @@ Class model_seeds extends CI_Model
 
 	function get_orders(){
 		$this->db->where('id_status',1);
+		$this->db->or_where('id_status',2);
 		$query=$this->db->get('t_order');
-		
 		if($query->num_rows()>0)
 		{
 			return $query->result();

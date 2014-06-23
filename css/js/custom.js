@@ -156,7 +156,7 @@
 				else
 				{
 					$("#content").html(errno.template);
-					notas("Cuenta registrada!.","success");
+					notas("Orden Registrada!.","success");
 					window.location ="../seeds/index";
 					
 				}
