@@ -21,27 +21,27 @@
 						<div class="col-md-6">
 						
 							<div class="input-group input-group-lg">
-								<p><b>Nombre Completo: <?php echo $client->result()[0]->first_name." ".$client->result()[0]->last_name;?></b></p>
+								<p><b>Nombre Completo:</b> <?php echo $client->result()[0]->first_name." ".$client->result()[0]->last_name;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Correo Electrónico: <?php echo $client->result()[0]->mail;?></b></p>
+								<p><b>Correo Electrónico: </b><?php echo $client->result()[0]->mail;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Teléfono: <?php echo $client->result()[0]->phone;?></b></p>
+								<p><b>Teléfono:</b> <?php echo $client->result()[0]->phone;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Calle/Colonia: <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></b></p>
+								<p><b>Calle/Colonia:</b> <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Número: <?php echo $client->result()[0]->address_number;?></b></p>
+								<p><b>Número: </b><?php echo $client->result()[0]->address_number;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>CP: <?php echo $client->result()[0]->cp;?></b></p>
+								<p><b>CP:</b> <?php echo $client->result()[0]->cp;?></p>
 							</div><!-- End nombre -->
 						
 						</div>
@@ -49,27 +49,27 @@
 						<div class="col-md-6">
 							
 							<div class="input-group input-group-lg">
-								<p><b>Razón Social: <?php echo $client->result()[0]->social_reason;?></b></p>
+								<p><b>Razón Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Fecha: <?php echo date("Y-m-d",strtotime($fecha))?></b></p>
+								<p><b>Fecha: </b><?php echo date("Y-m-d",strtotime($fecha))?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Tipo de cultivo: <?php echo $planta->result()[0]->plant_name;?></b></p>
+								<p><b>Tipo de cultivo:</b> <?php echo $planta->result()[0]->plant_name;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Volumen Total: <?php echo $volumen;?></b></p>
+								<p><b>Categoría:</b> <?php echo $categoria->result()[0]->category_name;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Categoría: <?php echo $categoria->result()[0]->category_name;?></b></p>
+								<p><b>Volumen Total:</b> <?php echo $volumen;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Volumen Plantado: var</b></p>
+								<p><b>Volumen Plantado:</b> <?php echo $suma->result()[0]->volume;?></p>
 							</div><!-- End nombre -->
 							
 						</div>

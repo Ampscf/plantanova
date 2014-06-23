@@ -2,7 +2,6 @@
 	<th>Cantidad</th>
 	<th>Fecha</th>
 	<th>Variedad/Portainjerto</th>
-	<th>Alcance</th>
 	<th>Comentario</th>
 	<th>Eliminar</th>
 
@@ -16,7 +15,6 @@
 				echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
 				$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
-				echo "<td></td>";
 				if($key->comment != null){
 				echo "<td>" ?>
 

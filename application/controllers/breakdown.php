@@ -70,7 +70,8 @@ class Breakdown extends CI_Controller {
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
-		//$template['total_germ']=$this->model_breakdown->get_all_germination();
+		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
+
 		
 		$this->load->view("main",$template);
 	}
