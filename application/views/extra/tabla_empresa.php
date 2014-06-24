@@ -9,7 +9,7 @@
 	</thead>
 	<tbody>
 		<?php 
-		if(isset($users))
+		if(is_array($users))
 		{
 			foreach ($users as $key) 
 			{

@@ -22,8 +22,8 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>	
-	<script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
-	<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
 
 		<!--<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

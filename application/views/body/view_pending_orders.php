@@ -17,6 +17,9 @@
 					</div>	
 					
 					<div class="panel-body">					
+						<br>
+						<h2>Ordenes Pendientes</h2>
+						<br>
 						<div >
 							<?php include_once('application/views/extra/tabla_orden_pendiente.php'); ?>
 						</div>

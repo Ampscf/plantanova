@@ -116,7 +116,7 @@
 					        </div>
 					    </div>
 					    </form><!--endform1-->
-
+					    
 					    <script>
 					    
 						$("#insert_sowing").validate({
