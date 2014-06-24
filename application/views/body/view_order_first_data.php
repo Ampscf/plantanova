@@ -146,11 +146,71 @@
 
 					<div class="panel-footer">						
 						<ul class="pager">
+							<input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" />
+							<?php echo form_close();
+							echo form_open('order/pending_order_first_next_before');?>
 							<input type="submit" value="&larr; Anterior" class="btn btn-default" style="float: left;" id="before" name="before"/>
-					        <input type="submit" value="Siguiente &rarr;" class="btn btn-default" style="float: right;" id="next" name="next" />
-						</ul>	
+					      	<input type="hidden" value="<?php echo $id_client=$order->result()[0]->id_client;?>" id="id_company" name="id_company">
+					       <?php echo form_close();?>
+					       </ul>	
 					</div><!-- End panel-footer -->
-					<?php echo form_close();?>
+					
+					 <script>
+					    
+						$("#update").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+								plant: {
+						            plant: true
+						        },
+						       datepicker:{
+						       		datepicker: true
+						       },
+						        category: {
+						            category: true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "El Campo Volumen es Requerido",
+				                    number: "El Campo Volumen debe ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("plant", plant, "Selecciona un Tipo de Cultivo");
+						$.validator.addMethod("category", category, "Selecciona una Categoria");
+						$.validator.addMethod("datepicker", datepicker, "Selecciona una Fecha Valida");
+
+						function plant(){
+							if (document.getElementById('plant').value < 0){
+								return false;
+							}else return true;
+						}
+
+						function category(){
+							if (document.getElementById('category').value < 0){
+								return false;
+							}else return true;
+						}
+
+						function datepicker(){
+
+							var today = new Date();
+							
+							var date= new Date(document.getElementById('datepicker').value);
+							var value = document.getElementById('datepicker').value;
+							if(date < today || value =='--Selecciona una Fecha--')
+							{
+								return false;
+							 } else{
+							return true;
+							 } 
+						}	
+						</script>	
 				</div><!-- @end .result -->
 			</div>
       	</div><!-- @end .span12 -->

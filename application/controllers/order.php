@@ -342,7 +342,7 @@ class Order extends CI_Controller {
 	public function pending_order_first_next_before(){
 		$a=$this->input->post();
 		$id_client=$this->input->post('id_company');
-		$this->load->library('form_validation');
+		/*$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		
 		//Valida que los campos que se reciban esten llenos
@@ -353,15 +353,15 @@ class Order extends CI_Controller {
 		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
 		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
-		if($this->input->post('next')){
-			if($this->form_validation->run() == FALSE) 
+		*/if($this->input->post('next')){
+			/*if($this->form_validation->run() == FALSE) 
 			{
 				//vuelve a la pagina de registro e imprime los errores
 				$this->load_first_step($id_client);
 				
 
 			}
-			else{
+			else{*/
 				$data['id_status'] = 4;
 				$data['id_plant'] = $this->input->post('plant');
 				$data['id_category'] = $this->input->post('category');
@@ -396,7 +396,7 @@ class Order extends CI_Controller {
 					$error['template'] = $this->load_first_step($id_client);
 				}
 			
-			}
+			//}
 			
 			
 		}
@@ -409,7 +409,7 @@ class Order extends CI_Controller {
 	public function pending_order_first_next_before_update(){
 		$a=$this->input->post();
 		$id_client=$a['id_company'];
-		$this->load->library('form_validation');
+		/*$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		
 		//Valida que los campos que se reciban esten llenos
@@ -420,15 +420,15 @@ class Order extends CI_Controller {
 		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
 		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
 		
-		if($this->input->post('next')){
-			if($this->form_validation->run() == FALSE) 
+		*/if($this->input->post('next')){
+			/*if($this->form_validation->run() == FALSE) 
 			{
 				//vuelve a la pagina de registro e imprime los errores
 				$this->load_first_step($id_client);
 				
 
 			}
-			else{
+			else{*/
 				$data['id_status'] = 4;
 				$data['id_plant'] = $this->input->post('plant');
 				$data['id_category'] = $this->input->post('category');
@@ -471,7 +471,7 @@ class Order extends CI_Controller {
 			}
 			
 			
-		}
+		//}
 		else if($this->input->post('before')){
 			$template['body']=$this->pending_order_two($id_client);
 			
