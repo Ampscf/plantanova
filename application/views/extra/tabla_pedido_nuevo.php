@@ -7,6 +7,7 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
+		<th>Comentario</th>
 		<th>Editar/Eliminar</th>
 	</thead>
 	<tbody>
@@ -26,6 +27,37 @@
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
 				echo "<td>" . $key->total_volume . "</td>";
+				if($key->comment != null){
+					echo "<td>" ?>
+					
+					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Comentario"
+	                    data-toggle="modal">
+						<i class="fa fa-comment-o"></i>
+	                </a>
+					
+					<div id="myModal2<?php echo $key->id_order;  ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Comentario</h4>
+                				</div>
+                				<div class="modal-body">
+                    				<p><?php echo $key->comment;?></p>
+                				</div>
+                				<div class="modal-footer">
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    			</div>
+            				</div>
+        				</div>
+    				</div>
+				
+				<?php	
+				}else{
+					echo "<td>";
+				}
+				echo "</td>";
 				echo "<td>";?>
 					<a class="btn btn-default"
 	                    rel="tooltip"
