@@ -372,6 +372,7 @@ class Order extends CI_Controller {
 				$data['total_volume'] = $this->input->post('volume');
 				$data['branch_number'] = $this->input->post('arms');
 				$data['tutoring'] = $this->input->post('tutoring');
+				$data['comment'] = $this->input->post('comment');
 
 				$datas=$this->input->post('comment');
 
