@@ -7,7 +7,7 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
-		<th>Editar/Eliminar</th>
+		<th>Sembrar/Eliminar</th>
 	</thead>
 	<tbody>
 		<?php 

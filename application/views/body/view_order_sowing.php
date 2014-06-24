@@ -94,7 +94,7 @@
 												<?php 
 													foreach($breakdown as $key)
 													{
-														echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
+														echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock."  --> Volumen Max: ". $key->volume."</option>";
 													}
 												?>	
 											</select>
@@ -116,7 +116,7 @@
 					        </div>
 					    </div>
 					    </form><!--endform1-->
-					    
+
 					    <script>
 					    
 						$("#insert_sowing").validate({
