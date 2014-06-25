@@ -43,10 +43,11 @@
 				<nav class="navbar navbar-default" role="navigation" style="min-height: 30px;padding-left: 30px;">
 					<div class="container">
 						<div class="navbar-header">
-							<a class="navbar-brand" href="#" style="height: 40px; padding: 5px;">
+							<?php $img='<img src="'. base_url() . 'img/logo2.jpg" style="height:30px; width:auto;">'; echo anchor('order/index', $img, 'class="navbar-brand"'); ?>
+							<!--<a class="navbar-brand" href="#">
 								<img src="<?php echo base_url() . '/img/logo2.jpg'; ?>" alt="Logotipo" style="height:30px; width:auto;"/>
 							</a>
-							<!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>

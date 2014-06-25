@@ -27,8 +27,7 @@
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
 				echo "<td>" . $key->total_volume . "</td>";
-				if($key->comment != null){
-					echo "<td>" ?>
+				echo "<td>" ?>
 					
 					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Comentario"
@@ -36,6 +35,7 @@
 						<i class="fa fa-comment-o"></i>
 	                </a>
 					
+					<?php echo form_open('order/update_comment'); ?>
 					<div id="myModal2<?php echo $key->id_order;  ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
@@ -44,19 +44,19 @@
                     				<h4 class="modal-title">Comentario</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p><?php echo $key->comment;?></p>
+									<input type="hidden" value="<?php echo $key->id_order;?>" id="id" name="id">
+									<textarea rows="4" cols="50" id="coment" name="coment"><?php echo $key->comment;?></textarea>                    				
                 				</div>
                 				<div class="modal-footer">
                     				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									<button type="submit" class="btn btn-default">Guardar</button>
                     			</div>
             				</div>
         				</div>
     				</div>
+					</form>
 				
-				<?php	
-				}else{
-					echo "<td>";
-				}
+				<?php
 				echo "</td>";
 				echo "<td>";?>
 					<a class="btn btn-default"
