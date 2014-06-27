@@ -7,7 +7,7 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
-		
+		<th>Resumen</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -27,7 +27,19 @@
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
 				echo "<td>" . $key->total_volume . "</td>";
-				
+				echo "<td>";
+				?>
+					<a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen"
+	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
+	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+			<?php
+				echo "</td>";
+				echo "</tr>";
+			
 			}
 		}
 		?>

@@ -240,7 +240,26 @@ class Breakdown extends CI_Controller {
 		if($this->model_breakdown->update_order($a,$data)>0)
 		{
 			redirect("breakdown/pedido_embarcado", "refresh");
-		}
+		}	
+	}
+	
+	public function final_resume()
+	{
+		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_final_resume.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['order']= $order;
+		$template['company']=$this->model_user->obtenerCliente($template['order']->result()[0]->id_client);
+		$template['plant']=$this->model_order->get_plant($template['order']->result()[0]->id_plant);
+		$template['category']=$this->model_order->get_category($template['order']->result()[0]->id_category);
+		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
+		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['germination'] = $this->model_breakdown->get_germination($this->uri->segment(3));
+		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
+		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
+		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
 		
+		$this->load->view('main',$template);	
 	}
 }		
