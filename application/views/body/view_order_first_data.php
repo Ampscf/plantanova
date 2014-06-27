@@ -156,7 +156,14 @@
 					</div><!-- End panel-footer -->
 					
 					 <script>
-					    
+					     $("#datepicker").datepicker({
+
+					        minDate: 0,
+					        onSelect: function(selected) {
+					          $("#txtToDate").datepicker("option","minDate", selected)
+					        }
+					    });
+
 						$("#update").validate({
 							rules: {
 								volume: {
@@ -199,10 +206,8 @@
 
 						function datepicker(){
 							var value = document.getElementById('datepicker').value;
-							var today = new Date();
-							var date= new Date(value);
-							
-							if(date < today )
+														
+							if(value == "--Selecciona una Fecha--" )
 							{
 								return false;
 							}else{
