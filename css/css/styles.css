@@ -2250,7 +2250,7 @@ div.tagsinput div {
 .ui-datepicker .ui-datepicker-prev:before,
 .ui-datepicker .ui-datepicker-next:before {
   font-size: 11px;
-  color: #1974a9;
+  color: rgba(131, 175, 127, 0);
   line-height: 22px;
   height: 20px;
   width: 20px;

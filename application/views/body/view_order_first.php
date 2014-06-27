@@ -167,17 +167,16 @@
 						}
 
 						function datepicker(){
-
-							var today = new Date();
-							
-							var date= new Date(document.getElementById('datepicker').value);
 							var value = document.getElementById('datepicker').value;
-							if(date < today || value =='--Selecciona una Fecha--')
+							var today = new Date();
+							var date= new Date(value);
+							
+							if(date < today )
 							{
 								return false;
-							 } else{
-							return true;
-							 } 
+							}else{
+								return true;
+							} 
 						}	
 						</script>	
 				</div><!-- @end .result -->
