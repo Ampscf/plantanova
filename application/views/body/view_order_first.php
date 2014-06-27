@@ -125,6 +125,7 @@
 					</div><!-- End panel-footer -->
 					
 					 <script>
+					
 					  $("#datepicker").datepicker({
 
 					        minDate: 0,
@@ -132,6 +133,7 @@
 					          $("#txtToDate").datepicker("option","minDate", selected)
 					        }
 					    });
+
 					    
 						$("#update").validate({
 							rules: {
