@@ -655,4 +655,12 @@ class Order extends CI_Controller {
 
 
     }*/
+	
+	public function update_comment()
+	{
+		$id = $this->input->post('id');
+		$comment = $this->input->post('coment');
+		$this->model_order->update_order_comment($id, $comment);
+		redirect("order/index", "refresh");
+	}
 }

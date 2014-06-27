@@ -736,5 +736,15 @@ Class model_order extends CI_Model
 		$this->db->update('t_total', $data);
 		return $this->db->affected_rows();
 	}
+	
+	function update_order_comment($id_order,$comment)
+	{
+		$data = array (
+			'comment' => $comment
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_order',$data);
+		return $this->db->affected_rows();
+	}
 }
 ?>
