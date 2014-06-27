@@ -213,7 +213,6 @@
 									number: true
 								},
 						       cellphone: {
-									required: true,
 									number: true
 								},
 								farm_name: {
@@ -221,7 +220,6 @@
 								},
 								addr_number: {
 									required: true,
-									number: true
 								},
 								social_reason: {
 									required: true,
@@ -266,7 +264,6 @@
 									number: "El Campo Teléfono debe ser Numerico"
 								},
 						       cellphone: {
-									required: "El Campo Celular es Requerido",
 									 number: "El Campo Celular debe ser Numerico"
 								},
 								farm_name: {
@@ -274,7 +271,6 @@
 								},
 								addr_number: {
 									required: "El Campo Número es Requerido",
-									 number: "El Campo Número debe ser Numerico"
 								},
 								social_reason: {
 									required: "El Campo Razón Social es Requerido"
