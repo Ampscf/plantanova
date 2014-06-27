@@ -111,7 +111,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Volumen</h3>
-									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="<?php echo $volume;?>">
+									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" onkeyup="this.value=add_commas(this.value);" value="<?php echo $volume;?>">
 								</div><!-- End Volume -->
 								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>

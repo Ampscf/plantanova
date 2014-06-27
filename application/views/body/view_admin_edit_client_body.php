@@ -67,7 +67,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Número</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo $addr_number; ?>">
+								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" onkeyup="this.value=add_commas(this.value);" value="<?php echo $addr_number; ?>">
 							</div><!-- End address number -->
 							<?php echo form_error('addr_number'); ?>
 
