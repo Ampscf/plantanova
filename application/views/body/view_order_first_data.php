@@ -156,7 +156,14 @@
 					</div><!-- End panel-footer -->
 					
 					 <script>
-					    
+					     $("#datepicker").datepicker({
+
+					        minDate: 0,
+					        onSelect: function(selected) {
+					          $("#txtToDate").datepicker("option","minDate", selected)
+					        }
+					    });
+
 						$("#update").validate({
 							rules: {
 								volume: {
@@ -198,17 +205,14 @@
 						}
 
 						function datepicker(){
-
-							var today = new Date();
-							
-							var date= new Date(document.getElementById('datepicker').value);
 							var value = document.getElementById('datepicker').value;
-							if(date < today || value =='--Selecciona una Fecha--')
+														
+							if(value == "--Selecciona una Fecha--" )
 							{
 								return false;
-							 } else{
-							return true;
-							 } 
+							}else{
+								return true;
+							} 
 						}	
 						</script>	
 				</div><!-- @end .result -->

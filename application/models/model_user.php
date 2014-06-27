@@ -137,6 +137,25 @@ Class model_user extends CI_Model	{
 		$this->db->update('t_user',$data);
 		return $this->db->affected_rows();
 	}
+
+	//---------------------------------
+	// EMAIL EXISTS (true or false)
+	//---------------------------------
+	function email_exists($email)
+	{
+		$this->db->where('mail', $email);
+		$query = $this->db->get('t_user');
+		if( $query->num_rows() > 0 ){ 
+			return true; 
+		} else { 
+			return false; 
+		}
+	}
+
+
+
+
+
 }
 
 ?>

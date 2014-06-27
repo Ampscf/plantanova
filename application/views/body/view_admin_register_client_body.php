@@ -5,7 +5,7 @@
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Registro Nuevo Cliente </h3>
 			</div>
 			<?php 
-				$attributes = array('id' => 'registry');
+				$attributes = array('id' => 'registry', 'name' => 'registry');
 				echo form_open('admin/register_client',$attributes); 
 			?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
@@ -82,7 +82,7 @@
 							<?php echo form_error('colony'); ?>
 
 							<div class="clear">&nbsp</div>
-							<h3>Teléfono Emprea</h3>
+							<h3>Teléfono Empresa</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Teléfono Empresa" name="company_phone" id="company_phone" value="<?php echo set_value('company_phone'); ?>">
 							</div><!-- End company_phone -->
@@ -92,7 +92,7 @@
 							<h3>Ciudad</h3>
 							<div class="input-group input-group-lg">
 								<select class="form-control" name="town" id="town">
-									<option selected>---Selecciona una ciudad---</option>
+									<option selected value="-1">---Selecciona una ciudad---</option>
 									<?php 
 										foreach($towns as $key)
 										{
@@ -164,13 +164,13 @@
 					</div>
 
 				</div><!-- End panel-body -->
-
-			</form><!-- End form -->
-
+				
+			
+			
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
-							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta" onClick="register_client();"/>
+							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta" /><!--onClick="register_client()"-->
 						</div>
 						<div class="col-md-3 col-md-offset-4">
 							<?php  
@@ -182,8 +182,140 @@
 							?>
 						</div>
 					</div><!-- End row -->
-				</div><!-- End panel-footer -->
-			
+				</div><!-- End panel-footer -->	
+				</form><!-- End form -->		
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
+
+			<script>
+					    
+				$("#registry").validate({
+							rules: {
+								state: {
+						            state: true
+						        },
+						        town:{
+						       		town: true
+						       },
+						       cp: {
+									required: true,
+									number: true, 
+									maxlength: 5,
+									minlength: 5
+								},
+						       company_phone: {
+									required: true,
+									number: true
+								},
+						       phone: {
+									required: true,
+									number: true
+								},
+						       cellphone: {
+									required: true,
+									number: true
+								},
+								farm_name: {
+									required: true,
+								},
+								addr_number: {
+									required: true,
+									number: true
+								},
+								social_reason: {
+									required: true,
+								},
+								street: {
+									required: true,
+								},
+								colony: {
+									required: true,
+								},
+								rfc: {
+									required: true,
+								},
+								first_name: {
+									required: true,
+								},
+								last_name: {
+									required: true,
+								},
+								email: {
+									required: true,
+									email:true,
+									remote:{url:"<?php echo base_url('index.php/admin/register_email_exists'); ?>", 
+											type:"post", 
+											data:$("email").val()
+									}
+								}
+							},
+							messages: {
+                        		cp: {
+									required: "El Campo CP es Requerido",
+									number: "El Campo CP debe ser Numerico",
+									maxlength: "El Campo CP debe tener 5 caracteres",
+									minlength: "El Campo CP debe tener 5 caracteres"
+								},
+						       company_phone: {
+									required: "El Campo Teléfono Empresa es Requerido",
+									number: "El Campo Teléfono Empresa debe ser Numerico"
+								},
+						       phone: {
+									required: "El Teléfono es Requerido",
+									number: "El Campo Teléfono debe ser Numerico"
+								},
+						       cellphone: {
+									required: "El Campo Celular es Requerido",
+									 number: "El Campo Celular debe ser Numerico"
+								},
+								farm_name: {
+									required: "El Campo Empresa es Requerido"
+								},
+								addr_number: {
+									required: "El Campo Número es Requerido",
+									 number: "El Campo Número debe ser Numerico"
+								},
+								social_reason: {
+									required: "El Campo Razón Social es Requerido"
+								},
+								street: {
+									required: "El Campo Calle es Requerido"
+								},
+								colony: {
+									required: "El Campo Colonia es Requerido"
+								},
+								rfc: {
+									required: "El Campo RFC es Requerido"
+								},
+								first_name: {
+									required: "El Campo Nombre es Requerido"
+								},
+								last_name: {
+									required: "El Campo Apellido es Requerido"
+								},
+								email: {
+									required: "El Campo Correo Electrónico es Requerido",
+									email: "Ingresa un Correo Valido",
+									remote: 'Este Correo Electrónico Ya Existe.'
+								}
+						  	}
+						});
+
+						$.validator.addMethod("state", state, "Selecciona un Estado");
+						$.validator.addMethod("town", town, "Selecciona una Ciudad");
+
+						function state(){
+							if (document.getElementById('state').value < 0){
+								return false;
+							}else return true;
+						}
+
+						function town(){
+							if (document.getElementById('town').value < 0){
+								return false;
+							}else return true;
+						}
+
+						
+			</script>

@@ -52,7 +52,7 @@ class Admin extends CI_Controller {
 	{
 		$datos['states'] = $this->model_order->get_states();
 		$datos['towns'] = $this->model_order->get_towns();
-		$this->load->library('form_validation');
+		/*$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 	 	
 	 	//Valida los campos que se reciben
@@ -73,7 +73,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('company_phone','Teléfono empresa','required|xss_clean');
 
 		//Algunos datos no son correctos y se tiene que lenar de nuevo
-		if($this->form_validation->run() == FALSE) 
+		if($this->form_validation->run() == TRUE) 
 		{
 			//vuelve a la pagina de registro e imprime los errores
 			$error['msj'] = "Error";
@@ -94,7 +94,7 @@ class Admin extends CI_Controller {
 			// 	$error['template'] = $this->load->view('view_admin_register_client_body',$datos,TRUE);
 			// 	echo json_encode($error);
 			// 	exit();
-			// }
+			// }*/
 
 			//Obtiene tdos los campos a guardar del usuario en un arreglo
 			$data['id_rol'] = $this->input->post('rol');
@@ -117,14 +117,15 @@ class Admin extends CI_Controller {
 			//Verifica si hubo una tupla modificada o agregada
 			if($this->model_user->insert_client_user($data) > 0 )
 			{
-				unset($data);
+				/*unset($data);
 				$data['msj'] = "Exito";
 				$data['template'] = $this->load->view('body/view_admin_register_client_body',$datos,TRUE);
-				echo json_encode($data);
+				echo json_encode($data);*/
+				redirect("admin/list_clients", "refresh");
 
 				
 			}
-			else
+			/*else
 			{
 				unset($data);
 				$error['msj'] = "Error";
@@ -132,7 +133,7 @@ class Admin extends CI_Controller {
 				$error['template'] = $this->load->view('body/view_admin_register_client_body',$datos,TRUE);
 				echo json_encode($error);
 			}
-		} 
+		}*/ 
 	}
 	
 	//funcion que edita un cliente
@@ -265,5 +266,20 @@ class Admin extends CI_Controller {
 	function carga_tabla()
 	{
 		$this->load->view("extra/tabla_empresa.php");
+	}
+
+
+	//---------------------------------
+	// AJAX REQUEST, IF EMAIL EXISTS
+	//---------------------------------
+	function register_email_exists()
+	{
+		$email = $this->input->post('email');
+
+	    if($this->model_user->email_exists($email)) {
+	        echo "false";
+	    } else {
+	        echo "true";
+	    }
 	}
 }

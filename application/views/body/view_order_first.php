@@ -125,6 +125,15 @@
 					</div><!-- End panel-footer -->
 					
 					 <script>
+					
+					  $("#datepicker").datepicker({
+
+					        minDate: 0,
+					        onSelect: function(selected) {
+					          $("#txtToDate").datepicker("option","minDate", selected)
+					        }
+					    });
+
 					    
 						$("#update").validate({
 							rules: {
@@ -152,7 +161,7 @@
 
 						$.validator.addMethod("plant", plant, "Selecciona un Tipo de Cultivo");
 						$.validator.addMethod("category", category, "Selecciona una Categoria");
-						$.validator.addMethod("datepicker", datepicker, "Selecciona una Fecha Valida");
+						$.validator.addMethod("datepicker", datepicker, "Selecciona una Fecha");
 
 						function plant(){
 							if (document.getElementById('plant').value < 0){
@@ -167,17 +176,15 @@
 						}
 
 						function datepicker(){
-
-							var today = new Date();
-							
-							var date= new Date(document.getElementById('datepicker').value);
 							var value = document.getElementById('datepicker').value;
-							if(date < today || value =='--Selecciona una Fecha--')
+							
+							
+							if(value == "--Selecciona una Fecha--" )
 							{
 								return false;
-							 } else{
-							return true;
-							 } 
+							}else{
+								return true;
+							} 
 						}	
 						</script>	
 				</div><!-- @end .result -->

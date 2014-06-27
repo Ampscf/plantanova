@@ -202,20 +202,20 @@ class Order extends CI_Controller {
 		$fecha=$this->input->post('fecha');
 
 		
-		$this->load->library('form_validation');
+		/*$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger"> <a href="#" class="close" data-dismiss="alert">&times;</a>', '</div>');
 		
 		$this->form_validation->set_rules('sustratum','Sustrato','required|xss_clean|callback_sel_sustrato');
 		$this->form_validation->set_rules('subtype','Subtipo','required|xss_clean|callback_sel_subtipo');
 		$this->form_validation->set_rules('variety','Variedad','required|xss_clean');
 		$this->form_validation->set_rules('rootstock','PortaInjerto','required|xss_clean');
-		$this->form_validation->set_rules('volume','Volumen','required|numeric|xss_clean');
+		$this->form_validation->set_rules('volume','Volumen','required|numeric|xss_clean');*/
 		
 		
-		if($this->form_validation->run() == FALSE) 
+		/*if($this->form_validation->run() == FALSE) 
 		{
 			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
-		} else {
+		} else {*/
 			$data['id_order']=$id_order;
 			$data['id_subtype']=$this->input->post('subtype');
 			$data['variety']=$this->input->post('variety');
@@ -225,7 +225,7 @@ class Order extends CI_Controller {
 			if($this->model_order->insert_breakdown($data)>0){
 				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
 			}
-		}
+		//}
 	
 	}
 	}

@@ -219,6 +219,60 @@
 						</ul>
 					</div>
 					<?php echo form_close();?>
+
+					 <script>
+					    
+						$("#update").validate({
+							rules: {
+								variety: {
+									required: true
+								},
+								rootstock: {
+									required: true
+								},
+								volume: {
+									required: true,
+									number: true
+								},
+								sustratum: {
+						            sustratum: true
+						        },
+						       subtype:{
+						       		subtype: true
+						       }
+							},
+							messages: {
+                        		variety: {
+				                    required: "El Campo Variedad es Requerido"
+				                },
+				                rootstock: {
+				                    required: "El Campo PortaInjerto es Requerido"
+				                    
+				                },
+				                volume: {
+				                    required: "El Campo Volumen es Requerido",
+				                    number: "El Campo Volumen debe ser Numerico"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("sustratum", sustratum, "Selecciona un Sustrato");
+						$.validator.addMethod("subtype", subtype, "Selecciona un Subtipo");
+
+						function sustratum(){
+							if (document.getElementById('sustratum').value < 0){
+								return false;
+							}else return true;
+						}
+
+						function subtype(){
+							if (document.getElementById('subtype').value < 0){
+								return false;
+							}else return true;
+						}
+
+						
+						</script>
 				</div><!-- @end .result -->
 			</div>
       	</div><!-- @end .span12 -->
