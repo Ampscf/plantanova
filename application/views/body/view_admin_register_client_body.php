@@ -189,6 +189,8 @@
 </div><!-- End row -->
 
 			<script>
+
+			
 					    
 				$("#registry").validate({
 							rules: {
