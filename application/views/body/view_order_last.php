@@ -111,7 +111,7 @@
 							<th>Variedad</th>
 							<th>PortaInjerto</th>
 							<th>Volumen</th>
-							
+
 							<tbody>
 								<?php
 								if(is_array($breakdown))
