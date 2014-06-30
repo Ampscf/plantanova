@@ -322,6 +322,30 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 	
+	function get_order_variety($id_order)
+	{
+		$result = $this->db->query('SELECT DISTINCT `variety`
+							FROM `t_breakdown` 
+							WHERE `id_order` ='.$id_order);
+		if($result->num_rows()>0)
+			{
+				return $result->result();
+			}
+			else return false;
+	}
+	
+	function get_order_rootstock($id_order)
+	{
+		$result = $this->db->query('SELECT DISTINCT `rootstock`
+							FROM `t_breakdown` 
+							WHERE `id_order` ='.$id_order);
+		if($result->num_rows()>0)
+			{
+				return $result->result();
+			}
+			else return false;
+	}
+	
 }
 	
 ?>

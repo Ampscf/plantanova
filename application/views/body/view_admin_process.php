@@ -160,12 +160,14 @@
 					</div>
 					
 				</div>
+				<div class="clear">&nbsp</div>
 				<div>
 				<?php echo form_open('breakdown/finish_order/'.$this->uri->segment(3))?>
 					<button type="submit" class="btn btn-success" name="" style="margin-left: 30%; margin-right: 20%;">Embarcar</button>
 					<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary"');?>
 				</form>
 				</div>
+				<div class="clear">&nbsp</div>
 			<div>
 			<?php 
 			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');

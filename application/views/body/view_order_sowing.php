@@ -92,9 +92,14 @@
 											<select class="form-control" name="breakdown" id="breakdown" >
 												<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
 												<?php 
-													foreach($breakdown as $key)
+													foreach($varial as $key)
 													{
-														echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock."  --> Volumen Max: ". number_format($key->volume)."</option>";
+
+														echo "<option value='" . $key->variety . "' set_select('breackdown','".$key->variety."')>" . $key->variety ."</option>";
+													}
+													foreach($injertal as $key)
+													{
+														echo "<option value='" . $key->rootstock . "' set_select('breackdown','".$key->rootstock."')>" . $key->rootstock ."</option>";
 													}
 												?>	
 											</select>
