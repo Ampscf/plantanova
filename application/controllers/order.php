@@ -605,6 +605,7 @@ class Order extends CI_Controller {
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
 		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
 		$template['total_plant']=$total_sowing->sowing;	
+		$template['farmer']=$order->result()[0]->farmer;
 
 
 		$this->load->view('main',$template);	

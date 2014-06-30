@@ -16,7 +16,12 @@
 								<div class="input-group input-group-lg">
 									<p><b>Pedido: <?php echo $id_order;?></b></p>
 								</div><!-- End nombre -->
-
+								<div class="input-group input-group-lg">
+									<p><b>Fecha:</b> <?php echo date("Y-m-d",strtotime($fecha))?></p>
+								</div><!-- End Plant -->
+								<div class="input-group input-group-lg">
+									<p><b>Agricultor:</b> <?php echo $farmer;?></p>
+								</div><!-- End farmer -->
 								<div class="input-group input-group-lg">
 									<p><b>Nombre Completo:</b> <?php echo $client->result()[0]->first_name." ".$client->result()[0]->last_name;?></p>
 								</div><!-- End nombre -->
@@ -27,12 +32,6 @@
 									<p><b>Telefono:</b> <?php echo $client->result()[0]->phone;?></p>
 								</div><!-- End telefono -->
 								<div class="input-group input-group-lg">
-									<p><b>Calle/Colonia:</b> <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></p>
-								</div><!-- End calle/colonia -->
-								<div class="input-group input-group-lg">
-									<p><b>Número:</b> <?php echo $client->result()[0]->address_number;?></p>
-								</div><!-- End numero -->
-								<div class="input-group input-group-lg">
 									<p><b>C.P:</b> <?php echo $client->result()[0]->cp;?></p>
 								</div><!-- End cp -->
 								
@@ -42,19 +41,19 @@
 						</div>
 						
 						<div class="col-md-6">
-							
-							<div class="clear">&nbsp</div>
+								
 								<div class="input-group input-group-lg">
 									<p><b>Razon Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
 								</div><!-- End Razon social -->
 								<div class="input-group input-group-lg">
-									<p><b>Fecha:</b> <?php echo date("Y-m-d",strtotime($fecha))?></p>
-								</div><!-- End Plant -->
-								
+									<p><b>Calle/Colonia:</b> <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></p>
+								</div><!-- End calle/colonia -->
+								<div class="input-group input-group-lg">
+									<p><b>Número:</b> <?php echo $client->result()[0]->address_number;?></p>
+								</div><!-- End numero -->								
 								<div class="input-group input-group-lg">
 									<p><b>Tipo de cultivo:</b> <?php echo $planta->result()[0]->plant_name;?></p>
 								</div><!-- End Cultivo -->
-								
 								<div class="input-group input-group-lg">
 									<p><b>Categoría:</b> <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->

@@ -79,7 +79,7 @@ class Breakdown extends CI_Controller {
 		$template['alcance_injerto']=(($template['total_graft']->graft/$order->result()[0]->total_volume)-1) * 100;
 		$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
 		$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
-		
+		$template['farmer']=$order->result()[0]->farmer;
 		$this->load->view("main",$template);
 	}
 

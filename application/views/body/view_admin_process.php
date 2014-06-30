@@ -14,12 +14,18 @@
 					</div>
 					
 					<div class="col-md-12">
-						<div class="input-group input-group-lg">
-							<p><b>Pedido: <?php echo $id_order;?></b></p>
-						</div><!-- End nombre -->
+						
 						
 						<div class="col-md-6">
-						
+							<div class="input-group input-group-lg">
+								<p><b>Pedido: <?php echo $id_order;?></b></p>
+							</div><!-- End nombre -->
+							<div class="input-group input-group-lg">
+								<p><b>Fecha: </b><?php echo date("d-m-Y",strtotime($fecha))?></p>
+							</div><!-- End nombre -->
+							<div class="input-group input-group-lg">
+								<p><b>Agricultor:</b> <?php echo $farmer;?></p>
+							</div><!-- End agricultor -->
 							<div class="input-group input-group-lg">
 								<p><b>Nombre Completo:</b> <?php echo $client->result()[0]->first_name." ".$client->result()[0]->last_name;?></p>
 							</div><!-- End nombre -->
@@ -31,15 +37,7 @@
 							<div class="input-group input-group-lg">
 								<p><b>Teléfono:</b> <?php echo $client->result()[0]->phone;?></p>
 							</div><!-- End nombre -->
-							
-							<div class="input-group input-group-lg">
-								<p><b>Calle/Colonia:</b> <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></p>
-							</div><!-- End nombre -->
-							
-							<div class="input-group input-group-lg">
-								<p><b>Número: </b><?php echo $client->result()[0]->address_number;?></p>
-							</div><!-- End nombre -->
-							
+											
 							<div class="input-group input-group-lg">
 								<p><b>CP:</b> <?php echo $client->result()[0]->cp;?></p>
 							</div><!-- End nombre -->
@@ -53,7 +51,11 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Fecha: </b><?php echo date("d-m-Y",strtotime($fecha))?></p>
+								<p><b>Calle/Colonia:</b> <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></p>
+							</div><!-- End nombre -->
+							
+							<div class="input-group input-group-lg">
+								<p><b>Número: </b><?php echo $client->result()[0]->address_number;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">

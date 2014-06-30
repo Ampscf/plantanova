@@ -1,6 +1,7 @@
 <table class="table table-hover" id="tabla-pedidos">
 	<thead>
 		<th class="col-md-1"># Pedido</th>
+		<th>Agricultor</th>
 		<th>Fecha</th>
 		<th>Estado</th>
 		<th>Empresa</th>
@@ -18,6 +19,7 @@
 			{
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
+				echo "<td>" . $key->farmer . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->order_date_delivery)) . "</td>";
 				echo "<td>Nuevos</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);

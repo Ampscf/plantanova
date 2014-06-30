@@ -70,15 +70,15 @@
 							<div class="input-group input-group-lg">
 								<p>Fecha: <?php echo date("d-m-Y", strtotime($order->result()[0]->order_date_delivery));?></p>
 							</div><!-- End Plant -->
+
+							<div class="input-group input-group-lg">
+								<p>Agricultor: <?php echo $order->result()[0]->farmer;?></p>
+							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">
 								<p>Tipo de cultivo: <?php echo $plant->result()[0]->plant_name;?></p>
 							</div><!-- End Plant -->
-							
-							<div class="input-group input-group-lg">
-								<p>Volumen total: <?php echo number_format($order->result()[0]->total_volume);?></p>
-							</div><!-- End Plant -->
-							
+
 							<div class="input-group input-group-lg">
 								<p>Categoría: <?php echo $category->result()[0]->category_name;?></p>
 							</div><!-- End Plant -->
@@ -86,10 +86,6 @@
 						</div>
 						
 						<div class="col-md-6">
-							<div class="input-group input-group-lg">
-
-								<p>Volumen restante: <?php echo number_format($restante); ?></p>
-							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">
 								<p>Brazos: <?php echo $order->result()[0]->branch_number;?></p>
@@ -98,6 +94,16 @@
 							<div class="input-group input-group-lg">
 								<p>Tutoreo: <?php echo $order->result()[0]->tutoring;?></p>
 							</div><!-- End Plant -->
+
+							<div class="input-group input-group-lg">
+								<p>Volumen total: <?php echo number_format($order->result()[0]->total_volume);?></p>
+							</div><!-- End Plant -->
+							
+							<div class="input-group input-group-lg">
+								<p>Volumen restante: <?php echo number_format($restante); ?></p>
+							</div><!-- End Plant -->
+
+							
 						</div>
 						
 						<div class="clear">&nbsp</div>					
