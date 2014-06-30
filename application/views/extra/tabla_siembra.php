@@ -1,7 +1,7 @@
 <table class="table table-hover" id="tabla-empresa">
 		<th>Cantidad</th>
 		<th>Fecha</th>
-		<th>Variedad/Portainjerto</th>
+		<th>Semilla</th>
 		<th>Comentario</th>
 		<th>Eliminar</th>
 	
@@ -13,8 +13,8 @@
 				echo "<tr>";
 				echo "<td>" . $key->volume . "</td>";
 				echo "<td>" . date("Y-m-d",strtotime($key->sowing_date)) . "</td>";
-				$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
-				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
+				//$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
+				echo "<td>" . $key->seed. "</td>";
 				if($key->comment != null){
 				echo "<td>" ?>
 
