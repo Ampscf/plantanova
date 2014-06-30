@@ -11,8 +11,8 @@
 			foreach ($graft as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->volume . "</td>";
-				echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
+				echo "<td>" . number_format($key->volume) . "</td>";
+				echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 				$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 				echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
 				if($key->comment != null){

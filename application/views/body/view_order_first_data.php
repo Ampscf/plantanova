@@ -19,10 +19,11 @@
 				$id_plant=$order->result()[0]->id_plant;
 				$id_category=$order->result()[0]->id_category;
 				$datepicker=$order->result()[0]->order_date_delivery;
-				$date=date("m/d/Y",strtotime($datepicker));
+				$date=date("d-m-Y",strtotime($datepicker));
 				$volume=$order->result()[0]->total_volume;
 				$branch_number=$order->result()[0]->branch_number;
 				$tutoring=$order->result()[0]->tutoring;
+				$farmer=$order->result()[0]->farmer;
 
 				$plant_name=$this->model_order->get_plant($id_plant);
 				$category_name=$this->model_order->get_category($id_category);
@@ -88,7 +89,12 @@
 										
 									</select>	
 								</div><!-- End Arms -->	
-								<?php echo form_error('arms'); ?>							
+								<?php echo form_error('arms'); ?>
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<h3>Agricultor</h3>
+									<input type="text" class="form-control" placeholder="Agricultor" name="farmer" id="farmer"  value="<?php echo $farmer;?>">
+								</div><!-- End Volume -->							
 							
 							</div>						
 
@@ -111,7 +117,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Volumen</h3>
-									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" onkeyup="this.value=add_commas(this.value);" value="<?php echo $volume;?>">
+									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume"  value="<?php echo $volume;?>">
 								</div><!-- End Volume -->
 								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>

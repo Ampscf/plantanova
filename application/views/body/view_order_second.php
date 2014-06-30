@@ -35,14 +35,14 @@
 						
 						<div class="col-md-6" style="width: 32%;">
 								<div class="input-group input-group-lg">
-									<p>Fecha: <?php echo date("Y-m-d",strtotime($fecha))?></p>
+									<p>Fecha: <?php echo date("d-m-Y",strtotime($fecha))?></p>
 								</div><!-- End Plant -->
 								
 								<div class="input-group input-group-lg">
 									<p>Tipo de cultivo: <?php echo $planta->result()[0]->plant_name;?></p>
 								</div><!-- End Cultivo -->
 								<div class="input-group input-group-lg">
-									<p>Volumen Total: <?php echo $volumen;?></p>
+									<p>Volumen Total: <?php echo number_format($volumen);?></p>
 								</div><!-- End Volumen -->
 						
 						</div>
@@ -55,7 +55,7 @@
 								</div><!-- End Plant -->
 								<div class="input-group input-group-lg">
 									<?php $restante=$volumen - $suma_volumen->result()[0]->volume;?>
-									<p>Volumen restante: <?php echo $restante;?></p>
+									<p>Volumen restante: <?php echo number_format($restante);?></p>
 								</div><!-- End Plant -->						
 						</div>
 						
@@ -99,7 +99,7 @@
 										echo "<td>" . $subtype_name_a . "</td>";
 										echo "<td>" . $key->variety . "</td>";
 										echo "<td>" . $key->rootstock . "</td>";
-										echo "<td>" . $key->volume . "</td>";
+										echo "<td>" .number_format($key->volume) . "</td>";
 										echo "<td>"?>
 										<a href="#delModal<?php echo $key->id_breakdown;?>" class="btn btn-default"
 						                    title="Eliminar"

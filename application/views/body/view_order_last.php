@@ -68,7 +68,7 @@
 						
 						<div class="col-md-6"style="width: 39%;">
 							<div class="input-group input-group-lg">
-								<p>Fecha: <?php echo date("y-m-d", strtotime($order->result()[0]->order_date_delivery));?></p>
+								<p>Fecha: <?php echo date("d-m-Y", strtotime($order->result()[0]->order_date_delivery));?></p>
 							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">
@@ -76,7 +76,7 @@
 							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">
-								<p>Volumen total: <?php echo $order->result()[0]->total_volume;?></p>
+								<p>Volumen total: <?php echo number_format($order->result()[0]->total_volume);?></p>
 							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">
@@ -87,7 +87,8 @@
 						
 						<div class="col-md-6">
 							<div class="input-group input-group-lg">
-								<p>Volumen restante: <?php echo $restante; ?></p>
+
+								<p>Volumen restante: <?php echo number_format($restante); ?></p>
 							</div><!-- End Plant -->
 							
 							<div class="input-group input-group-lg">
@@ -127,7 +128,7 @@
 										echo "<td>" . $subtype_name_a . "</td>";
 										echo "<td>" . $key->variety . "</td>";
 										echo "<td>" . $key->rootstock . "</td>";
-										echo "<td>" . $key->volume . "</td>";
+										echo "<td>" . number_format($key->volume) . "</td>";
 										echo "</tr>";
 									}
 								}

@@ -59,10 +59,10 @@
 									<p><b>Categoría:</b> <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->
 								<div class="input-group input-group-lg">
-									<p><b>Volumen de Pedido:</b> <?php echo $volumen;?></p>
+									<p><b>Volumen de Pedido:</b> <?php echo number_format($volumen);?></p>
 								</div><!-- End Volumen -->
 								<div class="input-group input-group-lg">
-									<p><b>Volumen Total de Siembra:</b> <?php echo $suma->result()[0]->volume;?></p>
+									<p><b>Volumen Total de Siembra:</b> <?php echo number_format($suma->result()[0]->volume);?></p>
 								</div><!-- End Plant -->						
 						</div>
 
@@ -94,7 +94,7 @@
 												<?php 
 													foreach($breakdown as $key)
 													{
-														echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock."  --> Volumen Max: ". $key->volume."</option>";
+														echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock."  --> Volumen Max: ". number_format($key->volume)."</option>";
 													}
 												?>	
 											</select>

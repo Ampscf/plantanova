@@ -53,7 +53,7 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Fecha: </b><?php echo date("Y-m-d",strtotime($fecha))?></p>
+								<p><b>Fecha: </b><?php echo date("d-m-Y",strtotime($fecha))?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
@@ -65,11 +65,11 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Volumen Total:</b> <?php echo $volumen;?></p>
+								<p><b>Volumen Total:</b> <?php echo number_format($volumen);?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Volumen Plantado:</b> <?php echo $suma->result()[0]->volume;?></p>
+								<p><b>Volumen Plantado:</b> <?php echo number_format($suma->result()[0]->volume);?></p>
 							</div><!-- End nombre -->
 							
 						</div>
@@ -92,7 +92,7 @@
 							<?php include_once('application/views/extra/tabla_germinacion.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo $total_germ->germination;?></labbel>
+							<labbel><b>Total:</b> <?php echo number_format($total_germ->germination);?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo $alcance_germinacion."%";?></labbel>
@@ -112,7 +112,7 @@
 							<?php include_once('application/views/extra/tabla_injerto.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo $total_graft->graft;?></labbel>
+							<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo $alcance_injerto."%";?></labbel>
@@ -132,7 +132,7 @@
 							<?php include_once('application/views/extra/tabla_pinchado.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo $total_punch->punch;?></labbel>
+							<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo $alcance_pinchado."%";?></labbel>
@@ -152,7 +152,7 @@
 							<?php include_once('application/views/extra/tabla_transplante.php'); ?>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo $total_transplant->transplant;?></labbel>
+							<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
 						</div>
 						<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo $alcance_transplante."%";?></labbel>

@@ -64,7 +64,12 @@
 										<option value="1">1</option>
 									</select>	
 								</div><!-- End Arms -->	
-								<?php echo form_error('arms'); ?>							
+								<?php echo form_error('arms'); ?>	
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<h3>Agricultor</h3>
+									<input type="text" class="form-control" placeholder="Agricultor" name="farmer" id="farmer" value="" >
+								</div><!-- End Volume -->						
 							
 							</div>						
 
@@ -87,7 +92,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Volumen</h3>
-									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="" onkeyup="this.value=add_commas(this.value);">
+									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="" >
 								</div><!-- End Volume -->
 								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>
@@ -149,12 +154,18 @@
 						       },
 						        category: {
 						            category: true
+						        },
+						         farmer: {
+						            required: true
 						        }
 							},
 							messages: {
                         		volume: {
 				                    required: "El Campo Volumen es Requerido",
 				                    number: "El Campo Volumen debe ser Numerico"
+				                },
+				                farmer: {
+				                    required: "El Campo Agricultor es Requerido",
 				                }
 						  	}
 						});

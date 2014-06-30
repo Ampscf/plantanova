@@ -14,7 +14,7 @@
 			foreach ($pending_order as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->id_order . "</td>";
+				echo "<td>" . number_format($key->id_order) . "</td>";
 				$plant=$this->model_order->get_plant($key->id_plant);
 				$plant_name=$plant->result()[0]->plant_name;
 				echo "<td>" . $plant_name . "</td>";
@@ -23,7 +23,7 @@
 				echo "<td>" . $category_name . "</td>";
 				echo "<td>" . $key->total_volume . "</td>";
 				$time=$key->order_date_submit;
-				$date= date("Y-m-d", strtotime($time));
+				$date= date("d-m-Y", strtotime($time));
 				echo "<td>" . $date . "</td>";
 				echo "<td>";?>
 				

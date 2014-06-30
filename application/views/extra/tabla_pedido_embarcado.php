@@ -18,15 +18,15 @@
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
 				
-				echo "<td>" . date("Y-m-d",strtotime($key->order_date_delivery)) . "</td>";
-				echo "<td>Completados</td>";
+				echo "<td>" . date("d-m-Y",strtotime($key->order_date_delivery)) . "</td>";
+				echo "<td>Completado</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";
 				$category=$this->model_breakdown->get_category($key->id_category);
 				echo "<td>" . $category[0]->category_name . "</td>";
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
-				echo "<td>" . $key->total_volume . "</td>";
+				echo "<td>" . number_format($key->total_volume) . "</td>";
 				echo "<td>";
 				?>
 					<a class="btn btn-default"

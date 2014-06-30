@@ -48,7 +48,7 @@
 	            dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
 	            dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
 	            weekHeader: 'Sm',
-	            dateFormat: 'dd/mm/yy',
+	            dateFormat: 'dd-mm-yy',
 	            firstDay: 1,
 	            isRTL: false,
 	            showMonthAfterYear: false,
@@ -56,24 +56,7 @@
 		    $.datepicker.setDefaults($.datepicker.regional['es']);
 		});
 
-		function add_commas(number){
-				//remove any existing commas...
-				number=number.replace(/,/g, "");
-				//start putting in new commas...
-				number = '' + number;
-				if (number.length > 3) {
-					var mod = number.length % 3;
-					var output = (mod > 0 ? (number.substring(0,mod)) : '');
-					for (i=0 ; i < Math.floor(number.length / 3); i++) {
-						if ((mod == 0) && (i == 0))
-							output += number.substring(mod+ 3 * i, mod + 3 * i + 3);
-						else
-							output+= ',' + number.substring(mod + 3 * i, mod + 3 * i + 3);
-					}
-					return (output);
-				}
-				else return number;
-			} 
+		
 	</script>
 
 </head>

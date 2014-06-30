@@ -16,9 +16,9 @@
 			foreach ($seeds as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . date("Y-m-d",strtotime($key->seeds_date)) . "</td>";
+				echo "<td>" . date("d-m-Y",strtotime($key->seeds_date)) . "</td>";
 				echo "<td>" . $key->farm_name . "</td>";
-				echo "<td>" . $key->volume . "</td>";
+				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->seed_name . "</td>";
 				echo "<td>" . $key->type . "</td>";
 				echo "<td>" . $key->batch . "</td>";
