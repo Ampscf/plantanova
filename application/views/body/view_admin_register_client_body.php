@@ -33,7 +33,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Número</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" value="<?php echo set_value('addr_number'); ?>">
+								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" onkeyup="this.value=add_commas(this.value);" value="<?php echo set_value('addr_number'); ?>">
 							</div><!-- End address number -->
 							<?php echo form_error('addr_number'); ?>
 
@@ -189,7 +189,6 @@
 </div><!-- End row -->
 
 			<script>
-					    
 				$("#registry").validate({
 							rules: {
 								state: {
@@ -213,7 +212,6 @@
 									number: true
 								},
 						       cellphone: {
-									required: true,
 									number: true
 								},
 								farm_name: {
@@ -221,7 +219,6 @@
 								},
 								addr_number: {
 									required: true,
-									number: true
 								},
 								social_reason: {
 									required: true,
@@ -266,7 +263,6 @@
 									number: "El Campo Teléfono debe ser Numerico"
 								},
 						       cellphone: {
-									required: "El Campo Celular es Requerido",
 									 number: "El Campo Celular debe ser Numerico"
 								},
 								farm_name: {
@@ -274,7 +270,6 @@
 								},
 								addr_number: {
 									required: "El Campo Número es Requerido",
-									 number: "El Campo Número debe ser Numerico"
 								},
 								social_reason: {
 									required: "El Campo Razón Social es Requerido"

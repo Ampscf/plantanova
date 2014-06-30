@@ -150,7 +150,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('last_name','Apellido','required|xss_clean');
 		$this->form_validation->set_rules('rfc','RFC','required|xss_clean');
 		$this->form_validation->set_rules('phone','Teléfono','required|numeric|xss_clean');
-		$this->form_validation->set_rules('cellphone','Celular','required|numeric|xss_clean');
+		$this->form_validation->set_rules('cellphone','Celular','numeric|xss_clean');
 		$this->form_validation->set_rules('farm_name','Agrícola','required|xss_clean');
 		$this->form_validation->set_rules('street','Calle','required|xss_clean');
 		$this->form_validation->set_rules('addr_number','Número','required|xss_clean');
