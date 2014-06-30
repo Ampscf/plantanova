@@ -7,6 +7,7 @@ class Seeds extends CI_Controller {
 		$this->load->model('model_seeds','',TRUE);
 		$this->load->model('model_order','',TRUE);
 		$this->load->model('model_user','',TRUE);
+		$this->load->model('model_breakdown','',TRUE);
 	}
 
 	public function index(){
@@ -20,10 +21,31 @@ class Seeds extends CI_Controller {
 
 
 	public function register_seeds_form(){
-		$template['header'] = "header/view_admin_header.php";
+		
+		$template['order']=$this->model_seeds-> get_orders();
+
+		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
+		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = "body/view_seeds_register.php";
 		$template['footer'] = "footer/view_footer.php";
-		$template['order']=$this->model_seeds-> get_orders();
+		$template['id_company']=$order->result()[0]->id_client;
+		$template['company']=$this->model_user->get_client($order->result()[0]->id_client);
+		$template['fecha']=$order->result()[0]->order_date_submit;
+		$template['id_plant']=$order->result()[0]->id_plant;
+		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
+		$template['volumen']=$order->result()[0]->total_volume;
+		$template['categ']=$order->result()[0]->id_category;
+		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category); 
+		$template['id_order']=$this->uri->segment(3);
+		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
+		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
+		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
+		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
+		$template['total_plant']=$total_sowing->sowing;	
+		$template['farmer']=$order->result()[0]->farmer;
 
 		$this->load->view('main',$template);
 	}
