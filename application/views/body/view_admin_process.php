@@ -37,7 +37,7 @@
 							<div class="input-group input-group-lg">
 								<p><b>Teléfono:</b> <?php echo $client->result()[0]->phone;?></p>
 							</div><!-- End nombre -->
-											
+
 							<div class="input-group input-group-lg">
 								<p><b>CP:</b> <?php echo $client->result()[0]->cp;?></p>
 							</div><!-- End nombre -->
@@ -97,7 +97,7 @@
 							<labbel><b>Total:</b> <?php echo number_format($total_germ->germination);?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo $alcance_germinacion."%";?></labbel>
+							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>
 					</div>
 					
@@ -117,7 +117,7 @@
 							<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo $alcance_injerto."%";?></labbel>
+							<labbel><b>Alcance:</b> <?php echo round($alcance_injerto)."%";?></labbel>
 						</div>
 					</div>
 					
@@ -137,7 +137,7 @@
 							<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo $alcance_pinchado."%";?></labbel>
+							<labbel><b>Alcance:</b> <?php echo round($alcance_pinchado)."%";?></labbel>
 						</div>
 					</div>
 					
@@ -157,20 +157,39 @@
 							<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo $alcance_transplante."%";?></labbel>
+							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
 						</div>
 					</div>
 					
 				</div>
 				<div class="clear">&nbsp</div>
-				<div>
-				<?php echo form_open('breakdown/finish_order/'.$this->uri->segment(3))?>
-					<button type="submit" class="btn btn-success" name="" style="margin-left: 30%; margin-right: 20%;">Embarcar</button>
-					<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary"');?>
-				</form>
+				<div class="col-md-12">
+					<div class="col-md-6">	
+						<a href="#myModal4" class="btn btn-success" data-toggle="modal" style="float: right">Embarcar</a>
+					</div>
+					<div class="col-md-6">	
+						<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary"');?>
+					</div>
 				</div>
 				<div class="clear">&nbsp</div>
-			<div>
+			
+			<?php echo form_open('breakdown/finish_order/'.$this->uri->segment(3))?>
+			<div id="myModal4" class="modal fade">
+        		<div class="modal-dialog">
+            		<div class="modal-content">
+                		<div class="modal-header">
+                		</div>
+                		<div class="modal-body">
+                		<h4 class="modal-title">¿Seguro que desea Embarcar? </h4>	                    		
+                		</div>
+                		<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                			</form>
+						</div>
+            		</div>
+        		</div>
+    		</div>
 			<?php 
 			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');
 			echo form_open('breakdown/insert_germination/'.$this->uri->segment(3),$attributes); 
