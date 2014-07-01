@@ -6,8 +6,8 @@
 			</div>
 				
 			<?php 
-				$attributes = array('id' => 'register_seeds');
-				echo form_open('seeds/register_seeds',$attributes); 
+				//$attributes = array('id' => 'register_seeds');
+				//echo form_open('seeds/register_seeds',$attributes); 
 			?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 					
@@ -66,15 +66,15 @@
 								<p><b>Volumen Total:</b> <?php echo number_format($volumen);?></p>
 							</div><!-- End nombre -->
 							
-							<div class="input-group input-group-lg">
-								<p><b>Volumen Plantado:</b> <?php echo number_format($suma->result()[0]->volume);?></p>
-							</div><!-- End nombre -->
-							
-							<div class="col-md-6">	
-								<a href="#myModal" class="btn btn-success" data-toggle="modal">+ Agregar</a>
-							</div>
-							
 						</div>
+						
+					</div>
+					
+					<div class="clear">&nbsp</div>
+					<div class="table-responsive">
+						<a href="#myModal" class="btn btn-success" data-toggle="modal">+ Agregar</a>
+						<div class="clear">&nbsp</div>
+						<?php include_once('application/views/extra/tabla_semillas.php'); ?>
 					</div>
 
 					<?php 
@@ -97,51 +97,52 @@
 									<option >Portainjerto</option>
 									
 								</select>
-							</div><!-- End seed -->
-							
-							<?php echo form_error('type'); ?>	
+							</div><!-- End variedad/portainjerto -->
+				
+							<div class="clear">&nbsp</div>
+							<h3>Semilla</h3>
+							<div class="input-group input-group-lg">								
+								<select class="form-control" name="id_order" id="id_order" onchange="get_order(this.value);">
+									<option value="-1" selected>---Selecciona una Semilla---</option>
+									<?php 
+										foreach($varial as $key)
+										{
+											echo "<option value='" . $key->variety . "' set_select('id_order','".$key->variety."')>" . $key->variety . "</option>";
+										}
+										foreach($injertal as $key)
+										{
+											echo "<option value='" . $key->rootstock . "' set_select('id_order','".$key->rootstock."')>" . $key->rootstock . "</option>";
+										}
+									?>
+								</select>
+							</div><!-- End semilla -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Cantidad</h3>
 							<div class="input-group input-group-lg">
 								
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume" value="<?php echo set_value('volume'); ?>">
-							</div><!-- End cp -->
-							<?php echo form_error('volume'); ?>
+							</div><!-- End cantidad -->							
 
-							<div class="clear">&nbsp</div>
-							<h3>Procentaje de germinación</h3>
-							<div class="input-group input-group-lg">
-								
-								<input type="text" class="form-control" placeholder="Porcentaje de germinación" name="seed_name" id="seed_name" value="<?php echo set_value('seed_name'); ?>">
-							</div><!-- End address number -->
-							<?php echo form_error('seed_name'); ?>
-						
-							<div class="clear">&nbsp</div>
-							<h3>Semilla</h3>
-							<div class="input-group input-group-lg">
-								
-								
-								<select class="form-control" name="id_order" id="id_order" onchange="get_order(this.value);">
-									<option value="-1" selected>---Selecciona una Semilla---</option>
-									<?php 
-										foreach($order as $key)
-										{
-											echo "<option value='" . $key->id_order . "' set_select('id_order','".$key->id_order."')>" ."Orden ". $key->id_order . "</option>";
-										}
-									?>
-								</select>
-							</div><!-- End state -->
-							<?php echo form_error('id_order'); ?>
-							
 							<div class="clear">&nbsp</div>
 							<h3>Lote</h3>
 							<div class="input-group input-group-lg">
 								
 								<input type="text" class="form-control" placeholder="Lote" name="batch" id="batch" value="<?php echo set_value('batch'); ?>">
-							</div><!-- End street -->
-							<?php echo form_error('batch'); ?>
+							</div><!-- End lote -->
 							
+							<div class="clear">&nbsp</div>
+							<h3>Fecha</h3>
+							<div class="input-group input-group-lg">
+								<p><input type="text" class="form-control" value="--Selecciona una Fecha--" id="datepicker" name="datepicker"></p>
+							</div><!-- End fecha -->
+							
+							<div class="clear">&nbsp</div>
+							<h3>Porcentaje de germinación</h3>
+							<div class="input-group input-group-lg">
+								
+								<input type="text" class="form-control" placeholder="Porcentaje de germinación" name="seed_name" id="seed_name" value="<?php echo set_value('seed_name'); ?>">
+							</div><!-- End porcentaje de germ -->				
                     		
                 		</div>
                 		<div class="modal-footer">
@@ -155,7 +156,7 @@
     	</div><!-- End panel-body -->
 
 			<?php
-			echo form_close();
+			//echo form_close();
 			?><!-- End form -->
 
 				<div class="panel-footer">
@@ -174,7 +175,18 @@
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
-			
+
+				<script>
+					
+					  $("#datepicker").datepicker({
+
+					        minDate: 0,
+					        onSelect: function(selected) {
+					          $("#txtToDate").datepicker("option","minDate", selected)
+					        }
+					    });
+
+				</script>	
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->

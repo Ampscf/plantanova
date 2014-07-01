@@ -25,7 +25,6 @@ class Seeds extends CI_Controller {
 		$template['order']=$this->model_seeds-> get_orders();
 
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
-		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = "body/view_seeds_register.php";
 		$template['footer'] = "footer/view_footer.php";
@@ -43,15 +42,15 @@ class Seeds extends CI_Controller {
 		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
 		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
-		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
-		$template['total_plant']=$total_sowing->sowing;	
+		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));	
 		$template['farmer']=$order->result()[0]->farmer;
+		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
 
 		$this->load->view('main',$template);
 	}
 
 	//Registra semillas
-	public function register_seeds() 
+	/*public function register_seeds() 
 	{
 		$datos['order']=$this->model_seeds->get_orders();
 		$this->load->library('form_validation');
@@ -103,7 +102,7 @@ class Seeds extends CI_Controller {
 				echo json_encode($error);
 			}
 		}	
-	} 
+	} */
 
 	//funcion que caraga informacion para editar las semillas
 	function edit_seeds(){
@@ -178,6 +177,7 @@ class Seeds extends CI_Controller {
 	//eliminar semillas
 	public function delete_seed()
 	{
+		$order=$this->uri->segment(3);
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -186,8 +186,7 @@ class Seeds extends CI_Controller {
 			}
 		}
 		$this -> model_seeds -> delete_seeds($llave);
-		redirect("seeds/index", "refresh");
-
+		redirect("seeds/register_seeds_form/$order", "refresh");
 	}
 
 	function sel_order(){
