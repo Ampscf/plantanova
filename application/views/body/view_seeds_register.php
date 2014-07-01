@@ -102,7 +102,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Semilla</h3>
 							<div class="input-group input-group-lg">								
-								<select class="form-control" name="id_order" id="id_order" >
+								<select class="form-control" name="seed_name" id="seed_name" >
 									<?php 
 										foreach($varial as $key)
 										{
@@ -136,7 +136,7 @@
 							<h3>Porcentaje de germinación</h3>
 							<div class="input-group input-group-lg">
 								
-								<input type="text" class="form-control" placeholder="Porcentaje de germinación" name="seed_name" id="seed_name" value="<?php echo set_value('seed_name'); ?>">
+								<input type="text" class="form-control" placeholder="Porcentaje de germinación" name="germ_percentage" id="germ_percentage" value="<?php echo set_value('seed_name'); ?>">
 							</div><!-- End porcentaje de germ -->				
                     		
                 		</div>
@@ -164,7 +164,7 @@
 						        datepicker: {
 						            required: true
 						        },
-						        seed_name: {
+						        germ_percentage: {
 						            required: true,
 						            number:true
 						        }
