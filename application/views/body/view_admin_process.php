@@ -205,18 +205,23 @@
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
 								<select class="form-control" name="breakdown_germination" id="breakdown_germination" >
-									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+									<option value="-1" selected>---Selecciona una semilla---</option>
 										<?php 
-											foreach($breakdown as $key)
-											{
-												echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
-											}
+													foreach($varial as $key)
+													{
+
+														echo "<option value='" . $key->variety . "' set_select('breackdown','".$key->variety."')>" . $key->variety ."</option>";
+													}
+													foreach($injertal as $key)
+													{
+														echo "<option value='" . $key->rootstock . "' set_select('breackdown','".$key->rootstock."')>" . $key->rootstock ."</option>";
+													}
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
 							<div class="input-group">
-								<p>Cantidad</p>
-								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+								<p>% de germinación</p>
+								<input type="text" class="form-control" placeholder="% de germinación" name="percentage" id="percentage">
 							</div><!-- End Cantidad -->	
 							<div class="input-group">
 								<p>Viabilidad</p>
@@ -225,7 +230,8 @@
 							<div class="input-group">
 								<p>Comentario</p>
 								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
-							</div><!-- End Alcance -->	                    		
+							</div><!-- End Alcance -->	
+							<input type="hidden" name="total" id="total" value="<?php echo $suma->result()[0]->volume?>" />                    		
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -289,7 +295,7 @@
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
 								<select class="form-control" name="breakdown_graft" id="breakdown_graft" >
-									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+									<option value="-1" selected>---Selecciona una variedad/portainjerto---</option>
 										<?php 
 											foreach($breakdown as $key)
 											{
@@ -418,7 +424,7 @@
 						  	}
 						});
 
-						$.validator.addMethod("selectcheck_punch", selectcheck_punch, "Selecciona una Variedad/Portainjerto");
+						$.validator.addMethod("selectcheck_punch", selectcheck_punch, "Selecciona una variedad/portainjerto");
 
 						function selectcheck_punch(){
 							if (document.getElementById('breakdown_punch').value < 0){

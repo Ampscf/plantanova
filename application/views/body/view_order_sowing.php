@@ -33,11 +33,7 @@
 								</div><!-- End telefono -->
 								<div class="input-group input-group-lg">
 									<p><b>C.P:</b> <?php echo $client->result()[0]->cp;?></p>
-								</div><!-- End cp -->
-								
-
-
-						
+								</div><!-- End cp -->					
 						</div>
 						
 						<div class="col-md-6">
@@ -175,7 +171,7 @@
 										'class'	=> 'btn btn-primary btn-block',
 										'name' => 'Regresar',
 									);
-									echo anchor('order/index', 'Regresar', $data);
+									echo anchor('breakdown/pedido_proceso', 'Regresar', $data);
 								?>
 							</div>
 						</div><!-- End row -->					
