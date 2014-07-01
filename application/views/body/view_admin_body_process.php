@@ -35,27 +35,27 @@
 						</ul>
 						
 						<div id="a" >
-							<?php echo "Proceso";?>
+							<?php echo "<h4 style='text-align:center;'>Proceso</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div id="b" >
-							<?php echo "Germinacion";?>
+							<?php echo "<h4 style='text-align:center;'>Germinacion</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_germinacion.php'); ?>
 						</div>
 						<div id="c" >
-							<?php echo "Injerto";?>
+							<?php echo "<h4 style='text-align:center;'>Injerto</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_injerto.php'); ?>
 						</div>
 						<div id="d" >
-							<?php echo "Pinchado";?>
+							<?php echo "<h4 style='text-align:center;'>Pinchado</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_pinchado.php'); ?>
 						</div>
 						<div  id="e" >
-							<?php echo "Transplante";?>
+							<?php echo "<h4 style='text-align:center;'>Transplante</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_transplante.php'); ?>
 						</div>
 						<div  id="f" >
-							<?php echo "Siembra";?>
+							<?php echo "<h4 style='text-align:center;'>Siembra</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_siembra.php'); ?>
 						</div>
 					</div>

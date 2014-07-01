@@ -77,7 +77,7 @@ Class model_breakdown extends CI_Model
 
 	function add_germination($datos)
 	{
-		$this->db->insert('t_process', $datos);
+		$this->db->insert('t_germination', $datos);
 		return $this->db->affected_rows();
 	}
 	
@@ -93,7 +93,7 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	function get_germination($id_order){
+	/*function get_germination($id_order){
 		$result = $this->db->query('select t_b.variety,t_b.rootstock, t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown FROM t_breakdown as t_b,t_process as t_p 
 									WHERE t_b.id_breakdown=t_p.id_breakdown
 									and t_p.id_process_type=1
@@ -104,6 +104,19 @@ Class model_breakdown extends CI_Model
 			}
 			else return false;
 
+	}*/
+	
+	function get_germination($id_order)
+	{
+		$this->db->where('id_order',$id_order);
+
+		$query=$this->db->get('t_germination');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		} 
+		else return false;
 	}
 
 	function get_graft($id_order){

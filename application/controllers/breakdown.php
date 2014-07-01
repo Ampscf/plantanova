@@ -80,21 +80,26 @@ class Breakdown extends CI_Controller {
 		$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
 		$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
 		$template['farmer']=$order->result()[0]->farmer;
+		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
+		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
 		$this->load->view("main",$template);
 	}
 
 	public function insert_germination(){
 		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
 		$total_germ=$total_germination->germination;
-		$volume=$this->input->post('volume');
-		$total_vol=$total_germ+$volume;	
-		$datos['id_breakdown']=$this->input->post('breakdown_germination');
-		$datos['volume']=$this->input->post('volume');
+		
+		$percentage=$this->input->post('percentage');
+		$volume=$this->input->post('total');
+		$datos['id_order']=$this->uri->segment(3);
+		$datos['germ_percentage']=$percentage;
 		$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
-		$datos['id_process_type']='1';
+		$datos['volume']=$volume*($percentage/100);
+		$datos['seed_name']=$this->input->post('breakdown_germination');
 		//$datos['id_order']=$this->uri->segment(3);
-
+		$total_vol=$total_germ+$datos['volume'];
+		
 		$this->model_breakdown->add_germination($datos);
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
