@@ -111,6 +111,22 @@
 			}
 		});
 	}
+
+	function get_type($value,$id_order)
+	{
+		$.ajax({
+			url: site_url + 'seeds/get_type',
+			data: {'value':$value,
+					'id_order':$id_order},
+			type: "POST",
+			success: function(data){
+				$("#id_order").html(data);
+			},
+			failure:function(data){
+				
+			}
+		});
+	}
 	
 	function takeoff_cat_value()
 	{

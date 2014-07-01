@@ -70,7 +70,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Fecha de entrega</h3>
-									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly style="width:88%" value="<?php echo $date;?>"><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a></p>
+									<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly style="width:88%; float:right" value="<?php echo $date;?>"></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								

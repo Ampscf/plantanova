@@ -78,8 +78,8 @@
 					</div>
 
 					<?php 
-			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');
-			echo form_open('breakdown/insert_germination/'.$this->uri->segment(3),$attributes); 
+			$attributes = array('id' => 'register_seeds','name'=>'register_seeds');
+			echo form_open('seeds/register_seeds/'.$this->uri->segment(3),$attributes); 
 			?>
 			<div id="myModal" class="modal fade">
         		<div class="modal-dialog">
@@ -92,9 +92,9 @@
 							<h3>Variedad / Portainjerto</h3>
 							<div class="input-group input-group-lg">
 								
-								<select class="form-control" name="type" id="type">
-									<option selected>Variedad</option>
-									<option >Portainjerto</option>
+								<select class="form-control" name="type" id="type" onchange="get_type(this.value,<?php echo $this->uri->segment(3);?>);">
+									<option value="0" selected>Variedad</option>
+									<option value="1">Portainjerto</option>
 									
 								</select>
 							</div><!-- End variedad/portainjerto -->
@@ -102,16 +102,11 @@
 							<div class="clear">&nbsp</div>
 							<h3>Semilla</h3>
 							<div class="input-group input-group-lg">								
-								<select class="form-control" name="id_order" id="id_order" onchange="get_order(this.value);">
-									<option value="-1" selected>---Selecciona una Semilla---</option>
+								<select class="form-control" name="id_order" id="id_order" >
 									<?php 
 										foreach($varial as $key)
 										{
 											echo "<option value='" . $key->variety . "' set_select('id_order','".$key->variety."')>" . $key->variety . "</option>";
-										}
-										foreach($injertal as $key)
-										{
-											echo "<option value='" . $key->rootstock . "' set_select('id_order','".$key->rootstock."')>" . $key->rootstock . "</option>";
 										}
 									?>
 								</select>
@@ -134,7 +129,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Fecha</h3>
 							<div class="input-group input-group-lg">
-								<p><input type="text" class="form-control" value="--Selecciona una Fecha--" id="datepicker" name="datepicker"></p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90%; float: right;" readonly></p>
 							</div><!-- End fecha -->
 							
 							<div class="clear">&nbsp</div>
@@ -154,10 +149,47 @@
         		</div>
     		</div>
     	</div><!-- End panel-body -->
+    	<script>
 
-			<?php
-			//echo form_close();
-			?><!-- End form -->
+					  	    
+						$("#register_seeds").validate({
+							rules: {
+								volume: {
+									required: true,
+									number: true
+								},
+						       	batch:{
+						       		required: true
+						       },
+						        datepicker: {
+						            required: true
+						        },
+						        seed_name: {
+						            required: true,
+						            number:true
+						        }
+							},
+							messages: {
+                        		volume: {
+				                    required: "El Campo Volumen es Requerido",
+				                    number: "El Campo Volumen debe ser Numerico"
+				                },
+				                batch: {
+				                    required: "El Campo Lote es Requerido"
+				                },
+				                datepicker:{
+				                	required:"El Campo Fecha es Requerido"
+				                },
+				                seed_name:{
+				                	required:"El Campo Porcentaje es Requerido",
+				                	number:"El Campo Porcentaje debe ser Numerico"
+				                }
+						  	}
+						});
+
+						
+						
+						</script>	
 
 				<div class="panel-footer">
 					<div class="row">
@@ -175,18 +207,6 @@
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
-
-				<script>
-					
-					  $("#datepicker").datepicker({
-
-					        minDate: 0,
-					        onSelect: function(selected) {
-					          $("#txtToDate").datepicker("option","minDate", selected)
-					        }
-					    });
-
-				</script>	
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->

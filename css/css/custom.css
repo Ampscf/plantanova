@@ -113,6 +113,8 @@ textarea
 	background: none repeat scroll 0% 0% #6BBD44 !important;
 }
 
+#datepicker {z-index: 1151 !important;}
+
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
 	background-color: #6BBD44 !important;
 }

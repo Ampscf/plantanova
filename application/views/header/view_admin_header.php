@@ -34,6 +34,7 @@
 			//alert("entro");
 			$( "#datepicker" ).datepicker();
 		});
+
 	$(function() {    
        $('#butondate').click(function() {
           $('#datepicker').datepicker('show');
@@ -57,11 +58,12 @@
 	            firstDay: 1,
 	            isRTL: false,
 	            showMonthAfterYear: false,
-	            yearSuffix: ''};
+	            yearSuffix: ''
+	        };
+		    
 		    $.datepicker.setDefaults($.datepicker.regional['es']);
 		});
 
-		
 	</script>
 
 </head>

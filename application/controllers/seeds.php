@@ -198,6 +198,31 @@ class Seeds extends CI_Controller {
 		return TRUE;
 	}
 
+	//AJAX:Función que regresa variedad o portainjerto de una orden
+	public function get_type()
+	{	
+		$value= $this->input->post('value');
+		$id_order= $this->input->post('id_order');
+		if($value == 0){
+			$variety = $this->model_breakdown->get_order_variety($id_order);
+			$result = "";
+			foreach ($variety as $key) 
+			{
+				$result = $result . "<option value='" . $key->variety . "'>" . $key->variety . "</option>";
+			}
+			echo $result;
+		}
+		else if($value == 1){
+			$rootstock = $this->model_breakdown->get_order_rootstock($id_order);
+			$result = "";
+			foreach ($rootstock as $key) 
+			{
+				$result = $result . "<option value='" . $key->rootstock . "'>" . $key->rootstock . "</option>";
+			}
+			echo $result;
+		}
+	}
+
 
 }
 	
