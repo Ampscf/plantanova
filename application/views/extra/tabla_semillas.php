@@ -1,14 +1,12 @@
 <table class="table table-hover" id="tabla-empresa">
-	<thead>
+
 		<th class="col-md-1" style="width: 100px;">Fecha</th>
-		<th>Empresa</th>
+		<th>Semilla</th>
 		<th>Cantidad</th>
-		<th>Nombre</th>
-		<th>Tipo</th>
 		<th>Lote</th>
-		<th>#Pedido</th>
-		<th>Modificar/Eliminar</th>
-	</thead>
+		<th>% de germinación</th>
+		<th>Eliminar</th>
+
 	<tbody>
 		<?php 
 		if(isset($seeds))
@@ -17,23 +15,11 @@
 			{
 				echo "<tr>";
 				echo "<td>" . date("d-m-Y",strtotime($key->seeds_date)) . "</td>";
-				echo "<td>" . $key->farm_name . "</td>";
-				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->seed_name . "</td>";
-				echo "<td>" . $key->type . "</td>";
+				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->batch . "</td>";
-				echo "<td>" . $key->id_order . "</td>";
-				echo "<td>";?>
-				
-					<a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
-	                    title="Modificar"
-	                    href="edit_seeds/<?php echo $key->id_seed; ?>">
-	                    <i class="fa fa-edit"></i>
-	                   
-	                </a>
-	                 
+				echo "<td>" . $key->germ_percentage . "</td>";
+				echo "<td>";?>	                 
 					 
 	                <a href="#myModal<?php echo $key->id_seed; ?>" class="btn btn-default"
 	                    title="Eliminar"
@@ -49,12 +35,12 @@
                     				<h4 class="modal-title">Confirmación</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p>¿Estás seguro de querer eliminar este formulario de semillas?</p>
+                    				<p>¿Estás seguro de querer eliminar esta semila?</p>
                 				</div>
                 				<div class="modal-footer">
-									<?php echo form_open('seeds/delete_seed'); ?>
+									<?php echo form_open('seeds/delete_seed/'.$this->uri->segment(3)); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_seed; ?>">Confirmar</button>
+                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_seed; ?>">Aceptar</button>
                 					</form>
 								</div>
             				</div>

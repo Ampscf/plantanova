@@ -38,6 +38,19 @@ Class model_seeds extends CI_Model
 		} 
 	}
 	
+	function get_client_seeds($id)
+	{
+		$this->db->where('id_order',$id);
+		$result=$this->db->get('t_seeds');
+		if($result->num_rows()>0){
+			
+			return $result->result();
+
+		}else{
+			return null;
+		}
+	}
+	
 	function delete_seeds($id)
 	{
 		$this->db->where('id_seed',$id);
