@@ -34,6 +34,11 @@
 			//alert("entro");
 			$( "#datepicker" ).datepicker();
 		});
+	$(function() {    
+       $('#butondate').click(function() {
+          $('#datepicker').datepicker('show');
+       });
+    });
 		 jQuery(function($){
 		 	$.datepicker.regional['es'] = {
 	            closeText: 'Cerrar',

@@ -52,7 +52,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Fecha de entrega</h3>
-									<p><input type="text" class="form-control" value="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly></p>
+									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:88%" readonly><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								
@@ -150,7 +150,7 @@
 						            plant: true
 						        },
 						       datepicker:{
-						       		datepicker: true
+						       		required: true
 						       },
 						        category: {
 						            category: true
@@ -165,14 +165,16 @@
 				                    number: "El Campo Volumen debe ser Numerico"
 				                },
 				                farmer: {
-				                    required: "El Campo Agricultor es Requerido",
+				                    required: "El Campo Agricultor es Requerido"
+				                },
+				                datepicker:{
+				                	required:"El Campo Fecha es Requerido"
 				                }
 						  	}
 						});
 
 						$.validator.addMethod("plant", plant, "Selecciona un Tipo de Cultivo");
 						$.validator.addMethod("category", category, "Selecciona una Categoria");
-						$.validator.addMethod("datepicker", datepicker, "Selecciona una Fecha");
 
 						function plant(){
 							if (document.getElementById('plant').value < 0){
@@ -185,18 +187,6 @@
 								return false;
 							}else return true;
 						}
-
-						function datepicker(){
-							var value = document.getElementById('datepicker').value;
-							
-							
-							if(value == "--Selecciona una Fecha--" )
-							{
-								return false;
-							}else{
-								return true;
-							} 
-						}	
 						</script>	
 				</div><!-- @end .result -->
 			</div>

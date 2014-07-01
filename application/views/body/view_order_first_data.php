@@ -70,7 +70,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Fecha de entrega</h3>
-									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly value="<?php echo $date;?>"></p>
+									<p><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" readonly style="width:88%" value="<?php echo $date;?>"><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								
@@ -180,17 +180,27 @@
 						            plant: true
 						        },
 						       datepicker:{
-						       		datepicker: true
+						       		required: true
 						       },
 						        category: {
 						            category: true
+						        },
+						         farmer: {
+						            required: true
 						        }
 							},
 							messages: {
                         		volume: {
 				                    required: "El Campo Volumen es Requerido",
 				                    number: "El Campo Volumen debe ser Numerico"
+				                },
+				                datepicker: {
+				                    required: "El Campo Fecha es Requerido"
+				                },
+				                farmer: {
+				                    required: "El Campo Agricultor es Requerido"
 				                }
+
 						  	}
 						});
 
