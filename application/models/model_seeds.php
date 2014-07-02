@@ -75,6 +75,27 @@ Class model_seeds extends CI_Model
 		$this->db->update('t_seeds', $data);
 		return $this->db->affected_rows();
 	}
+	
+	function order_seeds($id_order)
+	{
+		$result = $this->db->query('select `seed`
+									from `t_sowing`
+									where `id_order`='.$id_order);
+		if($result->num_rows() > 0) 
+		{
+			return $result->result();
+		} 
+		else 
+		{
+			return null;
+		} 						
+	}
+	
+	function add_total_seed($data)
+	{
+		$this->db->insert('t_total_seed',$data);
+		return $this->db->affected_rows();
+	}
 
 	function suma_volumen_seeds($id_order){
 		$this->db->where('id_order',$id_order);

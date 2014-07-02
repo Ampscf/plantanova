@@ -658,8 +658,6 @@ class Order extends CI_Controller {
     	$id_order=$this->input->post('id_order');
     	$this->model_order->update_status($id_order);
     	redirect("order/index", "refresh");
-
-
     }*/
 	
 	public function update_comment()

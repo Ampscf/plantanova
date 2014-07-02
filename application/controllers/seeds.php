@@ -193,6 +193,7 @@ class Seeds extends CI_Controller {
 			echo $result;
 		}
 	}
+
 	public function final_resume(){
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
@@ -216,6 +217,38 @@ class Seeds extends CI_Controller {
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
 
+		$this->load->view('main',$template);
+	}
+
+
+	
+	public function add_orders_seed($id_order)
+	{
+		$b = $this->model_seeds->order_seeds($id_order);
+		$template['header'] = "header/view_admin_header.php";
+		$template['body'] = "body/pruebas.php";
+		$template['footer'] = "footer/view_footer.php";
+		$i=0;
+		$a = array();
+		foreach ($b as $key)
+		{
+			$a[$i]=$key->seed;		
+			echo $key->seed;
+			$i++;
+		}
+		$j=0;
+		for($j; $j<count($a);$j++)
+		{
+			echo $a[$j];
+		}	
+		/*if(in_array("v1",$a))
+		{
+			echo $b->result()[$i]->seed;
+		}
+		else
+		{
+			echo "no";
+		}*/
 		$this->load->view('main',$template);
 	}
 
