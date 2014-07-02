@@ -120,7 +120,7 @@
 					'id_order':$id_order},
 			type: "POST",
 			success: function(data){
-				$("#id_order").html(data);
+				$("#seed_name").html(data);
 			},
 			failure:function(data){
 				

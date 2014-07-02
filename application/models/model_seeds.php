@@ -23,7 +23,7 @@ Class model_seeds extends CI_Model
 	function get_seeds_lists()
 	{
 	
-		$result = $this->db->query('select id_seed, t_seeds.id_order, seed_name, batch, volume, seeds_date, type, farm_name
+		$result = $this->db->query('select id_seed, t_seeds.id_order, seed_name, batch, volume, seeds_date, type, farm_name, germ_percentage
 									from `t_seeds`, `t_order`, `t_user`
 									where t_seeds.id_order = t_order.id_order and t_order.id_client=t_user.id_user
 									order by id_seed desc');
@@ -75,6 +75,52 @@ Class model_seeds extends CI_Model
 		$this->db->update('t_seeds', $data);
 		return $this->db->affected_rows();
 	}
+
+	function suma_volumen_seeds($id_order){
+		$this->db->where('id_order',$id_order);
+		$this->db->select_sum('volume');
+		$query = $this->db->get('t_seeds');
+		if($query->num_rows()>0)
+			{
+				return $query->result()[0];
+			} 
+			else return null;
+	}
+
+	function update_status($id_order){
+		$this->db->where('id_order',$id_order);
+		$data = array(
+               'id_status' => '2'
+        		);
+		$this->db->update('t_order',$data);
+		return $this->db->affected_rows();
+	}
+
+	function select_seed_distinct(){
+		$result = $this->db->query('select distinct id_order from t_seeds ');
+											
+		if($result->num_rows() > 0) 
+		{
+			return $result->result();
+		} 
+		else 
+		{
+			return null;
+		} 
+	}
+
+	function get_farmer($id_order){
+		$result = $this->db->query('select farmer from t_order where id_order='.$id_order);
+		if($result->num_rows() > 0) 
+		{
+			return $result->result()[0];
+		} 
+		else 
+		{
+			return null;
+		} 
+	}	
+
 
 
 }

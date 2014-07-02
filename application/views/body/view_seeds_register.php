@@ -63,7 +63,11 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Volumen Total:</b> <?php echo number_format($volumen);?></p>
+								<p><b>Volumen Total Pedido:</b> <?php echo number_format($volumen);?></p>
+							</div><!-- End nombre -->
+
+							<div class="input-group input-group-lg">
+								<p><b>Volumen Total Semillas:</b> <?php echo number_format($suma->volume);?></p>
 							</div><!-- End nombre -->
 							
 						</div>
@@ -93,8 +97,8 @@
 							<div class="input-group input-group-lg">
 								
 								<select class="form-control" name="type" id="type" onchange="get_type(this.value,<?php echo $this->uri->segment(3);?>);">
-									<option value="0" selected>Variedad</option>
-									<option value="1">Portainjerto</option>
+									<option value="Variedad" selected>Variedad</option>
+									<option value="Portainjerto">Portainjerto</option>
 									
 								</select>
 							</div><!-- End variedad/portainjerto -->
@@ -166,7 +170,8 @@
 						        },
 						        germ_percentage: {
 						            required: true,
-						            number:true
+						            number:true,
+						            max:100
 						        }
 							},
 							messages: {
@@ -180,9 +185,10 @@
 				                datepicker:{
 				                	required:"El Campo Fecha es Requerido"
 				                },
-				                seed_name:{
+				                germ_percentage:{
 				                	required:"El Campo Porcentaje es Requerido",
-				                	number:"El Campo Porcentaje debe ser Numerico"
+				                	number:"El Campo Porcentaje debe ser Numerico",
+				                	max:"Ingrese un Porcentaje Valido"
 				                }
 						  	}
 						});
@@ -193,18 +199,41 @@
 
 				<div class="panel-footer">
 					<div class="row">
+
 						<div class="col-md-3 col-md-offset-1">
-							<input class="btn btn-success btn-block" type="submit" value="Registrar" onClick="register_seeds();">
+							<a href="#myModal2" class="btn btn-success" data-toggle="modal" style="float: right">Registrar</a>
 						</div>
+						
+
 						<div class="col-md-3 col-md-offset-4">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
-									'name' => 'Cancelar',
+									'name' => 'Regresar',
 								);
-								echo anchor('seeds/index', 'Cancelar', $data);
+								echo anchor('order/index', 'Regresar', $data);
 							?>
 						</div>
+						<?php 
+						$attributes = array('id' => 'register_status','name'=>'register_status');
+						echo form_open('seeds/register_status/'.$this->uri->segment(3),$attributes); 
+						?>
+							<div id="myModal2" class="modal fade">
+				        		<div class="modal-dialog">
+				            		<div class="modal-content">
+				                		<div class="modal-header">
+				                		</div>
+				                		<div class="modal-body">
+				                		<h4 class="modal-title">¿Seguro que desea Registrar? Ya no se podra agregar semillas a la orden </h4>	                    		
+				                		</div>
+				                		<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+				                		</div>
+				            		</div>
+				        		</div>
+				    		</div>
+			    		</form>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
 		</div><!-- End panel-default -->

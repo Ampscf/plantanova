@@ -14,7 +14,8 @@ class Seeds extends CI_Controller {
 		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/view_seeds.php";
 		$template['footer'] = "footer/view_footer.php";
-		$template['seeds'] = $this->model_seeds->get_seeds_lists();
+		$template['seeds'] = $this->model_seeds->select_seed_distinct();
+
 			
 		$this->load->view('main',$template);
 	}
@@ -42,7 +43,7 @@ class Seeds extends CI_Controller {
 		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
 		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
-		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));	
+		$template['suma']=$this->model_seeds->suma_volumen_seeds($this->uri->segment(3));	
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
 
@@ -53,16 +54,26 @@ class Seeds extends CI_Controller {
 	public function register_seeds() 
 	{
 			//Obtiene tdos los campos a guardar del usuario en un arreglo
-			$data['id_order'] = $this->input->post('id_order');
+			$data['id_order'] = $this->uri->segment(3);
 			$data['seed_name'] = $this->input->post('seed_name');
 			$data['batch'] = $this->input->post('batch');
 			$data['volume'] = $this->input->post('volume');
 			$data['type'] = $this->input->post('type');
-			$data['seeds_date'] = $this->input->post('datepicker');
+			$date=$this->input->post('datepicker');
+			$data['seeds_date'] =  date("Y-m-d H:i:s", strtotime($date));
+			$data['germ_percentage']=$this->input->post('germ_percentage');
 			
 			$this->model_seeds->insert_seeds($data);
+
+			redirect("seeds/register_seeds_form/".$this->uri->segment(3), "refresh");
 			
 	} 
+	
+	//cambia el estatus de semillas a 2
+	public function register_status(){
+		$this->model_order->update_status($this->uri->segment(3));
+		redirect("breakdown/pedido_proceso/", "refresh");
+	}
 
 	//funcion que caraga informacion para editar las semillas
 	function edit_seeds(){
@@ -163,7 +174,7 @@ class Seeds extends CI_Controller {
 	{	
 		$value= $this->input->post('value');
 		$id_order= $this->input->post('id_order');
-		if($value == 0){
+		if($value == "Variedad"){
 			$variety = $this->model_breakdown->get_order_variety($id_order);
 			$result = "";
 			foreach ($variety as $key) 
@@ -172,7 +183,7 @@ class Seeds extends CI_Controller {
 			}
 			echo $result;
 		}
-		else if($value == 1){
+		else if($value == "Portainjerto"){
 			$rootstock = $this->model_breakdown->get_order_rootstock($id_order);
 			$result = "";
 			foreach ($rootstock as $key) 
@@ -182,6 +193,32 @@ class Seeds extends CI_Controller {
 			echo $result;
 		}
 	}
+	public function final_resume(){
+		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = "body/view_seeds_resume.php";
+		$template['footer'] = "footer/view_footer.php";
+		$template['id_company']=$order->result()[0]->id_client;
+		$template['company']=$this->model_user->get_client($order->result()[0]->id_client);
+		$template['fecha']=$order->result()[0]->order_date_submit;
+		$template['id_plant']=$order->result()[0]->id_plant;
+		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
+		$template['volumen']=$order->result()[0]->total_volume;
+		$template['categ']=$order->result()[0]->id_category;
+		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category); 
+		$template['id_order']=$this->uri->segment(3);
+		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
+		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
+		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
+		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['suma']=$this->model_seeds->suma_volumen_seeds($this->uri->segment(3));	
+		$template['farmer']=$order->result()[0]->farmer;
+		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
+
+		$this->load->view('main',$template);
+	}
+
 
 
 }
