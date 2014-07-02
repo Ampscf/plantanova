@@ -1,6 +1,7 @@
 <table  id="tabla-">
 	
 		<th># Orden</th>
+		<th>Agricultor</th>
 		<th>Tipo Cultivo</th>
 		<th>Categoria</th>
 		<th>Volumen</th>
@@ -15,6 +16,7 @@
 			{
 				echo "<tr>";
 				echo "<td>" . number_format($key->id_order) . "</td>";
+				echo "<td>" . $key->farmer . "</td>";
 				$plant=$this->model_order->get_plant($key->id_plant);
 				$plant_name=$plant->result()[0]->plant_name;
 				echo "<td>" . $plant_name . "</td>";

@@ -251,6 +251,11 @@
 								},
 								breakdown_germination: {
 						            selectcheck: true
+						        },
+						        percentage:{
+						        	required: true,
+						        	number: true,
+						        	max: 100
 						        }
 							},
 							messages: {
@@ -261,7 +266,13 @@
 				                viability: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                percentage:{
+				                	required: "Este Campo Es Requerido",
+				                	number: "Este Campo Debe Ser Numerico",
+				                	max: "Ingresa Un Porcentaje Valido"
 				                }
+
 						  	}
 						});
 

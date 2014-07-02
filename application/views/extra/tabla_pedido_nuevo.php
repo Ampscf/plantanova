@@ -2,14 +2,14 @@
 	<thead>
 		<th class="col-md-1"># Pedido</th>
 		<th>Agricultor</th>
-		<th>Fecha</th>
+		<th style="width:172px">Fecha</th>
 		<th>Estado</th>
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
 		<th>Comentario</th>
-		<th>Editar/Eliminar</th>
+		<th>Semillas/Eliminar</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -64,7 +64,7 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Modificar"
+	                    title="Semillas"
 	                    href=<?php echo site_url("seeds/register_seeds_form/$key->id_order");?>>
 	                    <i class="fa fa-edit"></i>
 	                </a>
