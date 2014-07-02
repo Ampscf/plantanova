@@ -182,6 +182,36 @@ class Seeds extends CI_Controller {
 			echo $result;
 		}
 	}
+	
+	public function add_orders_seed($id_order)
+	{
+		$b = $this->model_seeds->order_seeds($id_order);
+		$template['header'] = "header/view_admin_header.php";
+		$template['body'] = "body/pruebas.php";
+		$template['footer'] = "footer/view_footer.php";
+		$i=0;
+		$a = array();
+		foreach ($b as $key)
+		{
+			$a[$i]=$key->seed;		
+			echo $key->seed;
+			$i++;
+		}
+		$j=0;
+		for($j; $j<count($a);$j++)
+		{
+			echo $a[$j];
+		}	
+		/*if(in_array("v1",$a))
+		{
+			echo $b->result()[$i]->seed;
+		}
+		else
+		{
+			echo "no";
+		}*/
+		$this->load->view('main',$template);
+	}
 
 
 }
