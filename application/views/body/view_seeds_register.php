@@ -4,11 +4,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Formulario de Semillas </h3>
 			</div>
-				
-			<?php 
-				//$attributes = array('id' => 'register_seeds');
-				//echo form_open('seeds/register_seeds',$attributes); 
-			?>
+			
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 					
 					<div class="col-md-12">
