@@ -131,7 +131,7 @@
 						<table>
 							<th>Cantidad</th>
 							<th>Fecha</th>
-							<th>Variedad/Portainjerto</th>
+							<th>Semilla</th>
 							<th>Comentario</th>
 							
 							<?php 
@@ -142,8 +142,8 @@
 									echo "<tr>";
 									echo "<td>" . $key->volume . "</td>";
 									echo "<td>" . date("Y-m-d",strtotime($key->sowing_date)) . "</td>";
-									$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
-									echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
+									//$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
+									echo "<td>" .$key->seed. "</td>";
 									if($key->comment != null){
 									echo "<td>" ?>
 
@@ -194,8 +194,10 @@
 						<table>
 							<th>Cantidad</th>
 							<th>Fecha</th>
-							<th>Variedad/Portainjerto</th>
+							<th>Semilla</th>
+							<th>% Germinación</th>
 							<th>Viabilidad</th>
+							<th>Alcance</th>
 							<th>Comentario</th>
 							
 							<?php 
@@ -205,10 +207,20 @@
 										{
 											echo "<tr>";
 											echo "<td>" . $key->volume . "</td>";
-											echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
-											$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
-											echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
-											echo "<td>" . $key->viability . "</td>";
+											echo "<td>" . date("Y-m-d",strtotime($key->germ_date)) . "</td>";
+											echo "<td>".$key->seed_name."</td>";
+											if($key->germ_percentage==0){
+												echo "<td></td>";
+											}else{
+												echo "<td>".$key->germ_percentage."%"."</td>";	
+											}
+											if($key->viability==0){
+												echo "<td></td>";
+											}else{
+												echo "<td>" . $key->viability ."%". "</td>";
+											}
+											
+											echo "<td>".$key->scope."</td>";
 											if($key->comment != null){
 											echo "<td>" ?>
 
@@ -429,6 +441,16 @@
 									?>
 						</table>
 						<!--Fin desglose de la transplante-->
+					<div class="col-md-4 col-md-offset-4">
+				<?php  
+					$data = array(
+						'class'	=> 'btn btn-primary btn-block',
+						'name' => 'Regresar',
+						'style'=>'margin-top:50px'
+					);
+					echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+				?>
+			</div>
 					</div>
 				</div>
 			</div>

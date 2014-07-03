@@ -151,16 +151,13 @@ class Order extends CI_Controller {
 		$restante=$this->input->post('restante');
 		if($this->input->post('next')){
 
-			if($restante>0){
+			if($restante!=0){
 				
 				?><script languaje="javacript">
-				 alert('A'+'\u00da'+'N SE CUENTA CON VOLUMEN RESTANTE');
+				 alert('EL VOLUMEN RESTANTE DEBE SER IGUAL A CERO');
 				location.href='load_second_step_two/<?php echo $id_order; ?>';
 				</script>
 				<?php
-				
-				
-				
 			}else{
 				$template['header'] = 'header/view_admin_header.php';
 				$template['body'] = 'body/view_order_last.php';

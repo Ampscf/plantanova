@@ -18,7 +18,12 @@
 				echo "<td>" . $key->seed_name . "</td>";
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->batch . "</td>";
-				echo "<td>" . $key->germ_percentage ."%"."</td>";
+				if($key->germ_percentage==0){
+					echo "<td></td>";
+				}else{
+					echo "<td>" . $key->germ_percentage ."%"."</td>";
+				}
+				
 				echo "<td>";?>	                 
 					 
 	                <a href="#myModal<?php echo $key->id_seed; ?>" class="btn btn-default"

@@ -165,7 +165,6 @@
 						            required: true
 						        },
 						        germ_percentage: {
-						            required: true,
 						            number:true,
 						            max:100
 						        }
@@ -182,7 +181,6 @@
 				                	required:"El Campo Fecha es Requerido"
 				                },
 				                germ_percentage:{
-				                	required:"El Campo Porcentaje es Requerido",
 				                	number:"El Campo Porcentaje debe ser Numerico",
 				                	max:"Ingrese un Porcentaje Valido"
 				                }
@@ -197,7 +195,7 @@
 					<div class="row">
 
 						<div class="col-md-3 col-md-offset-1">
-							<a href="#myModal2" class="btn btn-success" data-toggle="modal" style="float: right">Registrar</a>
+							<a href="#myModal2" class="btn btn-success btn-block" data-toggle="modal" style="float: right">Registrar</a>
 						</div>
 						
 

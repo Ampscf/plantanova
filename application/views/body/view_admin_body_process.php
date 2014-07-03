@@ -35,27 +35,27 @@
 						</ul>
 						
 						<div id="a" >
-							<?php echo "<h4 style='text-align:center;'>Proceso</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>PROCESO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div id="b" >
-							<?php echo "<h4 style='text-align:center;'>Germinacion</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>GERMINACIÓN</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_germinacion.php'); ?>
 						</div>
 						<div id="c" >
-							<?php echo "<h4 style='text-align:center;'>Injerto</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>INJERTO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_injerto.php'); ?>
 						</div>
 						<div id="d" >
-							<?php echo "<h4 style='text-align:center;'>Pinchado</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>PINCHADO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_pinchado.php'); ?>
 						</div>
 						<div  id="e" >
-							<?php echo "<h4 style='text-align:center;'>Transplante</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>TRANSPLANTE</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_transplante.php'); ?>
 						</div>
 						<div  id="f" >
-							<?php echo "<h4 style='text-align:center;'>Siembra</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>SIEMBRA</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_siembra.php'); ?>
 						</div>
 					</div>

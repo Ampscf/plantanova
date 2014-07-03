@@ -3,11 +3,11 @@
 		<th># Pedido</th>
 		<th>Agricultor</th>
 		<th>Fecha</th>
-		<th>Estado</th>
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
+		<th>Resumen</th>
 		<th>Editar/Eliminar</th>
 	</thead>
 	<tbody>
@@ -20,7 +20,6 @@
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->order_date_delivery)) . "</td>";
-				echo "<td>Proceso</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";
 				$category=$this->model_breakdown->get_category($key->id_category);
@@ -28,6 +27,17 @@
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
 				echo "<td>" . number_format($key->total_volume) . "</td>";
+				echo "<td>";
+				?>
+					<a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen"
+	                    href=<?php echo site_url("breakdown/order_resume_proceso/$key->id_order");?>>
+	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+				<?php
+				echo "</td>";
 				echo "<td>";?>
 					<a class="btn btn-default"
 	                    rel="tooltip"

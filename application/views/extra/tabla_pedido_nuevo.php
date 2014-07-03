@@ -3,12 +3,12 @@
 		<th class="col-md-1"># Pedido</th>
 		<th>Agricultor</th>
 		<th style="width:172px">Fecha</th>
-		<th>Estado</th>
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
 		<th>Comentario</th>
+		<th>Resumen</th>
 		<th>Semillas/Eliminar</th>
 	</thead>
 	<tbody>
@@ -21,7 +21,6 @@
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->order_date_delivery)) . "</td>";
-				echo "<td>Nuevos</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";
 				$category=$this->model_breakdown->get_category($key->id_category);
@@ -58,6 +57,17 @@
     				</div>
 					</form>
 				
+				<?php
+				echo "</td>";
+				echo "<td>";
+				?>
+					<a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen"
+	                    href=<?php echo site_url("breakdown/order_resume_nuevo/$key->id_order");?>>
+	                    <i class="fa fa-file-text-o"></i>
+	                </a>
 				<?php
 				echo "</td>";
 				echo "<td>";?>
