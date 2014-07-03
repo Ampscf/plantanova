@@ -588,16 +588,18 @@ class Order extends CI_Controller {
 		if($b->result()[0]->times==1)
 		{
 			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->variety);
+			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		} else {
 			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->variety);
+			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		}
-		$c = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->rootstock);
+		/*$c = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		if($b->result()[0]->times==1)
 		{
 			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		} else {
 			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock);
-		}
+		}*/
        	$this -> model_order -> delete_breakdown($llave);
        	redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
     }

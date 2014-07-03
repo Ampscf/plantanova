@@ -255,6 +255,10 @@
 						        percentage:{
 						           	number: true,
 						        	max: 100
+						        },
+						        viability:{
+						        	number:true,
+						        	max:100
 						        }
 							},
 							messages: {
@@ -269,6 +273,10 @@
 				                percentage:{
 				                	number: "Este Campo Debe Ser Numerico",
 				                	max: "Ingresa Un Porcentaje Valido"
+				                },
+				                viability:{
+				                	number:"Este Campo Debe Ser Numerico",
+				                	max:"Ingresa un Porcentaje Valido"
 				                }
 
 						  	}
