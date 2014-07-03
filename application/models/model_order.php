@@ -531,11 +531,27 @@ Class model_order extends CI_Model
 			else return $query;
 	}
 
-	function insert_breakdown($data){
+	function insert_breakdown($data)
+	{
 		$this->db->insert('t_breakdown',$data);
 		return $this->db->affected_rows();
 	}
+	
+	function add_seeds($data)
+	{
+		$this->db->insert('t_total_seed',$data);
+		return $this->db->affected_rows();
+	}
 
+	function update_times($id_order, $seed_name)
+	{
+		$result = $this->db->query('update `t_total_seed`
+									set `times`=`times`+1
+									where `id_order` = '.$id_order.'
+									and `seed_name` = "'.$seed_name.'"');
+		return $this->db->affected_rows();
+	}
+	
 	function suma_volumen($id_order){
 		$this->db->where('id_order',$id_order);
 		$this->db->select_sum('volume');
@@ -563,6 +579,46 @@ Class model_order extends CI_Model
 		$this->db->delete('t_order_comments', array('id_order' => $id)); 
 	}
 
+	function get_breakdown_seeds($id_breakdown){
+		$this->db->select('id_order,variety,rootstock');
+		$this->db->where('id_breakdown', $id_breakdown);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows()>0)
+		{
+			return $query;
+		}
+		else return false;
+	}
+	
+	function get_times($id_order, $seed_name)
+	{
+		$this->db->select('times');
+		$this->db->where('id_order', $id_order);
+		$this->db->where('seed_name', $seed_name);
+		$query=$this->db->get('t_total_seed');
+		if($query->num_rows()>0)
+		{
+			return $query;
+		}
+		else return false;
+	}
+	
+	function update_times2($id_order,$seed_name)
+	{
+		$result = $this->db->query('update `t_total_seed`
+									set `times`=`times`- 1
+									where `id_order` = '.$id_order.'
+									and `seed_name` = "'.$seed_name.'"');
+		return $this->db->affected_rows();
+	}
+	
+	function delete_totalseed($id_order,$seed_name)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->where('seed_name',$seed_name);
+		$this->db->delete('t_total_seed');
+	}
+	
 	function delete_breakdown($id)
 	{
 		$this->db->where('id_breakdown',$id);

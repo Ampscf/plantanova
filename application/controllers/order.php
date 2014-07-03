@@ -7,6 +7,7 @@ class Order extends CI_Controller {
 	   $this->load->model('model_user','',TRUE);
 	   $this->load->model('model_order','',TRUE);
 	   $this->load->model('model_breakdown','',TRUE);
+	   $this->load->model('model_seeds','',TRUE);
 	}
 
 	public function index()
@@ -223,6 +224,41 @@ class Order extends CI_Controller {
 			$data['volume']=$this->input->post("volume");
 
 			if($this->model_order->insert_breakdown($data)>0){
+				$a=$this->model_seeds->get_totalseed_order($id_order);
+				$i=0; 
+				$b=array();
+				if($a != null)
+				{
+					foreach ($a as $key)
+					{
+						$b[$i]=$key->seed_name;		
+						$i++;
+					}
+					if(in_array($data['variety'],$b))
+					{
+						$this->model_order->update_times($id_order,$data['variety']);
+					} else {
+						$dato['id_order']=$id_order;
+						$dato['seed_name']=$data['variety'];
+						$this->model_order->add_seeds($dato);
+					}
+					if(in_array($data['rootstock'],$b))
+					{
+						$this->model_order->update_times($id_order,$data['rootstock']);
+					} else {
+						$dati['id_order']=$id_order;
+						$dati['seed_name']=$data['rootstock'];
+						$this->model_order->add_seeds($dati);
+					}
+					
+				} else {
+					$dato['id_order']=$id_order;
+					$dato['seed_name']=$data['variety'];
+					$dati['id_order']=$id_order;
+					$dati['seed_name']=$data['rootstock'];
+					$this->model_order->add_seeds($dato);
+					$this->model_order->add_seeds($dati);
+				}
 				$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
 			}
 		//}
@@ -550,8 +586,23 @@ class Order extends CI_Controller {
 
             }
         }
-       $this -> model_order -> delete_breakdown($llave);
-       redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+		$a = $this->model_order->get_breakdown_seeds($llave);
+		$b = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->variety);
+		if($b->result()[0]->times==1)
+		{
+			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->variety);
+		} else {
+			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->variety);
+		}
+		$c = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->rootstock);
+		if($b->result()[0]->times==1)
+		{
+			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
+		} else {
+			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock);
+		}
+       	$this -> model_order -> delete_breakdown($llave);
+       	redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
     }
 	
 	public function sel_sustrato()
