@@ -83,18 +83,18 @@
 					                </div>
 					                <div class="modal-body">	
 					                	<div class="input-group">
-											<p>Variedad/Portainjerto</p>
+											<p>Semilla</p>
 											<select class="form-control" name="breakdown" id="breakdown" >
-												<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+												<option value="-1" selected>---Selecciona una Semilla---</option>
 												<?php 
 													foreach($varial as $key)
 													{
 
-														echo "<option value='" . $key->variety . "' set_select('breackdown','".$key->variety."')>" . $key->variety ."</option>";
+														echo "<option value='" . $key->variety . "' set_select('breackdown','".$key->variety."')>" . $key->variety ."->".$key->volume."</option>";
 													}
 													foreach($injertal as $key)
 													{
-														echo "<option value='" . $key->rootstock . "' set_select('breackdown','".$key->rootstock."')>" . $key->rootstock ."</option>";
+														echo "<option value='" . $key->rootstock . "' set_select('breackdown','".$key->rootstock."')>" . $key->rootstock ."->".$key->volume."</option>";
 													}
 												?>	
 											</select>
