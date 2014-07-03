@@ -172,14 +172,7 @@ Class model_breakdown extends CI_Model
 
 	function get_process_germination()
 	{
-		$result = $this->db->query('select t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown,
-									t_o.id_status,t_o.id_order,t_o.id_status,
-									t_b.id_breakdown,t_b.id_order
-									from t_process as t_p, t_order as t_o,t_breakdown as t_b
-									where t_p.id_breakdown=t_b.id_breakdown
-									and t_b.id_order=t_o.id_order
-									and t_o.id_status=2
-									and t_p.id_process_type = 1');
+		$result=$this->db->get('t_germination');
 																				
 		if($result->num_rows() > 0) 
 		{
