@@ -35,21 +35,25 @@
 						
 						<div class="col-md-6" style="width: 32%;">
 								<div class="input-group input-group-lg">
+									<p># de orden: <?php echo $id_order->result()[0]->id_order;?></p>
+								</div><!-- End Plant -->
+								
+								<div class="input-group input-group-lg">
 									<p>Fecha: <?php echo date("d-m-Y",strtotime($fecha))?></p>
 								</div><!-- End Plant -->
 								
 								<div class="input-group input-group-lg">
 									<p>Tipo de cultivo: <?php echo $planta->result()[0]->plant_name;?></p>
 								</div><!-- End Cultivo -->
-								<div class="input-group input-group-lg">
-									<p>Volumen Total: <?php echo number_format($volumen);?></p>
-								</div><!-- End Volumen -->
+								
 						
 						</div>
 						
 						<div class="col-md-6">
+								<div class="input-group input-group-lg">
+									<p>Volumen Total: <?php echo number_format($volumen);?></p>
+								</div><!-- End Volumen -->
 							
-							<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<p>Categoría: <?php echo $categoria->result()[0]->category_name;?></p>
 								</div><!-- End Plant -->

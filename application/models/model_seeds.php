@@ -142,6 +142,20 @@ Class model_seeds extends CI_Model
 		} 
 	}	
 
+	function get_totalseed_order($id_order)
+	{
+		$result = $this->db->query('select `seed_name`
+									from `t_total_seed`
+									where `id_order`='.$id_order);
+		if($result->num_rows() > 0) 
+		{
+			return $result->result();
+		} 
+		else 
+		{
+			return null;
+		} 	
+	}
 
 
 }

@@ -222,20 +222,25 @@ class Seeds extends CI_Controller {
 
 
 	
-	public function add_orders_seed($id_order)
+	public function add_orders_seed()
 	{
-		$b = $this->model_seeds->order_seeds($id_order);
+		$b = $this->model_seeds->order_seeds(303);
 		$template['header'] = "header/view_admin_header.php";
-		$template['body'] = "body/pruebas.php";
+		$template['body'] = "body/prueba.php";
 		$template['footer'] = "footer/view_footer.php";
 		$i=0;
 		$a = array();
-		foreach ($b as $key)
-		{
-			$a[$i]=$key->seed;		
-			echo $key->seed;
-			$i++;
+		if ($b != null){
+			foreach ($b as $key)
+			{
+				$a[$i]=$key->seed;		
+				echo $key->seed;
+				$i++;
+			}
+		} else {
+			echo 'oliiii';
 		}
+
 		$j=0;
 		for($j; $j<count($a);$j++)
 		{
