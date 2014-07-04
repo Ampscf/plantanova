@@ -95,10 +95,13 @@ class Breakdown extends CI_Controller {
 		$datos['germ_percentage']=$percentage;
 		$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
-		$datos['volume']=$volume*($percentage/100);
 		$datos['seed_name']=$this->input->post('breakdown_germination');
+		$total=$this->model_breakdown->get_seed_total($this->uri->segment(3),$datos['seed_name']);
+		$datos['volume']=$total->total*($percentage/100);
 		//$datos['id_order']=$this->uri->segment(3);
 		$total_vol=$total_germ+$datos['volume'];
+		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
+		$datos['scope']=($datos['volume']/$order_vol->order_volume-1)*100;
 		
 		$this->model_breakdown->add_germination($datos);
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
