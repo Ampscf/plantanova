@@ -536,6 +536,16 @@ Class model_order extends CI_Model
 		$this->db->insert('t_breakdown',$data);
 		return $this->db->affected_rows();
 	}
+
+	function get_seeds($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_seeds');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
 	
 	function add_seeds($data)
 	{
@@ -694,8 +704,21 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+
+
 	function get_volume_sowing($id){
 		$this->db->select('volume');
+		$this->db->where('id_sowing',$id);
+		$query=$this->db->get('t_sowing');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_seed_sowing($id){
+		$this->db->select('seed');
 		$this->db->where('id_sowing',$id);
 		$query=$this->db->get('t_sowing');
 		if($query->num_rows()>0)
@@ -800,6 +823,22 @@ Class model_order extends CI_Model
 		);
 		$this->db->where('id_order',$id_order);
 		$this->db->update('t_order',$data);
+		return $this->db->affected_rows();
+	}
+
+	function update_total_seed($seed_name,$order,$volume){
+		$result = $this->db->query('update `t_total_seed`
+									set `total`=`total`+'.$volume.'
+									where `id_order` = '.$order.'
+									and `seed_name` = "'.$seed_name.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_total_seed2($seed_name,$order,$volume){
+		$result = $this->db->query('update `t_total_seed`
+									set `total`=`total`-'.$volume.'
+									where `id_order` = '.$order.'
+									and `seed_name` = "'.$seed_name.'"');
 		return $this->db->affected_rows();
 	}
 }

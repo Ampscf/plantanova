@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -87,15 +86,12 @@
 											<select class="form-control" name="breakdown" id="breakdown" >
 												<option value="-1" selected>---Selecciona una Semilla---</option>
 												<?php 
-													foreach($varial as $key)
+													foreach($seeds as $key)
 													{
 
-														echo "<option value='" . $key->variety . "' set_select('breackdown','".$key->variety."')>" . $key->variety ."->".$key->volume."</option>";
+														echo "<option value='" . $key->seed_name . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." -> Volumen Recibido:".$key->volume."</option>";
 													}
-													foreach($injertal as $key)
-													{
-														echo "<option value='" . $key->rootstock . "' set_select('breackdown','".$key->rootstock."')>" . $key->rootstock ."->".$key->volume."</option>";
-													}
+													
 												?>	
 											</select>
 										</div><!-- End Cantidad -->				
@@ -137,7 +133,7 @@
 						  	}
 						});
 
-						$.validator.addMethod("selectcheck", selectcheck, "Selecciona una Variedad/Portainjerto");
+						$.validator.addMethod("selectcheck", selectcheck, "Selecciona una Semilla");
 
 						function selectcheck(){
 							if (document.getElementById('breakdown').value < 0){
@@ -165,7 +161,7 @@
 									
 								</div>
 							</form>-->
-							<div class="col-md-3 col-md-offset-4">
+							<div class="col-md-4 col-md-offset-4">
 								<?php  
 									$data = array(
 										'class'	=> 'btn btn-primary btn-block',

@@ -650,8 +650,9 @@ class Order extends CI_Controller {
 		$template['id_order']=$this->uri->segment(3);
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
-		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
-		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+		//$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
+		//$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+		$template['seeds']=$this->model_order->get_seeds($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
 		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
 		$template['total_plant']=$total_sowing->sowing;	
@@ -667,14 +668,15 @@ class Order extends CI_Controller {
 		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
 		$total_plant=$total_sowing->sowing;
 		$volume=$this->input->post('volume');
-		$total_vol=$total_plant+$volume;	
+		$total_vol=$total_plant+$volume;
+		$seed_name=$this->input->post('breakdown');	
 		//$datos['id_breakdown']=$this->input->post('breakdown');
 		$datos['volume']=$volume;
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_order']=$order;
-		$datos['seed']=$this->input->post('breakdown');
+		$datos['seed']=$seed_name;
 		
-		
+		$this->model_order->update_total_seed($seed_name,$order,$volume);
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
 		$this->model_order->update_status($this->uri->segment(3));
@@ -698,8 +700,11 @@ class Order extends CI_Controller {
     	$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
 		$total_plant=$total_sowing->sowing;
 		$total_vol=$total_plant - $volume[0]->volume;
+		$seed_name=$this->model_order->get_seed_sowing($llave);
 		$this->model_order->update_total_sowing($this->uri->segment(3), $total_vol);
-
+		
+		$this->model_order->update_total_seed2($seed_name[0]->seed,$this->uri->segment(3),$volume[0]->volume);
+      
        $this->model_order-> delete_sowing($llave);
        redirect("order/edit_order/".$this->uri->segment(3), "refresh");
     }
