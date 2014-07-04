@@ -113,11 +113,13 @@ class Breakdown extends CI_Controller {
 		$total_graf=$total_graft->graft;
 		$volume=$this->input->post('volume');
 		$total_vol=$total_graf+$volume;	
+		$order_volume=$this->input->post('order_volume');
 		$datos['id_breakdown']=$this->input->post('breakdown_graft');
 		$datos['volume']=$this->input->post('volume');
 		//$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='2';
+		$datos['scope']=($volume/$order_volume)-1;
 		//$datos['id_order']=$this->uri->segment(3);
 
 		$this->model_breakdown->add_graft($datos);

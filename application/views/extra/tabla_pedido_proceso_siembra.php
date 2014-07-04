@@ -3,7 +3,6 @@
 		<th># Pedido</th>
 		<th>Agricultor</th>
 		<th>Fecha</th>
-		<th>Estado</th>
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
@@ -20,7 +19,6 @@
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->order_date_delivery)) . "</td>";
-				echo "<td>Proceso</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";
 				$category=$this->model_breakdown->get_category($key->id_category);

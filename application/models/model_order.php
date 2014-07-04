@@ -539,6 +539,7 @@ Class model_order extends CI_Model
 
 	function get_seeds($id_order){
 		$this->db->where('id_order',$id_order);
+		$this->db->order_by("id_seed", "asc");
 		$query=$this->db->get('t_seeds');
 		if($query->num_rows()>0)
 		{
@@ -553,12 +554,12 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	function update_times($id_order, $seed_name)
+	function update_times($id_order, $seed_name, $volume)
 	{
-		$result = $this->db->query('update `t_total_seed`
-									set `times`=`times`+1
-									where `id_order` = '.$id_order.'
-									and `seed_name` = "'.$seed_name.'"');
+		$result = $this->db->query('update t_total_seed
+									set times = times + 1, order_volume = order_volume +'.$volume.'
+									where id_order = '.$id_order.'
+									and seed_name = "'.$seed_name.'"');
 		return $this->db->affected_rows();
 	}
 	
@@ -590,7 +591,7 @@ Class model_order extends CI_Model
 	}
 
 	function get_breakdown_seeds($id_breakdown){
-		$this->db->select('id_order,variety,rootstock');
+		$this->db->select('id_order,variety,rootstock,volume');
 		$this->db->where('id_breakdown', $id_breakdown);
 		$query=$this->db->get('t_breakdown');
 		if($query->num_rows()>0)
@@ -613,10 +614,10 @@ Class model_order extends CI_Model
 		else return false;
 	}
 	
-	function update_times2($id_order,$seed_name)
+	function update_times2($id_order,$seed_name,$volume)
 	{
 		$result = $this->db->query('update `t_total_seed`
-									set `times`=`times`- 1
+									set `times`=`times`- 1,`order_volume`=`order_volume`-'.$volume.'
 									where `id_order` = '.$id_order.'
 									and `seed_name` = "'.$seed_name.'"');
 		return $this->db->affected_rows();
@@ -652,7 +653,9 @@ Class model_order extends CI_Model
 	}
 
 	function get_sowing($datos){
+
 		$this->db->where('id_order',$datos);
+		$this->db->order_by("id_sowing", "asc");
 		$query=$this->db->get('t_sowing');
 		
 			if($query->num_rows()>0)

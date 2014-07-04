@@ -300,6 +300,7 @@
 			$attributes = array('id' => 'insert_graft','name'=>'insert_graft');
 			echo form_open('breakdown/insert_graft/'.$this->uri->segment(3),$attributes); 
 			?>
+			<input type="hidden" id="order_volume" name="order_volume" value="<?php echo $volumen;?>">
 			<div id="myModal1" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">

@@ -115,6 +115,7 @@ Class model_breakdown extends CI_Model
 	function get_germination($id_order)
 	{
 		$this->db->where('id_order',$id_order);
+		$this->db->order_by("id_germination", "asc");
 
 		$query=$this->db->get('t_germination');
 		

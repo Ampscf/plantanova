@@ -214,11 +214,12 @@ class Order extends CI_Controller {
 		{
 			$this->load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order);
 		} else {*/
+			$volume=$this->input->post("volume");
 			$data['id_order']=$id_order;
 			$data['id_subtype']=$this->input->post('subtype');
 			$data['variety']=$this->input->post('variety');
 			$data['rootstock']=$this->input->post('rootstock');
-			$data['volume']=$this->input->post("volume");
+			$data['volume']=$volume;
 
 			if($this->model_order->insert_breakdown($data)>0){
 				$a=$this->model_seeds->get_totalseed_order($id_order);
@@ -233,26 +234,30 @@ class Order extends CI_Controller {
 					}
 					if(in_array($data['variety'],$b))
 					{
-						$this->model_order->update_times($id_order,$data['variety']);
+						$this->model_order->update_times($id_order,$data['variety'],$volume);
 					} else {
 						$dato['id_order']=$id_order;
 						$dato['seed_name']=$data['variety'];
+						$dato['order_volume']=$volume;
 						$this->model_order->add_seeds($dato);
 					}
 					if(in_array($data['rootstock'],$b))
 					{
-						$this->model_order->update_times($id_order,$data['rootstock']);
+						$this->model_order->update_times($id_order,$data['rootstock'],$volume);
 					} else {
 						$dati['id_order']=$id_order;
 						$dati['seed_name']=$data['rootstock'];
+						$dati['order_volume']=$volume;
 						$this->model_order->add_seeds($dati);
 					}
 					
 				} else {
 					$dato['id_order']=$id_order;
 					$dato['seed_name']=$data['variety'];
+					$dato['order_volume']=$volume;
 					$dati['id_order']=$id_order;
 					$dati['seed_name']=$data['rootstock'];
+					$dati['order_volume']=$volume;
 					$this->model_order->add_seeds($dato);
 					$this->model_order->add_seeds($dati);
 				}
@@ -590,8 +595,8 @@ class Order extends CI_Controller {
 			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->variety);
 			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		} else {
-			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->variety);
-			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock);
+			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->variety,$a->result()[0]->volume);
+			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock,$a->result()[0]->volume);
 		}
 		/*$c = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		if($b->result()[0]->times==1)

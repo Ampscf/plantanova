@@ -40,6 +40,7 @@ Class model_seeds extends CI_Model
 	
 	function get_client_seeds($id)
 	{
+		$this->db->order_by("id_seed", "asc");
 		$this->db->where('id_order',$id);
 		$result=$this->db->get('t_seeds');
 		if($result->num_rows()>0){
