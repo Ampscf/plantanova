@@ -120,7 +120,7 @@ class Breakdown extends CI_Controller {
 		$datos['id_process_type']='2';
 		//$datos['id_order']=$this->uri->segment(3);
 
-		$this->model_breakdown->add_germination($datos);
+		$this->model_breakdown->add_graft($datos);
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}

@@ -97,7 +97,7 @@
 							<labbel><b>Total:</b> <?php echo number_format($total_germ->germination);?></labbel>
 						</div>
 						<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php //echo round($alcance_germinacion)."%";?></labbel>
+							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>
 					</div>
 					

@@ -80,6 +80,12 @@ Class model_breakdown extends CI_Model
 		$this->db->insert('t_germination', $datos);
 		return $this->db->affected_rows();
 	}
+
+	function add_graft($datos)
+	{
+		$this->db->insert('t_process', $datos);
+		return $this->db->affected_rows();
+	}
 	
 	function add_punch($datos)
 	{
