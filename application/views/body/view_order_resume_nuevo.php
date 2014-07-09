@@ -4,7 +4,7 @@
 			<div class="panel panel-default">
 				<div id="result">						
 					<!-- Cuerpo del panel-->
-					<div class="panel-body">
+					<div class="panel-body" >
 						<div class="col-md-12">
 							<h1>Resumen</h1>
 						</div>
@@ -127,7 +127,6 @@
 						</table>
 						
 					</div><!-- fin cuerpo del panel -->
-									
 					<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-4 col-md-offset-4">

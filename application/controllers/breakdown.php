@@ -75,10 +75,12 @@ class Breakdown extends CI_Controller {
 		$template['total_graft']=$this->model_order->get_total_graft($this->uri->segment(3));
 		$template['total_punch']=$this->model_order->get_total_punch($this->uri->segment(3));
 		$template['total_transplant']=$this->model_order->get_total_transplant($this->uri->segment(3));
-		$template['alcance_germinacion']=(($template['total_germ']->germination/$order->result()[0]->total_volume)-1) * 100;
-		$template['alcance_injerto']=(($template['total_graft']->graft/$order->result()[0]->total_volume)-1) * 100;
-		$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
-		$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
+		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['seeds']=$this->model_order->get_seeds($this->uri->segment(3));
+		//$template['alcance_germinacion']=(($template['total_germ']->germination/$order->result()[0]->total_volume)-1) * 100;
+		//$template['alcance_injerto']=(($template['total_graft']->graft/$order->result()[0]->total_volume)-1) * 100;
+		//$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
+		//$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
 		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));

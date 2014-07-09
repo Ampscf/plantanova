@@ -31,7 +31,7 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Número: </b><?php echo $client->result()[0]->address_number;?></p>
+								<p><b>Número #: </b><?php echo $client->result()[0]->address_number;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
@@ -195,11 +195,6 @@
 					<div class="row">
 
 						<div class="col-md-3 col-md-offset-1">
-							<a href="#myModal2" class="btn btn-success btn-block" data-toggle="modal" style="float: right">Registrar</a>
-						</div>
-						
-
-						<div class="col-md-3 col-md-offset-4">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
@@ -208,6 +203,13 @@
 								echo anchor('order/index', 'Regresar', $data);
 							?>
 						</div>
+
+						<div class="col-md-3 col-md-offset-4">
+							<a href="#myModal2" class="btn btn-success btn-block" data-toggle="modal" style="float: right">Registrar</a>
+						</div>
+						
+
+						
 						<?php 
 						$attributes = array('id' => 'register_status','name'=>'register_status');
 						echo form_open('seeds/register_status/'.$this->uri->segment(3),$attributes); 

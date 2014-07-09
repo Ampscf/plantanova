@@ -35,7 +35,7 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Número: </b><?php echo $client->result()[0]->address_number;?></p>
+								<p><b>Número #: </b><?php echo $client->result()[0]->address_number;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">

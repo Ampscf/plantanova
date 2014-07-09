@@ -6,7 +6,7 @@
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
-		<th>Volúmen</th>
+		<th>Cantidad</th>
 		<th>Sembrar/Eliminar</th>
 	</thead>
 	<tbody>
@@ -25,7 +25,8 @@
 				echo "<td>" . $category[0]->category_name . "</td>";
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
-				echo "<td>" . number_format($key->total_volume) . "</td>";
+				$volumen=$this->model_breakdown->get_volume_sowing($key->id_order);
+				echo "<td>" . number_format($volumen[0]->volume) . "</td>";
 				echo "<td>";?>
 					<a class="btn btn-default"
 	                    rel="tooltip"

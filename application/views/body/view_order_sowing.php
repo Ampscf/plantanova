@@ -44,7 +44,7 @@
 									<p><b>Calle/Colonia:</b> <?php echo $client->result()[0]->street." ".$client->result()[0]->colony;?></p>
 								</div><!-- End calle/colonia -->
 								<div class="input-group input-group-lg">
-									<p><b>Número:</b> <?php echo $client->result()[0]->address_number;?></p>
+									<p><b>Número #:</b> <?php echo $client->result()[0]->address_number;?></p>
 								</div><!-- End numero -->								
 								<div class="input-group input-group-lg">
 									<p><b>Tipo de cultivo:</b> <?php echo $planta->result()[0]->plant_name;?></p>
@@ -83,7 +83,7 @@
 					                <div class="modal-body">	
 					                	<div class="input-group">
 											<p>Semilla</p>
-											<select class="form-control" name="breakdown" id="breakdown" >
+											<select class="form-control" name="seeds" id="seeds" >
 												<option value="-1" selected>---Selecciona una Semilla---</option>
 												<?php 
 													foreach($seeds as $key)
@@ -99,6 +99,10 @@
 											<p>Cantidad</p>
 											<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
 										</div><!-- End Cantidad -->
+										<p>Fecha</p>
+										<div class="input-group">
+											<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90%; float: right;" readonly></p>
+										</div><!-- End fecha -->
 										<div class="input-group">
 											<p>Comentario</p>
 											<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
@@ -121,22 +125,28 @@
 									required: true,
 									number: true
 								},
-								breakdown: {
-						            selectcheck: true
+								datepicker: {
+						            required: true
+						        },
+								seeds: {
+						            seeds: true
 						        }
 							},
 							messages: {
-                        		volume: {
+                        		 datepicker:{
+				                	required:"El Campo Fecha es Requerido"
+				                },
+				                volume: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
 				                }
 						  	}
 						});
 
-						$.validator.addMethod("selectcheck", selectcheck, "Selecciona una Semilla");
+						$.validator.addMethod("seeds", seeds, "Selecciona una Semilla");
 
-						function selectcheck(){
-							if (document.getElementById('breakdown').value < 0){
+						function seeeds(){
+							if (document.getElementById('seeds').value < 0){
 								return false;
 							}else return true;
 						}

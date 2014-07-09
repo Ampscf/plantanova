@@ -33,8 +33,12 @@
 				}else{
 					echo "<td>" . $key->viability ."%". "</td>";
 				}
+				if($key->scope < 1){
+					echo "<td style='color:red;'>".$key->scope."</td>";
+				}else{
+					echo "<td>".$key->scope."</td>";
+				}
 				
-				echo "<td>".$key->scope."</td>";
 				if($key->comment != null){
 				echo "<td>" ?>
 

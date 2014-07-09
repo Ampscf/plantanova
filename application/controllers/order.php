@@ -674,8 +674,10 @@ class Order extends CI_Controller {
 		$total_plant=$total_sowing->sowing;
 		$volume=$this->input->post('volume');
 		$total_vol=$total_plant+$volume;
-		$seed_name=$this->input->post('breakdown');	
+		$seed_name=$this->input->post('seeds');	
 		//$datos['id_breakdown']=$this->input->post('breakdown');
+		$fecha=$this->input->post('datepicker');
+		$datos['sowing_date'] = date("Y-m-d H:i:s", strtotime($fecha));
 		$datos['volume']=$volume;
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_order']=$order;
@@ -685,7 +687,7 @@ class Order extends CI_Controller {
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
 		$this->model_order->update_status($this->uri->segment(3));
-		redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 
 	}
 

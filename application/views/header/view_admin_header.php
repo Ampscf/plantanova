@@ -24,6 +24,7 @@
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>	
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() . 'css/js/jspdf.js'; ?>"></script>
 
 		<!--<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

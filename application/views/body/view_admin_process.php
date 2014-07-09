@@ -55,7 +55,7 @@
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
-								<p><b>Número: </b><?php echo $client->result()[0]->address_number;?></p>
+								<p><b>Número #: </b><?php echo $client->result()[0]->address_number;?></p>
 							</div><!-- End nombre -->
 							
 							<div class="input-group input-group-lg">
@@ -70,9 +70,7 @@
 								<p><b>Volumen Total:</b> <?php echo number_format($volumen);?></p>
 							</div><!-- End nombre -->
 							
-							<div class="input-group input-group-lg">
-								<p><b>Volumen Plantado:</b> <?php echo number_format($suma->result()[0]->volume);?></p>
-							</div><!-- End nombre -->
+							
 							
 						</div>
 						
@@ -82,6 +80,25 @@
 						<hr/>
 					</div>
 					
+					<div class="col-md-12">
+						<div class="col-md-10">
+							<h4>Siembra</h4>
+						</div>
+						<div class="col-md-2">
+							<a href="#myModal5" class="btn btn-success" data-toggle="modal">+Agregar</a>
+						</div>
+						
+						<div class="table-responsive" id="area">
+							<?php include_once('application/views/extra/tabla_siembra.php'); ?>
+						</div>
+						<div class="col-md-2">
+							<labbel><b>Total:</b> <?php echo number_format($suma->result()[0]->volume);?></labbel>
+						</div>
+						<!--<div class="col-md-2">
+							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
+						</div>-->
+					</div>
+					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
 						<div class="col-md-10">
 							<h4>Germinación</h4>
@@ -96,9 +113,9 @@
 						<div class="col-md-2">
 							<labbel><b>Total:</b> <?php echo number_format($total_germ->germination);?></labbel>
 						</div>
-						<div class="col-md-2">
+						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
-						</div>
+						</div>-->
 					</div>
 					
 					<div class="clear">&nbsp</div>
@@ -116,9 +133,9 @@
 						<div class="col-md-2">
 							<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
 						</div>
-						<div class="col-md-2">
+						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_injerto)."%";?></labbel>
-						</div>
+						</div>-->
 					</div>
 					
 					<div class="clear">&nbsp</div>
@@ -136,9 +153,9 @@
 						<div class="col-md-2">
 							<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
 						</div>
-						<div class="col-md-2">
+						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_pinchado)."%";?></labbel>
-						</div>
+						</div>-->
 					</div>
 					
 					<div class="clear">&nbsp</div>
@@ -156,19 +173,19 @@
 						<div class="col-md-2">
 							<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
 						</div>
-						<div class="col-md-2">
+						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
-						</div>
+						</div>-->
 					</div>
 					
 				</div>
 				<div class="clear">&nbsp</div>
 				<div class="col-md-12">
 					<div class="col-md-6">	
-						<a href="#myModal4" class="btn btn-success" data-toggle="modal" style="float: right">Embarcar</a>
+						<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary" style="float: right"');?>
 					</div>
 					<div class="col-md-6">	
-						<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary"');?>
+						<a href="#myModal4" class="btn btn-success" data-toggle="modal">Embarcar</a>
 					</div>
 				</div>
 				<div class="clear">&nbsp</div>
@@ -190,6 +207,92 @@
             		</div>
         		</div>
     		</div>
+    		<?php 
+			$attributes = array('id' => 'insert_sowing','name'=>'insert_sowing');
+			echo form_open('order/insert_sowing/'.$this->uri->segment(3),$attributes); 
+			?>
+		    <div id="myModal5" class="modal fade">
+		    	<div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                    <h4 class="modal-title">Desglose</h4>
+		                </div>
+		                <div class="modal-body">	
+		                	<div class="input-group">
+								<p>Semilla</p>
+								<select class="form-control" name="seeds" id="seeds" >
+									<option value="-1" selected>---Selecciona una Semilla---</option>
+									<?php 
+										foreach($seeds as $key)
+										{
+
+											echo "<option value='" . $key->seed_name . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." -> Volumen Recibido:".$key->volume."</option>";
+										}
+										
+									?>	
+								</select>
+							</div><!-- End Cantidad -->				
+							<div class="input-group">
+								<p>Cantidad</p>
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+							</div><!-- End Cantidad -->
+							<p>Fecha</p>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
+							<div class="input-group">
+								<p>Comentario</p>
+								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
+							</div><!-- End Alcance -->				
+		                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		                    <input type="submit" class="btn btn-success" id="save" name="save" value="Guardar"></button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    </form><!--endform1-->
+		      <script>
+		    
+			$("#insert_sowing").validate({
+				rules: {
+					volume: {
+						required: true,
+						number: true
+					},
+					datepicker: {
+			            required: true
+			        },
+					seeds: {
+			            seeds: true
+			        }
+				},
+				messages: {
+            		 datepicker:{
+	                	required:"El Campo Fecha es Requerido"
+	                },
+	                volume: {
+	                    required: "Este Campo es Requerido",
+	                    number: "Este Campo Debe Ser Numerico"
+	                }
+			  	}
+			});
+
+			$.validator.addMethod("seeds", seeds, "Selecciona una Semilla");
+
+			function seeds(){
+				if (document.getElementById('seeds').value < 0){
+					return false;
+				}else return true;
+			}
+
+				
+			</script>
+
+			<br/>
+			<br/>
 			<?php 
 			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');
 			echo form_open('breakdown/insert_germination/'.$this->uri->segment(3),$attributes); 
