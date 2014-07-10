@@ -23,13 +23,13 @@
 				if($key->comment != null){
 				echo "<td>" ?>
 
-					<a href="#myModal2<?php echo $key->id_process; ?>" class="btn btn-default"
+					<a href="#myModal2<?php echo $key->id_sowing; ?>" class="btn btn-default"
 	                    title="Comentario"
 	                    data-toggle="modal">
 						<i class="fa fa-comment-o"></i>
 	                </a>
 					
-					<div id="myModal2<?php echo $key->id_process;  ?>" class="modal fade">
+					<div id="myModal2<?php echo $key->id_sowing;  ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
                 				<div class="modal-header">
