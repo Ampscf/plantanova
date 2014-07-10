@@ -114,16 +114,15 @@ Class model_breakdown extends CI_Model
 	
 	function get_germination($id_order)
 	{
-		$this->db->where('id_order',$id_order);
-		$this->db->order_by("id_germination", "asc");
-
-		$query=$this->db->get('t_germination');
-		
-		if($query->num_rows()>0)
-		{
-			return $query->result();
-		} 
-		else return false;
+		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,tg.scope,  t_o.id_order, t_o.id_status
+									from t_germination as tg, t_order as t_o 
+									where t_o.id_order = tg.id_order and t_o.id_status = 2
+									order by tg.id_germination');
+		if($result->num_rows()>0)
+			{
+				return $result->result();
+			}
+			else return false;
 	}
 
 	function get_graft($id_order){
@@ -168,6 +167,12 @@ Class model_breakdown extends CI_Model
 	{
 		$this->db->where('id_process',$id);
 		$this->db->delete('t_process');
+	}
+
+	function delete_process_germination($id)
+	{
+		$this->db->where('id_germination',$id);
+		$this->db->delete('t_germination');
 	}
 	
 	function update_order($id_order,$data)
@@ -256,15 +261,19 @@ Class model_breakdown extends CI_Model
 
 	function get_process_sowing()
 	{
-		$this->db->where('id_status',2);
-
-		$query=$this->db->get('t_order');
-		
-		if($query->num_rows()>0)
+		//$result = $this->db->query('select t_o.id_order, t_o.id_status, t_o.id_plant, t_o.id_category, t_o.id_user, t_o.id_client, t_o.order_date_submit, t_o.order_date_delivery, t_o.total_volume, t_o.branch_number, t_o.tutoring, t_o.comment, t_o.farmer, ts.id_order
+									//from t_order as t_o, t_sowing as ts
+									//where t_o.id_order = ts.id_order');
+		$result=$this->db->get('t_sowing');
+																				
+		if($result->num_rows() > 0) 
 		{
-			return $query->result();
+			return $result->result();
 		} 
-		else return false;
+		else 
+		{
+			return null;
+		} 
 	}
 
 	function get_order_id_breakdown($id_breakdown)
@@ -323,6 +332,17 @@ Class model_breakdown extends CI_Model
 		}
 		else return false;
 	}	
+
+	function get_volume_germination($id){
+		$this->db->select('volume');
+		$this->db->where('id_germination',$id);
+		$query=$this->db->get('t_germination');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
 
 	function get_volume_process($id){
 		$this->db->select('volume');

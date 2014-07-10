@@ -105,6 +105,9 @@ class Breakdown extends CI_Controller {
 		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
 		$datos['scope']=($datos['volume']/$order_vol->order_volume-1)*100;
 		
+		$fecha=$this->input->post('datepicker1');
+		$datos['germ_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		
 		$this->model_breakdown->add_germination($datos);
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
@@ -123,6 +126,8 @@ class Breakdown extends CI_Controller {
 		$datos['id_process_type']='2';
 		$datos['scope']=($volume/$order_volume)-1;
 		//$datos['id_order']=$this->uri->segment(3);
+		$fecha=$this->input->post('datepicker2');
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
 
 		$this->model_breakdown->add_graft($datos);
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
@@ -139,6 +144,8 @@ class Breakdown extends CI_Controller {
 		$datos['volume']=$this->input->post('volume');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='3';
+		$fecha=$this->input->post('datepicker3');
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
 		
 		$this->model_breakdown->add_punch($datos);
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
@@ -155,6 +162,8 @@ class Breakdown extends CI_Controller {
 		$datos['volume']=$this->input->post('volume');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='4';
+		$fecha=$this->input->post('datepicker4');
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
 		
 		$this->model_breakdown->add_transplant($datos);
 		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);	
@@ -172,14 +181,13 @@ class Breakdown extends CI_Controller {
             }
         }
 
-        $volume=$this->model_breakdown->get_volume_process($llave); 
+        $volume=$this->model_breakdown->get_volume_germination($llave); 
     	$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
 		$total_germ=$total_germination->germination;
 		$total_vol=$total_germ - $volume[0]->volume;
-		
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 
-       $this->model_breakdown-> delete_process($llave);
+       $this->model_breakdown-> delete_process_germination($llave);
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
 
@@ -198,6 +206,7 @@ class Breakdown extends CI_Controller {
     	$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
 		$total_graf=$total_graft->graft;
 		$total_vol=$total_graf - $volume[0]->volume;
+		echo $llave;
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 
        	$this->model_breakdown-> delete_process($llave);
@@ -299,5 +308,13 @@ class Breakdown extends CI_Controller {
 				$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
 
 				$this->load->view('main',$template);
+	}
+
+	public function update_comment()
+	{
+		$id = $this->input->post('id');
+		$comment = $this->input->post('coment');
+		$this->model_order->update_order_comment($id, $comment);
+		redirect("breakdown/pedido_proceso", "refresh");
 	}
 }		

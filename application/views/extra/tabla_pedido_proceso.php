@@ -1,12 +1,13 @@
 <table class="table table-hover" id="tabla-pedidos">
 	<thead>
-		<th># Pedido</th>
+		<th class="col-md-1"># Pedido</th>
 		<th>Agricultor</th>
-		<th>Fecha</th>
+		<th style="width:172px">Fecha</th>
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
+		<th>Comentario</th>
 		<th>Resumen</th>
 		<th>Editar/Eliminar</th>
 	</thead>
@@ -27,6 +28,37 @@
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
 				echo "<td>" . number_format($key->total_volume) . "</td>";
+				echo "<td>" ?>
+					
+					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Comentario"
+	                    data-toggle="modal">
+						<i class="fa fa-comment-o"></i>
+	                </a>
+					
+					<?php echo form_open('breakdown/update_comment'); ?>
+					<div id="myModal2<?php echo $key->id_order;  ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Comentario</h4>
+                				</div>
+                				<div class="modal-body">
+									<input type="hidden" value="<?php echo $key->id_order;?>" id="id" name="id">
+									<textarea rows="4" cols="50" id="coment" name="coment"><?php echo $key->comment;?></textarea>                    				
+                				</div>
+                				<div class="modal-footer">
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									<button type="submit" class="btn btn-default">Guardar</button>
+                    			</div>
+            				</div>
+        				</div>
+    				</div>
+					</form>
+				
+				<?php
+				echo "</td>";
 				echo "<td>";
 				?>
 					<a class="btn btn-default"

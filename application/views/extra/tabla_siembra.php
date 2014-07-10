@@ -1,7 +1,7 @@
 <table class="table table-hover" id="tabla-empresa">
-		<th>Semilla</th>
+		<th>Cantidad</th>
 		<th>Fecha</th>	
-		<th>Cantidad</th>	
+		<th>Semilla</th>	
 		<th>Comentario</th>
 		<th>Eliminar</th>
 	
@@ -11,10 +11,10 @@
 			foreach ($sowing as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->seed. "</td>";
+				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->sowing_date)) . "</td>";
 				//$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
-				echo "<td>" . number_format($key->volume) . "</td>";
+				echo "<td>" . $key->seed. "</td>";
 				if($key->comment != null){
 				echo "<td>" ?>
 

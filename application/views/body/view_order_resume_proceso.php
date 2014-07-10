@@ -130,7 +130,7 @@
 									
 					<div class="panel-footer">
 						<div class="row">
-							<div class="col-md-4 col-md-offset-4">
+							<div class="col-md-2 col-md-offset-2">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
@@ -138,6 +138,9 @@
 								);
 								echo anchor('breakdown/pedido_proceso', 'Regresar', $data);
 							?>
+							</div>
+							<div class="col-md-4 col-md-offset-3">
+								<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="window.print();" style="width: 134px;">
 							</div>
 						</div>	
 					</div><!-- fin panel footer -->	

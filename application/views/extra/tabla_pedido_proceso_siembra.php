@@ -3,11 +3,9 @@
 		<th># Pedido</th>
 		<th>Agricultor</th>
 		<th>Fecha</th>
-		<th>Empresa</th>
-		<th>Categoría</th>
-		<th>Planta</th>
+		<th>Semilla</th>
 		<th>Cantidad</th>
-		<th>Sembrar/Eliminar</th>
+		<th>Comentario</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -17,52 +15,42 @@
 			{
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
-				echo "<td>" . $key->farmer . "</td>";
-				echo "<td>" . date("d-m-Y",strtotime($key->order_date_delivery)) . "</td>";
-				$cliente=$this->model_breakdown->get_user($key->id_client);
-				echo "<td>" . $cliente[0]->farm_name . "</td>";
-				$category=$this->model_breakdown->get_category($key->id_category);
-				echo "<td>" . $category[0]->category_name . "</td>";
-				$plant=$this->model_breakdown->get_plant($key->id_plant);
-				echo "<td>" . $plant[0]->plant_name . "</td>";
-				$volumen=$this->model_breakdown->get_volume_sowing($key->id_order);
-				echo "<td>" . number_format($volumen[0]->volume) . "</td>";
-				echo "<td>";?>
-					<a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
-	                    title="Modificar"
-	                    href=<?php echo site_url("order/edit_order/$key->id_order");?>>
-	                    <i class="fa fa-edit"></i>
-	                </a>
+				$farmer=$this->model_breakdown->get_process_orders($key->id_order);
+				echo "<td>" . $farmer[0]->farmer . "</td>";
+				echo "<td>" . date("d-m-Y",strtotime($key->sowing_date)) . "</td>";
+				echo "<td>" . $key->seed . "</td>";
+				echo "<td>" . number_format($key->volume) . "</td>";
+				if($key->comment != null){
+				echo "<td>" ?>
 
-	               <a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Eliminar"
+					<a href="#myModal2<?php echo $key->id_process; ?>" class="btn btn-default"
+	                    title="Comentario"
 	                    data-toggle="modal">
-						<i class="fa fa-times"></i>
+						<i class="fa fa-comment-o"></i>
 	                </a>
 					
-					<div id="myModal<?php echo $key->id_order; ?>" class="modal fade">
+					<div id="myModal2<?php echo $key->id_process;  ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
                 				<div class="modal-header">
                     				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    				<h4 class="modal-title">Confirmación</h4>
+                    				<h4 class="modal-title">Comentario</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p>¿Estás seguro de querer eliminar el pedido <?php echo $key->id_order; ?>?</p>
+                    				<p><?php echo $key->comment;?></p>
                 				</div>
                 				<div class="modal-footer">
-									<?php echo form_open('order/delete_order_pedido'); ?>
-                    					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
-                					</form>
-								</div>
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    			</div>
             				</div>
         				</div>
     				</div>
-		<?php 
-				echo "</td>";
+    			
+    			<?php
+    			}else{
+    			echo "<td>";
+    			} 
+    			echo "</td>";
 				echo "</tr>";
 			}
 		}

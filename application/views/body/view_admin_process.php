@@ -322,6 +322,10 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
+							<p>Fecha</p>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate1"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker1" placeholder="--Selecciona una Fecha--" id="datepicker1" name="datepicker1" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
 							<div class="input-group">
 								<p>% de germinación</p>
 								<input type="text" class="form-control" placeholder="% de germinación" name="percentage" id="percentage">
@@ -359,6 +363,9 @@
 						           	number: true,
 						        	max: 100
 						        },
+						        datepicker1: {
+						            required: true
+						        },
 						        viability:{
 						        	number:true,
 						        	max:100
@@ -376,6 +383,9 @@
 				                percentage:{
 				                	number: "Este Campo Debe Ser Numerico",
 				                	max: "Ingresa Un Porcentaje Valido"
+				                },
+				                 datepicker1:{
+				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability:{
 				                	number:"Este Campo Debe Ser Numerico",
@@ -424,6 +434,10 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
+							<p>Fecha</p>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate2"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker2" placeholder="--Selecciona una Fecha--" id="datepicker2" name="datepicker2" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
 							<div class="input-group">
 								<p>Cantidad</p>
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
@@ -449,6 +463,9 @@
 									required: true,
 									number: true
 								},
+								datepicker2: {
+						            required: true
+						        },
 								breakdown_graft: {
 						            selectcheck_graft: true
 						        }
@@ -457,6 +474,9 @@
                         		volume: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                 datepicker2:{
+				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability: {
 				                    required: "Este Campo es Requerido",
@@ -503,6 +523,10 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
+							<p>Fecha</p>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate3"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker3" placeholder="--Selecciona una Fecha--" id="datepicker3" name="datepicker3" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
 							<div class="input-group">
 								<p>Cantidad</p>
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
@@ -528,6 +552,9 @@
 									required: true,
 									number: true
 								},
+								datepicker3: {
+						            required: true
+						        },
 								breakdown_punch: {
 						            selectcheck_punch: true
 						        }
@@ -536,6 +563,9 @@
                         		volume: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                 datepicker3:{
+				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability: {
 				                    required: "Este Campo es Requerido",
@@ -582,6 +612,10 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
+							<p>Fecha</p>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate4"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker4" placeholder="--Selecciona una Fecha--" id="datepicker4" name="datepicker4" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
 							<div class="input-group">
 								<p>Cantidad</p>
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
@@ -607,6 +641,9 @@
 									required: true,
 									number: true
 								},
+								datepicker4: {
+						            required: true
+						        },
 								breakdown_transplant: {
 						            selectcheck_transplant: true
 						        }
@@ -615,6 +652,9 @@
                         		volume: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
+				                },
+				                 datepicker4:{
+				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability: {
 				                    required: "Este Campo es Requerido",

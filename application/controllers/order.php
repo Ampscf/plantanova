@@ -687,6 +687,7 @@ class Order extends CI_Controller {
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
 		$this->model_order->update_status($this->uri->segment(3));
+		//redirect("order/edit_order/".$this->uri->segment(3), "refresh");
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 
 	}
@@ -713,7 +714,8 @@ class Order extends CI_Controller {
 		$this->model_order->update_total_seed2($seed_name[0]->seed,$this->uri->segment(3),$volume[0]->volume);
       
        $this->model_order-> delete_sowing($llave);
-       redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+       //redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+       redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
 
     /*public function finish_sowing(){
