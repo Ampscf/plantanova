@@ -106,7 +106,7 @@
 						<div class="col-md-2">
 							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
-						
+						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_germinacion.php'); ?>
 						</div>
@@ -190,7 +190,7 @@
 				</div>
 				<div class="clear">&nbsp</div>
 			
-			<?php echo form_open('breakdown/finish_order/'.$this->uri->segment(3))?>
+			<?php echo form_open('breakdown/pedido_embarcado_body/'.$this->uri->segment(3))?>
 			<div id="myModal4" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">

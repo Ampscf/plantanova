@@ -2,7 +2,7 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
-					<div class="panel-body">
+					<div class="panel-body" id="seleccion">
 						
 						<div class="col-md-12">
 							<h1>Resumen orden embarcada</h1>
@@ -440,20 +440,43 @@
 									}
 									?>
 						</table>
-						<!--Fin desglose de la transplante-->
-					<div class="col-md-4 col-md-offset-4">
-				<?php  
-					$data = array(
-						'class'	=> 'btn btn-primary btn-block',
-						'name' => 'Regresar',
-						'style'=>'margin-top:50px'
-					);
-					echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
-				?>
-			</div>
+						<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-2 col-md-offset-2">
+							<?php  
+								$data = array(
+									'class'	=> 'btn btn-primary btn-block',
+									'name' => 'Regresar',
+								);
+								echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+							?>
+							</div>
+							<div class="col-md-4 col-md-offset-3">
+								<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
+							</div>
+						</div>	
+					</div><!-- fin panel footer -->	
 					</div>
 				</div>
 			</div>
 		</div> <!-- End row -->
 	</div> <!-- End container -->
 </div> <!-- End content div -->
+
+
+<script language="Javascript">
+	function imprSelec(nombre) {
+	  var ficha = document.getElementById(nombre);
+	  var ventimp = window.open(' ', 'popimpr');;
+	  
+    ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/styles.css';?>\" type=\"text/css\"/>" );
+    ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/TableTools.css';?>\" type=\"text/css\"/>" );
+    ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/custom.css';?>\" type=\"text/css\"/>" );
+   
+	  ventimp.document.write( ficha.innerHTML );
+	 
+	  ventimp.document.close();
+	  ventimp.print();
+	  ventimp.close();
+	}
+</script>

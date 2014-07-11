@@ -256,12 +256,58 @@ class Breakdown extends CI_Controller {
     }
 	public function finish_order()
 	{
-		$data['id_status']='3';
 		$a = $this->uri->segment(3);
-		if($this->model_breakdown->update_order($a,$data)>0)
-		{
-			redirect("breakdown/pedido_embarcado", "refresh");
-		}	
+		$datos['transporter']=$this->input->post('transporter');
+		$datos['final_volume']=$this->input->post('final_volume');
+		$datos['comment']=$this->input->post('comment');
+		$fecha=$this->input->post('datepicker');
+		$datos['date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['id_order']=$a;
+
+		$data['id_status']='3';
+		
+		$this->model_breakdown->update_order($a,$data);
+		if($this->model_breakdown->get_embark($a) == false){
+			$this->model_breakdown->insert_embark($datos);
+		}else{
+			$this->model_breakdown->update_embark($a,$datos);
+		}
+
+		
+
+		redirect("breakdown/pedido_embarcado/", "refresh");
+			
+
+		
+	}
+
+	public function pedido_embarcado_body(){
+		$template['id_order']=$this->uri->segment(3);
+		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['fecha']=$order->result()[0]->order_date_submit;
+		$template['fecha_entrega']=$order->result()[0]->order_date_delivery;
+		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
+		$template['volumen']=$order->result()[0]->total_volume;
+		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category);
+		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
+		$template['farmer']=$order->result()[0]->farmer;
+
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_embarker_body.php';
+		$template['footer'] = 'footer/view_footer.php';
+
+		$this->load->view("main",$template);
+	}
+
+	public function edit_embark(){
+		$a = $this->uri->segment(3);
+		$data['id_status']='2';
+		
+		$this->model_breakdown->update_order2($a,$data);
+		
+		
+
+		redirect("breakdown/process/".$a, "refresh");
 	}
 	
 	public function final_resume()
@@ -276,7 +322,7 @@ class Breakdown extends CI_Controller {
 		$template['category']=$this->model_order->get_category($template['order']->result()[0]->id_category);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
-		$template['germination'] = $this->model_breakdown->get_germination($this->uri->segment(3));
+		$template['germination'] = $this->model_breakdown->get_final_germination($this->uri->segment(3));
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));

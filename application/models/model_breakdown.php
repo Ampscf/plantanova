@@ -100,7 +100,8 @@ Class model_breakdown extends CI_Model
 	}
 
 	/*function get_germination($id_order){
-		$result = $this->db->query('select t_b.variety,t_b.rootstock, t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown FROM t_breakdown as t_b,t_process as t_p 
+		$result = $this->db->query('select t_b.variety,t_b.rootstock, t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown 
+									FROM t_breakdown as t_b,t_process as t_p 
 									WHERE t_b.id_breakdown=t_p.id_breakdown
 									and t_p.id_process_type=1
 									and t_b.id_order ='.$id_order);
@@ -117,6 +118,19 @@ Class model_breakdown extends CI_Model
 		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,tg.scope,  t_o.id_order, t_o.id_status
 									from t_germination as tg, t_order as t_o 
 									where t_o.id_order = tg.id_order and t_o.id_status = 2
+									order by tg.id_germination');
+		if($result->num_rows()>0)
+			{
+				return $result->result();
+			}
+			else return false;
+	}
+
+	function get_final_germination($id_order)
+	{
+		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,tg.scope,  t_o.id_order, t_o.id_status
+									from t_germination as tg, t_order as t_o 
+									where t_o.id_order = tg.id_order
 									order by tg.id_germination');
 		if($result->num_rows()>0)
 			{
@@ -176,6 +190,13 @@ Class model_breakdown extends CI_Model
 	}
 	
 	function update_order($id_order,$data)
+	{
+		$this->db->where('id_order', $id_order);
+		$this->db->update('t_order', $data);
+		return $this->db->affected_rows();
+	}
+
+	function update_order2($id_order,$data)
 	{
 		$this->db->where('id_order', $id_order);
 		$this->db->update('t_order', $data);
@@ -415,6 +436,27 @@ Class model_breakdown extends CI_Model
 		}
 		else return false;
 
+	}
+
+	function insert_embark($datos){
+		$this->db->insert('t_embark', $datos);
+		return $this->db->affected_rows();
+	}
+
+	function get_embark($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_embark');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function update_embark($id_order,$datos){
+		$this->db->where('id_order', $id_order);
+		$this->db->update('t_embark', $datos);
+		return $this->db->affected_rows();
 	}
 	
 }
