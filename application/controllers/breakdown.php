@@ -292,11 +292,24 @@ class Breakdown extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
 
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_embarker_body.php';
-		$template['footer'] = 'footer/view_footer.php';
+		if($this->model_breakdown->get_embark($template['id_order']) == false){
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_embarker_body.php';
+			$template['footer'] = 'footer/view_footer.php';
 
-		$this->load->view("main",$template);
+			$this->load->view("main",$template);
+		}else{
+			$template['embark'] = $this->model_breakdown->get_embark($template['id_order']);
+ 			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_edit_embarker_body.php';
+			$template['footer'] = 'footer/view_footer.php';
+
+			$this->load->view("main",$template);
+		}
+		
+		
+
+		
 	}
 
 	public function edit_embark(){

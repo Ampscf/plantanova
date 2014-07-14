@@ -466,17 +466,17 @@
 
 <script language="Javascript">
 	function imprSelec(nombre) {
-	  var ficha = document.getElementById(nombre);
-	  var ventimp = window.open(' ', 'popimpr');;
+		var ficha = document.getElementById(nombre);
+		var ventimp = window.open(' ', 'popimpr');;
 	  
-    ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/styles.css';?>\" type=\"text/css\"/>" );
-    ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/TableTools.css';?>\" type=\"text/css\"/>" );
-    ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/custom.css';?>\" type=\"text/css\"/>" );
+		ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/styles.css';?>\" type=\"text/css\"/>" );
+    	ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/TableTools.css';?>\" type=\"text/css\"/>" );
+    	ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/custom.css';?>\" type=\"text/css\"/>" );
    
-	  ventimp.document.write( ficha.innerHTML );
+	  	ventimp.document.write(ficha.innerHTML);
 	 
-	  ventimp.document.close();
-	  ventimp.print();
-	  ventimp.close();
+	  	ventimp.document.close();
+	  	ventimp.print();
+	  	ventimp.close();
 	}
 </script>

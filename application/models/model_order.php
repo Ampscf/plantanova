@@ -844,5 +844,44 @@ Class model_order extends CI_Model
 									and `seed_name` = "'.$seed_name.'"');
 		return $this->db->affected_rows();
 	}
+
+	function get_total_sowing2($order,$seed_name){
+		$this->db->where('id_order',$order);
+		$this->db->where('seed_name', $seed_name);
+		$query=$this->db->get('t_total_seed');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+
+	}
+
+	function update_germination($datos,$total,$order_volume)
+	{
+		$result = $this->db->query('update `t_germination`
+									set `volume`=`germ_percentage` / 100 * '.$total.' ,`scope`=((`germ_percentage`/ 100 * '.$total.' / '.$order_volume.') - 1 )* 100
+									where `id_order` = '.$datos['id_order'].'
+									and `seed_name` = "'.$datos['seed'].'"');
+		return $this->db->affected_rows();
+	}
+
+	function sum_germination($id_order){
+		$this->db->where('id_order',$id_order);
+		$this->db->select_sum('volume');
+		$query = $this->db->get('t_germination');
+		if($query->num_rows()>0)
+			{
+				return $query->result();
+			} 
+			else return null;
+	}
+
+	function update_volume_germination($order,$germination){
+		$data= array('germination' =>$germination );
+		$this->db->where('id_order',$order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
+
+	}
 }
 ?>
