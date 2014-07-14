@@ -123,7 +123,7 @@ Class model_breakdown extends CI_Model
 			{
 				return $result->result();
 			}
-			else return false;
+			else return null;
 	}
 
 	function get_final_germination($id_order)
@@ -205,16 +205,16 @@ Class model_breakdown extends CI_Model
 
 	function get_process_germination()
 	{
-		$result=$this->db->get('t_germination');
-																				
-		if($result->num_rows() > 0) 
-		{
-			return $result->result();
-		} 
-		else 
-		{
-			return null;
-		} 
+		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,tg.scope,  t_o.id_order, t_o.id_status
+									from t_germination as tg, t_order as t_o 
+									where t_o.id_order = tg.id_order and t_o.id_status = 2
+									order by tg.id_germination');
+		if($result->num_rows()>0)
+			{
+				return $result->result();
+			}
+			else return null;
+	
 	}
 
 	function get_process_graft()
@@ -282,19 +282,15 @@ Class model_breakdown extends CI_Model
 
 	function get_process_sowing()
 	{
-		//$result = $this->db->query('select t_o.id_order, t_o.id_status, t_o.id_plant, t_o.id_category, t_o.id_user, t_o.id_client, t_o.order_date_submit, t_o.order_date_delivery, t_o.total_volume, t_o.branch_number, t_o.tutoring, t_o.comment, t_o.farmer, ts.id_order
-									//from t_order as t_o, t_sowing as ts
-									//where t_o.id_order = ts.id_order');
-		$result=$this->db->get('t_sowing');
-																				
-		if($result->num_rows() > 0) 
-		{
-			return $result->result();
-		} 
-		else 
-		{
-			return null;
-		} 
+		$query = $this->db->query('select t_s.id_sowing,t_s.sowing_date, t_s.volume, t_s.id_order, t_s.comment, t_s.completed, t_s.seed, t_o.id_status 
+									from t_sowing as t_s, t_order as t_o 
+									where  t_o.id_status = 2 ');
+		
+			if($query->num_rows()>0)
+			{
+				return $query->result();
+			}
+			else return false;
 	}
 
 	function get_order_id_breakdown($id_breakdown)

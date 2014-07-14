@@ -654,9 +654,9 @@ Class model_order extends CI_Model
 
 	function get_sowing($datos){
 
-		$this->db->where('id_order',$datos);
-		$this->db->order_by("id_sowing", "asc");
-		$query=$this->db->get('t_sowing');
+		$query = $this->db->query('select t_s.id_sowing,t_s.sowing_date, t_s.volume, t_s.id_order, t_s.comment, t_s.completed, t_s.seed, t_o.id_status 
+									from t_sowing as t_s, t_order as t_o 
+									where t_s.id_order = '.$datos.' and t_o.id_status = 2 ');
 		
 			if($query->num_rows()>0)
 			{

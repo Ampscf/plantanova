@@ -77,15 +77,32 @@
 			<?php
 				echo "</td>";
 				echo "<td>";?>
-				
-					<a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
+
+				<a href="#myModal3<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
 	                    title="Modificar"
-	                   href="edit_embark/<?php echo $key->id_order ?>">
-	                    <i class="fa fa-edit"></i>
-	                   
+	                    data-toggle="modal">
+						<i class="fa fa-edit"></i>
 	                </a>
+				
+					<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
+	                <div id="myModal3<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title"></h4>
+                				</div>
+                				<div class="modal-body">
+                    				<p>¿Seguro que deceas editar este pedido?</p>
+                				</div>
+                				<div class="modal-footer">
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    				<button type="submit" class="btn btn-success">Modificar</button>
+                    			</div>
+            				</div>
+        				</div>
+    				</div>
+    			</form>
 	         <?php
 	         echo "</td>";
 				echo "</tr>";
