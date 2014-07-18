@@ -7,10 +7,13 @@
 	<th>Eliminar</th>
 
 	<?php 
+
 		if(is_array($graft))
-		{
+		{	
+			echo "<input type='hidden' value='1' id='grafta'>";
 			foreach ($graft as $key) 
 			{
+
 				echo "<tr>";
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
@@ -79,6 +82,8 @@
 				echo "</td>";
 				echo "</tr>";
 			}
+		}else{
+			echo "<input type='hidden' value='0' id='grafta'>";
 		}
 		?>
 	

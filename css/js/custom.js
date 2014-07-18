@@ -30,6 +30,17 @@
 	    }
 	});
 
+$("#check").click(function() {  
+					    
+					        if (document.getElementById("check").checked) {
+					           document.getElementById("divinjerto").style.display = "block";
+					        }
+					        else {
+					            document.getElementById("divinjerto").style.display = "none";
+					        }
+					    });
+
+
 
 	//Maneja el cambio de tabs para mostrar datos actualizados de ordenes
 	$('.nav-tabs li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {

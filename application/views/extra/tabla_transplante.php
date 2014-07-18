@@ -7,8 +7,10 @@
 	<th>Eliminar</th>
 
 	<?php 
+
 		if(is_array($transplant))
 		{
+			echo "<input type='hidden' value='1' id='transplanta'>";
 			foreach ($transplant as $key) 
 			{
 				echo "<tr>";
@@ -79,6 +81,8 @@
 				echo "</td>";
 				echo "</tr>";
 			}
+		}else{
+			echo "<input type='hidden' value='0' id='transplanta'>";
 		}
 		?>
 </table>

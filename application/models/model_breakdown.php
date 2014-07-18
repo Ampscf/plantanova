@@ -282,9 +282,9 @@ Class model_breakdown extends CI_Model
 
 	function get_process_sowing()
 	{
-		$query = $this->db->query('select t_s.id_sowing,t_s.sowing_date, t_s.volume, t_s.id_order, t_s.comment, t_s.completed, t_s.seed, t_o.id_status 
+		$query = $this->db->query('select t_s.id_sowing,t_s.sowing_date, t_s.volume, t_s.id_order, t_s.comment, t_s.completed, t_s.seed, t_o.id_status,t_o.id_order 
 									from t_sowing as t_s, t_order as t_o 
-									where  t_o.id_status = 2 ');
+									where  t_o.id_status = 2 and t_o.id_order = t_s.id_order');
 		
 			if($query->num_rows()>0)
 			{

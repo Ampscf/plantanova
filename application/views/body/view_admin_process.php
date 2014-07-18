@@ -98,6 +98,7 @@
 							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>-->
 					</div>
+					
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
 						<div class="col-md-10">
@@ -117,9 +118,17 @@
 							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>-->
 					</div>
-					
+
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
+					<h2>Injerto <input type="checkbox" name="check" id="check1" value="1"  />
+					Pinchado <input type="checkbox" name="check" id="check2" value="1"  />
+					Transplante <input type="checkbox" name="check" id="check3" value="1"  /></h2>
+					</div>
+					
+					<div class="clear">&nbsp</div>
+	
+					<div class="col-md-12" name="divinjerto" id="divinjerto" style="display: none;" >
 						<div class="col-md-10">
 							<h4>Injerto</h4>
 						</div>
@@ -137,9 +146,9 @@
 							<labbel><b>Alcance:</b> <?php echo round($alcance_injerto)."%";?></labbel>
 						</div>-->
 					</div>
-					
+
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12">
+					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;">
 						<div class="col-md-10">	
 							<h4>Pinchado</h4>
 						</div>
@@ -159,7 +168,7 @@
 					</div>
 					
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12">
+					<div class="col-md-12" name="divtransplante" id="divtransplante" style="display: none;">
 						<div class="col-md-10">	
 							<h4>Transplante</h4>
 						</div>
@@ -680,3 +689,49 @@
 		</div>
 	</div>
 </div> <!-- End content div -->
+
+<script type="text/javascript">
+	if (document.getElementById("grafta").value == 1){
+		document.getElementById("divinjerto").style.display = "block";
+		document.getElementById("check1").checked = true;
+	}
+
+	if (document.getElementById("puncha").value == 1){
+		document.getElementById("divpinchado").style.display = "block";
+		document.getElementById("check2").checked = true;
+	}
+
+	if (document.getElementById("transplanta").value == 1){
+		document.getElementById("divtransplante").style.display = "block";
+		document.getElementById("check3").checked = true;
+	}
+	
+
+	$("#check1").click(function() {  
+		if (document.getElementById("check1").checked){
+			document.getElementById("divinjerto").style.display = "block";
+		}
+		else {
+			document.getElementById("divinjerto").style.display = "none";
+		}
+	});
+
+	$("#check2").click(function() {  
+		if (document.getElementById("check2").checked) {
+			document.getElementById("divpinchado").style.display = "block";
+		}
+		else {
+			document.getElementById("divpinchado").style.display = "none";
+		}
+	});
+
+	$("#check3").click(function() {  
+		if (document.getElementById("check3").checked) {
+			document.getElementById("divtransplante").style.display = "block";
+		}
+		else {
+			document.getElementById("divtransplante").style.display = "none";
+		}
+	});
+
+</script>

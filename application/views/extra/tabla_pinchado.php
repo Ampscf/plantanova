@@ -7,8 +7,10 @@
 	<th>Eliminar</th>
 	
 	<?php 
+
 		if(is_array($punch))
 		{
+			echo "<input type='hidden' value='1' id='puncha'>";
 			foreach ($punch as $key) 
 			{
 				echo "<tr>";
@@ -79,6 +81,8 @@
 				echo "</td>";
 				echo "</tr>";
 			}
+		}else{
+			echo "<input type='hidden' value='0' id='puncha'>";
 		}
 		?>
 </table>
