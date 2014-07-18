@@ -593,19 +593,22 @@ class Order extends CI_Controller {
 		if($b->result()[0]->times==1)
 		{
 			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->variety);
-			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
+			//$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		} else {
 			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->variety,$a->result()[0]->volume);
-			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock,$a->result()[0]->volume);
+			//$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock,$a->result()[0]->volume);
 		}
-		/*$c = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->rootstock);
-		if($b->result()[0]->times==1)
+		$c = $this->model_order->get_times($a->result()[0]->id_order,$a->result()[0]->rootstock);
+		if($c->result()[0]->times==1)
 		{
 			$this->model_order->delete_totalseed($a->result()[0]->id_order,$a->result()[0]->rootstock);
 		} else {
-			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock);
-		}*/
+			$this->model_order->update_times2($a->result()[0]->id_order,$a->result()[0]->rootstock,$a->result()[0]->volume);
+		}
+
        	$this -> model_order -> delete_breakdown($llave);
+       	echo "b",$b->result()[0]->times;
+       	echo "c",$c->result()[0]->times;
        	redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
     }
 	
