@@ -79,7 +79,7 @@
 
 					<?php 
 			$attributes = array('id' => 'register_seeds','name'=>'register_seeds');
-			echo form_open('seeds/register_seeds/'.$this->uri->segment(3),$attributes); 
+			echo form_open('seeds/register_seeds/'.$this->uri->segment(3).'/'.$this->uri->segment(4),$attributes); 
 			?>
 			<div id="myModal" class="modal fade">
         		<div class="modal-dialog">
@@ -193,7 +193,21 @@
 
 				<div class="panel-footer">
 					<div class="row">
-
+						<?php
+						if($this->uri->segment(4)==1){
+						?>
+						<div class="col-md-3 col-md-offset-1">
+							<?php  
+								$data = array(
+									'class'	=> 'btn btn-primary btn-block',
+									'name' => 'Regresar',
+								);
+								echo anchor('seeds/index', 'Regresar', $data);
+							?>
+						</div>
+						<?php
+							}else{
+						?>
 						<div class="col-md-3 col-md-offset-1">
 							<?php  
 								$data = array(
@@ -202,34 +216,18 @@
 								);
 								echo anchor('order/index', 'Regresar', $data);
 							?>
-						</div>
-
-						<div class="col-md-3 col-md-offset-4">
-							<a href="#myModal2" class="btn btn-success btn-block" data-toggle="modal" style="float: right">Registrar</a>
-						</div>
-						
-
-						
+						</div>		
+						<?php
+							}
+						?>
 						<?php 
 						$attributes = array('id' => 'register_status','name'=>'register_status');
 						echo form_open('seeds/register_status/'.$this->uri->segment(3),$attributes); 
 						?>
-							<div id="myModal2" class="modal fade">
-				        		<div class="modal-dialog">
-				            		<div class="modal-content">
-				                		<div class="modal-header">
-				                		</div>
-				                		<div class="modal-body">
-				                		<h4 class="modal-title">¿Seguro que desea Registrar? Ya no se podra agregar semillas a la orden </h4>	                    		
-				                		</div>
-				                		<div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
-				                		</div>
-				            		</div>
-				        		</div>
-				    		</div>
-			    		</form>
+						<div class="col-md-3 col-md-offset-4">
+							<button type="submit" class="btn btn-success btn-block" style="float: right">Registrar</button>
+						</div>
+						</form>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
 		</div><!-- End panel-default -->

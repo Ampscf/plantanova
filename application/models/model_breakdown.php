@@ -117,7 +117,7 @@ Class model_breakdown extends CI_Model
 	{
 		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,tg.scope,  t_o.id_order, t_o.id_status
 									from t_germination as tg, t_order as t_o 
-									where t_o.id_order = tg.id_order and t_o.id_status = 2
+									where t_o.id_order = tg.id_order and t_o.id_status = 2 and tg.id_order='.$id_order.'
 									order by tg.id_germination');
 		if($result->num_rows()>0)
 			{
@@ -454,6 +454,18 @@ Class model_breakdown extends CI_Model
 		$this->db->update('t_embark', $datos);
 		return $this->db->affected_rows();
 	}
+
+	function get_sowing($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_sowing');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	
 	
 }
 	

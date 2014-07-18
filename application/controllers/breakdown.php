@@ -82,36 +82,54 @@ class Breakdown extends CI_Controller {
 		//$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
 		//$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
 		$template['farmer']=$order->result()[0]->farmer;
-		$template['varial']=$this->model_breakdown->get_order_variety($this->uri->segment(3));
-		$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+		$template['varial']=$this->model_breakdown->get_sowing($this->uri->segment(3));
+		//$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
 		$this->load->view("main",$template);
 	}
 
 	public function insert_germination(){
+		
 		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
 		$total_germ=$total_germination->germination;
 		
-		$percentage=$this->input->post('percentage');
-		$volume=$this->input->post('total');
 		$datos['id_order']=$this->uri->segment(3);
-		$datos['germ_percentage']=$percentage;
+		$id_sowing=$this->input->post('breakdown_germination');
+		$fecha=$this->input->post('datepicker1');
+		$datos['germ_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['germ_percentage']=$this->input->post('percentage');
 		$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
-		$datos['seed_name']=$this->input->post('breakdown_germination');
+		$sowing=$this->model_breakdown->get_sowing($datos['id_order']);
+		$datos['id_sowing']=$sowing[0]->id_sowing;
+		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
+		$datos['seed_name']=$sowing[0]->seed;
+		
+		$this->model_breakdown->add_germination($datos);
+
+		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
+
+		$total_vol=$total_germ+$datos['volume'];
+		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
+		
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+/*		$percentage=;
+		$volume=$this->input->post('total');
+		
+		
+		
+		
+		$datos['seed_name']=;
 		$total=$this->model_breakdown->get_seed_total($this->uri->segment(3),$datos['seed_name']);
 		$datos['volume']=$total->total*($percentage/100);
 		//$datos['id_order']=$this->uri->segment(3);
-		$total_vol=$total_germ+$datos['volume'];
-		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
+		
+		
 		$datos['scope']=($datos['volume']/$order_vol->order_volume-1)*100;
 		
-		$fecha=$this->input->post('datepicker1');
-		$datos['germ_date']=date("Y-m-d H:i:s", strtotime($fecha));
+				
 		
-		$this->model_breakdown->add_germination($datos);
-		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
-		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
-
+		
+*/
 	}
 	public function insert_graft(){
 		$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));

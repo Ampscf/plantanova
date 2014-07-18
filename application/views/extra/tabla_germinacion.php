@@ -4,7 +4,6 @@
 	<th>Semilla</th>
 	<th>% de germinación</th>
 	<th>Viabilidad</th>
-	<th>Alcance</th>
 	<th>Comentario</th>
 	<th>Eliminar</th>
 
@@ -18,12 +17,7 @@
 				echo "<td>" . date("d-m-Y",strtotime($key->germ_date)) . "</td>";
 				echo "<td>" . $key->seed_name . "</td>";
 				echo "<td>" . $key->germ_percentage ."%</td>";
-				echo "<td>" . $key->viability . "%</td>";
-				if($key->scope < 1){
-					echo "<td style='color:red;'>" . $key->scope . "%</td>";
-				}else{
-					echo "<td>" . $key->scope . "%</td>";
-				}				
+				echo "<td>" . $key->viability . "%</td>";				
 				if($key->comment != null){
 				echo "<td>" ?>
 

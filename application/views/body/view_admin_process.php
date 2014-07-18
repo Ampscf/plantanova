@@ -322,12 +322,9 @@
 													foreach($varial as $key)
 													{
 
-														echo "<option value='" . $key->variety . "' set_select('breackdown','".$key->variety."')>" . $key->variety ."</option>";
+														echo "<option value='" . $key->id_sowing . "' set_select('breackdown','".$key->seed."')>" . $key->seed ." -> Volumen Sembrado:".$key->volume."</option>";
 													}
-													foreach($injertal as $key)
-													{
-														echo "<option value='" . $key->rootstock . "' set_select('breackdown','".$key->rootstock."')>" . $key->rootstock ."</option>";
-													}
+													
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
@@ -694,16 +691,19 @@
 	if (document.getElementById("grafta").value == 1){
 		document.getElementById("divinjerto").style.display = "block";
 		document.getElementById("check1").checked = true;
+		document.getElementById("check1").disabled=true;
 	}
 
 	if (document.getElementById("puncha").value == 1){
 		document.getElementById("divpinchado").style.display = "block";
 		document.getElementById("check2").checked = true;
+		document.getElementById("check2").disabled=true;
 	}
 
 	if (document.getElementById("transplanta").value == 1){
 		document.getElementById("divtransplante").style.display = "block";
 		document.getElementById("check3").checked = true;
+		document.getElementById("check3").disabled=true;
 	}
 	
 

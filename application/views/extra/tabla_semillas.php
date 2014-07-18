@@ -43,7 +43,7 @@
                     				<p>¿Estás seguro de querer eliminar esta semila?</p>
                 				</div>
                 				<div class="modal-footer">
-									<?php echo form_open('seeds/delete_seed/'.$this->uri->segment(3)); ?>
+									<?php echo form_open('seeds/delete_seed/'.$this->uri->segment(3).'/'.$this->uri->segment(4)); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     					<button type="submit" class="btn btn-success" name="<?php echo $key->id_seed; ?>">Aceptar</button>
                 					</form>

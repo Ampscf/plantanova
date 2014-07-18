@@ -65,7 +65,7 @@ class Seeds extends CI_Controller {
 			
 			$this->model_seeds->insert_seeds($data);
 
-			redirect("seeds/register_seeds_form/".$this->uri->segment(3), "refresh");
+			redirect("seeds/register_seeds_form/".$this->uri->segment(3).'/'.$this->uri->segment(4), "refresh");
 			
 	} 
 	
@@ -157,7 +157,7 @@ class Seeds extends CI_Controller {
 			}
 		}
 		$this -> model_seeds -> delete_seeds($llave);
-		redirect("seeds/register_seeds_form/$order", "refresh");
+		redirect("seeds/register_seeds_form/$order/".$this->uri->segment(4), "refresh");
 	}
 
 	function sel_order(){

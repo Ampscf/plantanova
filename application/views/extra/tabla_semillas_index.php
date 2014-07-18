@@ -4,6 +4,7 @@
 		<th>Agricultor</th>
 		<th>Volumen</th>
 		<th>Resumen</th>
+		<th>Editar</th>
 
 	<tbody>
 		<?php 
@@ -27,6 +28,16 @@
 	                </a>
 			<?php 
 				echo "</td>";
+				echo "<td>";?>
+					<a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen"
+	                    href=<?php echo site_url("seeds/register_seeds_form/$key->id_order/1");?>>
+	                    <i class="fa fa-edit"></i>
+	                </a>
+	                <?php
+	            echo "</td>";
 				echo "</tr>";
 			}
 		}
