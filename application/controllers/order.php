@@ -689,12 +689,12 @@ class Order extends CI_Controller {
 		$this->model_order->update_total_seed($seed_name,$order,$volume);
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
-		//Esta parte actualiza la germinacion
+		/*/Esta parte actualiza la germinacion
 		$total_vol_seed=$this->model_order->get_total_sowing2($order,$seed_name);
 		$this->model_order->update_germination($datos,$total_vol_seed[0]->total,$total_vol_seed[0]->order_volume);
 		$sum_germ=$this->model_order->sum_germination($order);
 		$this->model_order->update_volume_germination($order,$sum_germ[0]->volume);
-		$this->model_order->update_status($this->uri->segment(3));
+		$this->model_order->update_status($this->uri->segment(3));*/
 
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 
@@ -722,14 +722,14 @@ class Order extends CI_Controller {
 		$this->model_order->update_total_seed2($seed_name[0]->seed,$this->uri->segment(3),$volume[0]->volume);
       
        $this->model_order-> delete_sowing($llave);
-       //esta parte actualiza la germinacion 
+       /*/esta parte actualiza la germinacion 
        $total_vol_seed=$this->model_order->get_total_sowing2($this->uri->segment(3),$seed_name[0]->seed);
 		$datos['id_order']=$this->uri->segment(3);
 		$datos['seed']=$seed_name[0]->seed;
 		$this->model_order->update_germination($datos,$total_vol_seed[0]->total,$total_vol_seed[0]->order_volume);
 		$sum_germ=$this->model_order->sum_germination($this->uri->segment(3));
 		$this->model_order->update_volume_germination($this->uri->segment(3),$sum_germ[0]->volume);
-       //redirect("order/edit_order/".$this->uri->segment(3), "refresh");
+       *///redirect("order/edit_order/".$this->uri->segment(3), "refresh");
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
 

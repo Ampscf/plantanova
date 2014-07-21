@@ -322,7 +322,7 @@
 													foreach($varial as $key)
 													{
 
-														echo "<option value='" . $key->id_sowing . "' set_select('breackdown','".$key->seed."')>" . $key->seed ." -> Volumen Sembrado:".$key->volume."</option>";
+														echo "<option value='" . $key->id_sowing . "' set_select('breackdown','".$key->seed."')>" . $key->seed ." -> Volumen Sembrado: ".number_format($key->volume)."</option>";
 													}
 													
 										?>	

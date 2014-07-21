@@ -99,7 +99,7 @@ class Breakdown extends CI_Controller {
 		$datos['germ_percentage']=$this->input->post('percentage');
 		$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
-		$sowing=$this->model_breakdown->get_sowing($datos['id_order']);
+		$sowing=$this->model_breakdown->get_sowing_id_sowing($id_sowing);
 		$datos['id_sowing']=$sowing[0]->id_sowing;
 		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
 		$datos['seed_name']=$sowing[0]->seed;

@@ -456,7 +456,21 @@ Class model_breakdown extends CI_Model
 	}
 
 	function get_sowing($id_order){
-		$this->db->where('id_order',$id_order);
+		$query=$this->db->query('select t_s.* 
+								from t_sowing as t_s
+								left join t_germination as t_g
+								on t_s.id_sowing = t_g.id_sowing
+								where t_g.id_sowing is null and t_s.id_order='.$id_order);
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_sowing_id_sowing($id_sowing){
+		$this->db->where('id_sowing',$id_sowing);
 		$query=$this->db->get('t_sowing');
 		if($query->num_rows()>0)
 		{
