@@ -479,6 +479,16 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 
+	function get_germination_id_sowing($id_sowing){
+		$this->db->where('id_sowing', $id_sowing);
+		$query=$this->db->get('t_germination');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+
+
+	}
 	
 	
 }
