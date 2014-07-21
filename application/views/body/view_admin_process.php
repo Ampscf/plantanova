@@ -239,13 +239,13 @@
 									<?php 
 										foreach($seeds as $key)
 										{
-
-											echo "<option value='" . $key->seed_name . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." -> Volumen Recibido:".$key->volume."</option>";
+											echo "<option value='" . $key->seed_name . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." / Volumen Recibido: ".number_format($key->volume)." / Lote: ".$key->batch."</option>";
 										}
 										
 									?>	
 								</select>
-							</div><!-- End Cantidad -->				
+							</div><!-- End Cantidad -->	
+								
 							<div class="input-group">
 								<p>Cantidad</p>
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
@@ -298,7 +298,8 @@
 			function seeds(){
 				if (document.getElementById('seeds').value < 0){
 					return false;
-				}else return true;
+				}
+				else return true;
 			}
 
 				
@@ -323,12 +324,10 @@
 								<select class="form-control" name="breakdown_germination" id="breakdown_germination" >
 									<option value="-1" selected>---Selecciona una semilla---</option>
 										<?php 
-													foreach($varial as $key)
-													{
-
-														echo "<option value='" . $key->id_sowing . "' set_select('breackdown','".$key->seed."')>" . $key->seed ." -> Volumen Sembrado: ".number_format($key->volume)."</option>";
-													}
-													
+											foreach($varial as $key)
+											{
+												echo "<option value='" . $key->id_sowing . "' set_select('breackdown','".$key->seed."')>" . $key->seed ." / Volumen Sembrado: ".number_format($key->volume)."</option>";
+											}													
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
