@@ -183,19 +183,37 @@
 										<!--<?php echo form_error('subtype'); ?>-->
 										<div class="input-group">
 											<p>Variedad</p>
-											<input type="text" class="form-control" placeholder="Variedad" name="variety" id="variety" value="">
+											<!--<input type="text" class="form-control" placeholder="Variedad" name="variety" id="variety" value="">-->
+											<select class="form-control" name="variety" id="variety">
+												<option value="-1" selected>---Selecciona una Variedad---</option>
+												<?php 
+													foreach($variety as $key)
+													{
+														echo "<option value='" . $key->variety_name . "' set_select('subtype','".$key->variety_name."')>" . $key->variety_name . "</option>";
+													}
+												?>
+											</select>
 										</div><!-- End Variedad -->
-										<!--<?php echo form_error('variety'); ?>-->
+										<!--<?php //echo form_error('variety'); ?>-->
 										<div class="input-group">
 											<p>PortaInjerto</p>
-											<input type="text" class="form-control" placeholder="PortaInjerto" name="rootstock" id="rootstock" value="">
+											<!--<input type="text" class="form-control" placeholder="PortaInjerto" name="rootstock" id="rootstock" value="">-->
+											<select class="form-control" name="rootstock" id="rootstock">
+												<option value="-1" selected>---Selecciona un PortaInjerto---</option>
+												<?php 
+													foreach($rootstock as $key)
+													{
+														echo "<option value='" . $key->rootstock_name . "' set_select('subtype','".$key->rootstock_name."')>" . $key->rootstock_name . "</option>";
+													}
+												?>
+											</select>
 										</div><!-- End PortaInjerto -->
-										<!--<?php echo form_error('rootstock'); ?>-->										
+										<!--<?php //echo form_error('rootstock'); ?>-->										
 										<div class="input-group">
 											<p>Volumen</p>
 											<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="">
 										</div><!-- End Volumen -->
-										<!--<?php echo form_error('volume'); ?>-->					
+										<!--<?php //echo form_error('volume'); ?>-->					
 					                </div>
 					                <div class="modal-footer">
 					                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -229,10 +247,10 @@
 						$("#update").validate({
 							rules: {
 								variety: {
-									required: true
+									variety: true
 								},
 								rootstock: {
-									required: true
+									rootstock: true
 								},
 								volume: {
 									required: true,
@@ -246,13 +264,6 @@
 						       }
 							},
 							messages: {
-                        		variety: {
-				                    required: "El Campo Variedad es Requerido"
-				                },
-				                rootstock: {
-				                    required: "El Campo PortaInjerto es Requerido"
-				                    
-				                },
 				                volume: {
 				                    required: "El Campo Volumen es Requerido",
 				                    number: "El Campo Volumen debe ser Numerico"
@@ -262,6 +273,8 @@
 
 						$.validator.addMethod("sustratum", sustratum, "Selecciona un Sustrato");
 						$.validator.addMethod("subtype", subtype, "Selecciona un Subtipo");
+						$.validator.addMethod("variety", variety, "Selecciona una Variedad");
+						$.validator.addMethod("rootstock", rootstock, "Selecciona un PortaInjerto");
 
 						function sustratum(){
 							if (document.getElementById('sustratum').value < 0){
@@ -271,6 +284,18 @@
 
 						function subtype(){
 							if (document.getElementById('subtype').value < 0){
+								return false;
+							}else return true;
+						}
+
+						function variety(){
+							if (document.getElementById('variety').value < 0){
+								return false;
+							}else return true;
+						}
+
+						function rootstock(){
+							if (document.getElementById('rootstock').value < 0){
 								return false;
 							}else return true;
 						}
