@@ -755,4 +755,9 @@ class Order extends CI_Controller {
 		$this->model_order->update_order_comment($id, $comment);
 		redirect("order/index", "refresh");
 	}
+
+	public function results()
+	{
+		$this->load->view('body/view_results.php');
+	}
 }

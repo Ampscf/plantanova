@@ -41,7 +41,7 @@
 							<div class="input-group input-group-lg">
 								<p><b>CP:</b> <?php echo $client->result()[0]->cp;?></p>
 							</div><!-- End nombre -->
-						
+
 						</div>
 						
 						<div class="col-md-6">
@@ -117,6 +117,10 @@
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>-->
+						</br></br>
+
+						<a href="<?php echo base_url("index.php/order/results");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
+						'left=20,top=20,width=1024,height=600,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 					</div>
 
 					<div class="clear">&nbsp</div>
