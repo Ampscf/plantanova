@@ -547,6 +547,16 @@ Class model_order extends CI_Model
 		}
 		else return false;
 	}
+
+	function get_seeds_id_seed($id_seed){
+		$this->db->where('id_seed',$id_seed);
+		$query=$this->db->get('t_seeds');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
 	
 	function add_seeds($data)
 	{

@@ -677,16 +677,17 @@ class Order extends CI_Controller {
 		$total_plant=$total_sowing->sowing;
 		$volume=$this->input->post('volume');
 		$total_vol=$total_plant+$volume;
-		$seed_name=$this->input->post('seeds');	
+		
+		$seed_name=$this->model_order->get_seeds_id_seed($this->input->post('seeds'));	
 		//$datos['id_breakdown']=$this->input->post('breakdown');
 		$fecha=$this->input->post('datepicker');
 		$datos['sowing_date'] = date("Y-m-d H:i:s", strtotime($fecha));
 		$datos['volume']=$volume;
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_order']=$order;
-		$datos['seed']=$seed_name;
+		$datos['seed']=$seed_name[0]->seed_name;
 		
-		$this->model_order->update_total_seed($seed_name,$order,$volume);
+		$this->model_order->update_total_seed($seed_name[0]->seed_name,$order,$volume);
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
 		/*/Esta parte actualiza la germinacion

@@ -239,7 +239,7 @@
 									<?php 
 										foreach($seeds as $key)
 										{
-											echo "<option value='" . $key->seed_name . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." / Volumen Recibido: ".number_format($key->volume)." / Lote: ".$key->batch."</option>";
+											echo "<option value='" . $key->id_seed . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." / Volumen Recibido: ".number_format($key->volume)." / Lote: ".$key->batch."</option>";
 										}
 										
 									?>	
@@ -273,7 +273,12 @@
 				rules: {
 					volume: {
 						required: true,
-						number: true
+						number: true,
+						remote:{url:"<?php echo base_url('index.php/admin/register_email_exists'); ?>", 
+											type:"post", 
+											data:$("email").val()
+									}
+
 					},
 					datepicker: {
 			            required: true

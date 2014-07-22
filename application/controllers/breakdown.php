@@ -394,4 +394,14 @@ class Breakdown extends CI_Controller {
 		$this->model_order->update_order_comment($id, $comment);
 		redirect("breakdown/pedido_proceso", "refresh");
 	}
+
+	public function max_volume_sowing(){
+		$id_sowing = $this->input->post('id_sowing');
+
+	    if($this->model_user->email_exists($email)) {
+	        echo "false";
+	    } else {
+	        echo "true";
+	    }
+	}
 }		
