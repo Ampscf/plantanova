@@ -893,5 +893,15 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 
 	}
+
+	function get_order_seeds_info($id_order){
+		$this->db->where('id_order', $id_order);
+		$query = $this->db->get('t_total_seed');
+		if($query->num_rows()>0)
+			{
+				return $query->result();
+			} 
+			else return null;
+	}
 }
 ?>

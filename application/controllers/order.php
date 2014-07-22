@@ -759,6 +759,7 @@ class Order extends CI_Controller {
 
 	public function results()
 	{
-		$this->load->view('body/view_results.php');
+		$template['orders']=$this->model_order->get_order_seeds_info($this->uri->segment(3));
+		$this->load->view('body/view_results.php', $template);
 	}
 }
