@@ -893,5 +893,36 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 
 	}
+
+	function get_order_seeds_info($id_order){
+		$this->db->where('id_order', $id_order);
+		$query = $this->db->get('t_total_seed');
+		if($query->num_rows()>0)
+			{
+				return $query->result();
+			} 
+			else return null;
+	}
+
+	function update_total_vial($id_order,$volume,$seed)
+	{
+		$data=array('viability_total'=>$volume);
+		$this->db->where('id_order',$order);
+		$this->db->where('seed_name',$seed);
+		$this->db->update('viability_total',$data);
+		return $this->db->affected_rows();
+	}
+
+	function get_vial_total($id_order)
+	{
+		$this->db->select('viability_total');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total_seed');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return null;
+	}
 }
 ?>

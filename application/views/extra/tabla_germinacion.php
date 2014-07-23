@@ -1,5 +1,5 @@
 <table class="table table-hover" id="tabla-empresa">
-	<th>Cantidad</th>
+	<th>Cantidad viable</th>
 	<th>Fecha</th>
 	<th>Semilla</th>
 	<th>% de germinación</th>

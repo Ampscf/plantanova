@@ -7,7 +7,6 @@
 	<th>Semilla</th>
 	<th>% Germinación</th>
 	<th>Viabilidad</th>
-	<th>Alcance</th>
 	<th>Comentario</th>
 </thead>
 <tbody>
@@ -32,11 +31,6 @@
 					echo "<td></td>";
 				}else{
 					echo "<td>" . $key->viability ."%". "</td>";
-				}
-				if($key->scope < 1){
-					echo "<td style='color:red;'>".$key->scope."</td>";
-				}else{
-					echo "<td>".$key->scope."</td>";
 				}
 				
 				if($key->comment != null){

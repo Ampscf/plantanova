@@ -87,8 +87,8 @@ class Breakdown extends CI_Controller {
 		$this->load->view("main",$template);
 	}
 
-	public function insert_germination(){
-		
+	public function insert_germination()
+	{
 		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
 		$total_germ=$total_germination->germination;
 		
@@ -107,30 +107,13 @@ class Breakdown extends CI_Controller {
 		$this->model_breakdown->add_germination($datos);
 
 		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
-
+		
 		$total_vol=$total_germ+$datos['volume'];
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 		
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
-/*		$percentage=;
-		$volume=$this->input->post('total');
-		
-		
-		
-		
-		$datos['seed_name']=;
-		$total=$this->model_breakdown->get_seed_total($this->uri->segment(3),$datos['seed_name']);
-		$datos['volume']=$total->total*($percentage/100);
-		//$datos['id_order']=$this->uri->segment(3);
-		
-		
-		$datos['scope']=($datos['volume']/$order_vol->order_volume-1)*100;
-		
-				
-		
-		
-*/
 	}
+
 	public function insert_graft(){
 		$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
 		$total_graf=$total_graft->graft;
