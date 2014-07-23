@@ -234,21 +234,25 @@
 		                <div class="modal-body">	
 		                	<div class="input-group">
 								<p>Semilla</p>
-								<select class="form-control" name="seeds" id="seeds" >
+								<select class="form-control" name="seeds" id="seeds" onchange="valor(this.value)" >
 									<option value="-1" selected>---Selecciona una Semilla---</option>
 									<?php 
 										foreach($seeds as $key)
 										{
-											echo "<option value='" . $key->id_seed . "' set_select('breackdown','".$key->seed_name."')>" . $key->seed_name ." / Volumen Recibido: ".number_format($key->volume)." / Lote: ".$key->batch."</option>";
+											echo "<option value='$key->id_seed'>" . $key->seed_name ." / Volumen Recibido: ".number_format($key->volume)." / Lote: ".$key->batch."</option>";
 										}
 										
 									?>	
 								</select>
 							</div><!-- End Cantidad -->	
-								
+							<div>
+								<input type="text" id="inputval" name="inputval" value="true">
+
+							</div>
+
 							<div class="input-group">
 								<p>Cantidad</p>
-								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume" onchange="valor2(this.value)">
 							</div><!-- End Cantidad -->
 							<p>Fecha</p>
 							<div class="input-group">
@@ -267,18 +271,52 @@
 		        </div>
 		    </div>
 		    </form><!--endform1-->
+
 		      <script>
-		    
+
+		      function valor(a){
+				var a = a;
+				var b = document.getElementById('volume').value;
+				$.ajax({
+					url: "<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
+					data: {'volume':b,'seeds':a},
+					type: "POST",
+					success: function(data){
+						document.getElementById('inputval').value=data;
+					},
+					failure:function(data){
+						
+					}
+				});
+			}
+			function valor2(b){
+				var a = document.getElementById('seeds').value;
+				var b = b;
+				$.ajax({
+					url: "<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
+					data: {'volume':b,'seeds':a},
+					type: "POST",
+					success: function(data){
+						document.getElementById('inputval').value=data;
+					},
+					failure:function(data){
+						
+					}
+				});
+			}
 			$("#insert_sowing").validate({
+				
 				rules: {
 					volume: {
 						required: true,
 						number: true,
-						remote:{url:"<?php echo base_url('index.php/admin/register_email_exists'); ?>", 
-											type:"post", 
-											data:$("email").val()
-									}
-
+						validate:true
+						/*remote:{
+							url:"<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
+							type:"post", 
+							data:{"volume":$("volume").val(),"seeds":document.getElementById("seeds").value}
+						}*/
+						
 					},
 					datepicker: {
 			            required: true
@@ -293,12 +331,21 @@
 	                },
 	                volume: {
 	                    required: "Este Campo es Requerido",
-	                    number: "Este Campo Debe Ser Numerico"
+	                    number: "Este Campo Debe Ser Numerico",
+	                    remote:"Cantidad Invalida"
 	                }
 			  	}
 			});
 
 			$.validator.addMethod("seeds", seeds, "Selecciona una Semilla");
+			$.validator.addMethod("validate", validate, "Cantidad Invalida");
+
+			function validate(){
+				if(document.getElementById('inputval').value == "true" ){
+					return true;
+				}else return false;
+			}
+
 
 			function seeds(){
 				if (document.getElementById('seeds').value < 0){
@@ -306,6 +353,8 @@
 				}
 				else return true;
 			}
+
+			
 
 				
 			</script>

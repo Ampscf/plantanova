@@ -486,6 +486,15 @@ Class model_breakdown extends CI_Model
 			return $query->result();
 		}
 		else return false;
+	}
+
+	function get_seed_id_seed($id_seed){
+		$this->db->where('id_seed',$id_seed);
+		$query=$this->db->get('t_seeds');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
 
 
 	}

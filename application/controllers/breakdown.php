@@ -396,9 +396,11 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function max_volume_sowing(){
-		$id_sowing = $this->input->post('id_sowing');
-
-	    if($this->model_user->email_exists($email)) {
+		$id_seed = $this->input->post('seeds');
+		$seed_volume = $this->input->post('volume');
+		$seed=$this->model_breakdown->get_seed_id_seed($id_seed);
+	    
+	    if( $seed_volume > $seed[0]->volume) {
 	        echo "false";
 	    } else {
 	        echo "true";

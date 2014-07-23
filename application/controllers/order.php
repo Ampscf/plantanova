@@ -678,16 +678,18 @@ class Order extends CI_Controller {
 		$volume=$this->input->post('volume');
 		$total_vol=$total_plant+$volume;
 		
-		$seed_name=$this->model_order->get_seeds_id_seed($this->input->post('seeds'));	
+		$seed=$this->model_order->get_seeds_id_seed($this->input->post('seeds'));	
 		//$datos['id_breakdown']=$this->input->post('breakdown');
 		$fecha=$this->input->post('datepicker');
 		$datos['sowing_date'] = date("Y-m-d H:i:s", strtotime($fecha));
 		$datos['volume']=$volume;
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_order']=$order;
-		$datos['seed']=$seed_name[0]->seed_name;
+		$datos['seed']=$seed[0]->seed_name;
+		$datos['id_seed']=$this->input->post('seeds');
 		
 		$this->model_order->update_total_seed($seed_name[0]->seed_name,$order,$volume);
+		
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
 		/*/Esta parte actualiza la germinacion
@@ -722,25 +724,20 @@ class Order extends CI_Controller {
 		
 		$this->model_order->update_total_seed2($seed_name[0]->seed,$this->uri->segment(3),$volume[0]->volume);
       
-       $this->model_order-> delete_sowing($llave);
-       //esta parte actualiza la germinacion 
-       $id_germination=$this->model_breakdown->get_germination_id_sowing($llave);
+       	$this->model_order-> delete_sowing($llave);
+       	
+       	//esta parte actualiza la germinacion 
+       
+      	if($this->model_breakdown->get_germination_id_sowing($llave)){
 
-		$volume=$this->model_breakdown->get_volume_germination($id_germination[0]->id_germination); 
-    	$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
-		$total_germ=$total_germination->germination;
-		$total_vol=$total_germ - $volume[0]->volume;
-		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
-		$this->model_breakdown-> delete_process_germination($id_germination[0]->id_germination);
-
-       /*$total_vol_seed=$this->model_order->get_total_sowing2($this->uri->segment(3),$seed_name[0]->seed);
-		$datos['id_order']=$this->uri->segment(3);
-		$datos['seed']=$seed_name[0]->seed;
-		$this->model_order->update_germination($datos,$total_vol_seed[0]->total,$total_vol_seed[0]->order_volume);
-		$sum_germ=$this->model_order->sum_germination($this->uri->segment(3));
-		$this->model_order->update_volume_germination($this->uri->segment(3),$sum_germ[0]->volume);
-       *///redirect("order/edit_order/".$this->uri->segment(3), "refresh");
-       redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+      		$id_germination=$this->model_breakdown->get_germination_id_sowing($llave);
+			$volume=$this->model_breakdown->get_volume_germination($id_germination[0]->id_germination); 
+    		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
+			$total_germ=$total_germination->germination;
+			$total_vol=$total_germ - $volume[0]->volume;
+			$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
+			$this->model_breakdown-> delete_process_germination($id_germination[0]->id_germination);
+      	}
     }
 
     /*public function finish_sowing(){
