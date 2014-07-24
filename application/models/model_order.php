@@ -863,7 +863,6 @@ Class model_order extends CI_Model
 			return $query->result();
 		}
 		else return false;
-
 	}
 
 	function update_germination($datos,$total,$order_volume)
@@ -925,4 +924,3 @@ Class model_order extends CI_Model
 		else return null;
 	}
 }
-?>
