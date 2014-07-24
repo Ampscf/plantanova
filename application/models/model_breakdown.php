@@ -506,6 +506,38 @@ Class model_breakdown extends CI_Model
 		}
 		else return false;
 	}
+
+	function get_breakdown($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+
+	}
+
+	function sum_seed($seed, $id_order){
+		$this->db->where('seed_name',$seed);
+		$this->db->where('id_order',$id_order);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_germination');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+
+	}
+
+	function sum_breakdown($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
 	
 	
 }

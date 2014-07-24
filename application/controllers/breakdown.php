@@ -117,11 +117,11 @@ class Breakdown extends CI_Controller {
 	public function insert_graft(){
 		$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
 		$total_graf=$total_graft->graft;
-		$volume=$this->input->post('volume');
+		$volume=$this->input->post('volume_graft');
 		$total_vol=$total_graf+$volume;	
 		$order_volume=$this->input->post('order_volume');
 		$datos['id_breakdown']=$this->input->post('breakdown_graft');
-		$datos['volume']=$this->input->post('volume');
+		$datos['volume']=$this->input->post('volume_graft');
 		//$datos['viability']=$this->input->post('viability');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='2';
@@ -390,5 +390,29 @@ class Breakdown extends CI_Controller {
 	    } else {
 	        echo "true";
 	    }
+	}
+
+	public function max_volume_graft(){
+		$id_breakdown = $this->input->post('breakdown_graft');
+		$graft_volume = $this->input->post('volume_graft');
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);
+		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);
+
+		if ($sum_variety[0]->volume < $sum_rootstock[0]->volume){
+			$minimo=$sum_variety[0]->volume;
+		}else{
+			$minimo=$sum_rootstock[0]->volume;
+		}
+
+		$sum_breakdown=$this->model_breakdown->sum_breakdown($id_breakdown);
+
+		if($graft_volume > $minimo || $sum_breakdown[0]->volume + $graft_volume > $minimo) {
+	        echo "false";
+	    } else {
+	        echo "true";
+	    }
+
+		
 	}
 }		

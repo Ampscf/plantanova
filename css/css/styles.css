@@ -4412,3 +4412,7 @@ li.ext_zip {
     max-width: auto !important;
   }
 }
+
+.modal-dialog {
+  margin-top: -100px;
+}
