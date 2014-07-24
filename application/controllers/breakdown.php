@@ -382,8 +382,10 @@ class Breakdown extends CI_Controller {
 		$id_seed = $this->input->post('seeds');
 		$seed_volume = $this->input->post('volume');
 		$seed=$this->model_breakdown->get_seed_id_seed($id_seed);
+		$suma_volumen_sowing=$this->model_breakdown->get_sum_sowing($id_seed);
+	    $resta=$seed[0]->volume - $suma_volumen_sowing[0]->volume;
 	    
-	    if( $seed_volume > $seed[0]->volume) {
+	    if( $seed_volume > $seed[0]->volume || $seed_volume > $resta) {
 	        echo "false";
 	    } else {
 	        echo "true";

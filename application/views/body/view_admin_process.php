@@ -274,43 +274,16 @@
 
 		      <script>
 
-		      function valor(a){
-				var a = a;
-				var b = document.getElementById('volume').value;
-				$.ajax({
-					url: "<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
-					data: {'volume':b,'seeds':a},
-					type: "POST",
-					success: function(data){
-						document.getElementById('inputval').value=data;
-					},
-					failure:function(data){
-						
-					}
-				});
-			}
-			function valor2(b){
-				var a = document.getElementById('seeds').value;
-				var b = b;
-				$.ajax({
-					url: "<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
-					data: {'volume':b,'seeds':a},
-					type: "POST",
-					success: function(data){
-						document.getElementById('inputval').value=data;
-					},
-					failure:function(data){
-						
-					}
-				});
-			}
+		     
+			
 			$("#insert_sowing").validate({
 				
 				rules: {
 					volume: {
 						required: true,
 						number: true,
-						validate:true
+						valor:true,
+						valor2:true
 						/*remote:{
 							url:"<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
 							type:"post", 
@@ -331,19 +304,56 @@
 	                },
 	                volume: {
 	                    required: "Este Campo es Requerido",
-	                    number: "Este Campo Debe Ser Numerico",
-	                    remote:"Cantidad Invalida"
+	                    number: "Este Campo Debe Ser Numerico"
+	                    //remote:"Cantidad Invalida"
 	                }
 			  	}
 			});
 
 			$.validator.addMethod("seeds", seeds, "Selecciona una Semilla");
-			$.validator.addMethod("validate", validate, "Cantidad Invalida");
+			$.validator.addMethod("valor", valor, "Cantidad Invalida");
+			$.validator.addMethod("valor2", valor2, "Cantidad Invalida");
 
-			function validate(){
+			 function valor(a){
+				var a = document.getElementById('seeds').value;
+				var b = document.getElementById('volume').value;
+				$.ajax({
+					url: "<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
+					data: {'volume':b,'seeds':a},
+					type: "POST",
+					success: function(data){
+						document.getElementById('inputval').value=data;
+					},
+					failure:function(data){
+						
+					}
+				});
 				if(document.getElementById('inputval').value == "true" ){
 					return true;
 				}else return false;
+			}
+
+			function valor2(b){
+				var a = document.getElementById('seeds').value;
+				var b = document.getElementById('volume').value;
+				$.ajax({
+					url: "<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
+					data: {'volume':b,'seeds':a},
+					type: "POST",
+					success: function(data){
+						document.getElementById('inputval').value=data;
+					},
+					failure:function(data){
+						
+					}
+				});
+				if(document.getElementById('inputval').value == "true" ){
+					return true;
+				}else return false;
+			}
+			
+			function validate(){
+				
 			}
 
 

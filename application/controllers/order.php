@@ -688,7 +688,7 @@ class Order extends CI_Controller {
 		$datos['seed']=$seed[0]->seed_name;
 		$datos['id_seed']=$this->input->post('seeds');
 		
-		$this->model_order->update_total_seed($seed_name[0]->seed_name,$order,$volume);
+		$this->model_order->update_total_seed($seed[0]->seed_name,$order,$volume);
 		
 		$this->model_order->add_sowing($datos);
 		$this->model_order->update_total_sowing($order, $total_vol);
@@ -738,6 +738,8 @@ class Order extends CI_Controller {
 			$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 			$this->model_breakdown-> delete_process_germination($id_germination[0]->id_germination);
       	}
+
+      	redirect("breakdown/process/".$this->uri->segment(3));
     }
 
     /*public function finish_sowing(){

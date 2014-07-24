@@ -495,8 +495,16 @@ Class model_breakdown extends CI_Model
 			return $query->result();
 		}
 		else return false;
+	}
 
-
+	function get_sum_sowing($id_seed){
+		$this->db->where('id_seed',$id_seed);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_sowing');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
 	}
 	
 	
