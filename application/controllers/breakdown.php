@@ -207,7 +207,7 @@ class Breakdown extends CI_Controller {
     	$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
 		$total_graf=$total_graft->graft;
 		$total_vol=$total_graf - $volume[0]->volume;
-		echo $llave;
+		
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 
        	$this->model_breakdown-> delete_process($llave);

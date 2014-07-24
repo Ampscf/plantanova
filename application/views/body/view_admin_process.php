@@ -500,7 +500,7 @@
 								</select>
 							</div><!-- End breakdown_graft -->
 							<div>
-								<input type="text" id="inputvalgraft" name="inputvalgraft" value="true">
+								<input type="hidden" id="inputvalgraft" name="inputvalgraft" value="true">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
@@ -634,7 +634,9 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
-							
+							<div>
+								<input type="text" id="inputvalpunch" name="inputvalpunch" value="true">
+							</div>
 
 							<div class="input-group">
 								<p>Cantidad</p>
@@ -662,8 +664,10 @@
 						$("#insert_punch").validate({
 							rules: {
 								volume: {
-									required: true,
-									number: true
+									required:true,
+									number:true,
+									max_punch:true,
+									max_punch2:true
 								},
 								datepicker3: {
 						            required: true
@@ -688,6 +692,46 @@
 						});
 
 						$.validator.addMethod("selectcheck_punch", selectcheck_punch, "Selecciona una variedad/portainjerto");
+						$.validator.addMethod("max_punch", max_punch, "Cantidad Invalida");
+						$.validator.addMethod("max_punch2", max_punch2, "Cantidad Invalida");
+
+						function max_graft(a){
+							var a = document.getElementById('breakdown_punch').value;
+							var b = document.getElementById('volume_punch').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
+								data: {'volume_punch':b,'breakdown_punch':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvalpunch').value=data;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvalpunch').value == "true" ){
+								return true;
+							}else return false;
+						}
+
+						function max_graft2(b){
+							var a = document.getElementById('breakdown_punch').value;
+							var b = document.getElementById('volume_punch').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
+								data: {'volume_punch':b,'breakdown_punch':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvalpunch').value=data;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvalpunch').value == "true" ){
+								return true;
+							}else return false;
+						}
 
 						function selectcheck_punch(){
 							if (document.getElementById('breakdown_punch').value < 0){
