@@ -246,7 +246,7 @@
 								</select>
 							</div><!-- End Cantidad -->	
 							<div>
-								<input type="text" id="inputval" name="inputval" value="true">
+								<input type="hidden" id="inputval" name="inputval" value="true">
 
 							</div>
 
@@ -351,11 +351,6 @@
 					return true;
 				}else return false;
 			}
-			
-			function validate(){
-				
-			}
-
 
 			function seeds(){
 				if (document.getElementById('seeds').value < 0){
@@ -364,9 +359,6 @@
 				else return true;
 			}
 
-			
-
-				
 			</script>
 
 			<br/>
@@ -497,7 +489,7 @@
                 		<div class="modal-body">
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
-								<select class="form-control" name="breakdown_graft" id="breakdown_graft" >
+								<select class="form-control" name="breakdown_graft" id="breakdown_graft" onchange="max_graft(this.value)">
 									<option value="-1" selected>---Selecciona una variedad/portainjerto---</option>
 										<?php 
 											foreach($breakdown as $key)
@@ -506,15 +498,19 @@
 											}
 										?>	
 								</select>
-							</div><!-- End Cantidad -->
-							<p>Fecha</p>
-							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate2"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker2" placeholder="--Selecciona una Fecha--" id="datepicker2" name="datepicker2" style="width:90%; float: right;" readonly></p>
-							</div><!-- End fecha -->
+							</div><!-- End breakdown_graft -->
+							<div>
+								<input type="text" id="inputvalgraft" name="inputvalgraft" value="true">
+							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
-								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume_graft" id="volume_graft" onchange="max_graft2(this.value)">
 							</div><!-- End Cantidad -->	
+							<div class="input-group">
+								<p>Fecha</p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate2"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker2" placeholder="--Selecciona una Fecha--" id="datepicker2" name="datepicker2" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
+							
 							<div class="input-group">
 								<!--<p>Viabilidad</p>
 								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">
@@ -532,9 +528,11 @@
 					    
 						$("#insert_graft").validate({
 							rules: {
-								volume: {
+								volume_graft: {
 									required: true,
-									number: true
+									number: true,
+									max_graft:true,
+									max_graft2:true
 								},
 								datepicker2: {
 						            required: true
@@ -544,7 +542,7 @@
 						        }
 							},
 							messages: {
-                        		volume: {
+                        		volume_graft: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
 				                },
@@ -559,6 +557,46 @@
 						});
 
 						$.validator.addMethod("selectcheck_graft", selectcheck_graft, "Selecciona una Variedad/Portainjerto");
+						$.validator.addMethod("max_graft", max_graft, "Cantidad Invalida");
+						$.validator.addMethod("max_graft2", max_graft2, "Cantidad Invalida");
+
+						 function max_graft(a){
+							var a = document.getElementById('breakdown_graft').value;
+							var b = document.getElementById('volume_graft').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_graft'); ?>", 
+								data: {'volume_graft':b,'breakdown_graft':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvalgraft').value=data;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvalgraft').value == "true" ){
+								return true;
+							}else return false;
+						}
+
+						function max_graft2(b){
+							var a = document.getElementById('breakdown_graft').value;
+							var b = document.getElementById('volume_graft').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_graft'); ?>", 
+								data: {'volume_graft':b,'breakdown_graft':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvalgraft').value=data;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvalgraft').value == "true" ){
+								return true;
+							}else return false;
+						}
 
 						function selectcheck_graft(){
 							if (document.getElementById('breakdown_graft').value < 0){
@@ -596,14 +634,16 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
-							<p>Fecha</p>
-							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate3"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker3" placeholder="--Selecciona una Fecha--" id="datepicker3" name="datepicker3" style="width:90%; float: right;" readonly></p>
-							</div><!-- End fecha -->
+							
+
 							<div class="input-group">
 								<p>Cantidad</p>
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
-							</div><!-- End Cantidad -->	
+							</div><!-- End Cantidad -->
+							<div class="input-group">
+								<p>Fecha</p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate3"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker3" placeholder="--Selecciona una Fecha--" id="datepicker3" name="datepicker3" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->	
 							<div class="input-group">
 								<!--<p>Viabilidad</p>
 								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">
@@ -685,14 +725,16 @@
 										?>	
 								</select>
 							</div><!-- End Cantidad -->
-							<p>Fecha</p>
-							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate4"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker4" placeholder="--Selecciona una Fecha--" id="datepicker4" name="datepicker4" style="width:90%; float: right;" readonly></p>
-							</div><!-- End fecha -->
+							
+
 							<div class="input-group">
 								<p>Cantidad</p>
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
 							</div><!-- End Cantidad -->	
+							<div class="input-group">
+								<p>Fecha</p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate4"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker4" placeholder="--Selecciona una Fecha--" id="datepicker4" name="datepicker4" style="width:90%; float: right;" readonly></p>
+							</div><!-- End fecha -->
 							<div class="input-group">
 								<!--<p>Viabilidad</p>
 								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">

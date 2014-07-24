@@ -32,7 +32,7 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Resumen"
+	                    title="Editar"
 	                    href=<?php echo site_url("seeds/register_seeds_form/$key->id_order/1");?>>
 	                    <i class="fa fa-edit"></i>
 	                </a>
