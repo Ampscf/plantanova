@@ -21,7 +21,13 @@
 				echo "<td>". $key->seed_name ."</td>";
 				echo "<td>". $key->total ."</td>";
 				echo "<td>". $key->viability_total ."</td>";
-				echo "<td>". $key->scope ."</td>";
+				if($key->scope > 0)
+				{
+					echo "<td>". round($key->scope) ."%</td>";
+				} else {
+					echo "<td style='color:red;'>". round($key->scope) ."%</td>";
+				}
+					
 				echo "</tr>";
 			}
 		}
