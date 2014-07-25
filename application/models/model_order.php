@@ -912,10 +912,11 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 
-	function get_vial_total($id_order)
+	function get_vial_total($id_order,$seed)
 	{
 		$this->db->select('viability_total');
 		$this->db->where('id_order', $id_order);
+		$this->db->where('seed_name',$seed);
 		$query=$this->db->get('t_total_seed');
 		if($query->num_rows()>0)
 		{

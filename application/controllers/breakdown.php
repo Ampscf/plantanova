@@ -105,6 +105,8 @@ class Breakdown extends CI_Controller {
 		$datos['id_sowing']=$sowing[0]->id_sowing;
 		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
 		$datos['seed_name']=$sowing[0]->seed;
+		$total_vial=$this->model_order->get_vial_total($this->uri->segment(3),$datos['seed_name']);
+		echo $total_vial->viability_total;
 		
 		$this->model_breakdown->add_germination($datos);
 
