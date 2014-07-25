@@ -903,12 +903,12 @@ Class model_order extends CI_Model
 			else return null;
 	}
 
-	function update_total_vial($id_order,$volume,$seed)
+	function update_total_vial($id_order,$volume,$seed,$scope)
 	{
-		$data=array('viability_total'=>$volume);
-		$this->db->where('id_order',$order);
+		$data=array('viability_total'=>$volume, 'scope'=>$scope);
+		$this->db->where('id_order',$id_order);
 		$this->db->where('seed_name',$seed);
-		$this->db->update('viability_total',$data);
+		$this->db->update('t_total_seed',$data);
 		return $this->db->affected_rows();
 	}
 
@@ -924,4 +924,18 @@ Class model_order extends CI_Model
 		}
 		else return null;
 	}
+
+	function get_order_volume($id_order,$seed)
+	{
+		$this->db->select('order_volume');
+		$this->db->where('id_order', $id_order);
+		$this->db->where('seed_name',$seed);
+		$query=$this->db->get('t_total_seed');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return null;
+	}
+	
 }

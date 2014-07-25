@@ -105,8 +105,12 @@ class Breakdown extends CI_Controller {
 		$datos['id_sowing']=$sowing[0]->id_sowing;
 		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
 		$datos['seed_name']=$sowing[0]->seed;
+		
+		$order_volume=$this->model_order->get_order_volume($this->uri->segment(3),$datos['seed_name']);
 		$total_vial=$this->model_order->get_vial_total($this->uri->segment(3),$datos['seed_name']);
-		echo $total_vial->viability_total;
+		$new_vol=$total_vial->viability_total+$datos['volume'];
+		$scope=($new_vol/$order_volume->order_volume-1)*100;
+		$this->model_order->update_total_vial($this->uri->segment(3),$new_vol,$datos['seed_name'],$scope);
 		
 		$this->model_breakdown->add_germination($datos);
 
@@ -186,14 +190,24 @@ class Breakdown extends CI_Controller {
             }
         }
 
-        $volume=$this->model_breakdown->get_volume_germination($llave); 
-    	$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
-		$total_germ=$total_germination->germination;
-		$total_vol=$total_germ - $volume[0]->volume;
+        /*$volume=$this->model_breakdown->get_volume_germination($llave); 
+    	*/
+		$seed=$this->model_breakdown->get_seed_name($llave); //Obtiene el nombre de la semilla
+		$actual_vol=$this->model_order->get_vial_total($this->uri->segment(3),$seed[0]->seed_name); //Obtiene el volumen actual
+		$volume=$this->model_breakdown->get_volume_germination($llave); //Obtiene el volumen que se esta eliminando
+		$new_vol=$actual_vol->viability_total - $volume[0]->volume; //Calcula el volumen nuevo, volumen que ya esta - la cantidad que se esta eliminando
+		$order_volume=$this->model_order->get_order_volume($this->uri->segment(3),$seed[0]->seed_name);
+		$scope=($new_vol/$order_volume->order_volume-1)*100;
+		if($scope==-100) {
+			$scope=0;
+		}
+		$this->model_order->update_total_vial($this->uri->segment(3),$new_vol,$seed[0]->seed_name,$scope);
+		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
+		$total_vol=$total_germination->germination - $volume[0]->volume;
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 
-       $this->model_breakdown-> delete_process_germination($llave);
-       redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+      	$this->model_breakdown-> delete_process_germination($llave);
+       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
 
     public function delete_graft()
