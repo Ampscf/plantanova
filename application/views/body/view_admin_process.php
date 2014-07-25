@@ -246,7 +246,7 @@
 								</select>
 							</div><!-- End Cantidad -->	
 							<div>
-								<input type="hidden" id="inputval" name="inputval" value="true">
+								<input type="text" id="inputval" name="inputval" value="true">
 
 							</div>
 
