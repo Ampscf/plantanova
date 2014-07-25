@@ -529,8 +529,9 @@ Class model_breakdown extends CI_Model
 
 	}
 
-	function sum_breakdown($id_breakdown){
+	function sum_graft($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',2);
 		$this->db->select_sum('volume');
 		$query=$this->db->get('t_process');
 		if($query->num_rows()>0){
@@ -538,8 +539,33 @@ Class model_breakdown extends CI_Model
 		}
 		else return false;
 	}
+
+	function sum_punch($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',3);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function sum_transplant($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',4);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+
+
+	}
 	
 	
+
 }
 	
 ?>

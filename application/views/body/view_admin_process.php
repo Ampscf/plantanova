@@ -246,8 +246,7 @@
 								</select>
 							</div><!-- End Cantidad -->	
 							<div>
-								<input type="text" id="inputval" name="inputval" value="true">
-
+								<input type="hidden" id="inputval" name="inputval" value="" />
 							</div>
 
 							<div class="input-group">
@@ -322,13 +321,14 @@
 					data: {'volume':b,'seeds':a},
 					type: "POST",
 					success: function(data){
-						document.getElementById('inputval').value=data;
+						document.getElementById('inputval').value=data.length;
+						
 					},
 					failure:function(data){
 						
 					}
 				});
-				if(document.getElementById('inputval').value == "true" ){
+				if(document.getElementById('inputval').value == 5 ){
 					return true;
 				}else return false;
 			}
@@ -341,13 +341,13 @@
 					data: {'volume':b,'seeds':a},
 					type: "POST",
 					success: function(data){
-						document.getElementById('inputval').value=data;
+						document.getElementById('inputval').value=data.length;
 					},
 					failure:function(data){
 						
 					}
 				});
-				if(document.getElementById('inputval').value == "true" ){
+				if(document.getElementById('inputval').value == 5 ){
 					return true;
 				}else return false;
 			}
@@ -568,13 +568,13 @@
 								data: {'volume_graft':b,'breakdown_graft':a},
 								type: "POST",
 								success: function(data){
-									document.getElementById('inputvalgraft').value=data;
+									document.getElementById('inputvalgraft').value=data.length;
 								},
 								failure:function(data){
 									
 								}
 							});
-							if(document.getElementById('inputvalgraft').value == "true" ){
+							if(document.getElementById('inputvalgraft').value == 5 ){
 								return true;
 							}else return false;
 						}
@@ -587,13 +587,13 @@
 								data: {'volume_graft':b,'breakdown_graft':a},
 								type: "POST",
 								success: function(data){
-									document.getElementById('inputvalgraft').value=data;
+									document.getElementById('inputvalgraft').value=data.length;
 								},
 								failure:function(data){
 									
 								}
 							});
-							if(document.getElementById('inputvalgraft').value == "true" ){
+							if(document.getElementById('inputvalgraft').value == 5 ){
 								return true;
 							}else return false;
 						}
@@ -624,7 +624,7 @@
                 		<div class="modal-body">
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
-								<select class="form-control" name="breakdown_punch" id="breakdown_punch" >
+								<select class="form-control" name="breakdown_punch" id="breakdown_punch" onchange="max_punch(this.value)">
 									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
 										<?php 
 											foreach($breakdown as $key)
@@ -635,12 +635,12 @@
 								</select>
 							</div><!-- End Cantidad -->
 							<div>
-								<input type="text" id="inputvalpunch" name="inputvalpunch" value="true">
+								<input type="hidden" id="inputvalpunch" name="inputvalpunch" value="true">
 							</div>
 
 							<div class="input-group">
 								<p>Cantidad</p>
-								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume_punch" id="volume_punch" onchange="max_punch2(this.value)">
 							</div><!-- End Cantidad -->
 							<div class="input-group">
 								<p>Fecha</p>
@@ -663,7 +663,7 @@
 					    
 						$("#insert_punch").validate({
 							rules: {
-								volume: {
+								volume_punch: {
 									required:true,
 									number:true,
 									max_punch:true,
@@ -677,7 +677,7 @@
 						        }
 							},
 							messages: {
-                        		volume: {
+                        		volume_punch: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Numerico"
 				                },
@@ -695,7 +695,7 @@
 						$.validator.addMethod("max_punch", max_punch, "Cantidad Invalida");
 						$.validator.addMethod("max_punch2", max_punch2, "Cantidad Invalida");
 
-						function max_graft(a){
+						function max_punch(a){
 							var a = document.getElementById('breakdown_punch').value;
 							var b = document.getElementById('volume_punch').value;
 							$.ajax({
@@ -703,32 +703,32 @@
 								data: {'volume_punch':b,'breakdown_punch':a},
 								type: "POST",
 								success: function(data){
-									document.getElementById('inputvalpunch').value=data;
+									document.getElementById('inputvalpunch').value=data.length;
 								},
 								failure:function(data){
 									
 								}
 							});
-							if(document.getElementById('inputvalpunch').value == "true" ){
+							if(document.getElementById('inputvalpunch').value == 5 ){
 								return true;
 							}else return false;
 						}
 
-						function max_graft2(b){
-							var a = document.getElementById('breakdown_punch').value;
+						function max_punch2(b){
+							var a = document.getElementById('breakdown_punch').value.length;
 							var b = document.getElementById('volume_punch').value;
 							$.ajax({
 								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
 								data: {'volume_punch':b,'breakdown_punch':a},
 								type: "POST",
 								success: function(data){
-									document.getElementById('inputvalpunch').value=data;
+									document.getElementById('inputvalpunch').value=data.length;
 								},
 								failure:function(data){
 									
 								}
 							});
-							if(document.getElementById('inputvalpunch').value == "true" ){
+							if(document.getElementById('inputvalpunch').value == 5 ){
 								return true;
 							}else return false;
 						}
@@ -759,7 +759,7 @@
                 		<div class="modal-body">
 							<div class="input-group">
 								<p>Variedad/Portainjerto</p>
-								<select class="form-control" name="breakdown_transplant" id="breakdown_transplant" >
+								<select class="form-control" name="breakdown_transplant" id="breakdown_transplant" onchange="max_transplant(this.value)">
 									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
 										<?php 
 											foreach($breakdown as $key)
@@ -768,12 +768,13 @@
 											}
 										?>	
 								</select>
-							</div><!-- End Cantidad -->
-							
-
+							</div><!-- End breakdown_transplant -->
+							<div>
+								<input type="hidden" id="inputvaltransplant" name="inputvaltransplant" value="true">
+							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
-								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume">
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume_transplant" id="volume_transplant" onchange="max_transplant2(this.value)">
 							</div><!-- End Cantidad -->	
 							<div class="input-group">
 								<p>Fecha</p>
@@ -796,9 +797,11 @@
 					    
 						$("#insert_transplant").validate({
 							rules: {
-								volume: {
+								volume_transplant: {
 									required: true,
-									number: true
+									number: true,
+									max_transplant:true,
+									max_transplant2:true
 								},
 								datepicker4: {
 						            required: true
@@ -823,6 +826,46 @@
 						});
 
 						$.validator.addMethod("selectcheck_transplant", selectcheck_transplant, "Selecciona una Variedad/Portainjerto");
+						$.validator.addMethod("max_transplant", max_transplant, "Cantidad Invalida");
+						$.validator.addMethod("max_transplant2", max_transplant2, "Cantidad Invalida");
+
+						function max_transplant(a){
+							var a = document.getElementById('breakdown_transplant').value;
+							var b = document.getElementById('volume_transplant').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_transplant'); ?>", 
+								data: {'volume_transplant':b,'breakdown_transplant':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvaltransplant').value=data.length;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvaltransplant').value == 5 ){
+								return true;
+							}else return false;
+						}
+
+						function max_transplant2(b){
+							var a = document.getElementById('breakdown_transplant').value.length;
+							var b = document.getElementById('volume_transplant').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
+								data: {'volume_transplant':b,'breakdown_transplant':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvaltransplant').value=data.length;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvaltransplant').value == 5 ){
+								return true;
+							}else return false;
+						}
 
 						function selectcheck_transplant(){
 							if (document.getElementById('breakdown_transplant').value < 0){
@@ -857,6 +900,7 @@
 		document.getElementById("divtransplante").style.display = "block";
 		document.getElementById("check3").checked = true;
 		document.getElementById("check3").disabled=true;
+		document.getElementById("check2").disabled=true;
 	}
 	
 

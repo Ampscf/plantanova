@@ -143,10 +143,10 @@ class Breakdown extends CI_Controller {
 	{
 		$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
 		$total_punsh=$total_punch->punch;
-		$volume=$this->input->post('volume');
+		$volume=$this->input->post('volume_punch');
 		$total_vol=$total_punsh+$volume;	
 		$datos['id_breakdown']=$this->input->post('breakdown_punch');
-		$datos['volume']=$this->input->post('volume');
+		$datos['volume']=$this->input->post('volume_punch');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='3';
 		$fecha=$this->input->post('datepicker3');
@@ -161,10 +161,10 @@ class Breakdown extends CI_Controller {
 	{
 		$total_transplant=$this->model_order->get_total_transplant($this->uri->segment(3));
 		$total_trans=$total_transplant->transplant;
-		$volume=$this->input->post('volume');
+		$volume=$this->input->post('volume_transplant');
 		$total_vol=$total_trans+$volume;
 		$datos['id_breakdown']=$this->input->post('breakdown_transplant');
-		$datos['volume']=$this->input->post('volume');
+		$datos['volume']=$this->input->post('volume_transplant');
 		$datos['comment']=$this->input->post('comment');
 		$datos['id_process_type']='4';
 		$fecha=$this->input->post('datepicker4');
@@ -390,9 +390,9 @@ class Breakdown extends CI_Controller {
 	    $resta=$seed[0]->volume - $suma_volumen_sowing[0]->volume;
 	    
 	    if( $seed_volume > $seed[0]->volume || $seed_volume > $resta) {
-	        echo "false";
+	        echo "11";//false
 	    } else {
-	        echo "true";
+	        echo "1";//true
 	    }
 	}
 
@@ -409,13 +409,50 @@ class Breakdown extends CI_Controller {
 			$minimo=$sum_rootstock[0]->volume;
 		}
 
-		$sum_breakdown=$this->model_breakdown->sum_breakdown($id_breakdown);
+		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
 
-		if($graft_volume > $minimo || $sum_breakdown[0]->volume + $graft_volume > $minimo) {
-	        echo "false";
+		if($graft_volume > $minimo || $sum_graft[0]->volume + $graft_volume > $minimo) {
+	        echo "11";//false
 	    } else {
-	        echo "true";
+	        echo "1";//true
 	    }
+	}
+
+	public function max_volume_punch(){
+		$id_breakdown = $this->input->post('breakdown_punch');
+		$punch_volume = $this->input->post('volume_punch');
+		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+
+		if($punch_volume > $sum_graft[0]->volume || $sum_punch[0]->volume + $punch_volume > $sum_graft[0]->volume){
+	        echo "11";//false
+	    } else {
+	        echo "1";//true
+	    }
+		
+
+		
+	}
+
+	public function max_volume_transplant(){
+		$id_breakdown = $this->input->post('breakdown_transplant');
+		$transplant_volume = $this->input->post('volume_transplant');
+		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
+
+		if($sum_punch[0]->volume >0){
+			$max=$sum_punch[0]->volume;
+		}else if($sum_graft[0]->volume){
+			$max=$sum_graft[0]->volume;
+		}
+
+		if($transplant_volume>$max || $sum_transplant[0]->volume + $transplant_volume > $max){
+			echo "11";//false
+		}else{
+			echo "1";//true
+		}
+		
 
 		
 	}
