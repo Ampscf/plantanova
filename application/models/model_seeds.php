@@ -159,5 +159,17 @@ Class model_seeds extends CI_Model
 	}
 
 
+	function get_id_seed($id_seed){
+		$this->db->select('id_seed');
+		$this->db->where('id_seed',$id_seed);
+		$query=$this->db->get('t_sowing');
+		if($query->num_rows()>0){
+			return $query->num_rows();
+		}else{
+			return false;
+		}
+	}
+
+
 }
 ?>

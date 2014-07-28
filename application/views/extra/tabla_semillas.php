@@ -23,8 +23,9 @@
 				}else{
 					echo "<td>" . $key->germ_percentage ."%"."</td>";
 				}
-				
-				echo "<td>";?>	                 
+				$sowing=$this->model_seeds->get_id_seed($key->id_seed);
+				if ($sowing < 1){
+					echo "<td>";?>	                 
 					 
 	                <a href="#myModal<?php echo $key->id_seed; ?>" class="btn btn-default"
 	                    title="Eliminar"
@@ -53,6 +54,11 @@
     				</div>
 		<?php 
 				echo "</td>";
+
+				}else{
+					echo "<td></td>";
+				}
+				
 				echo "</tr>";
 			}
 		}
