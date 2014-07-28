@@ -140,6 +140,7 @@ Class model_order extends CI_Model
 	{
 		$this -> db -> select('*');
 		$this -> db -> from('t_variety');
+		$this->db->order_by("variety_name", "asc");
 
 		$query = $this -> db -> get();
 
@@ -175,6 +176,7 @@ Class model_order extends CI_Model
 	{
 		$this -> db -> select('*');
 		$this -> db -> from('t_rootstock');
+		$this->db->order_by("rootstock_name", "asc");
 
 		$query = $this -> db -> get();
 

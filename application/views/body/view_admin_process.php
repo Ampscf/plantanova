@@ -703,6 +703,7 @@
 								data: {'volume_punch':b,'breakdown_punch':a},
 								type: "POST",
 								success: function(data){
+									
 									document.getElementById('inputvalpunch').value=data.length;
 								},
 								failure:function(data){
@@ -715,13 +716,14 @@
 						}
 
 						function max_punch2(b){
-							var a = document.getElementById('breakdown_punch').value.length;
+							var a = document.getElementById('breakdown_punch').value;
 							var b = document.getElementById('volume_punch').value;
 							$.ajax({
 								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
 								data: {'volume_punch':b,'breakdown_punch':a},
 								type: "POST",
 								success: function(data){
+									
 									document.getElementById('inputvalpunch').value=data.length;
 								},
 								failure:function(data){
