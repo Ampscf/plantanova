@@ -735,6 +735,13 @@ class Order extends CI_Controller {
     		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
 			$total_germ=$total_germination->germination;
 			$total_vol=$total_germ - $volume[0]->volume;
+			$this->model_breakdown->update_vial($id_germination[0]->seed_name,$this->uri->segment(3),$volume[0]->volume);
+			$order_vial=$this->model_breakdown->get_vial_total($this->uri->segment(3),$id_germination[0]->seed_name);
+			$scope=($order_vial->viability_total/$order_vial->order_volume-1)*100;
+			if($scope == -100){
+				$scope = 0;
+			}
+			$this->model_breakdown->update_scope($this->uri->segment(3),$id_germination[0]->seed_name,$scope);
 			$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 			$this->model_breakdown-> delete_process_germination($id_germination[0]->id_germination);
       	}

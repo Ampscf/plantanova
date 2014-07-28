@@ -572,11 +572,38 @@ Class model_breakdown extends CI_Model
 			return $query->result();
 		}
 		else return false;
-
-
 	}
-	
-	
+
+	function update_vial($seed_name,$order,$viability_total)
+	{
+		$result=$this->db->query('update `t_total_seed`
+									set `viability_total`=`viability_total`-'.$viability_total.'
+									where `id_order` = '.$order.'
+									and `seed_name` = "'.$seed_name.'"');
+		return $this->db->affected_rows();
+	}
+
+	function get_vial_total($order,$seed_name)
+	{
+		$this->db->select('order_volume,viability_total');
+		$this->db->where('id_order',$order);
+		$this->db->where('seed_name',$seed_name);
+		$query=$this->db->get('t_total_seed');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;
+	}
+
+	function update_scope($order,$seed_name,$scope)
+	{
+		$result=$this->db->query('update `t_total_seed`
+									set `scope`= '.$scope.'
+									where `id_order` = '.$order.'
+									and `seed_name` = "'.$seed_name.'"');
+		return $this->db->affected_rows();		
+	}
 
 }
 	
