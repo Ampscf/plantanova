@@ -607,8 +607,6 @@ class Order extends CI_Controller {
 		}
 
        	$this -> model_order -> delete_breakdown($llave);
-       	echo "b",$b->result()[0]->times;
-       	echo "c",$c->result()[0]->times;
        	redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
     }
 	

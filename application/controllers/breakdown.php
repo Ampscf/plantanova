@@ -292,12 +292,7 @@ class Breakdown extends CI_Controller {
 			$this->model_breakdown->update_embark($a,$datos);
 		}
 
-		
-
 		redirect("breakdown/pedido_embarcado/", "refresh");
-			
-
-		
 	}
 
 	public function pedido_embarcado_body(){
@@ -324,11 +319,7 @@ class Breakdown extends CI_Controller {
 			$template['footer'] = 'footer/view_footer.php';
 
 			$this->load->view("main",$template);
-		}
-		
-		
-
-		
+		}		
 	}
 
 	public function edit_embark(){
