@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css"/>
 </head>
 <body>
-<div id="seleccion">
+<div id="seleccion" name="seleccion">
 <table class="table table-bordered" >
 	<th>Semilla</th>
 	<th>Total Sembrado</th>
@@ -37,26 +37,11 @@
 </div>
 
 <div class="col-md-4 col-md-offset-3">
-	<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
+	<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="window.print();" style="width: 134px;">
 </div>
 
 
-       <script language="Javascript">
-	function imprSelec(nombre) {
-		var ficha = document.getElementById(nombre);
-		var ventimp = window.open(' ', 'popimpr');;
-	  
-		ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/styles.css';?>\" type=\"text/css\"/>" );
-    	ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/TableTools.css';?>\" type=\"text/css\"/>" );
-    	ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/custom.css';?>\" type=\"text/css\"/>" );
-   
-	  	ventimp.document.write(ficha.innerHTML);
-	 
-	  	ventimp.document.close();
-	  	ventimp.print();
-	  	ventimp.close();
-	}
-</script>
+
   
 </body>
 </html>
