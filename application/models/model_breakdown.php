@@ -605,6 +605,85 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();		
 	}
 
+	function get_breakdown_vr($seed_name,$id_order){
+		$this->db->where('variety',$seed_name);
+		$this->db->or_where('rootstock',$seed_name);
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+
+	}
+
+	function get_volume_graft($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',2);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+
+	function get_volume_punch($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',3);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+
+	function get_volume_transplant($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',4);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+
+	function update_total_graft($volume_graft,$id_order){
+		$this->db->query('update t_total set graft = graft - '.$volume_graft.' where id_order = '.$id_order);
+		
+		return $this->db->affected_rows();
+
+	}
+
+	function update_total_punch($volume_punch,$id_order){
+		$this->db->query('update t_total set punch = punch - '.$volume_punch.' where id_order = '.$id_order);
+		
+		return $this->db->affected_rows();
+
+	}
+
+	function update_total_transplant($volume_transplant,$id_order){
+		$this->db->query('update t_total set transplant = transplant - '.$volume_transplant.' where id_order = '.$id_order);
+		
+		return $this->db->affected_rows();
+
+	}
+
+	function delete_process_breakdown($id_breakdown)
+	{
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->delete('t_process');
+		return $this->db->affected_rows();
+	}
+
 }
 	
 ?>
