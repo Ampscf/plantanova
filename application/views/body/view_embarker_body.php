@@ -12,7 +12,7 @@
 
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
-						<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
+						<h3><span class="glyphicon glyphicon-th-large"></span> REPORTE DE EMBARQUE</h3>
 					</div>
 					
 					<div class="col-md-12">
@@ -93,23 +93,93 @@
 
 						<input type="hidden" name="rol" id="rol" value="2" />
 
-						
-							<h3>Transportador</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter">
-							</div><!-- End farm name -->
+						<div class="col-md-6">
 
 							<div class="clear">&nbsp</div>
-							<h3>Fecha de Embarque</h3>
+							<h3>Fecha de Entrega</h3>
 							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:93%; float: right;" readonly></p>
+								<a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:93%; float: right;" readonly>
 							</div><!-- End fecha -->
 
 							<div class="clear">&nbsp</div>
-							<h3>Volumen Final</h3>
+							<h3>Fecha de Arribo</h3>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:93%; float: right;" readonly></p>
+							</div><!-- End fecha -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Volumen a Entregar</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume">
-							</div><!-- End address number -->
+							</div><!-- End volumen a entregar -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Transportador</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter">
+							</div><!-- End transporte -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Fletera</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Fletera" name="transporter" id="transporter">
+							</div><!-- End fletera -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Chofer</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Chofer" name="transporter" id="transporter">
+							</div><!-- End Chofer -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Cel Chofer</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Cel Chofer" name="transporter" id="transporter">
+							</div><!-- End Cel chofer -->
+
+						</div>
+
+						<div class="col-md-6">
+
+							<div class="clear">&nbsp</div>
+							<h3>Destino</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Destino" name="transporter" id="transporter">
+							</div><!-- End Destino -->	
+
+							<div class="clear">&nbsp</div>
+							<h3>Tipo de Empaque</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Tipo de Empaque" name="transporter" id="transporter">
+							</div><!-- End Tipo de Empaque -->			
+
+							<div class="clear">&nbsp</div>
+							<h3>Contacto Entrega</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Contacto Entrega" name="transporter" id="transporter">
+							</div><!-- End Contacto Entrega -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Cajas</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Cajas" name="transporter" id="transporter">
+							</div><!-- End Cajas -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Caja</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Caja" name="transporter" id="transporter">
+							</div><!-- End Caja -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Racks</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Racks" name="transporter" id="transporter">
+							</div><!-- End Racks -->
+
+						</div>
+
+						<div class="col-md-12">	
 
 							<div class="clear">&nbsp</div>
 							<h3>Comentario</h3>
@@ -117,7 +187,7 @@
 								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>								
 							</div><!-- End comment -->
 
-											
+						</div>					
 					</div>
 
 				</div><!-- End panel-body -->

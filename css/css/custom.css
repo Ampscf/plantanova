@@ -132,5 +132,10 @@ textarea
   border-top: 0px;
 }
 
+#ui-datepicker-div {
+	z-index: 10000 !important;
+}
 
-
+.oli {
+	width: 89% !important;
+}
