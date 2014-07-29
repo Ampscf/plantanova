@@ -684,6 +684,39 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function get_process_id_process($id_process){
+		$this->db->where('id_process',$id_process);
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function get_process_id_breakdown($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',3);
+		$this->db->or_where('id_process_type',2);
+		$this->db->where('id_breakdown',$id_breakdown);
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function delete_process_id_breakdown_punch($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',3);
+		$this->db->delete('t_process');
+	}
+
+	function delete_process_id_breakdown_transplant($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',4);
+		$this->db->delete('t_process');
+	}
 }
 	
 ?>

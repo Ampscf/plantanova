@@ -249,8 +249,20 @@ class Breakdown extends CI_Controller {
 		
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 
+		//borrar procesos si es que tiene mas
+		$process=$this->model_breakdown->get_process_id_process($llave);
+		if($this->model_breakdown->get_process_id_breakdown($process[0]->id_breakdown)){
+			$volume_punch=$this->model_breakdown->get_volume_punch($process[0]->id_breakdown);
+			$volume_transplant=$this->model_breakdown->get_volume_transplant($process[0]->id_breakdown);
+			$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
+			$this->model_breakdown->update_total_transplant($volume_transplant[0]->volume,$this->uri->segment(3));
+			$this->model_breakdown->delete_process_id_breakdown_punch($process[0]->id_breakdown);
+			$this->model_breakdown->delete_process_id_breakdown_transplant($process[0]->id_breakdown);
+		}
+
+
        	$this->model_breakdown-> delete_process($llave);
-       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+       	//redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
 
     public function delete_punch()
