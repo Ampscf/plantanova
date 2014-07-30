@@ -29,4 +29,28 @@ class Embark extends CI_Controller {
 
 		$this->load->view('main',$template);
 	}
+
+	public function insert_embark(){
+		$data['id_status']='3';
+
+		$datos['id_order']=$this->uri->segment(3);
+		$datos['date_delivery']=$this->input->post('datepicker');
+		$datos['volume']=$this->input->post('final_volume');
+		$datos['transport']=$this->input->post('transporter');
+		$datos['freight']=$this->input->post('fletera');
+		$datos['driver']=$this->input->post('chofer');
+		$datos['driver_cel']=$this->input->post('cel');
+		$datos['date_arrival']=$this->input->post('butondates');
+		$datos['destiny']=$this->input->post('destino');
+		$datos['pack_type']=$this->input->post('empaque');
+		$datos['arrival_contact']=$this->input->post('contacto');	
+		$datos['boxes']=$this->input->post('cajas');
+		$datos['box']=$this->input->post('caja');
+		$datos['racks']=$this->input->post('racks');
+
+		$this->model_breakdown->update_order($this->uri->segment(3),$data);
+		$this->model_embark->insert_embark($datos);
+
+		redirect("breakdown/pedido_embarcado/", "refresh");
+	}
 }
