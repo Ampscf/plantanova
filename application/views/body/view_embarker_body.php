@@ -98,7 +98,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Fecha de Entrega</h3>
 							<div class="input-group">
-								<a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:93%; float: right;" readonly>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:93%; float: right;" readonly></p>
 							</div><!-- End fecha -->
 
 							<div class="clear">&nbsp</div>
@@ -122,19 +122,19 @@
 							<div class="clear">&nbsp</div>
 							<h3>Fletera</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Fletera" name="transporter" id="transporter">
+								<input type="text" class="form-control" placeholder="Fletera" name="fletera" id="fletera">
 							</div><!-- End fletera -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Chofer</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Chofer" name="transporter" id="transporter">
+								<input type="text" class="form-control" placeholder="Chofer" name="chofer" id="chofer">
 							</div><!-- End Chofer -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Cel Chofer</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Cel Chofer" name="transporter" id="transporter">
+								<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel">
 							</div><!-- End Cel chofer -->
 
 						</div>
@@ -144,37 +144,53 @@
 							<div class="clear">&nbsp</div>
 							<h3>Destino</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Destino" name="transporter" id="transporter">
+								<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino">
 							</div><!-- End Destino -->	
 
 							<div class="clear">&nbsp</div>
 							<h3>Tipo de Empaque</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Tipo de Empaque" name="transporter" id="transporter">
+								<input type="text" class="form-control" placeholder="Tipo de Empaque" name="empaque" id="empaque">
 							</div><!-- End Tipo de Empaque -->			
 
 							<div class="clear">&nbsp</div>
 							<h3>Contacto Entrega</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Contacto Entrega" name="transporter" id="transporter">
+								<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
 							</div><!-- End Contacto Entrega -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Cajas</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Cajas" name="transporter" id="transporter">
+								<select class="form-control" name="cajas" id="cajas">
+									<option value="1" selected>Chep</option>
+									<option value="2" selected>Ensenada</option>
+									<option value="3" selected>No Aplica</option>
+								</select>	
 							</div><!-- End Cajas -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Caja</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Caja" name="transporter" id="transporter">
+								<select class="form-control" name="caja" id="caja">
+									<option value="1" selected>Seca</option>
+									<option value="2" selected>Thermo</option>
+								</select>	
 							</div><!-- End Caja -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Racks</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Racks" name="transporter" id="transporter">
+								<select class="form-control" name="racks" id="racks">
+									<option value="1" selected>Si</option>
+									<option value="2" selected>No</option>
+								</select>	
+							</div><!-- End Racks -->
+
+							<div class="clear">&nbsp</div>
+							<h3># de Racks</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="# de Racks" name="racks" id="racks">
 							</div><!-- End Racks -->
 
 						</div>
@@ -227,6 +243,34 @@
 						        final_volume:{
 						       		required: true,
 						       		number: true
+						       	},
+						       	fletera:{
+						       		required: true
+						       	},
+						       	chofer:{
+						       		required: true
+						       	},
+						       	cel:{
+						       		required: true,
+						       		number: true
+						       	}, 
+						       	destino: {
+						       		required: true
+						       	},
+						       	empaque: {
+						       		required: true
+						       	}, 
+						       	contacto: {
+						       		required: true
+						       	},
+						       	cajas: {
+						       		required: true
+						       	},
+						       	caja: {
+						       		required: true
+						       	},
+						       	butondates: {
+						       		required: true
 						       	}
 								
 							},
@@ -239,7 +283,35 @@
 	                			},
 						       final_volume: { 
 									required: "El Campo Volumne Final es Requerido",
-									number: "El Campo Volumen Final debe ser Numerico"
+									number: "El Campo Volumen Final debe ser Numérico"
+								}, 
+								fletera:{
+									required: "El campo Fletera es Requerido"
+								},
+								chofer:{
+									required: "El campo Chofer es Requerido"
+								},
+								cel:{
+									required: "El campo Celular es Requerido",
+									number: "El campo Celular debe ser Numérico"
+								},
+								destino:{
+									required: "El campo Destino es Requerido"
+								},
+								empaque:{
+									required: "El campo Tipo de Empaque es Requerido"
+								},
+								contacto:{
+									required: "El campo Contacto es Requerido"
+								},
+								cajas:{
+									required: "El campo Cajas es Requerido"
+								},
+								caja:{
+									required: "El campo Caja es Requerido"
+								},
+								butondates:{
+									required: "El campo de Fecha es Requerido"
 								}
 						    }
 						});

@@ -203,7 +203,7 @@
 				</div>
 				<div class="clear">&nbsp</div>
 			
-			<?php echo form_open('breakdown/pedido_embarcado_body/'.$this->uri->segment(3))?>
+			<?php echo form_open('embark/index/'.$this->uri->segment(3))?>
 			<div id="myModal4" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
