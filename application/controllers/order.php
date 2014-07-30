@@ -744,6 +744,27 @@ class Order extends CI_Controller {
 			$this->model_breakdown-> delete_process_germination($id_germination[0]->id_germination);
       	}
 
+      //si tiene algun procesos es eliminado
+		if($this->model_breakdown->get_breakdown_vr($seed_name[0]->seed,$this->uri->segment(3))){
+			$breakdown=$this->model_breakdown->get_breakdown_vr($seed_name[0]->seed,$this->uri->segment(3));
+			$volume_graft=$this->model_breakdown->get_volume_graft($breakdown[0]->id_breakdown);
+			$volume_punch=$this->model_breakdown->get_volume_punch($breakdown[0]->id_breakdown);
+			$volume_transplant=$this->model_breakdown->get_volume_transplant($breakdown[0]->id_breakdown);
+			if($volume_graft[0]->volume>0){
+				$this->model_breakdown->update_total_graft($volume_graft[0]->volume,$this->uri->segment(3));
+			}
+			if($volume_punch[0]->volume>0){
+				$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
+			}
+			if($volume_transplant[0]->volume>0){
+				$this->model_breakdown->update_total_transplant($volume_graft[0]->volume,$this->uri->segment(3));
+			}
+
+			$this->model_breakdown->delete_process_breakdown($breakdown[0]->id_breakdown);
+
+			
+		}
+
       	redirect("breakdown/process/".$this->uri->segment(3));
     }
 

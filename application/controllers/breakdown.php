@@ -138,6 +138,9 @@ class Breakdown extends CI_Controller {
 		$fecha=$this->input->post('datepicker2');
 		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
 
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$this->model_breakdown->update_graft($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
+		
 		$this->model_breakdown->add_graft($datos);
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
@@ -155,6 +158,10 @@ class Breakdown extends CI_Controller {
 		$datos['id_process_type']='3';
 		$fecha=$this->input->post('datepicker3');
 		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$this->model_breakdown->update_punch($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
+		
 		
 		$this->model_breakdown->add_punch($datos);
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
@@ -173,6 +180,10 @@ class Breakdown extends CI_Controller {
 		$datos['id_process_type']='4';
 		$fecha=$this->input->post('datepicker4');
 		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$this->model_breakdown->update_transplant($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
+		
 		
 		$this->model_breakdown->add_transplant($datos);
 		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);	
@@ -251,18 +262,30 @@ class Breakdown extends CI_Controller {
 
 		//borrar procesos si es que tiene mas
 		$process=$this->model_breakdown->get_process_id_process($llave);
+		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
+
 		if($this->model_breakdown->get_process_id_breakdown($process[0]->id_breakdown)){
 			$volume_punch=$this->model_breakdown->get_volume_punch($process[0]->id_breakdown);
 			$volume_transplant=$this->model_breakdown->get_volume_transplant($process[0]->id_breakdown);
-			$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
-			$this->model_breakdown->update_total_transplant($volume_transplant[0]->volume,$this->uri->segment(3));
-			$this->model_breakdown->delete_process_id_breakdown_punch($process[0]->id_breakdown);
-			$this->model_breakdown->delete_process_id_breakdown_transplant($process[0]->id_breakdown);
+			if($volume_punch[0]->volume > 0){
+				$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_punch[0]->volume);
+				$this->model_breakdown->delete_process_id_breakdown_punch($process[0]->id_breakdown);
+				
+			}
+			if($volume_transplant[0]->volume > 0){
+				$this->model_breakdown->update_total_transplant($volume_transplant[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_transplant[0]->volume);
+				$this->model_breakdown->delete_process_id_breakdown_transplant($process[0]->id_breakdown);
+			}
+			
 		}
 
+		$this->model_breakdown->update_graft2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
+		
 
        	$this->model_breakdown-> delete_process($llave);
-       	//redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
     }
 
     public function delete_punch()
@@ -281,6 +304,20 @@ class Breakdown extends CI_Controller {
 		$total_punsh=$total_punch->punch;
 		$total_vol=$total_punsh - $volume[0]->volume;
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
+
+		//eliminar transplate si es que existe
+
+		$process=$this->model_breakdown->get_process_id_process($llave);
+		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
+		if($this->model_breakdown->get_process_id_breakdown2($process[0]->id_breakdown)){
+			$volume_transplant=$this->model_breakdown->get_volume_transplant($process[0]->id_breakdown);
+			$this->model_breakdown->update_total_transplant($volume_transplant[0]->volume,$this->uri->segment(3));
+			$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_transplant[0]->volume);
+			$this->model_breakdown->delete_process_id_breakdown_transplant($process[0]->id_breakdown);
+		}
+
+		$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
+
 
        $this->model_breakdown-> delete_process($llave);
        redirect("breakdown/process/".$this->uri->segment(3), "refresh");
@@ -302,6 +339,10 @@ class Breakdown extends CI_Controller {
 		$total_trans=$total_transplant->transplant;
 		$total_vol=$total_trans - $volume[0]->volume;
 		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);
+
+		$process=$this->model_breakdown->get_process_id_process($llave);
+		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
+		$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
 
       	$this->model_breakdown-> delete_process($llave);
        	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
@@ -438,8 +479,8 @@ class Breakdown extends CI_Controller {
 		$id_breakdown = $this->input->post('breakdown_graft');
 		$graft_volume = $this->input->post('volume_graft');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
-		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);
-		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);
+		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
+		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
 
 		if ($sum_variety[0]->volume < $sum_rootstock[0]->volume){
 			$minimo=$sum_variety[0]->volume;
@@ -466,10 +507,7 @@ class Breakdown extends CI_Controller {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
-	    }
-		
-
-		
+	    }		
 	}
 
 	public function max_volume_transplant(){

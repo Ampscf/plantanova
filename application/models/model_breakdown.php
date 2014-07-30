@@ -630,6 +630,7 @@ Class model_breakdown extends CI_Model
 		}
 	}
 
+
 	function get_volume_punch($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',3);
@@ -697,6 +698,30 @@ Class model_breakdown extends CI_Model
 	function get_process_id_breakdown($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',3);
+		$this->db->or_where('id_process_type',4);
+		$this->db->where('id_breakdown',$id_breakdown);
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_process_id_breakdown2($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',4);
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_process_id_breakdown3($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',3);
+		$this->db->or_where('id_process_type',4);
+		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->or_where('id_process_type',2);
 		$this->db->where('id_breakdown',$id_breakdown);
 		$query=$this->db->get('t_process');
@@ -704,6 +729,13 @@ Class model_breakdown extends CI_Model
 			return $query->result();
 		}
 		else return false;
+	}
+
+
+	function delete_process_id_breakdown_graft($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',2);
+		$this->db->delete('t_process');
 	}
 
 	function delete_process_id_breakdown_punch($id_breakdown){
@@ -716,6 +748,36 @@ Class model_breakdown extends CI_Model
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',4);
 		$this->db->delete('t_process');
+	}
+
+	function update_graft($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set graft_total = graft_total + '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_punch($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set punch_total = punch_total + '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_transplant($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set transplant_total = transplant_total + '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_graft2($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set graft_total = graft_total - '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_punch2($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set punch_total = punch_total - '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_transplant2($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set transplant_total = transplant_total - '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
 	}
 }
 	
