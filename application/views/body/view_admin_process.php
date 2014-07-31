@@ -500,7 +500,7 @@
 								</select>
 							</div><!-- End breakdown_graft -->
 							<div>
-								<input type="hidden" id="inputvalgraft" name="inputvalgraft" value="true">
+								<input type="text" id="inputvalgraft" name="inputvalgraft" value="true">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>

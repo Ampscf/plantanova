@@ -225,17 +225,18 @@ class Breakdown extends CI_Controller {
 			$volume_transplant=$this->model_breakdown->get_volume_transplant($breakdown[0]->id_breakdown);
 			if($volume_graft[0]->volume>0){
 				$this->model_breakdown->update_total_graft($volume_graft[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_graft2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_graft[0]->volume);
 			}
 			if($volume_punch[0]->volume>0){
 				$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_punch[0]->volume);
 			}
 			if($volume_transplant[0]->volume>0){
 				$this->model_breakdown->update_total_transplant($volume_graft[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_transplant[0]->volume);
 			}
 
-			$this->model_breakdown->delete_process_breakdown($breakdown[0]->id_breakdown);
-
-			
+			$this->model_breakdown->delete_process_breakdown($breakdown[0]->id_breakdown);			
 		}
 
       	$this->model_breakdown-> delete_process_germination($llave);
@@ -481,16 +482,22 @@ class Breakdown extends CI_Controller {
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
 		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
 		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
-
-		if ($sum_variety[0]->volume < $sum_rootstock[0]->volume){
-			$minimo=$sum_variety[0]->volume;
+		
+		$volume_graft_variety=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->variety,$breakdown[0]->id_order);
+		$volume_graft_rootstock=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->rootstock,$breakdown[0]->id_order);
+		
+		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
+		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
+		
+		if ($rest_variety < $rest_rootstock){
+			$minimo=$rest_variety;
 		}else{
-			$minimo=$sum_rootstock[0]->volume;
+			$minimo=$rest_rootstock;
 		}
 
-		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+		//$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
 
-		if($graft_volume > $minimo || $sum_graft[0]->volume + $graft_volume > $minimo) {
+		if($graft_volume > $minimo /*|| $sum_graft[0]->volume + $graft_volume > $minimo*/) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true

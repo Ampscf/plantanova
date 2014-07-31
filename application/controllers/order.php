@@ -752,12 +752,15 @@ class Order extends CI_Controller {
 			$volume_transplant=$this->model_breakdown->get_volume_transplant($breakdown[0]->id_breakdown);
 			if($volume_graft[0]->volume>0){
 				$this->model_breakdown->update_total_graft($volume_graft[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_graft2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_graft[0]->volume);
 			}
 			if($volume_punch[0]->volume>0){
 				$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_punch[0]->volume);
 			}
 			if($volume_transplant[0]->volume>0){
 				$this->model_breakdown->update_total_transplant($volume_graft[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_transplant[0]->volume);
 			}
 
 			$this->model_breakdown->delete_process_breakdown($breakdown[0]->id_breakdown);

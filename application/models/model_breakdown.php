@@ -607,6 +607,7 @@ Class model_breakdown extends CI_Model
 
 	function get_breakdown_vr($seed_name,$id_order){
 		$this->db->where('variety',$seed_name);
+		$this->db->where('id_order',$id_order);
 		$this->db->or_where('rootstock',$seed_name);
 		$this->db->where('id_order',$id_order);
 		$query=$this->db->get('t_breakdown');
@@ -779,6 +780,18 @@ Class model_breakdown extends CI_Model
 		$this->db->query('update `t_total_seed` set transplant_total = transplant_total - '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
 		return $this->db->affected_rows();
 	}
+
+	function get_volume_graft_seed($seed_name,$id_order){
+		$this->db->where('seed_name',$seed_name);
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_total_seed');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	
 }
 	
 ?>
