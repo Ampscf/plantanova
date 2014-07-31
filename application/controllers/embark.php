@@ -46,7 +46,7 @@ class Embark extends CI_Controller {
 		$datos['arrival_contact']=$this->input->post('contacto');	
 		$datos['boxes']=$this->input->post('cajas');
 		$datos['box']=$this->input->post('caja');
-		$datos['racks']=$this->input->post('racks');
+		$datos['racks']=$this->input->post('rackz');
 
 		$this->model_breakdown->update_order($this->uri->segment(3),$data);
 		$this->model_embark->insert_embark($datos);
