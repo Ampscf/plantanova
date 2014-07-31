@@ -397,10 +397,10 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function edit_embark(){
-		$a = $this->uri->segment(3);
-		$data['id_status']='2';
+		//$a = $this->uri->segment(3);
+		//$data['id_status']='2';
 		
-		$this->model_breakdown->update_order2($a,$data);
+		//$this->model_breakdown->update_order2($a,$data);
 		
 		
 
@@ -418,7 +418,7 @@ class Breakdown extends CI_Controller {
 		$template['plant']=$this->model_order->get_plant($template['order']->result()[0]->id_plant);
 		$template['category']=$this->model_order->get_category($template['order']->result()[0]->id_category);
 		$template['breakdown']=$this->model_order->get_breakdown($this->uri->segment(3));
-		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
+		$template['sowing'] = $this->model_order->get_sowing2($this->uri->segment(3));
 		$template['germination'] = $this->model_breakdown->get_final_germination($this->uri->segment(3));
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));

@@ -6,7 +6,7 @@
 			</div>
 			<?php 
 				$attributes = array('id' => 'registry', 'name' => 'registry');
-				echo form_open('breakdown/finish_order/'.$this->uri->segment(3),$attributes); 
+				echo form_open('embark/insert_embark/'.$this->uri->segment(3),$attributes); 
 			?>
 				<div class="panel-body">
 
@@ -181,18 +181,19 @@
 							<div class="clear">&nbsp</div>
 							<h3>Racks</h3>
 							<div class="input-group input-group-lg">
-								<select class="form-control" name="racks" id="racks">
+								<select class="form-control" name="racks" id="racks" onchange="cambio(this.value)">
 									<option value="1" selected>Si</option>
-									<option value="2" selected>No</option>
+									<option value="2">No</option>
 								</select>	
 							</div><!-- End Racks -->
 
 							<div class="clear">&nbsp</div>
+							<div id="hiden">
 							<h3># de Racks</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="# de Racks" name="racks" id="racks">
+								<input type="text" class="form-control" placeholder="# de Racks" name="rackz" id="rackz">
 							</div><!-- End Racks -->
-
+							</div>
 						</div>
 
 						<div class="col-md-12">	
@@ -232,6 +233,18 @@
 </div><!-- End row -->
 
 			<script>
+
+				function cambio (a){
+
+					if (a==1){
+					document.getElementById("hiden").style.display = "block";
+					}
+					else {
+						document.getElementById("hiden").style.display = "none";
+					}	
+				}
+
+
 				$("#registry").validate({
 							rules: {
 								transporter: {
@@ -271,6 +284,9 @@
 						       	},
 						       	butondates: {
 						       		required: true
+						       	},
+						       	rackz: {
+						       		number: true
 						       	}
 								
 							},
@@ -312,6 +328,9 @@
 								},
 								butondates:{
 									required: "El campo de Fecha es Requerido"
+								},
+								rackz: {
+									number: "El # de racks debe ser un número"
 								}
 						    }
 						});

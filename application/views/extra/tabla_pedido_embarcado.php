@@ -23,7 +23,7 @@
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
-				echo "<td>" . date("d-m-Y",strtotime($embarque[0]->date)) . "</td>";
+				echo "<td>" . date("d-m-Y",strtotime($embarque[0]->date_delivery)) . "</td>";
 				/*$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";
 				$category=$this->model_breakdown->get_category($key->id_category);
@@ -31,9 +31,9 @@
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
 				*/
-				echo "<td>".$embarque[0]->transporter."</td>";
+				echo "<td>".$embarque[0]->transport."</td>";
 				echo "<td>" . number_format($key->total_volume) . "</td>";
-				echo "<td>" . number_format($embarque[0]->final_volume) . "</td>";
+				echo "<td>" . number_format($embarque[0]->volume) . "</td>";
 				if($embarque[0]->comment != null){
 				echo "<td>" ?>
 
@@ -79,30 +79,84 @@
 				echo "<td>";?>
 
 				<a href="#myModal3<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
-	                    title="Modificar"
+	                    title="Modificar Proceso"
+	                    data-toggle="modal">
+						<i class="fa fa-list-alt"></i>
+	                </a>
+
+	                <a href="#myModal4<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
+	                    title="Modificar Embarque"
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
 	                </a>
+
+	                <a href="#myModal5<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
+	                    title="Finalizar"
+	                    data-toggle="modal">
+						<i class="fa fa-archive"></i>
+	                </a>
 				
 					<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
-	                <div id="myModal3<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
-        				<div class="modal-dialog">
-            				<div class="modal-content">
-                				<div class="modal-header">
-                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    				<h4 class="modal-title"></h4>
-                				</div>
-                				<div class="modal-body">
-                    				<p>¿Seguro que deceas editar este pedido?</p>
-                				</div>
-                				<div class="modal-footer">
-                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    				<button type="submit" class="btn btn-success">Modificar</button>
-                    			</div>
-            				</div>
-        				</div>
-    				</div>
-    			</form>
+		                <div id="myModal3<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+	        				<div class="modal-dialog">
+	            				<div class="modal-content">
+	                				<div class="modal-header">
+	                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                    				<h4 class="modal-title"></h4>
+	                				</div>
+	                				<div class="modal-body">
+	                    				<p>¿Seguro que deceas editar este pedido?</p>
+	                				</div>
+	                				<div class="modal-footer">
+	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	                    				<button type="submit" class="btn btn-success">Modificar</button>
+	                    			</div>
+	            				</div>
+	        				</div>
+	    				</div>
+	    			</form>
+
+	    			<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
+		                <div id="myModal4<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+	        				<div class="modal-dialog">
+	            				<div class="modal-content">
+	                				<div class="modal-header">
+	                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                    				<h4 class="modal-title"></h4>
+	                				</div>
+	                				<div class="modal-body">
+	                    				<p>¿Seguro que deceas editar la información del embarque?</p>
+	                				</div>
+	                				<div class="modal-footer">
+	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	                    				<button type="submit" class="btn btn-success">Modificar</button>
+	                    			</div>
+	            				</div>
+	        				</div>
+	    				</div>
+	    			</form>
+
+	    			<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
+		                <div id="myModal5<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+	        				<div class="modal-dialog">
+	            				<div class="modal-content">
+	                				<div class="modal-header">
+	                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                    				<h4 class="modal-title"></h4>
+	                				</div>
+	                				<div class="modal-body">
+	                    				<p>¿Seguro que deceas finalizar este pedido?</p>
+	                				</div>
+	                				<div class="modal-footer">
+	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	                    				<button type="submit" class="btn btn-success">Modificar</button>
+	                    			</div>
+	            				</div>
+	        				</div>
+	    				</div>
+	    			</form>		
+
+    			
 	         <?php
 	         echo "</td>";
 				echo "</tr>";
