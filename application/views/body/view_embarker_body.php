@@ -98,13 +98,13 @@
 							<div class="clear">&nbsp</div>
 							<h3>Fecha de Entrega</h3>
 							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:93%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:87% !important; float: right;" readonly></p>
 							</div><!-- End fecha -->
 
 							<div class="clear">&nbsp</div>
 							<h3>Fecha de Arribo</h3>
 							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:93%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:87% !important; float: right;" readonly></p>
 							</div><!-- End fecha -->
 
 							<div class="clear">&nbsp</div>
