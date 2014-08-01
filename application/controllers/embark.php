@@ -23,33 +23,74 @@ class Embark extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
 		
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_embarker_body.php';
-		$template['footer'] = 'footer/view_footer.php';
+		if($this->model_breakdown->get_embark($template['id_order']) == false){
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_embarker_body.php';
+			$template['footer'] = 'footer/view_footer.php';
 
-		$this->load->view('main',$template);
+			$this->load->view("main",$template);
+		}else{
+			$template['embark'] = $this->model_breakdown->get_embark($template['id_order']);
+ 			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_edit_embarker_body.php';
+			$template['footer'] = 'footer/view_footer.php';
+
+			$this->load->view("main",$template);
+		}		
 	}
 
 	public function insert_embark(){
 		$data['id_status']='3';
 
 		$datos['id_order']=$this->uri->segment(3);
-		$datos['date_delivery']=$this->input->post('datepicker');
+		$fecha=$this->input->post('datepicker');
+		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
 		$datos['volume']=$this->input->post('final_volume');
 		$datos['transport']=$this->input->post('transporter');
 		$datos['freight']=$this->input->post('fletera');
 		$datos['driver']=$this->input->post('chofer');
 		$datos['driver_cel']=$this->input->post('cel');
-		$datos['date_arrival']=$this->input->post('butondates');
+		$fecha2=$this->input->post('butondates');
+		$datos['date_arrival']=date("Y-m-d H:i:s", strtotime($fecha2));
 		$datos['destiny']=$this->input->post('destino');
 		$datos['pack_type']=$this->input->post('empaque');
 		$datos['arrival_contact']=$this->input->post('contacto');	
 		$datos['boxes']=$this->input->post('cajas');
 		$datos['box']=$this->input->post('caja');
 		$datos['racks']=$this->input->post('rackz');
+		$datos['comment']=$this->input->post('comment');
 
 		$this->model_breakdown->update_order($this->uri->segment(3),$data);
 		$this->model_embark->insert_embark($datos);
+
+		redirect("breakdown/pedido_embarcado/", "refresh");
+	}
+
+	public function update_embark(){
+		$fecha=$this->input->post('datepicker');
+		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['volume']=$this->input->post('final_volume');
+		$datos['transport']=$this->input->post('transporter');
+		$datos['freight']=$this->input->post('fletera');
+		$datos['driver']=$this->input->post('chofer');
+		$datos['driver_cel']=$this->input->post('cel');
+		$fecha2=$this->input->post('butondates');
+		$datos['date_arrival']=date("Y-m-d H:i:s", strtotime($fecha2));
+		$datos['destiny']=$this->input->post('destino');
+		$datos['pack_type']=$this->input->post('empaque');
+		$datos['arrival_contact']=$this->input->post('contacto');	
+		$datos['boxes']=$this->input->post('cajas');
+		$datos['box']=$this->input->post('caja');
+		if($this->input->post('racks')==1){
+			$datos['racks']=$this->input->post('rackz');
+		}else{
+			$datos['racks']="";
+		}
+		$datos['comment']=$this->input->post('comment');
+		
+		$data['id_status']='3';
+		$this->model_breakdown->update_order($this->uri->segment(3),$data);
+		$this->model_embark->update_embark($this->uri->segment(3),$datos);
 
 		redirect("breakdown/pedido_embarcado/", "refresh");
 	}

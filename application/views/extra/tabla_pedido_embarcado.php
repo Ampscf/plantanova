@@ -96,7 +96,7 @@
 						<i class="fa fa-archive"></i>
 	                </a>
 				
-					<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
+					<?php  echo form_open('breakdown/edit_process/'.$key->id_order); ?>	  
 		                <div id="myModal3<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">

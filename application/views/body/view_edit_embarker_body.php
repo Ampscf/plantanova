@@ -6,7 +6,7 @@
 			</div>
 			<?php 
 				$attributes = array('id' => 'registry', 'name' => 'registry');
-				echo form_open('breakdown/finish_order/'.$this->uri->segment(3),$attributes); 
+				echo form_open('embark/update_embark/'.$this->uri->segment(3),$attributes); 
 			?>
 				<div class="panel-body">
 
@@ -93,48 +93,179 @@
 
 						<input type="hidden" name="rol" id="rol" value="2" />
 
-						
-							<h3>Transportador</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter" value="<?php echo $embark[0]->transporter;?>">
-							</div><!-- End farm name -->
+						<div class="col-md-6">
 
 							<div class="clear">&nbsp</div>
-							<h3>Fecha de Embarque</h3>
+							<h3>Fecha de Entrega</h3>							
 							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:93%; float: right;" value="<?php echo date("d-m-Y",strtotime($embark[0]->date));?>" readonly></p>
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:87% !important; float: right;" value="<?php echo date("d-m-Y", strtotime($embark[0]->date_arrival));?>" readonly></p>
 							</div><!-- End fecha -->
 
 							<div class="clear">&nbsp</div>
-							<h3>Volumen Final</h3>
+							<h3>Fecha de Arribo</h3>
+							<div class="input-group">
+								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:87% !important; float: right;" value="<?php echo date("d-m-Y", strtotime($embark[0]->date_delivery));?>" readonly></p>
+							</div><!-- End fecha -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Volumen a Entregar</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume" value="<?php echo $embark[0]->final_volume;?>">
-							</div><!-- End address number -->
+								<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume" value="<?php echo $embark[0]->volume;?>">
+							</div><!-- End volumen a entregar -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Transportador</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter" value="<?php echo $embark[0]->transport;?>">
+							</div><!-- End transporte -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Fletera</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Fletera" name="fletera" id="fletera" value="<?php echo $embark[0]->freight;?>">
+							</div><!-- End fletera -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Chofer</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Chofer" name="chofer" id="chofer" value="<?php echo $embark[0]->driver;?>">
+							</div><!-- End Chofer -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Cel Chofer</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel" value="<?php echo $embark[0]->driver_cel;?>">
+							</div><!-- End Cel chofer -->
+
+						</div>
+
+						<div class="col-md-6">
+
+							<div class="clear">&nbsp</div>
+							<h3>Destino</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino" value="<?php echo $embark[0]->destiny;?>">
+							</div><!-- End Destino -->	
+
+							<div class="clear">&nbsp</div>
+							<h3>Tipo de Empaque</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Tipo de Empaque" name="empaque" id="empaque" value="<?php echo $embark[0]->pack_type;?>">
+							</div><!-- End Tipo de Empaque -->			
+
+							<div class="clear">&nbsp</div>
+							<h3>Contacto Entrega</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto" value="<?php echo $embark[0]->arrival_contact;?>">
+							</div><!-- End Contacto Entrega -->
+							<div class="clear">&nbsp</div>
+							<h3>Cajas</h3>
+							<div class="input-group input-group-lg">
+								<select class="form-control" name="cajas" id="cajas">
+									<?php if($embark[0]->boxes == 1){
+									?>
+									<option value="1" selected>Chep</option>
+									<option value="2" >Ensenada</option>
+									<option value="3" >No Aplica</option>
+									<?php
+									}else if($embark[0]->boxes == 2){
+									?>	
+									<option value="1" >Chep</option>
+									<option value="2" selected>Ensenada</option>
+									<option value="3" >No Aplica</option>
+									<?php
+									}else if($embark[0]->boxes == 3){
+									?>	
+									<option value="1" >Chep</option>
+									<option value="2" selected>Ensenada</option>
+									<option value="3" >No Aplica</option>
+									<?php
+									}
+									?>
+								</select>	
+							</div><!-- End Cajas -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Caja</h3>
+							<div class="input-group input-group-lg">
+								<select class="form-control" name="caja" id="caja">
+									<?php if($embark[0]->box == 1){
+									?>
+									<option value="1" selected>Seca</option>
+									<option value="2" >Thermo</option>
+									<?php
+									}else if($embark[0]->box == 2){
+									?>	
+									<option value="1" >Seca</option>
+									<option value="2" selected>Thermo</option>
+									<?php
+									}
+									?>	
+
+								</select>	
+							</div><!-- End Caja -->
+
+							<div class="clear">&nbsp</div>
+							<h3>Racks</h3>
+							<div class="input-group input-group-lg">
+								<select class="form-control" name="racks" id="racks" onchange="cambio(this.value)">
+									<?php if($embark[0]->racks > 0){
+									?>
+									<option value="1" selected>Si</option>
+									<option value="2">No</option>
+									<?php
+									}else if($embark[0]->racks == 0){
+									?>
+									<option value="1" >Si</option>
+									<option value="2"selected>No</option>
+									<?php
+									}
+									?>	
+								</select>	
+							</div><!-- End Racks -->
+
+							<div class="clear">&nbsp</div>
+							<?php if($embark[0]->racks > 0){
+									?>
+							<div id="hiden">
+								<?php
+									}else if($embark[0]->racks == 0){
+									?>
+							<div id="hiden" style="display:none;">
+								<?php
+								}
+								?>
+							<h3># de Racks</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="# de Racks" name="rackz" id="rackz" value="<?php echo $embark[0]->racks;?>">
+							</div><!-- End Racks -->
+							</div>
+						</div>
+
+						<div class="col-md-12">	
 
 							<div class="clear">&nbsp</div>
 							<h3>Comentario</h3>
 							<div class="input-group input-group-lg">
-								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"><?php echo $embark[0]->comment; ?></textarea>								
+								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"><?php echo $embark[0]->comment;?></textarea>								
 							</div><!-- End comment -->
 
-											
-					</div>
-
+						</div>	
 				</div><!-- End panel-body -->
-				
-			
-			
+				<div class="clear">&nbsp</div>
+				<div class="clear">&nbsp</div>
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
-									'name' => 'Cancelar',
+									'name' => 'Regresar',
 								);
-								echo anchor('breakdown/process/'.$this->uri->segment(3), 'Regresar', $data);
+								echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
 							?>
 						</div>
+
 						<div class="col-md-3 col-md-offset-4">
 							<input class="btn btn-success btn-block" type="submit" value="Aceptar" /><!--onClick="register_client()"-->
 						</div>
@@ -146,6 +277,18 @@
 </div><!-- End row -->
 
 			<script>
+			function cambio (a){
+
+					if (a==1){
+					document.getElementById("hiden").style.display = "block";
+					}
+					else {
+						document.getElementById("hiden").style.display = "none";
+					}	
+				}
+
+
+
 				$("#registry").validate({
 							rules: {
 								transporter: {
@@ -156,6 +299,37 @@
 						        },
 						        final_volume:{
 						       		required: true,
+						       		number: true
+						       	},
+						       	fletera:{
+						       		required: true
+						       	},
+						       	chofer:{
+						       		required: true
+						       	},
+						       	cel:{
+						       		required: true,
+						       		number: true
+						       	}, 
+						       	destino: {
+						       		required: true
+						       	},
+						       	empaque: {
+						       		required: true
+						       	}, 
+						       	contacto: {
+						       		required: true
+						       	},
+						       	cajas: {
+						       		required: true
+						       	},
+						       	caja: {
+						       		required: true
+						       	},
+						       	butondates: {
+						       		required: true
+						       	},
+						       	rackz: {
 						       		number: true
 						       	}
 								
@@ -169,7 +343,38 @@
 	                			},
 						       final_volume: { 
 									required: "El Campo Volumne Final es Requerido",
-									number: "El Campo Volumen Final debe ser Numerico"
+									number: "El Campo Volumen Final debe ser Numérico"
+								}, 
+								fletera:{
+									required: "El campo Fletera es Requerido"
+								},
+								chofer:{
+									required: "El campo Chofer es Requerido"
+								},
+								cel:{
+									required: "El campo Celular es Requerido",
+									number: "El campo Celular debe ser Numérico"
+								},
+								destino:{
+									required: "El campo Destino es Requerido"
+								},
+								empaque:{
+									required: "El campo Tipo de Empaque es Requerido"
+								},
+								contacto:{
+									required: "El campo Contacto es Requerido"
+								},
+								cajas:{
+									required: "El campo Cajas es Requerido"
+								},
+								caja:{
+									required: "El campo Caja es Requerido"
+								},
+								butondates:{
+									required: "El campo de Fecha es Requerido"
+								},
+								rackz: {
+									number: "El # de racks debe ser un número"
 								}
 						    }
 						});
