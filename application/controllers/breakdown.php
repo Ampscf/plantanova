@@ -406,10 +406,12 @@ class Breakdown extends CI_Controller {
 		redirect("breakdown/pedido_embarcado_body/".$this->uri->segment(3), "refresh");
 	}
 
+
 	public function edit_process(){
 		$data['id_status']='2';
 		
 		$this->model_breakdown->update_order2($this->uri->segment(3),$data);	
+
 		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 	
