@@ -405,7 +405,7 @@ class Breakdown extends CI_Controller {
 		
 		
 
-		redirect("breakdown/process/".$a, "refresh");
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
 	}
 	
 	public function final_resume()
