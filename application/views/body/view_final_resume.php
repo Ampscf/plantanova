@@ -5,7 +5,7 @@
 					<div class="panel-body" id="seleccion">
 						
 						<div class="col-md-12">
-							<h1>Resumen orden embarcada</h1>
+							<h1>Resumen Orden Embarcada</h1>
 						</div>
 						
 						<!--Datos del cliente-->
@@ -141,7 +141,7 @@
 								{
 									echo "<tr>";
 									echo "<td>" . $key->volume . "</td>";
-									echo "<td>" . date("Y-m-d",strtotime($key->sowing_date)) . "</td>";
+									echo "<td>" . date("d-m-Y",strtotime($key->sowing_date)) . "</td>";
 									//$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 									echo "<td>" .$key->seed. "</td>";
 									if($key->comment != null){
@@ -172,7 +172,7 @@
 					    			
 					    			<?php
 					    			}else{
-					    			echo "<td>";
+					    			echo "<td>N/A";
 					    			} 
 					    			echo "</td>";?>
 									<?php 
@@ -192,12 +192,11 @@
 						</div>
 						<div class="clear">&nbsp</div>
 						<table>
-							<th>Cantidad</th>
-							<th>Fecha</th>
 							<th>Semilla</th>
+							<th>Cantidad Viable</th>
+							<th>Fecha</th>
 							<th>% Germinación</th>
 							<th>Viabilidad</th>
-							<th>Alcance</th>
 							<th>Comentario</th>
 							
 							<?php 
@@ -206,9 +205,10 @@
 										foreach ($germination as $key) 
 										{
 											echo "<tr>";
-											echo "<td>" . $key->volume . "</td>";
-											echo "<td>" . date("Y-m-d",strtotime($key->germ_date)) . "</td>";
 											echo "<td>".$key->seed_name."</td>";
+											echo "<td>" . $key->volume . "</td>";
+											echo "<td>" . date("d-m-Y",strtotime($key->germ_date)) . "</td>";
+											
 											if($key->germ_percentage==0){
 												echo "<td></td>";
 											}else{
@@ -219,8 +219,6 @@
 											}else{
 												echo "<td>" . $key->viability ."%". "</td>";
 											}
-											
-											echo "<td>".$key->scope."</td>";
 											if($key->comment != null){
 											echo "<td>" ?>
 
@@ -249,7 +247,7 @@
 							    			
 							    			<?php
 							    			}else{
-							    			echo "<td>";
+							    			echo "<td>N/A";
 							    			} 
 							    			echo "</td>";
 						
@@ -281,7 +279,7 @@
 									{
 										echo "<tr>";
 										echo "<td>" . $key->volume . "</td>";
-										echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
+										echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 										$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 										echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
 										if($key->comment != null){
@@ -312,7 +310,7 @@
 						    			
 						    			<?php
 						    			}else{
-						    			echo "<td>";
+						    			echo "<td>N/A";
 						    			} 
 						    			echo "</td>";										
 										echo "</tr>";
@@ -341,7 +339,7 @@
 										{
 											echo "<tr>";
 											echo "<td>" . $key->volume . "</td>";
-											echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
+											echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 											$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 											echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
 											if($key->comment != null){
@@ -372,7 +370,7 @@
 							    			
 							    			<?php
 							    			}else{
-							    			echo "<td>";
+							    			echo "<td>N/A";
 							    			} 
 							    			echo "</td>";
 											echo "</tr>";
@@ -401,7 +399,7 @@
 										{
 											echo "<tr>";
 											echo "<td>" . $key->volume . "</td>";
-											echo "<td>" . date("Y-m-d",strtotime($key->process_date)) . "</td>";
+											echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 											$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 											echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
 											if($key->comment != null){
@@ -432,7 +430,7 @@
 							    			
 							    			<?php
 							    			}else{
-							    			echo "<td>";
+							    			echo "<td>N/A";
 							    			} 
 							    			echo "</td>";
 											echo "</tr>";
@@ -440,6 +438,7 @@
 									}
 									?>
 						</table>
+						</div>
 						<div class="panel-footer">
 						<div class="row">
 							<div class="col-md-2 col-md-offset-2">
@@ -456,7 +455,7 @@
 							</div>
 						</div>	
 					</div><!-- fin panel footer -->	
-					</div>
+					
 				</div>
 			</div>
 		</div> <!-- End row -->
@@ -469,10 +468,6 @@
 		var ficha = document.getElementById(nombre);
 		var ventimp = window.open(' ', 'popimpr');;
 	  
-		ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/styles.css';?>\" type=\"text/css\"/>" );
-    	ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/TableTools.css';?>\" type=\"text/css\"/>" );
-    	ventimp.document.write( "<link rel=\"stylesheet\" href=\"<?php echo base_url().'css/css/custom.css';?>\" type=\"text/css\"/>" );
-   
 	  	ventimp.document.write(ficha.innerHTML);
 	 
 	  	ventimp.document.close();
