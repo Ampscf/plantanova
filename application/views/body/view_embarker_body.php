@@ -208,7 +208,12 @@
 
 						</div>	
 
-						<div class="col-md-12">	
+						<div class="clear">&nbsp</div>
+							<div class="col-md-4">
+								<h5 style="color:red;"><?php echo $error;?></h5>
+							</div>
+
+						<div class="col-md-12">
 							<div class="clear">&nbsp</div>
 							<div class="col-md-1">
 								<h3>Cotización</h3>
@@ -378,6 +383,8 @@
 								}
 						    }
 						});
+
+					
 						
 			</script>
 
@@ -389,17 +396,33 @@
                 			<h4 class="modal-title">Agregar PDF de cotización</h4>
             			</div>
             			<div class="modal-body">
+
+                			<?php echo form_open_multipart('embark/do_upload1/'.$this->uri->segment(3));?>
                 			<p>Elige un PDF para subir en la cotización</p>  
                 			
-                			<div class="fileUpload btn btn-success">
+                			<!--<div class="fileUpload btn btn-success">
     							<span>Subir PDF</span>
-							    <input type="file" class="upload" />
+							    <input type="file" class="upload" name="userfile"/>
+							</div>-->
+
+							<input id="uploadFile" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn" type="file" class="upload" name="userfile"/>
 							</div>
+
+							<script>
+							document.getElementById("uploadBtn").onchange = function () {
+					    document.getElementById("uploadFile").value = this.value;
+					};
+						</script>
+
 
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
            				 </div>
         			</div>
     			</div>
@@ -431,11 +454,14 @@
                 			<h4 class="modal-title">Agregar PDF de factura</h4>
             			</div>
             			<div class="modal-body">
+                			<?php echo $error;?>
+                			<?php echo form_open_multipart('embark/do_upload1');?>
                 			<p>Elige un PDF para subir a la factura</p>           
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
            				 </div>
         			</div>
     			</div>
