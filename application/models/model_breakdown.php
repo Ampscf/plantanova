@@ -130,7 +130,7 @@ Class model_breakdown extends CI_Model
 	{
 		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,  t_o.id_order, t_o.id_status
 									from t_germination as tg, t_order as t_o 
-									where t_o.id_order = tg.id_order
+									where t_o.id_order = tg.id_order and tg.id_order = '.$id_order.'
 									order by tg.id_germination');
 		if($result->num_rows()>0)
 			{

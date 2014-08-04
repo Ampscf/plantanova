@@ -37,11 +37,29 @@
 </div>
 
 <div class="col-md-4 col-md-offset-3">
-	<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="window.print();" style="width: 134px;">
+	<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
 </div>
-
-
-
-  
 </body>
 </html>
+<script language="Javascript">
+	function imprSelec(nombre) {
+		var ficha = document.getElementById(nombre);
+		var mywindow = window.open(' ', 'popimpr');
+	    mywindow.document.write('<html><head><title></title>');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" />');
+
+     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/custom.css" type="text/css" />');
+     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/TableTools.css" type="text/css" />');
+	  	
+	  	mywindow.document.write('</head><body >');
+	  	mywindow.document.write(ficha.innerHTML);
+	  	mywindow.document.write('</body></html>');
+	 
+	  	mywindow.document.close();
+	  	mywindow.print();
+	  	mywindow.close();
+	}
+</script>

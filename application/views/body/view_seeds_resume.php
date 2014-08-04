@@ -9,7 +9,7 @@
 				//$attributes = array('id' => 'register_seeds');
 				//echo form_open('seeds/register_seeds',$attributes); 
 			?>
-				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
+				<div class="panel-body" style="padding: 10px 10px 10px 10px;" id="seleccion">
 					
 					<div class="col-md-12">
 						<div class="input-group input-group-lg">
@@ -25,7 +25,7 @@
 							<div class="input-group input-group-lg">
 								<p><b>Correo Electrónico: </b><?php echo $client->result()[0]->mail;?></p>
 							</div><!-- End nombre -->
-							
+							 
 							<div class="input-group input-group-lg">
 								<p><b>Teléfono:</b> <?php echo $client->result()[0]->phone;?></p>
 							</div><!-- End nombre -->
@@ -78,6 +78,7 @@
 					<div class="table-responsive">
 						<?php include_once('application/views/extra/tabla_semillas_final.php'); ?>
 					</div>
+				</div>	<!-- End panel-body -->
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-2 col-md-offset-2">
@@ -90,10 +91,33 @@
 							?>
 						</div>
 						<div class="col-md-4 col-md-offset-3">
-							<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="window.print();" style="width: 134px;">
+							<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
+
+<script language="Javascript">
+	function imprSelec(nombre) {
+		var ficha = document.getElementById(nombre);
+		var mywindow = window.open(' ', 'popimpr');
+	    mywindow.document.write('<html><head><title></title>');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" />');
+
+     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/custom.css" type="text/css" />');
+     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/TableTools.css" type="text/css" />');
+	  	
+	  	mywindow.document.write('</head><body >');
+	  	mywindow.document.write(ficha.innerHTML);
+	  	mywindow.document.write('</body></html>');
+	 
+	  	mywindow.document.close();
+	  	mywindow.print();
+	  	mywindow.close();
+	}
+</script>
