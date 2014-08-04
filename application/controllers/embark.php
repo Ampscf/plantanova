@@ -23,6 +23,7 @@ class Embark extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['error']=$this->session->flashdata('error');
+		//$template['error']=0;
 		
 		if($this->model_breakdown->get_embark($template['id_order']) == false){
 			$template['header'] = 'header/view_admin_header.php';
@@ -98,8 +99,6 @@ class Embark extends CI_Controller {
 
 	function do_upload1($uri)
 	{
-		//$uri = 355;
-
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'pdf';
 		$config['max_size']	= '0';
@@ -114,9 +113,11 @@ class Embark extends CI_Controller {
 		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
-
-			$this->load->view('body/upload_success', $data);
+			$data = $this->upload->data();
+			$datos['quotation'] = $data['full_path'];
+			$this->model_embark->update_embark($this->uri->segment(3),$datos);			
+			
+			$this->load->view('body/upload_success', $datos);
 		}
 	}
 }

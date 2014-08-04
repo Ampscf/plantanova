@@ -79,7 +79,7 @@
 	                    <i class="fa fa-edit"></i>
 	                </a>
 
-	               <a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+	               	<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Eliminar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>

@@ -399,12 +399,6 @@
 
                 			<?php echo form_open_multipart('embark/do_upload1/'.$this->uri->segment(3));?>
                 			<p>Elige un PDF para subir en la cotización</p>  
-                			
-                			<!--<div class="fileUpload btn btn-success">
-    							<span>Subir PDF</span>
-							    <input type="file" class="upload" name="userfile"/>
-							</div>-->
-
 							<input id="uploadFile" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
 							<div class="fileUpload btn btn-success">
     							<span>Buscar</span>
@@ -412,11 +406,10 @@
 							</div>
 
 							<script>
-							document.getElementById("uploadBtn").onchange = function () {
-					    document.getElementById("uploadFile").value = this.value;
-					};
-						</script>
-
+								document.getElementById("uploadBtn").onchange = function () {
+					    			document.getElementById("uploadFile").value = this.value;
+								};
+							</script>
 
            	 			</div>
             			<div class="modal-footer">
@@ -436,7 +429,9 @@
                 			<h4 class="modal-title">Agregar PDF de contrato</h4>
             			</div>
             			<div class="modal-body">
+
                 			<p>Elige un PDF para subir al contrato</p>                			
+           	 			
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -454,9 +449,11 @@
                 			<h4 class="modal-title">Agregar PDF de factura</h4>
             			</div>
             			<div class="modal-body">
+
                 			<?php echo $error;?>
                 			<?php echo form_open_multipart('embark/do_upload1');?>
                 			<p>Elige un PDF para subir a la factura</p>           
+           	 			
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -475,7 +472,9 @@
                 			<h4 class="modal-title">Agregar PDF de carta factura</h4>
             			</div>
             			<div class="modal-body">
+
                 			<p>Elige un PDF para subir a la carta factura</p>                			
+           	 			
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

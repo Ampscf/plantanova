@@ -1,1 +1,1 @@
-Archivo subido correctamente de la manera en que se debe de subir un archivo, muy bien
+<?php echo $quotation;?>

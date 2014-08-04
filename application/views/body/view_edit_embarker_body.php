@@ -250,7 +250,74 @@
 								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"><?php echo $embark[0]->comment;?></textarea>								
 							</div><!-- End comment -->
 
+						</div>
+
+
+						<div class="clear">&nbsp</div>
+							<div class="col-md-4">
+								<h5 style="color:red;"><?php echo $error;?></h5>
+							</div>
+
+						<div class="col-md-12">
+							<div class="clear">&nbsp</div>
+							<div class="col-md-1">
+								<h3>Cotización</h3>
+							</div>
+							<div class="col-md-3 col-md-offset-1">
+								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal11" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i>
+	                			</a>
+							</div>	
+						</div>
+
+						<div class="col-md-12">	
+							<div class="clear">&nbsp</div>
+							<div class="col-md-1">
+								<h3>Contrato</h3>
+							</div>
+							<div class="col-md-3 col-md-offset-1">
+								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal11" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i>
+	                			</a>
+							</div>	
+						</div>
+
+						<div class="col-md-12">	
+							<div class="clear">&nbsp</div>
+							<div class="col-md-1">
+								<h3>Factura</h3>
+							</div>
+							<div class="col-md-3 col-md-offset-1">
+								<a href="#myModal1" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal11" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i>
+	                			</a>
+							</div>	
+						</div>
+
+						<div class="col-md-12">	
+							<div class="clear">&nbsp</div>
+							<div class="col-md-1">
+								<h3>Carta Factura</h3>
+							</div>
+							<div class="col-md-3 col-md-offset-1">
+								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal11" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i>
+	                			</a>
+							</div>	
 						</div>	
+
 				</div><!-- End panel-body -->
 				<div class="clear">&nbsp</div>
 				<div class="clear">&nbsp</div>
@@ -380,3 +447,100 @@
 						});
 						
 			</script>
+
+			<div id="myModal" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar PDF de cotización</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('embark/do_upload1/'.$this->uri->segment(3));?>
+                			<p>Elige un PDF para subir en la cotización</p>
+							<input id="uploadFile" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn").onchange = function () {
+					    			document.getElementById("uploadFile").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal0" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar PDF de contrato</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<p>Elige un PDF para subir al contrato</p>
+           	 			
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal1" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar PDF de factura</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo $error;?>
+                			<?php echo form_open_multipart('embark/do_upload1');?>
+                			<p>Elige un PDF para subir a la factura</p>
+           	 			
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal2" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar PDF de carta factura</h4>
+            			</div>
+            			<div class="modal-body">
+            				
+                			<p>Elige un PDF para subir a la carta factura</p>
+           	 			
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
