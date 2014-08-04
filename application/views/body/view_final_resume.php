@@ -222,13 +222,13 @@
 											if($key->comment != null){
 											echo "<td>" ?>
 
-												<a href="#myModal2<?php echo $key->id_process; ?>" class="btn btn-default"
+												<a href="#myModal2<?php echo $key->id_germination; ?>" class="btn btn-default"
 								                    title="Comentario"
 								                    data-toggle="modal">
 													<i class="fa fa-comment-o"></i>
 								                </a>
 												
-												<div id="myModal2<?php echo $key->id_process;  ?>" class="modal fade">
+												<div id="myModal2<?php echo $key->id_germination;  ?>" class="modal fade">
 							        				<div class="modal-dialog">
 							            				<div class="modal-content">
 							                				<div class="modal-header">
@@ -466,12 +466,22 @@
 <script language="Javascript">
 	function imprSelec(nombre) {
 		var ficha = document.getElementById(nombre);
-		var ventimp = window.open(' ', 'popimpr');;
-	  
-	  	ventimp.document.write(ficha.innerHTML);
+		var mywindow = window.open(' ', 'popimpr');
+	    mywindow.document.write('<html><head><title></title>');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" />');
+
+     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/custom.css" type="text/css" />');
+     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/TableTools.css" type="text/css" />');
+	  	
+	  	mywindow.document.write('</head><body >');
+	  	mywindow.document.write(ficha.innerHTML);
+	  	mywindow.document.write('</body></html>');
 	 
-	  	ventimp.document.close();
-	  	ventimp.print();
-	  	ventimp.close();
+	  	mywindow.document.close();
+	  	mywindow.print();
+	  	mywindow.close();
 	}
 </script>
