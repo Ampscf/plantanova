@@ -747,23 +747,26 @@ class Order extends CI_Controller {
       //si tiene algun procesos es eliminado
 		if($this->model_breakdown->get_breakdown_vr($seed_name[0]->seed,$this->uri->segment(3))){
 			$breakdown=$this->model_breakdown->get_breakdown_vr($seed_name[0]->seed,$this->uri->segment(3));
-			$volume_graft=$this->model_breakdown->get_volume_graft($breakdown[0]->id_breakdown);
-			$volume_punch=$this->model_breakdown->get_volume_punch($breakdown[0]->id_breakdown);
-			$volume_transplant=$this->model_breakdown->get_volume_transplant($breakdown[0]->id_breakdown);
-			if($volume_graft[0]->volume>0){
-				$this->model_breakdown->update_total_graft($volume_graft[0]->volume,$this->uri->segment(3));
-				$this->model_breakdown->update_graft2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_graft[0]->volume);
-			}
-			if($volume_punch[0]->volume>0){
-				$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
-				$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_punch[0]->volume);
-			}
-			if($volume_transplant[0]->volume>0){
-				$this->model_breakdown->update_total_transplant($volume_graft[0]->volume,$this->uri->segment(3));
-				$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_transplant[0]->volume);
-			}
+			foreach ($breakdown as $key ) {
+				$volume_graft=$this->model_breakdown->get_volume_graft($key->id_breakdown);
+				$volume_punch=$this->model_breakdown->get_volume_punch($key->id_breakdown);
+				$volume_transplant=$this->model_breakdown->get_volume_transplant($key->id_breakdown);
+				if($volume_graft[0]->volume>0){
+					$this->model_breakdown->update_total_graft($volume_graft[0]->volume,$this->uri->segment(3));
+					$this->model_breakdown->update_graft2($this->uri->segment(3),$key->variety,$key->rootstock,$volume_graft[0]->volume);
+				}
+				if($volume_punch[0]->volume>0){
+					$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
+					$this->model_breakdown->update_punch2($this->uri->segment(3),$key->variety,$key->rootstock,$volume_punch[0]->volume);
+				}
+				if($volume_transplant[0]->volume>0){
+					$this->model_breakdown->update_total_transplant($volume_graft[0]->volume,$this->uri->segment(3));
+					$this->model_breakdown->update_transplant2($this->uri->segment(3),$key->variety,$key->rootstock,$volume_transplant[0]->volume);
+				}
 
-			$this->model_breakdown->delete_process_breakdown($breakdown[0]->id_breakdown);
+				$this->model_breakdown->delete_process_breakdown($key->id_breakdown);
+				}
+			
 
 			
 		}

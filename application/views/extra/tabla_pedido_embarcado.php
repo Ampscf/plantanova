@@ -105,7 +105,7 @@
 	                    				<h4 class="modal-title"></h4>
 	                				</div>
 	                				<div class="modal-body">
-	                    				<p>¿Seguro que deceas editar este pedido?</p>
+	                    				<p>¿Seguro que deseas editar este pedido?</p>
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -125,7 +125,7 @@
 	                    				<h4 class="modal-title"></h4>
 	                				</div>
 	                				<div class="modal-body">
-	                    				<p>¿Seguro que deceas editar la información del embarque?</p>
+	                    				<p>¿Seguro que deseas editar la información del embarque?</p>
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -145,7 +145,7 @@
 	                    				<h4 class="modal-title"></h4>
 	                				</div>
 	                				<div class="modal-body">
-	                    				<p>¿Seguro que deceas finalizar este pedido?</p>
+	                    				<p>¿Seguro que deseas finalizar este pedido?</p>
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
