@@ -24,7 +24,7 @@
 					
 					<div class="panel-body">
 						<ul class="breadcrumb">
-					        <li><a href="#" class="some1" >Proceso</a></li>
+					        <li><a href="#" class="some1" >Todos los Procesos</a></li>
 					        <li><a href="#" class="some6" >Siembra</a> <span class="divider"></span></li>
 					        <li><a href="#" class="some2" >Germinacion</a> <span class="divider"></span></li>
 					        <li><a href="#" class="some3" >Injerto</a> <span class="divider"></span></li>
@@ -35,7 +35,7 @@
 						</ul>
 						
 						<div id="a" >
-							<?php echo "<h4 style='text-align:center;'>PROCESO</h4>";?>
+							<?php echo "<h4 style='text-align:center;'>TODOS LOS PROCESOS</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
 						<div id="b" >
