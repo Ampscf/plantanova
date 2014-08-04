@@ -430,7 +430,7 @@
             			</div>
             			<div class="modal-body">
 
-                			<p>Elige un PDF para subir al contrato</p>                			
+                			<p>Elige un PDF para subir al contrato</p>
            	 			
            	 			</div>
             			<div class="modal-footer">
@@ -452,7 +452,7 @@
 
                 			<?php echo $error;?>
                 			<?php echo form_open_multipart('embark/do_upload1');?>
-                			<p>Elige un PDF para subir a la factura</p>           
+                			<p>Elige un PDF para subir a la factura</p>
            	 			
            	 			</div>
             			<div class="modal-footer">
@@ -473,7 +473,7 @@
             			</div>
             			<div class="modal-body">
 
-                			<p>Elige un PDF para subir a la carta factura</p>                			
+                			<p>Elige un PDF para subir a la carta factura</p>
            	 			
            	 			</div>
             			<div class="modal-footer">
