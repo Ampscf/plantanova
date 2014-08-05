@@ -195,7 +195,7 @@
 				<div class="clear">&nbsp</div>
 				<div class="col-md-12">
 					<div class="col-md-6">	
-						<?php echo anchor('breakdown/pedido_proceso', 'Regresar', 'class="btn btn-primary" style="float: right"');?>
+						<?php echo anchor('breakdown/pedido_proceso', 'Procesos', 'class="btn btn-primary" style="float: right"');?>
 					</div>
 					<div class="col-md-6">	
 						<a href="#myModal4" class="btn btn-success" data-toggle="modal">Embarcar</a>

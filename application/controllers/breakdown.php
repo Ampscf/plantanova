@@ -406,7 +406,7 @@ class Breakdown extends CI_Controller {
 		
 		//$this->model_breakdown->update_order2($a,$data);		
 
-		redirect("breakdown/pedido_embarcado_body/".$this->uri->segment(3), "refresh");
+		redirect("breakdown/pedido_embarcado_body/".$this->uri->segment(3).'/'.$this->uri->segment(4), "refresh");
 	}
 
 
