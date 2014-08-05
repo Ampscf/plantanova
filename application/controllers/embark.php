@@ -186,6 +186,54 @@ class Embark extends CI_Controller {
 		}
 	}
 
+	function do_upload3($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'pdf';
+		$config['max_size']	= '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+
+			redirect('embark/index/'.$uri);
+		}
+		else
+		{
+			$data = $this->upload->data();
+			$datos['bill'] = $data['full_path'];
+			$this->model_embark->update_embark($this->uri->segment(3),$datos);			
+			
+			$this->load->view('body/upload_success', $datos);
+		}
+	}
+
+	function do_upload4($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'pdf';
+		$config['max_size']	= '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+
+			redirect('embark/index/'.$uri);
+		}
+		else
+		{
+			$data = $this->upload->data();
+			$datos['card_bill'] = $data['full_path'];
+			$this->model_embark->update_embark($this->uri->segment(3),$datos);			
+			
+			$this->load->view('body/upload_success', $datos);
+		}
+	}
+
 	function delete_quotation()
 	{
 		$data = array(

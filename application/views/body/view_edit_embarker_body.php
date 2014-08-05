@@ -517,10 +517,20 @@
             			</div>
             			<div class="modal-body">
 
-                			<?php echo $error;?>
-                			<?php echo form_open_multipart('embark/do_upload1');?>
-                			<p>Elige un PDF para subir a la factura</p>
-           	 			
+                			<?php echo form_open_multipart('embark/do_upload3/'.$this->uri->segment(3));?>
+                			<p>Elige un PDF para subir en la factura</p>
+							<input id="uploadFile2" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn2" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn2").onchange = function () {
+					    			document.getElementById("uploadFile2").value = this.value;
+								};
+							</script>
+
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -539,13 +549,26 @@
                 			<h4 class="modal-title">Agregar PDF de carta factura</h4>
             			</div>
             			<div class="modal-body">
-            				
-                			<p>Elige un PDF para subir a la carta factura</p>
-           	 			
+
+                			<?php echo form_open_multipart('embark/do_upload4/'.$this->uri->segment(3));?>
+                			<p>Elige un PDF para subir en la carta factura</p>
+							<input id="uploadFile3" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn3" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn3").onchange = function () {
+					    			document.getElementById("uploadFile3").value = this.value;
+								};
+							</script>
+
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
            				 </div>
         			</div>
     			</div>
