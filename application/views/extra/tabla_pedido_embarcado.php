@@ -10,7 +10,8 @@
 		<th>Volúmen Pedido</th>
 		<th>Volúmen Embarcado</th>
 		<th>Comentario</th>
-		<th>Resumen</th>
+		<th>Resumen Orden</th>
+		<th>Resumen Embarque</th>
 		<th>Editar</th>
 	</thead>
 	<tbody>
@@ -70,8 +71,19 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Resumen"
+	                    title="Resumen Orden"
 	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
+	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+			<?php
+				echo "</td>";
+				echo "<td>";
+				?>
+					<a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Embarque"
+	                    href=<?php echo site_url("breakdown/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
 	                </a>
 			<?php
