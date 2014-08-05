@@ -166,9 +166,7 @@
 	            				</div>
 	        				</div>
 	    				</div>
-	    			</form>		
-
-    			
+	    			</form>	
 	         <?php
 	         echo "</td>";
 				echo "</tr>";
