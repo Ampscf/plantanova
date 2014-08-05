@@ -255,7 +255,11 @@
 
 						<div class="clear">&nbsp</div>
 							<div class="col-md-4">
-								<h5 style="color:red;"><?php echo $error;?></h5>
+								<h5 style="color:red;"><?php 
+									if (isset($error)){
+										echo $error;		
+									}
+								?></h5>
 							</div>
 
 						<div class="col-md-12">
@@ -265,11 +269,7 @@
 							</div>
 							<div class="col-md-3 col-md-offset-1">
 								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<a href="#myModal11" class="btn btn-default"
-	                    			title="Eliminar"
-	                    			data-toggle="modal">
-									<i class="fa fa-times"></i>
-	                			</a>
+								<?php echo $quotation?>
 							</div>	
 						</div>
 
@@ -280,11 +280,7 @@
 							</div>
 							<div class="col-md-3 col-md-offset-1">
 								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<a href="#myModal11" class="btn btn-default"
-	                    			title="Eliminar"
-	                    			data-toggle="modal">
-									<i class="fa fa-times"></i>
-	                			</a>
+								<?php echo $contract?>
 							</div>	
 						</div>
 
@@ -295,11 +291,7 @@
 							</div>
 							<div class="col-md-3 col-md-offset-1">
 								<a href="#myModal1" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<a href="#myModal11" class="btn btn-default"
-	                    			title="Eliminar"
-	                    			data-toggle="modal">
-									<i class="fa fa-times"></i>
-	                			</a>
+								<?php echo $bill?>
 							</div>	
 						</div>
 
@@ -310,11 +302,7 @@
 							</div>
 							<div class="col-md-3 col-md-offset-1">
 								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<a href="#myModal11" class="btn btn-default"
-	                    			title="Eliminar"
-	                    			data-toggle="modal">
-									<i class="fa fa-times"></i>
-	                			</a>
+								<?php echo $card_bill?>
 							</div>	
 						</div>	
 
@@ -453,6 +441,7 @@
 						
 			</script>
 
+
 			<div id="myModal" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -495,12 +484,25 @@
             			</div>
             			<div class="modal-body">
 
-                			<p>Elige un PDF para subir al contrato</p>
-           	 			
+                			<?php echo form_open_multipart('embark/do_upload2/'.$this->uri->segment(3));?>
+                			<p>Elige un PDF para subir en el contrato</p>
+							<input id="uploadFile1" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn1" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn1").onchange = function () {
+					    			document.getElementById("uploadFile1").value = this.value;
+								};
+							</script>
+
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
            				 </div>
         			</div>
     			</div>
@@ -547,4 +549,88 @@
            				 </div>
         			</div>
     			</div>
+			</div>
+
+			<div id="myModal11" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar este archivo?</p>
+			                <p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('embark/delete_quotation/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal12" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar este archivo?</p>
+			                <p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('embark/delete_contract/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal13" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar este archivo?</p>
+			                <p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('embark/delete_bill/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal14" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar este archivo?</p>
+			                <p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('embark/delete_card_bill/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
 			</div>
