@@ -268,7 +268,11 @@
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Cancelar',
 								);
-								echo anchor('breakdown/process/'.$this->uri->segment(3), 'Regresar', $data);
+								if($this->uri->segment(4)==1){
+									echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+								}else{
+									echo anchor('breakdown/process/'.$this->uri->segment(3), 'Regresar', $data);
+								}
 							?>
 						</div>
 						<div class="col-md-3 col-md-offset-4">

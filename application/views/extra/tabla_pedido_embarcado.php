@@ -10,7 +10,8 @@
 		<th>Volúmen Pedido</th>
 		<th>Volúmen Embarcado</th>
 		<th>Comentario</th>
-		<th>Resumen</th>
+		<th>Resumen Orden</th>
+		<th>Resumen Embarque</th>
 		<th>Editar</th>
 	</thead>
 	<tbody>
@@ -70,8 +71,19 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Resumen"
+	                    title="Resumen Orden"
 	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
+	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+			<?php
+				echo "</td>";
+				echo "<td>";
+				?>
+					<a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Embarque"
+	                    href=<?php echo site_url("breakdown/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
 	                </a>
 			<?php
@@ -116,7 +128,7 @@
 	    				</div>
 	    			</form>
 
-	    			<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
+	    			<?php  echo form_open('breakdown/edit_embark/'.$key->id_order.'/1'); ?>	  
 		                <div id="myModal4<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">

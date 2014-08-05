@@ -317,7 +317,12 @@
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Regresar',
 								);
-								echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+								if($this->uri->segment(4)==1){
+									echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+								}else{
+									echo anchor('breakdown/process/'.$this->uri->segment(3), 'Regresar', $data);
+								}
+								
 							?>
 						</div>
 
