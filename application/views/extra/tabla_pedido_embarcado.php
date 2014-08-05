@@ -3,13 +3,13 @@
 		<th class="col-md-1"># Pedido</th>
 		<th>Agricultor</th>
 		<th>Fecha</th>
-		<!--<th>Empresa</th>
+		<th>Empresa</th>
 		<th>Categoría</th>
-		<th>Planta</th>-->
-		<th>Tranportador</th>
+		<th>Planta</th>
+		<!--<th>Tranportador</th>-->
 		<th>Volúmen Pedido</th>
-		<th>Volúmen Embarcado</th>
-		<th>Comentario</th>
+		<!--<th>Volúmen Embarcado</th>
+		<th>Comentario</th>-->
 		<th>Resumen Orden</th>
 		<th>Resumen Embarque</th>
 		<th>Editar</th>
@@ -24,17 +24,17 @@
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
-				echo "<td>" . date("d-m-Y",strtotime($embarque[0]->date_delivery)) . "</td>";
-				/*$cliente=$this->model_breakdown->get_user($key->id_client);
+				echo "<td>" . date("d-m-Y",strtotime($key->order_date_submit)) . "</td>";
+				$cliente=$this->model_breakdown->get_user($key->id_client);
 				echo "<td>" . $cliente[0]->farm_name . "</td>";
 				$category=$this->model_breakdown->get_category($key->id_category);
 				echo "<td>" . $category[0]->category_name . "</td>";
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
-				*/
-				echo "<td>".$embarque[0]->transport."</td>";
+				
+				//echo "<td>".$embarque[0]->transport."</td>";
 				echo "<td>" . number_format($key->total_volume) . "</td>";
-				echo "<td>" . number_format($embarque[0]->volume) . "</td>";
+				/*echo "<td>" . number_format($embarque[0]->volume) . "</td>";
 				if($embarque[0]->comment != null){
 				echo "<td>" ?>
 
@@ -66,7 +66,7 @@
     				echo "<td>";
     			}
     			echo "</td>";
-				echo "<td>";
+				*/echo "<td>";
 				?>
 					<a class="btn btn-default"
 	                    rel="tooltip"
