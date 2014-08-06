@@ -301,5 +301,17 @@ class Embark extends CI_Controller {
 		}
 	}
 
+	function delete_embark(){
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this ->model_embark-> delete_embark($llave);
+		redirect("embark/index/".$this->uri->segment(3)."/".$this->uri->segment(4), "refresh");
+	}
+
 
 }
