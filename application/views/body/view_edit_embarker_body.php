@@ -167,7 +167,7 @@
 								if($this->uri->segment(4)==1){
 									echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
 								}else{
-									echo anchor('breakdown/process/'.$this->uri->segment(3), 'Regresar', $data);
+									echo anchor('breakdown/edit_process/'.$this->uri->segment(3), 'Regresar', $data);
 								}
 								
 							?>
