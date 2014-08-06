@@ -83,7 +83,7 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Resumen Embarque"
-	                    href=<?php echo site_url("breakdown/resume_embark/$key->id_order");?>>
+	                    href=<?php echo site_url("embark/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
 	                </a>
 			<?php
