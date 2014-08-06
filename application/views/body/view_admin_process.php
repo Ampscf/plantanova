@@ -282,12 +282,8 @@
 						required: true,
 						number: true,
 						valor:true,
-						valor2:true
-						/*remote:{
-							url:"<?php echo base_url('index.php/breakdown/max_volume_sowing'); ?>", 
-							type:"post", 
-							data:{"volume":$("volume").val(),"seeds":document.getElementById("seeds").value}
-						}*/
+						valor2:true,
+						min:0
 
 					},
 					datepicker: {
@@ -303,7 +299,8 @@
 	                },
 	                volume: {
 	                    required: "Este Campo es Requerido",
-	                    number: "Este Campo Debe Ser Numerico"
+	                    number: "Este Campo debe ser Númerico",
+	                    min:"Cantidad Invalida"
 	                    //remote:"Cantidad Invalida"
 	                }
 			  	}
@@ -413,48 +410,38 @@
 					    
 						$("#insert_germination").validate({
 							rules: {
-								volume: {
-									required: true,
-									number: true
-								},
-								viability: {
-									required: true,
-									number: true
-								},
 								breakdown_germination: {
 						            selectcheck: true
 						        },
 						        percentage:{
 						           	number: true,
-						        	max: 100
+						        	max: 100,
+						        	min:0
 						        },
 						        datepicker1: {
 						            required: true
 						        },
 						        viability:{
 						        	number:true,
-						        	max:100
+						        	required: true,
+						        	max:100,
+						        	min:0
 						        }
 							},
 							messages: {
-                        		volume: {
-				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
-				                },
-				                viability: {
-				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
-				                },
-				                percentage:{
-				                	number: "Este Campo Debe Ser Numerico",
-				                	max: "Ingresa Un Porcentaje Valido"
+                        		percentage:{
+				                	number: "Este Campo debe ser Númerico",
+				                	max: "Ingresa un Porcentaje Valido",
+				                	min:"Ingresa un Porcentaje Valido"
 				                },
 				                 datepicker1:{
 				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability:{
-				                	number:"Este Campo Debe Ser Numerico",
-				                	max:"Ingresa un Porcentaje Valido"
+				                	required: "Este Campo es Requerido",
+				                	number:"Este Campo debe ser Númerico",
+				                	max:"Ingresa un Porcentaje Valido",
+				                	min:"Ingresa un Porcentaje Valido"
 				                }
 
 						  	}
@@ -532,7 +519,8 @@
 									required: true,
 									number: true,
 									max_graft:true,
-									max_graft2:true
+									max_graft2:true,
+									min:0
 								},
 								datepicker2: {
 						            required: true
@@ -544,14 +532,15 @@
 							messages: {
                         		volume_graft: {
 				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
+				                    number: "Este Campo Debe Ser Númerico",
+				                    min:"Cantidad Invalida"
 				                },
 				                 datepicker2:{
 				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability: {
 				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
+				                    number: "Este Campo Debe Ser Númerico"
 				                }
 						  	}
 						});
@@ -667,7 +656,8 @@
 									required:true,
 									number:true,
 									max_punch:true,
-									max_punch2:true
+									max_punch2:true,
+									min:0
 								},
 								datepicker3: {
 						            required: true
@@ -679,14 +669,15 @@
 							messages: {
                         		volume_punch: {
 				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
+				                    number: "Este Campo Debe Ser Númerico",
+				                    minimo:"Cntidad Invalida"
 				                },
 				                 datepicker3:{
 				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability: {
 				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
+				                    number: "Este Campo Debe Ser Númerico"
 				                }
 						  	}
 						});
@@ -803,7 +794,8 @@
 									required: true,
 									number: true,
 									max_transplant:true,
-									max_transplant2:true
+									max_transplant2:true,
+									min:0
 								},
 								datepicker4: {
 						            required: true
@@ -815,14 +807,15 @@
 							messages: {
                         		volume: {
 				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
+				                    number: "Este Campo Debe Ser Númerico",
+				                    min:"Cantidad Invalida"
 				                },
 				                 datepicker4:{
 				                	required:"El Campo Fecha es Requerido"
 				                },
 				                viability: {
 				                    required: "Este Campo es Requerido",
-				                    number: "Este Campo Debe Ser Numerico"
+				                    number: "Este Campo Debe Ser Númerico"
 				                }
 						  	}
 						});
