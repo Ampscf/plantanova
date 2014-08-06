@@ -8,8 +8,8 @@
 				$attributes = array('id' => 'registry', 'name' => 'registry');
 				echo form_open('embark/update_embark/'.$this->uri->segment(3),$attributes); 
 			?>
-					<div class="panel-body" id="seleccion">
-
+					<div class="panel-body" >
+						<div id="seleccion">
 						<div class="clear">&nbsp</div>
 						<div class="col-md-12">
 							<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
@@ -164,7 +164,10 @@
 								<?php
 								}
 								?>
-						</div>	
+						</div>
+						</div>
+
+						<!-- Aqui -->	
 
 					</div><!-- End panel-body -->
 					<div class="clear">&nbsp</div>

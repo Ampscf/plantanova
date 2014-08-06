@@ -86,6 +86,9 @@ class Breakdown extends CI_Controller {
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['varial']=$this->model_breakdown->get_sowing($this->uri->segment(3));
 		//$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+
+		$data['id_status']='2';
+		$this->model_breakdown->update_order($this->uri->segment(3),$data);
 		$this->load->view("main",$template);
 	}
 
