@@ -190,7 +190,7 @@
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
 
-		<div id="myModals" class="modal fade">
+			<div id="myModals" class="modal fade">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">

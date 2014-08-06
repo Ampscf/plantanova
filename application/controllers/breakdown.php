@@ -550,8 +550,5 @@ class Breakdown extends CI_Controller {
 		}else{
 			echo "1";//true
 		}
-		
-
-		
 	}
 }		
