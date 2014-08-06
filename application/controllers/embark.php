@@ -323,13 +323,6 @@ class Embark extends CI_Controller {
 		$template['footer'] = 'footer/view_footer.php';
 
 		$this->load->view("main",$template);
-
-		//Load template
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_embark_orders.php';
-		$template['footer'] = 'footer/view_footer.php';
-
-		$this->load->view("main",$template);
 	}
 
 }
