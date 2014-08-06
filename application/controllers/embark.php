@@ -305,9 +305,21 @@ class Embark extends CI_Controller {
 		}
 	}
 
-	function embark_orders()
+	function delete_embark(){
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this ->model_embark-> delete_embark($llave);
+		redirect("embark/index/".$this->uri->segment(3)."/".$this->uri->segment(4), "refresh");
+	}
+
+	public function resume_embark()
 	{
-		//Order resume
+
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['fecha']=$order->result()[0]->order_date_submit;
@@ -318,6 +330,16 @@ class Embark extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
 
+		$template['embark'] = $this->model_embark->get_embark($template['id_order']);
+
+ 		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_embarker_resume.php';
+		$template['footer'] = 'footer/view_footer.php';
+
+		$this->load->view("main",$template);
+
+
+
 		//Load template
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_embark_orders.php';
@@ -325,6 +347,5 @@ class Embark extends CI_Controller {
 
 		$this->load->view("main",$template);
 	}
-
 
 }

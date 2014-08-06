@@ -27,5 +27,11 @@ Class model_embark extends CI_Model
 		else return false;
 	}
 
+	function delete_embark($id_embark){
+		$this->db->where('id_embark',$id_embark);
+		$this->db->delete('t_embark');
+		return $this->db->affected_rows();
+	}
+
 }	
 ?>

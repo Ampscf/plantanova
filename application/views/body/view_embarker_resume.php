@@ -86,110 +86,117 @@
 						</div>
 						
 					</div>
-
-					<div class="col-md-12">
-
-						<div class="clear"><P></P></div>
-						<h4> *DETALLE DEL EMBARQUE</h4>
+						<div class="col-md-12">
+						<?php 
+							foreach ($embark->result() as $key ) {
+						?>
+						
+						<div class="clear">&nbsp</div>
+						<h4> <b>*DETALLE DEL EMBARQUE <?php echo $key->id_embark;?></b></h4>
 						<input type="hidden" name="rol" id="rol" value="2" />
 
-						<div class="col-md-6">
-
-											
-							<div class="input-group input-group-lg">
-								<p><b>Fecha de Entrega:</b> <?php echo date("d-m-Y", strtotime($embark[0]->date_arrival));?></p>
-							</div><!-- End fecha -->
-
-							<div class="input-group">
-								<p><b>Fecha de Arribo:</b> <?php echo date("d-m-Y", strtotime($embark[0]->date_delivery));?></p>
-							</div><!-- End fecha -->
-
-							<div class="input-group input-group-lg">
-								<p><b>Volumen a Entregar:</b> <?php echo $embark[0]->volume;?></p>
-							</div><!-- End volumen a entregar -->
-
-							<div class="input-group input-group-lg">
-								<p><b>Transportador:</b> <?php echo $embark[0]->transport;?></p>
-							</div><!-- End transporte -->
-
-							<div class="input-group input-group-lg">
-								<p><b>Fletera:</b> <?php echo $embark[0]->freight;?></p>
-							</div><!-- End fletera -->
-
-							<div class="input-group input-group-lg">
-								<p><b>Chofer:</b> <?php echo $embark[0]->driver;?></p>
-							</div><!-- End Chofer -->
-
-							<div class="input-group input-group-lg">
-								<p><b>Cel Chofer:</b> <?php echo $embark[0]->driver_cel;?></p>
-							</div><!-- End Cel chofer -->
-
-						</div>
-
-						<div class="col-md-6">
-
-							<div class="input-group input-group-lg">
-								<p><b>Destino:</b> <?php echo $embark[0]->destiny;?></p>
-							</div><!-- End Destino -->	
-
-							<div class="input-group input-group-lg">
-								<p><b>Tipo de Empaque:</b> <?php echo $embark[0]->pack_type;?></p>
-							</div><!-- End Tipo de Empaque -->			
-
-							<div class="input-group input-group-lg">
-								<p><b>Contacto Entrega:</b> <?php echo $embark[0]->arrival_contact;?></p>
-							</div><!-- End Contacto Entrega -->
-
-							<div class="input-group input-group-lg">
+						
 								
-									<?php if($embark[0]->boxes == 1){
-									?>
-									<p><b>Cajas:</b> <?php echo 'Chep';?></p>
-									<?php
-									}else if($embark[0]->boxes == 2){
-									?>	
-									<p><b>Cajas:</b> <?php echo 'Ensenada';?></p>
-									<?php
-									}else if($embark[0]->boxes == 3){
-									?>	
-									<p><b>Cajas:</b> <?php echo 'No Aplica';?></p>
-									<?php
-									}
-									?>
-							</div><!-- End Cajas -->
+								<div class="col-md-6">
+												
+								<div class="input-group input-group-lg">
+									<p><b>Fecha de Entrega:</b> <?php echo date("d-m-Y", strtotime($key->date_arrival));?></p>
+								</div><!-- End fecha -->
 
-							<div class="input-group input-group-lg">
+								<div class="input-group">
+									<p><b>Fecha de Arribo:</b> <?php echo date("d-m-Y", strtotime($key->date_delivery));?></p>
+								</div><!-- End fecha -->
+
+								<div class="input-group input-group-lg">
+									<p><b>Volumen a Entregar:</b> <?php echo $key->volume;?></p>
+								</div><!-- End volumen a entregar -->
+
+								<div class="input-group input-group-lg">
+									<p><b>Transportador:</b> <?php echo $key->transport;?></p>
+								</div><!-- End transporte -->
+
+								<div class="input-group input-group-lg">
+									<p><b>Fletera:</b> <?php echo $key->freight;?></p>
+								</div><!-- End fletera -->
+
+								<div class="input-group input-group-lg">
+									<p><b>Chofer:</b> <?php echo $key->driver;?></p>
+								</div><!-- End Chofer -->
+
+								<div class="input-group input-group-lg">
+									<p><b>Cel Chofer:</b> <?php echo $key->driver_cel;?></p>
+								</div><!-- End Cel chofer -->
+
+							</div>
+
+							<div class="col-md-6">
+
+								<div class="input-group input-group-lg">
+									<p><b>Destino:</b> <?php echo $key->destiny;?></p>
+								</div><!-- End Destino -->	
+
+								<div class="input-group input-group-lg">
+									<p><b>Tipo de Empaque:</b> <?php echo $key->pack_type;?></p>
+								</div><!-- End Tipo de Empaque -->			
+
+								<div class="input-group input-group-lg">
+									<p><b>Contacto Entrega:</b> <?php echo $key->arrival_contact;?></p>
+								</div><!-- End Contacto Entrega -->
+
+								<div class="input-group input-group-lg">
+									
+										<?php if($key->boxes == 1){
+										?>
+										<p><b>Cajas:</b> <?php echo 'Chep';?></p>
+										<?php
+										}else if($key->boxes == 2){
+										?>	
+										<p><b>Cajas:</b> <?php echo 'Ensenada';?></p>
+										<?php
+										}else if($key->boxes == 3){
+										?>	
+										<p><b>Cajas:</b> <?php echo 'No Aplica';?></p>
+										<?php
+										}
+										?>
+								</div><!-- End Cajas -->
+
+								<div class="input-group input-group-lg">
+									
+										<?php if($key->box == 1){
+										?>
+										<p><b>Caja:</b> <?php echo 'Seca'; ?></p>
+										<?php
+										}else if($key->box == 2){
+										?>	
+										<p><b>Caja:</b> <?php echo 'Thermo'; ?></p>
+										<?php
+										}
+										?>	
+								</div><!-- End Caja -->
+
+								<div class="input-group input-group-lg">
+										<?php if($key->racks > 0){
+										?>
+										<p><b>Racks:</b> <?php echo 'Si'; ?></p>
+										<?php
+										}else if($key->racks == 0){
+										?>
+										<p><b>Racks:</b> <?php echo 'No'; ?></p>
+										<?php
+										}
+										?>	
+								</div><!-- End Racks -->
+
+								<div class="input-group input-group-lg">
+									<p><b># de Racks:</b><?php echo $key->racks;?></p>
+								</div><!-- End Racks -->
 								
-									<?php if($embark[0]->box == 1){
-									?>
-									<p><b>Caja:</b> <?php echo 'Seca'; ?></p>
-									<?php
-									}else if($embark[0]->box == 2){
-									?>	
-									<p><b>Caja:</b> <?php echo 'Thermo'; ?></p>
-									<?php
-									}
-									?>	
-							</div><!-- End Caja -->
+							</div>
+							<?php
+							}
+							?>
 
-							<div class="input-group input-group-lg">
-									<?php if($embark[0]->racks > 0){
-									?>
-									<p><b>Racks:</b> <?php echo 'Si'; ?></p>
-									<?php
-									}else if($embark[0]->racks == 0){
-									?>
-									<p><b>Racks:</b> <?php echo 'No'; ?></p>
-									<?php
-									}
-									?>	
-							</div><!-- End Racks -->
-
-							<div class="input-group input-group-lg">
-								<p><b># de Racks:</b><?php echo $embark[0]->racks;?></p>
-							</div><!-- End Racks -->
-							
-						</div>
 
 						<!--<div class="col-md-12">	
 

@@ -20,7 +20,7 @@
 		{
 			foreach ($pedidos_embarcados as $key) 
 			{
-				$embarque=$this->model_breakdown->get_embark($key->id_order);
+				//$embarque=$this->model_breakdown->get_embark($key->id_order);
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
@@ -83,33 +83,33 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Resumen Embarque"
-	                    href=<?php echo site_url("breakdown/resume_embark/$key->id_order");?>>
+	                    href=<?php echo site_url("embark/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
 	                </a>
 			<?php
 				echo "</td>";
 				echo "<td>";?>
 
-				<a href="#myModal3<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
+				<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Modificar Proceso"
 	                    data-toggle="modal">
 						<i class="fa fa-list-alt"></i>
 	                </a>
 
-	                <a href="#myModal4<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
+	                <a href="#myModal4<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Modificar Embarque"
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
 	                </a>
 
-	                <a href="#myModal5<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
+	                <a href="#myModal5<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Finalizar"
 	                    data-toggle="modal">
 						<i class="fa fa-archive"></i>
 	                </a>
 				
 					<?php  echo form_open('breakdown/edit_process/'.$key->id_order); ?>	  
-		                <div id="myModal3<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+		                <div id="myModal3<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">
 	                				<div class="modal-header">
@@ -129,7 +129,7 @@
 	    			</form>
 
 	    			<?php echo form_open('embark/index/'.$key->id_order.'/1'); ?>	  
-		                <div id="myModal4<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+		                <div id="myModal4<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">
 	                				<div class="modal-header">
@@ -149,7 +149,7 @@
 	    			</form>
 
 	    			<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
-		                <div id="myModal5<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
+		                <div id="myModal5<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">
 	                				<div class="modal-header">
