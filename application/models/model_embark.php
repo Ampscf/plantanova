@@ -18,6 +18,7 @@ Class model_embark extends CI_Model
 	function get_embark($id_order)
 	{
 		$this->db->where('id_order', $id_order);
+		$this->db->order_by('id_embark','asc');
 		$query = $this->db->get('t_embark');
 
 		if($query->num_rows()>0)
