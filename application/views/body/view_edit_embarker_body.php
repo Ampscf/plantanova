@@ -174,7 +174,14 @@
 						</div>
 
 						<div class="col-md-3 col-md-offset-4">
-							<input class="btn btn-success btn-block" type="submit" value="Aceptar" /><!--onClick="register_client()"-->
+							<?php
+								$data = array(
+										'class'	=> 'btn btn-success btn-block',
+										'name' => 'Aceptar',
+									);
+								echo anchor('breakdown/pedido_embarcado', 'Aceptar', $data);
+							?>
+							
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->	

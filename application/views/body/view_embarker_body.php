@@ -478,7 +478,7 @@
             			<div class="modal-body">
 
                 			<p>Elige un PDF para subir a la carta factura</p>
-           	 			
+                			           	 			
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
