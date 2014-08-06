@@ -128,7 +128,7 @@
 	    				</div>
 	    			</form>
 
-	    			<?php  echo form_open('embark/index/'.$key->id_order.'/1'); ?>	  
+	    			<?php echo form_open('embark/index/'.$key->id_order.'/1'); ?>	  
 		                <div id="myModal4<?php echo $embarque[0]->id_embark; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">

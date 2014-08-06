@@ -86,8 +86,17 @@
 						</div>
 						
 					</div>
-
+					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
+						<div class="col-md-10">
+							<h4>Embarque</h4>
+						</div>
+						<div class="col-md-2">
+							<a href="#myModal5" class="btn btn-success" data-toggle="modal">+Agregar</a>
+						</div>
+						<div class="table-responsive" id="area">
+							<?php include_once('application/views/extra/tabla_embarque.php'); ?>
+						</div>
 
 						<div class="clear">&nbsp</div>
 

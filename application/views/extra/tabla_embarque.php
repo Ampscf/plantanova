@@ -1,14 +1,15 @@
 <table class="table table-hover" id="tabla-pedidos">
-	<thead>
-		<th class="col-md-1"># Embarque</th>
+	
+		<th># Embarque</th>
 		<th>Fecha de Entrega</th>
 		<th>Fecha de Arribo</th>
 		<th>Volumen Embarcado</th>
 		<th>Destino</th>
 		<th>Transporte</th>
 		<th>Fletera</th>
-	</thead>
-	<tbody>
+		<th>Eliminar</th>
+	
+	
 		<?php 
 		if(is_array($embarque_pedido))
 		{
@@ -25,5 +26,5 @@
 			}
 		}
 		?>	
-	</tbody>
+	
 </table>
