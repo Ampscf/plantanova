@@ -26,7 +26,7 @@ class Embark extends CI_Controller {
 
 		$template['embarque_pedido']=$this->model_breakdown->get_embark($template['id_order']);
 
-		if ($embark->result()[0]->quotation == NULL){
+		/*if ($embark->result()[0]->quotation == NULL){
 			$template['quotation']='';
 		} else {
 			$template['quotation']='<a href="#myModal11" class="btn btn-default"
@@ -61,7 +61,7 @@ class Embark extends CI_Controller {
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
 	                			</a>';
-		}
+		}*/
 		
 
 		//$template['error']=0;
@@ -84,9 +84,14 @@ class Embark extends CI_Controller {
 		}		
 	}
 
-	public function insert_embark(){
+	public function change_status()
+	{
 		$data['id_status']='3';
+		$this->model_breakdown->update_order($this->uri->segment(3),$data);
+		redirect("embark/index/".$this->uri->segment(3), "refresh");
+	}
 
+	public function insert_embark(){
 		$datos['id_order']=$this->uri->segment(3);
 		$fecha=$this->input->post('datepicker');
 		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
@@ -105,10 +110,9 @@ class Embark extends CI_Controller {
 		$datos['racks']=$this->input->post('rackz');
 		$datos['comment']=$this->input->post('comment');
 
-		$this->model_breakdown->update_order($this->uri->segment(3),$data);
 		$this->model_embark->insert_embark($datos);
 
-		redirect("breakdown/pedido_embarcado/", "refresh");
+		redirect("embark/index/".$this->uri->segment(3), "refresh");
 	}
 
 	public function update_embark()

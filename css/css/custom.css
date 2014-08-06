@@ -156,3 +156,8 @@ textarea
 	opacity: 0;
 	filter: alpha(opacity=0);
 }
+
+.row {
+	margin-right: 0px !important;
+	margin-left: 0px !important;
+}

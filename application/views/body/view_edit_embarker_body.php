@@ -4,10 +4,6 @@
 			<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> EMBARQUE </h3>
 			</div>
-			<?php 
-				$attributes = array('id' => 'registry', 'name' => 'registry');
-				echo form_open('embark/update_embark/'.$this->uri->segment(3),$attributes); 
-			?>
 				<div class="panel-body">
 
 					<div class="clear">&nbsp</div>
@@ -86,13 +82,14 @@
 						</div>
 						
 					</div>
+
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
 						<div class="col-md-10">
 							<h4>Embarque</h4>
 						</div>
 						<div class="col-md-2">
-							<a href="#myModal5" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModals" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_embarque.php'); ?>
@@ -101,165 +98,6 @@
 						<div class="clear">&nbsp</div>
 
 						<input type="hidden" name="rol" id="rol" value="2" />
-
-						<div class="col-md-6">
-
-							<div class="clear">&nbsp</div>
-							<h3>Fecha de Entrega</h3>							
-							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:87% !important; float: right;" value="<?php echo date("d-m-Y", strtotime($embark[0]->date_arrival));?>" readonly></p>
-							</div><!-- End fecha -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Fecha de Arribo</h3>
-							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:87% !important; float: right;" value="<?php echo date("d-m-Y", strtotime($embark[0]->date_delivery));?>" readonly></p>
-							</div><!-- End fecha -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Volumen a Entregar</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume" value="<?php echo $embark[0]->volume;?>">
-							</div><!-- End volumen a entregar -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Transportador</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter" value="<?php echo $embark[0]->transport;?>">
-							</div><!-- End transporte -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Fletera</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Fletera" name="fletera" id="fletera" value="<?php echo $embark[0]->freight;?>">
-							</div><!-- End fletera -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Chofer</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Chofer" name="chofer" id="chofer" value="<?php echo $embark[0]->driver;?>">
-							</div><!-- End Chofer -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Cel Chofer</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel" value="<?php echo $embark[0]->driver_cel;?>">
-							</div><!-- End Cel chofer -->
-
-						</div>
-
-						<div class="col-md-6">
-
-							<div class="clear">&nbsp</div>
-							<h3>Destino</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino" value="<?php echo $embark[0]->destiny;?>">
-							</div><!-- End Destino -->	
-
-							<div class="clear">&nbsp</div>
-							<h3>Tipo de Empaque</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Tipo de Empaque" name="empaque" id="empaque" value="<?php echo $embark[0]->pack_type;?>">
-							</div><!-- End Tipo de Empaque -->			
-
-							<div class="clear">&nbsp</div>
-							<h3>Contacto Entrega</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto" value="<?php echo $embark[0]->arrival_contact;?>">
-							</div><!-- End Contacto Entrega -->
-							<div class="clear">&nbsp</div>
-							<h3>Cajas</h3>
-							<div class="input-group input-group-lg">
-								<select class="form-control" name="cajas" id="cajas">
-									<?php if($embark[0]->boxes == 1){
-									?>
-									<option value="1" selected>Chep</option>
-									<option value="2" >Ensenada</option>
-									<option value="3" >No Aplica</option>
-									<?php
-									}else if($embark[0]->boxes == 2){
-									?>	
-									<option value="1" >Chep</option>
-									<option value="2" selected>Ensenada</option>
-									<option value="3" >No Aplica</option>
-									<?php
-									}else if($embark[0]->boxes == 3){
-									?>	
-									<option value="1" >Chep</option>
-									<option value="2" selected>Ensenada</option>
-									<option value="3" >No Aplica</option>
-									<?php
-									}
-									?>
-								</select>	
-							</div><!-- End Cajas -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Caja</h3>
-							<div class="input-group input-group-lg">
-								<select class="form-control" name="caja" id="caja">
-									<?php if($embark[0]->box == 1){
-									?>
-									<option value="1" selected>Seca</option>
-									<option value="2" >Thermo</option>
-									<?php
-									}else if($embark[0]->box == 2){
-									?>	
-									<option value="1" >Seca</option>
-									<option value="2" selected>Thermo</option>
-									<?php
-									}
-									?>	
-
-								</select>	
-							</div><!-- End Caja -->
-
-							<div class="clear">&nbsp</div>
-							<h3>Racks</h3>
-							<div class="input-group input-group-lg">
-								<select class="form-control" name="racks" id="racks" onchange="cambio(this.value)">
-									<?php if($embark[0]->racks > 0){
-									?>
-									<option value="1" selected>Si</option>
-									<option value="2">No</option>
-									<?php
-									}else if($embark[0]->racks == 0){
-									?>
-									<option value="1" >Si</option>
-									<option value="2"selected>No</option>
-									<?php
-									}
-									?>	
-								</select>	
-							</div><!-- End Racks -->
-
-							<div class="clear">&nbsp</div>
-							<?php if($embark[0]->racks > 0){
-									?>
-							<div id="hiden">
-								<?php
-									}else if($embark[0]->racks == 0){
-									?>
-							<div id="hiden" style="display:none;">
-								<?php
-								}
-								?>
-							<h3># de Racks</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="# de Racks" name="rackz" id="rackz" value="<?php echo $embark[0]->racks;?>">
-							</div><!-- End Racks -->
-							</div>
-						</div>
-
-						<div class="col-md-12">	
-
-							<div class="clear">&nbsp</div>
-							<h3>Comentario</h3>
-							<div class="input-group input-group-lg">
-								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"><?php echo $embark[0]->comment;?></textarea>								
-							</div><!-- End comment -->
-
-						</div>
 
 
 						<div class="clear">&nbsp</div>
@@ -340,22 +178,150 @@
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->	
-				</form><!-- End form -->		
+				<!--</form> End form -->		
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
 
+		<div id="myModals" class="modal fade">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+					    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        <h4 class="modal-title">Embarque</h4>
+					    </div>
+
+					    <div class="modal-body row">
+					    	<?php 
+								$attributes = array('id' => 'registry', 'name' => 'registry');
+								echo form_open('embark/insert_embark/'.$this->uri->segment(3),$attributes); 
+							?>
+
+					    	<div class="col-md-6">
+								<h3>Fecha de Entrega</h3>							
+								<div class="input-group">
+									<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:87% !important; float: right;" readonly></p>
+								</div>	
+
+					    		<div class="clear">&nbsp</div>
+								<h3>Fecha de Arribo</h3>
+								<div class="input-group">
+									<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:87% !important; float: right;" readonly></p>
+								</div><!-- End fecha -->
+
+					    		<div class="clear">&nbsp</div>
+								<h3>Volumen a Entregar</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume">
+								</div><!-- End volumen a entregar -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Transportador</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter">
+								</div><!-- End transporte -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Fletera</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Fletera" name="fletera" id="fletera">
+								</div><!-- End fletera -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Chofer</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Chofer" name="chofer" id="chofer">
+								</div><!-- End Chofer -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Cel Chofer</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel">
+								</div><!-- End Cel chofer -->
+					    	</div>
+
+					    	<div class="col-md-6">
+						    	
+								<h3>Destino</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino">
+								</div><!-- End Destino -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Tipo de Empaque</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Tipo de Empaque" name="empaque" id="empaque">
+								</div><!-- End Tipo de Empaque -->			
+
+								<div class="clear">&nbsp</div>
+								<h3>Contacto Entrega</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
+								</div><!-- End Contacto Entrega -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Cajas</h3>
+								<div class="input-group input-group-lg">
+									<select class="form-control" name="cajas" id="cajas">
+										<option value="1" selected>Chep</option>
+										<option value="2" >Ensenada</option>
+										<option value="3" >No Aplica</option>										
+									</select>	
+								</div><!-- End Cajas -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Caja</h3>
+								<div class="input-group input-group-lg">
+									<select class="form-control" name="caja" id="caja">
+										<option value="1" selected>Seca</option>
+										<option value="2" >Thermo</option>
+									</select>	
+								</div><!-- End Caja -->
+
+								<div class="clear">&nbsp</div>
+								<h3>Racks</h3>
+								<div class="input-group input-group-lg">
+									<select class="form-control" name="racks" id="racks" onchange="cambio(this.value)">
+										<option value="1" selected>Si</option>
+										<option value="2">No</option>												
+									</select>	
+								</div><!-- End Racks -->
+
+								<div class="clear">&nbsp</div>
+								<div id="hiden">
+								<h3># de Racks</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="# de Racks" name="rackz" id="rackz">
+								</div><!-- End Racks -->
+								</div>
+
+								<script>
+									function cambio (a)
+									{
+										if (a==1){
+											document.getElementById("hiden").style.display = "block";
+										}
+										else {
+											document.getElementById("hiden").style.display = "none";
+										}	
+									}
+								</script>
+							</div>	
+					    	
+					    </div>
+					    
+					    <div class="modal-footer">
+					    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					        <input type="submit" class="btn btn-success" id="save" name="save" value="Guardar"></button>
+					    	</form>
+					    </div>	
+					</div>	
+				</div>
+			</div>
+
+
 			<script>
-			function cambio (a){
-
-					if (a==1){
-					document.getElementById("hiden").style.display = "block";
-					}
-					else {
-						document.getElementById("hiden").style.display = "none";
-					}	
-				}
-
+			
 
 
 				$("#registry").validate({
@@ -449,7 +415,6 @@
 						});
 						
 			</script>
-
 
 			<div id="myModal" class="modal fade">
     			<div class="modal-dialog">
