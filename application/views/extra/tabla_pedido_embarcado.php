@@ -6,10 +6,7 @@
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
-		<!--<th>Tranportador</th>-->
 		<th>Volúmen Pedido</th>
-		<!--<th>Volúmen Embarcado</th>
-		<th>Comentario</th>-->
 		<th>Resumen Orden</th>
 		<th>Resumen Embarque</th>
 		<th>Editar</th>
@@ -20,7 +17,6 @@
 		{
 			foreach ($pedidos_embarcados as $key) 
 			{
-				//$embarque=$this->model_breakdown->get_embark($key->id_order);
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
@@ -31,49 +27,15 @@
 				echo "<td>" . $category[0]->category_name . "</td>";
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
 				echo "<td>" . $plant[0]->plant_name . "</td>";
-				
-				//echo "<td>".$embarque[0]->transport."</td>";
 				echo "<td>" . number_format($key->total_volume) . "</td>";
-				/*echo "<td>" . number_format($embarque[0]->volume) . "</td>";
-				if($embarque[0]->comment != null){
-				echo "<td>" ?>
-
-					<a href="#myModal2<?php echo $embarque[0]->id_embark; ?>" class="btn btn-default"
-	                    title="Comentario"
-	                    data-toggle="modal">
-						<i class="fa fa-comment-o"></i>
-	                </a>
-					
-					<div id="myModal2<?php echo $embarque[0]->id_embark  ?>" class="modal fade">
-        				<div class="modal-dialog">
-            				<div class="modal-content">
-                				<div class="modal-header">
-                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    				<h4 class="modal-title">Comentario</h4>
-                				</div>
-                				<div class="modal-body">
-                    				<p><?php echo $embarque[0]->comment;?></p>
-                				</div>
-                				<div class="modal-footer">
-                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			</div>
-            				</div>
-        				</div>
-    				</div>
-    			
-    			<?php
-    			}else{
-    				echo "<td>";
-    			}
-    			echo "</td>";
-				*/echo "<td>";
+				echo "<td>";
 				?>
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Resumen Orden"
 	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
-	                    <i class="fa fa-file-text-o"></i>
+	                    <i class="fa fa-file-text"></i>
 	                </a>
 			<?php
 				echo "</td>";
@@ -170,7 +132,6 @@
 	         <?php
 	         echo "</td>";
 				echo "</tr>";
-			
 			}
 		}
 		?>

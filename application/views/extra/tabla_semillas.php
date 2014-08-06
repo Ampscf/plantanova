@@ -19,7 +19,7 @@
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->batch . "</td>";
 				if($key->germ_percentage==0){
-					echo "<td></td>";
+					echo "<td>N/A</td>";
 				}else{
 					echo "<td>" . $key->germ_percentage ."%"."</td>";
 				}

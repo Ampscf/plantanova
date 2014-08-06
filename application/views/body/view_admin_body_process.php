@@ -19,6 +19,7 @@
 						<li><?php echo anchor('breakdown/index', 'Nuevos') ?></li>
 						<li class="active"><?php echo anchor('breakdown/pedido_proceso', 'En proceso') ?></li>
 						<li><?php echo anchor('breakdown/pedido_embarcado', 'Embarcados') ?></li>
+						<li><?php echo anchor('', 'Finalizados') ?></li>
 					</ul>
 					</div>
 					
