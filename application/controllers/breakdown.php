@@ -373,7 +373,7 @@ class Breakdown extends CI_Controller {
 		redirect("breakdown/pedido_embarcado/", "refresh");
 	}
 
-	public function pedido_embarcado_body(){
+	/*public function pedido_embarcado_body(){
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['fecha']=$order->result()[0]->order_date_submit;
@@ -407,7 +407,7 @@ class Breakdown extends CI_Controller {
 		//$this->model_breakdown->update_order2($a,$data);		
 
 		redirect("breakdown/pedido_embarcado_body/".$this->uri->segment(3).'/'.$this->uri->segment(4), "refresh");
-	}
+	}*/
 
 	public function resume_embark(){
 		$template['id_order']=$this->uri->segment(3);
