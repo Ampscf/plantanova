@@ -122,7 +122,7 @@ class Breakdown extends CI_Controller {
 		$total_vol=$total_germ+$datos['volume'];
 		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
 		
-		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+		redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
 	}
 
 	public function insert_graft(){
@@ -146,7 +146,7 @@ class Breakdown extends CI_Controller {
 		
 		$this->model_breakdown->add_graft($datos);
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
-		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+		redirect("breakdown/process/".$this->uri->segment(3)."#injerto", "refresh");
 	}
 	
 	public function insert_punch()
@@ -168,7 +168,7 @@ class Breakdown extends CI_Controller {
 		
 		$this->model_breakdown->add_punch($datos);
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
-		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+		redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
 	}
 
 	public function insert_transplant()
@@ -190,7 +190,7 @@ class Breakdown extends CI_Controller {
 		
 		$this->model_breakdown->add_transplant($datos);
 		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);	
-		redirect("breakdown/process/".$this->uri->segment(3), "refresh");	
+		redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");	
 	}
 	
 	public function delete_germination()
@@ -246,7 +246,7 @@ class Breakdown extends CI_Controller {
 		}
 
       	$this->model_breakdown-> delete_process_germination($llave);
-       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+       	redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
     }
 
     public function delete_graft()
@@ -292,7 +292,7 @@ class Breakdown extends CI_Controller {
 		
 
        	$this->model_breakdown-> delete_process($llave);
-       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+       	redirect("breakdown/process/".$this->uri->segment(3)."#injerto", "refresh");
     }
 
     public function delete_punch()
@@ -327,7 +327,7 @@ class Breakdown extends CI_Controller {
 
 
        $this->model_breakdown-> delete_process($llave);
-       redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+       redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
     }
 
     public function delete_transplant()
@@ -352,7 +352,7 @@ class Breakdown extends CI_Controller {
 		$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
 
       	$this->model_breakdown-> delete_process($llave);
-       	redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+       	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
     }
 	public function finish_order()
 	{

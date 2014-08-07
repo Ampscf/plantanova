@@ -142,7 +142,7 @@ class Embark extends CI_Controller {
 
 		if ( ! $this->upload->do_upload())
 		{
-			$this->session->set_flashdata('error', $this->upload->display_errors());
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo'/*$this->upload->display_errors()*/);
 
 			redirect('embark/index/'.$uri);
 		}
@@ -166,7 +166,7 @@ class Embark extends CI_Controller {
 
 		if ( ! $this->upload->do_upload())
 		{
-			$this->session->set_flashdata('error', $this->upload->display_errors());
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo'/*$this->upload->display_errors()*/);
 
 			redirect('embark/index/'.$uri);
 		}
@@ -190,7 +190,7 @@ class Embark extends CI_Controller {
 
 		if ( ! $this->upload->do_upload())
 		{
-			$this->session->set_flashdata('error', $this->upload->display_errors());
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo'/*$this->upload->display_errors()*/);
 
 			redirect('embark/index/'.$uri);
 		}
@@ -214,7 +214,7 @@ class Embark extends CI_Controller {
 
 		if ( ! $this->upload->do_upload())
 		{
-			$this->session->set_flashdata('error', $this->upload->display_errors());
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo'/*$this->upload->display_errors()*/);
 
 			redirect('embark/index/'.$uri);
 		}

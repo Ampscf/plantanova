@@ -81,7 +81,7 @@
 					</div>
 					
 					<div class="col-md-12">
-						<div class="col-md-10" name="siembra">
+						<div class="col-md-10" id="siembra">
 							<h4>Siembra</h4>
 						</div>
 						<div class="col-md-2">
@@ -133,7 +133,7 @@
 					<div class="clear">&nbsp</div>
 	
 					<div class="col-md-12" name="divinjerto" id="divinjerto" style="display: none;" >
-						<div class="col-md-10" name="injerto">
+						<div class="col-md-10" id="injerto">
 							<h4>Injerto</h4>
 						</div>
 						<div class="col-md-2">
@@ -153,7 +153,7 @@
 
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;">
-						<div class="col-md-10" name="pinchado">	
+						<div class="col-md-10" id="pinchado">	
 							<h4>Pinchado</h4>
 						</div>
 						<div class="col-md-2">
@@ -173,7 +173,7 @@
 					
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12" name="divtransplante" id="divtransplante" style="display: none;">
-						<div class="col-md-10" name="transplante">	
+						<div class="col-md-10" id="transplante">	
 							<h4>Transplante</h4>
 						</div>
 						<div class="col-md-2">
