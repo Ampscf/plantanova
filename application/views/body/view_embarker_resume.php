@@ -13,12 +13,9 @@
 						<div class="clear">&nbsp</div>
 						<div class="col-md-12">
 							<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
-						</div>
-					
-						<div class="col-md-12">
 							<hr/>
 						</div>
-					
+
 						<div class="col-md-12">						
 							<div class="col-md-6">
 								<div class="input-group input-group-lg">
@@ -73,11 +70,11 @@
 						</div>
 						<div class="col-md-12">
 							<?php 
-								foreach ($embark->result() as $key )
+								foreach ($embark->result() as $key)
 								{
 							?>						
-									<div class="clear">&nbsp</div>
-									<h4><b>*DETALLE DEL EMBARQUE <?php echo $key->id_embark;?></b></h4>						
+									<div class="clear" style="margin-top: -15px">&nbsp</div>
+									<h5><b>*DETALLE DEL EMBARQUE <?php echo $key->id_embark;?></b></h5>						
 								
 									<div class="col-md-6">
 										<div class="input-group input-group-lg">
@@ -204,8 +201,8 @@
 	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" type="text/css" />');
 	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" />');
 
-     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/custom.css" type="text/css" />');
-     	mywindow.document.write('<link rel="stylesheet" href="http://localhost/plantanova/css/css/TableTools.css" type="text/css" />');
+     	mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url().'css/css/custom.css';?>' type='text/css' />");
+     	mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url().'css/css/TableTools.css';?>' type='text/css' />");
 	  	
 	  	mywindow.document.write('</head><body >');
 	  	mywindow.document.write(ficha.innerHTML);

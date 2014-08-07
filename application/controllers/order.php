@@ -697,7 +697,7 @@ class Order extends CI_Controller {
 		$this->model_order->update_volume_germination($order,$sum_germ[0]->volume);
 		$this->model_order->update_status($this->uri->segment(3));*/
 
-		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+		redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
 
 	}
 

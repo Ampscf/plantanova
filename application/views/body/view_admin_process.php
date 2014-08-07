@@ -81,7 +81,7 @@
 					</div>
 					
 					<div class="col-md-12">
-						<div class="col-md-10">
+						<div class="col-md-10" name="siembra">
 							<h4>Siembra</h4>
 						</div>
 						<div class="col-md-2">
@@ -101,7 +101,7 @@
 					
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12">
-						<div class="col-md-10">
+						<div class="col-md-10" name="germinacion" id="germinacion">
 							<h4>Germinación</h4>
 						</div>
 						<div class="col-md-2">
@@ -133,7 +133,7 @@
 					<div class="clear">&nbsp</div>
 	
 					<div class="col-md-12" name="divinjerto" id="divinjerto" style="display: none;" >
-						<div class="col-md-10">
+						<div class="col-md-10" name="injerto">
 							<h4>Injerto</h4>
 						</div>
 						<div class="col-md-2">
@@ -153,7 +153,7 @@
 
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;">
-						<div class="col-md-10">	
+						<div class="col-md-10" name="pinchado">	
 							<h4>Pinchado</h4>
 						</div>
 						<div class="col-md-2">
@@ -173,7 +173,7 @@
 					
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12" name="divtransplante" id="divtransplante" style="display: none;">
-						<div class="col-md-10">	
+						<div class="col-md-10" name="transplante">	
 							<h4>Transplante</h4>
 						</div>
 						<div class="col-md-2">
@@ -229,7 +229,7 @@
 		            <div class="modal-content">
 		                <div class="modal-header">
 		                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                    <h4 class="modal-title">Desglose</h4>
+		                    <h4 class="modal-title">Siembra</h4>
 		                </div>
 		                <div class="modal-body">	
 		                	<div class="input-group">
