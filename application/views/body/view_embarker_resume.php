@@ -164,7 +164,17 @@
 						</div>
 						</div>
 
-						<!-- Aqui -->	
+						<!-- Aqui -->
+						<div class="col-md-12">
+							<div class="clear">&nbsp</div>
+							<h4><b>*Archivos subidos</b></h4>
+
+							<p>Cotización: <?php echo $quoti;?> </p> 
+							<p>Contrato: <?php echo $contra;?></p>
+							<p>Facturas: <?php echo $bi;?></p>
+							<p>Carta Factura: <?php echo $card;?></p>
+
+						</div>	
 
 					</div><!-- End panel-body -->
 					<div class="clear">&nbsp</div>
