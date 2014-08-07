@@ -114,7 +114,7 @@
 							<div class="col-md-1">
 								<h3>Cotización</h3>
 							</div>
-							<div class="col-md-3 col-md-offset-1">
+							<div class="col-md-10 col-md-offset-1">
 								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 								<?php echo $quotation?>
 							</div>	
@@ -125,7 +125,7 @@
 							<div class="col-md-1">
 								<h3>Contrato</h3>
 							</div>
-							<div class="col-md-3 col-md-offset-1">
+							<div class="col-md-10 col-md-offset-1">
 								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 								<?php echo $contract?>
 							</div>	
@@ -136,7 +136,7 @@
 							<div class="col-md-1">
 								<h3>Factura</h3>
 							</div>
-							<div class="col-md-3 col-md-offset-1">
+							<div class="col-md-10 col-md-offset-1">
 								<a href="#myModal1" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 								<?php echo $bill?>
 							</div>	
@@ -147,7 +147,7 @@
 							<div class="col-md-1">
 								<h3>Carta Factura</h3>
 							</div>
-							<div class="col-md-3 col-md-offset-1">
+							<div class="col-md-10 col-md-offset-1">
 								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 								<?php echo $card_bill?>
 							</div>	

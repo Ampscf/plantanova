@@ -32,7 +32,7 @@ class Embark extends CI_Controller {
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
-	                			</a>';
+	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->quotation.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->quotation.'</a>';
 		}
 		if ($order->result()[0]->contract == NULL){
 			$template['contract']='';
@@ -41,7 +41,7 @@ class Embark extends CI_Controller {
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
-	                			</a>';
+	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->contract.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->contract.'</a>';
 		}
 		if ($order->result()[0]->bill == NULL){
 			$template['bill']='';
@@ -50,7 +50,7 @@ class Embark extends CI_Controller {
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
-	                			</a>';
+	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->bill.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->bill.'</a>';
 		}
 		if ($order->result()[0]->card_bill == NULL){
 			$template['card_bill']='';
@@ -59,7 +59,7 @@ class Embark extends CI_Controller {
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
-	                			</a>';
+	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->card_bill.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->card_bill.'</a>';
 		}
 
 		$template['embark'] = $this->model_breakdown->get_embark($template['id_order']);
@@ -149,7 +149,7 @@ class Embark extends CI_Controller {
 		else
 		{
 			$data = $this->upload->data();
-			$datos['quotation'] = $data['full_path'];
+			$datos['quotation'] = $data['file_name'];
 			$this->model_order->update_order($this->uri->segment(3),$datos);			
 			
 			redirect('embark/index/'.$uri, 'refresh');
@@ -173,7 +173,7 @@ class Embark extends CI_Controller {
 		else
 		{
 			$data = $this->upload->data();
-			$datos['contract'] = $data['full_path'];
+			$datos['contract'] = $data['file_name'];
 			$this->model_order->update_order($this->uri->segment(3),$datos);			
 			
 			redirect('embark/index/'.$uri, 'refresh');
@@ -197,7 +197,7 @@ class Embark extends CI_Controller {
 		else
 		{
 			$data = $this->upload->data();
-			$datos['bill'] = $data['full_path'];
+			$datos['bill'] = $data['file_name'];
 			$this->model_order->update_order($this->uri->segment(3),$datos);			
 			
 			redirect('embark/index/'.$uri, 'refresh');
@@ -221,7 +221,7 @@ class Embark extends CI_Controller {
 		else
 		{
 			$data = $this->upload->data();
-			$datos['card_bill'] = $data['full_path'];
+			$datos['card_bill'] = $data['file_name'];
 			$this->model_order->update_order($this->uri->segment(3),$datos);			
 			
 			redirect('embark/index/'.$uri, 'refresh');
@@ -234,7 +234,7 @@ class Embark extends CI_Controller {
 				'quotation' => NULL
 			);
 		$order = $this->model_order->get_order_id_order($this->uri->segment(3));
-		$path = $order->result()[0]->quotation;
+		$path = 'uploads/'.$order->result()[0]->quotation;
 		$this->model_order->update_order($this->uri->segment(3),$data);
 		if(unlink($path)) {
      		redirect('embark/index/'.$this->uri->segment(3));
@@ -250,7 +250,7 @@ class Embark extends CI_Controller {
 				'contract' => NULL
 			);
 		$order = $this->model_order->get_order_id_order($this->uri->segment(3));
-		$path = $order->result()[0]->contract;
+		$path = 'uploads/'.$order->result()[0]->contract;
 		$this->model_order->update_order($this->uri->segment(3),$data);
 		if(unlink($path)) {
      		redirect('embark/index/'.$this->uri->segment(3));
@@ -266,7 +266,7 @@ class Embark extends CI_Controller {
 				'bill' => NULL
 			);
 		$order = $this->model_order->get_order_id_order($this->uri->segment(3));
-		$path = $order->result()[0]->bill;
+		$path = 'uploads/'.$order->result()[0]->bill;
 		$this->model_order->update_order($this->uri->segment(3),$data);
 		if(unlink($path)) {
      		redirect('embark/index/'.$this->uri->segment(3));
@@ -282,7 +282,7 @@ class Embark extends CI_Controller {
 				'card_bill' => NULL
 			);
 		$order = $this->model_order->get_order_id_order($this->uri->segment(3));
-		$path = $order->result()[0]->card_bill;
+		$path = 'uploads/'.$order->result()[0]->card_bill;
 		$this->model_order->update_order($this->uri->segment(3),$data); 
 		if(unlink($path)) {
      		redirect('embark/index/'.$this->uri->segment(3));
@@ -315,6 +315,34 @@ class Embark extends CI_Controller {
 		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category);
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
+		$template['quotation']=$order->result()[0]->quotation;
+		$template['contract']=$order->result()[0]->contract;
+		$template['bill']=$order->result()[0]->bill;
+		$template['card_bill']=$order->result()[0]->card_bill;
+
+		if ($template['quotation']==NULL){
+			$template['quoti']='No se ha subido un PDF';
+		} else {
+			$template['quoti']='<a href="/plantanova/uploads/'.$template['quotation'].'" target="_blank" style="color:yellowgreen;">'.$template['quotation'].'</a>';
+		}
+
+		if ($template['contract']==NULL){
+			$template['contra']='No se ha subido un PDF';
+		} else {
+			$template['contra']='<a href="/plantanova/uploads/'.$template['contract'].'" target="_blank" style="color:yellowgreen;">'.$template['contract'].'</a>';
+		}
+
+		if ($template['bill']==NULL){
+			$template['bi']='No se ha subido un PDF';
+		} else {
+			$template['bi']='<a href="/plantanova/uploads/'.$template['bill'].'" target="_blank" style="color:yellowgreen;">'.$template['bill'].'</a>';
+		}
+
+		if ($template['card_bill']==NULL){
+			$template['card']='No se ha subido un PDF';
+		} else {
+			$template['card']='<a href="/plantanova/uploads/'.$template['card_bill'].'" target="_blank" style="color:yellowgreen;">'.$template['card_bill'].'</a>';
+		}
 
 		$template['embark'] = $this->model_embark->get_embark($template['id_order']);
 
@@ -324,5 +352,4 @@ class Embark extends CI_Controller {
 
 		$this->load->view("main",$template);
 	}
-
 }
