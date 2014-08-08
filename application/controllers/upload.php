@@ -24,7 +24,7 @@ public function do_upload()
         $this->load->library('upload', $config);
 
         if ( ! $this->upload->do_upload()) {
-            $error = array('error' => "ocurrio un error al subir el archivo intentelo de nuevo");
+            $error = array('error' => $this->upload->display_errors());
             $this->load->view('upload', $error);
 
         } else {
