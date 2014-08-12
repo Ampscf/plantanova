@@ -143,8 +143,19 @@
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_injerto.php'); ?>
 						</div>
-						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
+						<div class="col-md-12">
+							<div class="col-md-2">
+								<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal111" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal112" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal113" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							</div>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_injerto)."%";?></labbel>
@@ -157,14 +168,27 @@
 							<h4>Pinchado</h4>
 						</div>
 						<div class="col-md-2">
-							<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<div class="col-md-2">
+								<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							</div>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_pinchado.php'); ?>
 						</div>
-						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
+						<div class="col-md-12">
+							<div class="col-md-2">	
+								<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal222" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal223" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal224" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							</div>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_pinchado)."%";?></labbel>
@@ -183,8 +207,19 @@
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_transplante.php'); ?>
 						</div>
-						<div class="col-md-2">
-							<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
+						<div class="col-md-12">
+							<div class="col-md-2">
+								<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal333" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal334" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							</div>
+							<div class="col-md-2">
+								<a href="#myModal335" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							</div>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
