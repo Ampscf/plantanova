@@ -54,6 +54,7 @@ class Breakdown extends CI_Controller {
 	{
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
+		$images=$this->model_breakdown->get_image_process($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_process.php';
 		$template['footer'] = 'footer/view_footer.php';
@@ -79,13 +80,127 @@ class Breakdown extends CI_Controller {
 		$template['total_transplant']=$this->model_order->get_total_transplant($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
 		$template['seeds']=$this->model_order->get_seeds($this->uri->segment(3));
-		//$template['alcance_germinacion']=(($template['total_germ']->germination/$order->result()[0]->total_volume)-1) * 100;
-		//$template['alcance_injerto']=(($template['total_graft']->graft/$order->result()[0]->total_volume)-1) * 100;
-		//$template['alcance_pinchado']=(($template['total_punch']->punch/$order->result()[0]->total_volume)-1) * 100;
-		//$template['alcance_transplante']=(($template['total_transplant']->transplant/$order->result()[0]->total_volume)-1) * 100;
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['varial']=$this->model_breakdown->get_sowing($this->uri->segment(3));
-		//$template['injertal']=$this->model_breakdown->get_order_rootstock($this->uri->segment(3));
+		$template['error']=$this->session->flashdata('error');
+
+		if ($images->result()[0]->img_injer1 == NULL){
+			$template['injert1']='<div class="col-md-3">
+								  <a href="#myModal111" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							      </div>';
+		} else {
+			$template['injert1']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_injer1.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_injer1.'</a>
+								  <a href="#myModal444" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}	
+		if ($images->result()[0]->img_injer2 == NULL){
+			$template['injert2']='<div class="col-md-3">
+								  <a href="#myModal112" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							      </div>';
+		} else {
+			$template['injert2']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_injer2.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_injer2.'</a>
+								  <a href="#myModal445" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_injer3 == NULL){
+			$template['injert3']='<div class="col-md-3">
+								  <a href="#myModal113" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							      </div>';
+		} else {
+			$template['injert3']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_injer3.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_injer3.'</a>
+								  <a href="#myModal446" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_pinch1 == NULL){
+			$template['pinch1']='<div class="col-md-3">
+								  <a href="#myModal222" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							      </div>';
+		} else {
+			$template['pinch1']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_pinch1.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_pinch1.'</a>
+								  <a href="#myModal553" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_pinch2 == NULL){
+			$template['pinch2']='<div class="col-md-3">
+								  <a href="#myModal223" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							      </div>';
+		} else {
+			$template['pinch2']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_pinch2.'</a>
+								  <a href="#myModal554" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_pinch3 == NULL){
+			$template['pinch3']='<div class="col-md-3">
+								  <a href="#myModal224" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							      </div>';
+		} else {
+			$template['pinch3']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_pinch3.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_pinch3.'</a>
+								  <a href="#myModal555" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_trans1 == NULL){
+			$template['trans1']='<div class="col-md-3">
+								  <a href="#myModal335" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							      </div>';
+		} else {
+			$template['trans1']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_trans1.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_trans1.'</a>
+								  <a href="#myModal661" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_trans2 == NULL){
+			$template['trans2']='<div class="col-md-3">
+								  <a href="#myModal336" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							      </div>';
+		} else {
+			$template['trans2']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_trans2.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_trans2.'</a>
+								  <a href="#myModal662" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_trans3 == NULL){
+			$template['trans3']='<div class="col-md-3">
+								  <a href="#myModal337" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							      </div>';
+		} else {
+			$template['trans3']='<div class="col-md-3">
+								  <a href="/plantanova/uploads/'.$images->result()[0]->img_trans3.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_trans3.'</a>
+								  <a href="#myModal663" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+								  </div>';
+		}
 
 		$data['id_status']='2';
 		$this->model_breakdown->update_order($this->uri->segment(3),$data);
@@ -551,4 +666,359 @@ class Breakdown extends CI_Controller {
 			echo "1";//true
 		}
 	}
+
+	public function upload_injer1($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_injer1'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_injer2($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_injer2'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_injer3($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_injer3'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_pinch1($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_pinch1'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_pinch2($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_pinch2'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_pinch3($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_pinch3'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_trans1($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_trans1'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_trans2($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_trans2'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+	public function upload_trans3($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri);
+		} else {
+			$data = $this->upload->data();
+			$datos['img_trans3'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri, 'refresh');
+		}
+	}
+
+
+
+	public function delete_injer1()
+	{
+		$data = array(
+				'img_injer1' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_injer1;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_injer2()
+	{
+		$data = array(
+				'img_injer2' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_injer2;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_injer3()
+	{
+		$data = array(
+				'img_injer3' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_injer3;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_pinch1()
+	{
+		$data = array(
+				'img_pinch1' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_pinch1;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_pinch2()
+	{
+		$data = array(
+				'img_pinch2' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_pinch2;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_pinch3()
+	{
+		$data = array(
+				'img_pinch3' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_pinch3;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_trans1()
+	{
+		$data = array(
+				'img_trans1' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_trans1;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_trans2()
+	{
+		$data = array(
+				'img_trans2' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_trans2;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_trans3()
+	{
+		$data = array(
+				'img_trans3' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_trans3;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3));
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+
 }		

@@ -151,7 +151,18 @@
 								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 								<?php echo $card_bill?>
 							</div>	
-						</div>	
+						</div>
+
+						<div class="col-md-12">	
+							<div class="clear">&nbsp</div>
+							<div class="col-md-1">
+								<h3>Dictamen</h3>
+							</div>
+							<div class="col-md-10 col-md-offset-1">
+								<a href="#myModal21" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<?php echo $dictum?>
+							</div>	
+						</div>		
 
 				</div><!-- End panel-body -->
 				<div class="clear">&nbsp</div>
