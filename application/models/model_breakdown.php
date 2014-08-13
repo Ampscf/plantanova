@@ -791,6 +791,30 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 
+	function insert_image_process($id_order)
+	{
+		$this->db->set('id_order', $id_order); 
+		$this->db->insert('t_images_process'); 
+		return $this->db->affected_rows();
+	}
+
+	function update_image_process($id_order,$datos)
+	{
+		$this->db->where('id_order', $id_order);
+		$this->db->update('t_images_process', $datos);
+		return $this->db->affected_rows();
+	}
+
+	function get_image_process($id_order)
+	{
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_images_process');
+		if($query->num_rows > 0){
+			return $query;
+		}
+		else return false;
+	}
+
 	
 }
 	

@@ -34,5 +34,29 @@ Class model_embark extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function add_file($datos)
+	{
+		$this->db->insert('t_files', $datos);
+		return $this->db->affected_rows();
+	}
+
+	function delete_file($id_order)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->delete('t_files');
+		return $this->db->affected_rows();
+	}
+
+	function get_order_bills($id_order)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->where('id_files',1);
+		$query=$this->db->get('t_files');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
 }	
 ?>

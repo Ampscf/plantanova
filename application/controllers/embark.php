@@ -15,6 +15,7 @@ class Embark extends CI_Controller {
 	{
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$files=$this->model_embark->get_order_bills($this->uri->segment(3));
 		$template['fecha']=$order->result()[0]->order_date_submit;
 		$template['fecha_entrega']=$order->result()[0]->order_date_delivery;
 		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
@@ -24,6 +25,12 @@ class Embark extends CI_Controller {
 		$template['farmer']=$order->result()[0]->farmer;
 
 		$template['embarque_pedido']=$this->model_breakdown->get_embark($template['id_order']);
+		if($files != NULL){
+			foreach ($files as $key) {
+				echo $key->location;
+			}
+		} 
+		
 
 		if ($order->result()[0]->quotation == NULL){
 			$template['quotation']='';
@@ -61,6 +68,7 @@ class Embark extends CI_Controller {
 									<i class="fa fa-times"></i>
 	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->card_bill.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->card_bill.'</a>';
 		}
+		$template['dictum']='';
 
 		$template['embark'] = $this->model_breakdown->get_embark($template['id_order']);
 		$template['error']=$this->session->flashdata('error');
@@ -197,8 +205,14 @@ class Embark extends CI_Controller {
 		else
 		{
 			$data = $this->upload->data();
+			$datas = array(
+				'id_order' => $this->uri->segment(3),
+				'id_files' => 1,
+				'location' => $data['file_name']
+			);
 			$datos['bill'] = $data['file_name'];
-			$this->model_order->update_order($this->uri->segment(3),$datos);			
+			$this->model_order->update_order($this->uri->segment(3),$datos);
+			$this->model_embark->add_file($datas);		
 			
 			redirect('embark/index/'.$uri, 'refresh');
 		}

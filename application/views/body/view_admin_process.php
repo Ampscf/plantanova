@@ -129,6 +129,15 @@
 					Pinchado <input type="checkbox" name="check" id="check2" value="1"  />
 					Transplante <input type="checkbox" name="check" id="check3" value="1"  /></h2>
 					</div>
+
+					<div class="clear">&nbsp</div>
+						<div class="col-md-4">
+							<h5 style="color:red;"><?php 
+								if (isset($error)){
+									echo $error;		
+								}
+							?></h5>
+						</div>
 					
 					<div class="clear">&nbsp</div>
 	
@@ -147,15 +156,9 @@
 							<div class="col-md-2">
 								<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
 							</div>
-							<div class="col-md-2">
-								<a href="#myModal111" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
-							</div>
-							<div class="col-md-2">
-								<a href="#myModal112" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
-							</div>
-							<div class="col-md-2">
-								<a href="#myModal113" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
-							</div>
+							<?php echo $injert1;?>
+							<?php echo $injert2;?>
+							<?php echo $injert3;?>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_injerto)."%";?></labbel>
@@ -180,15 +183,9 @@
 							<div class="col-md-2">	
 								<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
 							</div>
-							<div class="col-md-2">
-								<a href="#myModal222" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
-							</div>
-							<div class="col-md-2">
-								<a href="#myModal223" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
-							</div>
-							<div class="col-md-2">
-								<a href="#myModal224" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
-							</div>
+							<?php echo $pinch1;?>
+							<?php echo $pinch2;?>
+							<?php echo $pinch3;?>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_pinchado)."%";?></labbel>
@@ -211,15 +208,9 @@
 							<div class="col-md-2">
 								<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
 							</div>
-							<div class="col-md-2">
-								<a href="#myModal333" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
-							</div>
-							<div class="col-md-2">
-								<a href="#myModal334" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
-							</div>
-							<div class="col-md-2">
-								<a href="#myModal335" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
-							</div>
+							<?php echo $trans1;?>
+							<?php echo $trans2;?>
+							<?php echo $trans3;?>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
@@ -961,3 +952,491 @@
 	});
 
 </script>
+
+			<div id="myModal111" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a injerto</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_injer1/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al injerto</p>
+							<input id="uploadFile" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn").onchange = function () {
+					    			document.getElementById("uploadFile").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal112" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a injerto</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_injer2/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al injerto</p>
+							<input id="uploadFile1" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn1" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn1").onchange = function () {
+					    			document.getElementById("uploadFile1").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal113" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a injerto</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_injer3/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al injerto</p>
+							<input id="uploadFile3" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn3" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn3").onchange = function () {
+					    			document.getElementById("uploadFile3").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal222" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a pinchado</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_pinch1/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al pinchado</p>
+							<input id="uploadFile4" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn4" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn4").onchange = function () {
+					    			document.getElementById("uploadFile4").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal223" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a pinchado</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_pinch2/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al pinchado</p>
+							<input id="uploadFile5" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn5" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn5").onchange = function () {
+					    			document.getElementById("uploadFile5").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal224" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a pinchado</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_pinch3/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al pinchado</p>
+							<input id="uploadFile6" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn6" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn6").onchange = function () {
+					    			document.getElementById("uploadFile6").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal335" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a transplante</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_trans1/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al transplante</p>
+							<input id="uploadFile7" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn7" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn7").onchange = function () {
+					    			document.getElementById("uploadFile7").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal336" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a transplante</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_trans2/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al transplante</p>
+							<input id="uploadFile8" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn8" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn8").onchange = function () {
+					    			document.getElementById("uploadFile8").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal337" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a transplante</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_trans3/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al transplante</p>
+							<input id="uploadFile9" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn9" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn9").onchange = function () {
+					    			document.getElementById("uploadFile9").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+
+
+			<div id="myModal444" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_injer1/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal445" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_injer2/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal446" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_injer3/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal553" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_pinch1/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal554" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_pinch2/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal555" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_pinch3/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal661" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_trans1/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal662" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_trans2/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal663" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_trans3/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
