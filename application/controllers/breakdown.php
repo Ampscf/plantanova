@@ -495,6 +495,7 @@ class Breakdown extends CI_Controller {
 		$id_breakdown = $this->input->post('breakdown_graft');
 		$graft_volume = $this->input->post('volume_graft');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		//maximo germinacion
 		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
 		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
 		
@@ -503,16 +504,34 @@ class Breakdown extends CI_Controller {
 		
 		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
 		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
+
+		//maximo pinchado
+		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+
+		//maximo transplante
+		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
 		
 		if ($rest_variety < $rest_rootstock){
-			$minimo=$rest_variety;
+			$maximo=$rest_variety;
+			if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
+				$maximo=$sum_punch[0]->volume;
+			}
+			if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
+				$maximo=$sum_transplant[0]->volume;
+			}
 		}else{
-			$minimo=$rest_rootstock;
+			$maximo=$rest_rootstock;
+			if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
+				$maximo=$sum_punch[0]->volume;
+			}
+			if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
+				$maximo=$sum_transplant[0]->volume;
+			}
 		}
 
 		//$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
 
-		if($graft_volume > $minimo /*|| $sum_graft[0]->volume + $graft_volume > $minimo*/) {
+		if($graft_volume > $maximo /*|| $sum_graft[0]->volume + $graft_volume > $maximo*/) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
@@ -522,10 +541,39 @@ class Breakdown extends CI_Controller {
 	public function max_volume_punch(){
 		$id_breakdown = $this->input->post('breakdown_punch');
 		$punch_volume = $this->input->post('volume_punch');
-		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
-		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		
+		//maximo germinacion
+		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
+		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
+		
+		$volume_graft_variety=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->variety,$breakdown[0]->id_order);
+		$volume_graft_rootstock=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->rootstock,$breakdown[0]->id_order);
+		
+		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
+		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
 
-		if($punch_volume > $sum_graft[0]->volume || $sum_punch[0]->volume + $punch_volume > $sum_graft[0]->volume){
+		//maximo pinchado
+		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+
+		//maximo transplante
+		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
+		
+		if ($rest_variety < $rest_rootstock){
+			$maximo=$rest_variety;
+		}else{
+			$maximo=$rest_rootstock;
+		}
+
+		if($sum_graft != 0 && $sum_graft[0]->volume < $maximo){
+				$maximo=$sum_graft[0]->volume;
+			}else if($sum_transplant != 0 && $sum_transplant[0]->volume < $maximo){
+				$maximo=$sum_transplant[0]->volume;
+			}
+			
+		//$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+
+		if($punch_volume > $maximo /*|| $sum_punch[0]->volume + $punch_volume > $sum_graft[0]->volume*/){
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
@@ -535,20 +583,47 @@ class Breakdown extends CI_Controller {
 	public function max_volume_transplant(){
 		$id_breakdown = $this->input->post('breakdown_transplant');
 		$transplant_volume = $this->input->post('volume_transplant');
-		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
-		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+		
 		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
 
-		if($sum_punch[0]->volume >0){
-			$max=$sum_punch[0]->volume;
-		}else if($sum_graft[0]->volume){
-			$max=$sum_graft[0]->volume;
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		//maximo germinacion
+		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
+		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
+		
+		$volume_graft_variety=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->variety,$breakdown[0]->id_order);
+		$volume_graft_rootstock=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->rootstock,$breakdown[0]->id_order);
+		
+		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
+		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
+
+		//maximo pinchado
+		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+
+		//maximo transplante
+		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+
+		
+		if ($rest_variety < $rest_rootstock){
+			$maximo=$rest_variety;
+		}else{
+			$maximo=$rest_rootstock;
 		}
 
-		if($transplant_volume>$max || $sum_transplant[0]->volume + $transplant_volume > $max){
-			echo "11";//false
-		}else{
-			echo "1";//true
+		if($sum_graft[0]->volume != 0 && $sum_graft[0]->volume < $maximo){
+				$maximo=$sum_graft[0]->volume;
+			}
+			
+		if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
+			$maximo=$sum_punch[0]->volume;
 		}
+
+		//$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
+
+		if($transplant_volume > $maximo /*|| $sum_graft[0]->volume + $graft_volume > $maximo*/) {
+	        echo "11";//false
+	    } else {
+	        echo "1";//true
+	    }
 	}
 }		

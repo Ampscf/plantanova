@@ -549,7 +549,7 @@ Class model_breakdown extends CI_Model
 		if($query->num_rows()>0){
 			return $query->result();
 		}
-		else return false;
+		else return 0;
 	}
 
 	function sum_punch($id_breakdown){
@@ -560,7 +560,7 @@ Class model_breakdown extends CI_Model
 		if($query->num_rows()>0){
 			return $query->result();
 		}
-		else return false;
+		else return 0;
 	}
 
 	function sum_transplant($id_breakdown){
@@ -571,7 +571,7 @@ Class model_breakdown extends CI_Model
 		if($query->num_rows()>0){
 			return $query->result();
 		}
-		else return false;
+		else return 0;
 	}
 
 	function update_vial($seed_name,$order,$viability_total)
