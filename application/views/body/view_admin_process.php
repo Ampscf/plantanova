@@ -513,7 +513,7 @@
 								</select>
 							</div><!-- End breakdown_graft -->
 							<div>
-								<input type="hidden" id="inputvalgraft" name="inputvalgraft" value="true">
+								<input type="text" id="inputvalgraft" name="inputvalgraft" value="true">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
@@ -650,7 +650,7 @@
 								</select>
 							</div><!-- End Cantidad -->
 							<div>
-								<input type="hidden" id="inputvalpunch" name="inputvalpunch" value="true">
+								<input type="text" id="inputvalpunch" name="inputvalpunch" value="true">
 							</div>
 
 							<div class="input-group">
@@ -789,7 +789,7 @@
 								</select>
 							</div><!-- End breakdown_transplant -->
 							<div>
-								<input type="hidden" id="inputvaltransplant" name="inputvaltransplant" value="true">
+								<input type="text" id="inputvaltransplant" name="inputvaltransplant" value="true">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
@@ -921,7 +921,6 @@
 		document.getElementById("divtransplante").style.display = "block";
 		document.getElementById("check3").checked = true;
 		document.getElementById("check3").disabled=true;
-		document.getElementById("check2").disabled=true;
 	}
 	
 
