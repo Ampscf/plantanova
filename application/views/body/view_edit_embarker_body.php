@@ -223,10 +223,17 @@
 								</div><!-- End volumen a entregar -->
 
 								<div class="clear">&nbsp</div>
-								<h3>Transportador</h3>
+								<h3>Transporte</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Transportador" name="transporter" id="transporter">
-								</div><!-- End transporte -->
+									<select class="form-control" name='transporter' id='transporter'>
+										<option value='-1' selected>--Selecciona un Transporte--</option>
+										<option value='Trailer 53' >Trailer 53</option>
+										<option value='Trailer 48'>Trailer 48</option>
+										<option value='Torton 3' >Torton 3</option>
+										<option value='Torton Media' >Torton Media</option>
+										<option value='Pickup' >Pickup</option>									
+									</select>	
+								</div><!-- End Cajas --><!-- End transporte -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Fletera</h3>
@@ -333,9 +340,9 @@
 
 				$("#registry").validate({
 							rules: {
-								transporter: {
-						           required: true
-						        },
+								transporter:{
+									transporter:true
+								},
 						        datepicker: {
 						        	required:true
 						        },
@@ -377,9 +384,7 @@
 								
 							},
 							messages: {
-                        		transporter: {
-									required: "El Campo Transportador es Requerido"
-								},
+                        		
 								datepicker:{
 	                				required:"El Campo Fecha es Requerido"
 	                			},
@@ -420,6 +425,15 @@
 								}
 						    }
 						});
+
+			$.validator.addMethod("transporter", transporter, "Selecciona un Transporte");
+
+			function trans(){
+				if (document.getElementById('trans').value == -1){
+					return false;
+				}
+				else return true;
+			}
 						
 			</script>
 

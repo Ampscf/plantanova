@@ -4,6 +4,7 @@
 		<th>Semilla</th>
 		<th>Cantidad</th>
 		<th>Lote</th>
+		<th>Marca</th>
 		<th>% de germinación</th>
 
 	<tbody>
@@ -17,6 +18,8 @@
 				echo "<td>" . $key->seed_name . "</td>";
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->batch . "</td>";
+				$mark=$this->model_seeds->get_mark_id_mark($key->id_seed_mark);
+				echo "<td>" .$mark[0]->mark ."</td>";
 				echo "<td>" . $key->germ_percentage ."%"."</td>";
 				echo "</tr>";
 			}
