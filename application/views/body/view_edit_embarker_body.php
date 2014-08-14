@@ -115,7 +115,9 @@
 								<h3>Cotización</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
+							</div>
+							<div class="col-md-10 col-md-offset-2">
 								<?php echo $quotation?>
 							</div>	
 						</div>
@@ -127,8 +129,10 @@
 							</div>
 							<div class="col-md-10 col-md-offset-1">
 								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+							</div>
+							<div class="col-md-10 col-md-offset-2">
 								<?php echo $contract?>
-							</div>	
+							</div>
 						</div>
 
 						<div class="col-md-12">	
@@ -138,8 +142,21 @@
 							</div>
 							<div class="col-md-10 col-md-offset-1">
 								<a href="#myModal1" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<?php echo $bill?>
-							</div>	
+							</div>
+							<?php 
+								if($bills != NULL){
+									foreach ($bills as $key) {
+										echo '<div class="col-md-10 col-md-offset-2">';
+										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>
+											  <a href="#myModal13"
+	                    						title="Eliminar"
+	                    						data-toggle="modal">
+											  <i class="fa fa-times"></i>
+	                			  			  </a>';
+										echo '</div>';
+									}
+								}
+							?>
 						</div>
 
 						<div class="col-md-12">	
@@ -148,9 +165,22 @@
 								<h3>Carta Factura</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<?php echo $card_bill?>
-							</div>	
+								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
+							</div>
+							<?php
+								if($card_bills != NULL){
+									foreach ($card_bills as $key) {
+										echo '<div class="col-md-10 col-md-offset-2">';
+										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>
+											  <a href="#myModal13"
+	                    						title="Eliminar"
+	                    						data-toggle="modal">
+											  <i class="fa fa-times"></i>
+	                			  			  </a>';
+										echo '</div>';
+									}
+								}
+							?>
 						</div>
 
 						<div class="col-md-12">	
@@ -159,9 +189,22 @@
 								<h3>Dictamen</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal21" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
-								<?php echo $dictum?>
-							</div>	
+								<a href="#myModal3" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
+							</div>
+							<?php
+								if($dictum != NULL){
+									foreach ($dictum as $key) {
+										echo '<div class="col-md-10 col-md-offset-2">';
+										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>
+											  <a href="#myModal13"
+	                    						title="Eliminar"
+	                    						data-toggle="modal">
+											  <i class="fa fa-times"></i>
+	                			  			  </a>';
+										echo '</div>';
+									}
+								}	 
+							?>
 						</div>		
 
 				</div><!-- End panel-body -->
@@ -553,6 +596,39 @@
 							<script>
 								document.getElementById("uploadBtn3").onchange = function () {
 					    			document.getElementById("uploadFile3").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<div id="myModal3" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar PDF de dictamen</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('embark/do_upload5/'.$this->uri->segment(3));?>
+                			<p>Elige un PDF para subir en el dictamen</p>
+							<input id="uploadFile4" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn4" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn4").onchange = function () {
+					    			document.getElementById("uploadFile4").value = this.value;
 								};
 							</script>
 

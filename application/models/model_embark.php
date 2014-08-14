@@ -58,5 +58,27 @@ Class model_embark extends CI_Model
 		else return false;
 	}
 
+	function get_card_bills($id_order)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->where('id_files',2);
+		$query=$this->db->get('t_files');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_order_dictum($id_order)
+	{
+		$this->db->where('id_order',$id_order);
+		$this->db->where('id_files',3);
+		$query=$this->db->get('t_files');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
 }	
 ?>

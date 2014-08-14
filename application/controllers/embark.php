@@ -15,7 +15,6 @@ class Embark extends CI_Controller {
 	{
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
-		$files=$this->model_embark->get_order_bills($this->uri->segment(3));
 		$template['fecha']=$order->result()[0]->order_date_submit;
 		$template['fecha_entrega']=$order->result()[0]->order_date_delivery;
 		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
@@ -24,51 +23,31 @@ class Embark extends CI_Controller {
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
 
-		$template['embarque_pedido']=$this->model_breakdown->get_embark($template['id_order']);
-		if($files != NULL){
-			foreach ($files as $key) {
-				echo $key->location;
-			}
-		} 
-		
+		$template['embarque_pedido']=$this->model_breakdown->get_embark($template['id_order']);		
 
 		if ($order->result()[0]->quotation == NULL){
 			$template['quotation']='';
 		} else {
-			$template['quotation']='<a href="#myModal11" class="btn btn-default"
+			$template['quotation']='<a href="/plantanova/uploads/'.$order->result()[0]->quotation.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->quotation.'</a>
+								<a href="#myModal11" 
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
-	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->quotation.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->quotation.'</a>';
+	                			</a>';
 		}
 		if ($order->result()[0]->contract == NULL){
 			$template['contract']='';
 		} else {
-			$template['contract']='<a href="#myModal12" class="btn btn-default"
+			$template['contract']='<a href="/plantanova/uploads/'.$order->result()[0]->contract.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->contract.'</a>
+								<a href="#myModal12" 
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
-	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->contract.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->contract.'</a>';
+	                			</a>';
 		}
-		if ($order->result()[0]->bill == NULL){
-			$template['bill']='';
-		} else {
-			$template['bill']='<a href="#myModal13" class="btn btn-default"
-	                    			title="Eliminar"
-	                    			data-toggle="modal">
-									<i class="fa fa-times"></i>
-	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->bill.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->bill.'</a>';
-		}
-		if ($order->result()[0]->card_bill == NULL){
-			$template['card_bill']='';
-		} else {
-			$template['card_bill']='<a href="#myModal14" class="btn btn-default"
-	                    			title="Eliminar"
-	                    			data-toggle="modal">
-									<i class="fa fa-times"></i>
-	                			</a> <a href="/plantanova/uploads/'.$order->result()[0]->card_bill.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->card_bill.'</a>';
-		}
-		$template['dictum']='';
+		$template['bills']=$this->model_embark->get_order_bills($this->uri->segment(3));
+		$template['card_bills']=$this->model_embark->get_card_bills($this->uri->segment(3));		
+		$template['dictum']=$this->model_embark->get_order_dictum($this->uri->segment(3));
 
 		$template['embark'] = $this->model_breakdown->get_embark($template['id_order']);
 		$template['error']=$this->session->flashdata('error');
@@ -210,8 +189,6 @@ class Embark extends CI_Controller {
 				'id_files' => 1,
 				'location' => $data['file_name']
 			);
-			$datos['bill'] = $data['file_name'];
-			$this->model_order->update_order($this->uri->segment(3),$datos);
 			$this->model_embark->add_file($datas);		
 			
 			redirect('embark/index/'.$uri, 'refresh');
@@ -235,12 +212,45 @@ class Embark extends CI_Controller {
 		else
 		{
 			$data = $this->upload->data();
-			$datos['card_bill'] = $data['file_name'];
-			$this->model_order->update_order($this->uri->segment(3),$datos);			
+			$datas = array(
+				'id_order' => $this->uri->segment(3),
+				'id_files' => 2,
+				'location' => $data['file_name']
+			);
+			$this->model_embark->add_file($datas);				
 			
 			redirect('embark/index/'.$uri, 'refresh');
 		}
 	}
+
+	function do_upload5($uri)
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'pdf';
+		$config['max_size']	= '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo'/*$this->upload->display_errors()*/);
+
+			redirect('embark/index/'.$uri);
+		}
+		else
+		{
+			$data = $this->upload->data();
+			$datas = array(
+				'id_order' => $this->uri->segment(3),
+				'id_files' => 3,
+				'location' => $data['file_name']
+			);
+			$this->model_embark->add_file($datas);				
+			
+			redirect('embark/index/'.$uri, 'refresh');
+		}
+	}
+
 
 	function delete_quotation()
 	{
