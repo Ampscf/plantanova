@@ -25,12 +25,12 @@
 	
 						<div class="col-md-3">					
 							<div class="input-group input-group-lg">
-								<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar Variedad</a>
+								<a href="#myModal2" class="btn btn-primary" data-toggle="modal">+Agregar Variedad</a>
 							</div>				
 						</div>
 						<div class="col-md-3">
 							<div class="input-group input-group-lg">
-								<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Portainjerto</a>
+								<a href="#myModal3" class="btn btn-primary" data-toggle="modal">+Agregar Portainjerto</a>
 							</div>	
 						</div>
 
@@ -83,7 +83,7 @@
 						
 						<div class="col-md-3">					
 								<div class="input-group input-group-lg">
-									<a href="#myModal" class="btn btn-success" data-toggle="modal" style="margin-left: 71px;">+Agregar</a>
+									<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar Desglose</a>
 									
 								</div><!-- End Desglose -->					
 						</div>
