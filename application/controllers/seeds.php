@@ -46,6 +46,7 @@ class Seeds extends CI_Controller {
 		$template['suma']=$this->model_seeds->suma_volumen_seeds($this->uri->segment(3));	
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
+		$template['mark']=$this->model_seeds->get_mark();
 
 		$this->load->view('main',$template);
 	}
@@ -62,6 +63,7 @@ class Seeds extends CI_Controller {
 			$date=$this->input->post('datepicker');
 			$data['seeds_date'] =  date("Y-m-d H:i:s", strtotime($date));
 			$data['germ_percentage']=$this->input->post('germ_percentage');
+			$data['id_seed_mark']=$this->input->post('mark');
 			
 			$this->model_seeds->insert_seeds($data);
 
@@ -255,6 +257,13 @@ class Seeds extends CI_Controller {
 			echo "no";
 		}*/
 		$this->load->view('main',$template);
+	}
+
+	public function register_mark(){
+		$datos['mark']=$this->input->post('mark');
+		$this->model_seeds->register_mark($datos);
+		redirect("seeds/index", "refresh");
+
 	}
 
 

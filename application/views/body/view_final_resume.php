@@ -113,7 +113,7 @@
 										echo "<td>" . $subtype_name_a . "</td>";
 										echo "<td>" . $key->variety . "</td>";
 										echo "<td>" . $key->rootstock . "</td>";
-										echo "<td>" . $key->volume . "</td>";
+										echo "<td>" . number_format($key->volume) . "</td>";
 										echo "</tr>";
 									}
 								}
@@ -140,7 +140,7 @@
 								foreach ($sowing as $key) 
 								{
 									echo "<tr>";
-									echo "<td>" . $key->volume . "</td>";
+									echo "<td>" . number_format($key->volume) . "</td>";
 									echo "<td>" . date("d-m-Y",strtotime($key->sowing_date)) . "</td>";
 									//$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 									echo "<td>" .$key->seed. "</td>";
@@ -206,7 +206,7 @@
 										{
 											echo "<tr>";
 											echo "<td>".$key->seed_name."</td>";
-											echo "<td>" . $key->volume . "</td>";
+											echo "<td>" . number_format($key->volume) . "</td>";
 											echo "<td>" . date("d-m-Y",strtotime($key->germ_date)) . "</td>";
 											
 											if($key->germ_percentage==0){
@@ -278,7 +278,7 @@
 									foreach ($graft as $key) 
 									{
 										echo "<tr>";
-										echo "<td>" . $key->volume . "</td>";
+										echo "<td>" . number_format($key->volume) . "</td>";
 										echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 										$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 										echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
@@ -338,7 +338,7 @@
 										foreach ($punch as $key) 
 										{
 											echo "<tr>";
-											echo "<td>" . $key->volume . "</td>";
+											echo "<td>" . number_format($key->volume) . "</td>";
 											echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 											$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 											echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
@@ -398,7 +398,7 @@
 										foreach ($transplant as $key) 
 										{
 											echo "<tr>";
-											echo "<td>" . $key->volume . "</td>";
+											echo "<td>" . number_format($key->volume) . "</td>";
 											echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
 											$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
 											echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";

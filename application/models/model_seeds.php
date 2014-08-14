@@ -170,6 +170,30 @@ Class model_seeds extends CI_Model
 		}
 	}
 
+	function get_mark(){
+		$query=$this->db->get('t_seed_mark');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function get_mark_id_mark($id_seed_mark){
+		$this->db->where('id_seed_mark',$id_seed_mark);
+		$query=$this->db->get('t_seed_mark');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function register_mark($datos){
+		$this->db->insert('t_seed_mark', $datos); 		
+		return $this->db->affected_rows();
+	}
+
 
 }
 ?>

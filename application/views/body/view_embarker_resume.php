@@ -84,7 +84,7 @@
 											<p><b>Fecha de Arribo:</b> <?php echo date("d-m-Y", strtotime($key->date_delivery));?></p>
 										</div><!-- End fecha -->
 										<div class="input-group input-group-lg">
-											<p><b>Volumen a Entregar:</b> <?php echo $key->volume;?></p>
+											<p><b>Volumen a Entregar:</b> <?php echo number_format($key->volume);?></p>
 										</div><!-- End volumen a entregar -->
 										<div class="input-group input-group-lg">
 											<p><b>Transportador:</b> <?php echo $key->transport;?></p>

@@ -118,13 +118,25 @@
 								
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume" value="<?php echo set_value('volume'); ?>">
 							</div><!-- End cantidad -->							
-
+<div class="clear">&nbsp</div>
+							<h3>Marca</h3>
+							<div class="input-group input-group-lg">								
+								<select class="form-control" name="mark" id="mark" >
+									<?php 
+										foreach($mark as $key)
+										{
+											echo "<option value='" . $key->id_seed_mark . "' set_select('id_seed_mark','".$key->id_seed_mark."')>" . $key->mark . "</option>";
+										}
+									?>
+								</select>
+							</div><!-- End semilla -->
 							<div class="clear">&nbsp</div>
 							<h3>Lote</h3>
 							<div class="input-group input-group-lg">
-								
 								<input type="text" class="form-control" placeholder="Lote" name="batch" id="batch" value="<?php echo set_value('batch'); ?>">
 							</div><!-- End lote -->
+
+							
 							
 							<div class="clear">&nbsp</div>
 							<h3>Fecha</h3>
