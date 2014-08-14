@@ -120,7 +120,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Marca</h3>
 							<div class="input-group input-group-lg">								
-								<select class="form-control" name="seed_name" id="seed_name" >
+								<select class="form-control" name="mark" id="mark" >
 									<?php 
 										foreach($ma as $key)
 										{

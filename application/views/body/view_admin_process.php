@@ -160,9 +160,10 @@
 							<?php echo $injert2;?>
 							<?php echo $injert3;?>
 						</div>
-						<!--<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo round($alcance_injerto)."%";?></labbel>
-						</div>-->
+						</br></br>
+
+						<a href="<?php echo base_url("index.php/order/results_graft/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
+						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 					</div>
 
 					<div class="clear">&nbsp</div>
@@ -186,6 +187,10 @@
 							<?php echo $pinch1;?>
 							<?php echo $pinch2;?>
 							<?php echo $pinch3;?>
+							</br></br>
+
+						<a href="<?php echo base_url("index.php/order/results_punch/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
+						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_pinchado)."%";?></labbel>
@@ -211,6 +216,11 @@
 							<?php echo $trans1;?>
 							<?php echo $trans2;?>
 							<?php echo $trans3;?>
+						</div>
+						</br></br>
+
+						<a href="<?php echo base_url("index.php/order/results_transplant/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
+						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 						</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>

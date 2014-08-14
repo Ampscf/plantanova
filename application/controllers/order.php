@@ -795,6 +795,48 @@ class Order extends CI_Controller {
 		$this->load->view('body/view_results.php', $template);
 	}
 
+	public function results_graft()
+	{
+		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
+		$graft=$this->model_order->get_graft($breakdown[0]->id_breakdown);
+		if($graft != false){
+			$template['breakdown']=$breakdown;
+		$this->load->view('body/view_results_graft.php', $template);
+
+		}else{
+			$template['breakdown']=null;
+			$this->load->view('body/view_results_graft.php', $template);
+		}
+	}
+
+	public function results_punch()
+	{
+		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
+		$punch=$this->model_order->get_punch($breakdown[0]->id_breakdown);
+		if($punch != false){
+			$template['breakdown']=$breakdown;
+		$this->load->view('body/view_results_punch.php', $template);
+
+		}else{
+			$template['breakdown']=null;
+			$this->load->view('body/view_results_punch.php', $template);
+		}	
+	}
+
+	public function results_transplant()
+	{
+		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
+		$punch=$this->model_order->get_transplant($breakdown[0]->id_breakdown);
+		if($punch != false){
+			$template['breakdown']=$breakdown;
+		$this->load->view('body/view_results_transplant.php', $template);
+
+		}else{
+			$template['breakdown']=null;
+			$this->load->view('body/view_results_transplant.php', $template);
+		}	
+	}
+
 	public function register_variety(){
 		$var=$this->input->post('variedad');
 		$datos['variety_name']=strtoupper($var);

@@ -628,20 +628,15 @@ class Breakdown extends CI_Controller {
 		
 		if ($rest_variety < $rest_rootstock){
 			$maximo=$rest_variety;
-			if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
-				$maximo=$sum_punch[0]->volume;
-			}
-			if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
-				$maximo=$sum_transplant[0]->volume;
-			}
 		}else{
 			$maximo=$rest_rootstock;
-			if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
+		}
+
+		if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
 				$maximo=$sum_punch[0]->volume;
 			}
-			if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
+		if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
 				$maximo=$sum_transplant[0]->volume;
-			}
 		}
 
 		//$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
@@ -657,7 +652,6 @@ class Breakdown extends CI_Controller {
 		$id_breakdown = $this->input->post('breakdown_punch');
 		$punch_volume = $this->input->post('volume_punch');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
-		
 		//maximo germinacion
 		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
 		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
@@ -668,7 +662,7 @@ class Breakdown extends CI_Controller {
 		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
 		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
 
-		//maximo pinchado
+		//maximo injerto
 		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
 
 		//maximo transplante
@@ -680,19 +674,20 @@ class Breakdown extends CI_Controller {
 			$maximo=$rest_rootstock;
 		}
 
-		if($sum_graft != 0 && $sum_graft[0]->volume < $maximo){
+		if($sum_graft[0]->volume != 0 && $sum_graft[0]->volume < $maximo){
 				$maximo=$sum_graft[0]->volume;
-			}else if($sum_transplant != 0 && $sum_transplant[0]->volume < $maximo){
-				$maximo=$sum_transplant[0]->volume;
 			}
-			
-		//$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+		if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
+				$maximo=$sum_transplant[0]->volume;
+		}
 
-		if($punch_volume > $maximo /*|| $sum_punch[0]->volume + $punch_volume > $sum_graft[0]->volume*/){
+		//$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+
+		if($punch_volume > $maximo /*|| $sum_graft[0]->volume + $graft_volume > $maximo*/) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
-	    }		
+	    }
 	}
 
 	public function max_volume_transplant(){
