@@ -47,10 +47,27 @@ Class model_embark extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function delete_fils($id_file)
+	{
+		$this->db->where('id_file',$id_file);
+		$this->db->delete('t_files');
+		return $this->db->affected_rows();
+	}
+
 	function get_order_bills($id_order)
 	{
 		$this->db->where('id_order',$id_order);
 		$this->db->where('id_files',1);
+		$query=$this->db->get('t_files');
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_card_bill($id_file)
+	{
+		$this->db->where('id_file',$id_file);
 		$query=$this->db->get('t_files');
 		if($query->num_rows > 0){
 			return $query->result();

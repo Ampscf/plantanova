@@ -148,12 +148,32 @@
 									foreach ($bills as $key) {
 										echo '<div class="col-md-10 col-md-offset-2">';
 										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>
-											  <a href="#myModal13"
+											  <a href="#Modal'.$key->id_file.'"
 	                    						title="Eliminar"
 	                    						data-toggle="modal">
 											  <i class="fa fa-times"></i>
 	                			  			  </a>';
 										echo '</div>';
+										echo '<div id="Modal'.$key->id_file.'" class="modal fade">
+			    								<div class="modal-dialog">
+			        								<div class="modal-content">
+			            								<div class="modal-header">
+			                								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                								<h4 class="modal-title">Confirmación</h4>
+			            								</div>
+			            								<div class="modal-body">			                
+			                								<p>¿Estás seguro de querer eliminar este archivo?'.$key->id_file.'</p>
+			                								<p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            								</div>
+			            								<div class="modal-footer">';
+			            							   echo form_open('embark/delete_card_bill/'.$key->id_file.'/'.$this->uri->segment(3));
+											           echo '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+											                <button type="submit" class="btn btn-primary">Borrar</button>
+											            	</form>
+											            </div>
+											        </div>
+											    </div>
+											</div>';
 									}
 								}
 							?>
@@ -172,12 +192,32 @@
 									foreach ($card_bills as $key) {
 										echo '<div class="col-md-10 col-md-offset-2">';
 										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>
-											  <a href="#myModal13"
+											  <a href="#Modal'.$key->id_file.'"
 	                    						title="Eliminar"
 	                    						data-toggle="modal">
 											  <i class="fa fa-times"></i>
 	                			  			  </a>';
 										echo '</div>';
+										echo '<div id="Modal'.$key->id_file.'" class="modal fade">
+			    								<div class="modal-dialog">
+			        								<div class="modal-content">
+			            								<div class="modal-header">
+			                								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                								<h4 class="modal-title">Confirmación</h4>
+			            								</div>
+			            								<div class="modal-body">			                
+			                								<p>¿Estás seguro de querer eliminar este archivo?'.$key->id_file.'</p>
+			                								<p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            								</div>
+			            								<div class="modal-footer">';
+			            							   echo form_open('embark/delete_card_bill/'.$key->id_file.'/'.$this->uri->segment(3));
+											           echo '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+											                <button type="submit" class="btn btn-primary">Borrar</button>
+											            	</form>
+											            </div>
+											        </div>
+											    </div>
+											</div>';
 									}
 								}
 							?>
@@ -196,12 +236,32 @@
 									foreach ($dictum as $key) {
 										echo '<div class="col-md-10 col-md-offset-2">';
 										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>
-											  <a href="#myModal13"
+											  <a href="#Modal'.$key->id_file.'"
 	                    						title="Eliminar"
 	                    						data-toggle="modal">
 											  <i class="fa fa-times"></i>
 	                			  			  </a>';
 										echo '</div>';
+										echo '<div id="Modal'.$key->id_file.'" class="modal fade">
+			    								<div class="modal-dialog">
+			        								<div class="modal-content">
+			            								<div class="modal-header">
+			                								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                								<h4 class="modal-title">Confirmación</h4>
+			            								</div>
+			            								<div class="modal-body">			                
+			                								<p>¿Estás seguro de querer eliminar este archivo?'.$key->id_file.'</p>
+			                								<p class="text-warning"><small>El archivo será eliminado completamente y no podrá ser recuperado.</small></p>
+			            								</div>
+			            								<div class="modal-footer">';
+			            							   echo form_open('embark/delete_card_bill/'.$key->id_file.'/'.$this->uri->segment(3));
+											           echo '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+											                <button type="submit" class="btn btn-primary">Borrar</button>
+											            	</form>
+											            </div>
+											        </div>
+											    </div>
+											</div>';
 									}
 								}	 
 							?>

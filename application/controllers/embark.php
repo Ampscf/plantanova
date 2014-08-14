@@ -284,39 +284,34 @@ class Embark extends CI_Controller {
 		}
 	}
 
-	function delete_bill()
+	function delete_bill($id_file)
 	{
-		$data = array(
-				'bill' => NULL
-			);
-		$order = $this->model_order->get_order_id_order($this->uri->segment(3));
-		$path = 'uploads/'.$order->result()[0]->bill;
-		$this->model_order->update_order($this->uri->segment(3),$data);
+		$card_bill = $this->model_embark->get_card_bill($id_file);
+		$path = 'uploads/'.$card_bill[0]->location;
+		$this->model_embark->delete_fils($id_file);
 		if(unlink($path)) {
-     		redirect('embark/index/'.$this->uri->segment(3));
+     		redirect('embark/index/'.$this->uri->segment(4));
 		}
 		else {
      		echo 'errors occured';
 		}
 	}
 
-	function delete_card_bill()
+	function delete_card_bill($id_file)
 	{
-		$data = array(
-				'card_bill' => NULL
-			);
-		$order = $this->model_order->get_order_id_order($this->uri->segment(3));
-		$path = 'uploads/'.$order->result()[0]->card_bill;
-		$this->model_order->update_order($this->uri->segment(3),$data); 
+		$card_bill = $this->model_embark->get_card_bill($id_file);
+		$path = 'uploads/'.$card_bill[0]->location;
+		$this->model_embark->delete_fils($id_file); 
 		if(unlink($path)) {
-     		redirect('embark/index/'.$this->uri->segment(3));
+     		redirect('embark/index/'.$this->uri->segment(4));
 		}
 		else {
      		echo 'errors occured';
 		}
 	}
 
-	function delete_embark(){
+	function delete_embark()
+	{
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
