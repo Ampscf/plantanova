@@ -41,6 +41,23 @@
 				            </div>	
 			        	</form>
 
+			        <script>
+
+					  	    
+						$("#register_mark").validate({
+							rules: {
+								mark:{
+									required: true
+								}								
+							},
+							messages: {
+                        		mark:{
+                        			required:"Este Campo es Requerido"
+                        		}
+				            }
+						});
+					</script>
+
 
 					</div>
 				</div>

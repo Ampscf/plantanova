@@ -76,7 +76,6 @@
 						<div class="clear">&nbsp</div>
 						<?php include_once('application/views/extra/tabla_semillas.php'); ?>
 					</div>
-
 					<?php 
 			$attributes = array('id' => 'register_seeds','name'=>'register_seeds');
 			echo form_open('seeds/register_seeds/'.$this->uri->segment(3).'/'.$this->uri->segment(4),$attributes); 
@@ -118,14 +117,14 @@
 								
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume" value="<?php echo set_value('volume'); ?>">
 							</div><!-- End cantidad -->							
-<div class="clear">&nbsp</div>
+							<div class="clear">&nbsp</div>
 							<h3>Marca</h3>
 							<div class="input-group input-group-lg">								
-								<select class="form-control" name="mark" id="mark" >
+								<select class="form-control" name="seed_name" id="seed_name" >
 									<?php 
-										foreach($mark as $key)
+										foreach($ma as $key)
 										{
-											echo "<option value='" . $key->id_seed_mark . "' set_select('id_seed_mark','".$key->id_seed_mark."')>" . $key->mark . "</option>";
+											echo "<option value='" . $key->id_seed_mark . "' set_select('id_order','".$key->id_seed_mark."')>" . $key->mark . "</option>";
 										}
 									?>
 								</select>
@@ -201,7 +200,7 @@
 
 						
 						
-						</script>	
+				</script>	
 
 				<div class="panel-footer">
 					<div class="row">

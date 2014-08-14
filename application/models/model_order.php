@@ -952,5 +952,27 @@ Class model_order extends CI_Model
 		}
 		else return null;
 	}
+
+	function register_variety($datos){
+
+		$this->db->where('variety_name',$datos['variety_name']);
+		$query=$this->db->get('t_variety');
+		if($query->num_rows() == 0){
+			$this->db->insert('t_variety', $datos); 		
+			return $this->db->affected_rows();
+		}
+		else return false;
+		
+	}
+
+	function register_rootstock($datos){
+		$this->db->where('rootstock_name',$datos['rootstock_name']);
+		$query=$this->db->get('t_rootstock');
+		if($query->num_rows() == 0){
+			$this->db->insert('t_rootstock', $datos); 		
+			return $this->db->affected_rows();
+		}
+		else return false;
+	}
 	
 }

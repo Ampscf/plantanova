@@ -172,7 +172,7 @@ Class model_seeds extends CI_Model
 
 	function get_mark(){
 		$query=$this->db->get('t_seed_mark');
-		if($query->num_rows()>0){
+		if($query->num_rows > 0){
 			return $query->result();
 		}else{
 			return false;

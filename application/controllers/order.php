@@ -794,4 +794,20 @@ class Order extends CI_Controller {
 		$template['orders']=$this->model_order->get_order_seeds_info($this->uri->segment(3));
 		$this->load->view('body/view_results.php', $template);
 	}
+
+	public function register_variety(){
+		$var=$this->input->post('variedad');
+		$datos['variety_name']=strtoupper($var);
+		$this->model_order->register_variety($datos);
+		redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+
+	}
+
+	public function register_rootstock(){
+		$porta=$this->input->post('portainjerto');
+		$datos['rootstock_name']=strtoupper($porta);
+		$this->model_order->register_rootstock($datos);
+		redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+
+	}
 }
