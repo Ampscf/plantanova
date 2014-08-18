@@ -841,7 +841,7 @@ class Order extends CI_Controller {
 		$var=$this->input->post('variedad');
 		$datos['variety_name']=strtoupper($var);
 		$this->model_order->register_variety($datos);
-		redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+		redirect("seeds/index", "refresh");
 
 	}
 
@@ -849,7 +849,7 @@ class Order extends CI_Controller {
 		$porta=$this->input->post('portainjerto');
 		$datos['rootstock_name']=strtoupper($porta);
 		$this->model_order->register_rootstock($datos);
-		redirect("order/load_second_step_two/".$this->uri->segment(3), "refresh");
+		redirect("seeds/index", "refresh");
 
 	}
 }

@@ -610,38 +610,42 @@ class Breakdown extends CI_Controller {
 		$id_breakdown = $this->input->post('breakdown_graft');
 		$graft_volume = $this->input->post('volume_graft');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
-		//maximo germinacion
-		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
-		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
 		
-		$volume_graft_variety=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->variety,$breakdown[0]->id_order);
-		$volume_graft_rootstock=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->rootstock,$breakdown[0]->id_order);
 		
-		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
-		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
 
-		//maximo pinchado
-		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
 
-		//maximo transplante
-		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
-		
-		if ($rest_variety < $rest_rootstock){
-			$maximo=$rest_variety;
-		}else{
-			$maximo=$rest_rootstock;
-		}
 
-		if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
-				$maximo=$sum_punch[0]->volume;
+		if($total_semillas1[0]->viability_total < $total_semillas2[0]->viability_total){
+			$maximo=$total_semillas1[0]->viability_total;
+
+			if($total_semillas1[0]->punch_total != 0 && $total_semillas1[0]->punch_total < $maximo){
+				$maximo=$total_semillas1[0]->punch_total;
 			}
-		if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
-				$maximo=$sum_transplant[0]->volume;
+			if($total_semillas1[0]->transplant_total != 0 && $total_semillas1[0]->transplant_total < $maximo ){
+				$maximo=$total_semillas1[0]->transplant_total;
+			}
+			$maximo2=$total_semillas1[0]->graft_total + $graft_volume;
+		}else{
+			$maximo=$total_semillas2[0]->viability_total;
+
+			if($total_semillas2[0]->punch_total != 0 && $total_semillas2[0]->punch_total < $maximo)
+			{
+				$maximo=$total_semillas2[0]->punch_total;
+			}
+			if($total_semillas2[0]->transplant_total != 0 && $total_semillas2[0]->transplant_total < $maximo)
+			{
+				$maximo=$total_semillas2[0]->transplant_total;
+			}
+			$maximo2=$total_semillas2[0]->graft_total + $graft_volume;
 		}
 
-		//$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+		$maximo2=$total_semillas1[0]->graft_total + $graft_volume;
 
-		if($graft_volume > $maximo /*|| $sum_graft[0]->volume + $graft_volume > $maximo*/) {
+		if($maximo < $graft_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
@@ -652,38 +656,37 @@ class Breakdown extends CI_Controller {
 		$id_breakdown = $this->input->post('breakdown_punch');
 		$punch_volume = $this->input->post('volume_punch');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
-		//maximo germinacion
-		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
-		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
-		
-		$volume_graft_variety=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->variety,$breakdown[0]->id_order);
-		$volume_graft_rootstock=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->rootstock,$breakdown[0]->id_order);
-		
-		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
-		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
+	
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
 
-		//maximo injerto
-		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
 
-		//maximo transplante
-		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
-		
-		if ($rest_variety < $rest_rootstock){
-			$maximo=$rest_variety;
-		}else{
-			$maximo=$rest_rootstock;
-		}
 
-		if($sum_graft[0]->volume != 0 && $sum_graft[0]->volume < $maximo){
-				$maximo=$sum_graft[0]->volume;
+		if($total_semillas1[0]->viability_total < $total_semillas2[0]->viability_total){
+			$maximo=$total_semillas1[0]->viability_total;
+
+			if($total_semillas1[0]->graft_total != 0 && $total_semillas1[0]->graft_total < $maximo){
+				$maximo=$total_semillas1[0]->graft_total;
 			}
-		if($sum_transplant[0]->volume != 0 && $sum_transplant[0]->volume < $maximo){
-				$maximo=$sum_transplant[0]->volume;
+			if($total_semillas1[0]->transplant_total != 0 && $total_semillas1[0]->transplant_total < $maximo ){
+				$maximo=$total_semillas1[0]->transplant_total;
+			}
+			$maximo2=$total_semillas1[0]->punch_total + $punch_volume;
+		}else{
+			$maximo=$total_semillas2[0]->viability_total;
+
+			if($total_semillas2[0]->graft_total != 0 && $total_semillas2[0]->graft_total < $maximo){
+				$maximo=$total_semillas2[0]->graft_total;
+			}
+			if($total_semillas2[0]->transplant_total != 0 && $total_semillas2[0]->transplant_total < $maximo){
+				$maximo=$total_semillas2[0]->transplant_total;
+			}
+			$maximo2=$total_semillas2[0]->punch_total + $punch_volume;
 		}
 
-		//$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
-
-		if($punch_volume > $maximo /*|| $sum_graft[0]->volume + $graft_volume > $maximo*/) {
+		if($maximo < $punch_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
@@ -693,44 +696,38 @@ class Breakdown extends CI_Controller {
 	public function max_volume_transplant(){
 		$id_breakdown = $this->input->post('breakdown_transplant');
 		$transplant_volume = $this->input->post('volume_transplant');
-		
-		$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
-
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
-		//maximo germinacion
-		$sum_variety=$this->model_breakdown-> sum_seed($breakdown[0]->variety, $breakdown[0]->id_order);//volumen que germino en variedad
-		$sum_rootstock=$this->model_breakdown-> sum_seed($breakdown[0]->rootstock, $breakdown[0]->id_order);//volumen que germino en portainjerto
 		
-		$volume_graft_variety=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->variety,$breakdown[0]->id_order);
-		$volume_graft_rootstock=$this->model_breakdown->get_volume_graft_seed($breakdown[0]->rootstock,$breakdown[0]->id_order);
-		
-		$rest_variety=$sum_variety[0]->volume - $volume_graft_variety[0]->graft_total;
-		$rest_rootstock=$sum_rootstock[0]->volume - $volume_graft_rootstock[0]->graft_total;
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
 
-		//maximo pinchado
-		$sum_punch=$this->model_breakdown->sum_punch($id_breakdown);
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
 
-		//maximo transplante
-		$sum_graft=$this->model_breakdown->sum_graft($id_breakdown);
 
-		
-		if ($rest_variety < $rest_rootstock){
-			$maximo=$rest_variety;
-		}else{
-			$maximo=$rest_rootstock;
-		}
+		if($total_semillas1[0]->viability_total < $total_semillas2[0]->viability_total){
+			$maximo=$total_semillas1[0]->viability_total;
 
-		if($sum_graft[0]->volume != 0 && $sum_graft[0]->volume < $maximo){
-				$maximo=$sum_graft[0]->volume;
+			if($total_semillas1[0]->graft_total != 0 && $total_semillas1[0]->graft_total < $maximo){
+				$maximo=$total_semillas1[0]->graft_total;
 			}
-			
-		if($sum_punch[0]->volume != 0 && $sum_punch[0]->volume < $maximo){
-			$maximo=$sum_punch[0]->volume;
+			if($total_semillas1[0]->punch_total != 0 && $total_semillas1[0]->punch_total < $maximo ){
+				$maximo=$total_semillas1[0]->punch_total;
+			}
+			$maximo2=$total_semillas1[0]->transplant_total + $transplant_volume;
+		}else{
+			$maximo=$total_semillas2[0]->viability_total;
+
+			if($total_semillas2[0]->graft_total != 0 && $total_semillas2[0]->graft_total < $maximo){
+				$maximo=$total_semillas2[0]->graft_total;
+			}
+			if($total_semillas2[0]->punch_total != 0 && $total_semillas2[0]->punch_total < $maximo){
+				$maximo=$total_semillas2[0]->punch_total;
+			}
+			$maximo2=$total_semillas2[0]->transplant_total + $transplant_volume;
 		}
 
-		//$sum_transplant=$this->model_breakdown->sum_transplant($id_breakdown);
-
-		if($transplant_volume > $maximo /*|| $sum_graft[0]->volume + $graft_volume > $maximo*/) {
+		if($maximo < $transplant_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true

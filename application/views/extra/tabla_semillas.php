@@ -19,8 +19,7 @@
 				echo "<td>" . $key->seed_name . "</td>";
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->batch . "</td>";
-				$mark=$this->model_seeds->get_mark_id_mark($key->id_seed_mark);
-				echo "<td>" .$mark[0]->mark ."</td>";
+				echo "<td>" .$key->mark ."</td>";
 				if($key->germ_percentage==0){
 					echo "<td>N/A</td>";
 				}else{

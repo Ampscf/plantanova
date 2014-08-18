@@ -343,8 +343,8 @@
 										<option value='-1' selected>--Selecciona un Transporte--</option>
 										<option value='Trailer 53' >Trailer 53</option>
 										<option value='Trailer 48'>Trailer 48</option>
-										<option value='Torton 3' >Torton 3</option>
-										<option value='Torton Media' >Torton Media</option>
+										<option value='Torton 3' >Torton</option>
+										<option value='Camioneta de tres y media' >Camioneta de tres y media</option>
 										<option value='Pickup' >Pickup</option>									
 									</select>	
 								</div><!-- End Cajas --><!-- End transporte -->

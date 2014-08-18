@@ -65,7 +65,7 @@ class Seeds extends CI_Controller {
 			$date=$this->input->post('datepicker');
 			$data['seeds_date'] =  date("Y-m-d H:i:s", strtotime($date));
 			$data['germ_percentage']=$this->input->post('germ_percentage');
-			$data['id_seed_mark']=$this->input->post('mark');
+			$data['mark']=$this->input->post('mark');
 			
 			$this->model_seeds->insert_seeds($data);
 

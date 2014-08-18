@@ -589,7 +589,7 @@
 							var a = document.getElementById('breakdown_graft').value;
 							var b = document.getElementById('volume_graft').value;
 							$.ajax({
-								url: "<?php echo base_url('index.php/breakdown/max_volume_graft'); ?>", 
+								url: "<?php echo base_url('index.php/breakdown/max_volume_graft/'.$this->uri->segment(3)); ?>", 
 								data: {'volume_graft':b,'breakdown_graft':a},
 								type: "POST",
 								success: function(data){
@@ -608,7 +608,7 @@
 							var a = document.getElementById('breakdown_graft').value;
 							var b = document.getElementById('volume_graft').value;
 							$.ajax({
-								url: "<?php echo base_url('index.php/breakdown/max_volume_graft'); ?>", 
+								url: "<?php echo base_url('index.php/breakdown/max_volume_graft/'.$this->uri->segment(3)); ?>", 
 								data: {'volume_graft':b,'breakdown_graft':a},
 								type: "POST",
 								success: function(data){
@@ -726,7 +726,7 @@
 							var a = document.getElementById('breakdown_punch').value;
 							var b = document.getElementById('volume_punch').value;
 							$.ajax({
-								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
+								url: "<?php echo base_url('index.php/breakdown/max_volume_punch/'.$this->uri->segment(3)); ?>", 
 								data: {'volume_punch':b,'breakdown_punch':a},
 								type: "POST",
 								success: function(data){
@@ -746,7 +746,7 @@
 							var a = document.getElementById('breakdown_punch').value;
 							var b = document.getElementById('volume_punch').value;
 							$.ajax({
-								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
+								url: "<?php echo base_url('index.php/breakdown/max_volume_punch/'.$this->uri->segment(3)); ?>", 
 								data: {'volume_punch':b,'breakdown_punch':a},
 								type: "POST",
 								success: function(data){
@@ -830,7 +830,6 @@
 									required: true,
 									number: true,
 									max_transplant:true,
-									max_transplant2:true,
 									min:0
 								},
 								datepicker4: {
@@ -864,7 +863,7 @@
 							var a = document.getElementById('breakdown_transplant').value;
 							var b = document.getElementById('volume_transplant').value;
 							$.ajax({
-								url: "<?php echo base_url('index.php/breakdown/max_volume_transplant'); ?>", 
+								url: "<?php echo base_url('index.php/breakdown/max_volume_transplant/'.$this->uri->segment(3)); ?>", 
 								data: {'volume_transplant':b,'breakdown_transplant':a},
 								type: "POST",
 								success: function(data){
@@ -879,24 +878,6 @@
 							}else return false;
 						}
 
-						function max_transplant2(b){
-							var a = document.getElementById('breakdown_transplant').value.length;
-							var b = document.getElementById('volume_transplant').value;
-							$.ajax({
-								url: "<?php echo base_url('index.php/breakdown/max_volume_punch'); ?>", 
-								data: {'volume_transplant':b,'breakdown_transplant':a},
-								type: "POST",
-								success: function(data){
-									document.getElementById('inputvaltransplant').value=data.length;
-								},
-								failure:function(data){
-									
-								}
-							});
-							if(document.getElementById('inputvaltransplant').value == 5 ){
-								return true;
-							}else return false;
-						}
 
 						function selectcheck_transplant(){
 							if (document.getElementById('breakdown_transplant').value < 0){

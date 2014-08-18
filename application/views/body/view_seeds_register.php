@@ -120,14 +120,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Marca</h3>
 							<div class="input-group input-group-lg">								
-								<select class="form-control" name="mark" id="mark" >
-									<?php 
-										foreach($ma as $key)
-										{
-											echo "<option value='" . $key->id_seed_mark . "' set_select('id_order','".$key->id_seed_mark."')>" . $key->mark . "</option>";
-										}
-									?>
-								</select>
+								<input type="text" class="form-control" placeholder="Marca" name="mark" id="mark" value="<?php echo set_value('mark'); ?>">
 							</div><!-- End semilla -->
 							<div class="clear">&nbsp</div>
 							<h3>Lote</h3>
@@ -169,6 +162,9 @@
 									required: true,
 									number: true
 								},
+								mark:{
+									required:true
+								},
 						       	batch:{
 						       		required: true
 						       },
@@ -184,6 +180,9 @@
                         		volume: {
 				                    required: "El Campo Volumen es Requerido",
 				                    number: "El Campo Volumen debe ser Numerico"
+				                },
+				                mark:{
+				                	required:"El Campo Marca es Requerido"
 				                },
 				                batch: {
 				                    required: "El Campo Lote es Requerido"

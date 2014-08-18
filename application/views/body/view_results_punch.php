@@ -23,7 +23,11 @@
 				echo "<td>". $sum_breakdown[0]->volume ."</td>";
 				$scope=($sum_breakdown[0]->volume/$key->volume) - 1;
 				if($scope <= 0){
-					echo "<td style='color:red'>". round($scope) ."%"."</td>";
+					if($scope > -1){
+						echo "<td style='color:red'>0%</td>";
+					}else{
+						echo "<td style='color:red'>". round($scope) ."%"."</td>";
+					}					
 				}else{
 					echo "<td>". round($scope) ."%"."</td>";
 				}
