@@ -51,6 +51,8 @@ class Embark extends CI_Controller {
 
 		$template['embark'] = $this->model_breakdown->get_embark($template['id_order']);
 		$template['error']=$this->session->flashdata('error');
+		$template['states'] = $this->model_order->get_states();
+		$template['towns'] = $this->model_order->get_towns();
  		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_edit_embarker_body.php';
 		$template['footer'] = 'footer/view_footer.php';
@@ -77,12 +79,20 @@ class Embark extends CI_Controller {
 		$fecha2=$this->input->post('butondates');
 		$datos['date_arrival']=date("Y-m-d H:i:s", strtotime($fecha2));
 		$datos['destiny']=$this->input->post('destino');
-		$datos['pack_type']=$this->input->post('empaque');
+		
 		$datos['arrival_contact']=$this->input->post('contacto');	
-		$datos['boxes']=$this->input->post('cajas');
-		$datos['box']=$this->input->post('caja');
+		$datos['retornable']=$this->input->post('retornable');
+		$datos['no_retornable']=$this->input->post('no_retornable');
+		$datos['chep']=$this->input->post('chep');
+		$datos['ensenada']=$this->input->post('ensenada');
+		$datos['no_aplica']=$this->input->post('no_aplica');
+		$datos['seca']=$this->input->post('seca');
+		$datos['thermo']=$this->input->post('thermo');
 		$datos['racks']=$this->input->post('rackz');
 		$datos['comment']=$this->input->post('comment');
+		$datos['address']=$this->input->post('address');
+		$datos['id_state']=$this->input->post('state');
+		$datos['id_town']=$this->input->post('town');
 
 		$this->model_embark->insert_embark($datos);
 

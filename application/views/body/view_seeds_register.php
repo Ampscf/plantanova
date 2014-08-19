@@ -126,9 +126,7 @@
 							<h3>Lote</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Lote" name="batch" id="batch" value="<?php echo set_value('batch'); ?>">
-							</div><!-- End lote -->
-
-							
+							</div><!-- End lote -->							
 							
 							<div class="clear">&nbsp</div>
 							<h3>Fecha</h3>

@@ -343,7 +343,7 @@
 										<option value='-1' selected>--Selecciona un Transporte--</option>
 										<option value='Trailer 53' >Trailer 53</option>
 										<option value='Trailer 48'>Trailer 48</option>
-										<option value='Torton 3' >Torton</option>
+										<option value='Torton' >Torton</option>
 										<option value='Camioneta de tres y media' >Camioneta de tres y media</option>
 										<option value='Pickup' >Pickup</option>									
 									</select>	
@@ -366,46 +366,91 @@
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel">
 								</div><!-- End Cel chofer -->
-					    	</div>
-
-					    	<div class="col-md-6">
-						    	
+								<div class="clear">&nbsp</div>
 								<h3>Destino</h3>
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino">
 								</div><!-- End Destino -->
+								<div class="clear">&nbsp</div>
+								<h3>Direccion</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Direccion" name="address" id="address">
+								</div><!-- End Destino -->
+								<div class="clear">&nbsp</div>
+								<h3>Estado</h3>
+								<div class="input-group input-group-lg">
+								<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
+									<option value="-1" selected>---Selecciona un estado---</option>
+									<?php 
+										foreach($states as $key)
+										{
+											echo "<option value='" . $key->id_state . "' set_select('state','".$key->id_state."')>" . $key->state_name . "</option>";
+										}
+									?>
+								</select>
+							</div><!-- End state -->
+							<div class="clear">&nbsp</div>
+							<h3>Ciudad</h3>
+							<div class="input-group input-group-lg">
+								<select class="form-control" name="town" id="town">
+									<option selected value="-1">---Selecciona una ciudad---</option>
+									<?php 
+										foreach($towns as $key)
+										{
+											echo "<option value='" . $key->id_town . "' set_select('town','".$key->id_town."') >" . $key->town_name . "</option>";
+										}
+									?>
+								</select>
+							</div><!-- End town -->
+					    	</div>
+
+					    	<div class="col-md-6">
+						    	
+								<h3>Contacto Entrega</h3>
+								<div class="input-group input-group-lg">
+									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
+								</div><!-- End Contacto Entrega -->			
 
 								<div class="clear">&nbsp</div>
 								<h3>Tipo de Empaque</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Tipo de Empaque" name="empaque" id="empaque">
-								</div><!-- End Tipo de Empaque -->			
-
+									<h4><input type="checkbox"  name="checkRetornable" id="checkRetornable">Retornable</h4>
+									<input type="text" class="form-control" placeholder="# Retornables" name="retornable" id="retornable" style="display:none">
+								</div>
 								<div class="clear">&nbsp</div>
-								<h3>Contacto Entrega</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
-								</div><!-- End Contacto Entrega -->
-
+									<h4><input type="checkbox"  name="checkNoRetornable" id="checkNoRetornable">No Retornable</h4>
+									<input type="text" class="form-control" placeholder="# No Retornables" name="no_retornable" id="no_retornable" style="display:none">
+								</div>
 								<div class="clear">&nbsp</div>
 								<h3>Cajas</h3>
+								<hr size="10" />
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="cajas" id="cajas">
-										<option value="1" selected>Chep</option>
-										<option value="2" >Ensenada</option>
-										<option value="3" >No Aplica</option>										
-									</select>	
+									<h4><input type="checkbox"  name="checkChep" id="checkChep">Chep</h4>
+									<input type="text" class="form-control" placeholder="# Chep" name="chep" id="chep" style="display:none">	
+								</div>
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<h4><input type="checkbox"  name="checkEnsenada" id="checkEnsenada">Ensenada</h4>
+									<input type="text" class="form-control" placeholder="# Ensenada" name="ensenada" id="ensenada" style="display:none">	
+								</div>
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<h4><input type="checkbox"  name="checkNoAplica" id="checkNoAplica">No Aplica</h4>
+									<input type="text" class="form-control" placeholder="# No Aplica" name="no_aplica" id="no_aplica" style="display:none">
 								</div><!-- End Cajas -->
-
 								<div class="clear">&nbsp</div>
 								<h3>Caja</h3>
+								<hr>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="caja" id="caja">
-										<option value="1" selected>Seca</option>
-										<option value="2" >Thermo</option>
-									</select>	
-								</div><!-- End Caja -->
-
+									<h4><input type="checkbox"  name="checkSeca" id="checkSeca">Seca</h4>
+									<input type="text" class="form-control" placeholder="# Seca" name="seca" id="seca" style="display:none">	
+								</div><!-- End Cajas -->
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">
+									<h4><input type="checkbox"  name="checkThermo" id="checkThermo">Thermo</h4>
+										<input type="text" class="form-control" placeholder="# Thermo" name="thermo" id="thermo" style="display:none">
+								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
 								<h3>Racks</h3>
 								<div class="input-group input-group-lg">
@@ -433,6 +478,63 @@
 											document.getElementById("hiden").style.display = "none";
 										}	
 									}
+
+									$("#checkRetornable").click(function() {  
+										if (document.getElementById("checkRetornable").checked){
+											document.getElementById("retornable").style.display = "block";
+										}
+										else {
+											document.getElementById("retornable").style.display = "none";
+										}
+									});
+									$("#checkNoRetornable").click(function() {  
+										if (document.getElementById("checkNoRetornable").checked){
+											document.getElementById("no_retornable").style.display = "block";
+										}
+										else {
+											document.getElementById("no_retornable").style.display = "none";
+										}
+									});
+									$("#checkChep").click(function() {  
+										if (document.getElementById("checkChep").checked){
+											document.getElementById("chep").style.display = "block";
+										}
+										else {
+											document.getElementById("chep").style.display = "none";
+										}
+									});
+									$("#checkEnsenada").click(function() {  
+										if (document.getElementById("checkEnsenada").checked){
+											document.getElementById("ensenada").style.display = "block";
+										}
+										else {
+											document.getElementById("ensenada").style.display = "none";
+										}
+									});
+									$("#checkNoAplica").click(function() {  
+										if (document.getElementById("checkNoAplica").checked){
+											document.getElementById("no_aplica").style.display = "block";
+										}
+										else {
+											document.getElementById("no_aplica").style.display = "none";
+										}
+									});
+									$("#checkSeca").click(function() {  
+										if (document.getElementById("checkSeca").checked){
+											document.getElementById("seca").style.display = "block";
+										}
+										else {
+											document.getElementById("seca").style.display = "none";
+										}
+									});
+									$("#checkThermo").click(function() {  
+										if (document.getElementById("checkThermo").checked){
+											document.getElementById("thermo").style.display = "block";
+										}
+										else {
+											document.getElementById("thermo").style.display = "none";
+										}
+									});
 								</script>
 							</div>	
 					    	
@@ -477,17 +579,39 @@
 						       	destino: {
 						       		required: true
 						       	},
-						       	empaque: {
-						       		required: true
-						       	}, 
+						       	address:{
+						       		required:true
+						       	},
+						       	state: {
+						            state: true
+						        },
+						        town:{
+						       		town: true
+						       	},
+						       	
 						       	contacto: {
 						       		required: true
 						       	},
-						       	cajas: {
-						       		required: true
+						       	retornable:{
+						       		number:true
 						       	},
-						       	caja: {
-						       		required: true
+						       	no_retornable:{
+						       		number:true
+						       	},
+						       	chep:{
+						       		number:true
+						       	},
+						       	ensenada:{
+						       		number:true
+						       	},
+						       	no_aplica:{
+						       		number:true
+						       	},
+						       	seca:{
+						       		number:true
+						       	},
+						       	thermo:{
+						       		number:true
 						       	},
 						       	butondates: {
 						       		required: true
@@ -507,30 +631,45 @@
 									number: "El Campo Volumen Final debe ser Numérico"
 								}, 
 								fletera:{
-									required: "El campo Fletera es Requerido"
+									required: "El Campo Fletera es Requerido"
 								},
 								chofer:{
-									required: "El campo Chofer es Requerido"
+									required: "El Campo Chofer es Requerido"
 								},
 								cel:{
-									required: "El campo Celular es Requerido",
-									number: "El campo Celular debe ser Numérico"
+									required: "El Campo Celular es Requerido",
+									number: "El Campo Celular debe ser Numérico"
 								},
 								destino:{
-									required: "El campo Destino es Requerido"
+									required: "El Campo Destino es Requerido"
 								},
-								empaque:{
-									required: "El campo Tipo de Empaque es Requerido"
-								},
+								address:{
+						       		required:"El Campo de Direccion es Requerido"
+						       	},
 								contacto:{
 									required: "El campo Contacto es Requerido"
 								},
-								cajas:{
-									required: "El campo Cajas es Requerido"
-								},
-								caja:{
-									required: "El campo Caja es Requerido"
-								},
+								retornable:{
+						       		number:"El campo # Retornable debe ser Numerico"
+						       	},
+						       	no_retornable:{
+						       		number:"El campo # No Retornable debe ser Numerico"
+						       	},
+						       	chep:{
+						       		number:"El campo # Chep debe ser Numerico"
+						       	},
+						       	ensenada:{
+						       		number:"El campo # Ensenada debe ser Numerico"
+						       	},
+						       	no_aplica:{
+						       		number:"El campo # No Aplica debe ser Numerico"
+						       	},
+						       	seca:{
+						       		number:"El campo # Seca debe ser Numerico"
+						       	},
+						       	thermo:{
+						       		number:"El campo # Thermo debe ser Numerico"
+						       	},
 								butondates:{
 									required: "El campo de Fecha es Requerido"
 								},
@@ -541,9 +680,24 @@
 						});
 
 			$.validator.addMethod("transporter", transporter, "Selecciona un Transporte");
+			$.validator.addMethod("state", state, "Selecciona un Estado");
+			$.validator.addMethod("town", town, "Selecciona una Ciudad");
 
-			function trans(){
-				if (document.getElementById('trans').value == -1){
+			function state(){
+				if (document.getElementById('state').value < 0){
+					return false;
+				}else return true;
+			}
+
+			function town(){
+				if (document.getElementById('town').value < 0){
+					return false;
+				}else return true;
+			}
+
+
+			function transporter(){
+				if (document.getElementById('transporter').value == -1){
 					return false;
 				}
 				else return true;

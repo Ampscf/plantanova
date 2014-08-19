@@ -98,48 +98,26 @@
 										<div class="input-group input-group-lg">
 											<p><b>Cel Chofer:</b> <?php echo $key->driver_cel;?></p>
 										</div><!-- End Cel chofer -->
+										<div class="input-group input-group-lg">
+											<p><b>Destino:</b> <?php echo $key->destiny;?></p>
+										</div><!-- End Destino -->
+										<div class="input-group input-group-lg">
+											<p><b>Dirección:</b> <?php echo $key->address;?></p>
+										</div><!-- End Destino -->
+										<?php $state=$this->model_embark->get_state($key->id_state);?>
+										<div class="input-group input-group-lg">
+											<p><b>Estado:</b> <?php echo $state[0]->state_name;?></p>
+										</div><!-- End Destino -->
+										<?php $town=$this->model_embark->get_town($key->id_town);?>
+										<div class="input-group input-group-lg">
+											<p><b>Ciudad:</b> <?php echo $town[0]->town_name;?></p>
+										</div><!-- End Destino -->
+										<div class="input-group input-group-lg">
+											<p><b>Contacto Entrega:</b> <?php echo $key->arrival_contact;?></p>
+										</div><!-- End Destino -->
 									</div>
 
 									<div class="col-md-6">
-										<div class="input-group input-group-lg">
-											<p><b>Destino:</b> <?php echo $key->destiny;?></p>
-										</div><!-- End Destino -->	
-										<div class="input-group input-group-lg">
-											<p><b>Tipo de Empaque:</b> <?php echo $key->pack_type;?></p>
-										</div><!-- End Tipo de Empaque -->			
-										<div class="input-group input-group-lg">
-											<p><b>Contacto Entrega:</b> <?php echo $key->arrival_contact;?></p>
-										</div><!-- End Contacto Entrega -->
-										<div class="input-group input-group-lg">
-											<?php 
-											if($key->boxes == 1){
-											?>
-												<p><b>Cajas:</b> <?php echo 'Chep';?></p>
-											<?php
-											}else if($key->boxes == 2){
-											?>	
-												<p><b>Cajas:</b> <?php echo 'Ensenada';?></p>
-											<?php
-											}else if($key->boxes == 3){
-											?>	
-												<p><b>Cajas:</b> <?php echo 'No Aplica';?></p>
-											<?php
-											}
-											?>
-										</div><!-- End Cajas -->
-										<div class="input-group input-group-lg">
-											<?php 
-											if($key->box == 1){
-											?>
-												<p><b>Caja:</b> <?php echo 'Seca'; ?></p>
-											<?php
-											}else if($key->box == 2){
-											?>	
-											<p><b>Caja:</b> <?php echo 'Thermo'; ?></p>
-											<?php
-											}
-											?>	
-										</div><!-- End Caja -->
 										<div class="input-group input-group-lg">
 											<?php 
 											if($key->racks > 0){
@@ -155,7 +133,38 @@
 										</div><!-- End Racks -->
 										<div class="input-group input-group-lg">
 											<p><b># de Racks: </b><?php echo $key->racks;?></p>
-										</div><!-- End Racks -->
+										</div><!-- End Racks -->										
+										<div class="input-group input-group-lg">
+											<p><b>*TIPO DE EMPAQUE:</b>
+										</div>
+										<div class="input-group input-group-lg">
+											<p><b>Retornable:</b><?php echo $key->retornable;?>
+										</div>
+										<div class="input-group input-group-lg">
+											<p><b>No Retornable:</b><?php echo $key->no_retornable;?></p>
+										</div><!-- End Tipo de Empaque -->			
+										<div class="input-group input-group-lg">
+											<p><b>*CAJAS:</b></p>
+										</div>
+										<div class="input-group input-group-lg">						
+											<p><b>Chep:</b> <?php echo $key->chep;?></p>
+										</div>
+										<div class="input-group input-group-lg">
+											<p><b>Ensenada:</b> <?php echo $key->ensenada;?></p>
+										</div>
+										<div class="input-group input-group-lg">
+											<p><b>No Aplica:</b> <?php echo $key->no_aplica;?></p>
+										</div><!-- End Contacto Entrega -->
+										<div class="input-group input-group-lg">
+											<p><b>*CAJA:</b></p>
+										</div>
+										<div class="input-group input-group-lg">
+											<p><b>Seca:</b> <?php echo $key->seca;?></p>
+										</div>
+										<div class="input-group input-group-lg">
+											<p><b>Thermo:</b> <?php echo $key->thermo;?></p>
+										</div><!-- End Contacto Entrega -->
+										
 								
 									</div>
 								<?php

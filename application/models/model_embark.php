@@ -97,5 +97,23 @@ Class model_embark extends CI_Model
 		else return false;
 	}
 
+	function get_state($id_state){
+		$this->db->where('id_state',$id_state);
+		$query=$this->db->get('t_state');
+		if($query->num_rows()){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_town($id_town){
+		$this->db->where('id_town',$id_town);
+		$query=$this->db->get('t_town');
+		if($query->num_rows()){
+			return $query->result();
+		}
+		else return false;
+	}
+
 }	
 ?>
