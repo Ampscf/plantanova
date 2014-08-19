@@ -822,7 +822,7 @@
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     			<button type="submit" class="btn btn-success" name="">Confirmar</button>
                 			</form>
-                			<script>
+                		<script>
 					    
 						$("#insert_transplant").validate({
 							rules: {
