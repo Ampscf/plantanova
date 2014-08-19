@@ -197,7 +197,10 @@ class Embark extends CI_Controller {
 			$datas = array(
 				'id_order' => $this->uri->segment(3),
 				'id_files' => 1,
-				'location' => $data['file_name']
+				'location' => $data['file_name'],
+				'folio' => $this->input->post('folio'),
+				'moneda' => $this->input->post('moneda'),
+				'total' => $this->input->post('volume') 
 			);
 			$this->model_embark->add_file($datas);		
 			

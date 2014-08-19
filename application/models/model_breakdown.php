@@ -42,6 +42,17 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 
+	function get_all_orders()
+	{
+		$query=$this->db->get('t_order');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
 	function get_user($id){
 		$this->db->where('id_user',$id);
 		$query=$this->db->get('t_user');
@@ -56,6 +67,17 @@ Class model_breakdown extends CI_Model
 	function get_category($id){
 		$this->db->where('id_category',$id);
 		$query=$this->db->get('t_category');
+
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_status($id){
+		$this->db->where('id_status',$id);
+		$query=$this->db->get('t_status');
 
 		if($query->num_rows()>0)
 		{
