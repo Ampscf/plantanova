@@ -49,6 +49,16 @@ class Breakdown extends CI_Controller {
 		$template['pedidos_embarcados'] = $this->model_breakdown->get_finish_orders();
 		$this->load->view("main",$template);
 	}
+
+	public function todos()
+	{
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_all.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['pedidos_todos'] = $this->model_breakdown->get_all_orders();
+
+		$this->load->view("main",$template);
+	}
 	
 	public function process()
 	{

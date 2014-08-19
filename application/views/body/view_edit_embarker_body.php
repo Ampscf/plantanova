@@ -624,7 +624,7 @@
                 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 			<h4 class="modal-title">Agregar PDF de factura</h4>
             			</div>
-            			<div class="modal-body">
+            			<div class="modal-body row">
 
                 			<?php echo form_open_multipart('embark/do_upload3/'.$this->uri->segment(3));?>
                 			<p>Elige un PDF para subir en la factura</p>
@@ -639,7 +639,30 @@
 					    			document.getElementById("uploadFile2").value = this.value;
 								};
 							</script>
-
+							<div class="clear">&nbsp</div>
+							<div class="col-md-2">
+								<p>Folio:</p>
+								<div class="clear">&nbsp</div>
+								<p>Moneda:</p>
+								<div class="clear">&nbsp</div>
+								<p style="margin: 1px 0px;">Total:</p>
+							</div>
+							<div class="col-md-5">
+								<div class="input-group input-group-sm">
+									<input type="text" class="form-control" placeholder="Folio" name="folio" id="folio">
+								</div>
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-sm">
+									<select class="form-control" name='moneda' id='moneda'>
+										<option value='pesos' selected>Pesos</option>
+										<option value='dolares'>Dólares</option>									
+									</select>
+								</div>
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-sm">
+									<input type="text" class="form-control" placeholder="Total" name="volume" id="volume">
+								</div>
+							</div>
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
