@@ -588,7 +588,9 @@ Class model_order extends CI_Model
 
 	function delete_order($id)
 	{
-		$this->db->delete('t_order', array('id_order' => $id)); 
+		//$this->db->delete('t_order', array('id_order' => $id));
+		$this->db->query('update t_order set id_status = 6 where id_order='.$id);
+		
 	}
 
 	function delete_sowing($id)

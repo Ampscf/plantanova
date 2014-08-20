@@ -59,7 +59,17 @@ class Breakdown extends CI_Controller {
 
 		$this->load->view("main",$template);
 	}
+	public function cancelados()
+	{
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_body_cancelados.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['pedidos_cancelados'] = $this->model_breakdown->get_cancel_orders();
+
+		$this->load->view("main",$template);
+	}
 	
+
 	public function process()
 	{
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));

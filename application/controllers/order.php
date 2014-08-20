@@ -371,11 +371,10 @@ class Order extends CI_Controller {
 				$llave=$key;
 			}
 		}
-		$this -> model_order -> delete_order($llave);
-		$this -> model_order -> delete_order_comment($llave);
+		$this->model_order->delete_order($llave);
+		//$this->model_order->delete_order_comment($llave);
 		$id_client=$this->input->post('id_client');
 		$this->index();
-		//redirect("order/pending_order_two");
 	}
 
 	public function pending_order_first_next_before(){

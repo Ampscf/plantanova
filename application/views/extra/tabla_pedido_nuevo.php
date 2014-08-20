@@ -9,7 +9,7 @@
 		<th>Volúmen</th>
 		<th>Comentario</th>
 		<th>Resumen</th>
-		<th>Semillas/Eliminar</th>
+		<th>Semillas/Cancelar</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -80,7 +80,7 @@
 	                </a>
 
 	               	<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Eliminar"
+	                    title="Cancelar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>
 	                </a>
@@ -93,7 +93,7 @@
                     				<h4 class="modal-title">Confirmación</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p>¿Estás seguro de querer eliminar el pedido <?php echo $key->id_order; ?>?</p>
+                    				<p>¿Estás seguro de querer cancelar el pedido <?php echo $key->id_order; ?>?</p>
                 				</div>
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order_pedido'); ?>

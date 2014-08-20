@@ -9,13 +9,13 @@
 		<th>Volúmen</th>
 		<th>Comentario</th>
 		<th>Resumen</th>
-		<th>Editar/Cancelar</th>
+		<th>Eliminar</th>
 	</thead>
 	<tbody>
 		<?php 
-		if(is_array($pedidos_proceso))
+		if(is_array($pedidos_cancelados))
 		{
-			foreach ($pedidos_proceso as $key) 
+			foreach ($pedidos_cancelados as $key) 
 			{
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
@@ -26,8 +26,8 @@
 				$category=$this->model_breakdown->get_category($key->id_category);
 				echo "<td>" . $category[0]->category_name . "</td>";
 				$plant=$this->model_breakdown->get_plant($key->id_plant);
-				echo "<td>" . $plant[0]->plant_name . "</td>";
-				echo "<td>" . number_format($key->total_volume) . "</td>";
+				echo "<td>" . $plant[0]->plant_name."</td>";
+				echo "<td>" . number_format($key->total_volume)."</td>";
 				echo "<td>" ?>
 					
 					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
@@ -36,7 +36,7 @@
 						<i class="fa fa-comment-o"></i>
 	                </a>
 					
-					<?php echo form_open('breakdown/update_comment'); ?>
+					<?php echo form_open('order/update_comment'); ?>
 					<div id="myModal2<?php echo $key->id_order;  ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
@@ -65,21 +65,13 @@
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Resumen"
-	                    href=<?php echo site_url("breakdown/order_resume_proceso/$key->id_order");?>>
+	                    href=<?php echo site_url("breakdown/order_resume_nuevo/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
 	                </a>
 				<?php
 				echo "</td>";
 				echo "<td>";?>
-					<a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
-	                    title="Modificar"
-	                   	href="process/<?php echo $key->id_order; ?>">
-	                    <i class="fa fa-edit"></i>
-	                </a>
-
-	               <a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+				   	<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Cancelar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>
@@ -93,7 +85,7 @@
                     				<h4 class="modal-title">Confirmación</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p>¿Estás seguro de querer cancelar el pedido <?php echo $key->id_order; ?>?</p>
+                    				<p>¿Estás seguro de querer eliminar el pedido <?php echo $key->id_order; ?>?</p>
                 				</div>
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order_pedido'); ?>
@@ -112,6 +104,13 @@
 		?>
 	</tbody>
 </table>
-	
-	
-	
+
+			<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.dataTables.min.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/TableTools.js'; ?>"></script>	
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/ZeroClipboard.js'; ?>"></script>	
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/jquery.noty.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/layouts/topCenter.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url() . 'css/js/themes/default.js'; ?>"></script>

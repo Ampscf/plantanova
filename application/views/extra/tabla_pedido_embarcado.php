@@ -2,14 +2,15 @@
 	<thead>
 		<th class="col-md-1"># Pedido</th>
 		<th>Agricultor</th>
-		<th>Fecha</th>
+		<th style="width:165px">Fecha</th>
 		<th>Empresa</th>
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen Pedido</th>
-		<th>Resumen Orden</th>
-		<th>Resumen Embarque</th>
-		<th>Editar</th>
+		
+		<th><p>Resumen</th>
+		<th style="width:175px">Editar</th>
+		<th>Finalizar/Cancelar</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -33,20 +34,16 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Resumen Orden"
-	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
-	                    <i class="fa fa-file-text"></i>
-	                </a>
-			<?php
-				echo "</td>";
-				echo "<td>";
-				?>
-					<a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
 	                    title="Resumen Embarque"
 	                    href=<?php echo site_url("embark/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+	                <a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Orden"
+	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
+	                    <i class="fa fa-file-text"></i>
 	                </a>
 			<?php
 				echo "</td>";
@@ -63,13 +60,6 @@
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
 	                </a>
-
-	                <a href="#myModal5<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Finalizar"
-	                    data-toggle="modal">
-						<i class="fa fa-archive"></i>
-	                </a>
-				
 					<?php  echo form_open('breakdown/edit_process/'.$key->id_order); ?>	  
 		                <div id="myModal3<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
@@ -131,6 +121,39 @@
 	    			</form>	
 	         <?php
 	         echo "</td>";
+	         echo "<td>";?>
+	         		 <a href="#myModal5<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Finalizar"
+	                    data-toggle="modal">
+						<i class="fa fa-archive"></i>
+	                </a>
+					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Cancelar"
+	                    data-toggle="modal">
+						<i class="fa fa-times"></i>
+	                </a>
+					
+					<div id="myModal<?php echo $key->id_order; ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Confirmación</h4>
+                				</div>
+                				<div class="modal-body">
+                    				<p>¿Estás seguro de querer cancelar el pedido <?php echo $key->id_order; ?>?</p>
+                				</div>
+                				<div class="modal-footer">
+									<?php echo form_open('order/delete_order_pedido'); ?>
+                    					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
+                					</form>
+								</div>
+            				</div>
+        				</div>
+    				</div>
+		<?php 
+				echo "</td>";
 				echo "</tr>";
 			}
 		}

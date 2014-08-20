@@ -53,6 +53,17 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 
+	function get_cancel_orders(){
+		$this->db->where('id_status',6);
+		$query=$this->db->get('t_order');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
 	function get_user($id){
 		$this->db->where('id_user',$id);
 		$query=$this->db->get('t_user');
