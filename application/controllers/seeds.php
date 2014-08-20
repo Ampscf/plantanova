@@ -15,6 +15,8 @@ class Seeds extends CI_Controller {
 		$template['body'] = "body/view_seeds.php";
 		$template['footer'] = "footer/view_footer.php";
 		$template['seeds'] = $this->model_seeds->select_seed_distinct();
+		$template['variety']=$this->model_seeds->get_variety();
+		$template['rootstock']=$this->model_seeds->get_rootstock();
 
 			
 		$this->load->view('main',$template);
@@ -266,6 +268,18 @@ class Seeds extends CI_Controller {
 		$this->model_seeds->register_mark($datos);
 		redirect("seeds/index", "refresh");
 
+	}
+
+	public function delete_variety(){
+		$id_variety=$this->input->post('vari');
+		$this->model_seeds->delete_variety($id_variety);
+		redirect("seeds/index", "refresh");
+	}
+
+	public function delete_rootstock(){
+		$id_rootstock=$this->input->post('por');
+		$this->model_seeds->delete_rootstock($id_rootstock);
+		redirect("seeds/index", "refresh");
 	}
 
 

@@ -372,9 +372,20 @@ class Order extends CI_Controller {
 			}
 		}
 		$this->model_order->delete_order($llave);
-		//$this->model_order->delete_order_comment($llave);
-		$id_client=$this->input->post('id_client');
 		$this->index();
+	}
+
+	function delete_order_pedido2()
+	{
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this->model_order->delete_order2($llave);
+		redirect("breakdown/cancelados", "refresh");
 	}
 
 	public function pending_order_first_next_before(){
@@ -849,6 +860,30 @@ class Order extends CI_Controller {
 		$datos['rootstock_name']=strtoupper($porta);
 		$this->model_order->register_rootstock($datos);
 		redirect("seeds/index", "refresh");
+
+	}
+
+	public function restablecer(){
+		foreach ($_POST as $key => $value) 
+		{
+			if(is_int($key))
+			{
+				$llave=$key;
+			}
+		}
+		$this ->model_order->reset_order($llave);
+		$order=$this->model_order->get_order_id_order($llave);
+		if($order->result()[0]->id_status == 1){
+			redirect("breakdown/index","refresh");
+		}else if($order->result()[0]->id_status == 2){
+			redirect("breakdown/pedido_proceso","refresh");
+		}else if($order->result()[0]->id_status == 3){
+			redirect("breakdown/pedido_embarcado","refresh");
+		}else if($order->result()[0]->id_status == 5){
+			redirect("breakdown/final","refresh");
+		}
+		
+	
 
 	}
 }

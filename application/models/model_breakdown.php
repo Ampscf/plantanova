@@ -7,6 +7,7 @@ Class model_breakdown extends CI_Model
 	function get_new_orders()
 	{
 		$this->db->where('id_status',1);
+		$this->db->where('activate',1);
 		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
@@ -20,6 +21,7 @@ Class model_breakdown extends CI_Model
 	function get_process_orders()
 	{
 		$this->db->where('id_status',"2");
+		$this->db->where('activate',1);
 		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
@@ -33,6 +35,7 @@ Class model_breakdown extends CI_Model
 	function get_finish_orders()
 	{
 		$this->db->where('id_status',3);
+		$this->db->where('activate',1);
 		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
@@ -54,7 +57,7 @@ Class model_breakdown extends CI_Model
 	}
 
 	function get_cancel_orders(){
-		$this->db->where('id_status',6);
+		$this->db->where('activate',0);
 		$query=$this->db->get('t_order');
 		
 		if($query->num_rows()>0)
@@ -240,7 +243,7 @@ Class model_breakdown extends CI_Model
 	{
 		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,  t_o.id_order, t_o.id_status
 									from t_germination as tg, t_order as t_o 
-									where t_o.id_order = tg.id_order and t_o.id_status = 2
+									where t_o.id_order = tg.id_order and t_o.id_status = 2 and t_o.activate = 1
 									order by tg.id_germination');
 		if($result->num_rows()>0)
 			{
@@ -259,7 +262,8 @@ Class model_breakdown extends CI_Model
 									where t_p.id_breakdown=t_b.id_breakdown
 									and t_b.id_order=t_o.id_order
 									and t_o.id_status=2
-									and t_p.id_process_type = 2');
+									and t_p.id_process_type = 2 
+									and t_o.activate=1');
 																				
 		if($result->num_rows() > 0) 
 		{
@@ -280,7 +284,8 @@ Class model_breakdown extends CI_Model
 									where t_p.id_breakdown=t_b.id_breakdown
 									and t_b.id_order=t_o.id_order
 									and t_o.id_status=2
-									and t_p.id_process_type = 3');
+									and t_p.id_process_type = 3
+									and t_o.activate=1');
 																				
 		if($result->num_rows() > 0) 
 		{
@@ -301,7 +306,8 @@ Class model_breakdown extends CI_Model
 									where t_p.id_breakdown=t_b.id_breakdown
 									and t_b.id_order=t_o.id_order
 									and t_o.id_status=2
-									and t_p.id_process_type = 4');
+									and t_p.id_process_type = 4
+									and t_o.activate=1');
 																				
 		if($result->num_rows() > 0) 
 		{
@@ -317,7 +323,7 @@ Class model_breakdown extends CI_Model
 	{
 		$query = $this->db->query('select t_s.id_sowing,t_s.sowing_date, t_s.volume, t_s.id_order, t_s.comment, t_s.completed, t_s.seed, t_o.id_status,t_o.id_order 
 									from t_sowing as t_s, t_order as t_o 
-									where  t_o.id_status = 2 and t_o.id_order = t_s.id_order');
+									where  t_o.id_status = 2 and t_o.id_order = t_s.id_order and t_o.activate=1');
 		
 			if($query->num_rows()>0)
 			{
