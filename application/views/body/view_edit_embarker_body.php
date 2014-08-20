@@ -152,7 +152,7 @@
 	                    						title="Eliminar"
 	                    						data-toggle="modal">
 											  <i class="fa fa-times"></i>
-	                			  			  </a>';
+	                			  			  </a>&nbsp;<p>Folio:'.$key->folio.' --- Total: $'.$key->total.'&nbsp;'.$key->moneda.'</p>';
 										echo '</div>';
 										echo '<div id="Modal'.$key->id_file.'" class="modal fade">
 			    								<div class="modal-dialog">
@@ -780,7 +780,7 @@
             			</div>
             			<div class="modal-body row">
 
-                			<?php echo form_open_multipart('embark/do_upload3/'.$this->uri->segment(3));?>
+                			<?php echo form_open_multipart('embark/do_upload3/'.$this->uri->segment(3),'id="money"');?>
                 			<p>Elige un PDF para subir en la factura</p>
 							<input id="uploadFile2" placeholder="Elige un PDF" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
 							<div class="fileUpload btn btn-success">
@@ -823,9 +823,38 @@
                 			<button type="submit" class="btn btn-primary">Subir</button>
                 			</form>
            				 </div>
+           				 <script>
+           				 $("#money").validate({
+           				 	rules: {
+           				 		folio: {
+           				 			required: true
+           				 		},
+           				 		moneda: {
+           				 			required: true
+           				 		},
+           				 		volume: {
+           				 			required: true,
+           				 			number: true
+           				 		}
+           				 	},
+           				 	messages: {
+           				 		folio:{
+						       		required:"El campo folio es requerido"
+						       	},
+						       	moneda:{
+						       		required:"El campo moneda es requerido"
+						       	},
+						       	volume:{
+						       		required:"El campo total es requerido",
+						       		number:"El campo total debe ser numérico"
+						       	}
+           				 	}
+           				 });	
+           				 </script>
         			</div>
     			</div>
 			</div>
+
 
 			<div id="myModal2" class="modal fade">
     			<div class="modal-dialog">
