@@ -349,8 +349,9 @@ class Embark extends CI_Controller {
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['quotation']=$order->result()[0]->quotation;
 		$template['contract']=$order->result()[0]->contract;
-		$template['bill']=$order->result()[0]->bill;
-		$template['card_bill']=$order->result()[0]->card_bill;
+		$template['bill']=$this->model_embark->get_order_bills($this->uri->segment(3));
+		$template['card_bill']=$this->model_embark->get_card_bills($this->uri->segment(3));
+		$template['dictum']=$this->model_embark->get_order_dictum($this->uri->segment(3));
 
 		if ($template['quotation']==NULL){
 			$template['quoti']='No se ha subido un PDF';
@@ -362,18 +363,6 @@ class Embark extends CI_Controller {
 			$template['contra']='No se ha subido un PDF';
 		} else {
 			$template['contra']='<a href="/plantanova/uploads/'.$template['contract'].'" target="_blank" style="color:yellowgreen;">'.$template['contract'].'</a>';
-		}
-
-		if ($template['bill']==NULL){
-			$template['bi']='No se ha subido un PDF';
-		} else {
-			$template['bi']='<a href="/plantanova/uploads/'.$template['bill'].'" target="_blank" style="color:yellowgreen;">'.$template['bill'].'</a>';
-		}
-
-		if ($template['card_bill']==NULL){
-			$template['card']='No se ha subido un PDF';
-		} else {
-			$template['card']='<a href="/plantanova/uploads/'.$template['card_bill'].'" target="_blank" style="color:yellowgreen;">'.$template['card_bill'].'</a>';
 		}
 
 		$template['embark'] = $this->model_embark->get_embark($template['id_order']);
