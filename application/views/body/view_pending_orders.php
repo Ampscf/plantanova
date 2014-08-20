@@ -2,6 +2,9 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> HAcer pedido nuevo </h3>
+				</div>
 				<div id="result"><!-- Div de mucha importancia, puesto que de aquí se jala el ajax, lo que esté adentro es lo que se va a refrescar -->
 					<div class="panel-header">				
 						<ul class="nav nav-tabs">

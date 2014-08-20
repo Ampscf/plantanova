@@ -946,13 +946,13 @@ div .widget-info:last-child {
 }
 .panel-default > .panel-heading {
   padding: 5px 0px 4px 10px;
-  border-color: #e5e5e5;
+  border-color: #8cc152;
 }
 .panel-default > .panel-heading + .panel-collapse .panel-body {
   border-color: #e5e5e5;
 }
 .panel-title {
-  font-size: 12px;
+  font-size: 25px;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 30px;
@@ -961,7 +961,9 @@ div .widget-info:last-child {
   margin: 10px 0px 0px;
 }
 .panel .panel-heading {
-  padding: 0px;
+  padding: 10px;
+  background-image: none; 
+  background-color: #8cc152;
 }
 .panel .panel-title {
   line-height: 30px;
@@ -1661,6 +1663,8 @@ input[type="checkbox"] {
 .modal-header {
   line-height: 30px;
   padding: 10px;
+  color: white;
+  background-color: #8cc152 !important;
 }
 .modal-header .close {
   margin-top: 2px;

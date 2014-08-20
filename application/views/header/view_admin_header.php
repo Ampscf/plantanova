@@ -239,7 +239,7 @@
 <body>
 	<div id="wrapper">
 		<!-- Contenedor para el encabezado de la pagina o la barra de encabezado -->
-				<nav class="navbar navbar-default" role="navigation" style="min-height: 30px;padding-left: 30px;">
+				<nav class="navbar navbar-default" role="navigation" style="min-height: 80px;padding-left: 30px;">
 					<div class="container">
 						<div class="navbar-header">
 							<?php $img='<img src="'. base_url() . 'img/logo2.jpg" style="height:30px; width:auto;">'; echo anchor('order/index', $img, 'class="navbar-brand"'); ?>
@@ -256,12 +256,30 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav nav-justified">
-								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/index','Ver pedidos'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;" id="pedidos">
+										Ver pedidos
+						      			<span class="caret"></span>
+						      		</a>
+						      		<ul class="dropdown-menu">
+						      			<li><?php echo anchor('breakdown/index','Nuevos');?></li>
+						      			<li role="presentation" class="divider"></li>
+						      			<li><?php echo anchor('breakdown/pedido_proceso','En Proceso');?></li>
+						      			<li role="presentation" class="divider"></li>
+						      			<li><?php echo anchor('breakdown/pedido_embarcado','Embarcados');?></li>
+						      			<li role="presentation" class="divider"></li>
+						      			<li><?php echo anchor('','Finalizados');?></li>
+						      			<li role="presentation" class="divider"></li>
+						      			<li><?php echo anchor('breakdown/cancelados','Cancelados');?></li>
+						      			<li role="presentation" class="divider"></li>
+						      			<li><?php echo anchor('breakdown/todos','Todos');?></li>
+						      		</ul>
+								</li>						
+								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:77px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes','id="admin" style="height:77px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:77px;"'); ?></li>
+								<li class="dropdown" style="border-left: 1px solid #000;">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;">
 										<?php echo $this->session->userdata('mail'); ?>
 						      			<span class="caret"></span>
 						      		</a>
@@ -275,9 +293,24 @@
 						      			</li>
 									</ul>
 								</li>
-							</ul>
-							
+							</ul>							
 						</div><!--/.nav-collapse -->
+						<script>
+							var url = window.location.href;
+							if (/(seeds)/i.test(url)) {
+								document.getElementById("sids").style.color = "White";
+								document.getElementById("sids").style.backgroundColor = "#8cc152";
+							} else if (/(admin)/i.test(url)){
+								document.getElementById("admin").style.color = "White";
+								document.getElementById("admin").style.backgroundColor = "#8cc152";
+							} else if (/(order)/i.test(url)){
+								document.getElementById("order").style.color = "White";
+								document.getElementById("order").style.backgroundColor = "#8cc152";
+							} else {
+								document.getElementById("pedidos").style.color = "White";
+								document.getElementById("pedidos").style.backgroundColor = "#8cc152";
+							}
+						</script>
 					</div>
 				</nav>
 				<div id="content">
