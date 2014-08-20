@@ -9,7 +9,7 @@
 		<th>Volúmen</th>
 		<th>Comentario</th>
 		<th>Resumen</th>
-		<th>Eliminar</th>
+		<th>Restablecer/Eliminar</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -71,12 +71,17 @@
 				<?php
 				echo "</td>";
 				echo "<td>";?>
-				   	<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+				   	<a href="#myModall<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Restablecer"
+	                    data-toggle="modal">
+						<i class="fa fa-history"></i>
+	                </a>
+					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Cancelar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>
 	                </a>
-					
+	                
 					<div id="myModal<?php echo $key->id_order; ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
@@ -88,7 +93,27 @@
                     				<p>¿Estás seguro de querer eliminar el pedido <?php echo $key->id_order; ?>?</p>
                 				</div>
                 				<div class="modal-footer">
-									<?php echo form_open('order/delete_order_pedido'); ?>
+									<?php echo form_open('order/delete_order_pedido2'); ?>
+                    					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
+                					</form>
+								</div>
+            				</div>
+        				</div>
+    				</div>
+
+    				<div id="myModall<?php echo $key->id_order; ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Confirmación</h4>
+                				</div>
+                				<div class="modal-body">
+                    				<p>¿Estás seguro de querer restablecer el pedido <?php echo $key->id_order; ?>?</p>
+                				</div>
+                				<div class="modal-footer">
+									<?php echo form_open('order/restablecer'); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
                 					</form>

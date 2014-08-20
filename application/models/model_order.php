@@ -588,9 +588,27 @@ Class model_order extends CI_Model
 
 	function delete_order($id)
 	{
-		//$this->db->delete('t_order', array('id_order' => $id));
-		$this->db->query('update t_order set id_status = 6 where id_order='.$id);
-		
+		$this->db->query('update t_order set activate = 0 where id_order='.$id);		
+	}
+
+	function reset_order($id)
+	{
+		$this->db->query('update t_order set activate = 1 where id_order='.$id);		
+	}
+
+	function delete_order2($id)
+	{
+		$this->db->delete('t_order', array('id_order' => $id));		
+		$this->db->delete('t_embark', array('id_order' => $id));
+		$this->db->delete('t_files', array('id_order' => $id));	
+		$this->db->delete('t_germination', array('id_order' => $id));
+		$this->db->delete('t_images_process', array('id_order' => $id));
+		$this->db->delete('t_order_comments', array('id_order' => $id));
+		$this->db->delete('t_seeds', array('id_order' => $id));	
+		$this->db->delete('t_sowing', array('id_order' => $id));
+		$this->db->delete('t_total', array('id_order' => $id));	
+		$this->db->delete('t_total_seed', array('id_order' => $id));
+		$this->db->delete('t_breakdown', array('id_order' => $id));		
 	}
 
 	function delete_sowing($id)

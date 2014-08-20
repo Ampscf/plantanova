@@ -19,8 +19,13 @@
 					$cliente=$this->model_breakdown->get_user($key->id_client);
 					echo "<td>".$cliente[0]->farm_name."</td>";
 					echo "<td>".number_format($key->total_volume)."</td>";
-					$status=$this->model_breakdown->get_status($key->id_status);
-					echo "<td>".$status[0]->status_name."</td>";
+					if($key->activate==0){
+						echo "<td>Cancelado</td>";
+					}else{
+						$status=$this->model_breakdown->get_status($key->id_status);
+						echo "<td>".$status[0]->status_name."</td>";
+					}
+					
 					echo "</tr>";
 				}
 			}	

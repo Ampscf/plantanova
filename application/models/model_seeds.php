@@ -57,6 +57,17 @@ Class model_seeds extends CI_Model
 		$this->db->where('id_seed',$id);
 		$this->db->delete('t_seeds');	
 	}
+	function delete_variety($id)
+	{
+		$this->db->where('id_variety',$id);
+		$this->db->delete('t_variety');	
+	}
+
+	function delete_rootstock($id)
+	{
+		$this->db->where('id_rootstock',$id);
+		$this->db->delete('t_rootstock');	
+	}
 
 	function get_seed_id($id){
 		$this->db->where('id_seed',$id);
@@ -194,6 +205,24 @@ Class model_seeds extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function get_variety(){
+		$query=$this->db->get('t_variety');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
 
+	}
+
+	function get_rootstock(){
+		$query=$this->db->get('t_rootstock');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
 }
 ?>
