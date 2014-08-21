@@ -50,6 +50,7 @@ class Admin extends CI_Controller {
 	//Registra un usuario 
 	function register_client() 
 	{
+		$this->load->library('PasswordHash');
 		$datos['states'] = $this->model_order->get_states();
 		$datos['towns'] = $this->model_order->get_towns();
 		/*$this->load->library('form_validation');
@@ -113,6 +114,8 @@ class Admin extends CI_Controller {
 			$data['cp'] = $this->input->post('cp');
 			$data['social_reason'] = $this->input->post('social_reason');
 			$data['company_phone'] = $this->input->post('company_phone');
+
+			$data['password']=$this->passwordhash->HashPassword($this->input->post('password'));
 
 			//Verifica si hubo una tupla modificada o agregada
 			if($this->model_user->insert_client_user($data) > 0 )

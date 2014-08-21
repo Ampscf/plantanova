@@ -131,6 +131,14 @@
 							<?php echo form_error('first_name'); ?>
 
 							<div class="clear">&nbsp</div>
+							<h3>Apellido(s)</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('last_name'); ?>">
+							</div><!-- End last name -->
+							<?php echo form_error('last_name'); ?>
+
+							
+							<div class="clear">&nbsp</div>
 							<h3>Teléfono</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
@@ -138,27 +146,35 @@
 							<?php echo form_error('phone'); ?>
 
 							<div class="clear">&nbsp</div>
-							<h3>Correo Electrónico</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Correo Electrónico" name="email" id="email" value="<?php echo set_value('email'); ?>">
-							</div><!-- End email -->
-							<?php echo form_error('email'); ?>	
-
-						</div>
-
-						<div class="col-md-6">
-							<h3>Apellido(s)</h3>
-							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('last_name'); ?>">
-							</div><!-- End last name -->
-							<?php echo form_error('last_name'); ?>
-
-							<div class="clear">&nbsp</div>
 							<h3>Celular</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo set_value('cellphone'); ?>">
 							</div><!-- End cellphone -->
 							<?php echo form_error('cellphone'); ?>
+
+							
+							<?php echo form_error('email'); ?>	
+
+						</div>
+
+						<div class="col-md-6">
+							<h3>Correo Electrónico</h3>
+							<div class="input-group input-group-lg">
+								<input type="text" class="form-control" placeholder="Correo Electrónico" name="email" id="email" value="<?php echo set_value('email'); ?>">
+							</div><!-- End email -->							
+
+							<div class="clear">&nbsp</div>
+							<h3>Contraseña</h3>
+							<div class="input-group input-group-lg">
+								<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" value="<?php echo set_value('password'); ?>">
+							</div>
+							
+
+							<div class="clear">&nbsp</div>
+							<h3>Repetir Contraseña</h3>
+							<div class="input-group input-group-lg">
+								<input type="password" class="form-control" placeholder="Contraseña" name="password_again" id="password_again" value="<?php echo set_value('password'); ?>">
+							</div>
 						</div>
 											
 					</div>
@@ -245,7 +261,13 @@
 											type:"post", 
 											data:$("email").val()
 									}
-								}
+								},
+								password: {
+									required:true
+								},
+							    password_again: {
+							      equalTo: "#password"
+							    }
 							},
 							messages: {
                         		cp: {
@@ -293,7 +315,13 @@
 									required: "El Campo Correo Electrónico es Requerido",
 									email: "Ingresa un Correo Valido",
 									remote: 'Este Correo Electrónico Ya Existe.'
-								}
+								},
+								password: {
+									required:"El Campo Contraseña es Requerido"
+								},
+							    password_again: {
+							      equalTo: "Las Contraseñas Deben Ser Iguales"
+							    }
 						  	}
 						});
 
