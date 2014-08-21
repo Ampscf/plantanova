@@ -21,10 +21,7 @@ class Order extends CI_Controller {
 			$this->load->view('main',$template);
 		} else {
 			redirect('client/index');
-		}
-		
-
-		
+		}		
 	}
 
 	public function dropdown_companies()
