@@ -46,7 +46,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-						      	<?php echo anchor('admin/my_acount_form', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
+						      	<?php echo anchor('client/my_acount_form_client', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
 							</li>
 						    <li role="presentation" class="divider"></li>
 						    <li>
