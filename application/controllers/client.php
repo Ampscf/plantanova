@@ -4,6 +4,7 @@ class Client extends CI_Controller {
 	   parent::__construct();
 	   	$this->load->model('model_user','',TRUE);
 	   	$this->load->model('model_order','',TRUE);
+	   	$this->load->model('model_client','',TRUE);
 	}
 	
 	public function index()
@@ -44,18 +45,30 @@ class Client extends CI_Controller {
 
 	public function change_pass(){
 		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<div style="display:none" id="error">', '</div>');
 
 		$this->form_validation->set_rules('password1', 'password1', 'trim|required|xss_clean|callback_check_user');
 	 	
 		if($this->form_validation->run() == FALSE) 
 		{	
 			$this->my_acount_form_client();
+			?>
+			<script>
+			alert("La Contraseña ingresada es incorrecata. No se realizo ningun cambio.");
+			</script>
+			<?php
 		}
 		else
 		{
-			//Manda a la pagina principal del rol que inicia sesión
-			echo "simon";
+
+			$password=$this->passwordhash->HashPassword($this->input->post('password2'));
+			$this->model_client->update_pass($password);
+			?>
+			<script>
+			alert("La contraseña se modifico con exito!");
+			</script>
+			<?php
+			$this->my_acount_form_client();
+
 		}
 	}
 

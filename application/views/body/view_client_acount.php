@@ -43,7 +43,7 @@
 
 					<!-- farm name, street, addr number, colony, cp, state, city, phone, social reason, rfc -->
 					<div class="col-md-12">
-						<?php echo form_error('password1'); ?>
+						
 						<div class="clear">&nbsp</div>
 
 						<div class="col-md-12">
@@ -188,8 +188,8 @@
 		                		</div>
 		                		<div class="modal-body">
 		                			<div class="input-group">
-		                				<p>Contraseña Anterior</p>
-										<input type="text" class="form-control" placeholder="Contraseña Anterior" name="password1" id="password1">     		
+		                				<p>Contraseña Actual</p>
+										<input type="text" class="form-control" placeholder="Contraseña Actual" name="password1" id="password1">     		
 			                				
 									</div>
 		                			<div class="clear">&nbsp</div>
@@ -218,7 +218,8 @@
 							required:true
 						},
 						password2:{
-							required:true
+							required:true,
+							password2:true
 						},
 						password3: {
 							required:true,
@@ -239,9 +240,14 @@
 				  	}
 				});
 
-			if(document.getElementById("error").value="error"){
-				alert("La Contraseña ingresada es incorrecata. No se realizo ningun cambio.");
-			}
+				$.validator.addMethod("password2", password2, "Las contraseñas deban ser diferentes");
+
+						function password2(){
+							if (document.getElementById('password1').value == document.getElementById('password2').value){
+								return false;
+							}else return true;
+						}
+
 				
 	    		</script>			
 		</div><!-- End panel-default -->
