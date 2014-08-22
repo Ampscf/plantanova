@@ -10,13 +10,17 @@ class Breakdown extends CI_Controller {
 	
 	public function index()
 	{
-		$template['header'] = 'header/view_admin_header.php';
-		$template['body'] = 'body/view_admin_body.php';
-		$template['footer'] = "footer/view_footer.php";
-		//Manda los datos necesarios para cargar los pedidos y datos del usuario
-		$template['pedidos'] = $this->model_breakdown->get_new_orders();
+		if($this->session->userdata('id_rol')==1){
+			$template['header'] = 'header/view_admin_header.php';
+			$template['body'] = 'body/view_admin_body.php';
+			$template['footer'] = "footer/view_footer.php";
+			//Manda los datos necesarios para cargar los pedidos y datos del usuario
+			$template['pedidos'] = $this->model_breakdown->get_new_orders();
 
-		$this->load->view('main',$template);
+			$this->load->view('main',$template);
+		} else {
+			redirect('client/index');
+		}
 	}
 
 	public function pedido_nuevo(){

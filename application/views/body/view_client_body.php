@@ -6,9 +6,9 @@
 					<div class="order-navs">
 						<ul class="nav nav-pills">
 							<li class="active"><?php echo anchor('client/index', 'Nuevos') ?></li>
-							<li><?php echo anchor('breakdown/pedido_proceso', 'En proceso') ?></li>
-							<li><?php echo anchor('', 'Finalizados') ?></li>	
-							<li><?php echo anchor('breakdown/todos', 'Todos') ?></li>
+							<li><?php echo anchor('client/pedido_proceso', 'En proceso') ?></li>
+							<li><?php echo anchor('client/finalizado', 'Finalizados') ?></li>	
+							<li><?php echo anchor('client/todos', 'Todos') ?></li>
 						</ul>
 					</div>
 

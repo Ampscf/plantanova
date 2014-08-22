@@ -9,8 +9,36 @@ class Client extends CI_Controller {
 	
 	public function index()
 	{
+		$template['new_order']=$this->model_client->get_new_order($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_body.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);
+	}
+
+	public function pedido_proceso(){
+		$template['process_order']=$this->model_client->get_process_order($this->session->userdata('id'));
+		$template['header'] = 'header/view_client_header.php';
+		$template['body'] = 'body/view_client_body_process.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);
+	}
+
+	public function finalizado(){
+		$template['final_order']=$this->model_client->get_final_order($this->session->userdata('id'));
+		$template['header'] = 'header/view_client_header.php';
+		$template['body'] = 'body/view_client_body_final.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);
+	}
+
+	public function todos(){
+		$template['all_order']=$this->model_client->get_order($this->session->userdata('id'));
+		$template['header'] = 'header/view_client_header.php';
+		$template['body'] = 'body/view_client_body_all.php';
 		$template['footer'] = "footer/view_footer.php";
 
 		$this->load->view('main',$template);

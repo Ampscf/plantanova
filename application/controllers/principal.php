@@ -48,7 +48,7 @@ class Principal extends CI_Controller {
 		else
 		{
 			//Manda a la pagina principal del rol que inicia sesión
-			redirect('order/index','refresh');
+			redirect('breakdown/index','refresh');
 		}
 	 }
 

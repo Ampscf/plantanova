@@ -285,7 +285,7 @@
 								</select>
 							</div><!-- End Cantidad -->	
 							<div>
-								<input type="hidden" id="inputval" name="inputval" value="" />
+								<input type="text" id="inputval" name="inputval" value="" />
 							</div>
 
 							<div class="input-group">
@@ -364,7 +364,7 @@
 						
 					}
 				});
-				if(document.getElementById('inputval').value == 5 ){
+				if(document.getElementById('inputval').value == 1 ){
 					return true;
 				}else return false;
 			}
@@ -383,7 +383,7 @@
 						
 					}
 				});
-				if(document.getElementById('inputval').value == 5 ){
+				if(document.getElementById('inputval').value == 1 ){
 					return true;
 				}else return false;
 			}
@@ -526,7 +526,7 @@
 								</select>
 							</div><!-- End breakdown_graft -->
 							<div>
-								<input type="hidden" id="inputvalgraft" name="inputvalgraft" value="true">
+								<input type="text" id="inputvalgraft" name="inputvalgraft" value="true">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
@@ -602,7 +602,7 @@
 									
 								}
 							});
-							if(document.getElementById('inputvalgraft').value == 5 ){
+							if(document.getElementById('inputvalgraft').value == 1 ){
 								return true;
 							}else return false;
 						}
@@ -621,7 +621,7 @@
 									
 								}
 							});
-							if(document.getElementById('inputvalgraft').value == 5 ){
+							if(document.getElementById('inputvalgraft').value == 1 ){
 								return true;
 							}else return false;
 						}
@@ -740,7 +740,7 @@
 									
 								}
 							});
-							if(document.getElementById('inputvalpunch').value == 5 ){
+							if(document.getElementById('inputvalpunch').value == 1 ){
 								return true;
 							}else return false;
 						}
@@ -760,7 +760,7 @@
 									
 								}
 							});
-							if(document.getElementById('inputvalpunch').value == 5 ){
+							if(document.getElementById('inputvalpunch').value == 1 ){
 								return true;
 							}else return false;
 						}
@@ -876,7 +876,7 @@
 									
 								}
 							});
-							if(document.getElementById('inputvaltransplant').value == 5 ){
+							if(document.getElementById('inputvaltransplant').value == 1 ){
 								return true;
 							}else return false;
 						}
