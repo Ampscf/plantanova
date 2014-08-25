@@ -70,7 +70,7 @@
 						</div>
 						<div class="col-md-12">
 							<?php 
-							if(is_array($embark)){
+							if($embark != false){
 								foreach ($embark->result() as $key)
 								{
 							?>						

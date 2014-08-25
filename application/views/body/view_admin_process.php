@@ -285,7 +285,7 @@
 								</select>
 							</div><!-- End Cantidad -->	
 							<div>
-								<input type="text" id="inputval" name="inputval" value="" />
+								<input type="hidden" id="inputval" name="inputval" value="" />
 							</div>
 
 							<div class="input-group">
@@ -526,7 +526,7 @@
 								</select>
 							</div><!-- End breakdown_graft -->
 							<div>
-								<input type="text" id="inputvalgraft" name="inputvalgraft" value="true">
+								<input type="hidden" id="inputvalgraft" name="inputvalgraft" value="true">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
