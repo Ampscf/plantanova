@@ -268,7 +268,7 @@
 						      			<li role="presentation" class="divider"></li>
 						      			<li><?php echo anchor('breakdown/pedido_embarcado','Embarcados');?></li>
 						      			<li role="presentation" class="divider"></li>
-						      			<li><?php echo anchor('','Finalizados');?></li>
+						      			<li><?php echo anchor('breakdown/finalizado','Finalizados');?></li>
 						      			<li role="presentation" class="divider"></li>
 						      			<li><?php echo anchor('breakdown/cancelados','Cancelados');?></li>
 						      			<li role="presentation" class="divider"></li>
@@ -299,16 +299,16 @@
 							var url = window.location.href;
 							if (/(seeds)/i.test(url)) {
 								document.getElementById("sids").style.color = "White";
-								document.getElementById("sids").style.backgroundColor = "#8cc152";
+								document.getElementById("sids").style.backgroundColor = "#6BBD44";
 							} else if (/(admin)/i.test(url)){
 								document.getElementById("admin").style.color = "White";
-								document.getElementById("admin").style.backgroundColor = "#8cc152";
+								document.getElementById("admin").style.backgroundColor = "#6BBD44";
 							} else if (/(order)/i.test(url)){
 								document.getElementById("order").style.color = "White";
-								document.getElementById("order").style.backgroundColor = "#8cc152";
+								document.getElementById("order").style.backgroundColor = "#6BBD44";
 							} else {
 								document.getElementById("pedidos").style.color = "White";
-								document.getElementById("pedidos").style.backgroundColor = "#8cc152";
+								document.getElementById("pedidos").style.backgroundColor = "#6BBD44";
 							}
 						</script>
 					</div>

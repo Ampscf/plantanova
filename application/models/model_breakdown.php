@@ -30,11 +30,28 @@ Class model_breakdown extends CI_Model
 		}
 		else return false;
 	}
+
+	function finish_status($id_order){
+		$this->db->query('update t_order set id_status=5 where id_order='.$id_order);
+	}
 	
-	//Obtiene las ordenes que tienen un estatus de terminadas
-	function get_finish_orders()
+	//Obtiene las ordenes que tienen un estatus de embarcados
+	function get_embarker_orders()
 	{
 		$this->db->where('id_status',3);
+		$this->db->where('activate',1);
+		$query=$this->db->get('t_order');
+		
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_final_orders()
+	{
+		$this->db->where('id_status',5);
 		$this->db->where('activate',1);
 		$query=$this->db->get('t_order');
 		

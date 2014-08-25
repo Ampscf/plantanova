@@ -64,9 +64,16 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Resumen"
+	                    title="Resumen Orden"
 	                    href=<?php echo site_url("breakdown/order_resume_proceso/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+	                <a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Proceso"
+	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order/2");?>>
+	                    <i class="fa fa-file-text"></i>
 	                </a>
 				<?php
 				echo "</td>";

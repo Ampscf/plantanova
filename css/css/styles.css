@@ -963,7 +963,7 @@ div .widget-info:last-child {
 .panel .panel-heading {
   padding: 10px;
   background-image: none; 
-  background-color: #8cc152;
+  background-color: #6BBD44;
 }
 .panel .panel-title {
   line-height: 30px;
@@ -1305,8 +1305,8 @@ div .form-group:first-child:last-child {
 }
 .btn.btn-success,
 .btn.btn-success:focus {
-  background: #8cc152;
-  border: 1px solid #85bd47;
+  background: #6BBD44;
+  border: 1px solid #6BBD44;
 }
 .btn.btn-success:hover {
   background: #7fb842;
@@ -1664,7 +1664,7 @@ input[type="checkbox"] {
   line-height: 30px;
   padding: 10px;
   color: white;
-  background-color: #8cc152 !important;
+  background-color: #6BBD44 !important;
 }
 .modal-header .close {
   margin-top: 2px;

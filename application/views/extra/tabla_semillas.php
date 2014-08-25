@@ -1,5 +1,5 @@
 <table class="table table-hover" id="tabla-empresa">
-
+<thead>
 		<th class="col-md-1" style="width: 100px;">Fecha</th>
 		<th>Semilla</th>
 		<th>Cantidad</th>
@@ -7,7 +7,7 @@
 		<th>Marca</th>
 		<th>% de germinación</th>
 		<th>Eliminar</th>
-
+<thead>
 	<tbody>
 		<?php 
 		if(isset($seeds))

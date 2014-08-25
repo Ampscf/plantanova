@@ -9,13 +9,13 @@
 		<th>Volúmen</th>
 		<th>Comentario</th>
 		<th>Resumen</th>
-		<th>Restablecer/Eliminar</th>
+		<th>Eliminar</th>
 	</thead>
 	<tbody>
 		<?php 
-		if(is_array($pedidos_cancelados))
+		if(is_array($pedidos_finalizados))
 		{
-			foreach ($pedidos_cancelados as $key) 
+			foreach ($pedidos_finalizados as $key) 
 			{
 				echo "<tr>";
 				echo "<td>" . $key->id_order . "</td>";
@@ -64,19 +64,28 @@
 					<a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
-	                    title="Resumen"
-	                    href=<?php echo site_url("breakdown/order_resume_nuevo/$key->id_order");?>>
+	                    title="Resumen Orden"
+	                    href=<?php echo site_url("breakdown/order_resume_nuevo/$key->id_order/1");?>>
 	                    <i class="fa fa-file-text-o"></i>
+	                </a>
+	                <a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Proceso"
+	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order/1");?>>
+	                    <i class="fa fa-file-text"></i>
+	                </a>
+	                <a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Embarque"
+	                    href=<?php echo site_url("embark/resume_embark/$key->id_order/1");?>>
+	                    <i class="fa fa-file-o"></i>
 	                </a>
 				<?php
 				echo "</td>";
 				echo "<td>";?>
-				   	<a href="#myModall<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Restablecer"
-	                    data-toggle="modal">
-						<i class="fa fa-history"></i>
-	                </a>
-					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+				  	<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Eliminar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>

@@ -74,13 +74,13 @@
 				var url = window.location.href;
 				if (/(contributors)/i.test(url)) {
 					document.getElementById("cola").style.color = "White";
-					document.getElementById("cola").style.backgroundColor = "#8cc152";
+					document.getElementById("cola").style.backgroundColor = "#6BBD44";
 				} else if (/(inform)/i.test(url)) {
 					document.getElementById("info").style.color = "White";
-					document.getElementById("info").style.backgroundColor = "#8cc152";
+					document.getElementById("info").style.backgroundColor = "#6BBD44";
 				} else {
 					document.getElementById("pedi").style.color = "White";
-					document.getElementById("pedi").style.backgroundColor = "#8cc152";
+					document.getElementById("pedi").style.backgroundColor = "#6BBD44";
 				}	
 			</script>
 		</div>

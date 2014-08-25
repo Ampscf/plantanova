@@ -1,10 +1,11 @@
 <table class="table table-hover" id="tabla-empresa">
-
+<thead>
 		<th>Orden</th>
 		<th>Agricultor</th>
 		<th>Volumen</th>
 		<th>Resumen</th>
 		<th>Editar</th>
+</thead>
 
 	<tbody>
 		<?php 

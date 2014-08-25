@@ -3,12 +3,12 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> resumen pedido embarcado </h3>
+						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Resumen Proceso </h3>
 					</div>
 					<div class="panel-body" id="seleccion">
 						
 						<div class="col-md-12">
-							<h1>Resumen Orden Embarcada</h1>
+							<h1>Resumen de la Orden</h1>
 						</div>
 						
 						<!--Datos del cliente-->
@@ -94,7 +94,7 @@
 							<h4><b>*Desglose de la orden:</b></h4>
 						</div>
 						<div class="clear">&nbsp</div>
-						<table>
+						<table class="table table-hover">
 							<th>Sustrato</th>
 							<th>Subtipo</th>
 							<th>Variedad</th>
@@ -131,7 +131,7 @@
 							<h4><b>*Desglose de la siembra:</b></h4>
 						</div>
 						<div class="clear">&nbsp</div>
-						<table>
+						<table class="table table-hover">
 							<th>Cantidad</th>
 							<th>Fecha</th>
 							<th>Semilla</th>
@@ -194,7 +194,7 @@
 							<h4><b>*Desglose de la germinación:</b></h4>
 						</div>
 						<div class="clear">&nbsp</div>
-						<table>
+						<table class="table table-hover">
 							<th>Semilla</th>
 							<th>Cantidad Viable</th>
 							<th>Fecha</th>
@@ -269,7 +269,7 @@
 							<h4><b>*Desglose del injerto:</b></h4>
 						</div>
 						<div class="clear">&nbsp</div>
-						<table>
+						<table class="table table-hover">
 							<th>Cantidad</th>
 							<th>Fecha</th>
 							<th>Variedad/Portainjerto</th>
@@ -329,7 +329,7 @@
 							<h4><b>*Desglose del pinchado:</b></h4>
 						</div>
 						<div class="clear">&nbsp</div>
-						<table>
+						<table class="table table-hover">
 								<th>Cantidad</th>
 								<th>Fecha</th>
 								<th>Variedad/Portainjerto</th>
@@ -389,7 +389,7 @@
 							<h4><b>*Desglose del transplante</b></h4>
 						</div>
 						<div class="clear">&nbsp</div>
-						<table>
+						<table class="table table-hover">
 							<th>Cantidad</th>
 							<th>Fecha</th>
 							<th>Variedad/Portainjerto</th>
@@ -446,11 +446,28 @@
 						<div class="row">
 							<div class="col-md-2 col-md-offset-2">
 							<?php  
+							if($this->uri->segment(4)==1){
+								$data = array(
+									'class'	=> 'btn btn-primary btn-block',
+									'name' => 'Regresar',
+								);
+								echo anchor('breakdown/finalizado', 'Regresar', $data);
+							}
+							else if($this->uri->segment(4)==2){
+								$data = array(
+									'class'	=> 'btn btn-primary btn-block',
+									'name' => 'Regresar',
+								);
+								echo anchor('breakdown/pedido_proceso', 'Regresar', $data);
+							}
+							else{
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Regresar',
 								);
 								echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+							}
+								
 							?>
 							</div>
 							<div class="col-md-4 col-md-offset-3">

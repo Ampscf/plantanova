@@ -7,7 +7,6 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen Pedido</th>
-		
 		<th><p>Resumen</th>
 		<th style="width:175px">Editar</th>
 		<th>Finalizar/Cancelar</th>
@@ -31,19 +30,20 @@
 				echo "<td>" . number_format($key->total_volume) . "</td>";
 				echo "<td>";
 				?>
-					<a class="btn btn-default"
+					
+	                <a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Proceso"
+	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
+	                    <i class="fa fa-file-text"></i>
+	                </a>
+	                <a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
 	                    title="Resumen Embarque"
 	                    href=<?php echo site_url("embark/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
-	                </a>
-	                <a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
-	                    title="Resumen Orden"
-	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
-	                    <i class="fa fa-file-text"></i>
 	                </a>
 			<?php
 				echo "</td>";
@@ -52,7 +52,7 @@
 				<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Modificar Proceso"
 	                    data-toggle="modal">
-						<i class="fa fa-list-alt"></i>
+						<i class="fa fa-pencil"></i>
 	                </a>
 
 	                <a href="#myModal4<?php echo $key->id_order; ?>" class="btn btn-default"
@@ -100,7 +100,7 @@
 	    				</div>
 	    			</form>
 
-	    			<?php  echo form_open('breakdown/edit_embark/'.$key->id_order); ?>	  
+	    			<?php  echo form_open('breakdown/finish/'.$key->id_order); ?>	  
 		                <div id="myModal5<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
 	            				<div class="modal-content">
@@ -113,7 +113,7 @@
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    				<button type="submit" class="btn btn-success">Modificar</button>
+	                    				<button type="submit" class="btn btn-success">Finalizar</button>
 	                    			</div>
 	            				</div>
 	        				</div>
@@ -125,7 +125,7 @@
 	         		 <a href="#myModal5<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Finalizar"
 	                    data-toggle="modal">
-						<i class="fa fa-archive"></i>
+						<i class="fa fa-check"></i>
 	                </a>
 					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Cancelar"

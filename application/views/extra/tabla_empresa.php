@@ -5,7 +5,8 @@
 		<th>RFC</th>
 		<th>Nombre</th>
 		<th>Apellido</th>
-		<th>Opciones</th>
+		<th>Correo</th>
+		<th>Editar/Eliminar</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -19,6 +20,7 @@
 				echo "<td>" . $key->rfc . "</td>";
 				echo "<td>" . $key->first_name . "</td>";
 				echo "<td>" . $key->last_name . "</td>";
+				echo "<td>" . $key->mail . "</td>";
 				echo "<td>";?>
 				
 					<a class="btn btn-default"

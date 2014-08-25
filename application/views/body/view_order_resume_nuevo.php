@@ -3,13 +3,13 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Resumen de pedido nuevo </h3>
+				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Resumen de la Orden </h3>
 			</div>
 				<div id="result">						
 					<!-- Cuerpo del panel-->
 					<div class="panel-body" id="seleccion">
 						<div class="col-md-12">
-							<h1>Resumen</h1>
+							<h1>Resumen de la Orden</h1>
 						</div>
 						
 						<div class="clear">&nbsp</div>		
@@ -99,7 +99,7 @@
 						</p>
 						</div><!-- End Desglose -->					
 						
-						<table>
+						<table class="table table-hover">
 							<th>Sustrato</th>
 							<th>Subtipo</th>
 							<th>Variedad</th>
@@ -134,11 +134,21 @@
 					<div class="row">
 						<div class="col-md-2 col-md-offset-2">
 							<?php  
+							
+							if($this->uri->segment(4)==1){
+								$data = array(
+									'class'	=> 'btn btn-primary btn-block',
+									'name' => 'Regresar',
+								);
+								echo anchor('breakdown/finalizado', 'Regresar', $data);
+							}else{
+
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Regresar',
 								);
 								echo anchor('order/index', 'Regresar', $data);
+							}
 							?>
 						</div>
 						<div class="col-md-4 col-md-offset-3">

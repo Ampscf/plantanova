@@ -180,13 +180,13 @@
 							<div class="clear">&nbsp</div>
 							<h4><b>*Archivos subidos</b></h4>
 
-							<p>Cotización: <?php echo $quoti;?> </p> 
-							<p>Contrato: <?php echo $contra;?></p>
-							<p>Facturas: </br><?php 
+							<p><b>Cotización:</b> </p><p><?php echo $quoti;?> </p> 
+							<p><b>Contrato:</b></p><p> <?php echo $contra;?></p>
+							<p><b>Facturas:</b> </br><?php 
 								if($bill != NULL){
 									foreach ($bill as $key) {
 										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>';			
-										echo '<p>Folio:'.$key->folio.' --- Total: $'.$key->total.'&nbsp;'.$key->moneda.'</p>';
+										echo '<p>Folio:'.$key->folio.' &nbsp;&nbsp;Total: $'.$key->total.'&nbsp;'.$key->moneda.'</p>';
 										echo '</br>';
 									}	
 								} else {
@@ -194,7 +194,7 @@
 								}
 							?>
 							</p>
-							<p>Carta Factura: </br><?php
+							<p><b>Carta Factura:</b> </br><?php
 								if($card_bill != NULL){
 									foreach ($card_bill as $key) {
 										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>';			
@@ -205,7 +205,7 @@
 								}
 							?> 
 							</p>
-							<p>Dictamen: </br><?php 
+							<p><b>Dictamen:</b> </br><?php 
 								if($dictum != NULL){
 									foreach ($dictum as $key) {
 										echo '<a href="/plantanova/uploads/'.$key->location.'" target="_blank" style="color:yellowgreen;">'.$key->location.'</a>';			
@@ -226,11 +226,20 @@
 						<div class="row">
 							<div class="col-md-3 col-md-offset-1">
 								<?php  
+								if($this->uri->segment(4)==1){
+									$data = array(
+										'class'	=> 'btn btn-primary btn-block',
+										'name' => 'Regresar',
+									);
+									echo anchor('breakdown/finalizado', 'Regresar', $data);
+								}else{
 									$data = array(
 										'class'	=> 'btn btn-primary btn-block',
 										'name' => 'Regresar',
 									);
 									echo anchor('breakdown/pedido_embarcado', 'Regresar', $data);
+								}
+									
 								?>
 							</div>
 

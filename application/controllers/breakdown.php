@@ -48,7 +48,7 @@ class Breakdown extends CI_Controller {
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body_embarcado.php';
 		$template['footer'] = "footer/view_footer.php";
-		$template['pedidos_embarcados'] = $this->model_breakdown->get_finish_orders();
+		$template['pedidos_embarcados'] = $this->model_breakdown->get_embarker_orders();
 		$this->load->view("main",$template);
 	}
 
@@ -70,7 +70,20 @@ class Breakdown extends CI_Controller {
 
 		$this->load->view("main",$template);
 	}
+
+	public function finalizado(){
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_body_finalizados.php';
+		$template['footer'] = "footer/view_footer.php";
+		$template['pedidos_finalizados'] = $this->model_breakdown->get_final_orders();
+
+		$this->load->view("main",$template);
+	}
 	
+	public function finish(){
+		$this->model_breakdown->finish_status($this->uri->segment(3));
+		redirect("breakdown/finalizado","refresh");
+	}
 
 	public function process()
 	{
