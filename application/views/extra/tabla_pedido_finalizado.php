@@ -7,9 +7,10 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
-		<th>Mensaje</th>
+		<th>Comentario</th>
 		<th>Resumen</th>
 		<th>Eliminar</th>
+		<th>Mensaje</th>
 	</thead>
 	<tbody>
 		<?php 
@@ -31,7 +32,7 @@
 				echo "<td>" ?>
 					
 					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Mensaje"
+	                    title="Comentario"
 	                    data-toggle="modal">
 						<i class="fa fa-comment-o"></i>
 	                </a>
@@ -42,7 +43,7 @@
             				<div class="modal-content">
                 				<div class="modal-header">
                     				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    				<h4 class="modal-title">Mensaje</h4>
+                    				<h4 class="modal-title">Comentario</h4>
                 				</div>
                 				<div class="modal-body">
 									<input type="hidden" value="<?php echo $key->id_order;?>" id="id" name="id">
@@ -131,6 +132,46 @@
         				</div>
     				</div>
 		<?php 
+				echo "</td>";
+				echo "<td>" ?>
+					
+					<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Mensaje"
+	                    data-toggle="modal">
+						<i class="fa fa-comments-o"></i>
+	                </a>
+					
+					<?php echo form_open('breakdown/add_message/4'); ?>
+					<div id="myModal3<?php echo $key->id_order;  ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Mensaje</h4>
+                				</div>
+                				<div class="modal-body">
+									<input type="hidden" value="<?php echo $key->id_order;?>" id="id" name="id">
+									<?php 
+										$message=$this->model_breakdown->get_message($key->id_order);
+										if($message==false){
+											$message="";
+										}else{
+											$message=$message[0]->comment_description;
+										}
+
+									?>
+									<textarea rows="4" cols="50" id="message" name="message"><?php echo $message;?></textarea>                    				
+                				</div>
+                				<div class="modal-footer">
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									<button type="submit" class="btn btn-default">Guardar</button>
+                    			</div>
+            				</div>
+        				</div>
+    				</div>
+					</form>
+				
+				<?php
 				echo "</td>";
 				echo "</tr>";
 			}

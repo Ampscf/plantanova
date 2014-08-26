@@ -179,7 +179,7 @@ class Order extends CI_Controller {
 			
 			$template['order']=$this->model_order->get_order_id_order($id_order);
 			$co=$this->model_order->get_order_comment($id_order);
-			$template['order_comment']=$this->model_order->get_order_comment($id_order);
+			
 			
 
 			$template['header'] = 'header/view_admin_header.php';
@@ -425,7 +425,7 @@ class Order extends CI_Controller {
 				$data['comment'] = $this->input->post('comment');
 				$data['farmer']=$this->input->post('farmer');
 
-				$datas=$this->input->post('comment');
+				
 
 				$idplant=$data['id_plant'];
 				$voltot=$data['total_volume'];
@@ -435,7 +435,7 @@ class Order extends CI_Controller {
 								
 				if($this->model_order->add_order($data) > 0 )
 				{	$id_order=$this->model_order->get_id_order();
-					$this->model_order->add_coment_oreder($datas);		
+							
 					unset($data);
 					$data['msj'] = "Exito";
 					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ,$id_order->result()[0]->id_order);				
@@ -493,7 +493,7 @@ class Order extends CI_Controller {
 				$data['tutoring'] = $this->input->post('tutoring');
 				$data['farmer']=$this->input->post('farmer');
 
-				$datas=$this->input->post('comment');
+				$data['comment']=$this->input->post('comment');
 
 				$idplant=$data['id_plant'];
 				$voltot=$data['total_volume'];
@@ -502,25 +502,13 @@ class Order extends CI_Controller {
 				$id_order=$this->input->post('id_order');
 
 					
-				if($this->model_order->update_order($id_order,$data) > 0 )
-				{
-					$this->model_order->update_coment_oreder($id_order,$datas);
-					unset($data);
-					$data['msj'] = "Exito";
-					$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order);
+				$this->model_order->update_order($id_order,$data); 
 				
-
-				}
-				else
-				{
-					$this->model_order->update_coment_oreder($id_order,$datas);
-					unset($data);
-					$error['msj'] = "Error";
-					$error['errores'] = "Error al guardar al usuario";
-					$error['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order);
 				
-				}
-			
+					
+				$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order);
+				
+		
 			}
 			
 			

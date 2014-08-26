@@ -398,6 +398,7 @@ Class model_order extends CI_Model
 		
 		$this->db->where('id_client',$id);
 		$this->db->where('id_status', 4);
+		$this->db->where('activate',1);
 		$query=$this->db->get('t_order');
 			
 			if($query->num_rows()>0)

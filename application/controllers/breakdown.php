@@ -1125,5 +1125,20 @@ class Breakdown extends CI_Controller {
 		}
 	}
 
+	public function add_message(){
+		$id_order=$this->input->post('id');
+		$message=$this->input->post('message');
+		$this->model_breakdown->add_message($id_order,$message);
+		if($this->uri->segment(3)==1){
+			redirect('breakdown/index');
+		}else if($this->uri->segment(3)==2){
+			redirect('breakdown/pedido_proceso');
+		}else if($this->uri->segment(3)==3){
+			redirect('breakdown/pedido_embarcado');
+		}else if($this->uri->segment(3)==4){
+			redirect('breakdown/finalizado');
+		}
+		
+	}
 
 }		

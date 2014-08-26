@@ -916,6 +916,23 @@ Class model_breakdown extends CI_Model
 		}
 	}
 
+	function get_message($id_order){
+		$this->db->where('id_order',$id_order);
+		$this->db->order_by("id_comment", "desc"); 
+		$query=$this->db->get('t_order_comments');
+
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function add_message($id_order,$message){
+		$datos= array('comment_description' =>$message ,
+						'id_order'=>$id_order );
+		$this->db->insert('t_order_comments', $datos);
+	}
+
 	
 }
 	

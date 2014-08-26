@@ -6,7 +6,7 @@
 		<th>Categoria</th>
 		<th>Volumen</th>
 		<th>Fecha de Pedido</th>
-		<th>Editar/Eliminar</th>
+		<th>Editar/Cancelar</th>
 	
 	<tbody>
 		<?php 
@@ -39,7 +39,7 @@
 	                </a>
 
 	                <a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Eliminar"
+	                    title="Cancelar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>
 	                </a>
@@ -52,13 +52,13 @@
                     				<h4 class="modal-title">Confirmación</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p>¿Estás seguro de querer eliminar a la orden <?php echo $key->id_order; ?>?</p>
+                    				<p>¿Estás seguro de querer cancelar a la orden <?php echo $key->id_order; ?>?</p>
                 				</div>
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order'); ?>
 									<input type="hidden" id="id_client" name="id_client" value=" <?php echo $id_company; ?>">
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<input type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>" value="Eliminar">
+                    					<input type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>" value="Cancelar">
                 					</form>
 								</div>
             				</div>
