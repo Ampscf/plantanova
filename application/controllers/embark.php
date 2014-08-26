@@ -68,6 +68,7 @@ class Embark extends CI_Controller {
 	}
 
 	public function insert_embark(){
+		
 		$datos['id_order']=$this->uri->segment(3);
 		$fecha=$this->input->post('datepicker');
 		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
@@ -81,13 +82,13 @@ class Embark extends CI_Controller {
 		$datos['destiny']=$this->input->post('destino');
 		
 		$datos['arrival_contact']=$this->input->post('contacto');	
-		$datos['retornable']=$this->input->post('retornable');
-		$datos['no_retornable']=$this->input->post('no_retornable');
+		
 		$datos['chep']=$this->input->post('chep');
 		$datos['ensenada']=$this->input->post('ensenada');
+		$tipo=$this->input->post('radio');
+		$datos['tipo_ensenada']=$tipo[0];
 		$datos['no_aplica']=$this->input->post('no_aplica');
-		$datos['seca']=$this->input->post('seca');
-		$datos['thermo']=$this->input->post('thermo');
+		$datos['transport_box']=$this->input->post('transport_box');
 		$datos['racks']=$this->input->post('rackz');
 		$datos['comment']=$this->input->post('comment');
 		$datos['address']=$this->input->post('address');

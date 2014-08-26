@@ -410,28 +410,21 @@
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
 								</div><!-- End Contacto Entrega -->			
-
-								<div class="clear">&nbsp</div>
-								<h3>Tipo de Empaque</h3>
-								<div class="input-group input-group-lg">
-									<h4><input type="checkbox"  name="checkRetornable" id="checkRetornable">Retornable</h4>
-									<input type="text" class="form-control" placeholder="# Retornables" name="retornable" id="retornable" style="display:none">
-								</div>
-								<div class="clear">&nbsp</div>
-								<div class="input-group input-group-lg">
-									<h4><input type="checkbox"  name="checkNoRetornable" id="checkNoRetornable">No Retornable</h4>
-									<input type="text" class="form-control" placeholder="# No Retornables" name="no_retornable" id="no_retornable" style="display:none">
-								</div>
+								
 								<div class="clear">&nbsp</div>
 								<h3>Cajas</h3>
 								<hr size="10" />
 								<div class="input-group input-group-lg">
-									<h4><input type="checkbox"  name="checkChep" id="checkChep">Chep</h4>
+									<h4><input type="checkbox"  name="checkChep" id="checkChep">Chep (Retornable)</h4>
 									<input type="text" class="form-control" placeholder="# Chep" name="chep" id="chep" style="display:none">	
 								</div>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkEnsenada" id="checkEnsenada">Ensenada</h4>
+									<div class="input-group input-group-lg" id="radiobutons" style="display:none">
+										<h4><input type="radio"  name="radio[]" id="1" value="Retornable" >Retornable</h4>
+										<h4><input type="radio"  name="radio[]" id="2" value="No Retornable">No Retornable</h4>
+									</div>
 									<input type="text" class="form-control" placeholder="# Ensenada" name="ensenada" id="ensenada" style="display:none">	
 								</div>
 								<div class="clear">&nbsp</div>
@@ -440,16 +433,12 @@
 									<input type="text" class="form-control" placeholder="# No Aplica" name="no_aplica" id="no_aplica" style="display:none">
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
-								<h3>Caja</h3>
-								<hr>
+								<h3>Caja del Transporte</h3>
 								<div class="input-group input-group-lg">
-									<h4><input type="checkbox"  name="checkSeca" id="checkSeca">Seca</h4>
-									<input type="text" class="form-control" placeholder="# Seca" name="seca" id="seca" style="display:none">	
-								</div><!-- End Cajas -->
-								<div class="clear">&nbsp</div>
-								<div class="input-group input-group-lg">
-									<h4><input type="checkbox"  name="checkThermo" id="checkThermo">Thermo</h4>
-										<input type="text" class="form-control" placeholder="# Thermo" name="thermo" id="thermo" style="display:none">
+									<select class="form-control" name="transport_box" id="transport_box">
+										<option value="Seca" selected>Seca</option>
+										<option value="Thermo">Thermo</option>												
+									</select>	
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
 								<h3>Racks</h3>
@@ -479,22 +468,7 @@
 										}	
 									}
 
-									$("#checkRetornable").click(function() {  
-										if (document.getElementById("checkRetornable").checked){
-											document.getElementById("retornable").style.display = "block";
-										}
-										else {
-											document.getElementById("retornable").style.display = "none";
-										}
-									});
-									$("#checkNoRetornable").click(function() {  
-										if (document.getElementById("checkNoRetornable").checked){
-											document.getElementById("no_retornable").style.display = "block";
-										}
-										else {
-											document.getElementById("no_retornable").style.display = "none";
-										}
-									});
+									
 									$("#checkChep").click(function() {  
 										if (document.getElementById("checkChep").checked){
 											document.getElementById("chep").style.display = "block";
@@ -506,9 +480,11 @@
 									$("#checkEnsenada").click(function() {  
 										if (document.getElementById("checkEnsenada").checked){
 											document.getElementById("ensenada").style.display = "block";
+											document.getElementById("radiobutons").style.display = "block";
 										}
 										else {
 											document.getElementById("ensenada").style.display = "none";
+											document.getElementById("radiobutons").style.display = "none";
 										}
 									});
 									$("#checkNoAplica").click(function() {  
