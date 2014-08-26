@@ -161,3 +161,23 @@ textarea
 	margin-right: 0px !important;
 	margin-left: 0px !important;
 }
+
+.blu {
+	background-color: azure;
+	height: 500px;
+}
+
+.grin {
+	background-color: paleturquoise;
+	height: 240px;
+}
+
+.gray {
+	background-color: slategrey;
+	height: 240px;
+}
+
+.vlac {
+	background-color: navajowhite;
+	height: 100%
+}

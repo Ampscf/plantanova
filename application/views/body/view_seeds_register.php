@@ -112,19 +112,6 @@
 							</div><!-- End semilla -->
 
 							<div class="clear">&nbsp</div>
-							<h3>Cultivo</h3>
-							<div class="input-group input-group-lg">								
-								<select class="form-control" name="seed_name" id="seed_name" >
-									<?php 
-										foreach($varial as $key)
-										{
-											echo "<option value='" . $key->variety . "' set_select('id_order','".$key->variety."')>" . $key->variety . "</option>";
-										}
-									?>
-								</select>
-							</div><!-- End Cultivo -->
-
-							<div class="clear">&nbsp</div>
 							<h3>Cantidad</h3>
 							<div class="input-group input-group-lg">
 								

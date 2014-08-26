@@ -115,5 +115,17 @@ Class model_embark extends CI_Model
 		else return false;
 	}
 
+	function get_order_embark($id_order)
+	{
+		$this->db->where('id_order', $id_order);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_embark');
+		if($query->num_rows()>0)
+		{
+			return $query->result()[0];
+		}
+		else return false;
+	}
+
 }	
 ?>
