@@ -8,7 +8,8 @@
 		<th>Planta</th>
 		<th>Volúmen Pedido</th>
 		<th><p>Resumen</th>
-		<th style="width:175px">Editar</th>
+		<th>Editar</th>
+		<th>Mensaje</th>
 		<th>Finalizar/Cancelar</th>
 	</thead>
 	<tbody>
@@ -30,7 +31,7 @@
 				echo "<td>" . number_format($key->total_volume) . "</td>";
 				echo "<td>";
 				?>
-					
+				<p>
 	                <a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
@@ -38,6 +39,8 @@
 	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
 	                    <i class="fa fa-file-text"></i>
 	                </a>
+	            </p>
+	            <p>
 	                <a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
@@ -45,21 +48,25 @@
 	                    href=<?php echo site_url("embark/resume_embark/$key->id_order");?>>
 	                    <i class="fa fa-file-text-o"></i>
 	                </a>
+	            </p>
 			<?php
 				echo "</td>";
 				echo "<td>";?>
 
-				<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
+				<p>
+					<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Modificar Proceso"
 	                    data-toggle="modal">
 						<i class="fa fa-pencil"></i>
 	                </a>
-
+	            </p>
+	            <p>
 	                <a href="#myModal4<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Modificar Embarque"
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
 	                </a>
+	            </p>
 					<?php  echo form_open('breakdown/edit_process/'.$key->id_order); ?>	  
 		                <div id="myModal3<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
@@ -121,6 +128,37 @@
 	    			</form>	
 	         <?php
 	         echo "</td>";
+	         echo "<td>" ?>
+					
+					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Mensaje"
+	                    data-toggle="modal">
+						<i class="fa fa-comment-o"></i>
+	                </a>
+					
+					<?php echo form_open('breakdown/update_comment'); ?>
+					<div id="myModal2<?php echo $key->id_order;  ?>" class="modal fade">
+        				<div class="modal-dialog">
+            				<div class="modal-content">
+                				<div class="modal-header">
+                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    				<h4 class="modal-title">Mensaje</h4>
+                				</div>
+                				<div class="modal-body">
+									<input type="hidden" value="<?php echo $key->id_order;?>" id="id" name="id">
+									<textarea rows="4" cols="50" id="coment" name="coment"><?php echo $key->comment;?></textarea>                    				
+                				</div>
+                				<div class="modal-footer">
+                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									<button type="submit" class="btn btn-default">Guardar</button>
+                    			</div>
+            				</div>
+        				</div>
+    				</div>
+					</form>
+				
+				<?php
+				echo "</td>";
 	         echo "<td>";?>
 	         		 <a href="#myModal5<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Finalizar"

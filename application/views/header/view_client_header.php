@@ -51,8 +51,7 @@
 			      			<li><?php echo anchor('client/todos','Todos');?></li>
 			      		</ul>
 					</li>		
-					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Informes','id="info" style="height:77px;"'); ?></li>
-					<li style="border-left: 1px solid #000;"><?php echo anchor('client/contributors','Colaboradores','id="cola" style="height:77px;"'); ?></li>
+					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Avisos','id="info" style="height:77px;"'); ?></li>
 					<li class="dropdown" style="border-left: 1px solid #000;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;">
 							<?php echo $this->session->userdata('mail'); ?>

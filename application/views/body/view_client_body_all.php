@@ -4,6 +4,24 @@
 				<div class="panel panel-default">
 					
 					<div class="order-navs">
+						<div class="col-md-12">
+						<div class="col-md-8">
+							<img src="<?php echo base_url() . '/img/plantanovaicongrand.png'; ?>" alt="Logotipo" class="img-rounded">
+						</div>
+						<div class="col-md4">
+							<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
+							mensaje:
+							<?php
+							if(is_array($all_order)){
+								echo $all_order[0]->comment;
+							}
+							
+							?>
+						</div>
+						<div class="col-md4 col-md-offset-8">
+							<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
+						</div>
+					</div>
 						<ul class="nav nav-pills">
 							<li ><?php echo anchor('client/index', 'Nuevos') ?></li>
 							<li ><?php echo anchor('client/pedido_proceso', 'En proceso') ?></li>
@@ -13,6 +31,7 @@
 					</div>
 
 					<div class="panel-body">	
+
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_pedidos_cliente_todos.php');?>
 						</div>	

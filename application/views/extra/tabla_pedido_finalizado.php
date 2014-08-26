@@ -7,7 +7,7 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen</th>
-		<th>Comentario</th>
+		<th>Mensaje</th>
 		<th>Resumen</th>
 		<th>Eliminar</th>
 	</thead>
@@ -31,7 +31,7 @@
 				echo "<td>" ?>
 					
 					<a href="#myModal2<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Comentario"
+	                    title="Mensaje"
 	                    data-toggle="modal">
 						<i class="fa fa-comment-o"></i>
 	                </a>
@@ -42,7 +42,7 @@
             				<div class="modal-content">
                 				<div class="modal-header">
                     				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    				<h4 class="modal-title">Comentario</h4>
+                    				<h4 class="modal-title">Mensaje</h4>
                 				</div>
                 				<div class="modal-body">
 									<input type="hidden" value="<?php echo $key->id_order;?>" id="id" name="id">
