@@ -871,6 +871,40 @@ Class model_breakdown extends CI_Model
 		else return false;
 	}
 
+	function get_image_injer($id_order)
+	{
+		$query = $this->db->query('select img_injer1, img_injer2, img_injer3
+									from t_images_process
+									where id_order = '.$id_order);
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_image_pinch($id_order)
+	{
+		$query = $this->db->query('select img_pinch1, img_pinch2, img_pinch3
+									from t_images_process
+									where id_order = '.$id_order);
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_image_trans($id_order)
+	{
+		$query = $this->db->query('select img_trans1, img_trans2, img_trans3
+									from t_images_process
+									where id_order = '.$id_order);
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+
 	function get_total_seed($order,$seed){
 		$this->db->where('id_order',$order);
 		$this->db->where('seed_name',$seed);

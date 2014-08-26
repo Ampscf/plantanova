@@ -23,7 +23,7 @@ Class model_seeds extends CI_Model
 	function get_seeds_lists()
 	{
 	
-		$result = $this->db->query('select id_seed, t_seeds.id_order, seed_name, batch, volume, seeds_date, type, farm_name, germ_percentage
+		$result = $this->db->query('select id_seed, t_seeds.id_order, seed_name, batch, volume, seeds_date, type, farm_name, germ_percentage, mark
 									from `t_seeds`, `t_order`, `t_user`
 									where t_seeds.id_order = t_order.id_order and t_order.id_client=t_user.id_user
 									order by id_seed desc');

@@ -321,6 +321,17 @@
 								}
 								?>
 						</table>
+						<?php
+							if($img_injer[0]->img_injer1 != null){
+								echo '<a href="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" target="_blank" style="color:yellowgreen">'.$img_injer[0]->img_injer1.'</a></br>';
+							}
+							if($img_injer[0]->img_injer2 != null){
+								echo '<a href="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" target="_blank" style="color:yellowgreen">'.$img_injer[0]->img_injer2.'</a></br>';
+							}
+							if($img_injer[0]->img_injer3 != null){
+								echo '<a href="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" target="_blank" style="color:yellowgreen">'.$img_injer[0]->img_injer3.'</a></br>';
+							}
+						?>
 						<!--Fin desglose de la injerto-->
 						
 						<!--Desglose de la pinchado-->
@@ -381,6 +392,17 @@
 									}
 									?>
 						</table>
+						<?php
+							if($img_pinch[0]->img_pinch1 != null){
+								echo '<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" target="_blank" style="color:yellowgreen">'.$img_pinch[0]->img_pinch1.'</a></br>';
+							}
+							if($img_pinch[0]->img_pinch2 != null){
+								echo '<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" target="_blank" style="color:yellowgreen">'.$img_pinch[0]->img_pinch2.'</a></br>';
+							}
+							if($img_pinch[0]->img_pinch3 != null){
+								echo '<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" target="_blank" style="color:yellowgreen">'.$img_pinch[0]->img_pinch3.'</a></br>';
+							}
+						?>
 						<!--Fin desglose de la pinchado-->
 						
 						<!--Desglose de la transplante-->
@@ -441,6 +463,17 @@
 									}
 									?>
 						</table>
+						<?php
+							if($img_trans[0]->img_trans1 != null){
+								echo '<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" target="_blank" style="color:yellowgreen">'.$img_trans[0]->img_trans1.'</a></br>';
+							}
+							if($img_trans[0]->img_trans2 != null){
+								echo '<a href="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" target="_blank" style="color:yellowgreen">'.$img_trans[0]->img_trans2.'</a></br>';
+							}
+							if($img_trans[0]->img_trans3 != null){
+								echo '<a href="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" target="_blank" style="color:yellowgreen">'.$img_trans[0]->img_trans3.'</a></br>';
+							}
+						?>
 						</div>
 						<div class="panel-footer">
 						<div class="row">

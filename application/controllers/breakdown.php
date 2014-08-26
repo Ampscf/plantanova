@@ -589,7 +589,10 @@ class Breakdown extends CI_Controller {
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
-		
+		$template['img_injer']=$this->model_breakdown->get_image_injer($this->uri->segment(3));
+		$template['img_pinch']=$this->model_breakdown->get_image_pinch($this->uri->segment(3));
+		$template['img_trans']=$this->model_breakdown->get_image_trans($this->uri->segment(3));
+
 		$this->load->view('main',$template);	
 	}
 
