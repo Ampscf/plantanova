@@ -22,6 +22,8 @@ class Embark extends CI_Controller {
 		$template['categoria']=$this->model_order->get_category($order->result()[0]->id_category);
 		$template['client']=$this->model_user->obtenerCliente($order->result()[0]->id_client);
 		$template['farmer']=$order->result()[0]->farmer;
+		$template['total_embark']=$this->model_embark->get_order_embark($this->uri->segment(3));
+		$template['volume_left']=$template['volumen']-$template['total_embark']->volume;
 
 		$template['embarque_pedido']=$this->model_breakdown->get_embark($template['id_order']);		
 

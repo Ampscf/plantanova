@@ -96,6 +96,8 @@
 						</div>
 
 						<div class="clear">&nbsp</div>
+						<p>Total embarcado: <?php echo $total_embark->volume ?></p>
+						<p>Volumen restante: <?php echo $volume_left?></p>	
 
 						<input type="hidden" name="rol" id="rol" value="2" />
 
