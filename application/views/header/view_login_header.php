@@ -21,8 +21,8 @@
 	<div id="wrapper">
 		<div id="container">
 			<div class="row">
-				<div class="col-sm-4 col-md-4 col-md-offset-4 text-center logo">
-					<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
+				<div class="col-md-6 col-md-offset-3" style="margin-left: 31%;">
+					<img src="<?php echo base_url() . '/img/LOGOS_plantanova_PLANTA.png'; ?>" alt="Logotipo" class="img-rounded" style="width:72%">
 				</div>
 			</div>
 		</div>

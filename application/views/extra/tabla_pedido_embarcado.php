@@ -224,7 +224,7 @@
                 				</div>
                 				<div class="modal-footer">
                     				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-									<button type="submit" class="btn btn-default">Guardar</button>
+									<button type="submit" class="btn btn-success">Enviar</button>
                     			</div>
             				</div>
         				</div>
