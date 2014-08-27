@@ -163,7 +163,7 @@ textarea
 }
 
 .blu {
-	background-color: azure;
+	background-color: transparent;
 	height: 500px;
 }
 
@@ -175,9 +175,43 @@ textarea
 .gray {
 	background-color: slategrey;
 	height: 240px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 
 .vlac {
 	background-color: navajowhite;
 	height: 100%
+}
+
+.item{
+    background: #333;    
+    text-align: center;
+    height: 240px !important;
+}
+
+.carousel{
+    margin-top: 0px;
+    height: 240px;
+}
+
+.carousel-inner{
+	height: 240px;
+}
+
+.caru-img {
+	height: 240px !important;
+	width: 100%;
+}
+
+.fill{
+	width:100%;
+	height:100%;
+	background-position:center;
+	background-size:cover;
+}
+
+.img-previ{
+	width: 400px;
+	height: 240px;
 }

@@ -278,6 +278,7 @@
 								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:77px;"'); ?></li>
 								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes','id="admin" style="height:77px;"'); ?></li>
 								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:77px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:77px;"'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;">
 										<?php echo $this->session->userdata('mail'); ?>
@@ -306,10 +307,13 @@
 							} else if (/(order)/i.test(url)){
 								document.getElementById("order").style.color = "White";
 								document.getElementById("order").style.backgroundColor = "#6BBD44";
+							} else if (/(publicity)/i.test(url)){
+								document.getElementById("pub").style.color = "White";
+								document.getElementById("pub").style.backgroundColor = "#6BBD44";
 							} else {
 								document.getElementById("pedidos").style.color = "White";
 								document.getElementById("pedidos").style.backgroundColor = "#6BBD44";
-							}
+							} 
 						</script>
 					</div>
 				</nav>
