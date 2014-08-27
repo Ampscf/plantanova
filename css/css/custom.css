@@ -234,3 +234,8 @@ textarea
 	background-color: #D0E3CA;
 	height: 180px;
 }
+
+.pad{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
