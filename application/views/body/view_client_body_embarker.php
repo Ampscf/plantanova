@@ -43,20 +43,19 @@
 				<div class="col-md-4 gray">Reservado pa la publicidad</div>
 				<div class="clear">&nbsp</div>
 				<div class="panel panel-default">
-					
 					<div class="order-navs">
 						<ul class="nav nav-pills">
-							<li class="active"><?php echo anchor('client/index#area', 'Nuevos') ?></li>
-							<li><?php echo anchor('client/pedido_proceso#area', 'En proceso') ?></li>
-							<li><?php echo anchor('client/pedido_embarcado#area', 'Embarcados') ?></li>
+							<li ><?php echo anchor('client/index#area', 'Nuevos') ?></li>
+							<li ><?php echo anchor('client/pedido_proceso#area', 'En proceso') ?></li>
+							<li class="active"><?php echo anchor('client/pedido_embarcado#area', 'Embarcados') ?></li>
 							<li><?php echo anchor('client/finalizado#area', 'Finalizados') ?></li>	
 							<li><?php echo anchor('client/todos#area', 'Todos') ?></li>
 						</ul>
 					</div>
 
-					<div class="panel-body">	
+					<div class="panel-body">		
 						<div class="table-responsive" id="area">
-							<?php include_once('application/views/extra/tabla_pedidos_cliente.php');?>
+							<?php include_once('application/views/extra/tabla_pedidos_cliente_embarcado.php');?>
 						</div>	
 					</div>
 						

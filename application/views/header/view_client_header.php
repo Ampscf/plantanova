@@ -32,7 +32,7 @@
 	<nav class="navbar navbar-default" role="navigation" style="min-height: 80px;padding-left: 30px;">
 		<div class="container">	
 			<div class="navbar-header">
-				<?php $img='<img src="'. base_url() . 'img/logo2.jpg" style="height:30px; width:auto;">'; echo anchor('client/index', $img, 'class="navbar-brand"'); ?>
+				<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('client/index', $img, 'class="navbar-brand"'); ?>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav nav-justified">
@@ -45,6 +45,8 @@
 			      			<li><?php echo anchor('client/index','Nuevos');?></li>
 			      			<li role="presentation" class="divider"></li>
 			      			<li><?php echo anchor('client/pedido_proceso','En Proceso');?></li>
+			      			<li role="presentation" class="divider"></li>
+			      			<li><?php echo anchor('client/pedido_embarcado','Embarcados');?></li>
 			      			<li role="presentation" class="divider"></li>
 			      			<li><?php echo anchor('client/finalizado','Finalizados');?></li>
 			      			<li role="presentation" class="divider"></li>

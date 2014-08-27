@@ -29,6 +29,17 @@ Class model_client extends CI_Model
 		}
 	}
 
+	function get_process_embarker($id_client){
+		$this->db->where('id_client',$id_client);
+		$this->db->where('id_status',3);
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
 	function get_final_order($id_client){
 		$this->db->where('id_client',$id_client);
 		$this->db->where('id_status',5);
@@ -70,6 +81,27 @@ Class model_client extends CI_Model
 				return $query->result();
 			}
 			else return false;
+	}
+
+	function get_messages($id_client){
+		$query=$this->db->query('select t_oc.id_comment, t_oc.id_order, t_oc.date_comment, t_oc.comment_description 
+						from t_order_comments as t_oc, t_order as t_o 
+						where t_oc.id_order = t_o.id_order and t_o.id_client='.$id_client.' order by t_oc.id_comment desc');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_status($id){
+		$this->db->where('id_status',$id);
+		$query=$this->db->get('t_status');
+
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		}
+		else return false;
 	}
 }
 ?>

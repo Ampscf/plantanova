@@ -1,32 +1,56 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
+				<div class="col-md-8">
+					<div>
+						<?php 
+							echo '<img src="'. base_url() . '/img/LOGOS_plantanova_AVANZAMOS.jpg" style="width:100%; height:500px">';
+						?>
+					</div>
+				</div>
+				<?php
+					if(is_array($messages)){
+				?>
+				<div class="col-md-4">
+					<div class="message-heading">
+						<h3 class="message-title"><i class="fa fa-clock-o"></i> Pagos</h3>
+					</div>
+					<div class="message-body">
+						<?php
+							echo "<h4>". $messages[0]->comment_description."</h4>";
+						
+						?>
+					</div>
+				</div>
+				<?php
+				}else{
+					?>
+				<div class="col-md-4">
+					<div class="message-heading">
+						<h3 class="message-title"><i class="fa fa-star-o"></i> Bienvenido</h3>
+					</div>
+					<div class="message-body">
+						<?php
+							echo "<h4>Bienvenido a PlantaNova</h4>";
+						
+						?>
+					</div>
+				</div>
+				<?php
+				}
+				?>
+				<div class="clear">&nbsp</div>
+				<div class="col-md-4 gray">Reservado pa la publicidad</div>
+				<div class="clear">&nbsp</div>
 				<div class="panel panel-default">
 					
 					<div class="order-navs">
-						<div class="col-md-12">
-						<div class="col-md-8">
-							<img src="<?php echo base_url() . '/img/plantanovaicongrand.png'; ?>" alt="Logotipo" class="img-rounded">
-						</div>
-						<div class="col-md4">
-							<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
-							mensaje:
-							<?php
-							if(is_array($final_order)){
-								echo $final_order[0]->comment;
-							}
-							
-							?>
-						</div>
-						<div class="col-md4 col-md-offset-8">
-							<img src="<?php echo base_url() . '/img/logo.png'; ?>" alt="Logotipo" class="img-rounded">
-						</div>
-					</div>
 						<ul class="nav nav-pills">
-							<li ><?php echo anchor('client/index', 'Nuevos') ?></li>
-							<li ><?php echo anchor('client/pedido_proceso', 'En proceso') ?></li>
-							<li class="active"><?php echo anchor('client/finalizado', 'Finalizados') ?></li>	
-							<li ><?php echo anchor('client/todos', 'Todos') ?></li>
+							<li ><?php echo anchor('client/index#area', 'Nuevos') ?></li>
+							<li ><?php echo anchor('client/pedido_proceso#area', 'En proceso') ?></li>
+							<li><?php echo anchor('client/pedido_embarcado#area', 'Embarcados') ?></li>
+							<li class="active"><?php echo anchor('client/finalizado#area', 'Finalizados') ?></li>
+							<li ><?php echo anchor('client/todos#area', 'Todos') ?></li>
 						</ul>
 					</div>
 
