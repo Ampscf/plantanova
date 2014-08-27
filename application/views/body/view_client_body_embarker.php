@@ -11,7 +11,7 @@
 				<?php
 					if(is_array($messages)){
 				?>
-				<div class="col-md-4">
+				<div class="col-md-4 pad">
 					<div class="message-heading">
 						<h3 class="message-title"><i class="fa fa-clock-o"></i> Pagos</h3>
 					</div>
@@ -25,7 +25,7 @@
 				<?php
 				}else{
 					?>
-				<div class="col-md-4">
+				<div class="col-md-4 pad">
 					<div class="message-heading">
 						<h3 class="message-title"><i class="fa fa-star-o"></i> Bienvenido</h3>
 					</div>

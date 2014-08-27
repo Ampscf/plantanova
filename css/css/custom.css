@@ -181,7 +181,6 @@ textarea
 	height: 100%
 }
 
-<<<<<<< HEAD
 .item{
     background: #333;    
     text-align: center;
@@ -234,4 +233,9 @@ textarea
 	padding: 15px;
 	background-color: #D0E3CA;
 	height: 180px;
+}
+
+.pad{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }

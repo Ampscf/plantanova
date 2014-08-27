@@ -68,12 +68,13 @@
 							</div>
 						
 						</div>
-						<div class="col-md-12">
-							<?php 
+						<?php 
 							if($embark != false){
 								foreach ($embark->result() as $key)
 								{
-							?>						
+							?>
+						<div class="col-md-12">
+													
 									<div class="clear" style="margin-top: -15px">&nbsp</div>
 									<h5><b>*DETALLE DEL EMBARQUE <?php echo $key->id_embark;?></b></h5>						
 								
@@ -105,6 +106,14 @@
 										<div class="input-group input-group-lg">
 											<p><b>Dirección:</b> <?php echo $key->address;?></p>
 										</div><!-- End Destino -->
+										
+										
+									</div>
+
+									<div class="col-md-6">
+										<div class="input-group input-group-lg">
+											<p><b>Contacto Entrega:</b> <?php echo $key->arrival_contact;?></p>
+										</div><!-- End Destino -->
 										<?php $state=$this->model_embark->get_state($key->id_state);?>
 										<div class="input-group input-group-lg">
 											<p><b>Estado:</b> <?php echo $state[0]->state_name;?></p>
@@ -113,12 +122,6 @@
 										<div class="input-group input-group-lg">
 											<p><b>Ciudad:</b> <?php echo $town[0]->town_name;?></p>
 										</div><!-- End Destino -->
-										<div class="input-group input-group-lg">
-											<p><b>Contacto Entrega:</b> <?php echo $key->arrival_contact;?></p>
-										</div><!-- End Destino -->
-									</div>
-
-									<div class="col-md-6">
 										<div class="input-group input-group-lg">
 											<?php 
 											if($key->racks > 0){
@@ -134,39 +137,19 @@
 										</div><!-- End Racks -->
 										<div class="input-group input-group-lg">
 											<p><b># de Racks: </b><?php echo $key->racks;?></p>
-										</div><!-- End Racks -->										
-										<div class="input-group input-group-lg">
-											<p><b>*TIPO DE EMPAQUE:</b>
-										</div>
-										<div class="input-group input-group-lg">
-											<p><b>Retornable:</b><?php echo $key->retornable;?>
-										</div>
-										<div class="input-group input-group-lg">
-											<p><b>No Retornable:</b><?php echo $key->no_retornable;?></p>
-										</div><!-- End Tipo de Empaque -->			
-										<div class="input-group input-group-lg">
-											<p><b>*CAJAS:</b></p>
-										</div>
+										</div><!-- End Racks -->																	
 										<div class="input-group input-group-lg">						
-											<p><b>Chep:</b> <?php echo $key->chep;?></p>
+											<p><b>Chep (Retornable):</b> <?php echo $key->chep;?></p>
 										</div>
 										<div class="input-group input-group-lg">
-											<p><b>Ensenada:</b> <?php echo $key->ensenada;?></p>
+											<p><b>Ensenada(<?php echo $key->tipo_ensenada;?>):</b> <?php echo $key->ensenada;?></p>
 										</div>
 										<div class="input-group input-group-lg">
 											<p><b>No Aplica:</b> <?php echo $key->no_aplica;?></p>
 										</div><!-- End Contacto Entrega -->
 										<div class="input-group input-group-lg">
-											<p><b>*CAJA:</b></p>
+											<p><b>Caja del Trailer:</b> <?php echo $key->transport_box;?></p>
 										</div>
-										<div class="input-group input-group-lg">
-											<p><b>Seca:</b> <?php echo $key->seca;?></p>
-										</div>
-										<div class="input-group input-group-lg">
-											<p><b>Thermo:</b> <?php echo $key->thermo;?></p>
-										</div><!-- End Contacto Entrega -->
-										
-								
 									</div>
 								<?php
 								}
