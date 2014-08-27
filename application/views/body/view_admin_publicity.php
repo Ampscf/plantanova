@@ -29,8 +29,9 @@
 									}
 								?>
 							</select>
-							
+							<div class="clear">&nbsp</div>
 							<div id="p2" class="img-previ"></div> 
+							<div class="clear">&nbsp</div>
 						</div>
 						<script>
 						$("#publicity").change(function(event) {

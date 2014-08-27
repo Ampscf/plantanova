@@ -5,12 +5,14 @@ class Client extends CI_Controller {
 	   	$this->load->model('model_user','',TRUE);
 	   	$this->load->model('model_order','',TRUE);
 	   	$this->load->model('model_client','',TRUE);
+	   	$this->load->model('model_publicity','',TRUE);
 	}
 	
 	public function index()
 	{
 		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 		$template['new_order']=$this->model_client->get_new_order($this->session->userdata('id'));
+		$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_body.php';
 		$template['footer'] = "footer/view_footer.php";

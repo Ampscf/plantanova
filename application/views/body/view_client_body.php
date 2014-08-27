@@ -47,15 +47,16 @@
 				          
 				       <!-- Carousel items -->
 				        <div class="carousel-inner">
-				            <div class="item" id="1">				      
-				               	<img src="<?php echo base_url();?>img/Publicidad/semillas-calabaza.jpg" class="caru-img">
-				            </div>
-				            <div class="item" id="2">
-				            	<img src="<?php echo base_url();?>img/Publicidad/download.jpg" class="caru-img">
-				            </div>
-				            <div class="item" id="3">
-				            	<img src="<?php echo base_url();?>img/Publicidad/nova.jpg" class="caru-img">
-				            </div>
+				        	<?php
+				        		$i=1;
+				        		foreach ($publicity as $key) {
+				        			echo '<div class="item" id="'.$i.'">';
+				        			echo '<img src="'.base_url().'img/Publicidad/'.$key->p_image.'" class="caru-img">';
+				        			echo '</div>'; 
+				        			$i++;				        		
+				        		}
+				        	?>
+				           
 				        </div>
 				        <script>
 				            document.getElementById('1').className="active item";

@@ -13,6 +13,7 @@ class Publicity extends CI_Controller {
 	{
 		$template['users'] = $this->model_user->get_clients();
 		$template['publicity'] = $this->model_publicity->get_publicity();
+
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_publicity.php';
 		$template['footer'] = "footer/view_footer.php";		
@@ -28,8 +29,7 @@ class Publicity extends CI_Controller {
 			$publicit = $this->model_publicity->get_image_p($publicity);
 			$imagen = $publicit[0]->p_image;
 
-			echo "<br>";
-			echo '<img src="'.base_url().'img/Publicidad/'.$imagen.'">';
+			echo '<img src="'.base_url().'img/Publicidad/'.$imagen.'" style="width: 400px; height: 240px;">';
 
 		} else {
 			echo "";
