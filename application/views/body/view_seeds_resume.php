@@ -98,7 +98,7 @@
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
-
+<img src="<?php echo base_url()?>img/ENCABEZADOS_resumensemillas.png" style="display:none">
 <script language="Javascript">
 	function imprSelec(nombre) {
 		var ficha = document.getElementById(nombre);
@@ -113,7 +113,10 @@
      	mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url().'css/css/TableTools.css';?>' type='text/css' />");
      	
 	  	mywindow.document.write('</head><body >');
+	  	mywindow.document.write('<img src="<?php echo base_url()?>img/ENCABEZADOS_resumensemillas.png" >');
+	  	mywindow.document.write('<div style="padding-left: 40px;">');
 	  	mywindow.document.write(ficha.innerHTML);
+	  	mywindow.document.write('</div>');
 	  	mywindow.document.write('</body></html>');
 	 
 	  	mywindow.document.close();

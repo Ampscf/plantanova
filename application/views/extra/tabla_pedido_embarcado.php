@@ -7,7 +7,7 @@
 		<th>Categoría</th>
 		<th>Planta</th>
 		<th>Volúmen Pedido</th>
-		<th><p>Resumen</th>
+		<th>Resumen</th>
 		<th>Editar</th>
 		<th>Comentario</th>
 		<th>Finalizar/Cancelar</th>
@@ -47,7 +47,7 @@
 	                    data-placement="top"
 	                    title="Resumen Embarque"
 	                    href=<?php echo site_url("embark/resume_embark/$key->id_order");?>>
-	                    <i class="fa fa-file-text-o"></i>
+	                    <i class="fa fa-file-o"></i>
 	                </a>
 	            </p>
 			<?php
