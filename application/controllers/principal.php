@@ -104,11 +104,4 @@ class Principal extends CI_Controller {
 	 	session_destroy();
 	 	redirect('principal/index','refresh');
 	 }
-
-	 function prueba()
-	 {
-	 	$this->load->library('PasswordHash');
-	 	$jash=$this->passwordhash->HashPassword('hola');
-	 	echo $jash;
-	 }
 }

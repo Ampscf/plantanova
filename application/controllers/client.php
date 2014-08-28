@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Client extends CI_Controller {
 	function __construct() {
 	   parent::__construct();
@@ -10,12 +11,19 @@ class Client extends CI_Controller {
 	
 	public function index()
 	{
-		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
-		$template['new_order']=$this->model_client->get_new_order($this->session->userdata('id'));
-		$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
-		$template['header'] = 'header/view_client_header.php';
-		$template['body'] = 'body/view_client_body.php';
-		$template['footer'] = "footer/view_footer.php";
+		if($this->session->userdata('logged_in')==FALSE)
+		{
+			$template['header'] = "header/view_login_header.php";
+			$template['body'] = "body/view_login_body.php";
+			$template['footer'] = "footer/view_footer.php";
+		} else {
+			$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
+			$template['new_order']=$this->model_client->get_new_order($this->session->userdata('id'));
+			$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
+			$template['header'] = 'header/view_client_header.php';
+			$template['body'] = 'body/view_client_body.php';
+			$template['footer'] = "footer/view_footer.php";
+		}
 
 		$this->load->view('main',$template);
 	}
