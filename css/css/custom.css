@@ -239,3 +239,9 @@ textarea
 	padding-right: 0px !important;
 	padding-left: 0px !important;
 }
+
+.see-more{
+	float: right;
+	margin-top: 50px;
+	color: blue;
+}

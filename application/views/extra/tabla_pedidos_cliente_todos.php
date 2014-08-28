@@ -11,6 +11,7 @@
 		<?php
 			if(is_array($all_order)){
 				foreach ($all_order as $key) {
+					echo "<tr>";
 					echo "<td>".$key->id_order."</td>";
 					echo "<td>".$key->total_volume."</td>";
 					echo "<td>".date("d-m-Y",strtotime($key->order_date_submit))."</td>";
@@ -24,6 +25,7 @@
 						$status=$this->model_client->get_status($key->id_status);
 						echo "<td>".$status[0]->status_name."</td>";
 					}
+					echo "</tr>";
 				}
 			}
 		?>

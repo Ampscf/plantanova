@@ -53,6 +53,8 @@ Class model_client extends CI_Model
 
 	function get_order($id_client){
 		$this->db->where('id_client',$id_client);
+		$this->db->where('id_status <>',4);
+		$this->db->where('id_status <>',6);
 		$query=$this->db->get('t_order');
 		if($query->num_rows()>0){
 			return $query->result();

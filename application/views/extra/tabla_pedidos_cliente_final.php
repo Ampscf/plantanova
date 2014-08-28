@@ -10,6 +10,7 @@
 		<?php
 			if(is_array($final_order)){
 				foreach ($final_order as $key) {
+					echo "<tr>";
 					echo "<td>".$key->id_order."</td>";
 					echo "<td>".$key->total_volume."</td>";
 					echo "<td>".date("d-m-Y",strtotime($key->order_date_submit))."</td>";
@@ -17,6 +18,7 @@
 					echo "<td>".$plant->result()[0]->plant_name."</td>";
 					$category=$this->model_order->get_category($key->id_category);
 					echo "<td>".$category->result()[0]->category_name."</td>";
+					echo "<tr>";
 				}
 			}
 		?>

@@ -31,6 +31,7 @@ class Client extends CI_Controller {
 	public function pedido_proceso(){
 		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 		$template['process_order']=$this->model_client->get_process_order($this->session->userdata('id'));
+		$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_body_process.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -41,6 +42,7 @@ class Client extends CI_Controller {
 	public function pedido_embarcado(){
 		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 		$template['embarker_order']=$this->model_client->get_process_embarker($this->session->userdata('id'));
+		$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_body_embarker.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -51,6 +53,7 @@ class Client extends CI_Controller {
 	public function finalizado(){
 		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 		$template['final_order']=$this->model_client->get_final_order($this->session->userdata('id'));
+		$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_body_final.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -61,6 +64,7 @@ class Client extends CI_Controller {
 	public function todos(){
 		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 		$template['all_order']=$this->model_client->get_order($this->session->userdata('id'));
+		$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_body_all.php';
 		$template['footer'] = "footer/view_footer.php";

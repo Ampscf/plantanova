@@ -18,7 +18,7 @@
 					<div class="message-body">
 						<?php
 							echo "<h4>". $messages[0]->comment_description."</h4>";
-						
+							echo "<a href='inform' class='see-more'>Ver Más</a>";
 						?>
 					</div>
 				</div>
@@ -40,7 +40,37 @@
 				}
 				?>
 				<div class="clear">&nbsp</div>
-				<div class="col-md-4 gray">Reservado pa la publicidad</div>
+				<div class="col-md-4 gray">
+					<div class="container fill">
+					<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+				    	<!-- Carousel indicators -->
+				          
+				       <!-- Carousel items -->
+				        <div class="carousel-inner">
+				        	<?php
+				        		$i=1;
+				        		foreach ($publicity as $key) {
+				        			echo '<div class="item" id="'.$i.'">';
+				        			echo '<img src="'.base_url().'img/Publicidad/'.$key->p_image.'" class="caru-img">';
+				        			echo '</div>'; 
+				        			$i++;				        		
+				        		}
+				        	?>
+				           
+				        </div>
+				        <script>
+				            document.getElementById('1').className="active item";
+				        </script>
+				        <!-- Carousel nav -->
+				        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				            <span class="glyphicon glyphicon-chevron-left"></span>
+				        </a>
+				        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+				            <span class="glyphicon glyphicon-chevron-right"></span>
+				        </a>
+				    </div>
+				    </div>
+				</div>
 				<div class="clear">&nbsp</div>
 				<div class="panel panel-default">
 					

@@ -11,6 +11,7 @@
 		<?php
 			if(is_array($process_order)){
 				foreach ($process_order as $key) {
+					echo "<tr>";
 					echo "<td>".$key->id_order."</td>";
 					$process=$this->model_client->get_process($key->id_order);
 					$germination=$this->model_client->get_germination($key->id_order);
@@ -35,6 +36,7 @@
 					echo "<td>".$plant->result()[0]->plant_name."</td>";
 					$category=$this->model_order->get_category($key->id_category);
 					echo "<td>".$category->result()[0]->category_name."</td>";
+					echo "</tr>";
 				}
 			}
 		?>

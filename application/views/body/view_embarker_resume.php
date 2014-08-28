@@ -249,7 +249,7 @@
      	mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url().'css/css/TableTools.css';?>' type='text/css' />");
 	  	
 	  	mywindow.document.write('</head><body >');
-	  	mywindow.document.write('<img src="<?php echo base_url()?>img/ENCABEZADOS_resumenordenembarcada.png" >');
+	  	mywindow.document.write('<img src="<?php echo base_url()?>img/ENCABEZADOS_resumenordenembarcada.png" style="width:100%">');
 	  	mywindow.document.write('<div style="padding-left: 40px;">');
 	  	mywindow.document.write(ficha.innerHTML);
 	  	mywindow.document.write('</div>');
