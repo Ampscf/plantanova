@@ -373,12 +373,14 @@
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino">
 								</div><!-- End Destino -->
-								<div class="clear">&nbsp</div>
+								<div class="clear">&nbsp</div>	
 								<h3>Direccion</h3>
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Direccion" name="address" id="address">
-								</div><!-- End Destino -->
-								<div class="clear">&nbsp</div>
+								</div><!-- End Destino -->							
+					    	</div>
+
+					    	<div class="col-md-6">
 								<h3>Estado</h3>
 								<div class="input-group input-group-lg">
 								<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
@@ -404,10 +406,7 @@
 									?>
 								</select>
 							</div><!-- End town -->
-					    	</div>
-
-					    	<div class="col-md-6">
-						    	
+							<div class="clear">&nbsp</div>
 								<h3>Contacto Entrega</h3>
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
