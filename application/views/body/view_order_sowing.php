@@ -101,7 +101,7 @@
 										</div><!-- End Cantidad -->
 										<p>Fecha</p>
 										<div class="input-group">
-											<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90%; float: right;" readonly></p>
+											<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:92%; float: right;" readonly></p>
 										</div><!-- End fecha -->
 										<div class="input-group">
 											<p>Comentario</p>

@@ -785,13 +785,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_injer1'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#injerto', 'refresh');
 		}
 	}
 
@@ -808,13 +808,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_injer2'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#injerto', 'refresh');
 		}
 	}
 
@@ -831,13 +831,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_injer3'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#injerto', 'refresh');
 		}
 	}
 
@@ -854,13 +854,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_pinch1'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#pinchado', 'refresh');
 		}
 	}
 
@@ -877,13 +877,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_pinch2'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#pinchado', 'refresh');
 		}
 	}
 
@@ -900,13 +900,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_pinch3'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#pinchado', 'refresh');
 		}
 	}
 
@@ -923,13 +923,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_trans1'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#transplante', 'refresh');
 		}
 	}
 
@@ -946,13 +946,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_trans2'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#transplante', 'refresh');
 		}
 	}
 
@@ -969,13 +969,13 @@ class Breakdown extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('breakdown/process/'.$uri);
+			redirect('breakdown/process/'.$uri.'#error');
 		} else {
 			$data = $this->upload->data();
 			$datos['img_trans3'] = $data['file_name'];
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
-			redirect('breakdown/process/'.$uri, 'refresh');
+			redirect('breakdown/process/'.$uri.'#transplante', 'refresh');
 		}
 	}
 
@@ -990,7 +990,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_injer1;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#injerto');
 		}
 		else {
      		echo 'errors occured';
@@ -1006,7 +1006,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_injer2;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#injerto');
 		}
 		else {
      		echo 'errors occured';
@@ -1022,7 +1022,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_injer3;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#injerto');
 		}
 		else {
      		echo 'errors occured';
@@ -1038,7 +1038,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_pinch1;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#pinchado');
 		}
 		else {
      		echo 'errors occured';
@@ -1054,7 +1054,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_pinch2;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#pinchado');
 		}
 		else {
      		echo 'errors occured';
@@ -1070,7 +1070,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_pinch3;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#pinchado');
 		}
 		else {
      		echo 'errors occured';
@@ -1086,7 +1086,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_trans1;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#transplante');
 		}
 		else {
      		echo 'errors occured';
@@ -1102,7 +1102,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_trans2;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#transplante');
 		}
 		else {
      		echo 'errors occured';
@@ -1118,7 +1118,7 @@ class Breakdown extends CI_Controller {
 		$path = 'uploads/'.$image_process->result()[0]->img_trans3;
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
-     		redirect('breakdown/process/'.$this->uri->segment(3));
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#transplante');
 		}
 		else {
      		echo 'errors occured';

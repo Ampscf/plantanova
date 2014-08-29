@@ -276,7 +276,7 @@ class Order extends CI_Controller {
 			$this->model_order->submit_order($id_order);
 			$this->model_breakdown->fill_sowing($id_order);
 			$this->model_breakdown->insert_image_process($id_order);
-			redirect("order/index");
+			redirect("breakdown/index");
 
 		}
 		if($this->input->post('before')){

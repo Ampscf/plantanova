@@ -134,7 +134,7 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-						<div class="col-md-4">
+						<div class="col-md-4" id="error">
 							<h5 style="color:red;"><?php 
 								if (isset($error)){
 									echo $error;		
@@ -294,7 +294,7 @@
 							</div><!-- End Cantidad -->
 							<p>Fecha</p>
 							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:92%; float: right;" readonly></p>
 							</div><!-- End fecha -->
 							<div class="input-group">
 								<p>Comentario</p>
@@ -425,7 +425,7 @@
 							</div><!-- End Cantidad -->
 							<p>Fecha</p>
 							<div class="input-group">
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate1"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker1" placeholder="--Selecciona una Fecha--" id="datepicker1" name="datepicker1" style="width:90%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate1"><i class="fa fa-calendar"></i></a><input type="text" class="datepicker1" placeholder="--Selecciona una Fecha--" id="datepicker1" name="datepicker1" style="width:92%; float: right;" readonly></p>
 							</div><!-- End fecha -->
 							<div class="input-group">
 								<p>% de germinación</p>
@@ -534,7 +534,7 @@
 							</div><!-- End Cantidad -->	
 							<div class="input-group">
 								<p>Fecha</p>
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate2"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker2" placeholder="--Selecciona una Fecha--" id="datepicker2" name="datepicker2" style="width:90%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate2"><i class="fa fa-calendar"></i></a><input type="text" class="datepicker2" placeholder="--Selecciona una Fecha--" id="datepicker2" name="datepicker2" style="width:92%; float: right;" readonly></p>
 							</div><!-- End fecha -->
 							
 							<div class="input-group">
@@ -672,7 +672,7 @@
 							</div><!-- End Cantidad -->
 							<div class="input-group">
 								<p>Fecha</p>
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate3"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker3" placeholder="--Selecciona una Fecha--" id="datepicker3" name="datepicker3" style="width:90%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate3"><i class="fa fa-calendar"></i></a><input type="text" class="datepicker3" placeholder="--Selecciona una Fecha--" id="datepicker3" name="datepicker3" style="width:92%; float: right;" readonly></p>
 							</div><!-- End fecha -->	
 							<div class="input-group">
 								<!--<p>Viabilidad</p>
@@ -810,7 +810,7 @@
 							</div><!-- End Cantidad -->	
 							<div class="input-group">
 								<p>Fecha</p>
-								<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate4"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="datepicker4" placeholder="--Selecciona una Fecha--" id="datepicker4" name="datepicker4" style="width:90%; float: right;" readonly></p>
+								<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate4"><i class="fa fa-calendar"></i></a><input type="text" class="datepicker4" placeholder="--Selecciona una Fecha--" id="datepicker4" name="datepicker4" style="width:92%; float: right;" readonly></p>
 							</div><!-- End fecha -->
 							<div class="input-group">
 								<!--<p>Viabilidad</p>

@@ -32,16 +32,7 @@
 				echo "<td>" . number_format($key->total_volume) . "</td>";
 				echo "<td>";
 				?>
-				<p>
-	                <a class="btn btn-default"
-	                    rel="tooltip"
-	                    data-placement="top"
-	                    title="Resumen Proceso"
-	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
-	                    <i class="fa fa-file-text"></i>
-	                </a>
-	            </p>
-	            <p>
+				 <p>
 	                <a class="btn btn-default"
 	                    rel="tooltip"
 	                    data-placement="top"
@@ -50,22 +41,33 @@
 	                    <i class="fa fa-file-o"></i>
 	                </a>
 	            </p>
+	            <p>
+	                <a class="btn btn-default"
+	                    rel="tooltip"
+	                    data-placement="top"
+	                    title="Resumen Proceso"
+	                    href=<?php echo site_url("breakdown/final_resume/$key->id_order");?>>
+	                    <i class="fa fa-file-text"></i>
+	                </a>
+	            </p>
+	           
 			<?php
 				echo "</td>";
 				echo "<td>";?>
 
-				<p>
-					<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Modificar Proceso"
-	                    data-toggle="modal">
-						<i class="fa fa-pencil"></i>
-	                </a>
-	            </p>
+				
 	            <p>
 	                <a href="#myModal4<?php echo $key->id_order; ?>" class="btn btn-default"
 	                    title="Modificar Embarque"
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
+	                </a>
+	            </p>
+	            <p>
+					<a href="#myModal3<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Modificar Proceso"
+	                    data-toggle="modal">
+						<i class="fa fa-pencil"></i>
 	                </a>
 	            </p>
 					<?php  echo form_open('breakdown/edit_process/'.$key->id_order); ?>	  

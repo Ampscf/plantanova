@@ -6,7 +6,7 @@
 			</div>
 				<div class="panel-body">
 
-					<div class="clear">&nbsp</div>
+					<div>&nbsp</div>
 					<div class="col-md-12">
 						<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
 					</div>
@@ -95,9 +95,9 @@
 							<?php include_once('application/views/extra/tabla_embarque.php'); ?>
 						</div>
 
-						<div class="clear">&nbsp</div>
-						<p>Total embarcado: <?php echo $total_embark->volume ?></p>
-						<p>Volumen restante: <?php echo $volume_left?></p>	
+						<div>&nbsp</div>
+						<p>Total embarcado: <?php echo number_format($total_embark->volume) ?></p>
+						<p>Volumen restante: <?php echo number_format($volume_left)?></p>	
 
 						<input type="hidden" name="rol" id="rol" value="2" />
 
@@ -154,7 +154,7 @@
 	                    						title="Eliminar"
 	                    						data-toggle="modal">
 											  <i class="fa fa-times"></i>
-	                			  			  </a>&nbsp;<p>Folio:'.$key->folio.' --- Total: $'.$key->total.'&nbsp;'.$key->moneda.'</p>';
+	                			  			  </a>&nbsp;<p>Folio:'.$key->folio.' Total: $'.$key->total.'&nbsp;'.$key->moneda.'</p>';
 										echo '</div>';
 										echo '<div id="Modal'.$key->id_file.'" class="modal fade">
 			    								<div class="modal-dialog">
@@ -270,8 +270,8 @@
 						</div>		
 
 				</div><!-- End panel-body -->
-				<div class="clear">&nbsp</div>
-				<div class="clear">&nbsp</div>
+				<div>&nbsp</div>
+				<div>&nbsp</div>
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
@@ -323,13 +323,13 @@
 					    	<div class="col-md-6">
 								<h3>Fecha de Entrega</h3>							
 								<div class="input-group">
-									<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:87% !important; float: right;" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90% !important; float: right;" readonly></p>
 								</div>	
 
 					    		<div class="clear">&nbsp</div>
 								<h3>Fecha de Arribo</h3>
 								<div class="input-group">
-									<p><a class="btn btn-default" style="height: 46px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar fa-2x"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:87% !important; float: right;" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:90% !important; float: right;" readonly></p>
 								</div><!-- End fecha -->
 
 					    		<div class="clear">&nbsp</div>
