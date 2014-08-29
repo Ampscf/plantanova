@@ -39,7 +39,7 @@
 				<?php
 				}
 				?>
-				<div class="clear">&nbsp</div>
+				<div>&nbsp</div>
 				<div class="col-md-4 gray">
 					<div class="container fill">
 					<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
@@ -76,7 +76,7 @@
 				    </div>
 				    </div>
 				</div>
-				<div class="clear">&nbsp</div>
+				<div>&nbsp</div>
 				<div class="panel panel-default">
 					
 					<div class="order-navs">
