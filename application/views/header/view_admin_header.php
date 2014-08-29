@@ -285,10 +285,10 @@
 						      			<span class="caret"></span>
 						      		</a>
 									<ul class="dropdown-menu">
-										<li>
+										<!--<li>
 						      				<?php echo anchor('admin/my_acount_form', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
 									    </li>
-						      			<li role="presentation" class="divider"></li>
+						      			<li role="presentation" class="divider"></li>-->
 						      			<li>
 						      				<?php echo anchor('principal/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
 						      			</li>

@@ -265,6 +265,20 @@ class Admin extends CI_Controller {
 		$this->load->view('main',$template);
 		
 	}
+
+	function edit2($id_user){
+		$id = $id_user;
+		$template['client']=$this->model_user->obtenerCliente($id);
+		$template['header'] = "header/view_admin_header.php";
+		$template['body'] = "body/view_admin_edit_client_body.php";
+		$template['footer'] = "footer/view_footer.php";
+		
+		$template['states'] = $this->model_order->get_states();
+		$template['towns'] = $this->model_order->get_towns();
+			
+		$this->load->view('main',$template);
+		
+	}
 	
 	function carga_tabla()
 	{
@@ -285,4 +299,71 @@ class Admin extends CI_Controller {
 	        echo "true";
 	    }
 	}
+
+	public function change_pass(){
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('password1', 'password1', 'trim|required|xss_clean|callback_check_user');
+	 	
+		if($this->form_validation->run() == FALSE) 
+		{	
+			$this->edit2($this->uri->segment(3));
+			?>
+			<script>
+			alert("La Contrase\u00f1a de Administrador ingresada es incorrecta. No se realizo ningun cambio.");
+			</script>
+			<?php
+		}
+		else
+		{
+
+			$password=$this->passwordhash->HashPassword($this->input->post('password2'));
+			$this->model_user->update_pass_client($password,$this->uri->segment(3));
+			?>
+			<script>
+			alert("La contrase\u00f1a se modifico con exito!");
+			</script>
+			<?php
+			$this->edit2($this->uri->segment(3));
+
+		}
+	}
+
+	 function check_user()
+	 {
+	 	//Carga libreria para encriptar password
+	 	$this->load->library('PasswordHash');
+		
+	 	$pass = $this->input->post('password1');
+	 	//Obtiene al usuario 
+	 	$user = $this->model_user->login($this->session->userdata('mail'));
+
+	 	//Verifica que exista el usuario
+	 	if($user)
+	 	{
+	 		//Verifica que el password dado y el de la base de datos sean iguales despues de la encripción
+	 		if($this->passwordhash->CheckPassword($pass,$user->password))
+	 		{
+	 			//Establece los datos de sesión
+	 			$sessionData = array(
+	                "id" => $user->id_user,
+	                "mail" => $user->mail,
+	                "logged_in" => TRUE,
+	                "id_rol" => $user->id_rol,
+	            );
+	            $this->session->set_userdata($sessionData);
+		 		return TRUE;
+	 		}
+	 		else
+	 		{
+	 			$this->form_validation->set_message('check_user', 'error');
+	 			return FALSE;
+	 		}
+	 	}
+	 	else 
+	 	{
+	 		$this->form_validation->set_message('check_user', 'error');
+	 		return FALSE;
+	 	}
+	 }
 }

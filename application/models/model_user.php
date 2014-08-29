@@ -152,6 +152,10 @@ Class model_user extends CI_Model	{
 		}
 	}
 
+	function update_pass_client($password,$id_user){
+		$this->db->query('update t_user set password="'.$password.'" where id_user='.$id_user);
+		return $this->db->affected_rows();
+	}
 
 
 

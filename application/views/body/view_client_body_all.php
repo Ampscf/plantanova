@@ -48,13 +48,18 @@
 				       <!-- Carousel items -->
 				        <div class="carousel-inner">
 				        	<?php
-				        		$i=1;
+				        		if(is_array($publicity)){
+								$i=1;
 				        		foreach ($publicity as $key) {
 				        			echo '<div class="item" id="'.$i.'">';
 				        			echo '<img src="'.base_url().'img/Publicidad/'.$key->p_image.'" class="caru-img">';
 				        			echo '</div>'; 
 				        			$i++;				        		
 				        		}
+					        	}else{
+				        			echo '<img src="'.base_url().'img/plantanovaicongrand.png" class="caru-img">';
+
+					        	}
 				        	?>
 				           
 				        </div>

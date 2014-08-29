@@ -194,6 +194,10 @@
 								<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo $cellphone; ?>">
 							</div><!-- End cellphone -->
 							<?php echo form_error('cellphone'); ?>
+							<div class="clear">&nbsp</div>
+							<div class="input-group input-group-lg" >
+								<a href="#myModal" class="btn btn-pas" data-toggle="modal" style="width: 100%;">Cambiar Contraseña</a>
+							</div>
 						</div>
 											
 
@@ -232,3 +236,76 @@
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
+
+<?php 
+				$att = array('id' => 'change_pass','name'=>'change_pass');
+				echo form_open('admin/change_pass/'.$this->uri->segment(3),$att)?>
+					<div id="myModal" class="modal fade">
+		        		<div class="modal-dialog">
+		            		<div class="modal-content">
+		                		<div class="modal-header">
+		                			<h4 class="modal-title">Cambiar Password </h4>	  
+		                		</div>
+		                		<div class="modal-body">
+		                			<div class="input-group">
+		                				<p>Contraseña Administrador</p>
+										<input type="password" class="form-control" placeholder="Contraseña Administrador" name="password1" id="password1" value="">	
+									</div>
+		                			<div class="clear">&nbsp</div>
+			                		<div class="input-group">
+			                			<p>Nueva Contraseña</p>
+										<input type="password" class="form-control" placeholder="Nueva Contraseña" name="password2" id="password2" value="">     		
+			                		</div>
+			                		<div class="clear">&nbsp</div>
+			                		<div class="input-group">
+			                			<p>Repetir Nueva Contraseña</p>
+										<input type="password" class="form-control" placeholder="Repetir Nueva Contraseña" name="password3" id="password3" value="">     		
+			                		</div>
+		                		</div>
+		                		<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	                    			<button type="submit" class="btn btn-success" name="" onclick="update_pass()">Confirmar</button>
+		                		</div>
+		            		</div>
+		        		</div>
+		    		</div>
+	    		</form>
+	    		<script>
+	    		$("#change_pass").validate({
+					rules: {
+						password1:{
+							required:true
+						},
+						password2:{
+							required:true,
+							password2:true
+						},
+						password3: {
+							required:true,
+							equalTo:"#password2"
+						}							    
+					},
+					messages: {
+						password1:{
+							required:"La Contraseña es Requerida"
+						},
+						password2:{
+							required:"La Nueva Contraseña es Requerida"
+						},
+                		password3:{
+                			required:"La Nueva Contraseña es Requerida",
+		                	equalTo:"Las Contraseñas no son iguales"
+		                }
+				  	}
+				});
+
+				$.validator.addMethod("password2", password2, "Las contraseñas deban ser diferentes");
+
+						function password2(){
+							if (document.getElementById('password1').value == document.getElementById('password2').value){
+								return false;
+							}else return true;
+						}
+
+				
+	    		</script>

@@ -110,7 +110,7 @@ class Client extends CI_Controller {
 			$this->my_acount_form_client();
 			?>
 			<script>
-			alert("La Contraseña ingresada es incorrecata. No se realizo ningun cambio.");
+			alert("La Contrase\u00f1a ingresada es incorrecta. No se realizo ningun cambio.");
 			</script>
 			<?php
 		}
@@ -121,7 +121,7 @@ class Client extends CI_Controller {
 			$this->model_client->update_pass($password);
 			?>
 			<script>
-			alert("La contraseña se modifico con exito!");
+			alert("La contrase\u00f1a se modifico con exito!");
 			</script>
 			<?php
 			$this->my_acount_form_client();

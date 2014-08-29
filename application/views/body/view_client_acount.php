@@ -189,18 +189,18 @@
 		                		<div class="modal-body">
 		                			<div class="input-group">
 		                				<p>Contraseña Actual</p>
-										<input type="text" class="form-control" placeholder="Contraseña Actual" name="password1" id="password1">     		
+										<input type="password" class="form-control" placeholder="Contraseña Actual" name="password1" id="password1">     		
 			                				
 									</div>
 		                			<div class="clear">&nbsp</div>
 			                		<div class="input-group">
 			                			<p>Nueva Contraseña</p>
-										<input type="text" class="form-control" placeholder="Nueva Contraseña" name="password2" id="password2">     		
+										<input type="password" class="form-control" placeholder="Nueva Contraseña" name="password2" id="password2">     		
 			                		</div>
 			                		<div class="clear">&nbsp</div>
 			                		<div class="input-group">
 			                			<p>Repetir Nueva Contraseña</p>
-										<input type="text" class="form-control" placeholder="Repetir Nueva Contraseña" name="password3" id="password3">     		
+										<input type="password" class="form-control" placeholder="Repetir Nueva Contraseña" name="password3" id="password3">     		
 			                		</div>
 		                		</div>
 		                		<div class="modal-footer">

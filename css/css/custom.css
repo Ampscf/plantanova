@@ -245,3 +245,15 @@ textarea
 	margin-top: 50px;
 	color: blue;
 }
+
+.btn.btn-pas,
+.btn.btn-pas:focus {
+  background: rgba(255, 0, 0, 0.8);
+  border: 1px solid rgba(255, 0, 0, 0.8);
+  color:#fff;
+}
+.btn.btn-pas:hover {
+  background: red;
+  border: 1px solid red;
+  color: #fff;
+}
