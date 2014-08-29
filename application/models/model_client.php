@@ -105,5 +105,16 @@ Class model_client extends CI_Model
 		}
 		else return false;
 	}
+
+	function get_user($id_user){
+		$this->db->where('id_user',$id_user);
+		$query=$this->db->get('t_user');
+		if($query->num_rows() > 0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
 }
 ?>

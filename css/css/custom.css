@@ -268,3 +268,15 @@ textarea
 .clear{
 	height: 10px;
 }
+
+ ul li{
+ 	list-style-type: none;
+ }
+
+.square:before {
+  color:#ed0000;
+  content:"\25A0"; 
+  font-size:20px; 
+  position:relative;
+  right: 5%;
+}

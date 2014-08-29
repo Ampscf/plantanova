@@ -6,20 +6,21 @@
 						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Avisos</h3>
 					</div>
 					<div class="panel-body">
-						
-						<?php
-							if(is_array($messages)){
-								foreach ($messages as $key) {
-									echo "<table class='dataTable'>";
-									echo "<tr>";
-									echo "<td style='text-align:justify;'><h1>".$key->comment_description."</h1></td>";
-									echo "</tr>";
-									echo "</table>";
-								}
+						<div class="col-md-6 col-md-offset-3 ">
+							<h1>¡Hola <?php echo $user[0]->farm_name; ?>!<h1>
+						</div>
+						<div class="col-md-6 col-md-offset-3">
+							<?php
+								if(is_array($messages)){
+									foreach ($messages as $key) {
+										echo "<ul>";
+										echo "<li class='square' style='text-align:justify;'>".$key->comment_description."</li>";
+										echo "</ul>";
+									}
 
-							}
-						?>
-						
+								}
+							?>
+						</div>
 					</div>
 				</div>
 			</div>
