@@ -27,8 +27,8 @@
 								<a href="#myModal5" class="btn btn-primary" data-toggle="modal">+Eliminar Portainjerto</a>
 							</div>	
 						</div>
-						<div class="clear">&nbsp</div>
-						<div class="clear">&nbsp</div><div class="clear">&nbsp</div>
+						<div >&nbsp</div>
+						<div >&nbsp</div><div class="clear">&nbsp</div>
 						<div class="table-responsive">
 							<?php include_once('application/views/extra/tabla_semillas_index.php'); ?>
 						</div>

@@ -74,6 +74,7 @@ class Client extends CI_Controller {
 
 	public function inform()
 	{
+		$template['user']=$this->model_client->get_user($this->session->userdata('id'));
 		$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 		$template['header'] = 'header/view_client_header.php';
 		$template['body'] = 'body/view_client_inform.php';
