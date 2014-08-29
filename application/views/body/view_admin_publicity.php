@@ -52,6 +52,10 @@
 							});
 				        });
 						</script>
+						<div class="col-md-2 col-md-offset-1">
+							<div class="clear">&nbsp</div>
+							<a href="#myModal" class="btn btn-default" data-toggle="modal">Quitar Publicidad</a>
+						</div>
 					</div>
 					<div class="panel-footer">
 						<div class="row">							
@@ -76,3 +80,44 @@
 	</div> <!-- End container -->
 </div> <!-- End content div -->
 
+					<div id="myModal" class="modal fade">
+		        		<div class="modal-dialog">
+		            		<div class="modal-content">
+		                		<div class="modal-header">
+		                			<h4 class="modal-title">Quitar Publicidad</h4>	  
+		                		</div>
+		                		<div class="modal-body">
+		                			<div class="input-group">
+		                				<p>Seleccionar Cliente</p>										     		
+			                			<select class="form-control" name="client" id="client" onchange="get_publicity(this.value);">
+			                				<option value="-1" selected>---Selecciona un usuario---</option>
+											<?php
+												foreach($users as $key)
+												{
+													echo "<option value='" . $key->id_user . "' set_select('user','".$key->id_user."')>" . $key->farm_name . "</option>";
+												}
+											?>
+										</select>
+									</div>
+		                			<div class="clear">&nbsp</div>
+			                		<div class="input-group">
+			                			<p>Seleccionar la publicidad a quitar</p>
+										 <select class="form-control" name="public" id="public">
+											<option value="-1" selected>---Selecciona una publicidad---</option>
+											<?php
+												foreach($publicity as $key)
+												{
+													echo "<option value='" . $key->id_pub_client . "' set_select('publicity','".$key->id_pub_client."')>" . $key->p_name . "</option>";
+												}
+											?>
+										</select>   		
+			                		</div>
+			                				                		
+		                		</div>
+		                		<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	                    			<button type="submit" class="btn btn-success" name="" onclick="update_pass()">Confirmar</button>
+		                		</div>
+		            		</div>
+		        		</div>
+		        	</div>

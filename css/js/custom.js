@@ -89,6 +89,25 @@
 			}
 		});
 	}
+
+	function get_publicity($id_user)
+	{
+		if($("#client [value='-1']").length)
+		{
+			$("#client [value='-1']").remove();
+		}
+		$.ajax({
+			url: site_url + 'publicity/get_publicity',
+			data: {'client':$id_user},
+			type: "POST",
+			success: function(data){
+				$("#public").html(data);
+			},
+			failure:function(data){
+				
+			}
+		});
+	}
 	
 	
 	//Obtiene las ciudades por estado dinamicamente para el control select de registro cliente

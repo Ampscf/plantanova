@@ -25,7 +25,7 @@
 
 		function get_client_pub($id_user)
 		{
-			$result = $this->db->query('select p_image, p.id_publicity
+			$result = $this->db->query('select p_image, p.id_publicity, p_name, id_pub_client
 										from t_publicity AS p, t_pub_client AS c
 										where p.id_publicity = c.id_publicity
 										and id_client ='.$id_user);
@@ -34,6 +34,12 @@
 				return $result->result();
 			}
 			else return null;
+		}
+
+		function delete_client_pub($id)
+		{
+			$this->db->where('id_pub_client',$id);
+			$this->db->delete('t_pub_client');	
 		}
 	}
 ?>

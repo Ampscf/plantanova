@@ -49,4 +49,18 @@ class Publicity extends CI_Controller {
 		$this->model_publicity->add_pub_client($data);
 		redirect("publicity/index/", "refresh");
 	}
+
+	public function get_publicity()
+	{	
+		$id_user = $this->input->post('client');
+		echo $id_user;
+	
+		$publicity = $this->model_publicity->get_client_pub($id_user);
+		$result = "";
+		foreach ($publicity as $key) 
+		{
+			$result = $result . "<option value='" . $key->id_pub_client . "'>" . $key->p_name . "</option>";
+		}
+		echo $result;
+	}
 }

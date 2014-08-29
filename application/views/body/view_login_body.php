@@ -13,20 +13,20 @@
 							<?php echo form_error('password'); ?>
 						</div>
 
-						<div class="input-group input-group-lg">
+						<div class="input-group input-group">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" class="form-control" placeholder="E-mail" name="email" id="email" value="<?php echo set_value('email'); ?>">
+							<input type="text" class="form-control inicio" placeholder="E-mail" name="email" id="email" value="<?php echo set_value('email'); ?>">
 						</div><!-- End mail -->
 
 						<div class="clear">&nbsp</div>
 
-						<div class="input-group input-group-lg">
-							<div class="input-group-addon">
+						<div class="input-group input-group">
+							<div class="input-group-addon" style="width: 39px;">
 								<i class="fa fa-lock"></i>
 							</div>
-							<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
+							<input type="password" class="form-control inicio" placeholder="Contraseña" name="password" id="password">
 						</div><!-- End password -->
 
 					</div><!-- End panel-body -->
