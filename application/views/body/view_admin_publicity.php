@@ -31,20 +31,7 @@
 						
 					</div>
 					<div class="panel-footer">
-						<div class="row">							
-							<div class="col-md-3 col-md-offset-1">
-								<?php  
-								$data = array(
-									'class'	=> 'btn btn-primary btn-block',
-									'name' => 'Regresar',
-								);
-								echo anchor('breakdown/index', 'Regresar', $data);
-							?>
-							</div>
-							<div class="col-md-3 col-md-offset-4">
-								<button type="submit" class="btn btn-success btn-block" style="float: right">Mandar</button>
-							</div>
-						</form>
+						<div class="row">						
 						</div>	
 					</div>	
 				</div>
