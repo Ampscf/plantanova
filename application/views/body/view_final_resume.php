@@ -5,12 +5,12 @@
 					<div class="panel-heading">
 						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Resumen Proceso </h3>
 					</div>
-					<div class="panel-body" id="seleccion">
+					<div class="panel-body" >
 						
 						<div class="col-md-12">
 							<h1>Resumen de la Orden</h1>
 						</div>
-						
+						<div id="seleccion">
 						<!--Datos del cliente-->
 						<div class="clear">&nbsp</div>	
 						<div class="col-md-12">
@@ -508,13 +508,13 @@
 							</div>
 						</div>	
 					</div><!-- fin panel footer -->	
-					
+					</div>
 				</div>
 			</div>
 		</div> <!-- End row -->
 	</div> <!-- End container -->
 </div> <!-- End content div -->
-
+<img src="<?php echo base_url()?>img/Resumen-de-proceso.png" style="display:none">
 
 <script language="Javascript">
 	function imprSelec(nombre) {
@@ -530,7 +530,10 @@
      	mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url().'css/css/TableTools.css';?>' type='text/css' />");
      	
 	  	mywindow.document.write('</head><body >');
+	  	mywindow.document.write('<img src="<?php echo base_url()?>img/Resumen-de-proceso.png" style="width:100%">');
+	  	mywindow.document.write('<div style="padding-left: 40px;">');
 	  	mywindow.document.write(ficha.innerHTML);
+	  	mywindow.document.write('</div>');
 	  	mywindow.document.write('</body></html>');
 	 
 	  	mywindow.document.close();

@@ -41,5 +41,21 @@
 			$this->db->where('id_pub_client',$id);
 			$this->db->delete('t_pub_client');	
 		}
+
+		function get_publicity_id_pub($id_pub_client){
+			$this->db->where('id_pub_client',$id_pub_client);
+			$query=$this->db->get('t_pub_client');
+			if($query->num_rows()>0){
+				return $query->result();
+			}else{
+				return false; 
+			}
+		}
+
+		function insert_publicity($datos)
+		{
+			$this->db->insert('t_publicity',$datos);
+			return $this->db->affected_rows();
+		}
 	}
 ?>
