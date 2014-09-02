@@ -41,7 +41,10 @@
 </div> <!-- End content div -->
 
 
-				<?php echo form_open('publicity/send_publicity/');?>
+				<?php
+					$attributes = array('id' => 'send_publicity','name'=>'send_publicity');
+					echo form_open('publicity/send_publicity/',$attributes);
+				?>
 					<div id="myModal" class="modal fade">
 		        		<div class="modal-dialog">
 		            		<div class="modal-content">
@@ -55,7 +58,7 @@
 										<?php 
 											foreach($users as $key)
 											{
-												echo "<option value='" . $key->id_user . "' set_select('state','".$key->id_user."')>" . $key->farm_name . "</option>";
+												echo "<option value='" . $key->id_user . "'>" . $key->farm_name . "</option>";
 											}
 										?>
 									</select>
@@ -66,7 +69,7 @@
 										<?php 
 											foreach($publicity as $key)
 											{
-												echo "<option value='" . $key->id_publicity . "' set_select('state','".$key->id_publicity."')>" . $key->p_name . "</option>";
+												echo "<option value='" . $key->id_publicity ."' set_select('id_publicity','".$key->id_publicity."')>" . $key->p_name . "</option>";
 											}
 										?>
 									</select>
@@ -85,6 +88,22 @@
 		        </form>
 
 						<script>
+								$("#send_publicity").validate({
+							rules:{
+								pub: {
+						            pub: true
+						        }
+							}
+						});
+
+						$.validator.addMethod("pub", pub, "Selecciona una Publicidad");
+						
+						function pub(){
+							if (document.getElementById('pub').value < 0){
+								return false;
+							}else return true;
+						}
+
 						function pu(data){
 							var posicion = data;
 				           
@@ -101,6 +120,8 @@
 							}	
 							});
 						}
+
+				
 						</script>
 					
 				<?php echo form_open('publicity/delete_publicity');?>
