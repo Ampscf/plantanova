@@ -171,7 +171,10 @@
             			</div>
             			<div class="modal-body">
 
-                			<?php echo form_open_multipart('publicity/upload_publicity/');?>
+                			<?php
+                				$attributes = array('id' => 'newpub', 'name' => 'newpub'); 
+                				echo form_open_multipart('publicity/upload_publicity/');
+                			?>
                 			<p>Nombre:</p>
 							<input id="p_name" name="p_name" placeholder="Nombre" />
                 			<p>Elige una imagen de publicidad</p>
@@ -196,6 +199,19 @@
         			</div>
     			</div>
 			</div>
+
+			<script>
+			$("#newpub").validate({
+				rules: {
+					p_name: {
+						required: true
+					}, 
+					messages: {
+						p_name: "El Campo Nombre es Requerido"
+					}
+				}
+			});
+			</script>
 
 			<div id="myModal4" class="modal fade">
     			<div class="modal-dialog">
