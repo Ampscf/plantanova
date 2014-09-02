@@ -19,8 +19,15 @@
 		}
 
 		function add_pub_client($datos){
-			$this->db->insert('t_pub_client', $datos);
-			return $this->db->affected_rows();
+			$this->db->where('id_publicity',$datos['id_publicity']);
+			$this->db->where('id_client',$datos['id_client']);
+			$query=$this->db->get('t_pub_client');
+			if($query->num_rows()>0){
+				return  $query->num_rows();
+			}else{
+				$this->db->insert('t_pub_client', $datos);
+				return $this->db->affected_rows();
+			}
 		}
 
 		function get_client_pub($id_user)
