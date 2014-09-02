@@ -102,6 +102,7 @@
 			type: "POST",
 			success: function(data){
 				$("#public").html(data);
+				$("#p3").html("");
 			},
 			failure:function(data){
 				

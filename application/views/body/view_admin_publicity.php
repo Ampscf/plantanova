@@ -146,19 +146,23 @@
 					<script>
 						function pu2(data){
 							var posicion = data;
+				           if(posicion>0){
+					           	$.ajax({
+								url: site_url + 'publicity/get_publicity_image2',
+								data: {'id_pub_client':+posicion},
+								type: "POST",
+								success: function(data){
+									$("#p3").html(data);
+									//alert(data);
+								},
+								failure:function(data){
+									alert("fallo");
+								}	
+								});
+					        }else{
+					        	$("#p3").html("");
+					        }
 				           
-				           $.ajax({
-							url: site_url + 'publicity/get_publicity_image2',
-							data: {'id_pub_client':+posicion},
-							type: "POST",
-							success: function(data){
-								$("#p3").html(data);
-								//alert(data);
-							},
-							failure:function(data){
-								alert("fallo");
-							}	
-							});
 						}
 					</script>
 
