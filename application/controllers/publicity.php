@@ -91,10 +91,16 @@ class Publicity extends CI_Controller {
 
 	public function delete_pub(){
 		$id_publicity=$this->input->post('publy');
-
+		$image=$this->model_publicity->get_image_p($id_publicity);
+		$path = 'img/Publicidad/'.$image[0]->p_image;
+		$this->model_publicity->delete_cascade_publicity($id_publicity);
 		$this->model_publicity->delete_publicity($id_publicity);
 
-		redirect('publicity/index',"refresh");
+		if(unlink($path)) {
+			redirect('publicity/index',"refresh");
+		} else {
+			echo 'errors occured';
+		}
 	}
 
 	public function upload_publicity()
