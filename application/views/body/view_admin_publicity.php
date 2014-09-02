@@ -197,3 +197,32 @@
     			</div>
 			</div>
 
+			<div id="myModal4" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Eliminar Publicidad</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('publicity/delete_pub/');?>
+                			<p>Elige la publicidad a eliminar</p>
+							<select class="form-control" name="publy" id="publy">
+								<?php 
+									foreach($publicity as $key)
+									{
+										echo "<option value='" . $key->id_publicity . "' set_select('state','".$key->id_publicity."')>" . $key->p_name . "</option>";
+									}
+								?>
+							</select>
+							<p class="text-warning"><small>Eliminando una publicidad también la quitará de todos los clientes.</small></p>
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>

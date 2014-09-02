@@ -50,7 +50,7 @@ class Publicity extends CI_Controller {
 	public function send_publicity()
 	{
 		$client = $this->input->post('client');
-		$publicity = $this->input->post('publicity');
+		$publicity = $this->input->post('pub');
 
 		$data= array(
 			'id_publicity' =>$publicity,
@@ -80,6 +80,14 @@ class Publicity extends CI_Controller {
 		$id_publicity=$this->input->post('public');
 
 		$this->model_publicity->delete_client_pub($id_publicity);
+
+		redirect('publicity/index',"refresh");
+	}
+
+	public function delete_pub(){
+		$id_publicity=$this->input->post('publy');
+
+		$this->model_publicity->delete_publicity($id_publicity);
 
 		redirect('publicity/index',"refresh");
 	}

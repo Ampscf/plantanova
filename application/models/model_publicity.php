@@ -57,5 +57,11 @@
 			$this->db->insert('t_publicity',$datos);
 			return $this->db->affected_rows();
 		}
+
+		function delete_publicity($id_publicity)
+		{
+			$this->db->where('id_publicity',$id_publicity);
+			$this->db->delete('t_publicity');	
+		}
 	}
 ?>
