@@ -65,15 +65,20 @@ class Publicity extends CI_Controller {
 	{	
 		$id_user = $this->input->post('client');
 		//echo $id_user;
-	
+		
 		$publicity = $this->model_publicity->get_client_pub($id_user);
-		$result = "";
-		foreach ($publicity as $key) 
-		{
-			$result = $result . "<option value='" . $key->id_pub_client . "'>" . $key->p_name . "</option>";
+		if($publicity!=false){
+			$result = "";
+			foreach ($publicity as $key) 
+			{
+				$result = $result . "<option value='" . $key->id_pub_client . "'>" . $key->p_name . "</option>";
+			}
+			echo "<option value='-1'>---Selecciona una publicidad---</option>";
+			echo $result;
+		}else{
+			echo "<option value='-1'>---Selecciona una publicidad---</option>";
 		}
-		echo "<option value='-1'>---Selecciona una publicidad---</option>";
-		echo $result;
+		
 	}
 
 	public function delete_publicity(){
