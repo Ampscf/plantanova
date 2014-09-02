@@ -220,7 +220,7 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary">Eliminar</button>
                 			</form>
            				 </div>
         			</div>

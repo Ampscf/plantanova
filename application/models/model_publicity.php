@@ -63,5 +63,11 @@
 			$this->db->where('id_publicity',$id_publicity);
 			$this->db->delete('t_publicity');	
 		}
+
+		function delete_cascade_publicity($id_publicity)
+		{
+			$this->db->where('id_publicity',$id_publicity);
+			$this->db->delete('t_pub_client');	
+		}
 	}
 ?>
