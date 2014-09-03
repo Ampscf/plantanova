@@ -868,6 +868,8 @@ class Order extends CI_Controller {
 			redirect("breakdown/pedido_proceso","refresh");
 		}else if($order->result()[0]->id_status == 3){
 			redirect("breakdown/pedido_embarcado","refresh");
+		}else if($order->result()[0]->id_status == 4){
+			redirect("order/carga_ordenes","refresh");
 		}else if($order->result()[0]->id_status == 5){
 			redirect("breakdown/final","refresh");
 		}

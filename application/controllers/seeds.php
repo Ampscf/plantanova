@@ -48,7 +48,7 @@ class Seeds extends CI_Controller {
 		$template['suma']=$this->model_seeds->suma_volumen_seeds($this->uri->segment(3));	
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
-		$template['ma']=$this->model_seeds->get_mark();
+		
 
 		
 

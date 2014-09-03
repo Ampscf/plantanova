@@ -82,7 +82,7 @@ class Publicity extends CI_Controller {
 	}
 
 	public function delete_publicity(){
-		$id_publicity=$this->input->post('public');
+		$id_publicity=$this->input->post('publici');
 
 		$this->model_publicity->delete_client_pub($id_publicity);
 
