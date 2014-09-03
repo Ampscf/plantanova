@@ -222,7 +222,7 @@
 									'class'	=> 'btn btn-primary btn-block',
 									'name' => 'Regresar',
 								);
-								echo anchor('order/index', 'Regresar', $data);
+								echo anchor('breakdown/index', 'Regresar', $data);
 							?>
 						</div>		
 						<?php
