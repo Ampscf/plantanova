@@ -113,7 +113,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Comentarios</h3>
-									<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>								
+									<textarea class="form-control" rows="4" style="height: auto !important;" id="comment" name="comment"></textarea>								
 								</div><!-- End Comments -->
 							</div>					
 
