@@ -101,7 +101,7 @@
 			data: {'client':$id_user},
 			type: "POST",
 			success: function(data){
-				$("#public").html(data);
+				$("#publici").html(data);
 				$("#p3").html("");
 			},
 			failure:function(data){

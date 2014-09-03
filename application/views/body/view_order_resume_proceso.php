@@ -150,7 +150,7 @@
 			</div>
       	</div><!-- @end .span12 -->
 	</div><!-- @end .row -->
-
+<img src="<?php echo base_url()?>img/ENCABEZADOS_resumendeorden.png" style="display:none">
 	<script language="Javascript">
 	function imprSelec(nombre) {
 		var ficha = document.getElementById(nombre);
