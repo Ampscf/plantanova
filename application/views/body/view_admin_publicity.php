@@ -88,21 +88,20 @@
 		        </form>
 
 						<script>
-								$("#send_publicity").validate({
+						$("#send_publicity").validate({
 							rules:{
 								pub: {
-						            pub: true
+						            min: 0
 						        }
+							},
+							messages:{
+								pub:{
+									min:"Selecciona una publicidad"
+								}
 							}
 						});
 
-						$.validator.addMethod("pub", pub, "Selecciona una Publicidad");
 						
-						function pub(){
-							if (document.getElementById('pub').value < 0){
-								return false;
-							}else return true;
-						}
 
 						function pu(data){
 							var posicion = data;
@@ -124,7 +123,9 @@
 				
 						</script>
 					
-				<?php echo form_open('publicity/delete_publicity');?>
+				<?php 
+				$attributes2 = array('id' => 'delete_publicity','name'=>'delete_publicity');
+				echo form_open('publicity/delete_publicity',$attributes2);?>
 					<div id="myModal2" class="modal fade">
 		        		<div class="modal-dialog">
 		            		<div class="modal-content">
@@ -147,7 +148,7 @@
 		                			<div class="clear">&nbsp</div>
 			                		<div class="input-group">
 			                			<p>Seleccionar la publicidad a quitar</p>
-										 <select class="form-control" name="public" id="public" onchange="pu2(this.value)">
+										 <select class="form-control" name="publici" id="publici" onchange="pu2(this.value)">
 											<option value="-1" selected>---Selecciona una publicidad---</option>
 										</select>   		
 			                		</div>
@@ -165,6 +166,26 @@
 		        	</div>
 		        </form>
 					<script>
+
+						$("#delete_publicity").validate({
+							rules:{
+								client: {
+						            min: 0
+						        },
+						        publici: {
+						            min: 0
+						        }
+							},
+							messages:{
+								client:{
+									min:"Selecciona una publicidad"
+								},
+								publici:{
+									min:"Selecciona una publicidad"
+								}
+							}
+						});
+
 						function pu2(data){
 							var posicion = data;
 				           if(posicion>0){
@@ -197,13 +218,13 @@
             			<div class="modal-body">
 
                 			<?php
-                				$attributes = array('id' => 'newpub', 'name' => 'newpub'); 
-                				echo form_open_multipart('publicity/upload_publicity/');
+                				$attributes3 = array('id' => 'newpub', 'name' => 'newpub'); 
+                				echo form_open_multipart('publicity/upload_publicity/',$attributes3);
                 			?>
                 			<p>Nombre:</p>
 							<input id="p_name" name="p_name" placeholder="Nombre" />
                 			<p>Elige una imagen de publicidad</p>
-							<input id="uploadFile" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<input id="uploadFile" name="uploadFile" placeholder="Elige una imagen" disabled style="height: 30px; position: relative; top: 5px;"/>
 							<div class="fileUpload btn btn-success">
     							<span>Buscar</span>
 							    <input id="uploadBtn" type="file" class="upload" name="userfile"/>
@@ -227,15 +248,24 @@
 
 			<script>
 			$("#newpub").validate({
-				rules: {
+				rules:{
 					p_name: {
-						required: true
-					}, 
-					messages: {
-						p_name: "El Campo Nombre es Requerido"
+			            required: true
+			        },
+			        uploadFile: {
+			            required: true
+			        }
+				},
+				messages:{
+					p_name:{
+						required:"El campo Nombre es requerido"
+					},
+					uploadFile:{
+						required:"Selecciona un archivo"
 					}
 				}
 			});
+
 			</script>
 
 			<div id="myModal4" class="modal fade">
@@ -267,3 +297,4 @@
         			</div>
     			</div>
 			</div>
+
