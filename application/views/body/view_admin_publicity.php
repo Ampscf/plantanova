@@ -80,7 +80,7 @@
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    			<button type="submit" class="btn btn-success" name="" onclick="update_pass()">Confirmar</button>
+	                    			<button type="submit" class="btn btn-success" id="button" name="" onclick="update_pass()">Confirmar</button>
 		                		</div>
 		            		</div>
 		        		</div>
@@ -88,6 +88,16 @@
 		        </form>
 
 						<script>
+						
+
+						$('#button').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+
 						$("#send_publicity").validate({
 							rules:{
 								pub: {
@@ -165,6 +175,7 @@
 		        		</div>
 		        	</div>
 		        </form>
+
 					<script>
 
 						$("#delete_publicity").validate({
