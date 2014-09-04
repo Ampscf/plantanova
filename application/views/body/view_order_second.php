@@ -226,6 +226,16 @@
 					        </div>
 					    </div>					
 					</div>
+					<script>
+
+					 $('#save').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
 									
 					<div class="panel-footer">
 						<ul class="pager">
@@ -245,6 +255,8 @@
 					<?php echo form_close();?>
 
 					 <script>
+
+
 					    
 						$("#update").validate({
 							rules: {

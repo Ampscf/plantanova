@@ -241,6 +241,7 @@
 					</div>
 				</div>
 				<div class="clear">&nbsp</div>
+
 			
 			<?php echo form_open('embark/change_status/'.$this->uri->segment(3))?>
 			<div id="myModal4" class="modal fade">
@@ -255,12 +256,21 @@
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                    			<button type="submit" class="btn btn-success" name="embarcar" id="embarcar">Confirmar</button>
                 			</form>
 						</div>
             		</div>
         		</div>
     		</div>
+    		<script>
+				$('#embarcar').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 2000)
+				});
+			</script>
     		<?php 
 			$attributes = array('id' => 'insert_sowing','name'=>'insert_sowing');
 			echo form_open('order/insert_sowing/'.$this->uri->segment(3),$attributes); 
@@ -314,7 +324,13 @@
 
 		      <script>
 
-		     
+		    $('#save').click(function() {
+		    	var btn = $(this)
+		        btn.button('loading')
+		        setTimeout(function () {
+		            btn.button('reset')
+		        }, 2000)
+			});
 			
 			$("#insert_sowing").validate({
 				
@@ -445,10 +461,18 @@
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                    			<button type="submit" class="btn btn-success" name="save2" id="save2">Confirmar</button>
                 			</form>
                 			<script>
 					    
+					    $('#save2').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
 						$("#insert_germination").validate({
 							rules: {
 								breakdown_germination: {
@@ -550,10 +574,18 @@
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                    			<button type="submit" class="btn btn-success" name="save3" id="save3">Confirmar</button>
                 			</form>
-                			<script>
-					    
+                		<script>
+
+					    $('#save3').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
 						$("#insert_graft").validate({
 							rules: {
 								volume_graft: {
@@ -687,10 +719,18 @@
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                    			<button type="submit" class="btn btn-success" name="save4" id="save4">Confirmar</button>
                 			</form>
                 			<script>
 					    
+					    $('#save4').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
 						$("#insert_punch").validate({
 							rules: {
 								volume_punch: {
@@ -825,10 +865,18 @@
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                    			<button type="submit" class="btn btn-success" name="save5" id="save5">Confirmar</button>
                 			</form>
                 		<script>
-					    
+
+					    $('#save5').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
 						$("#insert_transplant").validate({
 							rules: {
 								volume_transplant: {
@@ -975,12 +1023,22 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload1">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
+
+			<script>
+				$('#upload1').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 
 			<div id="myModal112" class="modal fade">
     			<div class="modal-dialog">
@@ -1008,13 +1066,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload2">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
-
+			<script>
+				$('#upload2').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 			<div id="myModal113" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -1041,13 +1107,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload3">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
-
+			<script>
+				$('#upload3').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 			<div id="myModal222" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -1074,13 +1148,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload4">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
-
+			<script>
+				$('#upload4').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 			<div id="myModal223" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -1107,13 +1189,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload5">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
-
+			<script>
+				$('#upload5').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 			<div id="myModal224" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -1140,12 +1230,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload6">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
+			<script>
+				$('#upload6').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 
 			<div id="myModal335" class="modal fade">
     			<div class="modal-dialog">
@@ -1173,13 +1272,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload7">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
-
+			<script>
+				$('#upload7').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 			<div id="myModal336" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -1206,13 +1313,21 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload8">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
-
+			<script>
+				$('#upload8').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 			<div id="myModal337" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
@@ -1239,14 +1354,22 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" class="btn btn-primary" id="upload9">Subir</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
 
-
+			<script>
+				$('#upload9').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
 
 			<div id="myModal444" class="modal fade">
 			    <div class="modal-dialog">

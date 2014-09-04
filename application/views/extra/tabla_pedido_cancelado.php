@@ -95,13 +95,21 @@
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order_pedido2'); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
+                    					<button type="submit" class="btn btn-success" id="delete" name="<?php echo $key->id_order; ?>">Confirmar</button>
                 					</form>
 								</div>
             				</div>
         				</div>
     				</div>
-
+    				<script>
+						$('#delete').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
     				<div id="myModall<?php echo $key->id_order; ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
@@ -115,12 +123,22 @@
                 				<div class="modal-footer">
 									<?php echo form_open('order/restablecer'); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
+                    					<button type="submit" class="btn btn-success" id="restablecer" name="<?php echo $key->id_order; ?>">Confirmar</button>
                 					</form>
 								</div>
             				</div>
         				</div>
     				</div>
+    				<script>
+						$('#restablecer').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
+
 		<?php 
 				echo "</td>";
 				echo "</tr>";
