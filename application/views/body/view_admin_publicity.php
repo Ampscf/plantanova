@@ -89,14 +89,12 @@
 		        </form>
 
 						<script>
-						
-
 						$('#button').click(function() {
 					    	var btn = $(this)
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 
 						$("#send_publicity").validate({
@@ -185,7 +183,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 
 						$("#delete_publicity").validate({
@@ -273,7 +271,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 
 			$("#newpub").validate({
@@ -333,7 +331,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 			</script>
 

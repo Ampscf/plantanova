@@ -142,9 +142,10 @@ class Admin extends CI_Controller {
 	//funcion que edita un cliente
 	function update_client() 
 	{
+		
 		$datos['states'] = $this->model_order->get_states();
 		$datos['towns'] = $this->model_order->get_towns();
-		$this->load->library('form_validation');
+		/*$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 	 	
 	 	//Valida los campos que se reciben
@@ -176,7 +177,7 @@ class Admin extends CI_Controller {
 		}
 		//Los datos son correctos y se redirecciona para login
 		else
-		{			
+		{		*/	
 			$data['first_name'] = $this->input->post('first_name');
 			$data['last_name'] = $this->input->post('last_name');
 			$data['mail'] = $this->input->post('email');
@@ -192,9 +193,11 @@ class Admin extends CI_Controller {
 			$data['cp'] = $this->input->post('cp');
 			$data['social_reason'] = $this->input->post('social_reason');
 			$data['company_phone'] = $this->input->post('company_phone');
+		
+			/*
 
 			//Verifica si hubo una tupla modificada o agregada
-			if($this->model_user->update_client_user($this->uri->segment(3),$data) > 0 )
+			if(*/$this->model_user->update_client_user($this->uri->segment(3),$data); /*> 0 )
 			{
 				unset($data);
 				$data['msj'] = "Exito";
@@ -209,7 +212,11 @@ class Admin extends CI_Controller {
 				$error['template'] = $this->load->view('body/view_admin_edit_client_body_empty',$datos,TRUE);
 				echo json_encode($error);
 			}
-		} 
+		}*/
+		redirect('admin/list_clients','refresh');
+
+
+
 	}
 
 	function delete_client()

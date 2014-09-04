@@ -214,8 +214,9 @@
 
 				</div><!-- End panel-body -->
 
-			<?php echo form_close(); ?><!-- End form -->
+			<!-- End form -->
 
+			
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-1">
@@ -232,12 +233,131 @@
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
-			
+			</form>
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
+		<script>
+			$("#update").validate({
+					rules: {
+						farm_name:{
+							required:true
+						},
+						addr_number:{
+							required:true,
+							number:true
+						},
+						cp:{
+							required:true,
+							number:true,
+							maxlength: 5,
+							minlength:5
+						},
+						state:{
+							min:0,
+							required:true
+						},
+						social_reason:{
+							required:true
+						},
+						street:{
+							required:true
+						},
+						colony:{
+							required:true
+						},
+						company_phone:{
+							required:true,
+							number:true
+						},
+						town:{
+							required:true,
+							min:0
+						},
+						rfc:{
+							required:true
+						},
+						first_name:{
+							required:true
+						},
+						phone:{
+							required:true,
+							number:true
+						},
+						email:{
+							required:true,
+							email:true
+						},
+						last_name:{
+							required:true
+						},
+						cellphone:{
+							required:true,
+							number:true
+						}						    
+					},
+					messages: {
+						farm_name:{
+							required:"El campo Empresa es requerido"
+						},
+						addr_number:{
+							required:"El campo Número es requerido",
+							number:"El campo Número debe ser numerico"
+						},
+						cp:{
+							required:"El campo CP es requerido",
+							maxlength: "El campo CP debe tener 5 digitos",
+							minlength:"El campo CP debe tener 5 digitos",
+							number:"El campo CP debe ser numerico"
+						},
+						state:{
+							min:"Selecciona un Estado",
+							required:"Selecciona un estado"
+						},
+						social_reason:{
+							required:"El campo Razón Social es requerido"
+						},
+						street:{
+							required:"El campo Calle es requerido"
+						},
+						colony:{
+							required:"El campo Colonia es requerido"
+						},
+						company_phone:{
+							required:"El campo Telefono Empresa es requerido",
+							number:"El campo Telefono Empresa debe se numerico"
+						},
+						town:{
+							required:"Selecciona una Ciudad",
+							min:"Selecciona una Ciudad"
+						},
+						rfc:{
+							required:"El campo RFC es requerido"
+						},
+						first_name:{
+							required:"El campo Nombre es requerido"
+						},
+						phone:{
+							required:"El campo Telefono es requerido",
+							number:"El campo Telefono debe ser numerico"
+						},
+						email:{
+							required:"El campo Correo Electronico es requerido",
+							email:"Ingresa un Correo Electronico valido"
+						},
+						last_name:{
+							required:"El campo Apellido es requerido"
+						},
+						cellphone:{
+							required:"El campo Celular es requerido",
+							number:"El campo Celular deba ser numerico"
+						}				
+				  	}
+				});
 
-<?php 
+			</script>
+
+				<?php 
 				$att = array('id' => 'change_pass','name'=>'change_pass');
 				echo form_open('admin/change_pass/'.$this->uri->segment(3),$att)?>
 					<div id="myModal" class="modal fade">

@@ -83,13 +83,21 @@
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    				<button type="submit" class="btn btn-success">Modificar</button>
+	                    				<button type="submit" class="btn btn-success" id="modPedido">Modificar</button>
 	                    			</div>
 	            				</div>
 	        				</div>
 	    				</div>
 	    			</form>
-
+	    			<script>
+						$('#modPedido').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
 	    			<?php echo form_open('embark/index/'.$key->id_order.'/1'); ?>	  
 		                <div id="myModal4<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
@@ -103,13 +111,21 @@
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    				<button type="submit" class="btn btn-success">Modificar</button>
+	                    				<button type="submit" class="btn btn-success" id="modEmbarque">Modificar</button>
 	                    			</div>
 	            				</div>
 	        				</div>
 	    				</div>
 	    			</form>
-
+					<script>
+						$('#modEmbarque').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
 	    			<?php  echo form_open('breakdown/finish/'.$key->id_order); ?>	  
 		                <div id="myModal5<?php echo $key->id_order; ?>" class="modal fade">
 	        				<div class="modal-dialog">
@@ -123,12 +139,21 @@
 	                				</div>
 	                				<div class="modal-footer">
 	                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    				<button type="submit" class="btn btn-success">Finalizar</button>
+	                    				<button type="submit" class="btn btn-success" id="finish">Finalizar</button>
 	                    			</div>
 	            				</div>
 	        				</div>
 	    				</div>
 	    			</form>	
+	    			<script>
+						$('#finish').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
 	         <?php
 	         echo "</td>";
 	         echo "<td>" ?>
@@ -187,12 +212,21 @@
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order_pedido'); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
+                    					<button type="submit" class="btn btn-success" id="cancel" name="<?php echo $key->id_order; ?>">Confirmar</button>
                 					</form>
 								</div>
             				</div>
         				</div>
     				</div>
+    				<script>
+						$('#cancel').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
 		<?php 
 				echo "</td>";
 				echo "<td>" ?>

@@ -67,7 +67,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 
 					  	    
@@ -118,7 +118,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 
 					  	    
@@ -178,7 +178,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 					  	    
 						$("#delete_variety").validate({
@@ -238,7 +238,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 					  	    
 						$("#delete_rootstock").validate({

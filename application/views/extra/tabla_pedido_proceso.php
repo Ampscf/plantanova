@@ -106,12 +106,21 @@
                 				<div class="modal-footer">
 									<?php echo form_open('order/delete_order_pedido'); ?>
                     					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    					<button type="submit" class="btn btn-success" name="<?php echo $key->id_order; ?>">Confirmar</button>
+                    					<button type="submit" class="btn btn-success" id="cancel" name="<?php echo $key->id_order; ?>">Confirmar</button>
                 					</form>
 								</div>
             				</div>
         				</div>
     				</div>
+    				<script>
+						$('#cancel').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+					</script>
 		<?php 
 				echo "</td>";
 				echo "<td>" ?>

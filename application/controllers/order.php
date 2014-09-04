@@ -373,7 +373,7 @@ class Order extends CI_Controller {
 			}
 		}
 		$this->model_order->delete_order($llave);
-		$this->index();
+		redirect("breakdown/cancelados", "refresh");
 	}
 
 	function delete_order_pedido2()

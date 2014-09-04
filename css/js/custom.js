@@ -261,7 +261,7 @@
 	}
 
 	
-	function update_client()
+	/*function update_client()
 	{
 		form = $("#update");
 		$.ajax({
@@ -287,7 +287,7 @@
 			}
 		});
 	}
-
+*/
 
 	function notas(coment,typee)
 	{

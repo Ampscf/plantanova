@@ -158,7 +158,7 @@
 					        btn.button('loading')
 					        setTimeout(function () {
 					            btn.button('reset')
-					        }, 1000)
+					        }, 2000)
 						});
 
 						$("#register_seeds").validate({

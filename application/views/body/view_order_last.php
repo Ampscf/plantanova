@@ -164,3 +164,14 @@
 			</div>
       	</div><!-- @end .span12 -->
 	</div><!-- @end .row -->
+
+	<script>
+						
+		$('#next').click(function() {
+	    	var btn = $(this)
+	        btn.button('loading')
+	        setTimeout(function () {
+	            btn.button('reset')
+	        }, 2000)
+		});
+	</script>
