@@ -169,10 +169,17 @@
 
 				<div class="panel-footer">
 					<div class="row">
-						<div class="col-md-6 col-md-offset-1">
-						</div>
 						<div class="col-md-3 col-md-offset-1">
-							<a href="#myModal" class="btn btn-primary" data-toggle="modal">Cambiar Contraseña</a>
+							<?php  
+								$data = array(
+									'class'	=> 'btn btn-primary btn-block',
+									'name' => 'Regresar',
+								);
+								echo anchor('client/index', 'Regresar', $data);
+							?>
+						</div>
+						<div class="col-md-4 col-md-offset-4">
+							<a href="#myModal" class="btn btn-success" data-toggle="modal">Cambiar Contraseña</a>
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
@@ -205,13 +212,21 @@
 		                		</div>
 		                		<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    			<button type="submit" class="btn btn-success" name="" onclick="update_pass()">Confirmar</button>
+	                    			<button type="submit" class="btn btn-success" id="button" name="" onclick="update_pass()">Confirmar</button>
 		                		</div>
 		            		</div>
 		        		</div>
 		    		</div>
 	    		</form>
 	    		<script>
+	    		$('#button').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+
 	    		$("#change_pass").validate({
 					rules: {
 						password1:{
@@ -240,7 +255,7 @@
 				  	}
 				});
 
-				$.validator.addMethod("password2", password2, "Las contraseñas deban ser diferentes");
+				$.validator.addMethod("password2", password2, "Las contraseñas deben ser diferentes");
 
 						function password2(){
 							if (document.getElementById('password1').value == document.getElementById('password2').value){

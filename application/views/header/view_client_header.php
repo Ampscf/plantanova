@@ -54,7 +54,7 @@
 			      		</ul>
 					</li>		
 					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Avisos','id="info" style="height:77px;"'); ?></li>
-					<li class="dropdown" style="border-left: 1px solid #000;">
+					<li class="dropdown" id="cuenta" style="border-left: 1px solid #000;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;">
 							<?php echo $this->session->userdata('mail'); ?>
 						    <span class="caret"></span>
@@ -79,6 +79,9 @@
 				} else if (/(inform)/i.test(url)) {
 					document.getElementById("info").style.color = "White";
 					document.getElementById("info").style.backgroundColor = "#6BBD44";
+				} else if (/(my_acount_form_client)/i.test(url)) {
+					document.getElementById("cuenta").style.color = "White";
+					document.getElementById("cuenta").style.backgroundColor = "#6BBD44";
 				} else {
 					document.getElementById("pedi").style.color = "White";
 					document.getElementById("pedi").style.backgroundColor = "#6BBD44";

@@ -251,11 +251,10 @@
 
 <script>
 $('#buttos').click(function() {
-					    	var btn = $(this)
-					        btn.button('loading')
-					        setTimeout(function () {
-					            btn.button('reset')
-					        }, 1000)
-						});
+	var btn = $(this)
+	btn.button('loading')
+	setTimeout(function () {
+	    btn.button('reset')
+	}, 1000)
+});
 </script>
-
