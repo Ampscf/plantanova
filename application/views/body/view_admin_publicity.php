@@ -49,6 +49,7 @@
 		        		<div class="modal-dialog">
 		            		<div class="modal-content">
 		                		<div class="modal-header">
+		                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		                			<h4 class="modal-title">Agregar Publicidad a Cliente</h4>	  
 		                		</div>
 		                		<div class="modal-body">
@@ -140,6 +141,7 @@
 		        		<div class="modal-dialog">
 		            		<div class="modal-content">
 		                		<div class="modal-header">
+		                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		                			<h4 class="modal-title">Quitar Publicidad del Cliente</h4>	  
 		                		</div>
 		                		<div class="modal-body">
@@ -169,7 +171,7 @@
 		                		</div>
 		                		<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    			<button type="submit" class="btn btn-success" name="" onclick="update_pass()">Confirmar</button>
+	                    			<button type="submit" class="btn btn-success" id="buttom" name="" onclick="update_pass()">Confirmar</button>
 		                		</div>
 		            		</div>
 		        		</div>
@@ -177,6 +179,14 @@
 		        </form>
 
 					<script>
+
+						$('#buttom').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
 
 						$("#delete_publicity").validate({
 							rules:{
@@ -250,7 +260,7 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Subir</button>
+                			<button type="submit" id="buttop" class="btn btn-primary">Subir</button>
                 			</form>
            				 </div>
         			</div>
@@ -258,6 +268,14 @@
 			</div>
 
 			<script>
+			$('#buttop').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+
 			$("#newpub").validate({
 				rules:{
 					p_name: {
@@ -302,10 +320,20 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" class="btn btn-primary">Eliminar</button>
+                			<button type="submit" id="buttol" class="btn btn-primary">Eliminar</button>
                 			</form>
            				 </div>
         			</div>
     			</div>
 			</div>
+
+			<script>
+			$('#buttol').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+			</script>
 

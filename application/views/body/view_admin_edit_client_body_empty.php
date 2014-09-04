@@ -210,7 +210,7 @@
 							?>
 						</div>
 						<div class="col-md-3 col-md-offset-4">
-							<input class="btn btn-success btn-block" type="submit" value="Editar Cuenta" onClick="update_client();"/>
+							<input class="btn btn-success btn-block" type="submit" id="button" value="Editar Cuenta" onClick="update_client();"/>
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->
@@ -218,3 +218,13 @@
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
+
+<script>
+$('#button').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+</script>

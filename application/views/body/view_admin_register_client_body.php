@@ -195,7 +195,7 @@
 							?>
 						</div>
 						<div class="col-md-3 col-md-offset-4">
-							<input class="btn btn-success btn-block" type="submit" value="Crear cuenta" /><!--onClick="register_client()"-->
+							<input class="btn btn-success btn-block" type="submit" id="button" value="Crear cuenta" /><!--onClick="register_client()"-->
 						</div>
 					</div><!-- End row -->
 				</div><!-- End panel-footer -->	
@@ -205,6 +205,14 @@
 </div><!-- End row -->
 
 			<script>
+				$('#button').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+
 				$("#registry").validate({
 							rules: {
 								state: {

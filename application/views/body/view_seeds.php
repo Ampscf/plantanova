@@ -53,7 +53,7 @@
 				                		</div>
 				                		<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+			                    			<button type="submit" id="button" class="btn btn-success" name="">Confirmar</button>
 										</div>
 				                	</div>
 				                </div>
@@ -61,6 +61,14 @@
 			        	</form>
 
 			        <script>
+
+			        	$('#button').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
 
 					  	    
 						$("#register_variety").validate({
@@ -96,7 +104,7 @@
 				                		</div>
 				                		<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+			                    			<button type="submit" id="buttom" class="btn btn-success" name="">Confirmar</button>
 										</div>
 				                	</div>
 				                </div>
@@ -104,6 +112,14 @@
 			        	</form>
 
 			        <script>
+
+			        $('#buttom').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
 
 					  	    
 						$("#register_rootstock").validate({
@@ -148,7 +164,7 @@
 				                		</div>
 				                		<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+			                    			<button type="submit" id="buttop" class="btn btn-success" name="">Confirmar</button>
 										</div>
 				                	</div>
 				                </div>
@@ -157,6 +173,13 @@
 
 			        <script>
 
+			        	$('#buttop').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
 					  	    
 						$("#delete_variety").validate({
 							rules: {
@@ -202,7 +225,7 @@
 				                		</div>
 				                		<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+			                    			<button type="submit" id="buttol" class="btn btn-success" name="">Confirmar</button>
 										</div>
 				                	</div>
 				                </div>
@@ -210,7 +233,13 @@
 			        	</form>
 
 			        <script>
-
+			        	$('#buttol').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
 					  	    
 						$("#delete_rootstock").validate({
 							rules: {

@@ -144,7 +144,7 @@
                 		</div>
                 		<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    			<button type="submit" class="btn btn-success" name="">Confirmar</button>
+                    			<button type="submit" id="buttol" class="btn btn-success" name="">Confirmar</button>
                 			</form>
 						</div>
             		</div>
@@ -153,7 +153,14 @@
     	</div><!-- End panel-body -->
     	<script>
 
-					  	    
+					  	 $('#buttol').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+
 						$("#register_seeds").validate({
 							rules: {
 								volume: {
@@ -233,7 +240,7 @@
 						echo form_open('seeds/register_status/'.$this->uri->segment(3),$attributes); 
 						?>
 						<div class="col-md-3 col-md-offset-4">
-							<button type="submit" class="btn btn-success btn-block" style="float: right">Registrar</button>
+							<button type="submit" class="btn btn-success btn-block" id="buttos" style="float: right">Registrar</button>
 						</div>
 						</form>
 					</div><!-- End row -->
@@ -241,3 +248,14 @@
 		</div><!-- End panel-default -->
 	</div><!-- End col-md-4 col-md-offset-4 -->
 </div><!-- End row -->
+
+<script>
+$('#buttos').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 1000)
+						});
+</script>
+
