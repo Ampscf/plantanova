@@ -242,7 +242,7 @@
 				<nav class="navbar navbar-default" role="navigation" style="min-height: 80px;padding-left: 30px;">
 					<div class="container">
 						<div class="navbar-header">
-						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand"'); ?>
+						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>
 							<!--<a class="navbar-brand" href="#">
 								<img src="<?php echo base_url() . '/img/logo2.jpg'; ?>" alt="Logotipo" style="height:30px; width:auto;"/>
 							</a>
@@ -257,7 +257,7 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav nav-justified">
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;" id="pedidos">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;" id="pedidos">
 										Ver pedidos
 						      			<span class="caret"></span>
 						      		</a>
@@ -275,12 +275,12 @@
 						      			<li><?php echo anchor('breakdown/todos','Todos');?></li>
 						      		</ul>
 								</li>						
-								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:77px;"'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes','id="admin" style="height:77px;"'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:77px;"'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:77px;"'); ?></li>
+								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:80px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes','id="admin" style="height:80px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:80px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:80px;"'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:77px;">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
 										<?php echo $this->session->userdata('mail'); ?>
 						      			<span class="caret"></span>
 						      		</a>

@@ -10,21 +10,19 @@
 							<?php 							
 								echo $this->session->flashdata('error');		
 							?></h5>
-					<div class="col-md-12">
-						<div class="col-md-3 ">
-							<div class="clear">&nbsp</div>
-							<a href="#myModal" class="btn btn-default" data-toggle="modal">Agregar Publicidad a Cliente</a>
+					<div class="row">
+						<div class="col-md-1">
 						</div>
-						<div class="col-md-4">
-							<div class="clear">&nbsp</div>
+						<div class="col-md-6 ">
+							
+							<a href="#myModal" class="btn btn-default" data-toggle="modal">Agregar Publicidad a Cliente</a>
+						
 							<a href="#myModal2" class="btn btn-default" data-toggle="modal">Quitar Publicidad de Cliente</a>
 						</div>
-						<div class="col-md-2">
-							<div class="clear">&nbsp</div>
+						<div class="col-md-5">
+							
 							<a href="#myModal3" class="btn btn-default" data-toggle="modal">Agregar Publicidad</a>
-						</div>
-						<div class="col-md-2">
-							<div class="clear">&nbsp</div>
+						
 							<a href="#myModal4" class="btn btn-default" data-toggle="modal">Eliminar Publicidad</a>
 						</div>
 					</div>
