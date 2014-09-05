@@ -170,36 +170,32 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;">
-						<div class="col-md-10" id="pinchado">	
+	
+					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;" >
+						<div class="col-md-10" id="injerto">
 							<h4>Pinchado</h4>
 						</div>
 						<div class="col-md-2">
-							<div class="col-md-2">
-								<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
-							</div>
+							<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_pinchado.php'); ?>
 						</div>
 						<div class="col-md-12">
-							<div class="col-md-2">	
+							<div class="col-md-2">
 								<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
 							</div>
 							<?php echo $pinch1;?>
 							<?php echo $pinch2;?>
 							<?php echo $pinch3;?>
-							</br></br>
+						</div>
+						</br></br>
 
 						<a href="<?php echo base_url("index.php/order/results_punch/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
 						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
-						</div>
-						<!--<div class="col-md-2">
-							<labbel><b>Alcance:</b> <?php echo round($alcance_pinchado)."%";?></labbel>
-						</div>-->
 					</div>
-					
+
 					<div class="clear">&nbsp</div>
 					<div class="col-md-12" name="divtransplante" id="divtransplante" style="display: none;">
 						<div class="col-md-10" id="transplante">	
@@ -224,24 +220,25 @@
 
 						<a href="<?php echo base_url("index.php/order/results_transplant/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
 						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
-						</div>
+					</div>
 						<!--<div class="col-md-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
 						</div>-->
-					</div>
-					
-				</div>
+				
+				<div class="clear">&nbsp</div>
 				<div class="clear">&nbsp</div>
 				<div class="col-md-12">
 					<div class="col-md-6">	
-						<?php echo anchor('breakdown/pedido_proceso', 'Procesos', 'class="btn btn-primary" style="float: right"');?>
+						<?php echo anchor('breakdown/pedido_proceso', 'Procesos', 'class="btn btn-primary" style="float: right; width: 50%;"');?>
 					</div>
 					<div class="col-md-6">	
-						<a href="#myModal4" class="btn btn-success" data-toggle="modal">Embarcar</a>
+						<a href="#myModal4" class="btn btn-success" data-toggle="modal" style="width: 50%;">Embarcar</a>
 					</div>
 				</div>
-				<div class="clear">&nbsp</div>
-
+				
+			
+			</div>
+		</div>
 			
 			<?php echo form_open('embark/change_status/'.$this->uri->segment(3))?>
 			<div id="myModal4" class="modal fade">

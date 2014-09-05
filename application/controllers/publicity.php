@@ -11,6 +11,9 @@ class Publicity extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['users'] = $this->model_user->get_clients();
 		$template['publicity'] = $this->model_publicity->get_publicity();
 
@@ -23,6 +26,9 @@ class Publicity extends CI_Controller {
 
 	public function get_publicity_image()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$publicity = $this->input->post('id_publicity');
 	
 		if($publicity>0){
@@ -38,6 +44,9 @@ class Publicity extends CI_Controller {
 
 	public function get_publicity_image2()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_pub_client = $this->input->post('id_pub_client');
 
 		$publycity=$this->model_publicity->get_publicity_id_pub($id_pub_client);
@@ -49,6 +58,9 @@ class Publicity extends CI_Controller {
 	}
 	public function send_publicity()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$client = $this->input->post('client');
 		$publicity = $this->input->post('pub');
 
@@ -63,6 +75,9 @@ class Publicity extends CI_Controller {
 
 	public function get_publicity()
 	{	
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_user = $this->input->post('client');
 		//echo $id_user;
 		
@@ -82,6 +97,9 @@ class Publicity extends CI_Controller {
 	}
 
 	public function delete_publicity(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_publicity=$this->input->post('publici');
 
 		$this->model_publicity->delete_client_pub($id_publicity);
@@ -90,6 +108,9 @@ class Publicity extends CI_Controller {
 	}
 
 	public function delete_pub(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_publicity=$this->input->post('publy');
 		$image=$this->model_publicity->get_image_p($id_publicity);
 		$path = 'img/Publicidad/'.$image[0]->p_image;
@@ -105,6 +126,9 @@ class Publicity extends CI_Controller {
 
 	public function upload_publicity()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './img/Publicidad';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';

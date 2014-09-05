@@ -11,6 +11,9 @@ class Seeds extends CI_Controller {
 	}
 
 	public function index(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/view_seeds.php";
 		$template['footer'] = "footer/view_footer.php";
@@ -24,6 +27,9 @@ class Seeds extends CI_Controller {
 
 
 	public function register_seeds_form(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		
 		$template['order']=$this->model_seeds-> get_orders();
 
@@ -58,6 +64,9 @@ class Seeds extends CI_Controller {
 	//Registra semillas
 	public function register_seeds() 
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 			//Obtiene tdos los campos a guardar del usuario en un arreglo
 			$data['id_order'] = $this->uri->segment(3);
 			$data['seed_name'] = $this->input->post('seed_name');
@@ -77,12 +86,18 @@ class Seeds extends CI_Controller {
 	
 	//cambia el estatus de semillas a 2
 	public function register_status(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$this->model_order->update_status($this->uri->segment(3));
 		redirect("breakdown/pedido_proceso/", "refresh");
 	}
 
 	//funcion que caraga informacion para editar las semillas
 	function edit_seeds(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id = $this->uri->segment(3);
 		$template['seed']=$this->model_seeds->get_seed_id($id);
 		$template['header'] = "header/view_admin_header.php";
@@ -98,6 +113,9 @@ class Seeds extends CI_Controller {
 	//edicion de semillas
 	public function update_seeds() 
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$datos['order']=$this->model_seeds->get_orders();
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
@@ -154,6 +172,9 @@ class Seeds extends CI_Controller {
 	//eliminar semillas
 	public function delete_seed()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$order=$this->uri->segment(3);
 		foreach ($_POST as $key => $value) 
 		{
@@ -166,7 +187,11 @@ class Seeds extends CI_Controller {
 		redirect("seeds/register_seeds_form/$order/".$this->uri->segment(4), "refresh");
 	}
 
-	function sel_order(){
+	function sel_order()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('id_order') == "-1")
 		{
 			$this->form_validation->set_message('sel_order', 'Selecciona una %s.');
@@ -178,6 +203,9 @@ class Seeds extends CI_Controller {
 	//AJAX:Función que regresa variedad o portainjerto de una orden
 	public function get_type()
 	{	
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$value= $this->input->post('value');
 		$id_order= $this->input->post('id_order');
 		if($value == "Variedad"){
@@ -200,7 +228,11 @@ class Seeds extends CI_Controller {
 		}
 	}
 
-	public function final_resume(){
+	public function final_resume()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = "body/view_seeds_resume.php";
@@ -230,6 +262,9 @@ class Seeds extends CI_Controller {
 	
 	public function add_orders_seed()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$b = $this->model_seeds->order_seeds(303);
 		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/prueba.php";
@@ -263,20 +298,32 @@ class Seeds extends CI_Controller {
 		$this->load->view('main',$template);
 	}
 
-	public function register_mark(){
+	public function register_mark()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$datos['mark']=$this->input->post('mark');
 		$this->model_seeds->register_mark($datos);
 		redirect("seeds/index", "refresh");
 
 	}
 
-	public function delete_variety(){
+	public function delete_variety()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_variety=$this->input->post('vari');
 		$this->model_seeds->delete_variety($id_variety);
 		redirect("seeds/index", "refresh");
 	}
 
-	public function delete_rootstock(){
+	public function delete_rootstock()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_rootstock=$this->input->post('por');
 		$this->model_seeds->delete_rootstock($id_rootstock);
 		redirect("seeds/index", "refresh");

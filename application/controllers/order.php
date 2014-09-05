@@ -12,18 +12,24 @@ class Order extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		
-			$template['header'] = 'header/view_admin_header.php';
-			$template['body'] = 'body/view_admin_body.php';
-			$template['footer'] = "footer/view_footer.php";
-			//Manda los datos necesarios para cargar los pedidos y datos del usuario
-			$template['pedidos'] = $this->model_breakdown->get_new_orders();
-			$this->load->view('main',$template);
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_body.php';
+		$template['footer'] = "footer/view_footer.php";
+		//Manda los datos necesarios para cargar los pedidos y datos del usuario
+		$template['pedidos'] = $this->model_breakdown->get_new_orders();
+		$this->load->view('main',$template);
 				
 	}
 
 	public function dropdown_companies()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$result = $this -> model_order -> get_companies_drop();
 		foreach($result as $row)
 		{
@@ -35,7 +41,9 @@ class Order extends CI_Controller {
 	//obtener la informacion de las compañia e imprimirla
 	public function get_companie_info()
 	{	
-		
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$companie = $this->input->post('id_companie');
 		
 		if($companie>0){
@@ -69,6 +77,9 @@ class Order extends CI_Controller {
 	
 	//Muestra el formulario para empezar a ordenar	
 	public function carga_ordenes(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_orders.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -80,11 +91,17 @@ class Order extends CI_Controller {
 	
 	public function load_zero_step()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$this->load->view('body/view_orders.php');
 	}
 	
 	public function load_first_step($id)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_first.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -98,6 +115,9 @@ class Order extends CI_Controller {
 	
 	public function load_second_step($id, $fecha, $idplant, $voltot, $categ, $id_order)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_second.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -123,6 +143,9 @@ class Order extends CI_Controller {
 
 	public function load_second_step_two()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		//$id, $fecha, $idplant, $voltot, $categ
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
@@ -149,6 +172,9 @@ class Order extends CI_Controller {
 	}
 
 	function pending_order_second_next_before(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_order=$this->input->post('id_order');
 		$restante=$this->input->post('restante');
 		if($this->input->post('next')){
@@ -270,6 +296,9 @@ class Order extends CI_Controller {
 	}
 
 	public function order_last_next_before(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_order=$this->input->post('id_order');
 		if($this->input->post('next')){
 			
@@ -287,6 +316,9 @@ class Order extends CI_Controller {
 
 	//carga las ordenes pendientes
 	public function pending_order(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		
 		$a=$this->input->post();
 		$id_client=$a['companies'];
@@ -311,6 +343,9 @@ class Order extends CI_Controller {
 	}
 
 	public function pending_order_two($id){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		
 		$id_client=$id;
 		$template['id_company']=$id_client;
@@ -335,6 +370,9 @@ class Order extends CI_Controller {
 
 	//funcion para valorar a donde dirigirse en la orden pendiente atras o adelante
 	public function pending_order_next_before(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('next')){
 			$a=$this->input->post();
 			$id_client=$a['id_company'];
@@ -349,6 +387,9 @@ class Order extends CI_Controller {
 
 	function delete_order()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -365,6 +406,9 @@ class Order extends CI_Controller {
 
 	function delete_order_pedido()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -378,6 +422,9 @@ class Order extends CI_Controller {
 
 	function delete_order_pedido2()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -390,6 +437,9 @@ class Order extends CI_Controller {
 	}
 
 	public function pending_order_first_next_before(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$a=$this->input->post();
 		$id_client=$this->input->post('id_company');
 		/*$this->load->library('form_validation');
@@ -459,6 +509,9 @@ class Order extends CI_Controller {
 	}
 
 	public function pending_order_first_next_before_update(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$a=$this->input->post();
 		$id_client=$a['id_company'];
 		/*$this->load->library('form_validation');
@@ -520,6 +573,9 @@ class Order extends CI_Controller {
 	}
 	function sel_plant()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('plant') == "-1")
 		{
 			$this->form_validation->set_message('sel_plant', 'Selecciona un %s.');
@@ -530,6 +586,9 @@ class Order extends CI_Controller {
 
 	function sel_category()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('category') == "-1")
 		{
 			$this->form_validation->set_message('sel_category', 'Selecciona una %s.');
@@ -540,6 +599,9 @@ class Order extends CI_Controller {
 
 	function sel_date()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$fecha=$this->input->post('datepicker');
 		$date= date("Y-m-d H:i:s", strtotime($fecha));
 		$cdate=date("Y-m-d H:i:s");
@@ -554,6 +616,9 @@ class Order extends CI_Controller {
 	//AJAX:Función que regresa todas las ciudades de un estado
 	public function get_subtype()
 	{	
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_sustratum = $this->input->post('sustratum');
 		echo $id_sustratum;
 	
@@ -568,6 +633,9 @@ class Order extends CI_Controller {
 
 	function insert_breakdown()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data['id_sustratum']=$this->input->post('sustratum');
 		$data['id_subtype']==$this->input->post('subtype');
 		$data['id_variety']==$this->input->post('variety');
@@ -580,6 +648,9 @@ class Order extends CI_Controller {
 	
 	public function delete_breakdown()
     {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
         foreach ($_POST as $key => $value)
         {
             if(is_int($key))
@@ -612,6 +683,9 @@ class Order extends CI_Controller {
 	
 	public function sel_sustrato()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('sustratum') == "-1")
 		{
 			$this->form_validation->set_message('sel_sustrato', 'Selecciona un %s.');
@@ -622,6 +696,9 @@ class Order extends CI_Controller {
 	
 	public function sel_subtipo()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('subtype') == "-1")
 		{
 			$this->form_validation->set_message('sel_subtipo', 'Selecciona un %s.');
@@ -632,6 +709,9 @@ class Order extends CI_Controller {
 	
 	public function temporal()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_order_last.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -640,6 +720,9 @@ class Order extends CI_Controller {
 	}
 
 	public function edit_order(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
@@ -670,6 +753,9 @@ class Order extends CI_Controller {
 
 	public function insert_sowing()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$order=$this->uri->segment(3);
 		$total_sowing=$this->model_order->get_total_sowing($this->uri->segment(3));
 		$total_plant=$total_sowing->sowing;
@@ -703,6 +789,9 @@ class Order extends CI_Controller {
 
 	public function delete_sowing()
     {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		
         foreach ($_POST as $key => $value)
         {
@@ -782,6 +871,9 @@ class Order extends CI_Controller {
 	
 	public function update_comment()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id = $this->input->post('id');
 		$comment = $this->input->post('coment');
 		$this->model_order->update_order_comment($id, $comment);
@@ -790,12 +882,18 @@ class Order extends CI_Controller {
 
 	public function results()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['orders']=$this->model_order->get_order_seeds_info($this->uri->segment(3));
 		$this->load->view('body/view_results.php', $template);
 	}
 
 	public function results_graft()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
 		$graft=$this->model_order->get_graft($breakdown[0]->id_breakdown);
 		if($graft != false){
@@ -810,6 +908,9 @@ class Order extends CI_Controller {
 
 	public function results_punch()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
 		$punch=$this->model_order->get_punch($breakdown[0]->id_breakdown);
 		if($punch != false){
@@ -824,6 +925,9 @@ class Order extends CI_Controller {
 
 	public function results_transplant()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
 		$punch=$this->model_order->get_transplant($breakdown[0]->id_breakdown);
 		if($punch != false){
@@ -837,6 +941,9 @@ class Order extends CI_Controller {
 	}
 
 	public function register_variety(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$var=$this->input->post('variedad');
 		$datos['variety_name']=strtoupper($var);
 		$this->model_order->register_variety($datos);
@@ -845,6 +952,9 @@ class Order extends CI_Controller {
 	}
 
 	public function register_rootstock(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$porta=$this->input->post('portainjerto');
 		$datos['rootstock_name']=strtoupper($porta);
 		$this->model_order->register_rootstock($datos);
@@ -853,6 +963,9 @@ class Order extends CI_Controller {
 	}
 
 	public function restablecer(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -873,8 +986,5 @@ class Order extends CI_Controller {
 		}else if($order->result()[0]->id_status == 5){
 			redirect("breakdown/final","refresh");
 		}
-		
-	
-
 	}
 }

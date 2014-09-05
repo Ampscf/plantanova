@@ -12,6 +12,9 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -24,6 +27,9 @@ class Admin extends CI_Controller {
 	//Manda a la forma que contiene la lista de todos los registros de los usuarios
 	public function list_clients() 
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_companies.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -36,6 +42,9 @@ class Admin extends CI_Controller {
 	//Manda la forma para el registro del cliente enviandole la lista de estados
 	public function register_client_form()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = "header/view_admin_header.php";
 		$template['body'] = "body/view_admin_register_client_body.php";
 		$template['footer'] = "footer/view_footer.php";
@@ -50,6 +59,9 @@ class Admin extends CI_Controller {
 	//Registra un usuario 
 	function register_client() 
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$this->load->library('PasswordHash');
 		$datos['states'] = $this->model_order->get_states();
 		$datos['towns'] = $this->model_order->get_towns();
@@ -142,7 +154,9 @@ class Admin extends CI_Controller {
 	//funcion que edita un cliente
 	function update_client() 
 	{
-		
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$datos['states'] = $this->model_order->get_states();
 		$datos['towns'] = $this->model_order->get_towns();
 		/*$this->load->library('form_validation');
@@ -221,6 +235,9 @@ class Admin extends CI_Controller {
 
 	function delete_client()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -236,6 +253,9 @@ class Admin extends CI_Controller {
 	//Verifica que el usuario haya seleccionado algún estado al registrarse
 	function sel_estado()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		if($this->input->post('state') == "-1")
 		{
 			$this->form_validation->set_message('sel_estado', 'Selecciona un %s.');
@@ -247,6 +267,9 @@ class Admin extends CI_Controller {
 	//AJAX:Función que regresa todas las ciudades de un estado
 	public function get_towns()
 	{	
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_state = $this->input->post('id_state');
 	
 		$towns = $this->model_order->get_town($id_state);
@@ -260,6 +283,9 @@ class Admin extends CI_Controller {
 
 	//funcion que caraga informacion para editar al cliente
 	function edit(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id = $this->uri->segment(3);
 		$template['client']=$this->model_user->obtenerCliente($id);
 		$template['header'] = "header/view_admin_header.php";
@@ -274,6 +300,9 @@ class Admin extends CI_Controller {
 	}
 
 	function edit2($id_user){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id = $id_user;
 		$template['client']=$this->model_user->obtenerCliente($id);
 		$template['header'] = "header/view_admin_header.php";
@@ -289,6 +318,9 @@ class Admin extends CI_Controller {
 	
 	function carga_tabla()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$this->load->view("extra/tabla_empresa.php");
 	}
 
@@ -298,6 +330,9 @@ class Admin extends CI_Controller {
 	//---------------------------------
 	function register_email_exists()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$email = $this->input->post('email');
 
 	    if($this->model_user->email_exists($email)) {
@@ -308,6 +343,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function change_pass(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('password1', 'password1', 'trim|required|xss_clean|callback_check_user');
@@ -338,6 +376,9 @@ class Admin extends CI_Controller {
 
 	 function check_user()
 	 {
+	 	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 	 	//Carga libreria para encriptar password
 	 	$this->load->library('PasswordHash');
 		

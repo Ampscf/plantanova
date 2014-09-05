@@ -24,6 +24,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function pedido_nuevo(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -32,6 +35,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function pedido_proceso(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body_process.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -45,6 +51,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function pedido_embarcado(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body_embarcado.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -54,6 +63,9 @@ class Breakdown extends CI_Controller {
 
 	public function todos()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_all.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -63,6 +75,9 @@ class Breakdown extends CI_Controller {
 	}
 	public function cancelados()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body_cancelados.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -72,6 +87,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function finalizado(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_body_finalizados.php';
 		$template['footer'] = "footer/view_footer.php";
@@ -81,12 +99,18 @@ class Breakdown extends CI_Controller {
 	}
 	
 	public function finish(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$this->model_breakdown->finish_status($this->uri->segment(3));
 		redirect("breakdown/finalizado","refresh");
 	}
 
 	public function process()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
 		$images=$this->model_breakdown->get_image_process($this->uri->segment(3));
@@ -125,11 +149,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['injert1']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_injer1.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_injer1.'</a>
-								  <a href="#myModal444" class="btn btn-default"
+								  '.$images->result()[0]->img_injer1.' <a href="#myModal444" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_injer1.'" 
+	                    			title="'.$images->result()[0]->img_injer1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_injer1.'" style="width:100%; height:200px"></a>
 								  </div>';
 		}	
 		if ($images->result()[0]->img_injer2 == NULL){
@@ -138,11 +167,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['injert2']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_injer2.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_injer2.'</a>
-								  <a href="#myModal445" class="btn btn-default"
+								  '.$images->result()[0]->img_injer2.' <a href="#myModal445" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_injer2.'" 
+	                    			title="'.$images->result()[0]->img_injer2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_injer2.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_injer3 == NULL){
@@ -151,11 +185,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['injert3']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_injer3.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_injer3.'</a>
-								  <a href="#myModal446" class="btn btn-default"
+								  '.$images->result()[0]->img_injer3.' <a href="#myModal446" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_injer3.'" 
+	                    			title="'.$images->result()[0]->img_injer3.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_injer3.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_pinch1 == NULL){
@@ -164,11 +203,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['pinch1']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_pinch1.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_pinch1.'</a>
-								  <a href="#myModal553" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch1.' <a href="#myModal553" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_pinch1.'" 
+	                    			title="'.$images->result()[0]->img_pinch1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_pinch1.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_pinch2 == NULL){
@@ -177,11 +221,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['pinch2']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_pinch2.'</a>
-								  <a href="#myModal554" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch2.' <a href="#myModal554" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" 
+	                    			title="'.$images->result()[0]->img_pinch2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_pinch3 == NULL){
@@ -190,11 +239,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['pinch3']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_pinch3.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_pinch3.'</a>
-								  <a href="#myModal555" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch2.' <a href="#myModal555" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" 
+	                    			title="'.$images->result()[0]->img_pinch2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_trans1 == NULL){
@@ -203,11 +257,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['trans1']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_trans1.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_trans1.'</a>
-								  <a href="#myModal661" class="btn btn-default"
+								  '.$images->result()[0]->img_trans1.' <a href="#myModal661" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_trans1.'" 
+	                    			title="'.$images->result()[0]->img_pinch1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_trans1.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_trans2 == NULL){
@@ -216,11 +275,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['trans2']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_trans2.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_trans2.'</a>
-								  <a href="#myModal662" class="btn btn-default"
+								  '.$images->result()[0]->img_trans2.' <a href="#myModal662" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_trans2.'" 
+	                    			title="'.$images->result()[0]->img_pinch2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_trans2.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_trans3 == NULL){
@@ -229,11 +293,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['trans3']='<div class="col-md-3">
-								  <a href="/plantanova/uploads/'.$images->result()[0]->img_trans3.'" target="_blank" style="color:yellowgreen">'.$images->result()[0]->img_trans3.'</a>
-								  <a href="#myModal663" class="btn btn-default"
+								  '.$images->result()[0]->img_trans3.' <a href="#myModal663" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_trans3.'" 
+	                    			title="'.$images->result()[0]->img_pinch3.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_trans3.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 
@@ -244,6 +313,9 @@ class Breakdown extends CI_Controller {
 
 	public function insert_germination()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
 		$total_germ=$total_germination->germination;
 		
@@ -276,6 +348,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function insert_graft(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
 		$total_graf=$total_graft->graft;
 		$volume=$this->input->post('volume_graft');
@@ -301,6 +376,9 @@ class Breakdown extends CI_Controller {
 	
 	public function insert_punch()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
 		$total_punsh=$total_punch->punch;
 		$volume=$this->input->post('volume_punch');
@@ -323,6 +401,9 @@ class Breakdown extends CI_Controller {
 
 	public function insert_transplant()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$total_transplant=$this->model_order->get_total_transplant($this->uri->segment(3));
 		$total_trans=$total_transplant->transplant;
 		$volume=$this->input->post('volume_transplant');
@@ -345,6 +426,9 @@ class Breakdown extends CI_Controller {
 	
 	public function delete_germination()
     {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
         foreach ($_POST as $key => $value)
         {
             if(is_int($key))
@@ -401,6 +485,9 @@ class Breakdown extends CI_Controller {
 
     public function delete_graft()
     {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
         foreach ($_POST as $key => $value)
         {
             if(is_int($key))
@@ -447,6 +534,9 @@ class Breakdown extends CI_Controller {
 
     public function delete_punch()
     {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
         foreach ($_POST as $key => $value)
         {
             if(is_int($key))
@@ -482,6 +572,9 @@ class Breakdown extends CI_Controller {
 
     public function delete_transplant()
     {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
         foreach ($_POST as $key => $value)
         {
             if(is_int($key))
@@ -506,6 +599,9 @@ class Breakdown extends CI_Controller {
     }
 	public function finish_order()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$a = $this->uri->segment(3);
 		$datos['transporter']=$this->input->post('transporter');
 		$datos['final_volume']=$this->input->post('final_volume');
@@ -566,6 +662,9 @@ class Breakdown extends CI_Controller {
 
 
 	public function edit_process(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data['id_status']='2';
 		
 		$this->model_breakdown->update_order2($this->uri->segment(3),$data);	
@@ -575,6 +674,9 @@ class Breakdown extends CI_Controller {
 	
 	public function final_resume()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_final_resume.php';
@@ -597,6 +699,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function order_resume_nuevo(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 			$template['header'] = 'header/view_admin_header.php';
 				$template['body'] = 'body/view_order_resume_nuevo.php';
 				$template['footer'] = "footer/view_footer.php";
@@ -610,6 +715,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function order_resume_proceso(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 			$template['header'] = 'header/view_admin_header.php';
 				$template['body'] = 'body/view_order_resume_proceso.php';
 				$template['footer'] = "footer/view_footer.php";
@@ -624,6 +732,9 @@ class Breakdown extends CI_Controller {
 
 	public function update_comment()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id = $this->input->post('id');
 		$comment = $this->input->post('coment');
 		$this->model_order->update_order_comment($id, $comment);
@@ -631,6 +742,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function max_volume_sowing(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_seed = $this->input->post('seeds');
 		$seed_volume = $this->input->post('volume');
 		$seed=$this->model_breakdown->get_seed_id_seed($id_seed);
@@ -645,6 +759,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function max_volume_graft(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_breakdown = $this->input->post('breakdown_graft');
 		$graft_volume = $this->input->post('volume_graft');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
@@ -691,6 +808,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function max_volume_punch(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_breakdown = $this->input->post('breakdown_punch');
 		$punch_volume = $this->input->post('volume_punch');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
@@ -732,6 +852,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function max_volume_transplant(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_breakdown = $this->input->post('breakdown_transplant');
 		$transplant_volume = $this->input->post('volume_transplant');
 		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
@@ -774,6 +897,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_injer1($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -797,6 +923,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_injer2($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -820,6 +949,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_injer3($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -843,6 +975,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_pinch1($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -866,6 +1001,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_pinch2($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -889,6 +1027,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_pinch3($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -912,6 +1053,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_trans1($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -935,6 +1079,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_trans2($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -958,6 +1105,9 @@ class Breakdown extends CI_Controller {
 
 	public function upload_trans3($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '0';
@@ -983,6 +1133,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_injer1()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_injer1' => NULL
 			);
@@ -999,6 +1152,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_injer2()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_injer2' => NULL
 			);
@@ -1015,6 +1171,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_injer3()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_injer3' => NULL
 			);
@@ -1031,6 +1190,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_pinch1()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_pinch1' => NULL
 			);
@@ -1047,6 +1209,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_pinch2()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_pinch2' => NULL
 			);
@@ -1063,6 +1228,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_pinch3()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_pinch3' => NULL
 			);
@@ -1079,6 +1247,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_trans1()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_trans1' => NULL
 			);
@@ -1095,6 +1266,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_trans2()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_trans2' => NULL
 			);
@@ -1111,6 +1285,9 @@ class Breakdown extends CI_Controller {
 
 	public function delete_trans3()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'img_trans3' => NULL
 			);
@@ -1126,6 +1303,9 @@ class Breakdown extends CI_Controller {
 	}
 
 	public function add_message(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$id_order=$this->input->post('id');
 		$message=$this->input->post('message');
 		$this->model_breakdown->add_message($id_order,$message);

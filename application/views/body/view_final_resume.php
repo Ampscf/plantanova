@@ -321,17 +321,40 @@
 								}
 								?>
 						</table>
+						<div class="col-md-12">
+							<div class="col-md-3">
 						<?php
 							if($img_injer[0]->img_injer1 != null){
-								echo '<a href="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" target="_blank" style="color:yellowgreen">'.$img_injer[0]->img_injer1.'</a></br>';
+								echo $img_injer[0]->img_injer1.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" 
+	                    			title="'.$img_injer[0]->img_injer1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
+							echo '</div>';
+							echo '<div class="col-md-3">';
 							if($img_injer[0]->img_injer2 != null){
-								echo '<a href="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" target="_blank" style="color:yellowgreen">'.$img_injer[0]->img_injer2.'</a></br>';
+								echo $img_injer[0]->img_injer2.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" 
+	                    			title="'.$img_injer[0]->img_injer2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
+							echo '</div>';
+							echo '<div class="col-md-3">';
 							if($img_injer[0]->img_injer3 != null){
-								echo '<a href="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" target="_blank" style="color:yellowgreen">'.$img_injer[0]->img_injer3.'</a></br>';
+								echo $img_injer[0]->img_injer3.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" 
+	                    			title="'.$img_injer[0]->img_injer3.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
 						?>
+					</div>
+				</div>
 						<!--Fin desglose de la injerto-->
 						
 						<!--Desglose de la pinchado-->
@@ -522,8 +545,8 @@
 		var mywindow = window.open(' ', 'popimpr');
 	    mywindow.document.write('<html><head><title></title>');
 	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" />');
-	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" type="text/css" />');
-	    mywindow.document.write('<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" type="text/css" />');
+	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" type="text/css" />');
 	    mywindow.document.write('<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" />');
 
      	mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url().'css/css/custom.css';?>' type='text/css' />");

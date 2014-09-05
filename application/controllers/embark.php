@@ -13,6 +13,9 @@ class Embark extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['fecha']=$order->result()[0]->order_date_submit;
@@ -64,13 +67,19 @@ class Embark extends CI_Controller {
 
 	public function change_status()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data['id_status']='3';
 		$this->model_breakdown->update_order($this->uri->segment(3),$data);
 		redirect("embark/index/".$this->uri->segment(3), "refresh");
 	}
 
-	public function insert_embark(){
-		
+	public function insert_embark()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$datos['id_order']=$this->uri->segment(3);
 		$fecha=$this->input->post('datepicker');
 		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
@@ -104,6 +113,9 @@ class Embark extends CI_Controller {
 
 	public function update_embark()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$fecha=$this->input->post('datepicker');
 		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
 		$datos['volume']=$this->input->post('final_volume');
@@ -134,6 +146,9 @@ class Embark extends CI_Controller {
 
 	function do_upload1($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'pdf';
 		$config['max_size']	= '0';
@@ -158,6 +173,9 @@ class Embark extends CI_Controller {
 
 	function do_upload2($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'pdf';
 		$config['max_size']	= '0';
@@ -182,6 +200,9 @@ class Embark extends CI_Controller {
 
 	function do_upload3($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'pdf';
 		$config['max_size']	= '0';
@@ -213,6 +234,9 @@ class Embark extends CI_Controller {
 
 	function do_upload4($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'pdf';
 		$config['max_size']	= '0';
@@ -241,6 +265,9 @@ class Embark extends CI_Controller {
 
 	function do_upload5($uri)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'pdf';
 		$config['max_size']	= '0';
@@ -270,6 +297,9 @@ class Embark extends CI_Controller {
 
 	function delete_quotation()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'quotation' => NULL
 			);
@@ -286,6 +316,9 @@ class Embark extends CI_Controller {
 
 	function delete_contract()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$data = array(
 				'contract' => NULL
 			);
@@ -302,6 +335,9 @@ class Embark extends CI_Controller {
 
 	function delete_bill($id_file)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$card_bill = $this->model_embark->get_card_bill($id_file);
 		$path = 'uploads/'.$card_bill[0]->location;
 		$this->model_embark->delete_fils($id_file);
@@ -315,6 +351,9 @@ class Embark extends CI_Controller {
 
 	function delete_card_bill($id_file)
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$card_bill = $this->model_embark->get_card_bill($id_file);
 		$path = 'uploads/'.$card_bill[0]->location;
 		$this->model_embark->delete_fils($id_file); 
@@ -328,6 +367,9 @@ class Embark extends CI_Controller {
 
 	function delete_embark()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		foreach ($_POST as $key => $value) 
 		{
 			if(is_int($key))
@@ -341,6 +383,9 @@ class Embark extends CI_Controller {
 
 	public function resume_embark()
 	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['fecha']=$order->result()[0]->order_date_submit;

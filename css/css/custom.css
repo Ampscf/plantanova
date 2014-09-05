@@ -284,3 +284,8 @@ ul li{
   position:relative;
   right: 5%;
 }
+
+.square-thumb {
+	width: 150px !important;
+	height: 150px !important;
+}
