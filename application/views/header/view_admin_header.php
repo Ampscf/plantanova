@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 
-
-
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -269,7 +267,21 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 						      		</ul>
 								</li>						
 								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:80px;"'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('admin/list_clients','Clientes','id="admin" style="height:80px;"'); ?></li>
+								
+
+								<li class="dropdown" style="border-left: 1px solid #000;">
+									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;" id="admin">
+										Clientes
+						      			<span class="caret"></span>
+						      		</a>
+									<ul class="dropdown-menu">
+								   		<li><?php echo anchor('admin/list_clients','Clientes');?></li>
+						      			<li role="presentation" class="divider"></li>
+								   		<li><?php echo anchor('admin/client_message','Mensaje');?></li>
+									</ul>
+								</li>
+								
+
 								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:80px;"'); ?></li>
 								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:80px;"'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">

@@ -155,7 +155,33 @@ Class model_user extends CI_Model	{
 		return $this->db->affected_rows();
 	}
 
+	function get_message($id_user,$type){
+		$this->db->where('id_user',$id_user);
+		$this->db->where('type_message',$type);
+		$query=$this->db->get('t_message');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
 
+	function update_message($id_user,$type,$message){
+		$datos=array('message'=>$message);
+		$this->db->where('id_user',$id_user);
+		$this->db->where('type_message',$type);
+		$this->db->update('t_message',$datos);
+		return $this->db->affected_rows();
+	}
+
+	function add_message($id_user,$type,$message){
+		$datos=array('id_user'=>$id_user,
+					'type_message'=>$type,
+					'message'=>$message);
+
+		$this->db->insert('t_message',$datos);
+		return $this->db->affected_rows();
+	}
 
 
 }

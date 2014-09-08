@@ -36,24 +36,8 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav nav-justified">
-					<li class="dropdown" style="border-left: 1px solid #000;">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;" id="pedi">
-							Ver pedidos
-			      			<span class="caret"></span>
-			      		</a>
-			      		<ul class="dropdown-menu">
-			      			<li><?php echo anchor('client/index','Nuevos');?></li>
-			      			<li role="presentation" class="divider"></li>
-			      			<li><?php echo anchor('client/pedido_proceso','En Proceso');?></li>
-			      			<li role="presentation" class="divider"></li>
-			      			<li><?php echo anchor('client/pedido_embarcado','Embarcados');?></li>
-			      			<li role="presentation" class="divider"></li>
-			      			<li><?php echo anchor('client/finalizado','Finalizados');?></li>
-			      			<li role="presentation" class="divider"></li>
-			      			<li><?php echo anchor('client/todos','Todos');?></li>
-			      		</ul>
-					</li>		
-					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Avisos','id="info" style="height:80px;"'); ?></li>
+					<li style="border-left: 1px solid #000;"><?php echo anchor('client/index','Ver Pedidos','id="pedi" style="height:80px;"'); ?></li>
+					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Alertas','id="info" style="height:80px;"'); ?></li>
 					<li class="dropdown" id="cuenta" style="border-left: 1px solid #000;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
 							<?php $user = $this->model_user->get_client($this->session->userdata('id'));

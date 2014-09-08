@@ -414,4 +414,49 @@ class Admin extends CI_Controller {
 	 		return FALSE;
 	 	}
 	 }
+
+	 public function client_message()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+
+		$template['client']=$this->model_user->get_clients();
+
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_message.php';
+		$template['footer'] = "footer/view_footer.php";
+		
+
+		$this->load->view('main',$template);
+
+	}
+
+	public function message(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+
+		$id_user=$this->input->post('client');
+		$type_message=$this->input->post('type');
+		$message=$this->input->post('message');
+		
+		if($type_message==1){
+			if($this->model_user->get_message($id_user,$type_message)!=false){
+				$this->model_user->update_message($id_user,$type_message,$message);
+			}else{
+				$this->model_user->add_message($id_user,$type_message,$message);
+			}
+
+		}else{
+			$this->model_user->add_message($id_user,$type_message,$message);
+		}
+		?>
+		<script>
+			alert("El mensaje fue enviado con exito!");
+		</script>
+		<?php
+		redirect('admin/client_message', "refresh");
+
+	}
 }

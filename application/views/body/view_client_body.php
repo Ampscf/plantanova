@@ -17,8 +17,7 @@
 					</div>
 					<div class="message-body">
 						<?php
-							echo "<h4>". $messages[0]->comment_description."</h4>";
-							echo "<a href='inform' class='see-more'>Ver Más</a>";
+							echo "<h4>". $messages[0]->message."</h4>";
 						?>
 					</div>
 				</div>

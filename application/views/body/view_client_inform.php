@@ -14,7 +14,7 @@
 								if(is_array($messages)){
 									foreach ($messages as $key) {
 										echo "<ul>";
-										echo "<li class='square' style='text-align:justify;'>".$key->comment_description."</li>";
+										echo "<li class='square' style='text-align:justify;'>".$key->message."</li>";
 										echo "</ul>";
 									}
 

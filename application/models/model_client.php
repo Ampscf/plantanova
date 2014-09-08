@@ -88,9 +88,19 @@ Class model_client extends CI_Model
 	}
 
 	function get_messages($id_client){
-		$query=$this->db->query('select t_oc.id_comment, t_oc.id_order, t_oc.date_comment, t_oc.comment_description 
-						from t_order_comments as t_oc, t_order as t_o 
-						where t_oc.id_order = t_o.id_order and t_o.id_client='.$id_client.' order by t_oc.id_comment desc');
+		$this->db->where('type_message',1);
+		$this->db->where('id_user',$id_client);
+		$query=$this->db->get('t_message');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_alert($id_client){
+		$this->db->where('type_message',2);
+		$this->db->where('id_user',$id_client);
+		$query=$this->db->get('t_message');
 		if($query->num_rows()>0){
 			return $query->result();
 		}
