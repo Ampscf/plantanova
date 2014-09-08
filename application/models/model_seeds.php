@@ -224,5 +224,14 @@ Class model_seeds extends CI_Model
 		}
 
 	}
+
+	function get_plant(){
+		$query=$this->db->get('t_plant');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
 }
 ?>

@@ -2,6 +2,7 @@
 <thead>
 		<th class="col-md-1" style="width: 100px;">Fecha</th>
 		<th>Semilla</th>
+		<th>Cultivo</th>
 		<th>Cantidad</th>
 		<th>Lote</th>
 		<th>Marca</th>
@@ -17,6 +18,7 @@
 				echo "<tr>";
 				echo "<td>" . date("d-m-Y",strtotime($key->seeds_date)) . "</td>";
 				echo "<td>" . $key->seed_name . "</td>";
+				echo "<td>" . $key->plant_name . "</td>";
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . $key->batch . "</td>";
 				echo "<td>" .$key->mark ."</td>";

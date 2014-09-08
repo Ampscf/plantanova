@@ -116,7 +116,21 @@
 							<div class="input-group input-group-lg">
 								
 								<input type="text" class="form-control" placeholder="Cantidad" name="volume" id="volume" value="<?php echo set_value('volume'); ?>">
-							</div><!-- End cantidad -->							
+							</div><!-- End cantidad -->		
+
+							<div class="clear">&nbsp</div>
+							<h3>Cultivo</h3>
+							<div class="input-group input-group-lg">								
+								<select class="form-control" name="crop" id="crop" >
+									<?php 
+										foreach($crop as $key)
+										{
+											echo "<option value='" . $key->plant_name . "' set_select('plant_name','".$key->plant_name."')>" . $key->plant_name . "</option>";
+										}
+									?>
+								</select>
+							</div><!-- End semilla -->
+
 							<div class="clear">&nbsp</div>
 							<h3>Marca</h3>
 							<div class="input-group input-group-lg">								

@@ -3,7 +3,6 @@
 		<th>Orden</th>
 		<th>Agricultor</th>
 		<th>Volumen</th>
-		<th>Marca</th>
 		<th>Resumen</th>
 		<th>Editar</th>
 </thead>
@@ -20,7 +19,6 @@
 				echo "<td>" . $farmer->farmer . "</td>";
 				$volume=$this->model_seeds->suma_volumen_seeds($key->id_order);
 				echo "<td>" . number_format($volume->volume) . "</td>";
-				echo "<td></td>";
 				echo "<td>";?>	                 
 					 <a class="btn btn-default"
 	                    rel="tooltip"
