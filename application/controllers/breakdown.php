@@ -239,16 +239,16 @@ class Breakdown extends CI_Controller {
 							      </div>';
 		} else {
 			$template['pinch3']='<div class="col-md-3">
-								  '.$images->result()[0]->img_pinch2.' <a href="#myModal555" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch3.' <a href="#myModal555" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
 
-									<a href="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" 
-	                    			title="'.$images->result()[0]->img_pinch2.'"
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_pinch3.'" 
+	                    			title="'.$images->result()[0]->img_pinch3.'"
 	                    			data-toggle="modal"
 	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$images->result()[0]->img_pinch2.'" style="width:100%; height:200px;"></a>
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_pinch3.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
 		if ($images->result()[0]->img_trans1 == NULL){

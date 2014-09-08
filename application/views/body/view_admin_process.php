@@ -172,7 +172,7 @@
 					<div class="clear">&nbsp</div>
 	
 					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;" >
-						<div class="col-md-10" id="injerto">
+						<div class="col-md-10" id="pinchado">
 							<h4>Pinchado</h4>
 						</div>
 						<div class="col-md-2">

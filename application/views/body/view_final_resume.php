@@ -415,17 +415,40 @@
 									}
 									?>
 						</table>
+						<div class="col-md-12">
+							<div class="col-md-3">
 						<?php
 							if($img_pinch[0]->img_pinch1 != null){
-								echo '<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" target="_blank" style="color:yellowgreen">'.$img_pinch[0]->img_pinch1.'</a></br>';
+								echo $img_pinch[0]->img_pinch1.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" 
+	                    			title="'.$img_pinch[0]->img_pinch1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
+							echo '</div>';
+							echo '<div class="col-md-3">';
 							if($img_pinch[0]->img_pinch2 != null){
-								echo '<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" target="_blank" style="color:yellowgreen">'.$img_pinch[0]->img_pinch2.'</a></br>';
+								echo $img_pinch[0]->img_pinch2.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" 
+	                    			title="'.$img_pinch[0]->img_pinch2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
+							echo '</div>';
+							echo '<div class="col-md-3">';
 							if($img_pinch[0]->img_pinch3 != null){
-								echo '<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" target="_blank" style="color:yellowgreen">'.$img_pinch[0]->img_pinch3.'</a></br>';
+								echo $img_pinch[0]->img_pinch3.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" 
+	                    			title="'.$img_pinch[0]->img_pinch3.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
 						?>
+					</div>
+				</div>
 						<!--Fin desglose de la pinchado-->
 						
 						<!--Desglose de la transplante-->
@@ -486,17 +509,41 @@
 									}
 									?>
 						</table>
+					<div class="col-md-12">
+						<div class="col-md-3">
 						<?php
 							if($img_trans[0]->img_trans1 != null){
-								echo '<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" target="_blank" style="color:yellowgreen">'.$img_trans[0]->img_trans1.'</a></br>';
+								echo $img_trans[0]->img_trans1.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" 
+	                    			title="'.$img_trans[0]->img_trans1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
+							echo '</div>';
+							echo '<div class="col-md-3">';
 							if($img_trans[0]->img_trans2 != null){
-								echo '<a href="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" target="_blank" style="color:yellowgreen">'.$img_trans[0]->img_trans2.'</a></br>';
+								echo $img_trans[0]->img_trans2.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" 
+	                    			title="'.$img_trans[0]->img_trans2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
+							echo '</div>';
+							echo '<div class="col-md-3">';
 							if($img_trans[0]->img_trans3 != null){
-								echo '<a href="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" target="_blank" style="color:yellowgreen">'.$img_trans[0]->img_trans3.'</a></br>';
+								echo $img_trans[0]->img_trans3.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" 
+	                    			title="'.$img_trans[0]->img_trans3.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" style="width:100%; height:200px;"></a>
+									</br>';
 							}
 						?>
+							</div>
+						</div>
+					</div>
 						</div>
 						<div class="panel-footer">
 						<div class="row">
