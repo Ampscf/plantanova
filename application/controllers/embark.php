@@ -100,7 +100,7 @@ class Embark extends CI_Controller {
 		$datos['tipo_ensenada']=$tipo[0];
 		$datos['no_aplica']=$this->input->post('no_aplica');
 		$datos['transport_box']=$this->input->post('transport_box');
-		$datos['racks']=$this->input->post('rackz');
+		$datos['racks']=$this->input->post('racks');
 		$datos['comment']=$this->input->post('comment');
 		$datos['address']=$this->input->post('address');
 		$datos['id_state']=$this->input->post('state');

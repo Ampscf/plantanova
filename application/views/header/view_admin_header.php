@@ -236,23 +236,16 @@
 	</script>
 
 </head>
+<?php 
+$user = $this->model_user->get_client($this->session->userdata('id'));
+?>
 <body>
 	<div id="wrapper">
 		<!-- Contenedor para el encabezado de la pagina o la barra de encabezado -->
 				<nav class="navbar navbar-default" role="navigation" style="min-height: 80px;padding-left: 30px;">
 					<div class="container">
 						<div class="navbar-header">
-						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>
-							<!--<a class="navbar-brand" href="#">
-								<img src="<?php echo base_url() . '/img/logo2.jpg'; ?>" alt="Logotipo" style="height:30px; width:auto;"/>
-							</a>
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button> -->
-							
+						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>							
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav nav-justified">
@@ -281,7 +274,8 @@
 								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:80px;"'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
-										<?php echo $this->session->userdata('mail'); ?>
+										<?php
+										 	echo $user[0]->farm_name; ?>
 						      			<span class="caret"></span>
 						      		</a>
 									<ul class="dropdown-menu">

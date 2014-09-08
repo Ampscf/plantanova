@@ -269,7 +269,7 @@
 							?>
 						</div>		
 
-				</div><!-- End panel-body -->
+					</div>
 				<div>&nbsp</div>
 				<div>&nbsp</div>
 				<div class="panel-footer">
@@ -402,30 +402,30 @@
 					    	<div class="col-md-6">
 								<h3>Estado</h3>
 								<div class="input-group input-group-lg">
-								<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
-									<option value="-1" selected>---Selecciona un estado---</option>
-									<?php 
-										foreach($states as $key)
-										{
-											echo "<option value='" . $key->id_state . "' set_select('state','".$key->id_state."')>" . $key->state_name . "</option>";
-										}
-									?>
-								</select>
-							</div><!-- End state -->
-							<div class="clear">&nbsp</div>
-							<h3>Ciudad</h3>
-							<div class="input-group input-group-lg">
-								<select class="form-control" name="town" id="town">
-									<option selected value="-1">---Selecciona una ciudad---</option>
-									<?php 
-										foreach($towns as $key)
-										{
-											echo "<option value='" . $key->id_town . "' set_select('town','".$key->id_town."') >" . $key->town_name . "</option>";
-										}
-									?>
-								</select>
-							</div><!-- End town -->
-							<div class="clear">&nbsp</div>
+									<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
+										<option value="-1" selected>---Selecciona un estado---</option>
+										<?php 
+											foreach($states as $key)
+											{
+												echo "<option value='" . $key->id_state . "' set_select('state','".$key->id_state."')>" . $key->state_name . "</option>";
+											}
+										?>
+									</select>
+								</div><!-- End state -->
+								<div class="clear">&nbsp</div>
+								<h3>Ciudad</h3>
+								<div class="input-group input-group-lg">
+									<select class="form-control" name="town" id="town">
+										<option selected value="-1">---Selecciona una ciudad---</option>
+										<?php 
+											foreach($towns as $key)
+											{
+												echo "<option value='" . $key->id_town . "' set_select('town','".$key->id_town."') >" . $key->town_name . "</option>";
+											}
+										?>
+									</select>
+								</div><!-- End town -->
+								<div class="clear">&nbsp</div>
 								<h3>Contacto Entrega</h3>
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
@@ -461,21 +461,13 @@
 									</select>	
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
-								<h3>Racks</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="racks" id="racks" onchange="cambio(this.value)">
-										<option value="1" selected>Si</option>
-										<option value="2">No</option>												
-									</select>	
-								</div><!-- End Racks -->
-
+									<h4><input type="checkbox"  name="checkRacks" id="checkRacks">Racks</h4>
+									<input type="text" class="form-control" placeholder="# Racks" name="racks" id="racks" style="display:none">
+								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
-								<div id="hiden">
-								<h3># de Racks</h3>
-								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="# de Racks" name="rackz" id="rackz">
-								</div><!-- End Racks -->
-								</div>
+																
+							</div>
 
 								<script>
 									function cambio (a)
@@ -531,11 +523,18 @@
 											document.getElementById("thermo").style.display = "none";
 										}
 									});
+									$("#checkRacks").click(function() {  
+										if (document.getElementById("checkRacks").checked){
+											document.getElementById("racks").style.display = "block";
+										}
+										else {
+											document.getElementById("racks").style.display = "none";
+										}
+									});
 								</script>
 							</div>	
 					    	
-					    </div>
-					    
+					   					    
 					    <div class="modal-footer">
 					    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					        <input type="submit" class="btn btn-success" id="save" name="save" value="Guardar"></button>

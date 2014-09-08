@@ -42,20 +42,18 @@ Class model_user extends CI_Model	{
 		}
 	}
 
+
 	//Obtiene los datos de un �nico cliente de la base de datos para poder ser utilizado
 	function get_client($id)
 	{
-		$this -> db -> select('farm_name');
-		$this -> db -> from('t_user');
-		$this -> db -> where('id_user', $id);
-		$this -> db -> limit(1);
+		$this ->db->where('id_user', $id);
 
-		$query = $this -> db -> get();
+		$query = $this->db->get('t_user');
 
-		if($query->num_rows()==1) 
+		if($query->num_rows()>0) 
 		{
 			
-			return $query->row();
+			return $query->result();
 		} 
 		else 
 		{

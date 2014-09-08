@@ -56,7 +56,8 @@
 					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Avisos','id="info" style="height:80px;"'); ?></li>
 					<li class="dropdown" id="cuenta" style="border-left: 1px solid #000;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
-							<?php echo $this->session->userdata('mail'); ?>
+							<?php $user = $this->model_user->get_client($this->session->userdata('id'));
+							echo $user[0]->farm_name; ?>
 						    <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
