@@ -17,6 +17,8 @@ class Client extends CI_Controller {
 			$template['body'] = "body/view_login_body.php";
 			$template['footer'] = "footer/view_footer.php";
 		} else {
+			$template['user']=$this->model_client->get_user($this->session->userdata('id'));
+			$template['alerts']=$this->model_client->get_alert($this->session->userdata('id'));
 			$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
 			$template['orders']=$this->model_client->get_order($this->session->userdata('id'));			
 			$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));

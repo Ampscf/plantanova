@@ -19,7 +19,7 @@ class Breakdown extends CI_Controller {
 
 			$this->load->view('main',$template);
 		} else {
-			redirect('client/index');
+			redirect('client/index/1');
 		}
 	}
 

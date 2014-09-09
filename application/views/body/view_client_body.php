@@ -92,3 +92,39 @@
 		</div> <!-- End row -->
 	</div> <!-- End container -->
 </div> <!-- End content div -->
+
+
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+    		<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h4 class="modal-title">Alertas</h4>	  
+    		</div>
+    		<div class="modal-body">
+    			<h4>¡Hola <?php echo $user[0]->farm_name; ?>!</h4>
+    			<?php
+				if(is_array($alerts)){
+					foreach ($alerts as $key) {
+						echo "<p>".$key->message."</p>";
+					}
+
+				}
+			?> 		
+    		</div>
+    		<div class="modal-footer">
+			</div>
+		</div>
+	</div>
+</div>
+<?php 
+if($this->uri->segment(3)==1){
+?>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+</script
+<?php
+}
+?>
