@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-xs-10 col-xs-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Resumen de la Orden </h3>
@@ -11,11 +11,11 @@
 						<div id="seleccion">
 
 							<div class="clear">&nbsp</div>		
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<h4><b>*Datos del cliente</b></h4>
 							</div>
 							
-							<div class="col-md-6" style="width: 39%;">
+							<div class="col-xs-6" style="width: 39%;">
 								<div class="input-group input-group-lg">
 									<p>Nombre Completo: <?php echo $company->result()[0]->first_name . " " . $company->result()[0]->last_name;?></p>
 								</div><!-- End Plant -->
@@ -34,7 +34,7 @@
 								
 							</div>
 							
-							<div class="col-md-6">
+							<div class="col-xs-6">
 								<div class="input-group input-group-lg">
 									<p>Número #: <?php echo $company->result()[0]->address_number;?></p>
 								</div><!-- End Plant -->
@@ -50,11 +50,11 @@
 							</div>
 							
 							<div class="clear">&nbsp</div>		
-							<div class="col-md-12">
+							<div class="col-xs-12">
 								<h4><b>*Datos del pedido</b></h4>
 							</div>
 							
-							<div class="col-md-6"style="width: 39%;">
+							<div class="col-xs-6"style="width: 39%;">
 								<div class="input-group input-group-lg">
 									<p>Fecha: <?php echo date("d-m-Y", strtotime($order->result()[0]->order_date_delivery));?></p>
 								</div><!-- End Plant -->
@@ -73,7 +73,7 @@
 								
 							</div>
 							
-							<div class="col-md-6">
+							<div class="col-xs-6">
 								
 								<div class="input-group input-group-lg">
 									<p>Brazos: <?php echo $order->result()[0]->branch_number;?></p>
@@ -130,7 +130,7 @@
 					</div><!-- fin cuerpo del panel -->
 					<div class="panel-footer">
 					<div class="row">
-						<div class="col-md-2 col-md-offset-2">
+						<div class="col-xs-2 col-xs-offset-2">
 							<?php  
 							
 							if($this->uri->segment(4)==1){
@@ -149,7 +149,7 @@
 							}
 							?>
 						</div>
-						<div class="col-md-4 col-md-offset-3">
+						<div class="col-xs-4 col-xs-offset-3">
 							<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
 						</div>
 					</div><!-- End row -->

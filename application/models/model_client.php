@@ -100,6 +100,7 @@ Class model_client extends CI_Model
 	function get_alert($id_client){
 		$this->db->where('type_message',2);
 		$this->db->where('id_user',$id_client);
+		$this->db->order_by('id_message','desc');
 		$query=$this->db->get('t_message');
 		if($query->num_rows()>0){
 			return $query->result();
@@ -126,6 +127,11 @@ Class model_client extends CI_Model
 		}else{
 			return false;
 		}
+	}
+
+	function update_logout_time($logout_time,$id_user,$login_time){
+		$this->db->query('update t_user_time set logout_time='.$logout_time.' where id_user ='.$id_user.' and login_time='.$login_time);
+		return $this->db->affected_rows();
 	}
 
 }

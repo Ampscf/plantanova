@@ -459,4 +459,18 @@ class Admin extends CI_Controller {
 		redirect('admin/client_message', "refresh");
 
 	}
+
+	public function client_log_info()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_info_log_client.php';
+		$template['footer'] = "footer/view_footer.php";
+		
+		$template['time_client'] =$this->model_user->get_time_client();
+
+		$this->load->view('main',$template);
+	}
 }

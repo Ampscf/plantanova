@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-xs-8 col-xs-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> EMBARQUE </h3>
@@ -11,13 +11,13 @@
 					<div class="panel-body" >
 
 						<div class="clear">&nbsp</div>
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
 							<hr/>
 						</div>
 						<div id="seleccion">
-							<div class="col-md-12">					
-								<div class="col-md-6">
+							<div class="col-xs-12">					
+								<div class="col-xs-6">
 									<div class="input-group input-group-lg">
 										<h4><b>Pedido: <?php echo $id_order;?></b></h4>
 									</div><!-- End nombre -->
@@ -42,7 +42,7 @@
 							
 								</div>
 							
-								<div class="col-md-6">
+								<div class="col-xs-6">
 								
 									<div class="input-group input-group-lg">
 										<p><b>Razón Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
@@ -73,10 +73,10 @@
 									foreach ($embark->result() as $key)
 									{
 								?>
-									<div class="col-md-12">
+									<div class="col-xs-12">
 										<hr/>
 										<h5><b>*DETALLE DEL EMBARQUE <?php echo $key->id_embark;?></b></h5>
-										<div class="col-md-6">
+										<div class="col-xs-6">
 											<div class="input-group input-group-lg">
 												<p><b>Fecha de Entrega:</b> <?php echo date("d-m-Y", strtotime($key->date_arrival));?></p>
 											</div><!-- End fecha -->
@@ -108,7 +108,7 @@
 											
 										</div>
 
-										<div class="col-md-6">
+										<div class="col-xs-6">
 											<div class="input-group input-group-lg">
 												<p><b>Contacto Entrega:</b> <?php echo $key->arrival_contact;?></p>
 											</div><!-- End Destino -->
@@ -158,7 +158,7 @@
 						</div>
 
 						<!-- Aqui -->
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<div class="clear">&nbsp</div>
 							<h4><b>*Archivos subidos</b></h4>
 
@@ -206,7 +206,7 @@
 					<div class="clear">&nbsp</div>
 					<div class="panel-footer">
 						<div class="row">
-							<div class="col-md-3 col-md-offset-1">
+							<div class="col-xs-3 col-xs-offset-1">
 								<?php  
 								if($this->uri->segment(4)==1){
 									$data = array(
@@ -225,14 +225,14 @@
 								?>
 							</div>
 
-							<div class="col-md-3 col-md-offset-4">
+							<div class="col-xs-3 col-xs-offset-4">
 								<input class="btn btn-success btn-block" type="button" value="Imprimir" onclick="imprSelec('seleccion');"/>
 							</div>
 						</div><!-- End row -->
 					</div><!-- End panel-footer -->	
 				</form><!-- End form -->		
 			</div><!-- End panel-default -->
-		</div><!-- End col-md-4 col-md-offset-4 -->
+		</div><!-- End col-xs-4 col-xs-offset-4 -->
 	</div><!-- End row -->
 <img src="<?php echo base_url()?>img/ENCABEZADOS_resumenordenembarcada.png" style="display:none">
 <script language="Javascript">

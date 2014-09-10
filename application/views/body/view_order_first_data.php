@@ -12,7 +12,7 @@
 						<li><a>Desglose</a></li>
 						<li><a>&rarr;</a></li>
 						<li><a>Resumen</a></li>
-						<li style="position: relative; left:35%;"><a>Cliente: <?php echo $company->farm_name; ?></a></li>
+						<li style="position: relative; left:35%;"><a>Cliente: <?php echo $company[0]->farm_name; ?></a></li>
 					</ul>
 				</div>
 				<?php

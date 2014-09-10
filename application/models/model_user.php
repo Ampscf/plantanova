@@ -183,6 +183,19 @@ Class model_user extends CI_Model	{
 		return $this->db->affected_rows();
 	}
 
+	function insert_time($id_user,$time){
+		$datos=array('id_user'=>$id_user,"login_time"=>$time);
+		$this->db->insert('t_user_time',$datos);
+	}
+
+	function get_time_client(){
+		$query=$this->db->get('t_user_time');
+		if ($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
 
 }
 

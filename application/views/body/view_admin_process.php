@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-xs-10 col-xs-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> desglose de pedido </h3>
@@ -8,18 +8,18 @@
 				<div class="panel-body">
 				
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
 					</div>
 					
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<hr/>
 					</div>
 					
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						
 						
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<div class="input-group input-group-lg">
 								<p><b>Pedido: <?php echo $id_order;?></b></p>
 							</div><!-- End nombre -->
@@ -47,7 +47,7 @@
 
 						</div>
 						
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							
 							<div class="input-group input-group-lg">
 								<p><b>Razón Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
@@ -79,45 +79,45 @@
 						
 					</div>
 					
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<hr/>
 					</div>
 					
-					<div class="col-md-12">
-						<div class="col-md-10" id="siembra">
+					<div class="col-xs-12">
+						<div class="col-xs-10" id="siembra">
 							<h4>Siembra</h4>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<a href="#myModal5" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_siembra.php'); ?>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<labbel><b>Total:</b> <?php echo number_format($suma->result()[0]->volume);?></labbel>
 						</div>
-						<!--<div class="col-md-2">
+						<!--<div class="col-xs-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>-->
 					</div>
 					
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12">
-						<div class="col-md-10" name="germinacion" id="germinacion">
+					<div class="col-xs-12">
+						<div class="col-xs-10" name="germinacion" id="germinacion">
 							<h4>Germinación</h4>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_germinacion.php'); ?>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<labbel><b>Total:</b> <?php echo number_format($total_germ->germination);?></labbel>
 						</div>
-						<!--<div class="col-md-2">
+						<!--<div class="col-xs-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_germinacion)."%";?></labbel>
 						</div>-->
 						</br></br>
@@ -127,14 +127,14 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12">
+					<div class="col-xs-12">
 					<h2>Injerto <input type="checkbox" name="check" id="check1" value="1"  />
 					Pinchado <input type="checkbox" name="check" id="check2" value="1"  />
 					Transplante <input type="checkbox" name="check" id="check3" value="1"  /></h2>
 					</div>
 
 					<div class="clear">&nbsp</div>
-						<div class="col-md-4" id="error">
+						<div class="col-xs-4" id="error">
 							<h5 style="color:red;"><?php 
 								if (isset($error)){
 									echo $error;		
@@ -144,19 +144,19 @@
 					
 					<div class="clear">&nbsp</div>
 	
-					<div class="col-md-12" name="divinjerto" id="divinjerto" style="display: none;" >
-						<div class="col-md-10" id="injerto">
+					<div class="col-xs-12" name="divinjerto" id="divinjerto" style="display: none;" >
+						<div class="col-xs-10" id="injerto">
 							<h4>Injerto</h4>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<a href="#myModal1" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_injerto.php'); ?>
 						</div>
-						<div class="col-md-12">
-							<div class="col-md-2">
+						<div class="col-xs-12">
+							<div class="col-xs-2">
 								<labbel><b>Total:</b> <?php echo number_format($total_graft->graft);?></labbel>
 							</div>
 							<?php echo $injert1;?>
@@ -171,19 +171,19 @@
 
 					<div class="clear">&nbsp</div>
 	
-					<div class="col-md-12" name="divpinchado" id="divpinchado" style="display: none;" >
-						<div class="col-md-10" id="pinchado">
+					<div class="col-xs-12" name="divpinchado" id="divpinchado" style="display: none;" >
+						<div class="col-xs-10" id="pinchado">
 							<h4>Pinchado</h4>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_pinchado.php'); ?>
 						</div>
-						<div class="col-md-12">
-							<div class="col-md-2">
+						<div class="col-xs-12">
+							<div class="col-xs-2">
 								<labbel><b>Total:</b> <?php echo number_format($total_punch->punch);?></labbel>
 							</div>
 							<?php echo $pinch1;?>
@@ -197,19 +197,19 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-					<div class="col-md-12" name="divtransplante" id="divtransplante" style="display: none;">
-						<div class="col-md-10" id="transplante">	
+					<div class="col-xs-12" name="divtransplante" id="divtransplante" style="display: none;">
+						<div class="col-xs-10" id="transplante">	
 							<h4>Transplante</h4>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
 							<?php include_once('application/views/extra/tabla_transplante.php'); ?>
 						</div>
-						<div class="col-md-12">
-							<div class="col-md-2">
+						<div class="col-xs-12">
+							<div class="col-xs-2">
 								<labbel><b>Total:</b> <?php echo number_format($total_transplant->transplant);?></labbel>
 							</div>
 							<?php echo $trans1;?>
@@ -221,17 +221,17 @@
 						<a href="<?php echo base_url("index.php/order/results_transplant/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
 						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 					</div>
-						<!--<div class="col-md-2">
+						<!--<div class="col-xs-2">
 							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
 						</div>-->
 				
 				<div class="clear">&nbsp</div>
 				<div class="clear">&nbsp</div>
-				<div class="col-md-12">
-					<div class="col-md-6">	
+				<div class="col-xs-12">
+					<div class="col-xs-6">	
 						<?php echo anchor('breakdown/pedido_proceso', 'Procesos', 'class="btn btn-primary" style="float: right; width: 50%;"');?>
 					</div>
-					<div class="col-md-6">	
+					<div class="col-xs-6">	
 						<a href="#myModal4" class="btn btn-success" data-toggle="modal" style="width: 50%;">Embarcar</a>
 					</div>
 				</div>

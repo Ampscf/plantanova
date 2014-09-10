@@ -8,6 +8,14 @@ class Client extends CI_Controller {
 	   	$this->load->model('model_client','',TRUE);
 	   	$this->load->model('model_publicity','',TRUE);
 	}
+
+	//funcion para monitorear el tiempo de logout
+	public function update_logout_time(){
+		$loguot_time=time();
+		$login_time=$this->session->userdata('login_time');
+		$user=$this->session->userdata('id');
+		$this->model_client->update_logout_time($loguot_time,$user,$login_time);
+	}
 	
 	public function index()
 	{

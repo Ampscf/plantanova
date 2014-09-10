@@ -1,23 +1,23 @@
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-xs-10 col-xs-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Resumen Proceso </h3>
 					</div>
 					<div class="panel-body" >
 						
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h1>Resumen de la Orden</h1>
 						</div>
 						<div id="seleccion">
 						<!--Datos del cliente-->
 						<div class="clear">&nbsp</div>	
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h4><b>*Datos del cliente</b></h4>
 						</div>
 						
-						<div class="col-md-6" style="width: 39%;">
+						<div class="col-xs-6" style="width: 39%;">
 							<div class="input-group input-group-lg">
 								<p>Nombre Completo: <?php echo $company->result()[0]->first_name . " " . $company->result()[0]->last_name;?></p>
 							</div>
@@ -36,7 +36,7 @@
 							
 						</div>
 						
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<div class="input-group input-group-lg">
 								<p>Número #: <?php echo $company->result()[0]->address_number;?></p>
 							</div>
@@ -54,11 +54,11 @@
 						
 						<!--Datos del pedido-->
 						<div class="clear">&nbsp</div>		
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h4><b>*Datos del pedido</b></h4>
 						</div>
 						
-						<div class="col-md-6"style="width: 39%;">
+						<div class="col-xs-6"style="width: 39%;">
 							<div class="input-group input-group-lg">
 								<p>Fecha: <?php echo date("y-m-d", strtotime($order->result()[0]->order_date_delivery));?></p>
 							</div>
@@ -73,7 +73,7 @@
 							
 						</div>
 						
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<div class="input-group input-group-lg">
 								<p>Categoría: <?php echo $category->result()[0]->category_name;?></p>
 							</div>
@@ -321,8 +321,8 @@
 								}
 								?>
 						</table>
-						<div class="col-md-12">
-							<div class="col-md-3">
+						<div class="col-xs-12">
+							<div class="col-xs-4">
 						<?php
 							if($img_injer[0]->img_injer1 != null){
 								echo $img_injer[0]->img_injer1.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" 
@@ -333,7 +333,7 @@
 									</br>';
 							}
 							echo '</div>';
-							echo '<div class="col-md-3">';
+							echo '<div class="col-xs-4">';
 							if($img_injer[0]->img_injer2 != null){
 								echo $img_injer[0]->img_injer2.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" 
 	                    			title="'.$img_injer[0]->img_injer2.'"
@@ -343,7 +343,7 @@
 									</br>';
 							}
 							echo '</div>';
-							echo '<div class="col-md-3">';
+							echo '<div class="col-xs-4">';
 							if($img_injer[0]->img_injer3 != null){
 								echo $img_injer[0]->img_injer3.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" 
 	                    			title="'.$img_injer[0]->img_injer3.'"
@@ -415,8 +415,8 @@
 									}
 									?>
 						</table>
-						<div class="col-md-12">
-							<div class="col-md-3">
+						<div class="col-xs-12">
+							<div class="col-xs-4">
 						<?php
 							if($img_pinch[0]->img_pinch1 != null){
 								echo $img_pinch[0]->img_pinch1.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" 
@@ -427,7 +427,7 @@
 									</br>';
 							}
 							echo '</div>';
-							echo '<div class="col-md-3">';
+							echo '<div class="col-xs-4">';
 							if($img_pinch[0]->img_pinch2 != null){
 								echo $img_pinch[0]->img_pinch2.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" 
 	                    			title="'.$img_pinch[0]->img_pinch2.'"
@@ -437,7 +437,7 @@
 									</br>';
 							}
 							echo '</div>';
-							echo '<div class="col-md-3">';
+							echo '<div class="col-xs-4">';
 							if($img_pinch[0]->img_pinch3 != null){
 								echo $img_pinch[0]->img_pinch3.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" 
 	                    			title="'.$img_pinch[0]->img_pinch3.'"
@@ -509,8 +509,8 @@
 									}
 									?>
 						</table>
-					<div class="col-md-12">
-						<div class="col-md-3">
+					<div class="col-xs-12">
+						<div class="col-xs-4">
 						<?php
 							if($img_trans[0]->img_trans1 != null){
 								echo $img_trans[0]->img_trans1.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" 
@@ -521,7 +521,7 @@
 									</br>';
 							}
 							echo '</div>';
-							echo '<div class="col-md-3">';
+							echo '<div class="col-xs-4">';
 							if($img_trans[0]->img_trans2 != null){
 								echo $img_trans[0]->img_trans2.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" 
 	                    			title="'.$img_trans[0]->img_trans2.'"
@@ -531,7 +531,7 @@
 									</br>';
 							}
 							echo '</div>';
-							echo '<div class="col-md-3">';
+							echo '<div class="col-xs-4">';
 							if($img_trans[0]->img_trans3 != null){
 								echo $img_trans[0]->img_trans3.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" 
 	                    			title="'.$img_trans[0]->img_trans3.'"
@@ -547,7 +547,7 @@
 						</div>
 						<div class="panel-footer">
 						<div class="row">
-							<div class="col-md-2 col-md-offset-2">
+							<div class="col-xs-2 col-xs-offset-2">
 							<?php  
 							if($this->uri->segment(4)==1){
 								$data = array(
@@ -573,13 +573,13 @@
 								
 							?>
 							</div>
-							<div class="col-md-4 col-md-offset-3">
+							<div class="col-xs-4 col-xs-offset-3">
 								<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
 							</div>
 						</div>	
 					</div><!-- fin panel footer -->	
 					</div>
-				</div>
+				
 			</div>
 		</div> <!-- End row -->
 	</div> <!-- End container -->

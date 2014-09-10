@@ -6,6 +6,7 @@ class Principal extends CI_Controller {
 	   parent::__construct();
 	   $this->load->model('model_user','',TRUE);
 	   $this->load->model('model_order','',TRUE);
+	   $this->load->model('model_client','',TRUE);
 	}
 
 	public function index()
@@ -48,6 +49,10 @@ class Principal extends CI_Controller {
 		else
 		{
 			//Manda a la pagina principal del rol que inicia sesión
+			if($this->session->userdata('id_rol')!=1){
+				$this->model_user->insert_time($this->session->userdata('id'),$this->session->userdata('login_time'));
+			}
+			
 			redirect('breakdown/index','refresh');
 		}
 	 }
@@ -79,6 +84,7 @@ class Principal extends CI_Controller {
 	                "mail" => $user->mail,
 	                "logged_in" => TRUE,
 	                "id_rol" => $user->id_rol,
+	                "login_time"=>time()
 	            );
 	            $this->session->set_userdata($sessionData);
 		 		return TRUE;
@@ -99,6 +105,12 @@ class Principal extends CI_Controller {
 	 //Destruye la sessión actual y regresa a página de login
 	 function logout()
 	 {
+	 	if($this->session->userdata('id_rol')!=1){
+	 		$loguot_time=time();
+			$login_time=$this->session->userdata('login_time');
+			$user=$this->session->userdata('id');
+			$this->model_client->update_logout_time($loguot_time,$user,$login_time);
+		}
 	 	$user_out = $this->session->all_userdata();
 	 	$this->session->unset_userdata($user_out);
 	 	session_destroy();

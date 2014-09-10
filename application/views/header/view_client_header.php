@@ -56,6 +56,7 @@
 					</li>	
 				</ul>	
 			</div>
+			
 			<script>
 				var url = window.location.href;
 				if (/(contributors)/i.test(url)) {
@@ -70,7 +71,18 @@
 				} else {
 					document.getElementById("pedi").style.color = "White";
 					document.getElementById("pedi").style.backgroundColor = "#6BBD44";
-				}	
+				}
+				
+				//funcion para monitorear el logout
+				setInterval(updateTime, 60000);
+
+				function updateTime(){
+					
+					$.ajax({
+						url: site_url + 'client/update_logout_time'
+					});
+				}
+
 			</script>
 		</div>
 	</nav>	
