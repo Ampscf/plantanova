@@ -17,7 +17,12 @@
 				$farm_name=$this->model_user->get_client($key->id_user);
 				echo "<td>" . $farm_name[0]->farm_name . "</td>";
 				echo "<td>" . date('d/m/Y H:i:s',$key->login_time) . "</td>";
-				echo "<td>" . date('d/m/Y H:i:s',$key->logout_time) . "</td>";
+				if($key->logout_time != Null){
+					echo "<td>" . date('d/m/Y H:i:s',$key->logout_time) . "</td>";
+				}else{
+					echo "<td></td>"; 
+				}
+				
 				echo "</tr>";
 			}
 		}
