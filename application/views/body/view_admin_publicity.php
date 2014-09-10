@@ -15,15 +15,15 @@
 						</div>
 						<div class="col-md-6 ">
 							
-							<a href="#myModal" class="btn btn-default" data-toggle="modal">Agregar Publicidad a Cliente</a>
+							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
 						
-							<a href="#myModal2" class="btn btn-default" data-toggle="modal">Quitar Publicidad de Cliente</a>
+							<a href="#myModal2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
 						</div>
 						<div class="col-md-5">
 							
-							<a href="#myModal3" class="btn btn-default" data-toggle="modal">Agregar Publicidad</a>
+							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
 						
-							<a href="#myModal4" class="btn btn-default" data-toggle="modal">Eliminar Publicidad</a>
+							<a href="#myModal4" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad</a>
 						</div>
 					</div>
 						
@@ -256,7 +256,7 @@
            	 			</div>
             			<div class="modal-footer">
                	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                			<button type="submit" id="buttop" class="btn btn-primary">Subir</button>
+                			<button type="submit" id="buttop" class="btn btn-success">Subir</button>
                 			</form>
            				 </div>
         			</div>

@@ -19,12 +19,12 @@
 						</div>
 						<div class="col-md-3">					
 							<div class="input-group input-group-lg">
-								<a href="#myModal4" class="btn btn-primary" data-toggle="modal">+Eliminar Variedad</a>
+								<a href="#myModal4" class="btn btn-primary" data-toggle="modal">Eliminar Variedad</a>
 							</div>				
 						</div>
 						<div class="col-md-3">
 							<div class="input-group input-group-lg">
-								<a href="#myModal5" class="btn btn-primary" data-toggle="modal">+Eliminar Portainjerto</a>
+								<a href="#myModal5" class="btn btn-primary" data-toggle="modal">Eliminar Portainjerto</a>
 							</div>	
 						</div>
 						<div >&nbsp</div>
