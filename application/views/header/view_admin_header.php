@@ -277,6 +277,8 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 									<ul class="dropdown-menu">
 								   		<li><?php echo anchor('admin/list_clients','Clientes');?></li>
 						      			<li role="presentation" class="divider"></li>
+								   		<li><?php echo anchor('admin/client_inform','Informe del Cliente');?></li>
+								   		<li role="presentation" class="divider"></li>
 								   		<li><?php echo anchor('admin/client_message','Mensaje');?></li>
 								   		<li role="presentation" class="divider"></li>	
 								   		<li><?php echo anchor('admin/client_log_info','Informe de Sesion');?></li>

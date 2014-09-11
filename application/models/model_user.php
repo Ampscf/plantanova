@@ -197,6 +197,30 @@ Class model_user extends CI_Model	{
 		}
 	}
 
+	function get_order($id_user){
+		$this->db->where('id_client',$id_user);
+		$this->db->where('id_status',1);
+		$this->db->or_where('id_client',$id_user);
+		$this->db->where('id_status',2);
+		$this->db->or_where('id_client',$id_user);
+		$this->db->where('id_status',3);
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function get_breakdown($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

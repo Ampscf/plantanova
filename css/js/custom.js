@@ -320,6 +320,35 @@
 			});
 	}
 
+	function get_order_client(id_client) {
+					 	           
+           $.ajax({
+				url: site_url + 'admin/get_order',
+				data: {'id_user':+id_client},
+				type: "POST",
+				success: function(data){
+					$("#order_client").html(data);
+					$("#informes").html("");
+				},
+				failure:function(data){
+					alert("fallo");
+				}
+			});
+        }
+
+    function get_breakdown_order(id_order){
+    	$.ajax({
+			url: site_url + 'admin/get_breakdown_order',
+			data: {'id_order':+id_order},
+			type: "POST",
+			success: function(data){
+				$("#informes").html(data);
+			},
+			failure:function(data){
+				alert("fallo");
+			}
+		});
+    }
 
 	
 

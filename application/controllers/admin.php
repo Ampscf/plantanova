@@ -415,7 +415,7 @@ class Admin extends CI_Controller {
 	 	}
 	 }
 
-	 public function client_message()
+	public function client_message()
 	{
 		if($this->session->userdata('id_rol')!=1){
 			redirect('client/index');
@@ -472,5 +472,219 @@ class Admin extends CI_Controller {
 		$template['time_client'] =$this->model_user->get_time_client();
 
 		$this->load->view('main',$template);
+	}
+
+	public function client_inform()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+
+		$template['client']=$this->model_user->get_clients();
+
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_admin_client_inform.php';
+		$template['footer'] = "footer/view_footer.php";
+		
+
+		$this->load->view('main',$template);
+
+	}
+
+	public function get_order(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_user=$this->input->post('id_user');
+		$order=$this->model_user->get_order($id_user);
+		$result="";
+		foreach ($order as $key ) {
+			$result= $result."<option value='$key->id_order'>" ."#". $key->id_order." Agricultor:".$key->farmer ."</option>";
+		}
+		echo "<option value='-1'>---Selecciona una Orden---</option>";
+		echo $result;
+	}
+
+	public function get_breakdown_order(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_order=$this->input->post('id_order');
+		$breakdown=$this->model_user->get_breakdown($id_order);
+		$result="";
+		$modal="";
+		$javascript="";
+		if(is_array($breakdown)){
+			foreach ($breakdown as $key ) {
+			$result.= "<a href='#myModal".$key->id_breakdown."' class='btn btn-default'
+	                    title='".$key->variety."/".$key->rootstock."'
+	                    data-toggle='modal'>
+						<i class='fa fa-file-archive-o'></i>
+	                </a>";
+	        $modal.=form_open('/'.$this->uri->segment(3))."
+			<div id='myModal".$key->id_breakdown."' class='modal fade'>
+        		<div class='modal-dialog modal-lg'>
+            		<div class='modal-content'>
+                		<div class='modal-header'>
+                			<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                			<h4 class='modal-title'>Informe</h4>
+                		</div>
+                		<div class='modal-body'>
+	                		<h3>Nombre del Cliente</h3>
+								<div class='input-group input-group-lg'>
+									<input type='text' class='form-control' placeholder='Nombre del cliente' name='final_volume' id='final_volume'>
+								</div>
+							<div >&nbsp</div>
+							<h3>Texto Informe</h3>
+								<div class='input-group input-group-lg'>
+									<textarea class='form-control' rows='4' style='height: auto !important;' id='inform_text' name='inform_text' ></textarea>								
+								</div>
+	                		
+	                		<div >&nbsp</div>
+	                		<div class='input-group input-group-lg'>
+		                		<div class='col-xs-12'>
+			                		<div class='col-xs-6'>
+			                			<div id='recepcion".$key->id_breakdown."' style='display: none;'>
+			                				<h3 style='color:#6BBD44'>Recepcion</h3>
+				                			<p><b>Fecha:</b><input type='text' class='form-control' placeholder='Fecha' name='reception_date' id='reception_date'></p>
+			                			</div>
+			                			<div >&nbsp</div>
+			                			<div id='siembra_ger".$key->id_breakdown."' style='display: none;'>
+				                			<h3 style='color:#6BBD44'>Siembra/Germinacion</h3>
+				                			<p><b>Variedad:</b>
+				                				<input type='text' class='form-control' placeholder='Variedad' name='variety' id='variety'></p>
+				                			<p><b>Fecha de Siembra:</b>
+				                				<input type='text' class='form-control' placeholder='Fecha de Siembra' name='sowing_date_variety' id='sowing_date'></p>
+				                			<p><b>% Germinacion:</b>
+				                				<input type='text' class='form-control' placeholder='% Germinacion' name='germiantion_variety' id='germination_variety'></p>
+				                			<p><b>% Viabilidad:</b>
+				                				<input type='text' class='form-control' placeholder='% Viabilidad' name='viability_variety' id='viability_variety'></p>
+											<div >&nbsp</div>
+				                			<p><b>Portainjerto:</b>
+				                				<input type='text' class='form-control' placeholder='Portainjerto' name='rootstock' id='rootstock'></p>
+				                			<p><b>Fecha de Siembra:</b>
+				                				<input type='text' class='form-control' placeholder='sowing_date_rootstock' name='variety' id='variety'></p>
+				                			<p><b>% Germinacion:</b>
+				                				<input type='text' class='form-control' placeholder='% Germinacion' name='germiantion_rootstock' id='germination_rootstock'></p>
+				                			<p><b>% Viabilidad:</b>
+				                			<input type='text' class='form-control' placeholder='% Viabilidad' name='viability_rootstock' id='viability_rootstock'></p>
+			                			</div>
+			                			<div >&nbsp</div>
+			                			<div id='injerto".$key->id_breakdown."' style='display: none;'>
+				                			<h3 style='color:#6BBD44'>Injerto</h3>
+				                			<p><b>Fecha:</b>
+				                				<input type='text' class='form-control' placeholder='Fecha' name='graft_date' id='graft_date'></p>
+			                			</div>
+			                			<div >&nbsp</div>
+			                			<div id='transplante".$key->id_breakdown."' style='display: none;'>
+			                				<h3 style='color:#6BBD44'>Transplante</h3>
+				                			<p><b>Fecha:</b>
+				                				<input type='text' class='form-control' placeholder='Fecha' name='transplant_date' id='transplant_date'></p>
+			                			</div>
+			                			<div >&nbsp</div>
+			                			<div id='pinchado".$key->id_breakdown."' style='display: none;'>
+			                				<h3 style='color:#6BBD44'>Pinchado</h3>
+				                			<p><b>Fecha:</b>	
+				                				<input type='text' class='form-control' placeholder='Fecha' name='date_punch' id='date_punch'></p>
+			                			</div>
+			                			<div >&nbsp</div>
+			                			<div id='empaque".$key->id_breakdown."' style='display: none;'>
+			                				<h3 style='color:#6BBD44'>Empaque</h3>
+				                			<p><b>Fecha:</b>
+				                				<input type='text' class='form-control' placeholder='Fecha' name='empak_date' id='empak_date'></p>
+			                			</div>
+			                			<div >&nbsp</div>
+			                			<div id='embarque".$key->id_breakdown."' style='display: none;'>
+			                				<h3 style='color:#6BBD44'>Embarque</h3>
+				                			<p><b>Fecha:</b><input type='text' class='form-control' placeholder='Fecha' name='embark_date' id='embark_date'></p>
+			                			</div>
+			                		</div>
+			                		<div class='col-xs-6'>
+			                		<h3 style='color:#6BBD44'>¿Como vamos?</h3>
+			                			
+										<p><input type='checkbox' name='check' id='check1".$key->id_breakdown."' value='1'/>Recepcion </p>
+										<p><input type='checkbox' name='check' id='check2".$key->id_breakdown."' value='1'/>Siembra/Germinacion </p>
+										<p><input type='checkbox' name='check' id='check3".$key->id_breakdown."' value='1'/>Ingerto </p>
+										<p><input type='checkbox' name='check' id='check4".$key->id_breakdown."' value='1'/>Transplante </p>
+										<p><input type='checkbox' name='check' id='check5".$key->id_breakdown."' value='1'/>Pinchado </p>
+										<p><input type='checkbox' name='check' id='check6".$key->id_breakdown."' value='1'/>Empaque </p>
+										<p><input type='checkbox' name='check' id='check7".$key->id_breakdown."' value='1'/>Embarque </p>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+                		<div class='modal-footer'>
+								<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>
+                    			<button type='submit' class='btn btn-success' name='embarcar' id='embarcar'>Confirmar</button>
+                		</div>
+						</form>
+            		</div>
+        		</div>
+    		</div>";    
+    		$javascript.='<script>
+			    $("#check1'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check1'.$key->id_breakdown.'").checked){
+						document.getElementById("recepcion'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("recepcion'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check2'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check2'.$key->id_breakdown.'").checked){
+						document.getElementById("siembra_ger'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("siembra_ger'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check3'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check3'.$key->id_breakdown.'").checked){
+						document.getElementById("injerto'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("injerto'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check4'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check4'.$key->id_breakdown.'").checked){
+						document.getElementById("transplante'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("transplante'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check5'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check5'.$key->id_breakdown.'").checked){
+						document.getElementById("pinchado'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("pinchado'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check6'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check6'.$key->id_breakdown.'").checked){
+						document.getElementById("empaque'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("empaque'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check7'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check7'.$key->id_breakdown.'").checked){
+						document.getElementById("embarque'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("embarque'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+			</script>';   
+			}
+			echo $result;
+			echo $modal;
+			echo $javascript;
+		}else echo "";
+		
 	}
 }
