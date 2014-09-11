@@ -540,7 +540,7 @@ class Admin extends CI_Controller {
 									<textarea class='form-control' rows='4' style='height: auto !important;' id='inform_text' name='inform_text' ></textarea>								
 								</div>
 	                		
-	                		<div >&nbsp</div>
+	                		<div>&nbsp</div>
 	                		<div class='input-group input-group-lg'>
 		                		<div class='col-xs-12'>
 			                		<div class='col-xs-6'>
