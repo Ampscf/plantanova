@@ -499,7 +499,7 @@ class Admin extends CI_Controller {
 		$order=$this->model_user->get_order($id_user);
 		$result="";
 		foreach ($order as $key ) {
-			$result= $result."<option value='$key->id_order'>" ."#". $key->id_order." Agricultor:".$key->farmer ."</option>";
+			$result= $result."<option value='$key->id_order'>" ."#". $key->id_order." Agricultor: ".$key->farmer ."</option>";
 		}
 		echo "<option value='-1'>---Selecciona una Orden---</option>";
 		echo $result;
@@ -511,17 +511,17 @@ class Admin extends CI_Controller {
 		}
 		$id_order=$this->input->post('id_order');
 		$breakdown=$this->model_user->get_breakdown($id_order);
-		$result="";
+		$boton="";
 		$modal="";
 		$javascript="";
 		if(is_array($breakdown)){
 			foreach ($breakdown as $key ) {
-			$result.= "<a href='#myModal".$key->id_breakdown."' class='btn btn-default'
+			$boton.= "<a href='#myModal".$key->id_breakdown."' class='btn btn-default'
 	                    title='".$key->variety."/".$key->rootstock."'
 	                    data-toggle='modal'>
 						<i class='fa fa-file-archive-o'></i>
 	                </a>";
-	        $modal.=form_open('/'.$this->uri->segment(3))."
+	        $modal.=form_open('admin/inform_client/'.$key->id_breakdown)."
 			<div id='myModal".$key->id_breakdown."' class='modal fade'>
         		<div class='modal-dialog modal-lg'>
             		<div class='modal-content'>
@@ -532,12 +532,12 @@ class Admin extends CI_Controller {
                 		<div class='modal-body'>
 	                		<h3>Nombre del Cliente</h3>
 								<div class='input-group input-group-lg'>
-									<input type='text' class='form-control' placeholder='Nombre del cliente' name='final_volume' id='final_volume'>
+									<input type='text' class='form-control' placeholder='Nombre del cliente' name='client_name".$key->id_breakdown."' id='client_name".$key->id_breakdown."'>
 								</div>
 							<div >&nbsp</div>
 							<h3>Texto Informe</h3>
 								<div class='input-group input-group-lg'>
-									<textarea class='form-control' rows='4' style='height: auto !important;' id='inform_text' name='inform_text' ></textarea>								
+									<textarea class='form-control' rows='4' style='height: auto !important;' id='inform_text".$key->id_breakdown."' name='inform_text".$key->id_breakdown."' ></textarea>								
 								</div>
 	                		
 	                		<div>&nbsp</div>
@@ -546,57 +546,59 @@ class Admin extends CI_Controller {
 			                		<div class='col-xs-6'>
 			                			<div id='recepcion".$key->id_breakdown."' style='display: none;'>
 			                				<h3 style='color:#6BBD44'>Recepcion</h3>
-				                			<p><b>Fecha:</b><input type='text' class='form-control' placeholder='Fecha' name='reception_date' id='reception_date'></p>
+				                			<p><b>Fecha:</b></p>
+											<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate1".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker1".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='reception_date".$key->id_breakdown."' name='reception_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='siembra_ger".$key->id_breakdown."' style='display: none;'>
 				                			<h3 style='color:#6BBD44'>Siembra/Germinacion</h3>
 				                			<p><b>Variedad:</b>
-				                				<input type='text' class='form-control' placeholder='Variedad' name='variety' id='variety'></p>
-				                			<p><b>Fecha de Siembra:</b>
-				                				<input type='text' class='form-control' placeholder='Fecha de Siembra' name='sowing_date_variety' id='sowing_date'></p>
+				                				<input type='text' class='form-control' placeholder='Variedad' name='variety".$key->id_breakdown."' id='variety".$key->id_breakdown."'></p>
+				                			<p><b>Fecha de Siembra:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate2".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker2".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='variety_sowing_date".$key->id_breakdown."' name='variety_sowing_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 				                			<p><b>% Germinacion:</b>
-				                				<input type='text' class='form-control' placeholder='% Germinacion' name='germiantion_variety' id='germination_variety'></p>
+				                				<input type='text' class='form-control' placeholder='% Germinacion' name='variety_germination".$key->id_breakdown."' id='variety_germination".$key->id_breakdown."'></p>
 				                			<p><b>% Viabilidad:</b>
-				                				<input type='text' class='form-control' placeholder='% Viabilidad' name='viability_variety' id='viability_variety'></p>
+				                				<input type='text' class='form-control' placeholder='% Viabilidad' name='variety_viability".$key->id_breakdown."' id='variety_viability".$key->id_breakdown."'></p>
 											<div >&nbsp</div>
 				                			<p><b>Portainjerto:</b>
-				                				<input type='text' class='form-control' placeholder='Portainjerto' name='rootstock' id='rootstock'></p>
-				                			<p><b>Fecha de Siembra:</b>
-				                				<input type='text' class='form-control' placeholder='sowing_date_rootstock' name='variety' id='variety'></p>
+				                				<input type='text' class='form-control' placeholder='Portainjerto' name='rootstock".$key->id_breakdown."' id='rootstock".$key->id_breakdown."'></p>
+				                			<p><b>Fecha de Siembra:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate3".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker3".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='rootstock_sowing_date".$key->id_breakdown."' name='rootstock_sowing_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 				                			<p><b>% Germinacion:</b>
-				                				<input type='text' class='form-control' placeholder='% Germinacion' name='germiantion_rootstock' id='germination_rootstock'></p>
+				                				<input type='text' class='form-control' placeholder='% Germinacion' name='rootstock_germination".$key->id_breakdown."' id='rootstock_germination".$key->id_breakdown."'></p>
 				                			<p><b>% Viabilidad:</b>
-				                			<input type='text' class='form-control' placeholder='% Viabilidad' name='viability_rootstock' id='viability_rootstock'></p>
+				                			<input type='text' class='form-control' placeholder='% Viabilidad' name='rootstock_viability".$key->id_breakdown."' id='rootstock_viability".$key->id_breakdown."'></p>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='injerto".$key->id_breakdown."' style='display: none;'>
 				                			<h3 style='color:#6BBD44'>Injerto</h3>
-				                			<p><b>Fecha:</b>
-				                				<input type='text' class='form-control' placeholder='Fecha' name='graft_date' id='graft_date'></p>
+				                			<p><b>Fecha:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate4".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker4".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='graft_date".$key->id_breakdown."' name='graft_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='transplante".$key->id_breakdown."' style='display: none;'>
 			                				<h3 style='color:#6BBD44'>Transplante</h3>
-				                			<p><b>Fecha:</b>
-				                				<input type='text' class='form-control' placeholder='Fecha' name='transplant_date' id='transplant_date'></p>
+				                			<p><b>Fecha:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate5".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker5".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='transplant_date".$key->id_breakdown."' name='transplant_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='pinchado".$key->id_breakdown."' style='display: none;'>
 			                				<h3 style='color:#6BBD44'>Pinchado</h3>
-				                			<p><b>Fecha:</b>	
-				                				<input type='text' class='form-control' placeholder='Fecha' name='date_punch' id='date_punch'></p>
+				                			<p><b>Fecha:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate6".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker6".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='punch_date".$key->id_breakdown."' name='punch_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='empaque".$key->id_breakdown."' style='display: none;'>
 			                				<h3 style='color:#6BBD44'>Empaque</h3>
-				                			<p><b>Fecha:</b>
-				                				<input type='text' class='form-control' placeholder='Fecha' name='empak_date' id='empak_date'></p>
+				                			<p><b>Fecha:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate7".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker7".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='pack_date".$key->id_breakdown."' name='pack_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='embarque".$key->id_breakdown."' style='display: none;'>
 			                				<h3 style='color:#6BBD44'>Embarque</h3>
-				                			<p><b>Fecha:</b><input type='text' class='form-control' placeholder='Fecha' name='embark_date' id='embark_date'></p>
+				                			<p><b>Fecha:</b></p>
+												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate8".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker8".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='embark_date".$key->id_breakdown."' name='embark_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
 			                			</div>
 			                		</div>
 			                		<div class='col-xs-6'>
@@ -610,6 +612,64 @@ class Admin extends CI_Controller {
 										<p><input type='checkbox' name='check' id='check6".$key->id_breakdown."' value='1'/>Empaque </p>
 										<p><input type='checkbox' name='check' id='check7".$key->id_breakdown."' value='1'/>Embarque </p>
 										
+									</div>
+								</div>
+								<div >&nbsp</div>
+								<div class='col-xs-12'>
+									<div class='col-xs-6'>
+										<h3 style='color:#6BBD44'>Cualquier duda o comentario estamos a sus órdenes</h3>
+										<h3><b>Teresa Ugalde</b></h3>
+										<p style='margin-top: -15px;'>Atención a clientes</p>
+										<p style='margin-top: -15px;'>t.ugalde@plantanova.com.mx</p>
+										<p style='margin-top: -15px;'>(442) 229 1861 ext. 802</p>
+									</div>
+									<div class='col-xs-6' style='background-color: #D0E3CA;'>
+								  		<h3 style='color:#6BBD44'>Pagos</h3>
+										<textarea rows='3' style='height: auto !important; width:100%; background-color: #D0E3CA;' id='pay_text".$key->id_breakdown."' name='pay_text".$key->id_breakdown."' ></textarea>								
+									</div>
+								</div>
+								<div >&nbsp</div>
+								<div class='col-xs-12'>
+									<div class='col-xs-4'>
+								  		<h3 style='color:#6BBD44'>Elige una imagen</h3>
+										<input id='uploadFile".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;'/>
+										<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
+			    							<span>Buscar</span>
+										    <input id='uploadBtn".$key->id_breakdown."' type='file' class='upload' name='userfile'/>
+										</div>
+										<script>
+											document.getElementById('uploadBtn".$key->id_breakdown."').onchange = function () {
+								    			document.getElementById('uploadFile".$key->id_breakdown."').value = this.value;
+											};
+										</script>
+									</div>
+									<div class='col-xs-4'>
+										<h3 style='color:#6BBD44'>Elige una imagen</h3>
+										<input id='uploadFile2".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;'/>
+										<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
+			    							<span>Buscar</span>
+										    <input id='uploadBtn2".$key->id_breakdown."' type='file' class='upload' name='userfile'/>
+										</div>
+
+										<script>
+											document.getElementById('uploadBtn2".$key->id_breakdown."').onchange = function () {
+								    			document.getElementById('uploadFile2".$key->id_breakdown."').value = this.value;
+											};
+										</script>
+									</div>
+									<div class='col-xs-4'>
+										<h3 style='color:#6BBD44'>Elige una imagen</h3>
+										<input id='uploadFile3".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;'/>
+										<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
+			    							<span>Buscar</span>
+										    <input id='uploadBtn3".$key->id_breakdown."' type='file' class='upload' name='userfile'/>
+										</div>
+
+										<script>
+											document.getElementById('uploadBtn3".$key->id_breakdown."').onchange = function () {
+								    			document.getElementById('uploadFile3".$key->id_breakdown."').value = this.value;
+											};
+										</script>
 									</div>
 								</div>
 							</div>
@@ -679,12 +739,141 @@ class Admin extends CI_Controller {
 						document.getElementById("embarque'.$key->id_breakdown.'").style.display = "none";
 					}
 				});
+
+			$(function() {			
+				$( ".datepicker1'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate1'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker1'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker2'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate2'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker2'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker3'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate3'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker3'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker4'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate4'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker4'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker5'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate5'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker5'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker6'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate6'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker6'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker7'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate7'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker7'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			$(function() {			
+				$( ".datepicker8'.$key->id_breakdown.'" ).datepicker();
+			});
+			$(function() {    
+	      		$("#butondate8'.$key->id_breakdown.'").click(function() {
+	        		$(".datepicker8'.$key->id_breakdown.'").datepicker("show");
+	       		});
+	    	});
+			jQuery(function($){
+			 	$.datepicker.regional["es"] = {
+		            closeText: "Cerrar",
+		            prevText: "&#x3c;Ant",
+		            nextText: "Sig&#x3e;",
+		            currentText: "Hoy",
+		            monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
+		            "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+		            monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun",
+		            "Jul","Ago","Sep","Oct","Nov","Dic"],
+		            dayNames: ["Domingo","Lunes","Martes","Mi&eacute;rcoles","Jueves","Viernes","S&aacute;bado"],
+		            dayNamesShort: ["Dom","Lun","Mar","Mi&eacute;","Juv","Vie","S&aacute;b"],
+		            dayNamesMin: ["Do","Lu","Ma","Mi","Ju","Vi","S&aacute;"],
+		            weekHeader: "Sm",
+		            dateFormat: "dd-mm-yy",
+		            firstDay: 1,
+		            isRTL: false,
+		            showMonthAfterYear: false,
+		            yearSuffix: ""
+		        };
+		    
+		    	$.datepicker.setDefaults($.datepicker.regional["es"]);
+			});
 			</script>';   
 			}
-			echo $result;
+			echo $boton;
 			echo $modal;
 			echo $javascript;
 		}else echo "";
 		
+	}
+
+	function inform_client(){
+		$id_breakdown=$this->uri->segment(3);
+		$datos['id_breakdown']=$id_breakdown;
+		$datos['client_name']=$this->input->post('client_name'.$id_breakdown);
+		$fecha1=$this->input->post('reception_date'.$id_breakdown);
+		$datos['reception_date']=date("Y-m-d H:i:s", strtotime($fecha1));
+		$datos['inform_text']=$this->input->post('inform_text'.$id_breakdown);
+		$datos['variety']=$this->input->post('variety'.$id_breakdown);
+		$fecha2=$this->input->post('variety_sowing_date'.$id_breakdown);
+		$datos['variety_sowing_date']=date("Y-m-d H:i:s", strtotime($fecha2));
+		$datos['variety_germination']=$this->input->post('variety_germination'.$id_breakdown);
+		$datos['variety_viability']=$this->input->post('variety_viability'.$id_breakdown);
+		$datos['rootstock']=$this->input->post('rootstock'.$id_breakdown);
+		$fecha3=$this->input->post('rootstock_sowing_date'.$id_breakdown);
+		$datos['rootstock_sowing_date']=date("Y-m-d H:i:s", strtotime($fecha3));
+		$datos['rootstock_germination']=$this->input->post('rootstock_germination'.$id_breakdown);
+		$datos['rootstock_viability']=$this->input->post('rootstock_viability'.$id_breakdown);
+		$fecha4=$this->input->post('graft_date'.$id_breakdown);
+		$datos['graft_date']=date("Y-m-d H:i:s", strtotime($fecha4));
+		$fecha5=$this->input->post('transplant_date'.$id_breakdown);
+		$datos['transplant_date']=date("Y-m-d H:i:s", strtotime($fecha5));
+		$fecha6=$this->input->post('punch_date'.$id_breakdown);
+		$datos['punch_date']=date("Y-m-d H:i:s", strtotime($fecha6));
+		$fecha7=$this->input->post('pack_date'.$id_breakdown);
+		$datos['pack_date']=date("Y-m-d H:i:s", strtotime($fecha7));
+		$fecha8=$this->input->post('embark_date'.$id_breakdown);
+		$datos['embark_date']=date("Y-m-d H:i:s", strtotime($fecha8));
+		$datos['pay_text']=$this->input->post('pay_text'.$id_breakdown);
+		$datos['file1']=$this->input->post('uploadFile'.$id_breakdown);
+		$datos['file2']=$this->input->post('uploadFile2'.$id_breakdown);
+		$datos['file3']=$this->input->post('uploadFile3'.$id_breakdown);
+
+		if($this->model_user->get_inform_client($id_breakdown) != false){
+			$this->model_user->update_inform_client($datos);
+		}else{
+			$this->model_user->insert_inform_client($datos);
+		}
+
+		redirect("admin/client_inform",$refresh);
 	}
 }

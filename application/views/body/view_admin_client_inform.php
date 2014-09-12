@@ -12,7 +12,7 @@
 						?>
 						<div class="col-md-4">
 							<div class="input-group">
-								<p>Cleinte</p>
+								<p>Cliente</p>
 								<select class="form-control" name="client" id="client" onchange="get_order_client(this.value)">
 									<option value="-1" selected>---Selecciona un Cliente---</option>
 									<?php 

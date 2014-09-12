@@ -221,6 +221,26 @@ Class model_user extends CI_Model	{
 			return false;
 		}
 	}
+
+	function get_inform_client($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$query=$this->db->get('t_client_inform');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function update_inform_client($datos){
+		$this->db->update('t_client_inform',$datos);
+		return $this->db->affected_rows();
+	}
+
+	function insert_inform_client($datos){
+		$this->db->insert('t_client_inform',$datos);
+		return $this->db->affected_rows();
+	}
 }
 
 ?>
