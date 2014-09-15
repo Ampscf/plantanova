@@ -324,34 +324,37 @@
 						<div class="col-xs-12">
 							<div class="col-xs-4">
 						<?php
-							if($img_injer[0]->img_injer1 != null){
+							if(is_array($img_injer)){
+								if($img_injer[0]->img_injer1 != null){
 								echo $img_injer[0]->img_injer1.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" 
 	                    			title="'.$img_injer[0]->img_injer1.'"
 	                    			data-toggle="modal"
 	                    			target="_blank">
 									<img src="/plantanova/uploads/'.$img_injer[0]->img_injer1.'" style="width:100%; height:200px;"></a>
 									</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_injer[0]->img_injer2 != null){
+									echo $img_injer[0]->img_injer2.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" 
+		                    			title="'.$img_injer[0]->img_injer2.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_injer[0]->img_injer3 != null){
+									echo $img_injer[0]->img_injer3.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" 
+		                    			title="'.$img_injer[0]->img_injer3.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
 							}
-							echo '</div>';
-							echo '<div class="col-xs-4">';
-							if($img_injer[0]->img_injer2 != null){
-								echo $img_injer[0]->img_injer2.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" 
-	                    			title="'.$img_injer[0]->img_injer2.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_injer[0]->img_injer2.'" style="width:100%; height:200px;"></a>
-									</br>';
-							}
-							echo '</div>';
-							echo '<div class="col-xs-4">';
-							if($img_injer[0]->img_injer3 != null){
-								echo $img_injer[0]->img_injer3.'<a href="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" 
-	                    			title="'.$img_injer[0]->img_injer3.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_injer[0]->img_injer3.'" style="width:100%; height:200px;"></a>
-									</br>';
-							}
+							
 						?>
 					</div>
 				</div>
@@ -418,33 +421,35 @@
 						<div class="col-xs-12">
 							<div class="col-xs-4">
 						<?php
-							if($img_pinch[0]->img_pinch1 != null){
-								echo $img_pinch[0]->img_pinch1.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" 
-	                    			title="'.$img_pinch[0]->img_pinch1.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" style="width:100%; height:200px;"></a>
-									</br>';
-							}
-							echo '</div>';
-							echo '<div class="col-xs-4">';
-							if($img_pinch[0]->img_pinch2 != null){
-								echo $img_pinch[0]->img_pinch2.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" 
-	                    			title="'.$img_pinch[0]->img_pinch2.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" style="width:100%; height:200px;"></a>
-									</br>';
-							}
-							echo '</div>';
-							echo '<div class="col-xs-4">';
-							if($img_pinch[0]->img_pinch3 != null){
-								echo $img_pinch[0]->img_pinch3.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" 
-	                    			title="'.$img_pinch[0]->img_pinch3.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" style="width:100%; height:200px;"></a>
-									</br>';
+							if(is_array($img_pinch)){
+								if($img_pinch[0]->img_pinch1 != null){
+									echo $img_pinch[0]->img_pinch1.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" 
+		                    			title="'.$img_pinch[0]->img_pinch1.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch1.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_pinch[0]->img_pinch2 != null){
+									echo $img_pinch[0]->img_pinch2.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" 
+		                    			title="'.$img_pinch[0]->img_pinch2.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch2.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_pinch[0]->img_pinch3 != null){
+									echo $img_pinch[0]->img_pinch3.'<a href="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" 
+		                    			title="'.$img_pinch[0]->img_pinch3.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_pinch[0]->img_pinch3.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
 							}
 						?>
 					</div>
@@ -512,33 +517,35 @@
 					<div class="col-xs-12">
 						<div class="col-xs-4">
 						<?php
-							if($img_trans[0]->img_trans1 != null){
-								echo $img_trans[0]->img_trans1.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" 
-	                    			title="'.$img_trans[0]->img_trans1.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" style="width:100%; height:200px;"></a>
-									</br>';
-							}
-							echo '</div>';
-							echo '<div class="col-xs-4">';
-							if($img_trans[0]->img_trans2 != null){
-								echo $img_trans[0]->img_trans2.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" 
-	                    			title="'.$img_trans[0]->img_trans2.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" style="width:100%; height:200px;"></a>
-									</br>';
-							}
-							echo '</div>';
-							echo '<div class="col-xs-4">';
-							if($img_trans[0]->img_trans3 != null){
-								echo $img_trans[0]->img_trans3.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" 
-	                    			title="'.$img_trans[0]->img_trans3.'"
-	                    			data-toggle="modal"
-	                    			target="_blank">
-									<img src="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" style="width:100%; height:200px;"></a>
-									</br>';
+							if(is_array($img_injer)){
+								if($img_trans[0]->img_trans1 != null){
+									echo $img_trans[0]->img_trans1.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" 
+		                    			title="'.$img_trans[0]->img_trans1.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_trans[0]->img_trans2 != null){
+									echo $img_trans[0]->img_trans2.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" 
+		                    			title="'.$img_trans[0]->img_trans2.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_trans[0]->img_trans2.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_trans[0]->img_trans3 != null){
+									echo $img_trans[0]->img_trans3.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" 
+		                    			title="'.$img_trans[0]->img_trans3.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_trans[0]->img_trans3.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
 							}
 						?>
 							</div>

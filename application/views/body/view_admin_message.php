@@ -26,17 +26,24 @@
 							</div><!-- End Cantidad -->	
 							<div class="clear">&nbsp</div>
 							<div class="input-group">
-								<p>Tipo de Mensage:</p>
-								<select class="form-control" name="type" id="type" >
-									<option value="-1" selected>---Selecciona un Tipo de Mensaje---</option>
-									<option value="1">Pago</option>
-									<option value="2">Alerta</option>
-								</select>
-							</div><!-- End Cantidad -->	
+								<input type="radio" name="status" id="activate" value="1" cheked >Activado
+								<input type="radio" name="status" id="disable" value="0" >Desactivado
+							</div>
 							<div class="clear">&nbsp</div>
-							<div class="input-group">
-								<p>Mensage</p>
-								<textarea class="form-control" rows="4" style="height: auto !important;" id="message" name="message"></textarea>								
+							<div id="div_message">
+								<div class="input-group">
+									<p>Tipo de Mensage:</p>
+									<select class="form-control" name="type" id="type" >
+										<option value="-1" selected>---Selecciona un Tipo de Mensaje---</option>
+										<option value="1">Pago</option>
+										<option value="2">Alerta</option>
+									</select>
+								</div><!-- End Cantidad -->	
+								<div class="clear">&nbsp</div>
+								<div class="input-group">
+									<p>Mensage</p>
+									<textarea class="form-control" rows="4" style="height: auto !important;" id="message" name="message"></textarea>								
+								</div>
 							</div>
 						</div>
 					</div>
@@ -58,23 +65,11 @@
 							rules:{
 								client: {
 						            min: 0
-						        },
-						        type:{
-						        	min:0
-						        },
-						        message:{
-						        	required:true
 						        }
 							},
 							messages:{
 								client: {
 						            min: "Selecciona un Cliente"
-						        },
-						        type:{
-						        	min:"Selecciona un Tipo de Mensaje"
-						        },
-						        message:{
-						        	required:"Ingresa un Mensaje"
 						        }
 							}
 						});

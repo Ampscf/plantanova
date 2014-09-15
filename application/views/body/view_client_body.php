@@ -104,13 +104,8 @@
     		<div class="modal-body">
     			<h4>¡Hola <?php echo $user[0]->farm_name; ?>!</h4>
     			<?php
-				if(is_array($alerts)){
-					foreach ($alerts as $key) {
-						echo "<p>".$key->message."</p>";
-					}
-
-				}
-			?> 		
+					echo "<p>".$alerts[0]->message."</p>";
+				?> 		
     		</div>
     		<div class="modal-footer">
 			</div>
@@ -118,13 +113,13 @@
 	</div>
 </div>
 <?php 
-if($this->uri->segment(3)==1){
+if($this->uri->segment(3)==1 && $user[0]->message_status==1){
 ?>
-<script type="text/javascript">
-    $(window).load(function(){
-        $('#myModal').modal('show');
-    });
-</script
+	<script type="text/javascript">
+	    $(window).load(function(){
+	        $('#myModal').modal('show');
+	    });
+	</script
 <?php
 }
 ?>

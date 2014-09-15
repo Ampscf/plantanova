@@ -241,6 +241,11 @@ Class model_user extends CI_Model	{
 		$this->db->insert('t_client_inform',$datos);
 		return $this->db->affected_rows();
 	}
+
+	function status_client_message($id_user,$status){
+		$this->db->query('update t_user set message_status='.$status.' where id_user='.$id_user);
+		return $this->db->affected_rows();
+	}
 }
 
 ?>

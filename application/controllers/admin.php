@@ -436,26 +436,93 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('id_rol')!=1){
 			redirect('client/index');
 		}
-
+		$status=$this->input->post('status');
+		
 		$id_user=$this->input->post('client');
 		$type_message=$this->input->post('type');
 		$message=$this->input->post('message');
-		
-		if($type_message==1){
-			if($this->model_user->get_message($id_user,$type_message)!=false){
-				$this->model_user->update_message($id_user,$type_message,$message);
-			}else{
+		if($status!=Null){
+			if($status==1){
+			$this->model_user->status_client_message($id_user,$status);
+			//si es pago
+			if($type_message==1){
+				if($this->model_user->get_message($id_user,$type_message)!=false){
+					$this->model_user->update_message($id_user,$type_message,$message);
+				}else{
+					$this->model_user->add_message($id_user,$type_message,$message);
+				}
+				?>
+				<script>
+					alert("El mensaje fue enviado con exito!");
+				</script>
+				<?php
+
+			}
+			//si es alerta
+			else if($type_message==2){
 				$this->model_user->add_message($id_user,$type_message,$message);
+				$this->model_user->status_client_message($id_user,$status);
+				?>
+				<script>
+					alert("El mensaje fue enviado con exito!");
+				</script>
+				<?php
+			}
+			
+			}else if($status==0){
+				$this->model_user->status_client_message($id_user,$status);
+				if($type_message==1){
+					if($this->model_user->get_message($id_user,$type_message)!=false){
+						$this->model_user->update_message($id_user,$type_message,$message);
+					}else{
+						$this->model_user->add_message($id_user,$type_message,$message);
+					}
+					?>
+					<script>
+						alert("El mensaje fue enviado con exito!");
+					</script>
+					<?php
+
+				}
+				//si es alerta
+				else if($type_message==2){
+					$this->model_user->add_message($id_user,$type_message,$message);
+					$this->model_user->status_client_message($id_user,$status);
+					?>
+					<script>
+						alert("El mensaje fue enviado con exito!");
+					</script>
+					<?php
+				}
 			}
 
 		}else{
-			$this->model_user->add_message($id_user,$type_message,$message);
+			if($type_message==1){
+				if($this->model_user->get_message($id_user,$type_message)!=false){
+					$this->model_user->update_message($id_user,$type_message,$message);
+				}else{
+					$this->model_user->add_message($id_user,$type_message,$message);
+				}
+				?>
+				<script>
+					alert("El mensaje fue enviado con exito!");
+				</script>
+				<?php
+
+			}
+			//si es alerta
+			else if($type_message==2){
+				$this->model_user->add_message($id_user,$type_message,$message);
+				$this->model_user->status_client_message($id_user,$status);
+				?>
+				<script>
+					alert("El mensaje fue enviado con exito!");
+				</script>
+				<?php
+			}
 		}
-		?>
-		<script>
-			alert("El mensaje fue enviado con exito!");
-		</script>
-		<?php
+		
+		
 		redirect('admin/client_message', "refresh");
 
 	}
@@ -552,23 +619,27 @@ class Admin extends CI_Controller {
 			                			<div >&nbsp</div>
 			                			<div id='siembra_ger".$key->id_breakdown."' style='display: none;'>
 				                			<h3 style='color:#6BBD44'>Siembra/Germinacion</h3>
-				                			<p><b>Variedad:</b>
-				                				<input type='text' class='form-control' placeholder='Variedad' name='variety".$key->id_breakdown."' id='variety".$key->id_breakdown."'></p>
-				                			<p><b>Fecha de Siembra:</b></p>
-												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate2".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker2".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='variety_sowing_date".$key->id_breakdown."' name='variety_sowing_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
-				                			<p><b>% Germinacion:</b>
-				                				<input type='text' class='form-control' placeholder='% Germinacion' name='variety_germination".$key->id_breakdown."' id='variety_germination".$key->id_breakdown."'></p>
-				                			<p><b>% Viabilidad:</b>
-				                				<input type='text' class='form-control' placeholder='% Viabilidad' name='variety_viability".$key->id_breakdown."' id='variety_viability".$key->id_breakdown."'></p>
-											<div >&nbsp</div>
-				                			<p><b>Portainjerto:</b>
-				                				<input type='text' class='form-control' placeholder='Portainjerto' name='rootstock".$key->id_breakdown."' id='rootstock".$key->id_breakdown."'></p>
-				                			<p><b>Fecha de Siembra:</b></p>
-												<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate3".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker3".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='rootstock_sowing_date".$key->id_breakdown."' name='rootstock_sowing_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
-				                			<p><b>% Germinacion:</b>
-				                				<input type='text' class='form-control' placeholder='% Germinacion' name='rootstock_germination".$key->id_breakdown."' id='rootstock_germination".$key->id_breakdown."'></p>
-				                			<p><b>% Viabilidad:</b>
-				                			<input type='text' class='form-control' placeholder='% Viabilidad' name='rootstock_viability".$key->id_breakdown."' id='rootstock_viability".$key->id_breakdown."'></p>
+				                			<div id='divvariety".$key->id_breakdown."' style='display: none;'>
+					                			<p><b>Variedad:</b>
+					                				<input type='text' class='form-control' placeholder='Variedad' name='variety".$key->id_breakdown."' id='variety".$key->id_breakdown."'></p>
+					                			<p><b>Fecha de Siembra:</b></p>
+													<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate2".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker2".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='variety_sowing_date".$key->id_breakdown."' name='variety_sowing_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
+					                			<p><b>% Germinacion:</b>
+					                				<input type='text' class='form-control' placeholder='% Germinacion' name='variety_germination".$key->id_breakdown."' id='variety_germination".$key->id_breakdown."'></p>
+					                			<p><b>% Viabilidad:</b>
+					                				<input type='text' class='form-control' placeholder='% Viabilidad' name='variety_viability".$key->id_breakdown."' id='variety_viability".$key->id_breakdown."'></p>
+												<div >&nbsp</div>
+				                			</div>
+				                			<div id='divrootstock".$key->id_breakdown."' style='display: none;'>
+					                			<p><b>Portainjerto:</b>
+					                				<input type='text' class='form-control' placeholder='Portainjerto' name='rootstock".$key->id_breakdown."' id='rootstock".$key->id_breakdown."'></p>
+					                			<p><b>Fecha de Siembra:</b></p>
+													<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate3".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker3".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='rootstock_sowing_date".$key->id_breakdown."' name='rootstock_sowing_date".$key->id_breakdown."' style='width:90%; float: right;' readonly></p>
+					                			<p><b>% Germinacion:</b>
+					                				<input type='text' class='form-control' placeholder='% Germinacion' name='rootstock_germination".$key->id_breakdown."' id='rootstock_germination".$key->id_breakdown."'></p>
+					                			<p><b>% Viabilidad:</b>
+					                			<input type='text' class='form-control' placeholder='% Viabilidad' name='rootstock_viability".$key->id_breakdown."' id='rootstock_viability".$key->id_breakdown."'></p>
+			                				</div>
 			                			</div>
 			                			<div >&nbsp</div>
 			                			<div id='injerto".$key->id_breakdown."' style='display: none;'>
@@ -606,6 +677,10 @@ class Admin extends CI_Controller {
 			                			
 										<p><input type='checkbox' name='check' id='check1".$key->id_breakdown."' value='1'/>Recepcion </p>
 										<p><input type='checkbox' name='check' id='check2".$key->id_breakdown."' value='1'/>Siembra/Germinacion </p>
+										<div id='siem_ger".$key->id_breakdown."' style='display: none;'>
+											<p>&nbsp;&nbsp;<input type='checkbox' name='check' id='check11".$key->id_breakdown."' value='1'/>Variedad
+											<input type='checkbox' name='check' id='check12".$key->id_breakdown."' value='1'/>Portainjerto </p>
+										</div>
 										<p><input type='checkbox' name='check' id='check3".$key->id_breakdown."' value='1'/>Ingerto </p>
 										<p><input type='checkbox' name='check' id='check4".$key->id_breakdown."' value='1'/>Transplante </p>
 										<p><input type='checkbox' name='check' id='check5".$key->id_breakdown."' value='1'/>Pinchado </p>
@@ -694,11 +769,31 @@ class Admin extends CI_Controller {
 				$("#check2'.$key->id_breakdown.'").click(function() {  
 					if (document.getElementById("check2'.$key->id_breakdown.'").checked){
 						document.getElementById("siembra_ger'.$key->id_breakdown.'").style.display = "block";
+						document.getElementById("siem_ger'.$key->id_breakdown.'").style.display = "block";
 					}
 					else {
 						document.getElementById("siembra_ger'.$key->id_breakdown.'").style.display = "none";
+						document.getElementById("siem_ger'.$key->id_breakdown.'").style.display = "none";
+
 					}
 				});
+				$("#check11'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check11'.$key->id_breakdown.'").checked){
+						document.getElementById("divvariety'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("divvariety'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+				$("#check12'.$key->id_breakdown.'").click(function() {  
+					if (document.getElementById("check12'.$key->id_breakdown.'").checked){
+						document.getElementById("divrootstock'.$key->id_breakdown.'").style.display = "block";
+					}
+					else {
+						document.getElementById("divrootstock'.$key->id_breakdown.'").style.display = "none";
+					}
+				});
+
 				$("#check3'.$key->id_breakdown.'").click(function() {  
 					if (document.getElementById("check3'.$key->id_breakdown.'").checked){
 						document.getElementById("injerto'.$key->id_breakdown.'").style.display = "block";
