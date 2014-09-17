@@ -246,6 +246,31 @@ Class model_user extends CI_Model	{
 		$this->db->query('update t_user set message_status='.$status.' where id_user='.$id_user);
 		return $this->db->affected_rows();
 	}
+
+	function seeds($variety,$rootstock,$id_order){
+		$this->db->where('id_order', $id_order);
+		$this->db->where('seed_name',$variety);
+		$this->db->or_where('seed_name',$rootstock);
+		$this->db->order_by('id_seed','desc');
+		$query=$this->db->get('t_seeds');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function get_germination($seed_name,$id_order){
+		$this->db->where('id_order',$id_order);
+		$this->db->where('seed_name',$seed_name);
+		$query=$this->db->get('t_germination');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
 }
 
 ?>

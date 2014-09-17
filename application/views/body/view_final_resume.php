@@ -517,7 +517,7 @@
 					<div class="col-xs-12">
 						<div class="col-xs-4">
 						<?php
-							if(is_array($img_injer)){
+							if(is_array($img_trans)){
 								if($img_trans[0]->img_trans1 != null){
 									echo $img_trans[0]->img_trans1.'<a href="/plantanova/uploads/'.$img_trans[0]->img_trans1.'" 
 		                    			title="'.$img_trans[0]->img_trans1.'"

@@ -21,7 +21,7 @@ Class model_embark extends CI_Model
 		$this->db->order_by('id_embark','asc');
 		$query = $this->db->get('t_embark');
 
-		if($query->num_rows()>0)
+		if($query->num_rows() > 0)
 		{
 			return $query;
 		}
