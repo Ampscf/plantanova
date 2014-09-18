@@ -233,6 +233,7 @@ Class model_user extends CI_Model	{
 	}
 
 	function update_inform_client($datos){
+		$this->db->where("id_breakdown",$datos['id_breakdown']);
 		$this->db->update('t_client_inform',$datos);
 		return $this->db->affected_rows();
 	}

@@ -5,7 +5,16 @@
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-tags"></i> Informe del Cliente </h3>
 					</div>
+					<div class="clear">&nbsp</div>
+						<div class="col-xs-4" id="error">
+							<h5 style="color:red;"><?php 
+								if (isset($error)){
+									echo $error;		
+								}
+							?></h5>
+						</div>
 					<div class="panel-body">
+
 						<?php
 							$attributes=array('id' => 'form_message', 'name'=> 'form_message');
 							echo form_open('admin/message',$attributes);
