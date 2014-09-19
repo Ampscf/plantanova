@@ -3,7 +3,7 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-tags"></i> Informe del Cliente </h3>
+						<h3 class="panel-title"><i class="fa fa-tags"></i> Resumen del Cliente </h3>
 					</div>
 					
 					<div class="panel-body">
