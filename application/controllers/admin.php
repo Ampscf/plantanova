@@ -651,7 +651,7 @@ class Admin extends CI_Controller {
 							$transplant_date=date("d-m-Y",strtotime($transplante[0]->process_date));
 						}
 
-						$modal.=form_open('admin/inform_client/'.$key->id_breakdown)."
+						$modal.=form_open_multipart('admin/inform_client/'.$key->id_breakdown)."
 							<div id='myModal".$key->id_breakdown."' class='modal fade'>
 				        		<div class='modal-dialog modal-lg'>
 				            		<div class='modal-content'>
@@ -770,10 +770,10 @@ class Admin extends CI_Controller {
 												<div class='col-xs-12'>
 													<div class='col-xs-4'>
 												  		<h3 style='color:#6BBD44'>Elige una imagen</h3>
-														<input id='uploadFile".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;'/>
+														<input id='uploadFile".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;' value=''/>
 														<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
 							    							<span>Buscar</span>
-														    <input id='uploadBtn".$key->id_breakdown."' type='file' class='upload' name='userfile'/>
+														    <input id='uploadBtn".$key->id_breakdown."' type='file' class='upload' name='userfile1'/>
 														</div>
 														<script>
 															document.getElementById('uploadBtn".$key->id_breakdown."').onchange = function () {
@@ -783,10 +783,10 @@ class Admin extends CI_Controller {
 													</div>
 													<div class='col-xs-4'>
 														<h3 style='color:#6BBD44'>Elige una imagen</h3>
-														<input id='uploadFile2".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;'/>
+														<input id='uploadFile2".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;' value=''/>
 														<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
 							    							<span>Buscar</span>
-														    <input id='uploadBtn2".$key->id_breakdown."' type='file' class='upload' name='userfile'/>
+														    <input id='uploadBtn2".$key->id_breakdown."' type='file' class='upload' name='userfile2'/>
 														</div>
 
 														<script>
@@ -797,10 +797,10 @@ class Admin extends CI_Controller {
 													</div>
 													<div class='col-xs-4'>
 														<h3 style='color:#6BBD44'>Elige una imagen</h3>
-														<input id='uploadFile3".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;'/>
+														<input id='uploadFile3".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;' value=''/>
 														<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
 							    							<span>Buscar</span>
-														    <input id='uploadBtn3".$key->id_breakdown."' type='file' class='upload' name='userfile'/>
+														    <input id='uploadBtn3".$key->id_breakdown."' type='file' class='upload' name='userfile3'/>
 														</div>
 
 														<script>
@@ -860,6 +860,36 @@ class Admin extends CI_Controller {
 						$embark_date="";
 					}else{
 						$embark_date=date("d-m-Y",strtotime($inform_client[0]->embark_date));
+					}
+
+					if($inform_client[0]->userfile1 != Null){
+						$a="<a href='/plantanova/uploads/".$inform_client[0]->userfile1."' 
+                			title='".$inform_client[0]->userfile1."'
+                			data-toggle='modal'
+                			target='_blank'>
+							<img src='/plantanova/uploads/".$inform_client[0]->userfile1."' style='width:100%; height:200px'></a>";
+					}else{
+						$a='';
+					}
+					if($inform_client[0]->userfile2 != Null){
+						$b="<a href='/plantanova/uploads/".$inform_client[0]->userfile2."' 
+                			title='".$inform_client[0]->userfile2."'
+                			data-toggle='modal'
+                			target='_blank'>
+							<img src='/plantanova/uploads/".$inform_client[0]->userfile2."' style='width:100%; height:200px'></a>";
+					}
+					else{
+						$b='';
+					}
+					if($inform_client[0]->userfile3 != Null){
+						$c="<a href='/plantanova/uploads/".$inform_client[0]->userfile3."' 
+                			title='".$inform_client[0]->userfile3."'
+                			data-toggle='modal'
+                			target='_blank'>
+							<img src='/plantanova/uploads/".$inform_client[0]->userfile3."' style='width:100%; height:200px'></a>";
+					}
+					else{
+						$c='';
 					}
 					$modal.= form_open_multipart('admin/inform_client/'.$key->id_breakdown)."
 							<div id='myModal".$key->id_breakdown."' class='modal fade'>
@@ -1002,7 +1032,7 @@ class Admin extends CI_Controller {
 
 														<script>
 															document.getElementById('uploadBtn2".$key->id_breakdown."').onchange = function () {
-												    			document.getElementById('uploadFile2".$key->id_breakdown."').value = this.value;
+																document.getElementById('uploadFile2".$key->id_breakdown."').value = this.value;
 															};
 														</script>
 													</div>
@@ -1011,14 +1041,28 @@ class Admin extends CI_Controller {
 														<input id='uploadFile3".$key->id_breakdown."' placeholder='Elige una imagen' disabled='disabled' style='height: 30px; width: 100%;' value='".$inform_client[0]->userfile3."'/>
 														<div class='fileUpload btn btn-success' style='width: 100%; margin: 0px; margin-top: 10px;'>
 							    							<span>Buscar</span>
-														    <input id='uploadBtn3".$key->id_breakdown."' type='file' class='upload' name='userfile3'/>
+															<input id='uploadBtn3".$key->id_breakdown."' type='file' class='upload' name='userfile3'/>
 														</div>
 
 														<script>
 															document.getElementById('uploadBtn3".$key->id_breakdown."').onchange = function () {
-												    			document.getElementById('uploadFile3".$key->id_breakdown."').value = this.value;
+																document.getElementById('uploadFile3".$key->id_breakdown."').value = this.value;
 															};
 														</script>
+													</div>
+												</div>
+												<div >&nbsp</div>
+												<div class='col-xs-12'>	
+
+													<div class='col-xs-4' id='file1".$key->id_breakdown."'>
+													 	".$a."
+													</div>
+													
+													<div class='col-xs-4'>
+													 	".$b."
+													</div>
+													<div class='col-xs-4'>
+													 	".$c."
 													</div>
 												</div>
 											</div>
@@ -1041,7 +1085,7 @@ class Admin extends CI_Controller {
 					</a>";
 	        
     		$javascript.='<script>
-			    $("#check1'.$key->id_breakdown.'").click(function() {  
+    			$("#check1'.$key->id_breakdown.'").click(function() {  
 					if (document.getElementById("check1'.$key->id_breakdown.'").checked){
 						document.getElementById("recepcion'.$key->id_breakdown.'").style.display = "block";
 					}
@@ -1118,93 +1162,94 @@ class Admin extends CI_Controller {
 					}
 				});
 
-			$(function() {			
-				$( ".datepicker1'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate1'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker1'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker2'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate2'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker2'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker3'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate3'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker3'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker4'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate4'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker4'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker5'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate5'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker5'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker6'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate6'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker6'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker7'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate7'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker7'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			$(function() {			
-				$( ".datepicker8'.$key->id_breakdown.'" ).datepicker();
-			});
-			$(function() {    
-	      		$("#butondate8'.$key->id_breakdown.'").click(function() {
-	        		$(".datepicker8'.$key->id_breakdown.'").datepicker("show");
-	       		});
-	    	});
-			jQuery(function($){
-			 	$.datepicker.regional["es"] = {
-		            closeText: "Cerrar",
-		            prevText: "&#x3c;Ant",
-		            nextText: "Sig&#x3e;",
-		            currentText: "Hoy",
-		            monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
-		            "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
-		            monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun",
-		            "Jul","Ago","Sep","Oct","Nov","Dic"],
-		            dayNames: ["Domingo","Lunes","Martes","Mi&eacute;rcoles","Jueves","Viernes","S&aacute;bado"],
-		            dayNamesShort: ["Dom","Lun","Mar","Mi&eacute;","Juv","Vie","S&aacute;b"],
-		            dayNamesMin: ["Do","Lu","Ma","Mi","Ju","Vi","S&aacute;"],
-		            weekHeader: "Sm",
-		            dateFormat: "dd-mm-yy",
-		            firstDay: 1,
-		            isRTL: false,
-		            showMonthAfterYear: false,
-		            yearSuffix: ""
-		        };
-		    
-		    	$.datepicker.setDefaults($.datepicker.regional["es"]);
-			});
+				$(function() {			
+					$( ".datepicker1'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate1'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker1'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker2'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate2'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker2'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker3'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate3'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker3'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker4'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate4'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker4'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker5'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate5'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker5'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker6'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate6'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker6'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker7'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate7'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker7'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				$(function() {			
+					$( ".datepicker8'.$key->id_breakdown.'" ).datepicker();
+				});
+				$(function() {    
+		      		$("#butondate8'.$key->id_breakdown.'").click(function() {
+		        		$(".datepicker8'.$key->id_breakdown.'").datepicker("show");
+		       		});
+		    	});
+				jQuery(function($){
+				 	$.datepicker.regional["es"] = {
+			            closeText: "Cerrar",
+			            prevText: "&#x3c;Ant",
+			            nextText: "Sig&#x3e;",
+			            currentText: "Hoy",
+			            monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
+			            "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+			            monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun",
+			            "Jul","Ago","Sep","Oct","Nov","Dic"],
+			            dayNames: ["Domingo","Lunes","Martes","Mi&eacute;rcoles","Jueves","Viernes","S&aacute;bado"],
+			            dayNamesShort: ["Dom","Lun","Mar","Mi&eacute;","Juv","Vie","S&aacute;b"],
+			            dayNamesMin: ["Do","Lu","Ma","Mi","Ju","Vi","S&aacute;"],
+			            weekHeader: "Sm",
+			            dateFormat: "dd-mm-yy",
+			            firstDay: 1,
+			            isRTL: false,
+			            showMonthAfterYear: false,
+			            yearSuffix: ""
+			        };
+			    
+			    	$.datepicker.setDefaults($.datepicker.regional["es"]);
+				});
+			
 			</script>';   
 			}
 			echo $boton;
@@ -1217,22 +1262,7 @@ class Admin extends CI_Controller {
 	function inform_client(){
 		$id_breakdown=$this->uri->segment(3);
 		$datos['id_breakdown']=$id_breakdown;
-		
-
-		$config = array();
-		$config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'gif|jpg|png|jepg';
-			$config['max_size']	= '0';
-			$config['max_width']  = '0';
-			$config['max_height']  = '0';
-
-			$this->load->library('upload', $config);
-			//echo $_FILES['userfile1']->name;
-
-		
-		    
-		
-        $datos['client_name']=$this->input->post('client_name'.$id_breakdown);
+		$datos['client_name']=$this->input->post('client_name'.$id_breakdown);
 		
 		$fecha1=$this->input->post('reception_date'.$id_breakdown);
 		if($fecha1==null){
@@ -1294,37 +1324,37 @@ class Admin extends CI_Controller {
 		$datos['pay_text']=$this->input->post('pay_text'.$id_breakdown);
 		
 
-
-	
-
-
-
 		if($this->model_user->get_inform_client($id_breakdown) != false){
 			$this->model_user->update_inform_client($datos);
 		}else{
 			$this->model_user->insert_inform_client($datos);
 		}
 
+		$config = array();
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|jepg';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
 
-		 foreach ($_FILES as $key => $value)
+		$this->load->library('upload', $config);
+
+		foreach ($_FILES as $key => $value)
         {
             if ($value['name'] != '')
             {
                 //upload the image
-                if ( ! $this->upload->do_upload($key))
+                if ( $this->upload->do_upload($key))
                 {
-                  	$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+					$datas['id_breakdown'] = $datos['id_breakdown'];
+					$data = $this->upload->data();
+					$datas[$key]=$data['file_name'];
+					$this->model_user->update_inform_client($datas);
+				}
+                else{
+					$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
 					redirect('admin/inform_client#error');
-                }
-                else
-                {
-                	$data = $this->upload->data();
-                	 
-					$datos[$key]=$data['file_name'];
-					
-					$this->model_user->update_inform_client($datos);
-					
-                }
+				}
             }
         }
 		redirect("admin/client_inform",$refresh);

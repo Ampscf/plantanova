@@ -337,6 +337,10 @@
         }
 
     function get_breakdown_order(id_order){
+    	if($("#order_client [value='-1']").length)
+		{
+			$("#order_client [value='-1']").remove();
+		}
     	$.ajax({
 			url: site_url + 'admin/get_breakdown_order',
 			data: {'id_order':+id_order},
