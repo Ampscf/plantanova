@@ -25,14 +25,23 @@ class Client extends CI_Controller {
 			$template['body'] = "body/view_login_body.php";
 			$template['footer'] = "footer/view_footer.php";
 		} else {
-			$template['user']=$this->model_client->get_user($this->session->userdata('id'));
-			$template['alerts']=$this->model_client->get_alert($this->session->userdata('id'));
-			$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
-			$template['orders']=$this->model_client->get_order($this->session->userdata('id'));			
-			$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
-			$template['header'] = 'header/view_client_header.php';
-			$template['body'] = 'body/view_client_body.php';
-			$template['footer'] = "footer/view_footer.php";
+			$termsncon=$this->model_client->get_user($this->session->userdata('id'));
+			if($termsncon[0]->terms_conditions == 0){
+				$template['header'] = 'header/view_client_header.php';
+				$template['body'] = 'body/view_client_terms_cond.php';
+				$template['footer'] = "footer/view_footer.php";
+			}else{
+				$template['user']=$this->model_client->get_user($this->session->userdata('id'));
+				$template['alerts']=$this->model_client->get_alert($this->session->userdata('id'));
+				$template['messages']=$this->model_client->get_messages($this->session->userdata('id'));
+				$template['orders']=$this->model_client->get_order($this->session->userdata('id'));			
+				$template['publicity'] = $this->model_publicity->get_client_pub($this->session->userdata('id'));
+				$template['header'] = 'header/view_client_header.php';
+				$template['body'] = 'body/view_client_body.php';
+				$template['footer'] = "footer/view_footer.php";
+			}
+
+			
 		}
 
 		$this->load->view('main',$template);

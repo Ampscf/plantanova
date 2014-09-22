@@ -8,7 +8,6 @@ class Admin extends CI_Controller {
 	   	$this->load->model('model_order','',TRUE);
 	   	$this->load->model('model_embark','',TRUE);
 	   	$this->load->helper('url');
-		
 	}
 
 	public function index()
@@ -744,7 +743,7 @@ class Admin extends CI_Controller {
 															<p>&nbsp;&nbsp;<input type='checkbox' name='check21".$key->id_breakdown."' id='check21".$key->id_breakdown."' value='1'/>Variedad
 															<input type='checkbox' name='check22".$key->id_breakdown."' id='check22".$key->id_breakdown."' value='1'/>Portainjerto </p>
 														</div>
-														<p><input type='checkbox' name='check3".$key->id_breakdown."' id='check3".$key->id_breakdown."' value='1'/>Ingerto </p>
+														<p><input type='checkbox' name='check3".$key->id_breakdown."' id='check3".$key->id_breakdown."' value='1'/>Injerto </p>
 														<p><input type='checkbox' name='check4".$key->id_breakdown."' id='check4".$key->id_breakdown."' value='1'/>Pinchado </p>
 														<p><input type='checkbox' name='check5".$key->id_breakdown."' id='check5".$key->id_breakdown."' value='1'/>Transplante </p>
 														<p><input type='checkbox' name='check6".$key->id_breakdown."' id='check6".$key->id_breakdown."' value='1'/>Empaque </p>
@@ -985,7 +984,7 @@ class Admin extends CI_Controller {
 															<p>&nbsp;&nbsp;<input type='checkbox' name='check21".$key->id_breakdown."' id='check21".$key->id_breakdown."' value='1'/>Variedad
 															<input type='checkbox' name='check22".$key->id_breakdown."' id='check22".$key->id_breakdown."' value='1'/>Portainjerto </p>
 														</div>
-														<p><input type='checkbox' name='check3".$key->id_breakdown."' id='check3".$key->id_breakdown."' value='1'/>Ingerto </p>
+														<p><input type='checkbox' name='check3".$key->id_breakdown."' id='check3".$key->id_breakdown."' value='1'/>Injerto </p>
 														<p><input type='checkbox' name='check4".$key->id_breakdown."' id='check4".$key->id_breakdown."' value='1'/>Pinchado </p>
 														<p><input type='checkbox' name='check5".$key->id_breakdown."' id='check5".$key->id_breakdown."' value='1'/>Transplante </p>
 														<p><input type='checkbox' name='check6".$key->id_breakdown."' id='check6".$key->id_breakdown."' value='1'/>Empaque </p>
