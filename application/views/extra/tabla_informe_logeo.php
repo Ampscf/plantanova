@@ -7,9 +7,9 @@
 	</thead>
 	<tbody>
 		<?php 
-		if(is_array($time_client))
+		if(is_array($time_client)){
 			date_default_timezone_set('America/Mexico_City');
-		{
+		
 			foreach ($time_client as $key) 
 			{
 				echo "<tr>";

@@ -99,12 +99,15 @@
 		<div class="modal-content">
     		<div class="modal-header">
     			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    			<h4 class="modal-title">Alertas</h4>	  
+    			<h4 class="modal-title">Alerta</h4>	  
     		</div>
     		<div class="modal-body">
     			<h4>¡Hola <?php echo $user[0]->farm_name; ?>!</h4>
     			<?php
-					echo "<p>".$alerts[0]->message."</p>";
+    				if(is_array($alerts)){
+    					echo "<p>".$alerts[0]->message."</p>";
+    				}
+					
 				?> 		
     		</div>
     		<div class="modal-footer">

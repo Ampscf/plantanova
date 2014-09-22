@@ -26,6 +26,7 @@
 							</div><!-- End Cantidad -->	
 							<div class="clear">&nbsp</div>
 							<div class="input-group">
+								<p>Pop-up de Alerta</p>
 								<input type="radio" name="status" id="activate" value="1" cheked >Activado
 								<input type="radio" name="status" id="disable" value="0" >Desactivado
 							</div>
