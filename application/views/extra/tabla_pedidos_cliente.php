@@ -6,6 +6,7 @@
 		<th>Planta</th>
 		<th>Categoria</th>
 		<th>Estatus</th>
+		<th>Informe</th>
 
 	
 		<?php
@@ -25,6 +26,18 @@
 						$status=$this->model_client->get_status($key->id_status);
 						echo "<td>".$status[0]->status_name."</td>";
 					}
+
+					echo "<td>";?>	                 
+					 
+	                <a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+	                    title="Eliminar"
+	                    data-toggle="modal">
+						<i class="fa fa-file-text-o"></i>
+	                </a>
+					
+					
+		<?php 
+				echo "</td>";
 					echo "</tr>";
 				}
 			}

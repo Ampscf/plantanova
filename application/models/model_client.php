@@ -139,5 +139,14 @@ Class model_client extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function get_informs($id_order){
+		$query=$this->db->query('select t_ci.* from t_client_inform as t_ci, t_breakdown as t_b where t_ci.id_breakdown = t_b.id_breakdown and t_b.id_order ='.$id_order);
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
 }
 ?>
