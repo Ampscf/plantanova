@@ -183,9 +183,8 @@
 								<?php } ?>
 								<div class='modal-footer'>
 										<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>
-										<button type='submit' class='btn btn-success' name='embarcar' id='embarcar'>Confirmar</button>
+										<button type='submit' class='btn btn-success' name='print' id='embarcar'>Imprimir</button>
 								</div>
-								</form>
 							</div>
 						</div>
 					</div>
