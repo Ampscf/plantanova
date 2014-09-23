@@ -27,7 +27,7 @@ class Client extends CI_Controller {
 		} else {
 			$termsncon=$this->model_client->get_user($this->session->userdata('id'));
 			if($termsncon[0]->terms_conditions == 0){
-				$template['header'] = 'header/view_client_header.php';
+				$template['header'] = 'header/view_client_header_terms.php';
 				$template['body'] = 'body/view_client_terms_cond.php';
 				$template['footer'] = "footer/view_footer.php";
 			}else{
@@ -45,6 +45,11 @@ class Client extends CI_Controller {
 		}
 
 		$this->load->view('main',$template);
+	}
+
+	public function acept_terms(){
+		$this->model_client->update_terms_conditions($this->session->userdata('id'));
+		redirect('client/index/1','refresh');
 	}
 
 	public function pedido_proceso(){

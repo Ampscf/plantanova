@@ -134,5 +134,10 @@ Class model_client extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function update_terms_conditions($id_user){
+		$this->db->query('update t_user set terms_conditions=1 where id_user='.$id_user);
+		return $this->db->affected_rows();
+	}
+
 }
 ?>
