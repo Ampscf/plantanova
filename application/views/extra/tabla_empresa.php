@@ -6,6 +6,7 @@
 		<th>Nombre</th>
 		<th>Apellido</th>
 		<th>Correo</th>
+		<th>Acepto Terminos y Condiciones</th>
 		<th>Editar/Eliminar</th>
 	</thead>
 	<tbody>
@@ -21,6 +22,11 @@
 				echo "<td>" . $key->first_name . "</td>";
 				echo "<td>" . $key->last_name . "</td>";
 				echo "<td>" . $key->mail . "</td>";
+				if($key->terms_conditions==0){
+					echo "<td>No</td>";
+				}else{
+					echo "<td>Si</td>";
+				}
 				echo "<td>";?>
 				
 					<a class="btn btn-default"
