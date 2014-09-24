@@ -38,6 +38,7 @@
 				<ul class="nav nav-justified">
 					<li style="border-left: 1px solid #000;"><?php echo anchor('client/index','Ver Pedidos','id="pedi" style="height:80px;"'); ?></li>
 					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Alertas','id="info" style="height:80px;"'); ?></li>
+					<li style="border-left: 1px solid #000;"><?php echo anchor('client/colaboradores','Colaboradores','id="col" style="height:80px;"'); ?></li>
 					<li class="dropdown" id="cuenta" style="border-left: 1px solid #000;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
 							<?php $user = $this->model_user->get_client($this->session->userdata('id'));
@@ -68,6 +69,9 @@
 				} else if (/(my_acount_form_client)/i.test(url)) {
 					document.getElementById("cuenta").style.color = "White";
 					document.getElementById("cuenta").style.backgroundColor = "#6BBD44";
+				} else if (/(colaboradores)/i.test(url)) {
+					document.getElementById("col").style.color = "White";
+					document.getElementById("col").style.backgroundColor = "#6BBD44";
 				} else {
 					document.getElementById("pedi").style.color = "White";
 					document.getElementById("pedi").style.backgroundColor = "#6BBD44";

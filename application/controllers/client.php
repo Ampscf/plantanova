@@ -47,6 +47,28 @@ class Client extends CI_Controller {
 		$this->load->view('main',$template);
 	}
 
+
+	public function colaboradores(){
+		if($this->session->userdata('logged_in')==FALSE)
+		{
+			$template['header'] = "header/view_login_header.php";
+			$template['body'] = "body/view_login_body.php";
+			$template['footer'] = "footer/view_footer.php";
+		} else {
+			
+			$template['user']=$this->model_client->get_user($this->session->userdata('id'));
+			$template['messages']=$this->model_client->get_colaboradores($this->session->userdata('id'));
+			$template['header'] = 'header/view_client_header.php';
+			$template['body'] = 'body/view_client_colaboradores.php';
+			$template['footer'] = "footer/view_footer.php";
+		}
+
+		$this->load->view('main',$template);
+	}
+
+
+	
+
 	public function acept_terms(){
 		$this->model_client->update_terms_conditions($this->session->userdata('id'));
 		redirect('client/index/1','refresh');

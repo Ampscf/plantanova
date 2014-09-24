@@ -142,12 +142,25 @@ class Publicity extends CI_Controller {
 			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
 			redirect('publicity/index');
 		} else {
-			$data = $this->upload->data();
-			$datos['p_image'] = $data['file_name'];
-			$datos['p_name']=$this->input->post('p_name');
-			$this->model_publicity->insert_publicity($datos);			
+			if(!filter_var($this->input->post('p_url'), FILTER_VALIDATE_URL))
+			  {
+			  $this->session->set_flashdata('error', 'URL no valida');
+				redirect('publicity/index');
+			  }else			  {
+				$data = $this->upload->data();
+				$datos['p_image'] = $data['file_name'];
+				$datos['p_name']=$this->input->post('p_name');
+				$datos['p_url']=$this->input->post('p_url');
+				$datos['p_parrafo1']=$this->input->post('p_parrafo1');
+				$datos['p_parrafo2']=$this->input->post('p_parrafo2');
+				$datos['p_parrafo3']=$this->input->post('p_parrafo3');
+				$this->model_publicity->insert_publicity($datos);			
+				
+				redirect('publicity/index/', 'refresh');
+
 			
-			redirect('publicity/index/', 'refresh');
+			  }
+			
 		}
 	}
 }

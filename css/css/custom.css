@@ -289,3 +289,29 @@ ul li{
 	width: 150px !important;
 	height: 150px !important;
 }
+/*slider colaboradores*/
+table.contenido img {
+	width: 400px;
+}
+div.cat {
+	width: 100%;
+}
+button.glyphicon.glyphicon-arrow-right {
+	float: right;
+}
+div.texto {
+	font-family: source sans Pro;
+	text-align: justify;
+}
+div#text1 {
+font-size: 20px;
+font-weight: bolder;
+}
+div#text2 {
+font-size: 18px;
+font-weight: bolder;
+
+}
+div#text3 {
+font-size: 16px;
+}

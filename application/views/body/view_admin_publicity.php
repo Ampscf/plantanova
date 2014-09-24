@@ -246,7 +246,14 @@
     							<span>Buscar</span>
 							    <input id="uploadBtn" type="file" class="upload" name="userfile"/>
 							</div>
-
+							<p>Pagina web del cliente</p>
+							<input id="p_url" name="p_url" placeholder="url" />
+							<p>Descripción del cliente parrafo-1</P>
+								<textarea rows="4" cols="50" id="p_parrafo1" name="p_parrafo1" ></textarea>
+							<p>Descripción del cliente parrafo-2</P>
+								<textarea rows="4" cols="50" id="p_parrafo2" name="p_parrafo2" ></textarea>
+							<p>Descripción del cliente parrafo-3</P>
+								<textarea rows="4" cols="50" id="p_parrafo3" name="p_parrafo3" ></textarea>
 							<script>
 								document.getElementById("uploadBtn").onchange = function () {
 					    			document.getElementById("uploadFile").value = this.value;
