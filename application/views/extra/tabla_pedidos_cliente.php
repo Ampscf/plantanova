@@ -131,7 +131,7 @@
 												<?php } 
 												if($value->embark_date!=null){?>
 												<div id='embarque<?php echo $value->id_breakdown; ?>' >
-													<h4 style='color:#6BBD44; margin:0px;'>Embarque</h4>
+													<h4 class="green-margin">Embarque</h4>
 													<b>Fecha:</b><?php echo $value->embark_date; ?>
 												</div>
 												<?php } ?>
@@ -156,14 +156,14 @@
 										<div >&nbsp</div>
 										<div class='col-xs-12'>
 											<div class='col-xs-6'>
-												<h4 style='color:#6BBD44'>Cualquier duda o comentario estamos a sus órdenes</h4>
+												<h4 class="green-margin">Cualquier duda o comentario estamos a sus órdenes</h4>
 												<h4><b>Teresa Ugalde</b></h4>
 												<p style='margin-top: -15px;'>Atención a clientes</p>
 												<p style='margin-top: -15px;'>t.ugalde@plantanova.com.mx</p>
 												<p style='margin-top: -15px;'>(442) 229 1861 ext. 802</p>
 											</div>
-											<div class='col-xs-6' style='background-color: #D0E3CA; height:140px;'>
-												<h4 style='color:#6BBD44'>Pagos</h4>
+											<div class='col-xs-6' style='background-color: #D0E3CA !important; height:140px !important;'>
+												<h4 style="color:#6BBD44 !important">Pagos</h4>
 												<?php echo $value->pay_text; ?>							
 											</div>
 										</div>
@@ -171,21 +171,21 @@
 								
 									<div class='saltopagina'>
 										<div class='col-xs-12'>
-											<h4 style='color:#6BBD44' align=center>Sus plantas avanzan así</h4>
+											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
 											<div >&nbsp</div>
 											<img src='/plantanova/uploads/<?php echo $value->userfile1?>' style='width:100%; heigth:500px'></a>
 										</div>
 										<div >&nbsp</div>
 
 										<div class='col-xs-12'>
-											<h4 style='color:#6BBD44' align=center>Sus plantas avanzan así</h4>
+											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
 											<div >&nbsp</div>
 											<img src='/plantanova/uploads/<?php echo $value->userfile2?>' style='width:100%; heigth:500px'></a>
 										</div>
 										<div >&nbsp</div>
 										
 										<div class='col-xs-12 pad' >
-											<h4 style='color:#6BBD44' align=center>Sus plantas avanzan así</h4>
+											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
 											<div >&nbsp</div>
 											<img src='/plantanova/uploads/<?php echo $value->userfile3?>' style='width:100%; heigth:500px'></a>
 										</div>
