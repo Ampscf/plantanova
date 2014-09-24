@@ -1,3 +1,23 @@
+@media print{
+   div.saltopagina{ 
+      page-break-before:always;
+   }
+
+   div.prepage{
+ 	page-break-after: always
+
+   }
+
+   div.pad{
+   		padding-top: 200px;
+   }
+
+   h4.green-margin{
+	color:#6BBD44; 
+	margin:0px;
+	}
+}
+
 html,
 body {
 	margin:0;
@@ -289,3 +309,10 @@ ul li{
 	width: 150px !important;
 	height: 150px !important;
 }
+
+.green-margin{
+	color:#6BBD44; 
+	margin:0px;
+}
+
+
