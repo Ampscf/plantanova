@@ -122,7 +122,7 @@ if($this->uri->segment(3)==1 && $user[0]->message_status==1){
 	    $(window).load(function(){
 	        $('#myModal').modal('show');
 	    });
-	</script
+	</script>
 <?php
 }
 ?>

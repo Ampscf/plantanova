@@ -1,3 +1,23 @@
+@media print{
+   div.saltopagina{ 
+      page-break-before:always;
+   }
+
+   div.prepage{
+ 	page-break-after: always
+
+   }
+
+   div.pad{
+   		padding-top: 100px;
+   }
+
+   .green-margin{
+	color:#6BBD44 !important; 
+	margin:0px;
+	}
+}
+
 html,
 body {
 	margin:0;
@@ -289,6 +309,7 @@ ul li{
 	width: 150px !important;
 	height: 150px !important;
 }
+
 /*slider colaboradores*/
 table.contenido img {
 	width: 400px;
@@ -315,3 +336,11 @@ font-weight: bolder;
 div#text3 {
 font-size: 16px;
 }
+
+.green-margin{
+	color:#6BBD44; 
+	margin:0px;
+}
+
+
+
