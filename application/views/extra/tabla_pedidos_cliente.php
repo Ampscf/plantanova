@@ -238,8 +238,9 @@
 	  	mywindow.document.write('</div>');
 	  	mywindow.document.write('</body></html>');
 	 
-	  	mywindow.document.close();
-	  	mywindow.print();
-	  	mywindow.close();
+	   	
+	 	mywindow.print();
+	 	mywindow.document.close();
+		mywindow.close();
 	}
 </script>
