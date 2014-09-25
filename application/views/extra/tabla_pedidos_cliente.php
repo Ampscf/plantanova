@@ -31,8 +31,6 @@
 					
 					echo "<td>";
 					if(is_array($informs)){
-
-
 					?>	                 
 					 
 					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
@@ -66,7 +64,10 @@
 									<div class='input-group input-group-lg'>
 										<div class='col-xs-12'>
 											<div class='col-xs-6'>
-												<?php if($value->reception_date!=null){?>
+												<?php if($value->reception_date!=null){
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/recepcion.jpg" style="height: 500px;">';
+													?>
+												
 												<div id='recepcion<?php echo $value->id_breakdown ?>' >
 													<h4 class="green-margin">Recepcion</h4>
 													<b>Fecha: </b><?php echo $value->reception_date ?>
@@ -75,12 +76,12 @@
 												<div >&nbsp</div>
 												<?php }
 												if($value->variety!=null || $value->rootstock!=null){
-
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/siembra.jpg" style="height: 500px;">';
 												?>
 												<div id='siembra_ger<?php echo $value->id_breakdown; ?>' >
 													<h4 class="green-margin">Siembra/Germinacion</h4>
 												<?php }
-												if($value->variety!=null){ ?>
+												if($value->variety!=null ){ ?>
 													<div id='divvariety<?php echo $value->id_breakdown;?>' >
 														<b>Variedad:</b><?php echo $value->variety; ?><br>
 														<b>Fecha de Siembra:</b><?php echo $value->variety_sowing_date; ?><br>
@@ -101,35 +102,43 @@
 												</div>
 												<div >&nbsp</div>
 												<?php } 
-												if($value->graft_date!=null){?>
+												if($value->graft_date!=null){
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/injerto.jpg" style="height: 500px;">';
+													?>
 												<div id='injerto<?php echo $value->id_breakdown; ?>' >
 													<h4 class="green-margin">Injerto</h4>
 													<b>Fecha:</b><?php echo $value->graft_date; ?>
 												</div>												
 												<div >&nbsp</div>
 												<?php } 
-												if($value->transplant_date!=null){?>
+												if($value->transplant_date!=null){
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/trasnplante.jpg" style="height: 500px;">';
+													?>
 												<div id='pinchado<?php echo $value->id_breakdown; ?>' >
 													<h4 class="green-margin">Pinchado</h4>
 													<b>Fecha:</b><?php echo $value->transplant_date; ?>
 												</div>
 												<div >&nbsp</div>
 												<?php } 
-												if($value->punch_date!=null){?>
+												if($value->punch_date!=null){
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/pinchado.jpg" style="height: 500px;">';
+													?>
 												<div id='transplante<?php echo $value->id_breakdown; ?>' >
 													<h4 class="green-margin">Transplante</h4>
 													<b>Fecha:</b><?php echo $value->punch_date; ?>
 												</div>
 												<div >&nbsp</div>
 												<?php } 
-												if($value->pack_date!=null){?>
+												if($value->pack_date!=null){
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/empaque.jpg" style="height: 500px;">';?>
 												<div id='empaque<?php echo $value->id_breakdown; ?>' >
 													<h4 class="green-margin">Empaque</h4>
 													<b>Fecha:</b><?php echo $value->pack_date; ?>
 												</div>
 												<div >&nbsp</div>
 												<?php } 
-												if($value->embark_date!=null){?>
+												if($value->embark_date!=null){
+													$img='<img src="'. base_url() . 'img/infomrme_cliente/embarque.jpg" style="height: 500px;">';?>
 												<div id='embarque<?php echo $value->id_breakdown; ?>' >
 													<h4 class="green-margin">Embarque</h4>
 													<b>Fecha:</b><?php echo $value->embark_date; ?>
@@ -137,19 +146,9 @@
 												<?php } ?>
 											</div>
 											<div class='col-xs-6'>
-											<h4 style='color:#6BBD44'>¿Como vamos?</h4>
+											
 												
-												<p><input type='checkbox' name='check1<?php echo $value->id_breakdown; ?>' id='check1<?php echo $value->id_breakdown; ?>' value='1'/>Recepcion </p>
-												<p><input type='checkbox' name='check2<?php echo $value->id_breakdown; ?>' id='check2<?php echo $value->id_breakdown; ?>' value='1'/>Siembra/Germinacion </p>
-												<div id='siem_ger<?php echo $value->id_breakdown; ?>' >
-													<p>&nbsp;&nbsp;<input type='checkbox' name='check21<?php echo $value->id_breakdown; ?>' id='check21<?php echo $value->id_breakdown; ?>' value='1'/>Variedad
-													<input type='checkbox' name='check22<?php echo $value->id_breakdown; ?>' id='check22<?php echo $value->id_breakdown; ?>' value='1'/>Portainjerto </p>
-												</div>
-												<p><input type='checkbox' name='check3<?php echo $value->id_breakdown; ?>' id='check3<?php echo $value->id_breakdown; ?>' value='1'/>Injerto </p>
-												<p><input type='checkbox' name='check4<?php echo $value->id_breakdown; ?>' id='check4<?php echo $value->id_breakdown; ?>' value='1'/>Pinchado </p>
-												<p><input type='checkbox' name='check5<?php echo $value->id_breakdown; ?>' id='check5<?php echo $value->id_breakdown; ?>' value='1'/>Transplante </p>
-												<p><input type='checkbox' name='check6<?php echo $value->id_breakdown; ?>' id='check6<?php echo $value->id_breakdown; ?>' value='1'/>Empaque </p>
-												<p><input type='checkbox' name='check7<?php echo $value->id_breakdown; ?>' id='check7<?php echo $value->id_breakdown; ?>' value='1'/>Embarque </p>
+												<?php echo $img;?>
 												
 											</div>
 										</div>
@@ -162,7 +161,7 @@
 												<p style='margin-top: -15px;'>t.ugalde@plantanova.com.mx</p>
 												<p style='margin-top: -15px;'>(442) 229 1861 ext. 802</p>
 											</div>
-											<div class='col-xs-6' style='background-color: #D0E3CA !important; height:140px !important;'>
+											<div class='col-xs-6' style='background-color: #D0E3CA !important; height:130px !important;'>
 												<h4 style="color:#6BBD44 !important">Pagos</h4>
 												<?php echo $value->pay_text; ?>							
 											</div>
