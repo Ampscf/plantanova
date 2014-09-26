@@ -13,17 +13,18 @@
 					<div class="row">
 						<div class="col-md-1">
 						</div>
-						<div class="col-md-6 ">
+						<div class="col-md-6 pubcol1">
 							
 							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
 						
 							<a href="#myModal2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-5 pubcol2">
 							
 							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
 						
 							<a href="#myModal4" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad</a>
+							<a href="#myModal5" class="btn btn-success" data-toggle="modal">Editar Publicidad</a>
 						</div>
 					</div>
 						
@@ -119,7 +120,7 @@
 							type: "POST",
 							success: function(data){
 								$("#p2").html(data);
-								//alert(data);
+								
 							},
 							failure:function(data){
 								alert("fallo");
@@ -340,3 +341,89 @@
 						});
 			</script>
 
+
+<div id="myModal5" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Editar Publicidad</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php 
+							$attributes4 = array('id' => 'editpub', 'name' => 'editpub'); 
+                			echo form_open_multipart('publicity/upload_publicity/',$attributes4);?>
+                			<p>Elige la publicidad a editar</p>
+							<select class="form-control" name="editpubly" id="editpubly" onchange="editpu(this.value)">
+								<option value='0'>--Selecciona una piblicidad--</option>
+								<?php 
+									foreach($publicity as $key)
+									{
+										echo "<option value='" . $key->id_publicity . "' set_select('state','".$key->id_publicity."')>" . $key->p_name . "</option>";
+									}
+								?>
+							</select>
+										<div id="p4" class=""></div> 
+						
+
+									 
+							<p class="text-warning"><small>Editar una publicidad también la editará en todos los clientes.</small></p>
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" id="buttoupload" class="btn btn-primary">Editar</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+			<script>
+			$('#buttoupload').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
+			$("#editpub").validate({
+				rules:{
+					p_name: {
+			            required: true
+			        },
+			        uploadimageup: {
+			            required: true
+			        }
+				},
+				messages:{
+					p_name:{
+						required:"El campo Nombre es requerido"
+					},
+					uploadimageup:{
+						required:"Selecciona un nuevo archivo"
+					}
+				}
+			});
+
+			</script>
+			<script>
+			function editpu(data){
+			if(data!=0){
+				var posicion = data;
+				   $.ajax({
+								url: site_url + 'publicity/getinfopublicity',
+								data: {'id_pub':+posicion},
+								type: "POST",
+								success: function(data){
+									$("#p4").html(data);
+									//alert(data);
+								},
+								failure:function(data){
+									alert("fallo");
+								}	
+								});      
+
+			}	
+		}
+			</script>

@@ -10,6 +10,18 @@
 			} 
 			else return false;
 		}
+		function update_publicity($data){
+		
+		$this->db->where('id_publicity',$data['id_publicity']);
+		$query=$this->db->update('t_publicity',$data);
+
+
+		}
+		function get_information($id_pub){
+			$this->db->where('id_publicity',$id_pub);
+			$query=$this->db->get('t_publicity');
+			return $query->result();
+		}
 
 		function get_image_p($id){
 			$this->db->where('id_publicity',$id);

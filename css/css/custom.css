@@ -342,5 +342,12 @@ font-size: 16px;
 	margin:0px;
 }
 
+/*publicidad ancho de columnas*/
+.col-md-6.pubcol1 {
+	margin-left: -5%!important;
+	width: 50%!important;
+}
 
-
+.col-md-5.pubcol2 {
+	width: 46%;
+}
