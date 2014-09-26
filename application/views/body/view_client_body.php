@@ -51,7 +51,7 @@
 								$i=1;
 				        		foreach ($publicity as $key) {
 				        			echo '<div class="item" id="'.$i.'">';
-				        			echo '<a href="/plantanova/index.php/client/colaboradores/'.$i.'" target="blank"><img src="'.base_url().'img/Publicidad/'.$key->p_image.'" class="caru-img"></a>';
+				        			echo '<a href="/plantanova/index.php/client/colaboradores/'.$i.'" ><img src="'.base_url().'img/Publicidad/'.$key->p_image.'" class="caru-img"></a>';
 				        			echo '</div>'; 
 				        			$i++;				        		
 				        		}
