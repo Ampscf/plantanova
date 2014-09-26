@@ -353,7 +353,7 @@
 
                 			<?php 
 							$attributes4 = array('id' => 'editpub', 'name' => 'editpub'); 
-                			echo form_open_multipart('publicity/upload_publicity/',$attributes4);?>
+                			echo form_open_multipart('publicity/update_pub/',$attributes4);?>
                 			<p>Elige la publicidad a editar</p>
 							<select class="form-control" name="editpubly" id="editpubly" onchange="editpu(this.value)">
 								<option value='0'>--Selecciona una piblicidad--</option>
@@ -394,7 +394,13 @@
 			        },
 			        uploadimageup: {
 			            required: true
+			        },
+			        p_url:{
+			        	url:true,
+			        	required:true
+
 			        }
+
 				},
 				messages:{
 					p_name:{
@@ -402,6 +408,10 @@
 					},
 					uploadimageup:{
 						required:"Selecciona un nuevo archivo"
+					},
+					p_url:{
+						url:"url no valida",
+						required:"el campo url es requerido"
 					}
 				}
 			});
