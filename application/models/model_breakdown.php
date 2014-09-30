@@ -733,6 +733,19 @@ Class model_breakdown extends CI_Model
 		}
 	}
 
+	function get_volume_tutoring($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',5);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+
 	function update_total_graft($volume_graft,$id_order){
 		$this->db->query('update t_total set graft = graft - '.$volume_graft.' where id_order = '.$id_order);
 		
@@ -823,6 +836,12 @@ Class model_breakdown extends CI_Model
 	function delete_process_id_breakdown_transplant($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',4);
+		$this->db->delete('t_process');
+	}
+
+	function delete_process_id_breakdown_tutoring($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',5);
 		$this->db->delete('t_process');
 	}
 

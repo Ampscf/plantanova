@@ -886,6 +886,12 @@ Class model_order extends CI_Model
 		return $this->db->affected_rows();
 	}
 	
+	function update_total_tutoring2($id_order,$volume)
+	{
+		$this->db->query('update `t_total` set tutoring= tutoring - '.$volume.' where id_order ='.$id_order);
+		return $this->db->affected_rows();
+	}
+
 	function update_order_comment($id_order,$comment)
 	{
 		$data = array (

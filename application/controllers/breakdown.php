@@ -676,7 +676,13 @@ class Breakdown extends CI_Controller {
 		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
 		$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
 
+		$volume_tutoring=$this->model_order->get_total_tutoring($this->uri->segment(3));
+
+		$this->model_order->update_total_tutoring2($this->uri->segment(3),$volume_tutoring->tutoring);
+		$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_tutoring->tutoring);
+
       	$this->model_breakdown-> delete_process($llave);
+      	$this->model_breakdown->delete_process_id_breakdown_tutoring($process[0]->id_breakdown);
        	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
     }
 
@@ -699,6 +705,7 @@ class Breakdown extends CI_Controller {
 		$total_tuto=$total_tutoring->tutoring;
 		$total_vol=$total_tuto - $volume[0]->volume;
 		$this->model_order->update_total_tutoring($this->uri->segment(3), $total_vol);
+
 
 		$process=$this->model_breakdown->get_process_id_process($llave);
 		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
