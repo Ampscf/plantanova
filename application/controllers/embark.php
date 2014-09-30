@@ -229,6 +229,8 @@ class Embark extends CI_Controller {
 			$this->model_embark->add_file($datas);		
 			
 			redirect('embark/index/'.$uri, 'refresh');
+
+
 		}
 	}
 

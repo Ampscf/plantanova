@@ -10,9 +10,9 @@
 						<div id="terms" style="overflow: scroll; height:300px">
 							<h1>Aviso de Privacidad</h1>
 							<p>Los Datos Personales que nos proporciona, son tratados por Plantanova, S.A. de C.V., (en adelante “Plantanova”), con domicilio Prolongación Zaragoza S/N, Cofradía de Guadalupe, Tuxpan, Michoacan, con las siguientes finalidades primarias:</p> 
-							<p>•	Emitir la factura electrónica 
-							•	Asesar al Software de atención de clientes Plantanova; y
-							•	Dar cumplimiento a la legislación fiscal vigente.</p>
+							<p>•	Emitir la factura electrónica</p> 
+							<p>•	Accesar al Software de atención de clientes Plantanova; y</p>
+							<p>•	Dar cumplimiento a la legislación fiscal vigente.</p>
 							<p>Nos abstendremos de vender, arrendar o alquilar sus Datos Personales. Podremos llegar a compartir sus Datos Personales, en cumplimiento a las obligaciones contempladas en la legislación fiscal aplicable, y/o a los requerimientos por parte de autoridades locales y federales. </p></p>
 							<p>En virtud de lo anterior, dichas personas no podrán utilizar la información proporcionada por Plantanova de manera diversa a la establecida en el presente Aviso de Privacidad. Estas transferencias de Datos Personales serán realizadas con todas las medidas de seguridad apropiadas, de conformidad con los principios contenidos en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, su Reglamento y los Lineamientos del Aviso de Privacidad (en adelante y conjuntamente “La Legislación”). </p>
 							<p>Los Datos Personales que nos ha proporcionado, serán conservados por un periodo de 5 años en medios físicos y electrónicos y posteriormente descartados a efecto de evitar un tratamiento indebido de los mismos. </p>
@@ -22,7 +22,9 @@
 						</div>
 						<div>
 							<div>&nbsp</div>
-							<input type="checkbox" id="checkterms" name="checkterms"> He leído y acepto los Términos y Condiciones
+							<a href="<?php echo base_url().'termsandconditions/terms_conditions.pdf';?>" target="blank" style="color:blue">Terminos y Condiciones</a>
+							<div>&nbsp</div>
+							<input type="checkbox" id="checkterms" name="checkterms" > He leído y acepto los Términos y Condiciones
 						</div>
 
 					</div>

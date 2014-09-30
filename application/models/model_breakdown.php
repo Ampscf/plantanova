@@ -152,6 +152,12 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function add_tutoring($datos)
+	{
+		$this->db->insert('t_process', $datos);
+		return $this->db->affected_rows();
+	}
+
 	/*function get_germination($id_order){
 		$result = $this->db->query('select t_b.variety,t_b.rootstock, t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown 
 									FROM t_breakdown as t_b,t_process as t_p 
@@ -222,6 +228,19 @@ Class model_breakdown extends CI_Model
 		$result = $this->db->query('select t_b.variety,t_b.rootstock, t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown FROM t_breakdown as t_b,t_process as t_p 
 									WHERE t_b.id_breakdown=t_p.id_breakdown
 									and t_p.id_process_type=4
+									and t_b.id_order ='.$id_order);
+		if($result->num_rows()>0)
+			{
+				return $result->result();
+			}
+			else return false;
+	}
+
+	function get_tutoring($id_order)
+	{
+		$result = $this->db->query('select t_b.variety,t_b.rootstock, t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown FROM t_breakdown as t_b,t_process as t_p 
+									WHERE t_b.id_breakdown=t_p.id_breakdown
+									and t_p.id_process_type=5
 									and t_b.id_order ='.$id_order);
 		if($result->num_rows()>0)
 			{
@@ -834,6 +853,16 @@ Class model_breakdown extends CI_Model
 
 	function update_transplant2($id_order,$variety,$rootstock,$volume){
 		$this->db->query('update `t_total_seed` set transplant_total = transplant_total - '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_tutoring($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set tutoring_total = tutoring_total + '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_tutoring2($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set tutoring_total = tutoring_total - '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
 		return $this->db->affected_rows();
 	}
 

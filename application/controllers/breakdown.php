@@ -132,11 +132,14 @@ class Breakdown extends CI_Controller {
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
+		$template['tutoring']= $this->model_breakdown->get_tutoring($this->uri->segment(3));
 		$template['suma']=$this->model_order->suma_volumen_sowing($this->uri->segment(3));
 		$template['total_germ']=$this->model_order->get_total_germ($this->uri->segment(3));
 		$template['total_graft']=$this->model_order->get_total_graft($this->uri->segment(3));
 		$template['total_punch']=$this->model_order->get_total_punch($this->uri->segment(3));
 		$template['total_transplant']=$this->model_order->get_total_transplant($this->uri->segment(3));
+		$template['total_tutoring']=$this->model_order->get_total_tutoring($this->uri->segment(3));
+		
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
 		$template['seeds']=$this->model_order->get_seeds($this->uri->segment(3));
 		$template['farmer']=$order->result()[0]->farmer;
@@ -305,6 +308,60 @@ class Breakdown extends CI_Controller {
 									<img src="/plantanova/uploads/'.$images->result()[0]->img_trans3.'" style="width:100%; height:200px;"></a>
 								  </div>';
 		}
+		if ($images->result()[0]->img_tuto1 == NULL){
+			$template['tuto1']='<div class="col-xs-3">
+								  <a href="#myModal771" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+							      </div>';
+		} else {
+			$template['tuto1']='<div class="col-xs-3">
+								  '.$images->result()[0]->img_tuto1.' <a href="#myModal881" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_tuto1.'" 
+	                    			title="'.$images->result()[0]->img_pinch1.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_tuto1.'" style="width:100%; height:200px;"></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_tuto2 == NULL){
+			$template['tuto2']='<div class="col-xs-3">
+								  <a href="#myModal772" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+							      </div>';
+		} else {
+			$template['tuto2']='<div class="col-xs-3">
+								  '.$images->result()[0]->img_tuto2.' <a href="#myModal882" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_tuto2.'" 
+	                    			title="'.$images->result()[0]->img_pinch2.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_tuto2.'" style="width:100%; height:200px;"></a>
+								  </div>';
+		}
+		if ($images->result()[0]->img_tuto3 == NULL){
+			$template['tuto3']='<div class="col-xs-3">
+								  <a href="#myModal773" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+							      </div>';
+		} else {
+			$template['tuto3']='<div class="col-xs-3">
+								  '.$images->result()[0]->img_tuto3.' <a href="#myModal883" class="btn btn-default"
+	                    			title="Eliminar"
+	                    			data-toggle="modal">
+									<i class="fa fa-times"></i></a>
+
+									<a href="/plantanova/uploads/'.$images->result()[0]->img_tuto3.'" 
+	                    			title="'.$images->result()[0]->img_pinch3.'"
+	                    			data-toggle="modal"
+	                    			target="_blank">
+									<img src="/plantanova/uploads/'.$images->result()[0]->img_tuto3.'" style="width:100%; height:200px;"></a>
+								  </div>';
+		}
 
 		$data['id_status']='2';
 		$this->model_breakdown->update_order($this->uri->segment(3),$data);
@@ -422,6 +479,31 @@ class Breakdown extends CI_Controller {
 		$this->model_breakdown->add_transplant($datos);
 		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);	
 		redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");	
+	}
+
+	public function insert_tutoring()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$total_tutoring=$this->model_order->get_total_tutoring($this->uri->segment(3));
+		$total_tuto=$total_tutoring->tutoring;
+		$volume=$this->input->post('volume_tutoring');
+		$total_vol=$total_tuto+$volume;
+		$datos['id_breakdown']=$this->input->post('breakdown_tutoring');
+		$datos['volume']=$this->input->post('volume_tutoring');
+		$datos['comment']=$this->input->post('comment');
+		$datos['id_process_type']='5';
+		$fecha=$this->input->post('datepicker5');
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$this->model_breakdown->update_tutoring($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
+		
+		
+		$this->model_breakdown->add_tutoring($datos);
+		$this->model_order->update_total_tutoring($this->uri->segment(3), $total_vol);	
+		redirect("breakdown/process/".$this->uri->segment(3)."#tutoreo", "refresh");	
 	}
 	
 	public function delete_germination()
@@ -546,8 +628,8 @@ class Breakdown extends CI_Controller {
             }
         }
 
-        $volume=$this->model_breakdown->get_volume_process($llave); 
-    	$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
+		$volume=$this->model_breakdown->get_volume_process($llave); 
+		$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
 		$total_punsh=$total_punch->punch;
 		$total_vol=$total_punsh - $volume[0]->volume;
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
@@ -566,8 +648,8 @@ class Breakdown extends CI_Controller {
 		$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
 
 
-       $this->model_breakdown-> delete_process($llave);
-       redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
+		$this->model_breakdown-> delete_process($llave);
+		redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
     }
 
     public function delete_transplant()
@@ -597,6 +679,36 @@ class Breakdown extends CI_Controller {
       	$this->model_breakdown-> delete_process($llave);
        	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
     }
+
+    public function delete_tutoring()
+    {
+    	if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+        foreach ($_POST as $key => $value)
+        {
+            if(is_int($key))
+            {    
+                $llave=$key;
+
+            }
+        }
+
+        $volume=$this->model_breakdown->get_volume_process($llave); 
+    	$total_tutoring=$this->model_order->get_total_tutoring($this->uri->segment(3));
+		$total_tuto=$total_tutoring->tutoring;
+		$total_vol=$total_tuto - $volume[0]->volume;
+		$this->model_order->update_total_tutoring($this->uri->segment(3), $total_vol);
+
+		$process=$this->model_breakdown->get_process_id_process($llave);
+		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
+		$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
+
+      	$this->model_breakdown-> delete_process($llave);
+       	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
+    }
+
+
 	public function finish_order()
 	{
 		if($this->session->userdata('id_rol')!=1){
@@ -889,6 +1001,29 @@ class Breakdown extends CI_Controller {
 		}
 
 		if($maximo < $transplant_volume || $maximo2 > $maximo ) {
+	        echo "11";//false
+	    } else {
+	        echo "1";//true
+	    }
+	}
+
+	public function max_volume_tutoring(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_breakdown = $this->input->post('breakdown_tutoring');
+		$tutoring_volume = $this->input->post('volume_tutoring');
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
+
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		//$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
+
+		$maximo=$total_semillas1[0]->transplant_total;
+		$maximo2=$total_semillas1[0]->tutoring_total + $tutoring_volume;
+		if($maximo < $tutoring_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
@@ -1296,6 +1431,63 @@ class Breakdown extends CI_Controller {
 		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
 		if(unlink($path)) {
      		redirect('breakdown/process/'.$this->uri->segment(3).'#transplante');
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_tuto1()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$data = array(
+				'img_tuto1' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_tuto1;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#tutoreo');
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_tuto2()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$data = array(
+				'img_tuto2' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_tuto2;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#tutoreo');
+		}
+		else {
+     		echo 'errors occured';
+		}
+	}
+
+	public function delete_tuto3()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$data = array(
+				'img_tuto3' => NULL
+			);
+		$image_process = $this->model_breakdown->get_image_process($this->uri->segment(3));
+		$path = 'uploads/'.$image_process->result()[0]->img_tuto3;
+		$this->model_breakdown->update_image_process($this->uri->segment(3),$data);
+		if(unlink($path)) {
+     		redirect('breakdown/process/'.$this->uri->segment(3).'#tutoreo');
 		}
 		else {
      		echo 'errors occured';

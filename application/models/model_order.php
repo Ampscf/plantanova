@@ -855,10 +855,31 @@ Class model_order extends CI_Model
 		else return false;
 	}
 	
+	function get_total_tutoring($id_order)
+	{
+		$this->db->select('tutoring');
+		$this->db->where('id_order', $id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0)
+		{
+			return $query->row(0);
+		}
+		else return false;
+	}
 	function update_total_transplant($id_order, $transplant)
 	{
 		$data = array (
 			'transplant' => $transplant
+		);
+		$this->db->where('id_order',$id_order);
+		$this->db->update('t_total', $data);
+		return $this->db->affected_rows();
+	}
+
+	function update_total_tutoring($id_order, $tutoring)
+	{
+		$data = array (
+			'tutoring' => $tutoring
 		);
 		$this->db->where('id_order',$id_order);
 		$this->db->update('t_total', $data);

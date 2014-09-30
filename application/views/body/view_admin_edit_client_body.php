@@ -244,8 +244,8 @@
 							required:true
 						},
 						addr_number:{
-							required:true,
-							number:true
+							required:true
+							
 						},
 						cp:{
 							required:true,
@@ -281,8 +281,7 @@
 							required:true
 						},
 						phone:{
-							required:true,
-							number:true
+							required:true
 						},
 						email:{
 							required:true,
@@ -290,11 +289,7 @@
 						},
 						last_name:{
 							required:true
-						},
-						cellphone:{
-							required:true,
-							number:true
-						}						    
+						}					    
 					},
 					messages: {
 						farm_name:{

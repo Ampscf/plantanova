@@ -169,25 +169,36 @@
 										
 								
 									<div class='saltopagina'>
-										<div class='col-xs-12'>
-											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
-											<div >&nbsp</div>
-											<img src='/plantanova/uploads/<?php echo $value->userfile1?>' style='width:100%; heigth:500px'></a>
-										</div>
-										<div >&nbsp</div>
-
-										<div class='col-xs-12'>
-											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
-											<div >&nbsp</div>
-											<img src='/plantanova/uploads/<?php echo $value->userfile2?>' style='width:100%; heigth:500px'></a>
-										</div>
-										<div >&nbsp</div>
+										<?php
 										
-										<div class='col-xs-12 pad' >
+										if ($value->userfile1 != null){
+											?>
+										<div class='col-xs-12'>
 											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
 											<div >&nbsp</div>
-											<img src='/plantanova/uploads/<?php echo $value->userfile3?>' style='width:100%; heigth:500px'></a>
+											<img src='/plantanova/uploads/<?php echo $value->userfile1?>' style='width:90%; height:350px; padding-left: 10%;'></a>
 										</div>
+										<div >&nbsp</div>
+										<?php
+										}
+										if ($value->userfile2 != null){
+											?>
+										<div class='col-xs-12 pad'>
+											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
+											<div >&nbsp</div>
+											<img src='/plantanova/uploads/<?php echo $value->userfile2?>' style='width:90%; height:350px; padding-left: 10%;'></a>
+										</div>
+										<div >&nbsp</div>
+										<?php
+										}
+										if ($value->userfile3 != null){
+											?>
+										<div class='col-xs-12' >
+											<h4 style='color:#6BBD44 !important' align=center>Sus plantas avanzan así</h4>
+											<div >&nbsp</div>
+											<img src='/plantanova/uploads/<?php echo $value->userfile3?>' style='width:90%; height:350px; padding-left: 10%;'></a>
+										</div>
+										<?php } ?>
 									</div>	
 									</div>
 								</div>

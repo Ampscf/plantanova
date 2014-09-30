@@ -81,6 +81,16 @@
 	          $('.datepicker4').datepicker('show');
 	       });
 	    });
+
+	    $(function() {
+			//alert("entro");
+			$( ".datepicker5" ).datepicker();
+		});
+		$(function() {    
+	       $('#butondate5').click(function() {
+	          $('.datepicker5').datepicker('show');
+	       });
+	    });
 		 
 		$(function() {
 			//alert("entro");

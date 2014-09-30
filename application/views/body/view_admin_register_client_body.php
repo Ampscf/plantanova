@@ -232,12 +232,10 @@
 									number: true
 								},
 						       phone: {
-									required: true,
-									number: true
+									required: true
+
 								},
-						       cellphone: {
-									number: true
-								},
+						       
 								farm_name: {
 									required: true,
 								},
@@ -289,8 +287,8 @@
 									number: "El Campo Teléfono Empresa debe ser Numerico"
 								},
 						       phone: {
-									required: "El Teléfono es Requerido",
-									number: "El Campo Teléfono debe ser Numerico"
+									required: "El Teléfono es Requerido"
+									
 								},
 						       cellphone: {
 									 number: "El Campo Celular debe ser Numerico"

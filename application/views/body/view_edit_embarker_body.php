@@ -154,7 +154,7 @@
 	                    						title="Eliminar"
 	                    						data-toggle="modal">
 											  <i class="fa fa-times"></i>
-	                			  			  </a>&nbsp;<p>Folio:'.$key->folio.' Total: $'.$key->total.'&nbsp;'.$key->moneda.'</p>';
+	                			  			  </a>&nbsp;<p>Folio:'.$key->folio.' Total: $'.number_format($key->total, 2, '.', ',').'&nbsp;'.$key->moneda.'</p>';
 										echo '</div>';
 										echo '<div id="Modal'.$key->id_file.'" class="modal fade">
 			    								<div class="modal-dialog">

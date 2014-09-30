@@ -130,7 +130,8 @@
 					<div class="col-xs-12">
 					<h2>Injerto <input type="checkbox" name="check" id="check1" value="1"  />
 					Pinchado <input type="checkbox" name="check" id="check2" value="1"  />
-					Transplante <input type="checkbox" name="check" id="check3" value="1"  /></h2>
+					Transplante <input type="checkbox" name="check" id="check3" value="1"  />
+					Tutoreo <input type="checkbox" name="check" id="check4" value="1"  /></h2>
 					</div>
 
 					<div class="clear">&nbsp</div>
@@ -221,9 +222,33 @@
 						<a href="<?php echo base_url("index.php/order/results_transplant/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
 						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 					</div>
-						<!--<div class="col-xs-2">
-							<labbel><b>Alcance:</b> <?php echo round($alcance_transplante)."%";?></labbel>
-						</div>-->
+
+					<div class="clear">&nbsp</div>
+					<div class="col-xs-12" name="divtutoreo" id="divtutoreo" style="display: none;">
+						<div class="col-xs-10" id="tutoreo">	
+							<h4>Tutoreo</h4>
+						</div>
+						<div class="col-xs-2">
+							<a href="#myModal6" class="btn btn-success" data-toggle="modal">+Agregar</a>
+						</div>
+						<div class="clear">&nbsp</div>
+						<div class="table-responsive" id="area">
+							<?php include_once('application/views/extra/tabla_tutoreo.php'); ?>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-2">
+								<labbel><b>Total:</b> <?php echo number_format($total_tutoring->tutoring);?></labbel>
+							</div>
+							<?php echo $tuto1;?>
+							<?php echo $tuto2;?>
+							<?php echo $tuto3;?>
+						</div>
+						</br></br>
+
+						<a href="<?php echo base_url("index.php/order/results_transplant/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
+						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
+					</div>
+						
 				
 				<div class="clear">&nbsp</div>
 				<div class="clear">&nbsp</div>
@@ -890,7 +915,7 @@
 						        }
 							},
 							messages: {
-                        		volume: {
+                        		volume_transplant: {
 				                    required: "Este Campo es Requerido",
 				                    number: "Este Campo Debe Ser Númerico",
 				                    min:"Cantidad Invalida"
@@ -907,7 +932,7 @@
 
 						$.validator.addMethod("selectcheck_transplant", selectcheck_transplant, "Selecciona una Variedad/Portainjerto");
 						$.validator.addMethod("max_transplant", max_transplant, "Cantidad Invalida");
-						$.validator.addMethod("max_transplant2", max_transplant2, "Cantidad Invalida");
+						//$.validator.addMethod("max_transplant2", max_transplant2, "Cantidad Invalida");
 
 						function max_transplant(a){
 							var a = document.getElementById('breakdown_transplant').value;
@@ -940,12 +965,135 @@
         		</div>
     		</div>
     	</div>
+
+
+    	<?php 
+			$attributes = array('id' => 'insert_tutoring','name'=>'insert_tutoring');
+			echo form_open('breakdown/insert_tutoring/'.$this->uri->segment(3),$attributes); 
+			?>
+			<div id="myModal6" class="modal fade">
+        		<div class="modal-dialog">
+            		<div class="modal-content">
+                		<div class="modal-header">
+                    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    		<h4 class="modal-title">Tutoreo</h4>
+                		</div>
+                		<div class="modal-body">
+							<div class="input-group">
+								<p>Variedad/Portainjerto</p>
+								<select class="form-control" name="breakdown_tutoring" id="breakdown_tutoring" onchange="max_tutoring(this.value)">
+									<option value="-1" selected>---Selecciona una Variedad/Portainjerto---</option>
+										<?php 
+											foreach($breakdown as $key)
+											{
+												echo "<option value='" . $key->id_breakdown . "' set_select('breackdown','".$key->id_breakdown."')>" . $key->variety ." / ".$key->rootstock. "</option>";
+											}
+										?>	
+								</select>
+							</div><!-- End breakdown_transplant -->
+							<div>
+								<input type="hidden" id="inputvaltutoring" name="inputvaltutoring" value="true">
+							</div>
+							<div class="input-group">
+								<p>Cantidad</p>
+								<input type="text" class="form-control" placeholder="Cantidad" name="volume_tutoring" id="volume_tutoring" onchange="max_tutoring(this.value)">
+							</div><!-- End Cantidad -->	
+							<div class="input-group">
+								<p>Fecha</p>
+								<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate5"><i class="fa fa-calendar"></i></a><input type="text" class="datepicker5" placeholder="--Selecciona una Fecha--" id="datepicker5" name="datepicker5" style="width:92%; float: right;" readonly></p>
+							</div><!-- End fecha -->
+							<div class="input-group">
+								<!--<p>Viabilidad</p>
+								<input type="text" class="form-control" placeholder="Viabilidad" name="viability" id="viability">
+							</div><!-- End Viabilidad -->
+							<div class="input-group">
+								<p>Comentario</p>
+								<textarea class="form-control" rows="4" style="height: auto;" id="comment" name="comment"></textarea>										
+							</div><!-- End Alcance -->	                    		
+                		</div>
+                		<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    			<button type="submit" class="btn btn-success" name="save6" id="save6">Confirmar</button>
+                			</form>
+                		<script>
+
+					    $('#save6').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
+						$("#insert_tutoring").validate({
+							rules: {
+								volume_tutoring: {
+									required: true,
+									number: true,
+									max_tutoring:true,
+									min:0
+								},
+								datepicker5: {
+									required: true
+						        },
+								breakdown_tutoring: {
+									selectcheck_tutoring: true
+						        }
+							},
+							messages: {
+                        		volume_tutoring: {
+				                    required: "Este Campo es Requerido",
+				                    number: "Este Campo Debe Ser Númerico",
+				                    min:"Cantidad Invalida"
+				                },
+				                 datepicker5:{
+									required:"El Campo Fecha es Requerido"
+				                }
+						  	}
+						});
+
+						$.validator.addMethod("selectcheck_tutoring", selectcheck_tutoring, "Selecciona una Variedad/Portainjerto");
+						$.validator.addMethod("max_tutoring", max_tutoring, "Cantidad Invalida");
+						//$.validator.addMethod("max_transplant2", max_transplant2, "Cantidad Invalida");
+
+						function max_tutoring(a){
+							var a = document.getElementById('breakdown_tutoring').value;
+							var b = document.getElementById('volume_tutoring').value;
+							$.ajax({
+								url: "<?php echo base_url('index.php/breakdown/max_volume_tutoring/'.$this->uri->segment(3)); ?>", 
+								data: {'volume_tutoring':b,'breakdown_tutoring':a},
+								type: "POST",
+								success: function(data){
+									document.getElementById('inputvaltutoring').value=data.length;
+								},
+								failure:function(data){
+									
+								}
+							});
+							if(document.getElementById('inputvaltutoring').value == 1 ){
+								return true;
+							}else return false;
+						}
+
+
+						function selectcheck_tutoring(){
+							if (document.getElementById('breakdown_tutoring').value < 0){
+								return false;
+							}else return true;
+						}
+						</script>
+						</div>
+            		</div>
+        		</div>
+    		</div>
+    	</div>
 		
 		</div>
 	</div>
 </div> <!-- End content div -->
 
 <script type="text/javascript">
+	
 	if (document.getElementById("grafta").value == 1){
 		document.getElementById("divinjerto").style.display = "block";
 		document.getElementById("check1").checked = true;
@@ -961,7 +1109,13 @@
 	if (document.getElementById("transplanta").value == 1){
 		document.getElementById("divtransplante").style.display = "block";
 		document.getElementById("check3").checked = true;
-		document.getElementById("check3").disabled=true;
+		document.getElementById("check3").disabled= true;
+	}
+
+	if (document.getElementById("tutoringa").value == 1){
+		document.getElementById("divtutoreo").style.display = "block";
+		document.getElementById("check4").checked = true;
+		document.getElementById("check4").disabled=true;
 	}
 	
 
@@ -989,6 +1143,15 @@
 		}
 		else {
 			document.getElementById("divtransplante").style.display = "none";
+		}
+	});
+
+	$("#check4").click(function() {  
+		if (document.getElementById("check4").checked) {
+			document.getElementById("divtutoreo").style.display = "block";
+		}
+		else {
+			document.getElementById("divtutoreo").style.display = "none";
 		}
 	});
 
@@ -1549,6 +1712,198 @@
 			            </div>
 			            <div class="modal-footer">
 			            	<?php echo form_open('breakdown/delete_trans3/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal771" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a tutoreo</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_tuto1/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al tutoreo</p>
+							<input id="uploadFile10" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn10" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn10").onchange = function () {
+					    			document.getElementById("uploadFile10").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary" id="upload10">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<script>
+				$('#upload10').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
+
+			<div id="myModal772" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a tutoreo</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_tuto2/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al tutotreo</p>
+							<input id="uploadFile11" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn11" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn11").onchange = function () {
+					    			document.getElementById("uploadFile11").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary" id="upload11">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<script>
+				$('#upload11').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
+
+			<div id="myModal773" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar imagen a tutoreo</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('breakdown/upload_tuto3/'.$this->uri->segment(3));?>
+                			<p>Elige una imagen para subir al tutoreo</p>
+							<input id="uploadFile11" placeholder="Elige una imagen" disabled="disabled" style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn11" type="file" class="upload" name="userfile"/>
+							</div>
+
+							<script>
+								document.getElementById("uploadBtn11").onchange = function () {
+					    			document.getElementById("uploadFile11").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" class="btn btn-primary" id="upload11">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<script>
+				$('#upload11').click(function() {
+			    	var btn = $(this)
+			        btn.button('loading')
+			        setTimeout(function () {
+			            btn.button('reset')
+			        }, 5000)
+				});
+			</script>
+
+			<div id="myModal881" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_tuto1/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal882" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_tuto2/'.$this->uri->segment(3));?>
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			                <button type="submit" class="btn btn-primary">Borrar</button>
+			            	</form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<div id="myModal881" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">Confirmación</h4>
+			            </div>
+			            <div class="modal-body">			                
+			                <p>¿Estás seguro de querer eliminar esta imagen?</p>
+			                <p class="text-warning"><small>La imagen será eliminada completamente y no podrá ser recuperada.</small></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<?php echo form_open('breakdown/delete_tuto3/'.$this->uri->segment(3));?>
 			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 			                <button type="submit" class="btn btn-primary">Borrar</button>
 			            	</form>
