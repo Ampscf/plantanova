@@ -127,11 +127,11 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-					<div class="col-xs-12">
-					<h2>Injerto <input type="checkbox" name="check" id="check1" value="1"  />
-					Pinchado <input type="checkbox" name="check" id="check2" value="1"  />
-					Transplante <input type="checkbox" name="check" id="check3" value="1"  />
-					Tutoreo <input type="checkbox" name="check" id="check4" value="1"  /></h2>
+					<div class="col-xs-12" style="text-align:center">
+					<h2><input type="checkbox" name="check" id="check1" value="1"  />Injerto &nbsp; 
+					<input type="checkbox" name="check" id="check2" value="1"  />Pinchado &nbsp;
+					<input type="checkbox" name="check" id="check3" value="1"  />Transplante &nbsp;
+					<input type="checkbox" name="check" id="check4" value="1"  />Tutoreo </h2> 
 					</div>
 
 					<div class="clear">&nbsp</div>
