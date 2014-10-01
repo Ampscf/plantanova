@@ -929,8 +929,25 @@ class Order extends CI_Controller {
 			redirect('client/index');
 		}
 		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
-		$punch=$this->model_order->get_transplant($breakdown[0]->id_breakdown);
-		if($punch != false){
+		$transplant=$this->model_order->get_transplant($breakdown[0]->id_breakdown);
+		if($transplant != false){
+			$template['breakdown']=$breakdown;
+		$this->load->view('body/view_results_transplant.php', $template);
+
+		}else{
+			$template['breakdown']=null;
+			$this->load->view('body/view_results_transplant.php', $template);
+		}	
+	}
+
+	public function results_tutoring()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$breakdown=$this->model_order->get_breakdown($this->uri->segment(3));
+		$tutoring=$this->model_order->get_tutoring($breakdown[0]->id_breakdown);
+		if($tutoring != false){
 			$template['breakdown']=$breakdown;
 		$this->load->view('body/view_results_transplant.php', $template);
 

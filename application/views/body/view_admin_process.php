@@ -245,7 +245,7 @@
 						</div>
 						</br></br>
 
-						<a href="<?php echo base_url("index.php/order/results_transplant/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
+						<a href="<?php echo base_url("index.php/order/results_tutoring/$id_order");?>" class="btn btn-default" onclick="window.open(this.href, 'mywin',
 						'left=20,top=20,width=950,height=500,toolbar=1,resizable=0'); return false;" >Ver resultados</a>
 					</div>
 						
@@ -1891,7 +1891,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal881" class="modal fade">
+			<div id="myModal883" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">

@@ -681,7 +681,7 @@ class Breakdown extends CI_Controller {
 		$this->model_order->update_total_tutoring2($this->uri->segment(3),$volume_tutoring->tutoring);
 		$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_tutoring->tutoring);
 
-      	$this->model_breakdown-> delete_process($llave);
+      	$this->model_breakdown->delete_process($llave);
       	$this->model_breakdown->delete_process_id_breakdown_tutoring($process[0]->id_breakdown);
        	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
     }
@@ -1268,6 +1268,84 @@ class Breakdown extends CI_Controller {
 			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
 			
 			redirect('breakdown/process/'.$uri.'#transplante', 'refresh');
+		}
+	}
+
+	public function upload_tuto1($uri)
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri.'#error');
+		} else {
+			$data = $this->upload->data();
+			$datos['img_tuto1'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri.'#tutoreo', 'refresh');
+		}
+	}
+
+	public function upload_tuto2($uri)
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri.'#error');
+		} else {
+			$data = $this->upload->data();
+			$datos['img_tuto2'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri.'#tutoreo', 'refresh');
+		}
+	}
+
+	public function upload_tuto3($uri)
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('breakdown/process/'.$uri.'#error');
+		} else {
+			$data = $this->upload->data();
+			$datos['img_tuto3'] = $data['file_name'];
+			$this->model_breakdown->update_image_process($this->uri->segment(3),$datos);			
+			
+			redirect('breakdown/process/'.$uri.'#tutoreo', 'refresh');
 		}
 	}
 

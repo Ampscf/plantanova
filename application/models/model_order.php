@@ -1056,6 +1056,17 @@ Class model_order extends CI_Model
 		else return false;
 	}
 	
+	function get_total_tutoring2($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',5);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
 	function get_graft($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',2);
@@ -1079,6 +1090,16 @@ Class model_order extends CI_Model
 	function get_transplant($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',4);
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_tutoring($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',5);
 		$query=$this->db->get('t_process');
 		if($query->num_rows()>0){
 			return $query->result();
