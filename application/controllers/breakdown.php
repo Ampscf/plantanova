@@ -46,6 +46,7 @@ class Breakdown extends CI_Controller {
 		$template['pedidos_proceso_graft'] = $this->model_breakdown->get_process_graft();
 		$template['pedidos_proceso_punch'] = $this->model_breakdown->get_process_punch();
 		$template['pedidos_proceso_transplant'] = $this->model_breakdown->get_process_transplant();
+		$template['pedidos_proceso_tutoring'] = $this->model_breakdown->get_process_tutoring();
 		$template['pedidos_proceso_sowing'] = $this->model_breakdown->get_process_sowing();
 		$this->load->view("main",$template);
 	}
@@ -810,9 +811,11 @@ class Breakdown extends CI_Controller {
 		$template['graft'] = $this->model_breakdown->get_graft($this->uri->segment(3));
 		$template['punch']= $this->model_breakdown->get_punch($this->uri->segment(3));
 		$template['transplant']= $this->model_breakdown->get_transplant($this->uri->segment(3));
+		$template['tutoring']= $this->model_breakdown->get_tutoring($this->uri->segment(3));
 		$template['img_injer']=$this->model_breakdown->get_image_injer($this->uri->segment(3));
 		$template['img_pinch']=$this->model_breakdown->get_image_pinch($this->uri->segment(3));
 		$template['img_trans']=$this->model_breakdown->get_image_trans($this->uri->segment(3));
+		$template['img_tuto']=$this->model_breakdown->get_image_tuto($this->uri->segment(3));
 
 		$this->load->view('main',$template);	
 	}

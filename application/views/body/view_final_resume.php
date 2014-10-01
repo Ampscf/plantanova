@@ -456,7 +456,7 @@
 				</div>
 						<!--Fin desglose de la pinchado-->
 						
-						<!--Desglose de la transplante-->
+						<!--Desglose del transplante-->
 						<div class="clear">&nbsp</div>					
 						<div class="input-group input-group-lg">
 							<h4><b>*Desglose del transplante</b></h4>
@@ -550,6 +550,105 @@
 						?>
 							</div>
 						</div>
+
+						<!--Fin desglose del transplante-->
+						
+						<!--Desglose del tutoreo-->
+						<div class="clear">&nbsp</div>					
+						<div class="input-group input-group-lg">
+							<h4><b>*Desglose del tutoreo</b></h4>
+						</div>
+						<div class="clear">&nbsp</div>
+						<table class="table table-hover">
+							<th>Cantidad</th>
+							<th>Fecha</th>
+							<th>Variedad/Portainjerto</th>
+							<th>Comentario</th>
+							
+								<?php 
+									if(is_array($tutoring))
+									{
+										foreach ($tutoring as $key) 
+										{
+											echo "<tr>";
+											echo "<td>" . number_format($key->volume) . "</td>";
+											echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
+											$breakdownn=$this->model_order->get_breakdown_id_breakdown($key->id_breakdown);
+											echo "<td>" .$breakdownn[0]->variety."/".$breakdownn[0]->rootstock. "</td>";
+											if($key->comment != null){
+											echo "<td>" ?>
+
+												<a href="#myModal3<?php echo $key->id_process; ?>" class="btn btn-default"
+								                    title="Comentario"
+								                    data-toggle="modal">
+													<i class="fa fa-comment-o"></i>
+								                </a>
+												
+												<div id="myModal3<?php echo $key->id_process;  ?>" class="modal fade">
+							        				<div class="modal-dialog">
+							            				<div class="modal-content">
+							                				<div class="modal-header">
+							                    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							                    				<h4 class="modal-title">Comentario</h4>
+							                				</div>
+							                				<div class="modal-body">
+							                    				<p><?php echo $key->comment;?></p>
+							                				</div>
+							                				<div class="modal-footer">
+							                    				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+							                    			</div>
+							            				</div>
+							        				</div>
+							    				</div>
+							    			
+							    			<?php
+							    			}else{
+							    			echo "<td>N/A";
+							    			} 
+							    			echo "</td>";
+											echo "</tr>";
+										}
+									}
+									?>
+						</table>
+					<div class="col-xs-12">
+						<div class="col-xs-4">
+						<?php
+							if(is_array($img_tuto)){
+								if($img_tuto[0]->img_tuto1 != null){
+									echo $img_tuto[0]->img_tuto1.'<a href="/plantanova/uploads/'.$img_tuto[0]->img_tuto1.'" 
+		                    			title="'.$img_tuto[0]->img_tuto1.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_tuto[0]->img_tuto1.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_tuto[0]->img_tuto2 != null){
+									echo $img_tuto[0]->img_tuto2.'<a href="/plantanova/uploads/'.$img_tuto[0]->img_tuto2.'" 
+		                    			title="'.$img_tuto[0]->img_tuto2.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_tuto[0]->img_tuto2.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+								echo '</div>';
+								echo '<div class="col-xs-4">';
+								if($img_tuto[0]->img_tuto3 != null){
+									echo $img_tuto[0]->img_tuto3.'<a href="/plantanova/uploads/'.$img_tuto[0]->img_tuto3.'" 
+		                    			title="'.$img_tuto[0]->img_tuto3.'"
+		                    			data-toggle="modal"
+		                    			target="_blank">
+										<img src="/plantanova/uploads/'.$img_tuto[0]->img_tuto3.'" style="width:100%; height:200px;"></a>
+										</br>';
+								}
+							}
+						?>
+							</div>
+						</div>
+
+
 					</div>
 						</div>
 						<div class="panel-footer">

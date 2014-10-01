@@ -33,6 +33,7 @@
 					        <li><a href="#" class="some3" >Injerto</a> <span class="divider"></span></li>
 					        <li><a href="#" class="some4" >Pinchado</a> <span class="divider"></span></li>
 					        <li><a href="#" class="some5" >Transplante</a> <span class="divider"></span></li>
+					        <li><a href="#" class="some7" >Tutoreo</a> <span class="divider"></span></li>
 					        
 					       
 						</ul>
@@ -61,6 +62,10 @@
 							<?php echo "<h4 style='text-align:center;'>SIEMBRA</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_siembra.php'); ?>
 						</div>
+						<div  id="g" >
+							<?php echo "<h4 style='text-align:center;'>TUTOREO</h4>";?>
+							<?php include('application/views/extra/tabla_pedido_proceso_tutoreo.php'); ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -76,6 +81,7 @@
 	document.getElementById("d").style.display = "none";
 	document.getElementById("e").style.display = "none";
 	document.getElementById("f").style.display = "none";
+	document.getElementById("g").style.display = "none";
 
 	$(".some1").click(function() {  
 		document.getElementById("a").style.display = "block";
@@ -84,6 +90,7 @@
 		document.getElementById("d").style.display = "none";
 		document.getElementById("e").style.display = "none";
 		document.getElementById("f").style.display = "none";
+		document.getElementById("g").style.display = "none";
 	});
 
 	$(".some2").click(function() {  
@@ -93,6 +100,7 @@
 		document.getElementById("d").style.display = "none";
 		document.getElementById("e").style.display = "none";
 		document.getElementById("f").style.display = "none";
+		document.getElementById("g").style.display = "none";
 	});
 
 	$(".some3").click(function() {  
@@ -102,6 +110,7 @@
 		document.getElementById("d").style.display = "none";
 		document.getElementById("e").style.display = "none";
 		document.getElementById("f").style.display = "none";
+		document.getElementById("g").style.display = "none";
 	});
 	$(".some4").click(function() {  
 		document.getElementById("a").style.display = "none";
@@ -110,6 +119,7 @@
 		document.getElementById("d").style.display = "block";
 		document.getElementById("e").style.display = "none";
 		document.getElementById("f").style.display = "none";
+		document.getElementById("g").style.display = "none";
 	});
 	$(".some5").click(function() {  
 		document.getElementById("a").style.display = "none";
@@ -118,6 +128,7 @@
 		document.getElementById("d").style.display = "none";
 		document.getElementById("e").style.display = "block";
 		document.getElementById("f").style.display = "none";
+		document.getElementById("g").style.display = "none";
 	});
 	$(".some6").click(function() {  
 		document.getElementById("a").style.display = "none";
@@ -126,6 +137,16 @@
 		document.getElementById("d").style.display = "none";
 		document.getElementById("e").style.display = "none";
 		document.getElementById("f").style.display = "block";
+		document.getElementById("g").style.display = "none";
+	});
+	$(".some7").click(function() {  
+		document.getElementById("a").style.display = "none";
+		document.getElementById("b").style.display = "none";
+		document.getElementById("c").style.display = "none";
+		document.getElementById("d").style.display = "none";
+		document.getElementById("e").style.display = "none";
+		document.getElementById("f").style.display = "none";
+		document.getElementById("g").style.display = "block";
 	});
 
 </script>
