@@ -355,6 +355,28 @@ Class model_breakdown extends CI_Model
 		} 
 	}
 
+	function get_process_tutoring()
+	{
+		$result = $this->db->query('select t_p.id_process, t_p.id_process_type, t_p.process_date, t_p.scope, t_p.volume, t_p.viability, t_p.comment, t_p.id_breakdown,
+									t_o.id_status,t_o.id_order,t_o.id_status,
+									t_b.id_breakdown,t_b.id_order
+									from t_process as t_p, t_order as t_o,t_breakdown as t_b
+									where t_p.id_breakdown=t_b.id_breakdown
+									and t_b.id_order=t_o.id_order
+									and t_o.id_status=2
+									and t_p.id_process_type = 5
+									and t_o.activate=1');
+																				
+		if($result->num_rows() > 0) 
+		{
+			return $result->result();
+		} 
+		else 
+		{
+			return null;
+		} 
+	}
+
 	function get_process_sowing()
 	{
 		$query = $this->db->query('select t_s.id_sowing,t_s.sowing_date, t_s.volume, t_s.id_order, t_s.comment, t_s.completed, t_s.seed, t_o.id_status,t_o.id_order 
@@ -733,6 +755,19 @@ Class model_breakdown extends CI_Model
 		}
 	}
 
+	function get_volume_tutoring($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',5);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_process');
+		if($query->num_rows()>0){
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+
 	function update_total_graft($volume_graft,$id_order){
 		$this->db->query('update t_total set graft = graft - '.$volume_graft.' where id_order = '.$id_order);
 		
@@ -823,6 +858,12 @@ Class model_breakdown extends CI_Model
 	function delete_process_id_breakdown_transplant($id_breakdown){
 		$this->db->where('id_breakdown',$id_breakdown);
 		$this->db->where('id_process_type',4);
+		$this->db->delete('t_process');
+	}
+
+	function delete_process_id_breakdown_tutoring($id_breakdown){
+		$this->db->where('id_breakdown',$id_breakdown);
+		$this->db->where('id_process_type',5);
 		$this->db->delete('t_process');
 	}
 
@@ -925,6 +966,17 @@ Class model_breakdown extends CI_Model
 	function get_image_trans($id_order)
 	{
 		$query = $this->db->query('select img_trans1, img_trans2, img_trans3
+									from t_images_process
+									where id_order = '.$id_order);
+		if($query->num_rows > 0){
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_image_tuto($id_order)
+	{
+		$query = $this->db->query('select img_tuto1, img_tuto2, img_tuto3
 									from t_images_process
 									where id_order = '.$id_order);
 		if($query->num_rows > 0){
