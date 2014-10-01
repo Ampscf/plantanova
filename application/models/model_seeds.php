@@ -19,6 +19,11 @@ Class model_seeds extends CI_Model
 		$this->db->insert('t_seeds',$data);
 		return $this->db->affected_rows();
 	}
+	function update_seeds($data){
+
+		$this->db->where('id_seed',$data['id_seed']);
+		$query=$this->db->update('t_seeds',$data);
+	}
 
 	function get_seeds_lists()
 	{

@@ -30,9 +30,7 @@ class Seeds extends CI_Controller {
 		if($this->session->userdata('id_rol')!=1){
 			redirect('client/index');
 		}
-		
 		$template['order']=$this->model_seeds-> get_orders();
-
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = "body/view_seeds_register.php";
@@ -56,9 +54,6 @@ class Seeds extends CI_Controller {
 		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
 		$template['crop']=$this->model_seeds->get_plant();
 		
-
-		
-
 		$this->load->view('main',$template);
 	}
 
@@ -86,6 +81,26 @@ class Seeds extends CI_Controller {
 			
 	} 
 	
+	public function edit_register_seeds(){
+
+			if($this->session->userdata('id_rol')!=1){
+				redirect('client/index');
+			}
+			//Obtiene tdos los campos a guardar del usuario en un arreglo
+			$data['id_order'] = $this->uri->segment(3);
+			$data['batch'] = $this->input->post('batchedit');
+			$data['volume'] = $this->input->post('volume');
+			$date=$this->input->post('datepicker');
+			$data['seeds_date'] =  date("Y-m-d H:i:s", strtotime($date));
+			$data['germ_percentage']=$this->input->post('germ_percentageedit');
+			$data['mark']=$this->input->post('markedit');
+			$data['plant_name']=$this->input->post('cropedit');
+			$data['id_seed']=$this->input->post('id_seed');
+			$this->model_seeds->update_seeds($data);
+			redirect("seeds/register_seeds_form/".$this->uri->segment(3).'/'.$this->uri->segment(4), "refresh");
+	
+
+	}
 	//cambia el estatus de semillas a 2
 	public function register_status(){
 		if($this->session->userdata('id_rol')!=1){

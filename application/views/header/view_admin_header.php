@@ -124,6 +124,12 @@
 	        };		    
 		    $.datepicker.setDefaults($.datepicker.regional['es']);
 		});
+		
+		function generatedate(id){   
+			$( ".datepicker"+id ).datepicker();
+			$('.datepicker'+id).datepicker('show');
+		}
+						
 	
 	</script>
 
