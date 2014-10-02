@@ -143,9 +143,12 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 				<nav class="navbar navbar-default" role="navigation" style="min-height: 80px;padding-left: 30px;">
 					<div class="container">
 						<div class="navbar-header">
+							
 						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>							
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						</div>
-						<div class="navbar-collapse collapse">
+
+						<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav nav-justified">
 								<li class="dropdown" style="border-left: 1px solid #000;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;" id="pedidos">
@@ -196,11 +199,7 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 						      			<span class="caret"></span>
 						      		</a>
 									<ul class="dropdown-menu">
-										<!--<li>
-						      				<?php //echo anchor('admin/my_acount_form', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
-									    </li>
-						      			<li role="presentation" class="divider"></li>-->
-						      			<li>
+										<li>
 						      				<?php echo anchor('principal/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
 						      			</li>
 									</ul>

@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3" style="margin-left: 32%; width: 35%;">
+		<div class="col-xs-4 col-xs-offset-4" style="min-width: 200px;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"> Inicio de sesión </h3>
@@ -33,13 +33,13 @@
 
 					<div class="panel-footer">
 						<div class="row">
-							<div class="col-md-4 col-md-offset-4">
+							<div class="col-xs-12" style="min-width: 100px;">
 								<input class="btn btn-success btn-block" type="submit" value="Acceder"/>
 							</div>
 						</div><!-- End row -->
 					</div><!-- End panel-footer -->
 				</form><!-- End form -->
 			</div><!-- End panel-default -->
-		</div><!-- End col-md-4 col-md-offset-4 -->
+		</div><!-- End col-xs-4 col-xs-offset-4 -->
 	</div><!-- End row -->
 </div>
