@@ -54,12 +54,15 @@
 									<?php }else{?>
 								<div class='modal-body'>
 									<?php }?>
-									
+									<div class='col-xs-12'>
 									<img src="<?php echo base_url()?>img/Resumen-de-proceso.png" style="margin-left: -35px;width:100%">
-									
+									</div>	
+									<div class='col-xs-12'>
 									<h4><b><?php echo $value->client_name;?></b></h4>
-										
-									<h4><?php echo $value->inform_text ?></h4>			                		
+									</div>	
+									<div class='col-xs-12'>
+									<h4><?php echo $value->inform_text ?></h4>
+									</div>			                		
 									<div>&nbsp</div>
 									<div class='input-group input-group-lg'>
 										<div class='col-xs-12'>

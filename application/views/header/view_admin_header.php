@@ -144,13 +144,13 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 					<div class="container-fluid">
 						<div class="navbar-header">
 							
-						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>							
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-						 <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				      </button>
+							<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>							
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+					      	</button>
 						</div>
 
 						<div class="collapse navbar-collapse" id="collapse-1">

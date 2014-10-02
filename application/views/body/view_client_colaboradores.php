@@ -6,7 +6,7 @@
 						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Colaboradores</h3>
 					</div>
 					<div class="panel-body">
-						<div class="col-md-6 col-md cat">
+						<div class="col-md-12">
 							<h1>¡Hola <?php echo $user[0]->farm_name; ?>!<h1>
 																	
 						<?php 
@@ -16,7 +16,7 @@
 						
 						foreach($messages as $key){
 								$cont++;			
-							echo "<div id='cliente".$cont."'><table class='contenido' >
+							echo "<div id='cliente".$cont."' class='table-responsive'><table class='table' >
 							<tr>
 							<td><a href='".$key->p_url."' target='blank'><img src='/plantanova/img/Publicidad/".$key->p_image."' width'850' height='450'></a></td>	
 							<td><div id='text1' class='texto'>".$key->p_parrafo1."</div><br><div id='text2' class='texto'>".$key->p_parrafo2."</div><br><div id='text3' class='texto'> ".$key->p_parrafo3."</div></td>
