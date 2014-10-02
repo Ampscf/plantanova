@@ -351,3 +351,7 @@ font-size: 16px;
 .col-md-5.pubcol2 {
 	width: 46%;
 }
+
+.navbar-collapse{
+	max-height: 1000px !important;
+}
