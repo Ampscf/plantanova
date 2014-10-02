@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-xs-8 col-xs-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Edicion de Cliente </h3>
@@ -29,11 +29,11 @@
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
 					<!-- farm name, street, addr number, colony, cp, state, city, phone, social reason, rfc -->
-					<div class="col-md-12">
+					<div class="col-xs-12">
 
 						<div class="clear">&nbsp</div>
 
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h3><span class="glyphicon glyphicon-list-alt"></span> Datos Empresa</h3>
 						</div>
 
@@ -41,7 +41,7 @@
 
 						<input type="hidden" name="rol" id="rol" value="2" />
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h3>Empresa</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Empresa" name="farm_name" id="farm_name" value="<?php echo set_value('farm_name'); ?>">
@@ -86,7 +86,7 @@
 							<?php echo form_error('social_reason'); ?>
 						</div>						
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h3>Calle</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo set_value('street'); ?>">
@@ -133,17 +133,17 @@
 				
 
 					<!-- Company representant:  Name, last name, phone, cellphone, email -->
-					<div class="col-md-12">
+					<div class="col-xs-12">
 
 						<div class="clear">&nbsp</div>
 
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h3><span class="glyphicon glyphicon-user"></span> Representante de la empresa</h3>
 						</div>
 
 						<div class="clear">&nbsp</div>
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h3>Nombre(s)</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
@@ -166,7 +166,7 @@
 
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h3>Apellido(s)</h3>
 							<div class="input-group input-group-lg">
 								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo set_value('last_name'); ?>">
@@ -200,7 +200,7 @@
 				<div class="panel-footer">
 					<div class="row">
 						
-						<div class="col-md-3 col-md-offset-1">
+						<div class="col-xs-3 col-xs-offset-1">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
@@ -209,7 +209,7 @@
 								echo anchor('admin/list_clients', 'Cancelar', $data);
 							?>
 						</div>
-						<div class="col-md-3 col-md-offset-4">
+						<div class="col-xs-3 col-xs-offset-4">
 							<input class="btn btn-success btn-block" type="submit" id="button" value="Editar Cuenta" onClick="update_client();"/>
 						</div>
 					</div><!-- End row -->

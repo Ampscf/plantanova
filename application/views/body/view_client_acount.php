@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-xs-8 col-xs-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Datos de la Cuenta</b></h4>
@@ -42,17 +42,17 @@
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
 					<!-- farm name, street, addr number, colony, cp, state, city, phone, social reason, rfc -->
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						
 						<div class="clear">&nbsp</div>
 
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h3><span class="glyphicon glyphicon-list-alt"></span> Datos Empresa</h3>
 						</div>
 
 						<div class="clear">&nbsp</div>
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h4><b>Empresa:</b></h4>
 							<div class="input-group input-group-lg">
 								<h4><?php echo $farm_name; ?></h4>
@@ -83,7 +83,7 @@
 							</div><!-- End social reason -->
 						</div>						
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h4><b>Calle:</b></h4>
 							<div class="input-group input-group-lg">
 								<h4><?php echo $street; ?></h4>
@@ -118,17 +118,17 @@
 				
 
 					<!-- Company representant:  Name, last name, phone, cellphone, email -->
-					<div class="col-md-12">
+					<div class="col-xs-12">
 
 						<div class="clear">&nbsp</div>
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<h3><span class="glyphicon glyphicon-user"></span> Representante de la empresa</h3>
 							
 						</div>
 
 						<div class="clear">&nbsp</div>
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<div class="input-group input-group-lg">
 								<h4><b>Nombre(s):</b></h4>
 								<h4><?php echo $first_name; ?></h4>
@@ -149,7 +149,7 @@
 
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-xs-6">
 							<h4><b>Apellido(s):</b></h4>
 							<div class="input-group input-group-lg">
 								<h4><?php echo $last_name; ?></h4>
@@ -169,7 +169,7 @@
 
 				<div class="panel-footer">
 					<div class="row">
-						<div class="col-md-3 col-md-offset-8">
+						<div class="col-xs-3 col-xs-offset-8">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',

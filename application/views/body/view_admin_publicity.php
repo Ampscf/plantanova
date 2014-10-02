@@ -1,6 +1,6 @@
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-tags"></i> Publicidad </h3>
@@ -11,15 +11,12 @@
 								echo $this->session->flashdata('error');		
 							?></h5>
 					<div class="row">
-						<div class="col-md-1">
-						</div>
-						<div class="col-md-6 pubcol1">
+						<div class="col-xs-12 col-md-12 pubcol1 center-block">
 							
 							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
 						
 							<a href="#myModal2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
-						</div>
-						<div class="col-md-5 pubcol2">
+						
 							
 							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
 						
@@ -250,11 +247,11 @@
 							<p>Pagina web del cliente</p>
 							<input id="p_url" name="p_url" placeholder="url" />
 							<p>Descripción del cliente parrafo-1</P>
-								<textarea rows="4" cols="50" id="p_parrafo1" name="p_parrafo1" ></textarea>
+								<textarea  id="p_parrafo1" name="p_parrafo1" ></textarea>
 							<p>Descripción del cliente parrafo-2</P>
-								<textarea rows="4" cols="50" id="p_parrafo2" name="p_parrafo2" ></textarea>
+								<textarea  id="p_parrafo2" name="p_parrafo2" ></textarea>
 							<p>Descripción del cliente parrafo-3</P>
-								<textarea rows="4" cols="50" id="p_parrafo3" name="p_parrafo3" ></textarea>
+								<textarea  id="p_parrafo3" name="p_parrafo3" ></textarea>
 							<script>
 								document.getElementById("uploadBtn").onchange = function () {
 					    			document.getElementById("uploadFile").value = this.value;

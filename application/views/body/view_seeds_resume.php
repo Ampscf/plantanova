@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-xs-8 col-xs-offset-2">
+	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Formulario de Semillas </h3>
@@ -11,12 +11,12 @@
 			?>
 				<div class="panel-body" style="padding: 10px 10px 10px 10px;" id="seleccion">
 					
-					<div class="col-xs-12">
+					<div class="col-md-12">
 						<div class="input-group input-group-lg">
 							<p><b>Pedido: <?php echo $id_order;?></b></p>
 						</div><!-- End nombre -->
 						
-						<div class="col-xs-6">
+						<div class="col-md-6">
 						
 							<div class="input-group input-group-lg">
 								<p><b>Nombre Completo:</b> <?php echo $client->result()[0]->first_name." ".$client->result()[0]->last_name;?></p>
@@ -44,7 +44,7 @@
 						
 						</div>
 						
-						<div class="col-xs-6">
+						<div class="col-md-6">
 							
 							<div class="input-group input-group-lg">
 								<p><b>Razón Social:</b> <?php echo $client->result()[0]->social_reason;?></p>
@@ -81,7 +81,7 @@
 				</div>	<!-- End panel-body -->
 				<div class="panel-footer">
 					<div class="row">
-						<div class="col-xs-2 col-xs-offset-2">
+						<div class="col-md-2 col-md-offset-2">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
@@ -90,7 +90,7 @@
 								echo anchor('seeds/index', 'Regresar', $data);
 							?>
 						</div>
-						<div class="col-xs-4 col-xs-offset-3">
+						<div class="col-md-4 col-md-offset-3">
 							<input type="button" name="imprimir" class="btn btn-primary btn-success" value="Imprimir" onclick="imprSelec('seleccion');" style="width: 134px;">
 						</div>
 					</div><!-- End row -->

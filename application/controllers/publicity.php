@@ -120,11 +120,11 @@ class Publicity extends CI_Controller {
 		<p>Pagina web del cliente</p>
 		<input id='p_url' name='p_url' placeholder='url' value='".$infopublicity[0]->p_url."'/>
 		<p>Descripción del cliente parrafo-1</P>
-		<textarea rows='4' cols='50' id='p_parrafo1' name='p_parrafo1'>".$infopublicity[0]->p_parrafo1."</textarea>
+		<textarea  id='p_parrafo1' name='p_parrafo1'>".$infopublicity[0]->p_parrafo1."</textarea>
 		<p>Descripción del cliente parrafo-2</P>
-		<textarea rows='4' cols='50' id='p_parrafo2' name='p_parrafo2' >".$infopublicity[0]->p_parrafo2."</textarea>
+		<textarea  id='p_parrafo2' name='p_parrafo2' >".$infopublicity[0]->p_parrafo2."</textarea>
 		<p>Descripción del cliente parrafo-3</P>
-		<textarea rows='4' cols='50' id='p_parrafo3' name='p_parrafo3' >".$infopublicity[0]->p_parrafo3."</textarea>
+		<textarea  id='p_parrafo3' name='p_parrafo3' >".$infopublicity[0]->p_parrafo3."</textarea>
 		<script>
 
 		document.getElementById('uploadBtn2').onchange = function () {

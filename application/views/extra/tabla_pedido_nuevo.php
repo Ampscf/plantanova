@@ -1,6 +1,6 @@
 <table class="table table-hover" id="tabla-pedidos">
 	<thead>
-		<th class="col-md-1"># Pedido</th>
+		<th class="col-md-1 col-xs-1"># Pedido</th>
 		<th>Agricultor</th>
 		<th style="width:172px">Fecha</th>
 		<th>Empresa</th>
