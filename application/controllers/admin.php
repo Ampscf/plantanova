@@ -10,6 +10,8 @@ class Admin extends CI_Controller {
 	   	$this->load->helper('url');
 	}
 
+
+	
 	public function index()
 	{
 		if($this->session->userdata('id_rol')!=1){
