@@ -52,7 +52,7 @@
 							echo $user[0]->farm_name; ?>
 						    <span class="caret"></span>
 						</a>
-						<ul class="dropdown-menu">
+						<ul class="dropdown-menu" style="margin-top: 50px;">
 							<li>
 						      	<?php echo anchor('client/my_acount_form_client', 'Cuenta <span class="glyphicon glyphicon-user pull-right"></span>'); ?>
 							</li>

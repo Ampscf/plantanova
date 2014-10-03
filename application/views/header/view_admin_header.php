@@ -156,11 +156,11 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 						<div class="collapse navbar-collapse" id="collapse-1">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;padding-top: 28px;" id="pedidos">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px; padding-top: 28px;" id="pedidos">
 										Ver pedidos
 						      			<span class="caret"></span>
 						      		</a>
-						      		<ul class="dropdown-menu">
+						      		<ul class="dropdown-menu" style="margin-top: 50px;">
 						      			<li><?php echo anchor('breakdown/index','Nuevos');?></li>
 						      			<li role="presentation" class="divider"></li>
 						      			<li><?php echo anchor('breakdown/pedido_proceso','En Proceso');?></li>
@@ -178,11 +178,11 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 								
 
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;padding-top: 28px;" id="admin">
+									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px; padding-top: 28px;" id="admin">
 										Clientes
 						      			<span class="caret"></span>
 						      		</a>
-									<ul class="dropdown-menu">
+									<ul class="dropdown-menu" style="margin-top: 50px;">
 								   		<li><?php echo anchor('admin/list_clients','Clientes');?></li>
 						      			<li role="presentation" class="divider"></li>
 								   		<li><?php echo anchor('admin/client_inform','Resumen del Cliente');?></li>
@@ -202,7 +202,7 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 										<?php echo $user[0]->farm_name; ?>
 						      			<span class="caret"></span>
 						      		</a>
-									<ul class="dropdown-menu" role="menu">
+									<ul class="dropdown-menu" role="menu" style="margin-top: 50px;">
 										<li><?php echo anchor('principal/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?></li>
 									</ul>
 								</li>
