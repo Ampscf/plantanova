@@ -5,24 +5,24 @@
 					<div class="panel-heading">
 					<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Semillas </h3>
 				</div>
-					<div class="panel-body">
+					<div class="panel-body center-block">
 						<div class="clear">&nbsp</div>
-						<div class="col-md-3">					
+						<div class="col-md-3  pubcol1">					
 							<div class="input-group input-group-lg">
 								<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar Variedad</a>
 							</div>				
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-3  pubcol1">
 							<div class="input-group input-group-lg">
 								<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Portainjerto</a>
 							</div>	
 						</div>
-						<div class="col-md-3">					
+						<div class="col-md-3  pubcol1">					
 							<div class="input-group input-group-lg">
 								<a href="#myModal4" class="btn btn-primary" data-toggle="modal">Eliminar Variedad</a>
 							</div>				
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-3  pubcol1">
 							<div class="input-group input-group-lg">
 								<a href="#myModal5" class="btn btn-primary" data-toggle="modal">Eliminar Portainjerto</a>
 							</div>	

@@ -1,6 +1,6 @@
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-tags"></i> Mensajes </h3>
@@ -10,7 +10,7 @@
 							$attributes=array('id' => 'form_message', 'name'=> 'form_message');
 							echo form_open('admin/message',$attributes);
 						?>
-						<div class="col-md-4">
+						<div class="col-xs-10 col-md-4 center-block">
 							<div class="input-group">
 								<p>Cleinte</p>
 								<select class="form-control" name="client" id="client" >
@@ -48,9 +48,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="panel-footer">
-						<button type="submit" class="btn btn-success" name="enviar" id="enviar" style="width: 20%;">Enviar</button>
-					</div>	
+					<div class="panel-footer alignright">
+							<button type="submit" class="btn btn-success" name="enviar" id="enviar" style="width: 20%;">Enviar</button>
+						
+						</div>	
 				</form>
 				</div>
 				<script>

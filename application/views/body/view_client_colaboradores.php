@@ -16,12 +16,25 @@
 						
 						foreach($messages as $key){
 								$cont++;			
-							echo "<div id='cliente".$cont."' class='table-responsive'><table class='table' >
-							<tr>
-							<td><a href='".$key->p_url."' target='blank'><img src='/plantanova/img/Publicidad/".$key->p_image."' width'850' height='450'></a></td>	
-							<td><div id='text1' class='texto'>".$key->p_parrafo1."</div><br><div id='text2' class='texto'>".$key->p_parrafo2."</div><br><div id='text3' class='texto'> ".$key->p_parrafo3."</div></td>
-							</tr>
-							</table>	<button type='button' class='glyphicon glyphicon-arrow-right'  Onclick='cambio(".$cont.",".$lon.")'></button></div>";
+
+							echo "<div id='cliente".$cont."'>
+							<div class='contenido' >
+							
+							<div class='row'>
+								<div class='col-md-6'>
+									<a href='".$key->p_url."' target='blank'><img src='/plantanova/img/Publicidad/".$key->p_image."' class='img-responsive' alt='Responsive image' style='width:100%; height:400px'></a>
+								</div>	
+								<div class='col-md-6'>
+								<div id='text1' class='texto'>".$key->p_parrafo1."</div><br><div id='text2' class='texto'>".$key->p_parrafo2."</div><br><div id='text3' class='texto'> ".$key->p_parrafo3."</div>
+								</div>
+							
+								</div>	
+
+							</div>
+							<div class='row'>
+								<button type='button' class='glyphicon glyphicon-arrow-right'  Onclick='cambio(".$cont.",".$lon.")'></button></div>
+							</div>";
+
 							echo "<style> div#cliente".$cont."{display:none;}</style>";
 						}
 						if($this->uri->segment(3)){

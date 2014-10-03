@@ -38,33 +38,32 @@
 					       
 						</ul>
 						
-						<div id="a" class="table-responsive" >
+
+						<div id="a" class="table-responsive screen" >
 							<?php echo "<h4 style='text-align:center;'>TODOS LOS PROCESOS</h4>";?>
-							
-								<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
-							
+							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
 						</div>
-						<div id="b" >
+						<div id="b" class="table-responsive screen">
 							<?php echo "<h4 style='text-align:center;'>GERMINACIÓN</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_germinacion.php'); ?>
 						</div>
-						<div id="c" >
+						<div id="c" class="table-responsive screen">
 							<?php echo "<h4 style='text-align:center;'>INJERTO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_injerto.php'); ?>
 						</div>
-						<div id="d" >
+						<div id="d" class="table-responsive screen">
 							<?php echo "<h4 style='text-align:center;'>PINCHADO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_pinchado.php'); ?>
 						</div>
-						<div  id="e" >
+						<div  id="e" class="table-responsive screen">
 							<?php echo "<h4 style='text-align:center;'>TRANSPLANTE</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_transplante.php'); ?>
 						</div>
-						<div  id="f" >
+						<div  id="f" class="table-responsive screen" >
 							<?php echo "<h4 style='text-align:center;'>SIEMBRA</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_siembra.php'); ?>
 						</div>
-						<div  id="g" >
+						<div  id="g" class="table-responsive screen">
 							<?php echo "<h4 style='text-align:center;'>TUTOREO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_tutoreo.php'); ?>
 						</div>
