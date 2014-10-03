@@ -1,4 +1,4 @@
-<table class="table table-hover" id="tabla-pedidos">
+<table class="table" id="tabla-pedidos">
 	<thead>
 		<th class="col-md-1"># Pedido</th>
 		<th>Agricultor</th>
@@ -129,6 +129,5 @@
 		?>
 	</tbody>
 </table>
-	
-	
+
 	

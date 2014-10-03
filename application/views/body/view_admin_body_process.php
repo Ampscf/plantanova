@@ -38,9 +38,11 @@
 					       
 						</ul>
 						
-						<div id="a" >
+						<div id="a" class="table-responsive" >
 							<?php echo "<h4 style='text-align:center;'>TODOS LOS PROCESOS</h4>";?>
-							<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+							
+								<?php include('application/views/extra/tabla_pedido_proceso.php'); ?>
+							
 						</div>
 						<div id="b" >
 							<?php echo "<h4 style='text-align:center;'>GERMINACIÓN</h4>";?>

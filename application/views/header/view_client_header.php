@@ -41,7 +41,7 @@
 		      	</button>
 			</div>
 			<div class="navbar-collapse collapse">
-				<div style="padding-right: 40px;">
+				<div>
 				<ul class="nav navbar-nav navbar-right">
 					<li style="border-left: 1px solid #000;text-align:center;"><?php echo anchor('client/index','Ver Pedidos','id="pedi" style="height:80px;padding-top: 28px;"'); ?></li>
 					<li style="border-left: 1px solid #000;text-align:center;"><?php echo anchor('client/inform','Alertas','id="info" style="height:80px;padding-top: 28px;"'); ?></li>
