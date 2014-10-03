@@ -140,18 +140,23 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 <body>
 	<div id="wrapper">
 		<!-- Contenedor para el encabezado de la pagina o la barra de encabezado -->
-				<nav class="navbar navbar-default" role="navigation" style="min-height: 80px;padding-left: 30px;">
-					<div class="container">
+				<nav class="navbar navbar-default" role="navigation" >
+					<div class="container-fluid">
 						<div class="navbar-header">
 							
-						<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>							
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('breakdown/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>							
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+					      	</button>
 						</div>
 
-						<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav nav-justified">
+						<div class="collapse navbar-collapse" id="collapse-1">
+							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;" id="pedidos">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;padding-top: 28px;" id="pedidos">
 										Ver pedidos
 						      			<span class="caret"></span>
 						      		</a>
@@ -169,11 +174,11 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 						      			<li><?php echo anchor('breakdown/todos','Todos');?></li>
 						      		</ul>
 								</li>						
-								<li class="active" style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:80px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:80px;padding-top: 28px;"'); ?></li>
 								
 
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;" id="admin">
+									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;padding-top: 28px;" id="admin">
 										Clientes
 						      			<span class="caret"></span>
 						      		</a>
@@ -190,23 +195,23 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 								</li>
 								
 
-								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:80px;"'); ?></li>
-								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:80px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('seeds/index','Semillas','id="sids" style="height:80px;padding-top: 28px;"'); ?></li>
+								<li style="border-left: 1px solid #000;"><?php echo anchor('publicity/index','Publicidad','id="pub" style="height:80px;padding-top: 28px;"'); ?></li>
 								<li class="dropdown" style="border-left: 1px solid #000;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
-										<?php
-										 	echo $user[0]->farm_name; ?>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;padding-top: 28px;" id="pedidos">
+										<?php echo $user[0]->farm_name; ?>
 						      			<span class="caret"></span>
 						      		</a>
-									<ul class="dropdown-menu">
-										<li>
-						      				<?php echo anchor('principal/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?>
-						      			</li>
+									<ul class="dropdown-menu" role="menu">
+										<li><?php echo anchor('principal/logout', 'Salir <span class="glyphicon glyphicon-off pull-right"></span>'); ?></li>
 									</ul>
 								</li>
 							</ul>							
 						</div><!--/.nav-collapse -->
-						<script>
+						
+					</div>
+				</nav>
+				<script>
 							var url = window.location.href;
 							if (/(seeds)/i.test(url)) {
 								document.getElementById("sids").style.color = "White";
@@ -225,6 +230,4 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 								document.getElementById("pedidos").style.backgroundColor = "#6BBD44";
 							} 
 						</script>
-					</div>
-				</nav>
 				<div id="content">

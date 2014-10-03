@@ -6,7 +6,7 @@
 						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Colaboradores</h3>
 					</div>
 					<div class="panel-body">
-						<div class="col-md-6 col-md cat">
+						<div class="col-md-12">
 							<h1>¡Hola <?php echo $user[0]->farm_name; ?>!<h1>
 																	
 						<?php 
@@ -16,6 +16,7 @@
 						
 						foreach($messages as $key){
 								$cont++;			
+
 							echo "<div id='cliente".$cont."'>
 							<div class='contenido' >
 							
@@ -33,6 +34,7 @@
 							<div class='row'>
 								<button type='button' class='glyphicon glyphicon-arrow-right'  Onclick='cambio(".$cont.",".$lon.")'></button></div>
 							</div>";
+
 							echo "<style> div#cliente".$cont."{display:none;}</style>";
 						}
 						if($this->uri->segment(3)){

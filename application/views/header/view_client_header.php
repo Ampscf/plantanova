@@ -33,14 +33,21 @@
 		<div class="container">	
 			<div class="navbar-header">
 				<?php $img='<img src="'. base_url() . 'img/LOGOS_plantanova.png" style="height:70px;">'; echo anchor('client/index', $img, 'class="navbar-brand" style="height:auto !important"'); ?>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
 			</div>
 			<div class="navbar-collapse collapse">
-				<ul class="nav nav-justified">
-					<li style="border-left: 1px solid #000;"><?php echo anchor('client/index','Ver Pedidos','id="pedi" style="height:80px;"'); ?></li>
-					<li style="border-left: 1px solid #000;"><?php echo anchor('client/inform','Alertas','id="info" style="height:80px;"'); ?></li>
-					<li style="border-left: 1px solid #000;"><?php echo anchor('client/colaboradores','Colaboradores','id="col" style="height:80px;"'); ?></li>
+				<div style="padding-right: 40px;">
+				<ul class="nav navbar-nav navbar-right">
+					<li style="border-left: 1px solid #000;text-align:center;"><?php echo anchor('client/index','Ver Pedidos','id="pedi" style="height:80px;padding-top: 28px;"'); ?></li>
+					<li style="border-left: 1px solid #000;text-align:center;"><?php echo anchor('client/inform','Alertas','id="info" style="height:80px;padding-top: 28px;"'); ?></li>
+					<li style="border-left: 1px solid #000;text-align:center;"><?php echo anchor('client/colaboradores','Colaboradores','id="col" style="height:80px;padding-top: 28px;"'); ?></li>
 					<li class="dropdown" id="cuenta" style="border-left: 1px solid #000;">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height:80px;padding-top: 28px;text-align:center;">
 							<?php $user = $this->model_user->get_client($this->session->userdata('id'));
 							echo $user[0]->farm_name; ?>
 						    <span class="caret"></span>
@@ -55,7 +62,8 @@
 						    </li>
 						</ul>	
 					</li>	
-				</ul>	
+				</ul>
+				</div>	
 			</div>
 			
 			<script>

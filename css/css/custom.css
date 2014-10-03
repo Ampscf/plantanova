@@ -340,9 +340,7 @@ div#text3 {
 .pubcol1,.aligncenter{
 	text-align: center;
 }
-.pubcol1 a {
-	margin:1%;
-}
+
 .center-block {
 	float: center!important;
 }
@@ -404,6 +402,7 @@ textarea {
   }
 .nameclient{
 	left: 0px!important;
-}
+	}
   
+
 }
