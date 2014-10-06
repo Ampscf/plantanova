@@ -1399,4 +1399,6 @@ class Admin extends CI_Controller {
         }
 		redirect("admin/client_inform",$refresh);
 	}
+
+	
 }
