@@ -28,12 +28,7 @@ class Reports extends CI_Controller {
 							 ->setCategory("");
 		$objPHPExcel->setActiveSheetIndex(0);
 		$objPHPExcel->getActiveSheet()->setTitle('PROCESO');
-		$objPHPExcel->createSheet();
-		$objPHPExcel->setActiveSheetIndex(1);
-		$objPHPExcel->getActiveSheet()->setTitle('CLIENTES');
-		$objPHPExcel->createSheet();
-		$objPHPExcel->setActiveSheetIndex(2);
-		$objPHPExcel->getActiveSheet()->setTitle('EMBARQUE');
+
 
 		$objPHPExcel->setActiveSheetIndex(0);
 		$orders= $this->model_report->get_orders();
