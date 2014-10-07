@@ -26,14 +26,17 @@ class Reports extends CI_Controller {
 							 ->setDescription("")
 							 ->setKeywords("office 2007")
 							 ->setCategory("");
+	
 		$objPHPExcel->setActiveSheetIndex(0);
 		$objPHPExcel->getActiveSheet()->setTitle('PROCESO');
 		$objPHPExcel->createSheet();
 		$objPHPExcel->setActiveSheetIndex(1);
-		$objPHPExcel->getActiveSheet()->setTitle('EMBARQUE');
-		$objPHPExcel->createSheet();
+
+		$objPHPExcel->getActiveSheet()->setTitle('EMBARQUES');
+			$objPHPExcel->createSheet();
 		$objPHPExcel->setActiveSheetIndex(2);
 		$objPHPExcel->getActiveSheet()->setTitle('CLIENTES');
+		
 
 		$objPHPExcel->setActiveSheetIndex(0);
 		$orders= $this->model_report->get_orders();
@@ -115,11 +118,17 @@ class Reports extends CI_Controller {
 			}
 		}
 		
-
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+	  
 
 		
 		$objPHPExcel->setActiveSheetIndex(1);
-
 		$embarque=$this->model_report->get_embark();
 		foreach ($embarque as $key) {
 			$cont=1;
@@ -146,21 +155,11 @@ class Reports extends CI_Controller {
 		}
 
 		/*$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(100);*/
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-
-		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
-	    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
-	    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
-	    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
-	    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-	    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
-	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
-	  
+	
+		
        	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-
-		$fichero="./reportes/reporte_plantanova.xlsx";
+       	$fichero="./reportes/reporte_plantanova.xlsx";
 		$objWriter->save($fichero);
-
 		$data = file_get_contents("./reportes/reporte_plantanova.xlsx"); // Read the file's contents
 		$name = 'reporte_plantanova.xlsx';
 		force_download($name, $data);
