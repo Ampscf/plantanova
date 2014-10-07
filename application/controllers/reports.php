@@ -26,7 +26,15 @@ class Reports extends CI_Controller {
 							 ->setKeywords("office 2007")
 							 ->setCategory("");
 		$objPHPExcel->setActiveSheetIndex(0);
-		$objPHPExcel->getActiveSheet()->setTitle('SEMILLAS');
+		$objPHPExcel->getActiveSheet()->setTitle('PROCESO');
+		$objPHPExcel->createSheet();
+		$objPHPExcel->setActiveSheetIndex(1);
+		$objPHPExcel->getActiveSheet()->setTitle('CLIENTES');
+		$objPHPExcel->createSheet();
+		$objPHPExcel->setActiveSheetIndex(2);
+		$objPHPExcel->getActiveSheet()->setTitle('EMBARQUE');
+
+		$objPHPExcel->setActiveSheetIndex(0);
 		$orders= $this->model_report->get_orders();
 		$cont=1;
 		foreach($orders as $key) {
@@ -42,6 +50,8 @@ class Reports extends CI_Controller {
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,"Transplante"); 
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,"Tutoreo"); 
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,"Alcance"); 
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'F28A8C')));
 				$cont++;
 				foreach($inforders as $key2){
 					$type=$this->model_report->get_type($key2->seed_name);
@@ -57,25 +67,47 @@ class Reports extends CI_Controller {
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,$key2->transplant_total); 
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,$key2->tutoring_total); 
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,$key2->scope); 
+							$celdas="A".$cont.":K".$cont;
+							$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'C0C0C0')));
+				
 							$cont++;
 						
 								
 					}
 
 				}
-				$cont++;
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL SEMBRADO");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->sowing);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->sowing);
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'DCDCDC')));
+				$cont++;
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL GERMINADO");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->germination);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->germination);
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'DCDCDC')));
+				$cont++;
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL INJERTADO");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->graft);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->graft);
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'DCDCDC')));
+				$cont++;
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL PINCHADO ");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->punch);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->punch);
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'DCDCDC')));
+				$cont++;
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL TRANSPLANTADO ");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->transplant);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->transplant);
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'DCDCDC')));
+				$cont++;
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL TUTOREADO ");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->tutoring);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->tutoring);
+				$celdas="A".$cont.":K".$cont;
+				$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'DCDCDC')));
+				$cont++;
+				
+				
 				$cont++;
 			
 				
@@ -85,8 +117,15 @@ class Reports extends CI_Controller {
 					
 		}
 		
-		/*$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(100);*/
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+	  
+       	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 		$fichero="./reportes/reporte_plantanova.xlsx";
 		$objWriter->save($fichero);
 		$template['header'] = 'header/view_admin_header.php';
