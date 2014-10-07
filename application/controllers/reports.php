@@ -8,6 +8,7 @@ class Reports extends CI_Controller {
 		$this->load->library('Excel');
 		$this->load->model('model_user','',TRUE);
 		$this->load->model('model_report','',TRUE);
+		$this->load->helper('download');
 
 	}
 	public function report()
@@ -37,6 +38,7 @@ class Reports extends CI_Controller {
 		$objPHPExcel->setActiveSheetIndex(0);
 		$orders= $this->model_report->get_orders();
 		$cont=1;
+
 		foreach($orders as $key) {
 			$inforders=$this->model_report->get_inforders($key->id_order);
 			if($inforders){
@@ -71,11 +73,12 @@ class Reports extends CI_Controller {
 							$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'C0C0C0')));
 				
 							$cont++;
-						
-								
 					}
-
 				}
+
+				
+				$cont++;
+
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL SEMBRADO");
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->sowing);
 				$celdas="A".$cont.":K".$cont;
@@ -109,12 +112,7 @@ class Reports extends CI_Controller {
 				
 				
 				$cont++;
-			
-				
-			
-				
 			}
-					
 		}
 		
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
@@ -128,10 +126,21 @@ class Reports extends CI_Controller {
        	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 		$fichero="./reportes/reporte_plantanova.xlsx";
 		$objWriter->save($fichero);
+
+		$data = file_get_contents("./reportes/reporte_plantanova.xlsx"); // Read the file's contents
+		$name = 'reporte_plantanova.xlsx';
+		force_download($name, $data);
+	}
+
+	public function report_body(){
+		
+
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_report.php';
-		$template['footer'] = "footer/view_footer.php";		
+		$template['footer'] = "footer/view_footer.php";	
 		$this->load->view('main',$template);
+
+
 	}
 
 

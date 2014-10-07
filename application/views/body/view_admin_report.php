@@ -9,11 +9,8 @@
 				
 					<div class="panel-body" style="padding: 10px 10px 10px 10px;">
 
-					<?php echo "archivo generado exitosamente";?>
-					<br><div><a href="http://127.0.0.1/plantanova/reportes/reporte_plantanova.xlsx">Descarga tu reporte</a></div>
-
-
-
+						<?php echo "archivo generado exitosamente";?>
+						<br><div><a href="./report" >Descarga tu reporte</a></div>
 
 					</div><!-- End panel-body -->
 
