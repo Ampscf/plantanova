@@ -21,7 +21,7 @@
 				echo "<td>". $key->variety."/".$key->rootstock."</td>";
 				$sum_breakdown=$this->model_order->get_total_punch2($key->id_breakdown);
 				echo "<td>". $sum_breakdown[0]->volume ."</td>";
-				$scope=($sum_breakdown[0]->volume/$key->volume) - 1;
+				$scope=(($sum_breakdown[0]->volume/$key->volume) - 1) * 100;
 				if($scope <= 0){
 					if($scope > -1){
 						echo "<td style='color:red'>0%</td>";
