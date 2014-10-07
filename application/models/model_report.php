@@ -4,10 +4,11 @@ Class model_report extends CI_Model	{
 
 
 
-function get_users(){
+function get_inforders($id){
 
-$this -> db -> select('id_user,first_name');
-		$this -> db -> from('t_user');
+$this -> db -> select('id_total_seed,seed_name,order_volume,viability_total,graft_total,punch_total,transplant_total,tutoring_total,scope');
+		$this -> db -> from('t_total_seed');
+		$this -> db -> where('id_order', $id);
 		$query = $this -> db -> get();
 		if($query->num_rows() > 0) 
 		{
@@ -19,10 +20,9 @@ $this -> db -> select('id_user,first_name');
 		}
 }
 
-function get_orders($id){
-	$this -> db -> select('id_order,order_date_submit');
+function get_orders(){
+	$this -> db -> select('id_order,farmer,order_date_submit');
 		$this -> db -> from('t_order');
-		$this -> db -> where ('id_client', $id);
 		$query = $this -> db -> get();
 		if($query->num_rows() > 0) 
 		{
@@ -34,11 +34,11 @@ function get_orders($id){
 		}
 	
 }
-
-function get_breakdown($id){
-	$this -> db -> select('id_breakdown,variety,rootstock,volume');
-		$this -> db -> from('t_breakdown');
-		$this -> db -> where ('id_order', $id);
+function get_type($name){
+	$this -> db -> select('type');
+		$this -> db -> from('t_seeds');
+		$this -> db -> where('seed_name', $name);
+		$this -> db -> limit(1);
 		$query = $this -> db -> get();
 		if($query->num_rows() > 0) 
 		{
@@ -48,6 +48,23 @@ function get_breakdown($id){
 		{
 			return null;
 		}
+
+
+}
+function get_totales($id_order){
+	$this -> db -> select('sowing,germination,graft,punch,transplant,tutoring');
+		$this -> db -> from('t_total');
+		$this -> db -> where('id_order', $id_order);
+		$query = $this -> db -> get();
+		if($query->num_rows() > 0) 
+		{
+			return $query->result();
+		} 
+		else 
+		{
+			return null;
+		}
+
 
 }
 
