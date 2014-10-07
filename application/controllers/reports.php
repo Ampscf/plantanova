@@ -26,45 +26,66 @@ class Reports extends CI_Controller {
 							 ->setKeywords("office 2007")
 							 ->setCategory("");
 		$objPHPExcel->setActiveSheetIndex(0);
-		$objPHPExcel->getActiveSheet()->setTitle('plantanova');
-		$users= $this->model_report->get_users();
+		$objPHPExcel->getActiveSheet()->setTitle('SEMILLAS');
+		$orders= $this->model_report->get_orders();
 		$cont=1;
-		foreach($users as $key) {
-		$orders=$this->model_report->get_orders($key->id_user);
-		if($orders){
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"Cliente: ". $key->first_name); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Siembra");
-			$cont++;
-			foreach($orders as $key2) {
-				$breakdowns=$this->model_report->get_breakdown($key2->id_order);
-				if($breakdowns){
-					foreach($breakdowns as $key3){
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,"PEDIDO");  
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,"FECHA");  
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Cantidad"); 
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"Fecha"); 
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"Alcance");  
-						$cont++;
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"VARIEDAD");
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$key3->variety);
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,$key3->volume);  
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,$key2->order_date_submit);
-						$cont++;
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"PORTAINJERTO");
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$key3->rootstock);  
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,$key3->volume);  
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,$key2->order_date_submit);
-						$cont++;
+		foreach($orders as $key) {
+			$inforders=$this->model_report->get_inforders($key->id_order);
+			if($inforders){
+				$totales=$this->model_report->get_totales($key->id_order);
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$key->farmer); 
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,"Pedido"); 
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,"Fecha"); 
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Viabilidad");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"Injerto");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"Pinchado");   
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,"Transplante"); 
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,"Tutoreo"); 
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,"Alcance"); 
+				$cont++;
+				foreach($inforders as $key2){
+					$type=$this->model_report->get_type($key2->seed_name);
+					if($type){
+						
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$type[0]->type); 
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$key2->seed_name);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,$key2->order_volume);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,$key->order_date_submit);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,$key2->viability_total);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,$key2->graft_total);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,$key2->punch_total);   
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,$key2->transplant_total); 
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,$key2->tutoring_total); 
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,$key2->scope); 
+							$cont++;
+						
+								
 					}
 
 				}
+				$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL SEMBRADO");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->sowing);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL GERMINADO");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->germination);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL INJERTADO");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->graft);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL PINCHADO ");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->punch);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL TRANSPLANTADO ");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->transplant);$cont++;
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL TUTOREADO ");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->tutoring);$cont++;
+				$cont++;
+			
+				
+			
+				
 			}
-		
+					
 		}
-	
-	
-	}
-
+		
+		/*$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(100);*/
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 		$fichero="./reportes/reporte_plantanova.xlsx";
 		$objWriter->save($fichero);
