@@ -126,6 +126,7 @@ class Reports extends CI_Controller {
 	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 	  
 
+
 		/*Hoja clientes*/
 		$objPHPExcel->setActiveSheetIndex(3);
 		$cont=1;
@@ -144,7 +145,6 @@ class Reports extends CI_Controller {
 		$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'6BBD44')));
 		$cont++;
 		
-
 		foreach ($users as $key) {
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$key->first_name);
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$key->last_name);
@@ -177,6 +177,7 @@ class Reports extends CI_Controller {
 	    $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(30);
 	    $objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(30);
 		
+
 		/*Hoja desglose*/
 		$objPHPExcel->setActiveSheetIndex(0);
 		$cont=1;
@@ -193,7 +194,88 @@ class Reports extends CI_Controller {
 		}
 		
 		}
-		
+
+		 /*Hoja embarque*/
+		$objPHPExcel->setActiveSheetIndex(2);
+		$cont=1;
+		$embarque=$this->model_report->get_embark();
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"Orden"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,"Embarque"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,"Fecha de entrega"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,"Volumen"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Transporte");
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"Fletera");
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"Chofer");   
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,"Cel chofer"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,"Fecha de arrivo"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,"Destino"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10,$cont,"Estado"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11,$cont,"Ciudad"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12,$cont,"Contacto de entrega"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13,$cont,"Chep");
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14,$cont,"Ensenada");
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15,$cont,"Tipo de ensenada");   
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16,$cont,"No aplica"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(17,$cont,"Caja de transporte"); 
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(18,$cont,"Racks"); 
+		$celdas="A".$cont.":S".$cont;
+		$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'6BBD44')));
+		$objPHPExcel->getActiveSheet()->getStyle($celdas)->getBorders()->getAllBorders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+		foreach ($embarque as $key) {
+			
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont+1,$key->id_order);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont+1,$key->id_embark);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont+1,date("d-m-Y",strtotime($key->date_delivery)));
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont+1,$key->volume);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont+1,$key->transport);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont+1,$key->freight);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont+1,$key->driver);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont+1,$key->driver_cel);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont+1,date("d-m-Y",strtotime($key->date_arrival)));
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont+1,$key->destiny);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10,$cont+1,$key->id_state);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11,$cont+1,$key->id_town);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12,$cont+1,$key->arrival_contact);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13,$cont+1,$key->chep);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14,$cont+1,$key->ensenada);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15,$cont+1,$key->tipo_ensenada);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16,$cont+1,$key->no_aplica);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(17,$cont+1,$key->transport_box);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(18,$cont+1,$key->racks); 
+			$celdas="A".($cont+1).":S".($cont+1);
+			$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'e5e5e5')));
+			$objPHPExcel->getActiveSheet()->getStyle($celdas)->getBorders()->getAllBorders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+			$cont++;
+
+		}
+
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('L')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('M')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('N')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('O')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('P')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('Q')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('R')->setWidth(20);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('S')->setWidth(20);
+
+
+			
+		$objPHPExcel->setActiveSheetIndex(0);
        	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
        	$fichero="./reportes/reporte_plantanova.xlsx";
 		$objWriter->save($fichero);

@@ -100,5 +100,17 @@ Class model_report extends CI_Model	{
 
 	}
 
+	function get_germination($id){
+		$this->db->order_by('id_germination');
+		$this -> db -> where('id_breakdown', $id);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows > 0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
+
 }
 ?>
