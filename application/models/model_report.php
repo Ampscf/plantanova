@@ -77,5 +77,40 @@ Class model_report extends CI_Model	{
 		}
 	}
 
+	function get_infouser(){
+		$this->db->order_by('first_name');
+		$query=$this->db->get('t_user');
+		if($query->num_rows > 0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+
+	}
+	function get_breakdown($id){
+		$this->db->order_by('id_breakdown');
+		$this -> db -> where('id_order', $id);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows > 0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
+
+	function get_germination($id){
+		$this->db->order_by('id_germination');
+		$this -> db -> where('id_breakdown', $id);
+		$query=$this->db->get('t_breakdown');
+		if($query->num_rows > 0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
+
 }
 ?>
