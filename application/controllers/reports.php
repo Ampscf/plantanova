@@ -35,7 +35,7 @@ class Reports extends CI_Controller {
 			$objPHPExcel->createSheet();
 		$objPHPExcel->setActiveSheetIndex(2);
 		$objPHPExcel->getActiveSheet()->setTitle('CLIENTES');
-		
+
 		$objPHPExcel->setActiveSheetIndex(0);
 		$orders= $this->model_report->get_orders();
 		$cont=1;
@@ -78,8 +78,6 @@ class Reports extends CI_Controller {
 				}
 
 				
-				$cont++;
-
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"TOTAL SEMBRADO");
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$totales[0]->sowing);
 				$celdas="A".$cont.":K".$cont;
@@ -125,34 +123,11 @@ class Reports extends CI_Controller {
 	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 	  
 
+		/*Hoja clientes*/
+		$objPHPExcel->setActiveSheetIndex(2);
 		
-		$objPHPExcel->setActiveSheetIndex(1);
-		$embarque=$this->model_report->get_embark();
-		foreach ($embarque as $key) {
-			$cont=1;
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"Embarque"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,"Fecha de entrega"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,"Volumen"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,"Transporte");
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Fletera");
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"Chofer");   
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"Cel chofer"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,"Fecha de arrivo"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,"Destino"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,"Estado"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10,$cont,"Ciudad"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11,$cont,"Contacto de entrega"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12,$cont,"Chep");
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13,$cont,"Ensenada");
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14,$cont,"Tipo de ensenada");   
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15,$cont,"No aplica"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16,$cont,"Caja de transporte"); 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(17,$cont,"Racks"); 
-			$cont++;
-			
-		}
 
-		/*$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(100);*/
+		
 	
 		
        	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
