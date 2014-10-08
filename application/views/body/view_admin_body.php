@@ -1,6 +1,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
+				<a href="<?php echo base_url().'index.php/reports/report'?>" class="btn btn-success" data-toggle="modal">Descargar Reporte</a>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
 
 				<div class="panel panel-default">
 
