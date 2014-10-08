@@ -55,7 +55,7 @@
 								<div class='modal-body'>
 									<?php }?>
 									<div class='col-xs-12'>
-									<img src="<?php echo base_url()?>img/Resumen-de-proceso.png" style="margin-left: -35px;width:100%">
+									<img src="<?php echo base_url()?>img/informe.png" style="margin-left: -35px;width:100%">
 									</div>	
 									<div class='col-xs-12'>
 									<h4><b><?php echo $value->client_name;?></b></h4>
