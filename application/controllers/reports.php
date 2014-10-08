@@ -197,16 +197,153 @@ class Reports extends CI_Controller {
 		$orders=$this->model_report->get_orders();
 		foreach($orders as $key){
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$key->farmer);
+			$celdas="A".$cont.":Z".$cont;
+			$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'6BBD44')));
 			$breakdown=$this->model_report->get_breakdown($key->id_order);
 			$cont++;
+
 		foreach ($breakdown as $key2) {
-			$combinacion="Combinacion :".$key2->variety."/".$key2->rootstock;
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$combinacion);
-			
+			$breakdown="Combinacion :".$key2->variety."/".$key2->rootstock;
+			$process=$this->model_report->get_process($key2->id_breakdown);
+			if($process){
+				//para injerto
+				foreach ($process as $key3) {
+					if($key3->id_process_type==2){
+						$injerto=$key3->volume;
+						$scopein=$key3->scope;
+						$datein=date("d-m-Y",strtotime($key3->process_date));
+					}
+					if($key3->id_process_type==3){
+						$pinchado=$key3->volume;
+						$scopepin=$key3->scope;
+						$datepin=date("d-m-Y",strtotime($key3->process_date));
+					}
+					if($key3->id_process_type==4){
+						$transplantado=$key3->volume;
+						$scopetrans=$key3->scope;
+						$datetrans=date("d-m-Y",strtotime($key3->process_date));
+					}
+					if($key3->id_process_type==5){
+						$tutoreo=$key3->volume;
+						$scopetu=$key3->scope;
+						$datetu=date("d-m-Y",strtotime($key3->process_date));
+					}
+				}
+			}else{
+					$injerto=0;
+					$scopein=0;
+					$datein='dd/mm/YY';
+
+					$pinchado=0;
+					$scopepin=0;
+					$datepin='dd/mm/YY';
+
+					$transplantado=0;
+					$scopetrans=0;
+					$datetrans='dd/mm/YY';
+
+					$tutoreo=0;
+					$scopetu=0;
+					$datetu='dd/mm/YY';
+
+			}
+
+			//validamos si se definen los procesos
+			if(!isset($injerto)){$injerto=0;}
+			if(!isset($scopein)){$scopein=0;}
+			if(!isset($datein)){$datein='dd/mm/YY';}
+
+			if(!isset($pinchado)){$pinchado=0;}
+			if(!isset($scopepin)){$scopepin=0;}
+			if(!isset($datepin)){$datepin='dd/mm/YY';}
+
+			if(!isset($transplantado)){$transplantado=0;}
+			if(!isset($scopetrans)){$scopetrans=0;}
+			if(!isset($datetrans)){$datetrans='dd/mm/YY';}
+
+			if(!isset($tutoreo)){$tutoreo=0;}
+			if(!isset($scopetu)){$scopetu=0;}
+			if(!isset($datetu)){$datetu='dd/mm/YY';}
+
+
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$breakdown);
+			$celdas="A".$cont.":Z".$cont;
+			$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'C0D3DF')));
 			$cont++;
+			/*etiqueteas*/
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,"SEMILLA");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,"INJERTADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,"ALCANCE INJERTADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,"FECHA DE INJERTADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"PINCHADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"ALCANCE PINCHADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"FECHA DE  PINCHADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,"TRANSPLANTADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,"ALCANCE TRANSPLANTADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,"FECHA DE  TRANSPLANTADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10,$cont,"TUTOREADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11,$cont,"ALCANCE TUTOREADO");
+					$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12,$cont,"FECHA DE TUTOREADO");
+					$celdas="A".$cont.":Z".$cont;
+					$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'797474')));
+					$cont++;
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$key2->variety);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$injerto);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,$scopein."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,$datein);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,$pinchado);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,$scopepin."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,$datepin);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,$transplantado);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,$scopetrans."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,$datetrans);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10,$cont,$tutoreo);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11,$cont,$scopetu."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12,$cont,$datetu);
+			$celdas="A".$cont.":Z".$cont;
+			$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'C0C0C0')));
+			$cont++;
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$key2->rootstock);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$injerto);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,$scopein."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,$datein);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,$pinchado);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,$scopepin."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,$datepin);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,$transplantado);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,$scopetrans."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,$datetrans);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10,$cont,$tutoreo);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11,$cont,$scopetu."%");
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12,$cont,$datetu);
+			$celdas="A".$cont.":Z".$cont;
+			$objPHPExcel->getActiveSheet()->getStyle($celdas)->getFill()->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,'startcolor' => array('rgb' =>'C0C0C0')));
+			$cont++;
+
 		}
-		
+		$cont++;
 		}
+
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(30);
+	    $objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(30);
+
+
+
+
+
+
+
+
+
 
 		 /*Hoja embarque*/
 		$objPHPExcel->setActiveSheetIndex(2);
