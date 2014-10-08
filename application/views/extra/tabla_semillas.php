@@ -12,7 +12,7 @@
 <thead>
 	<tbody>
 		<?php 
-		if(isset($seeds))
+		if(is_array($seeds))
 		{
 			foreach ($seeds as $key) 
 			{

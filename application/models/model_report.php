@@ -112,5 +112,41 @@ Class model_report extends CI_Model	{
 
 	}
 
+	function get_sowing($id_order,$seed_name){
+		$this->db->where('id_order',$id_order);
+		$this->db->where('seed',$seed_name);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_sowing');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
+		
+	function get_germination2($id_order,$seed_name){
+		$this->db->where('id_order',$id_order);
+		$this->db->where('seed_name',$seed_name);
+		$this->db->select_sum('volume');
+		$query=$this->db->get('t_germination');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function get_farmer($id_order){
+		$this->db->where('id_order',$id_order);
+		$this->db->select('farmer');
+		$query=$this->db->get('t_order');
+		if ($query->num_rows()>0) {
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
 }
 ?>

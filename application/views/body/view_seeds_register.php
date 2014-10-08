@@ -254,7 +254,12 @@
 						echo form_open('seeds/register_status/'.$this->uri->segment(3),$attributes); 
 						?>
 						<div class="col-md-3 col-md-offset-4">
+							<?php if(is_array($seeds))
+									{?>
 							<button type="submit" class="btn btn-success btn-block" id="buttos" style="float: right">Registrar</button>
+							<?php }else{?>
+							<button type="submit" class="btn btn-success btn-block" id="buttos" style="float: right;" disabled>Registrar</button>
+							<?php }?>
 						</div>
 						</form>
 					</div><!-- End row -->
