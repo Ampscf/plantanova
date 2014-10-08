@@ -50,9 +50,9 @@ class Reports extends CI_Controller {
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,$cont,$key->farmer); 
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,"Pedido"); 
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,"Fecha"); 
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Viabilidad");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"Siembra");
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"Germinacion");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,"Siembra");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,"Germinacion");
+				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,"Viabilidad");
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,"Injerto");
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,"Pinchado");   
 				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,"Transplante"); 
@@ -72,9 +72,9 @@ class Reports extends CI_Controller {
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,$cont,$key2->seed_name);
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2,$cont,$key2->order_volume);
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3,$cont,$key->order_date_submit);
-							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,$key2->viability_total);
-							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,$siembra[0]->volume);
-							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,$germinacion[0]->volume);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4,$cont,$siembra[0]->volume);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5,$cont,$germinacion[0]->volume);
+							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6,$cont,$key2->viability_total);
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7,$cont,$key2->graft_total);
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8,$cont,$key2->punch_total);   
 							$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9,$cont,$key2->transplant_total); 

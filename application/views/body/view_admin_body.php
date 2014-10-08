@@ -1,7 +1,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
-				<a href="<?php echo base_url().'index.php/reports/report'?>" class="btn btn-success" data-toggle="modal">Descargar Reporte</a>
+				<a href="<?php echo base_url().'index.php/reports/report'?>" id="download" class="btn btn-success" data-toggle="modal">Descargar Reporte</a>
+			<script>
+				$('#download').click(function() {
+					var btn = $(this)
+				    btn.button('loading')
+				    setTimeout(function () {
+				        btn.button('reset')
+				    }, 10000)
+				});
+			</script>
 			</div>
 			<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
 
