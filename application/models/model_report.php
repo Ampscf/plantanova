@@ -161,10 +161,16 @@ Class model_report extends CI_Model	{
 
 			return false;
 		}
+	}
 
-
-
-
+	function get_seeds(){
+		$this->db->order_by('id_order');
+		$query=$this->db->get('t_seeds');
+		if($query->num_rows > 0){
+			return $query->result();
+		}else{
+			return false;
+		}
 	}
 
 }

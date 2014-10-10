@@ -40,8 +40,6 @@ class Client extends CI_Controller {
 				$template['body'] = 'body/view_client_body.php';
 				$template['footer'] = "footer/view_footer.php";
 			}
-
-			
 		}
 
 		$this->load->view('main',$template);
