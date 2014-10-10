@@ -369,42 +369,6 @@ class Breakdown extends CI_Controller {
 		$this->load->view("main",$template);
 	}
 
-	public function insert_germination()
-	{
-		if($this->session->userdata('id_rol')!=1){
-			redirect('client/index');
-		}
-		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
-		$total_germ=$total_germination->germination;
-		
-		$datos['id_order']=$this->uri->segment(3);
-		$id_sowing=$this->input->post('breakdown_germination');
-		$fecha=$this->input->post('datepicker1');
-		$datos['germ_date']=date("Y-m-d H:i:s", strtotime($fecha));
-		$datos['germ_percentage']=$this->input->post('percentage');
-		$datos['viability']=$this->input->post('viability');
-		$datos['comment']=$this->input->post('comment');
-		$sowing=$this->model_breakdown->get_sowing_id_sowing($id_sowing);
-		$datos['id_sowing']=$sowing[0]->id_sowing;
-		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
-		$datos['seed_name']=$sowing[0]->seed;
-		
-		$order_volume=$this->model_order->get_order_volume($this->uri->segment(3),$datos['seed_name']);
-		$total_vial=$this->model_order->get_vial_total($this->uri->segment(3),$datos['seed_name']);
-		$new_vol=$total_vial->viability_total+$datos['volume'];
-		$scope=($new_vol/$order_volume->order_volume-1)*100;
-		$this->model_order->update_total_vial($this->uri->segment(3),$new_vol,$datos['seed_name'],$scope);
-		
-		$this->model_breakdown->add_germination($datos);
-
-		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
-		
-		$total_vol=$total_germ+$datos['volume'];
-		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
-		
-		redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
-	}
-
 	public function insert_graft(){
 		if($this->session->userdata('id_rol')!=1){
 			redirect('client/index');
@@ -427,8 +391,20 @@ class Breakdown extends CI_Controller {
 		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
 		$this->model_breakdown->update_graft($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
 		
+
+		$sum_breakdown=$this->model_order->get_total_graft2($datos['id_breakdown']);
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		if(is_array($sum_breakdown)){
+			$datos['scope']=((($sum_breakdown[0]->volume+$datos['volume'])/$total_breackdown[0]->volume) - 1) * 100;
+		}else{
+			$datos['scope']=(($datos['volume']/$total_breackdown[0]->volume) - 1) * 100;
+		}
+
 		$this->model_breakdown->add_graft($datos);
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
+		
+		$this->model_breakdown->update_scope2($datos['scope'],$datos['id_breakdown'],2);
+
 		redirect("breakdown/process/".$this->uri->segment(3)."#injerto", "refresh");
 	}
 	
@@ -451,9 +427,19 @@ class Breakdown extends CI_Controller {
 		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
 		$this->model_breakdown->update_punch($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
 		
+		$sum_breakdown=$this->model_order->get_total_punch2($datos['id_breakdown']);
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		if(is_array($sum_breakdown)){
+			$datos['scope']=((($sum_breakdown[0]->volume+$datos['volume'])/$total_breackdown[0]->volume) - 1) * 100;
+		}else{
+			$datos['scope']=(($datos['volume']/$total_breackdown[0]->volume) - 1) * 100;
+		}
 		
 		$this->model_breakdown->add_punch($datos);
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
+
+		$this->model_breakdown->update_scope2($datos['scope'],$datos['id_breakdown'],3);
+
 		redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
 	}
 
@@ -476,9 +462,19 @@ class Breakdown extends CI_Controller {
 		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
 		$this->model_breakdown->update_transplant($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
 		
-		
+		$sum_breakdown=$this->model_order->get_total_transplant2($datos['id_breakdown']);
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		if(is_array($sum_breakdown)){
+			$datos['scope']=((($sum_breakdown[0]->volume+$datos['volume'])/$total_breackdown[0]->volume) - 1) * 100;
+		}else{
+			$datos['scope']=(($datos['volume']/$total_breackdown[0]->volume) - 1) * 100;
+		}
+
 		$this->model_breakdown->add_transplant($datos);
-		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);	
+		$this->model_order->update_total_transplant($this->uri->segment(3), $total_vol);
+
+		$this->model_breakdown->update_scope2($datos['scope'],$datos['id_breakdown'],4);
+
 		redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");	
 	}
 
@@ -501,9 +497,19 @@ class Breakdown extends CI_Controller {
 		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
 		$this->model_breakdown->update_tutoring($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume);
 		
-		
+		$sum_breakdown=$this->model_order->get_total_tutoring2($datos['id_breakdown']);
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		if(is_array($sum_breakdown)){
+			$datos['scope']=((($sum_breakdown[0]->volume+$datos['volume'])/$total_breackdown[0]->volume) - 1) * 100;
+		}else{
+			$datos['scope']=(($datos['volume']/$total_breackdown[0]->volume) - 1) * 100;
+		}
+
 		$this->model_breakdown->add_tutoring($datos);
 		$this->model_order->update_total_tutoring($this->uri->segment(3), $total_vol);	
+
+		$this->model_breakdown->update_scope2($datos['scope'],$datos['id_breakdown'],5);
+
 		redirect("breakdown/process/".$this->uri->segment(3)."#tutoreo", "refresh");	
 	}
 	
@@ -580,6 +586,7 @@ class Breakdown extends CI_Controller {
             }
         }
 
+
         $volume=$this->model_breakdown->get_volume_process($llave); 
     	$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
 		$total_graf=$total_graft->graft;
@@ -587,7 +594,7 @@ class Breakdown extends CI_Controller {
 		
 		$this->model_order->update_total_graft($this->uri->segment(3), $total_vol);
 
-		//borrar procesos si es que tiene mas
+		//borrar procesos si es que tiene mas anidados
 		$process=$this->model_breakdown->get_process_id_process($llave);
 		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
 
@@ -610,6 +617,9 @@ class Breakdown extends CI_Controller {
 
 		$this->model_breakdown->update_graft2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
 		
+		$volume_total=$this->model_breakdown->get_total($this->uri->segment(3));
+		$scope=(($volume_total[0]->graft/$breakdown[0]->volume) - 1) * 100;
+		$this->model_breakdown->update_scope2($scope,$process[0]->id_breakdown,2);
 
        	$this->model_breakdown-> delete_process($llave);
        	redirect("breakdown/process/".$this->uri->segment(3)."#injerto", "refresh");
@@ -648,6 +658,9 @@ class Breakdown extends CI_Controller {
 
 		$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
 
+		$volume_total=$this->model_breakdown->get_total($this->uri->segment(3));
+		$scope=(($volume_total[0]->punch/$breakdown[0]->volume) - 1) * 100;
+		$this->model_breakdown->update_scope2($scope,$process[0]->id_breakdown,3);
 
 		$this->model_breakdown-> delete_process($llave);
 		redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
@@ -682,6 +695,10 @@ class Breakdown extends CI_Controller {
 		$this->model_order->update_total_tutoring2($this->uri->segment(3),$volume_tutoring->tutoring);
 		$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_tutoring->tutoring);
 
+		$volume_total=$this->model_breakdown->get_total($this->uri->segment(3));
+		$scope=(($volume_total[0]->transplant/$breakdown[0]->volume) - 1) * 100;
+		$this->model_breakdown->update_scope2($scope,$process[0]->id_breakdown,4);
+
       	$this->model_breakdown->delete_process($llave);
       	$this->model_breakdown->delete_process_id_breakdown_tutoring($process[0]->id_breakdown);
        	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
@@ -711,6 +728,13 @@ class Breakdown extends CI_Controller {
 		$process=$this->model_breakdown->get_process_id_process($llave);
 		$breakdown=$this->model_breakdown->get_breakdown($process[0]->id_breakdown);
 		$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume[0]->volume);
+
+		
+		$volume_total=$this->model_breakdown->get_total($this->uri->segment(3));
+		$scope=(($volume_total[0]->tutoring/$breakdown[0]->volume) - 1) * 100;
+		
+		$this->model_breakdown->update_scope2($scope,$process[0]->id_breakdown,5);
+
 
       	$this->model_breakdown-> delete_process($llave);
        	redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");

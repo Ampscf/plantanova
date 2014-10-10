@@ -949,11 +949,11 @@ class Order extends CI_Controller {
 		$tutoring=$this->model_order->get_tutoring($breakdown[0]->id_breakdown);
 		if($tutoring != false){
 			$template['breakdown']=$breakdown;
-		$this->load->view('body/view_results_transplant.php', $template);
+		$this->load->view('body/view_results_tutoring.php', $template);
 
 		}else{
 			$template['breakdown']=null;
-			$this->load->view('body/view_results_transplant.php', $template);
+			$this->load->view('body/view_results_tutoring.php', $template);
 		}	
 	}
 

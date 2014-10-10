@@ -1014,6 +1014,19 @@ Class model_breakdown extends CI_Model
 		$this->db->insert('t_order_comments', $datos);
 	}
 
+	function update_scope2($scope,$id_breakdown,$id_process_type){
+		$this->db->query('update t_process set scope='.$scope.' where id_breakdown='.$id_breakdown.' and id_process_type='.$id_process_type);
+	}
+
+	function get_total($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_total');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
 	
 }
 	
