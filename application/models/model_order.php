@@ -80,7 +80,14 @@ Class model_order extends CI_Model
 		}
 	}
 	
-	
+	function get_order(){
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
 	//Obtiene los sustratos de la base de datos
 	function get_sustratum()
 	{

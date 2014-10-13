@@ -154,7 +154,26 @@ Class model_client extends CI_Model
 		}else{
 			return false;
 		}
+	}
 
+	function get_files_order($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function get_files_order2($id_order){
+		$this->db->where('id_order',$id_order);
+		$query=$this->db->get('t_files');
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			return false;
+		}
 	}
 
 }

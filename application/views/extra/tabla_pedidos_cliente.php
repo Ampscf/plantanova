@@ -7,6 +7,7 @@
 		<th>Categoria</th>
 		<th>Estatus</th>
 		<th>Informe</th>
+		<th>Descargas</th>
 
 	
 		<?php
@@ -34,7 +35,7 @@
 					?>	                 
 					 
 					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
-						title="Eliminar"
+						title="Informe"
 						data-toggle="modal">
 						<i class="fa fa-file-text-o"></i>
 					</a>
@@ -223,7 +224,66 @@
 				}else{
 					echo "Por el momento no se tiene informe de la orden</td>";
 				}
+				echo "<td>";
+				?>
+					<a href="#myModal1<?php echo $key->id_order; ?>" class="btn btn-default"
+						title="Descargas"
+						data-toggle="modal">
+						<i class="fa fa-download"></i>
+					</a>
 
+					<div id="myModal1<?php echo $key->id_order; ?>" class='modal fade'>
+						<div class='modal-dialog modal-lg'>
+							<div class='modal-content'>
+								<div class='modal-header'>
+									<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+									<h4 class='modal-title'>Descargas</h4>
+								</div>
+								<div class='modal-body'>
+									<?php $files=$this->model_client->get_files_order($key->id_order);
+									if(is_array($files)){
+										foreach ($files as $key) {
+											if($key->quotation != null){
+												echo anchor(''.base_url('uploads/'.$key->quotation), 'Cotización', 'Download');
+												echo "</br>";
+											}
+											if($key->contract != null){
+												echo anchor(''.base_url('uploads/'.$key->contract), 'Contrato', 'Download');
+												echo "</br>";
+											}
+										}
+									}
+									$files2=$this->model_client->get_files_order2($key->id_order);
+									if(is_array($files2)){
+										foreach ($files2 as $key) {
+											if($key->location != null){
+												if($key->id_files == 1){
+													echo anchor(''.base_url('uploads/'.$key->location), 'Factura: folio '.$key->folio, 'Download');
+													echo "</br>";
+												}elseif ($key->id_files == 2) {
+													echo anchor(''.base_url('uploads/'.$key->location), 'Carta Factura', 'Download');
+													echo "</br>";
+												}elseif ($key->id_files == 3) {
+													echo anchor(''.base_url('uploads/'.$key->location), 'Dictamen', 'Download');
+													echo "</br>";
+												}else{
+													echo anchor(''.base_url('uploads/'.$key->location), ''.$key->location, 'Download');
+													echo "</br>";
+												}
+												
+											}
+										}
+									}?>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+		                		</div>
+							</div>
+						</div>
+					</div>
+
+
+				<?php
 				
 					echo "</tr>";
 				}
