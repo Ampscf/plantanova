@@ -4420,3 +4420,12 @@ li.ext_zip {
 .modal-dialog {
   margin-top: -100px;
 }
+
+div#folletos {
+  display: inline-block!important;
+  margin-right: 50px!important;
+}
+div#folletos a {
+  font-size: 70%!important;
+  font-family: source sans Pro!important;
+}

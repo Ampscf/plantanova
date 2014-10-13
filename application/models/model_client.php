@@ -148,7 +148,7 @@ Class model_client extends CI_Model
 		}
 	}
 	function get_colaboradores($id_user){
-		$query=$this->db->query('select p_image,p_url,p_parrafo1,p_parrafo2,p_parrafo3 from t_pub_client join t_publicity on t_pub_client.id_publicity=t_publicity.id_publicity where t_pub_client.id_client='.$id_user);
+		$query=$this->db->query('select t_publicity.id_publicity,p_image,p_url,p_parrafo1,p_parrafo2,p_parrafo3 from t_pub_client join t_publicity on t_pub_client.id_publicity=t_publicity.id_publicity where t_pub_client.id_client='.$id_user);
 		if($query->num_rows()>0){
 			return $query->result();
 		}else{

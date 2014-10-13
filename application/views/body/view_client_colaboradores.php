@@ -30,10 +30,23 @@
 							
 								</div>	
 
+								<div id='boxfolletos'><br>";
+									$publicitys=$this->model_publicity->get_brochure_publicity($key->id_publicity);	
+									if($publicitys){
+										echo "<br><p>Descargas</p><br>";
+										foreach($publicitys as $key2){
+											echo "<div id='folletos'><a href='/./plantanova/uploads/folletos/".$key2->b_file."' target='blank'><img widht='30' height='30' src='/./plantanova/img/pdf.gif'></img>".$key2->b_name."<a></div>";
+
+										}
+									}
+									
+								echo "
+								</div>
 							</div>
 							<div class='row'>
 								<button type='button' class='glyphicon glyphicon-arrow-right'  Onclick='cambio(".$cont.",".$lon.")'></button></div>
 							</div>";
+
 
 							echo "<style> div#cliente".$cont."{display:none;}</style>";
 						}
@@ -48,6 +61,12 @@
 						?>
 						
 						<script type="text/javascript">
+
+							function folletos(id){
+								alert(id);
+
+							}
+
 							function cambio(cont,lon){
 							cont++;
 							if(cont<=lon){
@@ -64,8 +83,7 @@
 								document.getElementById("cliente1").style.display="block";
 							}
 
-							}
-
+							}							
 						</script>
 
 						</div>

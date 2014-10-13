@@ -21,7 +21,12 @@
 							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
 						
 							<a href="#myModal4" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad</a>
+
 							<a href="#myModal5" class="btn btn-success" data-toggle="modal">Editar Publicidad</a>
+
+							<a href="#myModal6" class="btn btn-success" data-toggle="modal">Agregar Folleto</a>
+
+							<a href="#myModal7" class="btn btn-primary" data-toggle="modal">Eliminar folleto</a>
 						</div>
 					</div>
 						
@@ -436,6 +441,165 @@
 									alert("fallo");
 								}	
 								});      
+
+			}	
+		}
+			</script>
+
+	<div id="myModal6" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            		<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Agregar folleto</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php
+                				$attributes5 = array('id' => 'newbro', 'name' => 'newbro'); 
+                				echo form_open_multipart('publicity/upload_brochure/',$attributes5);
+                			?>
+
+                			<p>Elije la publicidad ala que agregaras el folleto</p>
+							<select class="form-control" name="alterbropu" id="alterbropu">
+								<option value='0'>--Selecciona una piblicidad--</option>
+								<?php 
+									foreach($publicity as $key)
+									{
+										echo "<option value='" . $key->id_publicity . "' set_select('state','".$key->id_publicity."')>" . $key->p_name . "</option>";
+									}
+								?>
+							</select>
+
+                			<p>Nombre:</p>
+							<input id="b_name" name="b_name" placeholder="Nombre" />
+
+                			<p>Elige una archivo para el folleto</p>
+							<input id="uploadFile16" name="uploadFile16" placeholder="Elige una archivo" disabled style="height: 30px; position: relative; top: 5px;"/>
+							<div class='fileUpload btn btn-success'>
+					    	<span>Buscar</span>
+							<input id='uploadBtn16' type='file' class='upload' name='userfile'/>
+
+							</div>
+												
+							<p>Descripción del folleto</P>
+								<textarea  id="b_desciption" name="b_description" ></textarea>
+							
+							<script>
+								document.getElementById("uploadBtn16").onchange = function () {
+					    			document.getElementById("uploadFile16").value = this.value;
+								};
+							</script>
+
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" id="buttob" class="btn btn-success">Subir</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			<script>
+			$('#buttob').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+
+			$("#newbro").validate({
+				rules:{
+					b_name: {
+			            required: true
+			        },
+			        uploadFilebro: {
+			            required: true
+			        }
+				},
+				messages:{
+					b_name:{
+						required:"El campo Nombre es requerido"
+					},
+					uploadFilebro:{
+						required:"Selecciona un archivo"
+					}
+				}
+			});
+
+			</script>
+
+		
+			
+			<!---------------------------eliminar folleto---------------------->
+		<div id="myModal7" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Eliminar Folleto</h4>
+            			</div>
+            			<div class="modal-body">
+
+                			<?php echo form_open_multipart('publicity/delete_bro/');?>
+
+
+                			<p>Elige una publicacion</p>
+							<select class="form-control" name="deletebropu" id="deletebropu" onchange="deletebr(this.value)">
+								<option value='0'>--Selecciona una piblicidad--</option>
+								<?php 
+									foreach($publicity as $key)
+									{
+										echo "<option value='" . $key->id_publicity . "' set_select('state','".$key->id_publicity."')>" . $key->p_name . "</option>";
+									}
+								?>
+							</select>
+
+							
+
+						<div id="p6" class="">
+							
+						</div> 
+						
+
+									 
+							<p class="text-warning"><small>Editar un follelto, tambien lo modifica en todas las publicidades.</small></p>
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" id="buttodelete" class="btn btn-primary">Eliminar</button>
+                			</form>
+           				 </div>
+        			</div>
+    			</div>
+			</div>
+
+			
+			<script>
+			$('#buttodelete').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+			function deletebr(data){
+			if(data!=0){
+				var posicion = data;
+				      $.ajax({
+								url: site_url + 'publicity/getbrochurepub',
+								data: {'id_pub':+posicion},
+								type: "POST",
+								success: function(data){
+									$("#p6").html(data);
+									//alert(data);
+								},
+								failure:function(data){
+									alert("fallo");
+								}	
+								}); 
 
 			}	
 		}

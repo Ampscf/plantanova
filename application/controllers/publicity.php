@@ -16,6 +16,7 @@ class Publicity extends CI_Controller {
 		}
 		$template['users'] = $this->model_user->get_clients();
 		$template['publicity'] = $this->model_publicity->get_publicity();
+		$template['brochure']=$this->model_publicity->get_brochure();
 
 		$template['header'] = 'header/view_admin_header.php';
 		$template['body'] = 'body/view_admin_publicity.php';
@@ -238,4 +239,83 @@ class Publicity extends CI_Controller {
 			
 		}
 	}
+
+		public function upload_brochure()
+		{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		
+		$config['upload_path'] = './uploads/folletos/';
+		$config['allowed_types'] = 'pdf';
+		$config['max_size']	= '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('publicity/index');
+		} else {
+			
+			  	$data = $this->upload->data();
+				$datos['b_name']=$this->input->post('b_name');
+				$datos['b_file'] = $data['file_name'];
+				$datos['b_description']=$this->input->post('b_description');
+				$datos['id_pub']=$this->input->post('alterbropu');
+				$this->model_publicity->insert_brochure($datos);			
+				redirect('publicity/index/', 'refresh');
+
+		}
+	}
+
+	public function getbrochurepub(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_pub=$this->input->post('id_pub');
+		$getbrochure=$this->model_publicity->get_brochure_publicity($id_pub);
+		if($getbrochure){
+
+			echo '<br><p>Elige el folleto a eliminar</p>
+				<select class="form-control" name="brochu" id="brochu">
+				<option value="0">--Selecciona una piblicidad--</option>';
+				foreach($getbrochure as $key)
+				{
+					echo "<option value='" . $key->id_brochure . "' set_select('state','".$key->id_brochure."')>" . $key->b_name . "</option>";
+				}
+			echo '</select>';
+		}else{
+			echo "<br><p>No hay folletos para esta publicidad</p>";
+		}
+		
+	
+
+		
+	}
+
+	//eliminar un folleto
+	public function delete_bro(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		if($this->input->post('brochu')){
+			$id_brochure=$this->input->post('brochu');
+			$file=$this->model_publicity->get_file_b($id_brochure);
+			$path = 'uploads/folletos/'.$file[0]->b_file;
+			$this->model_publicity->delete_brochure($id_brochure);
+
+			if(unlink($path)) {
+				redirect('publicity/index',"refresh");
+			} else {
+				echo 'errors occured';
+			}
+		}else{
+
+			redirect('publicity/index',"refresh");
+		}
+		
+	}
+
+
 }

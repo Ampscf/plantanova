@@ -10,6 +10,17 @@
 			} 
 			else return false;
 		}
+
+		function get_brochure()
+		{
+			$query=$this->db->get('t_brochure');
+			if($query->num_rows()>0)
+			{
+				return $query->result();
+			} 
+			else return false;
+		}
+
 		function update_publicity($data){
 		
 		$this->db->where('id_publicity',$data['id_publicity']);
@@ -88,5 +99,31 @@
 			$this->db->where('id_publicity',$id_publicity);
 			$this->db->delete('t_pub_client');	
 		}
+		function insert_brochure($datos)
+		{
+			$this->db->insert('t_brochure',$datos);
+			return $this->db->affected_rows();
+		}
+			
+		function get_file_b($id){
+			$this->db->where('id_brochure',$id);
+			$query=$this->db->get('t_brochure');
+			if($query->num_rows()>0) return $query->result();
+			else return false;
+		}
+		function delete_brochure($id_brochure)
+		{
+			$this->db->where('id_brochure',$id_brochure);
+			$this->db->delete('t_brochure');	
+		}
+		function get_brochure_publicity($id_pub){
+			$this->db->where('id_pub',$id_pub);
+			$query=$this->db->get('t_brochure');
+			if($query->num_rows()>0) return $query->result();
+			else return false;
+
+
+		}
+
 	}
 ?>
