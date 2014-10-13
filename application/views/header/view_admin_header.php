@@ -173,9 +173,10 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 						      			<li role="presentation" class="divider"></li>
 						      			<li><?php echo anchor('breakdown/todos','Todos');?></li>
 						      		</ul>
-								</li>						
+								</li>	
 								<li style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:80px;padding-top: 28px;"'); ?></li>
-								
+								<li style="border-left: 1px solid #000;"><?php echo anchor('files/index','Subir PDF','id="files" style="height:80px;padding-top: 28px;"'); ?></li>
+
 
 								<li class="dropdown" style="border-left: 1px solid #000;">
 									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px; padding-top: 28px;" id="admin">
@@ -216,6 +217,9 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 							if (/(seeds)/i.test(url)) {
 								document.getElementById("sids").style.color = "White";
 								document.getElementById("sids").style.backgroundColor = "#6BBD44";
+							} else if (/(files)/i.test(url)){
+								document.getElementById("files").style.color = "White";
+								document.getElementById("files").style.backgroundColor = "#6BBD44";
 							} else if (/(admin)/i.test(url)){
 								document.getElementById("admin").style.color = "White";
 								document.getElementById("admin").style.backgroundColor = "#6BBD44";
