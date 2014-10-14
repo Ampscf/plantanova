@@ -241,33 +241,35 @@
 								</div>
 								<div class='modal-body'>
 									<?php $files=$this->model_client->get_files_order($key->id_order);
+									$img="<img widht='30' height='30' src='/./plantanova/img/pdf.gif'></img>";
 									if(is_array($files)){
 										foreach ($files as $key) {
 											if($key->quotation != null){
-												echo anchor(''.base_url('uploads/'.$key->quotation), 'Cotización', 'Download');
+												echo anchor(''.base_url('uploads/'.$key->quotation), $img.'Cotización', 'Download');
 												echo "</br>";
 											}
 											if($key->contract != null){
-												echo anchor(''.base_url('uploads/'.$key->contract), 'Contrato', 'Download');
+												echo anchor(''.base_url('uploads/'.$key->contract), $img.'Contrato', 'Download');
 												echo "</br>";
 											}
 										}
 									}
 									$files2=$this->model_client->get_files_order2($key->id_order);
+									
 									if(is_array($files2)){
 										foreach ($files2 as $key) {
 											if($key->location != null){
 												if($key->id_files == 1){
-													echo anchor(''.base_url('uploads/'.$key->location), 'Factura: folio '.$key->folio, 'Download');
+													echo anchor(''.base_url('uploads/'.$key->location), $img.'Factura: folio '.$key->folio,  'Download');
 													echo "</br>";
 												}elseif ($key->id_files == 2) {
-													echo anchor(''.base_url('uploads/'.$key->location), 'Carta Factura', 'Download');
+													echo anchor(''.base_url('uploads/'.$key->location), $img.'Carta Factura', 'Download');
 													echo "</br>";
 												}elseif ($key->id_files == 3) {
-													echo anchor(''.base_url('uploads/'.$key->location), 'Dictamen', 'Download');
+													echo anchor(''.base_url('uploads/'.$key->location), $img.'Dictamen', 'Download');
 													echo "</br>";
 												}else{
-													echo anchor(''.base_url('uploads/'.$key->location), ''.$key->location, 'Download');
+													echo anchor(''.base_url('uploads/'.$key->location), $img.$key->location, 'Download');
 													echo "</br>";
 												}
 												
