@@ -30,10 +30,10 @@
 							
 								</div>	
 
-								<div id='boxfolletos'><br>";
+								<div id='boxfolletos'>";
 									$publicitys=$this->model_publicity->get_brochure_publicity($key->id_publicity);	
 									if($publicitys){
-										echo "<br><p>Descargas</p><br>";
+										echo "<p>Descargas</p><br>";
 										foreach($publicitys as $key2){
 											echo "<div id='folletos'><a href='/./plantanova/uploads/folletos/".$key2->b_file."' target='blank'><img widht='30' height='30' src='/./plantanova/img/pdf.gif'></img>".$key2->b_name."<a></div>";
 

@@ -4429,5 +4429,7 @@ div#folletos a {
   font-size: 70%!important;
   font-family: source sans Pro!important;
 }
-
+div#boxfolletos {
+  margin-top: 5%;
+}
 
