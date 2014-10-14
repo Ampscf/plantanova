@@ -23,6 +23,7 @@ Class model_report extends CI_Model	{
 	function get_orders(){
 		$this -> db -> select('id_order,farmer,order_date_submit');
 			$this -> db -> from('t_order');
+			$this->db->where('id_status <>', 4); 
 			$query = $this -> db -> get();
 			if($query->num_rows() > 0) 
 			{
