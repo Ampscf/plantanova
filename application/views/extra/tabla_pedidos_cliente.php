@@ -14,18 +14,18 @@
 			if(is_array($orders)){
 				foreach ($orders as $key) {
 					echo "<tr>";
-					echo "<td>".$key->id_order ."</td>";
-					echo "<td>".$key->total_volume ."</td>";
-					echo "<td>".date("d-m-Y",strtotime($key->order_date_submit))."</td>";
+					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>". $key->id_order ."</a></td>";
+					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>".$key->total_volume ."</td>";
+					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>".date("d-m-Y",strtotime($key->order_date_submit))."</td>";
 					$plant=$this->model_order->get_plant($key->id_plant);
-					echo "<td>". $plant->result()[0]->plant_name ."</td>";
+					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>". $plant->result()[0]->plant_name ."</td>";
 					$category=$this->model_order->get_category($key->id_category);
-					echo "<td>".  $category->result()[0]->category_name."</td>";
+					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>".  $category->result()[0]->category_name."</td>";
 					if($key->activate==0){
-						echo "<td>Cancelado</td>";
+						echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>Cancelado</a></td>";
 					}else{
 						$status=$this->model_client->get_status($key->id_status);
-						echo "<td>". $status[0]->status_name."</td>";
+						echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>". $status[0]->status_name."</a></td>";
 					}
 
 					$informs=$this->model_client->get_informs($key->id_order);
@@ -34,7 +34,7 @@
 					if(is_array($informs)){
 					?>	                 
 					 
-					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-default"
+					<a href="#myModal<?php echo $key->id_order; ?>" class="btn btn-success"
 						title="Informe"
 						data-toggle="modal">
 						<i class="fa fa-file-text-o"></i>
@@ -226,7 +226,7 @@
 				}
 				echo "<td>";
 				?>
-					<a href="#myModal1<?php echo $key->id_order; ?>" class="btn btn-default"
+					<a href="#myModal1<?php echo $key->id_order; ?>" class="btn btn-success"
 						title="Descargas"
 						data-toggle="modal">
 						<i class="fa fa-download"></i>

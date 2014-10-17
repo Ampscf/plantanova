@@ -8,10 +8,6 @@
 					
 					<div class="panel-body">
 
-						<?php
-							$attributes=array('id' => 'form_message', 'name'=> 'form_message');
-							echo form_open('admin/message',$attributes);
-						?>
 						<div class="col-md-4">
 							<div class="input-group">
 								<p>Cliente</p>
@@ -53,7 +49,6 @@
 
 					</div>
 					<div class="panel-footer">
-						<button type="submit" class="btn btn-success" name="enviar" id="enviar" style="width: 20%;">Enviar</button>
 					</div>	
 				</form>
 				</div>

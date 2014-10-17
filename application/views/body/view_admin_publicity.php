@@ -482,9 +482,7 @@
 
 							</div>
 												
-							<p>Descripción del folleto</P>
-								<textarea  id="b_desciption" name="b_description" ></textarea>
-							
+														
 							<script>
 								document.getElementById("uploadBtn16").onchange = function () {
 					    			document.getElementById("uploadFile16").value = this.value;
