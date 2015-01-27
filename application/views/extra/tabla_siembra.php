@@ -48,13 +48,13 @@
     			echo "</td>";
 				echo "<td>";?>
 				
-					<a href="#myModal<?php echo $key->id_sowing; ?>" class="btn btn-default"
+					<a href="#myModal11<?php echo $key->id_sowing; ?>" class="btn btn-default"
 	                    title="Eliminar"
 	                    data-toggle="modal">
 						<i class="fa fa-times"></i>
 	                </a>
 					
-					<div id="myModal<?php echo $key->id_sowing; ?>" class="modal fade">
+					<div id="myModal11<?php echo $key->id_sowing; ?>" class="modal fade">
         				<div class="modal-dialog">
             				<div class="modal-content">
                 				<div class="modal-header">

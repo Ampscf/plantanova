@@ -368,6 +368,42 @@ class Breakdown extends CI_Controller {
 		$this->model_breakdown->update_order($this->uri->segment(3),$data);
 		$this->load->view("main",$template);
 	}
+	
+	public function insert_germination()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
+		$total_germ=$total_germination->germination;
+		
+		$datos['id_order']=$this->uri->segment(3);
+		$id_sowing=$this->input->post('breakdown_germination');
+		$fecha=$this->input->post('datepicker1');
+		$datos['germ_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['germ_percentage']=$this->input->post('percentage');
+		$datos['viability']=$this->input->post('viability');
+		$datos['comment']=$this->input->post('comment');
+		$sowing=$this->model_breakdown->get_sowing_id_sowing($id_sowing);
+		$datos['id_sowing']=$sowing[0]->id_sowing;
+		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
+		$datos['seed_name']=$sowing[0]->seed;
+		
+		$order_volume=$this->model_order->get_order_volume($this->uri->segment(3),$datos['seed_name']);
+		$total_vial=$this->model_order->get_vial_total($this->uri->segment(3),$datos['seed_name']);
+		$new_vol=$total_vial->viability_total+$datos['volume'];
+		$scope=($new_vol/$order_volume->order_volume-1)*100;
+		$this->model_order->update_total_vial($this->uri->segment(3),$new_vol,$datos['seed_name'],$scope);
+		
+		$this->model_breakdown->add_germination($datos);
+
+		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
+		
+		$total_vol=$total_germ+$datos['volume'];
+		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
+		
+		redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
+	}
 
 	public function insert_graft(){
 		if($this->session->userdata('id_rol')!=1){
