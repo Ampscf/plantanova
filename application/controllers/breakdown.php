@@ -149,11 +149,11 @@ class Breakdown extends CI_Controller {
 
 		if ($images->result()[0]->img_injer1 == NULL){
 			$template['injert1']='<div class="col-xs-3">
-								  <a href="#myModal111" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+								  <a href="#myModal0111" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
 							      </div>';
 		} else {
 			$template['injert1']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_injer1.' <a href="#myModal444" class="btn btn-default"
+								  '.$images->result()[0]->img_injer1.' <a href="#myModal0444" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -167,11 +167,11 @@ class Breakdown extends CI_Controller {
 		}	
 		if ($images->result()[0]->img_injer2 == NULL){
 			$template['injert2']='<div class="col-xs-3">
-								  <a href="#myModal112" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+								  <a href="#myModal0112" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
 							      </div>';
 		} else {
 			$template['injert2']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_injer2.' <a href="#myModal445" class="btn btn-default"
+								  '.$images->result()[0]->img_injer2.' <a href="#myModal0445" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -185,11 +185,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_injer3 == NULL){
 			$template['injert3']='<div class="col-xs-3">
-								  <a href="#myModal113" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+								  <a href="#myModal0113" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
 							      </div>';
 		} else {
 			$template['injert3']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_injer3.' <a href="#myModal446" class="btn btn-default"
+								  '.$images->result()[0]->img_injer3.' <a href="#myModal0446" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -203,11 +203,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_pinch1 == NULL){
 			$template['pinch1']='<div class="col-xs-3">
-								  <a href="#myModal222" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+								  <a href="#myModal0222" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
 							      </div>';
 		} else {
 			$template['pinch1']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_pinch1.' <a href="#myModal553" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch1.' <a href="#myModal0553" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -221,11 +221,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_pinch2 == NULL){
 			$template['pinch2']='<div class="col-xs-3">
-								  <a href="#myModal223" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+								  <a href="#myModal0223" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
 							      </div>';
 		} else {
 			$template['pinch2']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_pinch2.' <a href="#myModal554" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch2.' <a href="#myModal0554" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -239,11 +239,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_pinch3 == NULL){
 			$template['pinch3']='<div class="col-xs-3">
-								  <a href="#myModal224" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+								  <a href="#myModal0224" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
 							      </div>';
 		} else {
 			$template['pinch3']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_pinch3.' <a href="#myModal555" class="btn btn-default"
+								  '.$images->result()[0]->img_pinch3.' <a href="#myModal0555" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -257,11 +257,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_trans1 == NULL){
 			$template['trans1']='<div class="col-xs-3">
-								  <a href="#myModal335" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+								  <a href="#myModal0335" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
 							      </div>';
 		} else {
 			$template['trans1']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_trans1.' <a href="#myModal661" class="btn btn-default"
+								  '.$images->result()[0]->img_trans1.' <a href="#myModal0661" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -275,11 +275,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_trans2 == NULL){
 			$template['trans2']='<div class="col-xs-3">
-								  <a href="#myModal336" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+								  <a href="#myModal0336" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
 							      </div>';
 		} else {
 			$template['trans2']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_trans2.' <a href="#myModal662" class="btn btn-default"
+								  '.$images->result()[0]->img_trans2.' <a href="#myModal0662" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -293,11 +293,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_trans3 == NULL){
 			$template['trans3']='<div class="col-xs-3">
-								  <a href="#myModal337" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+								  <a href="#myModal0337" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
 							      </div>';
 		} else {
 			$template['trans3']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_trans3.' <a href="#myModal663" class="btn btn-default"
+								  '.$images->result()[0]->img_trans3.' <a href="#myModal0663" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -311,11 +311,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_tuto1 == NULL){
 			$template['tuto1']='<div class="col-xs-3">
-								  <a href="#myModal771" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
+								  <a href="#myModal0771" class="btn btn-default" data-toggle="modal">Subir Imágen 1</a>
 							      </div>';
 		} else {
 			$template['tuto1']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_tuto1.' <a href="#myModal881" class="btn btn-default"
+								  '.$images->result()[0]->img_tuto1.' <a href="#myModal0881" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -329,11 +329,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_tuto2 == NULL){
 			$template['tuto2']='<div class="col-xs-3">
-								  <a href="#myModal772" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
+								  <a href="#myModal0772" class="btn btn-default" data-toggle="modal">Subir Imágen 2</a>
 							      </div>';
 		} else {
 			$template['tuto2']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_tuto2.' <a href="#myModal882" class="btn btn-default"
+								  '.$images->result()[0]->img_tuto2.' <a href="#myModal0882" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>
@@ -347,11 +347,11 @@ class Breakdown extends CI_Controller {
 		}
 		if ($images->result()[0]->img_tuto3 == NULL){
 			$template['tuto3']='<div class="col-xs-3">
-								  <a href="#myModal773" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
+								  <a href="#myModal0773" class="btn btn-default" data-toggle="modal">Subir Imágen 3</a>
 							      </div>';
 		} else {
 			$template['tuto3']='<div class="col-xs-3">
-								  '.$images->result()[0]->img_tuto3.' <a href="#myModal883" class="btn btn-default"
+								  '.$images->result()[0]->img_tuto3.' <a href="#myModal0883" class="btn btn-default"
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i></a>

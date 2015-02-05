@@ -317,5 +317,30 @@ class Publicity extends CI_Controller {
 		
 	}
 
+	public function changebanner(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		
+		$config['upload_path'] = './img/bannerPrincipal';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['file_name']= 'LOGO.jpg';
+		$config['overwrite']= true;
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
+			redirect('publicity/index');
+		} else {
+			redirect('publicity/index/', 'refresh');
+		}
+			
+	}
+
 
 }

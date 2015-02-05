@@ -88,7 +88,7 @@
 							<h4>Siembra</h4>
 						</div>
 						<div class="col-xs-2">
-							<a href="#myModal5" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModal05" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						
 						<div class="table-responsive" id="area">
@@ -108,7 +108,7 @@
 							<h4>Germinación</h4>
 						</div>
 						<div class="col-xs-2">
-							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModal0" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
@@ -150,7 +150,7 @@
 							<h4>Injerto</h4>
 						</div>
 						<div class="col-xs-2">
-							<a href="#myModal1" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModal01" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
@@ -177,7 +177,7 @@
 							<h4>Pinchado</h4>
 						</div>
 						<div class="col-xs-2">
-							<a href="#myModal2" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModal02" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
@@ -203,7 +203,7 @@
 							<h4>Transplante</h4>
 						</div>
 						<div class="col-xs-2">
-							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModal03" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
@@ -229,7 +229,7 @@
 							<h4>Tutoreo</h4>
 						</div>
 						<div class="col-xs-2">
-							<a href="#myModal6" class="btn btn-success" data-toggle="modal">+Agregar</a>
+							<a href="#myModal06" class="btn btn-success" data-toggle="modal">+Agregar</a>
 						</div>
 						<div class="clear">&nbsp</div>
 						<div class="table-responsive" id="area">
@@ -257,7 +257,7 @@
 						<?php echo anchor('breakdown/pedido_proceso', 'Procesos', 'class="btn btn-primary" style="float: right; width: 50%;"');?>
 					</div>
 					<div class="col-xs-6">	
-						<a href="#myModal4" class="btn btn-success" data-toggle="modal" style="width: 50%;">Embarcar</a>
+						<a href="#myModal04" class="btn btn-success" data-toggle="modal" style="width: 50%;">Embarcar</a>
 					</div>
 				</div>
 				
@@ -266,7 +266,7 @@
 		</div>
 			
 			<?php echo form_open('embark/change_status/'.$this->uri->segment(3))?>
-			<div id="myModal4" class="modal fade">
+			<div id="myModal04" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
@@ -297,7 +297,7 @@
 			$attributes = array('id' => 'insert_sowing','name'=>'insert_sowing');
 			echo form_open('order/insert_sowing/'.$this->uri->segment(3),$attributes); 
 			?>
-		    <div id="myModal5" class="modal fade">
+		    <div id="myModal05" class="modal fade">
 		    	<div class="modal-dialog">
 		            <div class="modal-content">
 		                <div class="modal-header">
@@ -443,7 +443,7 @@
 			$attributes = array('id' => 'insert_germination','name'=>'insert_germination');
 			echo form_open('breakdown/insert_germination/'.$this->uri->segment(3),$attributes); 
 			?>
-			<div id="myModal" class="modal fade">
+			<div id="myModal0" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
@@ -553,7 +553,7 @@
 			echo form_open('breakdown/insert_graft/'.$this->uri->segment(3),$attributes); 
 			?>
 			<input type="hidden" id="order_volume" name="order_volume" value="<?php echo $volumen;?>">
-			<div id="myModal1" class="modal fade">
+			<div id="myModal01" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
@@ -698,7 +698,7 @@
 			$attributes = array('id' => 'insert_punch','name'=>'insert_punch');
 			echo form_open('breakdown/insert_punch/'.$this->uri->segment(3),$attributes); 
 			?>
-			<div id="myModal2" class="modal fade">
+			<div id="myModal02" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
@@ -845,7 +845,7 @@
 			$attributes = array('id' => 'insert_transplant','name'=>'insert_transplant');
 			echo form_open('breakdown/insert_transplant/'.$this->uri->segment(3),$attributes); 
 			?>
-			<div id="myModal3" class="modal fade">
+			<div id="myModal03" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
@@ -971,7 +971,7 @@
 			$attributes = array('id' => 'insert_tutoring','name'=>'insert_tutoring');
 			echo form_open('breakdown/insert_tutoring/'.$this->uri->segment(3),$attributes); 
 			?>
-			<div id="myModal6" class="modal fade">
+			<div id="myModal06" class="modal fade">
         		<div class="modal-dialog">
             		<div class="modal-content">
                 		<div class="modal-header">
@@ -1157,7 +1157,7 @@
 
 </script>
 
-			<div id="myModal111" class="modal fade">
+			<div id="myModal0111" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1200,7 +1200,7 @@
 				});
 			</script>
 
-			<div id="myModal112" class="modal fade">
+			<div id="myModal0112" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1241,7 +1241,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal113" class="modal fade">
+			<div id="myModal0113" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1282,7 +1282,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal222" class="modal fade">
+			<div id="myModal0222" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1323,7 +1323,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal223" class="modal fade">
+			<div id="myModal0223" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1364,7 +1364,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal224" class="modal fade">
+			<div id="myModal0224" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1406,7 +1406,7 @@
 				});
 			</script>
 
-			<div id="myModal335" class="modal fade">
+			<div id="myModal0335" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1447,7 +1447,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal336" class="modal fade">
+			<div id="myModal0336" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1488,7 +1488,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal337" class="modal fade">
+			<div id="myModal0337" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1531,7 +1531,7 @@
 				});
 			</script>
 
-			<div id="myModal444" class="modal fade">
+			<div id="myModal0444" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1552,7 +1552,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal445" class="modal fade">
+			<div id="myModal0445" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1573,7 +1573,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal446" class="modal fade">
+			<div id="myModal0446" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1594,7 +1594,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal553" class="modal fade">
+			<div id="myModal0553" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1615,7 +1615,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal554" class="modal fade">
+			<div id="myModal0554" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1636,7 +1636,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal555" class="modal fade">
+			<div id="myModal0555" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1657,7 +1657,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal661" class="modal fade">
+			<div id="myModal0661" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1678,7 +1678,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal662" class="modal fade">
+			<div id="myModal0662" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1699,7 +1699,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal663" class="modal fade">
+			<div id="myModal0663" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1720,7 +1720,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal771" class="modal fade">
+			<div id="myModal0771" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1763,7 +1763,7 @@
 				});
 			</script>
 
-			<div id="myModal772" class="modal fade">
+			<div id="myModal0772" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1806,7 +1806,7 @@
 				});
 			</script>
 
-			<div id="myModal773" class="modal fade">
+			<div id="myModal0773" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -1849,7 +1849,7 @@
 				});
 			</script>
 
-			<div id="myModal881" class="modal fade">
+			<div id="myModal0881" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1870,7 +1870,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal882" class="modal fade">
+			<div id="myModal0882" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1891,7 +1891,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal883" class="modal fade">
+			<div id="myModal0883" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
