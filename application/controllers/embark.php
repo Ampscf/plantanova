@@ -34,7 +34,7 @@ class Embark extends CI_Controller {
 			$template['quotation']='';
 		} else {
 			$template['quotation']='<a href="/plantanova/uploads/'.$order->result()[0]->quotation.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->quotation.'</a>
-								<a href="#myModal11" 
+								<a href="#myModal011" 
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>
@@ -44,7 +44,7 @@ class Embark extends CI_Controller {
 			$template['contract']='';
 		} else {
 			$template['contract']='<a href="/plantanova/uploads/'.$order->result()[0]->contract.'" target="_blank" style="color:yellowgreen;">'.$order->result()[0]->contract.'</a>
-								<a href="#myModal12" 
+								<a href="#myModal012" 
 	                    			title="Eliminar"
 	                    			data-toggle="modal">
 									<i class="fa fa-times"></i>

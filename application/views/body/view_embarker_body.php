@@ -219,7 +219,7 @@
 								<h3>Cotización</h3>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
-								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
+								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
 							</div>	
 						</div>
 
@@ -229,7 +229,7 @@
 								<h3>Contrato</h3>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
-								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
+								<a href="#myModal00" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
 							</div>	
 						</div>
 
@@ -239,7 +239,7 @@
 								<h3>Factura</h3>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
-								<a href="#myModal1" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
+								<a href="#myModal01" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
 							</div>	
 						</div>
 
@@ -249,7 +249,7 @@
 								<h3>Carta Factura</h3>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
-								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
+								<a href="#myModal02" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>&nbsp<i class="fa fa-check"></i>&nbsp<i class="fa fa-times"></i>
 							</div>	
 						</div>	
 
@@ -392,7 +392,7 @@
 						
 			</script>
 
-			<div id="myModal" class="modal fade">
+			<div id="myModal0" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -425,7 +425,7 @@
     			</div>
 			</div>
 
-			<div id="myModal0" class="modal fade">
+			<div id="myModal00" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -445,7 +445,7 @@
     			</div>
 			</div>
 
-			<div id="myModal1" class="modal fade">
+			<div id="myModal01" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -468,7 +468,7 @@
     			</div>
 			</div>
 
-			<div id="myModal2" class="modal fade">
+			<div id="myModal02" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">

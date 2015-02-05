@@ -4,7 +4,7 @@
 				<div class="col-md-8">
 					<div>
 						<?php 
-							echo '<img src="'. base_url() . '/img/LOGOS_plantanova_AVANZAMOS.jpg" style="width:100%; height:500px">';
+							echo '<img src="'. base_url() . '/img/bannerPrincipal/LOGO.jpg" style="width:100%; height:500px">';
 						?>
 					</div>
 				</div>

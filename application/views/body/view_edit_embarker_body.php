@@ -117,7 +117,7 @@
 								<h3>Cotización</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
+								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
 							</div>
 							<div class="col-md-10 col-md-offset-2">
 								<?php echo $quotation?>
@@ -130,7 +130,7 @@
 								<h3>Contrato</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal0" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal00" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 							</div>
 							<div class="col-md-10 col-md-offset-2">
 								<?php echo $contract?>
@@ -143,7 +143,7 @@
 								<h3>Factura</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal1" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
+								<a href="#myModal01" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>
 							</div>
 							<?php 
 								if($bills != NULL){
@@ -187,7 +187,7 @@
 								<h3>Carta Factura</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal2" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
+								<a href="#myModal02" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
 							</div>
 							<?php
 								if($card_bills != NULL){
@@ -231,7 +231,7 @@
 								<h3>Dictamen</h3>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<a href="#myModal3" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
+								<a href="#myModal03" class="btn btn-default" data-toggle="modal">Adjuntar PDF</a>								
 							</div>
 							<?php
 								if($dictum != NULL){
@@ -706,7 +706,7 @@
 						
 			</script>
 
-			<div id="myModal" class="modal fade">
+			<div id="myModal0" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -748,7 +748,7 @@
 				});
 			</script>
 
-			<div id="myModal0" class="modal fade">
+			<div id="myModal00" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -790,7 +790,7 @@
 				});
 			</script>
 
-			<div id="myModal1" class="modal fade">
+			<div id="myModal01" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -884,7 +884,7 @@
 			</div>
 
 
-			<div id="myModal2" class="modal fade">
+			<div id="myModal02" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -926,7 +926,7 @@
 				});
 			</script>
 
-			<div id="myModal3" class="modal fade">
+			<div id="myModal03" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -967,7 +967,7 @@
 			        }, 5000)
 				});
 			</script>
-			<div id="myModal11" class="modal fade">
+			<div id="myModal011" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -988,7 +988,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal12" class="modal fade">
+			<div id="myModal012" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1009,7 +1009,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal13" class="modal fade">
+			<div id="myModal013" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -1030,7 +1030,7 @@
 			    </div>
 			</div>
 
-			<div id="myModal14" class="modal fade">
+			<div id="myModal014" class="modal fade">
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">

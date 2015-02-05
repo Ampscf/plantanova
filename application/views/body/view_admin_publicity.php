@@ -12,21 +12,21 @@
 							?></h5>
 					<div class="row">
 						<div class="col-xs-12 col-md-12 pubcol1 center-block">
+							<a href="#myModalPublicity8" class="btn btn-success" data-toggle="modal">Cambiar Banner Principal</a>
+
+							<a href="#myModalPublicity" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
+						
+							<a href="#myModalPublicity2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
 							
-							<a href="#myModal" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
+							<a href="#myModalPublicity3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
 						
-							<a href="#myModal2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
-						
-							
-							<a href="#myModal3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
-						
-							<a href="#myModal4" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad</a>
+							<a href="#myModalPublicity4" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad</a>
 
-							<a href="#myModal5" class="btn btn-success" data-toggle="modal">Editar Publicidad</a>
+							<a href="#myModalPublicity5" class="btn btn-success" data-toggle="modal">Editar Publicidad</a>
 
-							<a href="#myModal6" class="btn btn-success" data-toggle="modal">Agregar Folleto</a>
+							<a href="#myModalPublicity6" class="btn btn-success" data-toggle="modal">Agregar Folleto</a>
 
-							<a href="#myModal7" class="btn btn-primary" data-toggle="modal">Eliminar folleto</a>
+							<a href="#myModalPublicity7" class="btn btn-primary" data-toggle="modal">Eliminar folleto</a>
 						</div>
 					</div>
 						
@@ -46,7 +46,7 @@
 					$attributes = array('id' => 'send_publicity','name'=>'send_publicity');
 					echo form_open('publicity/send_publicity/',$attributes);
 				?>
-					<div id="myModal" class="modal fade">
+					<div id="myModalPublicity" class="modal fade">
 		        		<div class="modal-dialog">
 		            		<div class="modal-content">
 		                		<div class="modal-header">
@@ -136,7 +136,7 @@
 				<?php 
 				$attributes2 = array('id' => 'delete_publicity','name'=>'delete_publicity');
 				echo form_open('publicity/delete_publicity',$attributes2);?>
-					<div id="myModal2" class="modal fade">
+					<div id="myModalPublicity2" class="modal fade">
 		        		<div class="modal-dialog">
 		            		<div class="modal-content">
 		                		<div class="modal-header">
@@ -228,7 +228,7 @@
 						}
 					</script>
 
-			<div id="myModal3" class="modal fade">
+			<div id="myModalPublicity3" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -303,7 +303,7 @@
 
 			</script>
 
-			<div id="myModal4" class="modal fade">
+			<div id="myModalPublicity4" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -446,7 +446,7 @@
 		}
 			</script>
 
-	<div id="myModal6" class="modal fade">
+	<div id="myModalPublicity6" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             		<div class="modal-header">
@@ -532,7 +532,7 @@
 		
 			
 			<!---------------------------eliminar folleto---------------------->
-		<div id="myModal7" class="modal fade">
+		<div id="myModalPublicity7" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
@@ -601,4 +601,48 @@
 
 			}	
 		}
+			</script>
+
+<!--modal para cambiar el banner principal-->
+		<div id="myModalPublicity8" class="modal fade">
+    			<div class="modal-dialog">
+       				<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                			<h4 class="modal-title">Cambiar Banner Principal</h4>
+            			</div>
+            			<div class="modal-body">
+                			<?php echo form_open_multipart('publicity/changebanner/');?>
+                			<p>Elige una archivo para el folleto</p>
+							<input id="uploadFile17" name="uploadFile17" placeholder="Elige una archivo" disabled style="height: 30px; position: relative; top: 5px;"/>
+							<div class='fileUpload btn btn-success'>
+					    		<span>Buscar</span>
+								<input id='uploadBtn17' type='file' class='upload' name='userfile'/>
+							</div>
+							<script>
+								document.getElementById("uploadBtn17").onchange = function () {
+					    			document.getElementById("uploadFile17").value = this.value;
+								};
+							</script>
+							<p class="text-warning"><small>Cambiar el banner pricipal lo modificara en todos los clientes.</small></p>
+           	 			</div>
+            			<div class="modal-footer">
+               	 			<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                			<button type="submit" id="buttochange" class="btn btn-primary">Cambiar</button>
+                			</form>
+           				</div>
+        			</div>
+    			</div>
+			</div>
+
+			
+			<script>
+			$('#buttochange').click(function() {
+					    	var btn = $(this)
+					        btn.button('loading')
+					        setTimeout(function () {
+					            btn.button('reset')
+					        }, 2000)
+						});
+			
 			</script>
