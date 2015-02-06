@@ -628,7 +628,7 @@
             			</div>
             			<div class="modal-body">
                 			<?php echo form_open_multipart('publicity/changebanner/');?>
-                			<p>Elige una archivo para el folleto</p>
+                			<p>Elige una archivo para el Banner Principal</p>
 							<input id="uploadFile17" name="uploadFile17" placeholder="Elige una archivo" disabled style="height: 30px; position: relative; top: 5px;"/>
 							<div class='fileUpload btn btn-success'>
 					    		<span>Buscar</span>
