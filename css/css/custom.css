@@ -322,16 +322,14 @@ button.glyphicon.glyphicon-arrow-right {
 	float: right;
 }
 div.texto {
-	font-family: source sans Pro;
 	text-align: justify;
 }
 div#text1 {
-	font-size: 20px;
-	font-weight: bolder;
+	font-size: 18px;
+	
 }
 div#text2 {
-	font-size: 18px;
-	font-weight: bolder;
+	font-size: 20px;
 
 }
 div#text3 {
