@@ -243,11 +243,17 @@
                 			?>
                 			<p>Nombre:</p>
 							<input id="p_name" name="p_name" placeholder="Nombre" />
-                			<p>Elige una imagen de publicidad</p>
+                			<p>Elige una imagen del slider</p>
+							<input id="uploadFile2" name="uploadFile2" placeholder="Elige una imagen" disabled style="height: 30px; position: relative; top: 5px;"/>
+							<div class="fileUpload btn btn-success">
+    							<span>Buscar</span>
+							    <input id="uploadBtn2" type="file" class="upload" name="userfile[]" multiple/>
+							</div>
+							<p>Elige una imagen promocional</p>
 							<input id="uploadFile" name="uploadFile" placeholder="Elige una imagen" disabled style="height: 30px; position: relative; top: 5px;"/>
 							<div class="fileUpload btn btn-success">
     							<span>Buscar</span>
-							    <input id="uploadBtn" type="file" class="upload" name="userfile"/>
+							    <input id="uploadBtn" type="file" class="upload" name="userfile[]" multiple/>
 							</div>
 							<p>Pagina web del cliente</p>
 							<input id="p_url" name="p_url" placeholder="url" />
@@ -260,6 +266,9 @@
 							<script>
 								document.getElementById("uploadBtn").onchange = function () {
 					    			document.getElementById("uploadFile").value = this.value;
+								};
+								document.getElementById("uploadBtn2").onchange = function () {
+					    			document.getElementById("uploadFile2").value = this.value;
 								};
 							</script>
 

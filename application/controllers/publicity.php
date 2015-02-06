@@ -213,18 +213,34 @@ class Publicity extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload())
-		{
-			$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-			redirect('publicity/index');
-		} else {
-			if(!filter_var($this->input->post('p_url'), FILTER_VALIDATE_URL))
-			  {
-			  $this->session->set_flashdata('error', 'URL no valida');
+		$name_array = array();
+		$count = count($_FILES['userfile']['size']);
+		foreach($_FILES as $key=>$value){
+			for($s=0; $s<=$count-1; $s++) {
+				$_FILES['userfile']['name']=$value['name'][$s];
+				$_FILES['userfile']['type']    = $value['type'][$s];
+				$_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
+				$_FILES['userfile']['error']       = $value['error'][$s];
+				$_FILES['userfile']['size']    = $value['size'][$s];  
+		   		$config['upload_path'] = './img/Publicidad';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size'] = '0';
+				$config['max_width']  = '0';
+				$config['max_height']  = '0';
+				$this->load->library('upload', $config);
+				$this->upload->do_upload();
+				$data = $this->upload->data();
+				$name_array[] = $data['file_name'];
+			}
+		}
+		if(!filter_var($this->input->post('p_url'), FILTER_VALIDATE_URL))
+			{
+				$this->session->set_flashdata('error', 'URL no valida');
 				redirect('publicity/index');
-			  }else	 {
+			}else{
 			  	$data = $this->upload->data();
-				$datos['p_image'] = $data['file_name'];
+			  	$datos['p_thum'] = $name_array[0];
+				$datos['p_image'] = $name_array[1];
 				$datos['p_name']=$this->input->post('p_name');
 				$datos['p_url']=$this->input->post('p_url');
 				$datos['p_parrafo1']=$this->input->post('p_parrafo1');
@@ -235,10 +251,10 @@ class Publicity extends CI_Controller {
 				redirect('publicity/index/', 'refresh');
 
 			
-			  }
+			}
 			
-		}
 	}
+	
 
 		public function upload_brochure()
 		{
