@@ -12,18 +12,20 @@
 							?></h5>
 					<div class="row">
 						<div class="col-xs-12 col-md-12 pubcol1 center-block">
-							<a href="#myModalPublicity8" class="btn btn-success" data-toggle="modal">Cambiar Banner Principal</a>
 
-							<a href="#myModalPublicity" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
-						
-							<a href="#myModalPublicity2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
-							
+							<a href="#myModalPublicity8" class="btn btn-primary" data-toggle="modal">Cambiar Banner Principal</a>
+
 							<a href="#myModalPublicity3" class="btn btn-success" data-toggle="modal">+Agregar Publicidad</a>
 						
 							<a href="#myModalPublicity4" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad</a>
 
 							<a href="#myModalPublicity5" class="btn btn-success" data-toggle="modal">Editar Publicidad</a>
-
+						</div>
+						<div class="col-xs-12 col-md-12 pubcol1 center-block">
+							<a href="#myModalPublicity" class="btn btn-success" data-toggle="modal">+Agregar Publicidad a Cliente</a>
+						
+							<a href="#myModalPublicity2" class="btn btn-primary" data-toggle="modal">Eliminar Publicidad de Cliente</a>
+							
 							<a href="#myModalPublicity6" class="btn btn-success" data-toggle="modal">Agregar Folleto</a>
 
 							<a href="#myModalPublicity7" class="btn btn-primary" data-toggle="modal">Eliminar folleto</a>
