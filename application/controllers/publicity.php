@@ -214,7 +214,7 @@ class Publicity extends CI_Controller {
 				$name_array[] = $data['file_name'];
 			}
 		}
-		if(!filter_var($this->input->post('p_url'), FILTER_VALIDATE_URL)){
+				if(!filter_var($this->input->post('p_url'), FILTER_VALIDATE_URL)){
 			if($this->input->post('cont')==1){
 				$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo de publicidad, intentelo de nuevo');
 				echo("1");
@@ -225,25 +225,32 @@ class Publicity extends CI_Controller {
 			}
 
 		}
-		elseif($name_array[0]==$name_array[1] ){
-			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$name_array[0],'p_image'=>$this->input->post('uploadFile22'),
+		elseif($name_array[0]==NULL && $name_array[1]==NULL ){
+			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$this->input->post('imageoriginal2'),'p_image'=>$this->input->post('imageoriginal'),
 						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
 			$this->model_publicity->update_publicity($datas);
-			echo("simon1");
+			redirect("publicity/index/", "refresh");
+
+		}
+		elseif($name_array[0]==$name_array[1] ){
+			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$name_array[0],'p_image'=>$this->input->post('imageoriginal'),
+						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
+			$this->model_publicity->update_publicity($datas);
+			redirect("publicity/index/", "refresh");
 
 		}
 		elseif($name_array[0]==null){
-			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$this->input->post('uploadFile3'),'p_image'=>$name_array[1],
+			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$this->input->post('imageoriginal2'),'p_image'=>$name_array[1],
 						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
 			$this->model_publicity->update_publicity($datas);
-			echo("simon2");
+			redirect("publicity/index/", "refresh");
 
 		}
 		else{
 			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$name_array[0],'p_image'=>$name_array[1],
 						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
 			$this->model_publicity->update_publicity($datas);
-			echo("simon3");
+			redirect("publicity/index/", "refresh");
 			}
 	}
 
