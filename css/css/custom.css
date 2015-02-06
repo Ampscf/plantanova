@@ -420,6 +420,15 @@ a.btn.btn-success {
 	color: white;
 }
 
+.login .col-xs-offset-3 {
+	margin-left: 0%!important;
+}
+.login .col-xs-6 {
+		width: 100%!important;
+
+		text-align: center;
+	}
+
 /*image responsive*/
  @media (min-width: 1224px) {
  	.caru-img {
@@ -427,7 +436,7 @@ a.btn.btn-success {
  		max-height: 240px;
 	
 	}
-
+	
 }
  @media (min-width: 900px) and (max-width: 1223px)  {
  	.caru-img {

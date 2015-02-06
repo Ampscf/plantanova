@@ -373,6 +373,7 @@
                 			echo form_open_multipart('publicity/update_pub/',$attributes4);?>
 
                 			<p>Elige la publicidad a editar</p>
+                			
 							<select class="form-control" name="editpubly" id="editpubly" onchange="editpu(this.value)">
 								<option value='0'>--Selecciona una piblicidad--</option>
 								<?php 

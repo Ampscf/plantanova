@@ -17,12 +17,14 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 
 </head>
-<body>
+<body class="login">
 	<div id="wrapper">
 		<div id="container">
 			<div class="row">
-				<div class="col-xs-6 col-xs-offset-3" style="margin-left: 31%;">
-					<img src="<?php echo base_url() . '/img/LOGOS_plantanova_PLANTA.png'; ?>" alt="Logotipo" class="img-rounded" style="width:72%">
+				<div class="col-xs-6 col-xs-offset-3">
+					<div class="logo´-planta">
+					<img src="<?php echo base_url() . '/img/LOGOS_plantanova_PLANTA.png'; ?>" alt="Logotipo" class="img-rounded" style="width:auto">
+					</div>
 				</div>
 			</div>
 		</div>
