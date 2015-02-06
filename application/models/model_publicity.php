@@ -55,7 +55,7 @@
 
 		function get_client_pub($id_user)
 		{
-			$result = $this->db->query('select p_image, p.id_publicity, p_name, id_pub_client
+			$result = $this->db->query('select p_image,p.p_thum, p.id_publicity, p_name, id_pub_client
 										from t_publicity AS p, t_pub_client AS c
 										where p.id_publicity = c.id_publicity
 										and id_client ='.$id_user);

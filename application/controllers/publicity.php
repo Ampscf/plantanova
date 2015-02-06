@@ -107,14 +107,22 @@ class Publicity extends CI_Controller {
 		echo "<p>Nombre:</p>
 		<input id='p_name' name='p_name' placeholder='Nombre' value='".$infopublicity[0]->p_name."' />
 
-         <p>Elige una imagen de publicidad</p>
-		<input id='uploadFile2' name='uploadFile2' placeholder='Elige una imagen' value='".$infopublicity[0]->p_image."' disabled style='height: 30px; position: relative; top: 5px;'/>
+		<p>Elige una imagen del slider</p>
+		<input id='uploadFile3' name='uploadFile3' placeholder='Elige una imagen' value='".$infopublicity[0]->p_thum."' disabled style='height: 30px; position: relative; top: 5px;'/>
+		<input id='cont2' name='cont2' type='hidden' value='0'/>
+		<input id='imageoriginal2' name='imageoriginal2' type='hidden' value='".$infopublicity[0]->p_thum."'/>
+		<div class='fileUpload btn btn-success'>
+    	<span>Buscar</span>
+		<input id='uploadBtn3' type='file' class='upload' name='userfile[]'/>
+		</div>
+
+        <p>Elige una imagen promocional</p>
+		<input id='uploadFile22' name='uploadFile22' placeholder='Elige una imagen' value='".$infopublicity[0]->p_image."' disabled style='height: 30px; position: relative; top: 5px;'/>
 		<input id='cont' name='cont' type='hidden' value='0'/>
 		<input id='imageoriginal' name='imageoriginal' type='hidden' value='".$infopublicity[0]->p_image."'/>
 		<div class='fileUpload btn btn-success'>
     	<span>Buscar</span>
-		<input id='uploadBtn2' type='file' class='upload' name='userfile'/>
-
+		<input id='uploadBtn22' type='file' class='upload' name='userfile[]'/>
 		</div>
 
          
@@ -128,11 +136,17 @@ class Publicity extends CI_Controller {
 		<textarea  id='p_parrafo3' name='p_parrafo3' >".$infopublicity[0]->p_parrafo3."</textarea>
 		<script>
 
-		document.getElementById('uploadBtn2').onchange = function () {
-		document.getElementById('uploadFile2').value = this.value;
-		document.getElementById('cont').value = 1;
-
+		document.getElementById('uploadBtn22').onchange = function () {
+			document.getElementById('uploadFile22').value = this.value;
+			document.getElementById('cont').value = 1;
 		};
+
+		document.getElementById('uploadBtn3').onchange = function () {
+			document.getElementById('uploadFile3').value = this.value;
+			document.getElementById('cont2').value = 1;
+		};
+
+		
 		</script>";
 	
 		}
@@ -180,24 +194,57 @@ class Publicity extends CI_Controller {
 		$this->load->library('upload', $config);
 
 		
-		if ( ! $this->upload->do_upload()){
-			if($this->input->post('cont')==1){
-				$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo, intentelo de nuevo');
-				redirect('publicity/index');
-			}else{
-				$data=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),
-							'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
-				$this->model_publicity->update_publicity($data);
-				redirect('publicity/index/', 'refresh');
+		$name_array = array();
+		$count = count($_FILES['userfile']['size']);
+		foreach($_FILES as $key=>$value){
+			for($s=0; $s<=$count-1; $s++) {
+				$_FILES['userfile']['name']=$value['name'][$s];
+				$_FILES['userfile']['type']    = $value['type'][$s];
+				$_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
+				$_FILES['userfile']['error']       = $value['error'][$s];
+				$_FILES['userfile']['size']    = $value['size'][$s];  
+		   		$config['upload_path'] = './img/Publicidad';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size'] = '0';
+				$config['max_width']  = '0';
+				$config['max_height']  = '0';
+				$this->load->library('upload', $config);
+				$this->upload->do_upload();
+				$data = $this->upload->data();
+				$name_array[] = $data['file_name'];
 			}
-		} else {
-			$data = $this->upload->data();
-			$data=array('id_publicity'=>$this->input->post('editpubly'),'p_image'=>$data['file_name'],'p_name'=>$this->input->post('p_name'),
-			'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
-			$this->model_publicity->update_publicity($data);
-			redirect('publicity/index/', 'refresh');
-			
 		}
+		if(!filter_var($this->input->post('p_url'), FILTER_VALIDATE_URL)){
+			if($this->input->post('cont')==1){
+				$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo de publicidad, intentelo de nuevo');
+				echo("1");
+			}
+			if($this->input->post('cont2')==1){
+				$this->session->set_flashdata('error', 'Ocurrio un error al subir el archivo del slider, intentelo de nuevo');
+				echo("2");
+			}
+
+		}
+		elseif($name_array[0]==$name_array[1] ){
+			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$name_array[0],'p_image'=>$this->input->post('uploadFile22'),
+						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
+			$this->model_publicity->update_publicity($datas);
+			echo("simon1");
+
+		}
+		elseif($name_array[0]==null){
+			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$this->input->post('uploadFile3'),'p_image'=>$name_array[1],
+						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
+			$this->model_publicity->update_publicity($datas);
+			echo("simon2");
+
+		}
+		else{
+			$datas=array('id_publicity'=>$this->input->post('editpubly'),'p_name'=>$this->input->post('p_name'),'p_thum'=>$name_array[0],'p_image'=>$name_array[1],
+						'p_url'=>$this->input->post('p_url'),'p_parrafo1'=>$this->input->post('p_parrafo1'),'p_parrafo2'=>$this->input->post('p_parrafo2'),'p_parrafo3'=>$this->input->post('p_parrafo3'));
+			$this->model_publicity->update_publicity($datas);
+			echo("simon3");
+			}
 	}
 
 	public function upload_publicity()

@@ -306,6 +306,9 @@
 					},
 					uploadFile:{
 						required:"Selecciona un archivo"
+					},
+					uploadFile2:{
+						required:"Selecciona un archivo"
 					}
 				}
 			});
@@ -353,7 +356,7 @@
 			</script>
 
 
-<div id="myModal5" class="modal fade">
+			<div id="myModalPublicity5" class="modal fade">
     			<div class="modal-dialog">
        				<div class="modal-content">
             			<div class="modal-header">
