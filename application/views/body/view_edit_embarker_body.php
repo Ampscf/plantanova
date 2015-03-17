@@ -274,7 +274,7 @@
 				<div>&nbsp</div>
 				<div class="panel-footer">
 					<div class="row">
-						<div class="col-md-3 col-md-offset-1">
+						<div class="col-md-3 col-md-offset-1" style="margin-top:10px;">
 							<?php  
 								$data = array(
 									'class'	=> 'btn btn-primary btn-block',
