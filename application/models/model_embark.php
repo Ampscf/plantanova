@@ -8,6 +8,14 @@ Class model_embark extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function edit_embark($id_embark,$datos)
+	{
+		$this->db->where('id_embark', $id_embark);
+		$this->db->update('t_embark', $datos);
+		return $this->db->affected_rows();
+	}
+
+
 	function update_embark($id_order,$datos)
 	{
 		$this->db->where('id_order', $id_order);
@@ -32,6 +40,26 @@ Class model_embark extends CI_Model
 		$this->db->where('id_embark',$id_embark);
 		$this->db->delete('t_embark');
 		return $this->db->affected_rows();
+	}
+
+	function get_state($id_state){
+		$this->db->where('id_state',$id_state);
+		$query=$this->db->get('t_state');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else return false;
+	}
+
+	function get_town($id_town){
+		$this->db->where('id_town',$id_town);
+		$query=$this->db->get('t_town');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+		else return false;
 	}
 
 	function add_file($datos)
@@ -97,23 +125,8 @@ Class model_embark extends CI_Model
 		else return false;
 	}
 
-	function get_state($id_state){
-		$this->db->where('id_state',$id_state);
-		$query=$this->db->get('t_state');
-		if($query->num_rows()){
-			return $query->result();
-		}
-		else return false;
-	}
+	
 
-	function get_town($id_town){
-		$this->db->where('id_town',$id_town);
-		$query=$this->db->get('t_town');
-		if($query->num_rows()){
-			return $query->result();
-		}
-		else return false;
-	}
 
 	function get_order_embark($id_order)
 	{

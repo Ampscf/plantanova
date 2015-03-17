@@ -174,7 +174,7 @@ Class model_breakdown extends CI_Model
 	
 	function get_germination($id_order)
 	{
-		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,t_o.id_order, t_o.id_status
+		$result = $this->db->query('select tg.id_germination, tg.id_order, tg.germ_date, tg.volume,tg.id_sowing, tg.germ_percentage, tg.viability, tg.seed_name, tg.comment,t_o.id_order, t_o.id_status
 									from t_germination as tg, t_order as t_o 
 									where t_o.id_order = tg.id_order and t_o.id_status = 2 and tg.id_order='.$id_order.'
 									order by tg.id_germination');
@@ -605,6 +605,11 @@ Class model_breakdown extends CI_Model
 		}
 		else return false;
 	}
+	function update_germination($datos,$id_germination){
+		$this->db->where('id_germination', $id_germination);
+		$this->db->update('t_germination', $datos);
+		return $this->db->affected_rows();
+	}
 
 	function get_sum_sowing($id_seed){
 		$this->db->where('id_seed',$id_seed);
@@ -789,6 +794,13 @@ Class model_breakdown extends CI_Model
 
 	}
 
+	function update_total_tutoring($volume_tutoring,$id_order){
+		$this->db->query('update t_total set tutoring = tutoring - '.$volume_tutoring.' where id_order = '.$id_order);
+		
+		return $this->db->affected_rows();
+
+	}
+
 	function delete_process_breakdown($id_breakdown)
 	{
 		$this->db->where('id_breakdown',$id_breakdown);
@@ -872,13 +884,33 @@ Class model_breakdown extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function update_graft_seed($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set graft_total = '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
 	function update_punch($id_order,$variety,$rootstock,$volume){
 		$this->db->query('update `t_total_seed` set punch_total = punch_total + '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
 		return $this->db->affected_rows();
 	}
 
+	function update_punch_seed($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set punch_total = '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
 	function update_transplant($id_order,$variety,$rootstock,$volume){
 		$this->db->query('update `t_total_seed` set transplant_total = transplant_total + '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_transplant_seed($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set transplant_total = '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
+		return $this->db->affected_rows();
+	}
+
+	function update_tutoring_seed($id_order,$variety,$rootstock,$volume){
+		$this->db->query('update `t_total_seed` set tutoring_total = '.$volume.' where id_order ='.$id_order.' and seed_name = "'.$variety.'" or id_order = '.$id_order.' and seed_name = "'.$rootstock.'"');
 		return $this->db->affected_rows();
 	}
 
@@ -928,6 +960,13 @@ Class model_breakdown extends CI_Model
 	{
 		$this->db->where('id_order', $id_order);
 		$this->db->update('t_images_process', $datos);
+		return $this->db->affected_rows();
+	}
+
+	function update_process($id_process,$datos)
+	{
+		$this->db->where('id_process', $id_process);
+		$this->db->update('t_process', $datos);
 		return $this->db->affected_rows();
 	}
 
@@ -1027,7 +1066,25 @@ Class model_breakdown extends CI_Model
 			return false;
 		}
 	}
-	
+
+	function update_sowing_total($total,$order){
+
+		$this->db->query('update `t_total` set `sowing`='.$total.'	where `id_order` = '.$order);
+		return $this->db->affected_rows();
+	}
+	function update_sowing_total_seed($total,$order,$seed_name){
+
+		$this->db->query('update `t_total_seed` set `total`='.$total.'	where `id_order` = '.$order.' and seed_name='."'".$seed_name."'");
+		return $this->db->affected_rows();
+	}
+
+	function update_sowing($id_sowing,$volume,$date,$comment){
+		$this->db->query('update `t_sowing` set `volume`='.$volume.',`sowing_date`='."'".$date."'".',`comment`='."'".$comment."'".'	where `id_sowing` = '.$id_sowing);
+		return $this->db->affected_rows();
+	}
+
+
+
 }
 	
 ?>

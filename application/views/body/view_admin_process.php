@@ -7,6 +7,7 @@
 				</div>
 				<div class="panel-body">
 				
+
 					<div class="clear">&nbsp</div>
 					<div class="col-xs-12">
 						<h3><span class="glyphicon glyphicon-th-large"></span> DETALLE DEL PEDIDO</h3>
@@ -252,8 +253,8 @@
 				
 				<div class="clear">&nbsp</div>
 				<div class="clear">&nbsp</div>
-				<div class="col-xs-12">
-					<div class="col-xs-6">	
+				<div class="col-md-12">
+					<div class="col-xs-6" style="padding-top: 10px;">	
 						<?php echo anchor('breakdown/pedido_proceso', 'Procesos', 'class="btn btn-primary" style="float: right; width: 50%;"');?>
 					</div>
 					<div class="col-xs-6">	
@@ -435,6 +436,7 @@
 				else return true;
 			}
 
+			
 			</script>
 
 			<br/>
@@ -1091,6 +1093,39 @@
 		</div>
 	</div>
 </div> <!-- End content div -->
+
+<?php 
+
+	if(is_array($t_total_seed)){
+		foreach ($t_total_seed as $key) {
+			if($key->viability_total < $key->graft_total ){ ?>
+				<script type="text/javascript">
+					alert("LA GERMINACION DE <?php echo $key->seed_name; ?> ES MENOR QUE EL INJERTO");
+				</script>
+			<?php 
+			}
+			if($key->viability_total < $key->punch_total){ ?>
+				<script type="text/javascript">
+					alert("LA GERMINACION DE <?php echo $key->seed_name; ?> ES MENOR QUE EL PINCHADO");
+				</script>
+			<?php 
+			}
+			if($key->viability_total < $key->transplant_total ){ ?>
+				<script type="text/javascript">
+					alert("LA GERMINACION DE <?php echo $key->seed_name; ?> ES MENOR QUE EL TRANSPLANTE");
+				</script>
+			<?php 
+			}
+			if($key->viability_total < $key->tutoring_total ){ ?>
+				<script type="text/javascript">
+					alert("LA GERMINACION DE <?php echo $key->seed_name; ?> ES MENOR QUE EL TUTOREO");
+				</script>
+			<?php 
+			}
+		}
+	}
+	
+?>
 
 <script type="text/javascript">
 	
@@ -1911,3 +1946,4 @@
 			        </div>
 			    </div>
 			</div>
+

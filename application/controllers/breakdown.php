@@ -140,7 +140,7 @@ class Breakdown extends CI_Controller {
 		$template['total_punch']=$this->model_order->get_total_punch($this->uri->segment(3));
 		$template['total_transplant']=$this->model_order->get_total_transplant($this->uri->segment(3));
 		$template['total_tutoring']=$this->model_order->get_total_tutoring($this->uri->segment(3));
-		
+		$template['t_total_seed']=$this->model_order->get_t_total_seed($this->uri->segment(3));
 		$template['sowing'] = $this->model_order->get_sowing($this->uri->segment(3));
 		$template['seeds']=$this->model_order->get_seeds($this->uri->segment(3));
 		$template['farmer']=$order->result()[0]->farmer;
@@ -405,6 +405,49 @@ class Breakdown extends CI_Controller {
 		redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
 	}
 
+	public function edit_germination()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$total_germination=$this->model_order->get_total_germ($this->uri->segment(3));
+		$total_germ=$total_germination->germination;
+		
+		$datos['id_order']=$this->uri->segment(3);
+		$id_germination=$this->input->post('id_germination');
+		$id_sowing=$this->input->post('breackdown_Germ'.$id_germination);
+		$fecha=$this->input->post('datepickerGerm'.$id_germination);
+		$datos['germ_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['germ_percentage']=$this->input->post('percentageGerm'.$id_germination);
+		$datos['viability']=$this->input->post('viabilityGerm'.$id_germination);
+		$datos['comment']=$this->input->post('commentGerm'.$id_germination);
+		$sowing=$this->model_breakdown->get_sowing_id_sowing($id_sowing);
+		$datos['id_sowing']=$sowing[0]->id_sowing;
+		
+		$germination=$this->model_breakdown->get_germination_id_sowing($id_sowing);
+		$viability_old=$germination[0]->volume;
+
+		$datos['volume']=$sowing[0]->volume*($datos['viability']/100);
+		$datos['seed_name']=$sowing[0]->seed;
+	
+		$order_volume=$this->model_order->get_order_volume($this->uri->segment(3),$datos['seed_name']);
+		$total_vial=$this->model_order->get_vial_total($this->uri->segment(3),$datos['seed_name']);
+		$new_vol=$total_vial->viability_total-$viability_old+$datos['volume'];
+		$scope=($new_vol/$order_volume->order_volume-1)*100;
+	
+		$order_vol=$this->model_breakdown->get_seed_volume($this->uri->segment(3),$datos['seed_name']);
+		
+		$total_vol=$total_germ-$germination[0]->volume+$datos['volume'];
+		
+		//echo "totalvial".$total_vial->viability_total."viabilityold".$viability_old."datos_volume".$datos['volume']."new_vol".$new_vol;
+		$this->model_order->update_total_vial($this->uri->segment(3),$new_vol,$datos['seed_name'],$scope);
+		$this->model_order->update_total_germination($this->uri->segment(3), $total_vol);
+		$this->model_breakdown->update_germination($datos,$id_germination);
+		//echo "totalvial".$total_vial->viability_total."viabilityold".$viability_old."datos_volume".$datos['volume']."new_vol".$new_vol;
+
+		redirect("breakdown/process/".$this->uri->segment(3)."#germinacion", "refresh");
+	}
+
 	public function insert_graft(){
 		if($this->session->userdata('id_rol')!=1){
 			redirect('client/index');
@@ -444,6 +487,38 @@ class Breakdown extends CI_Controller {
 		redirect("breakdown/process/".$this->uri->segment(3)."#injerto", "refresh");
 	}
 	
+	public function edit_graft(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_process=$this->input->post("id_processGraft");
+		$datos['id_breakdown']=$this->input->post("breakdownGraft".$id_process);
+		$datos['volume']=$this->input->post("volumeGraft".$id_process);
+		$fecha=$this->input->post('datepickerGraft'.$id_process);
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['comment']=$this->input->post('commentGraft'.$id_process);
+
+		$process=$this->model_breakdown->get_process_id_process($id_process);
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+
+		$sum_breakdown=$this->model_order->get_total_graft2($datos['id_breakdown']);
+		$sum_breakdown2=$sum_breakdown[0]->volume - $process[0]->volume;
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$datos['scope']=((($sum_breakdown2 + $datos['volume'])/ $total_breackdown[0]->volume) - 1) * 100;
+		
+		$total_graft=$this->model_order->get_total_graft($this->uri->segment(3));
+
+		$total_graft2=$total_graft->graft - $process[0]->volume + $datos['volume'];
+
+		$total_seed_graft=$this->model_breakdown->get_total_seed($this->uri->segment(3),$breakdown[0]->variety);
+		$volume_seed_graft=$total_seed_graft[0]->graft_total - $process[0]->volume + $datos['volume'];
+		$this->model_breakdown->update_graft_seed($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_seed_graft);
+		$this->model_order->update_total_graft($this->uri->segment(3), $total_graft2);
+		$this->model_breakdown->update_process($id_process,$datos);
+
+		redirect("breakdown/process/".$this->uri->segment(3)."#injerto", "refresh");
+	}
+
 	public function insert_punch()
 	{
 		if($this->session->userdata('id_rol')!=1){
@@ -475,6 +550,38 @@ class Breakdown extends CI_Controller {
 		$this->model_order->update_total_punch($this->uri->segment(3), $total_vol);
 
 		$this->model_breakdown->update_scope2($datos['scope'],$datos['id_breakdown'],3);
+
+		redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
+	}
+
+	public function edit_punch(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_process=$this->input->post("id_processPunch");
+		$datos['id_breakdown']=$this->input->post("breakdownPunch".$id_process);
+		$datos['volume']=$this->input->post("volumePunch".$id_process);
+		$fecha=$this->input->post('datepickerPunch'.$id_process);
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['comment']=$this->input->post('commentPunch'.$id_process);
+
+		$process=$this->model_breakdown->get_process_id_process($id_process);
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+
+		$sum_breakdown=$this->model_order->get_total_punch2($datos['id_breakdown']);
+		$sum_breakdown2=$sum_breakdown[0]->volume - $process[0]->volume;
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$datos['scope']=((($sum_breakdown2 + $datos['volume'])/ $total_breackdown[0]->volume) - 1) * 100;
+		
+		$total_punch=$this->model_order->get_total_punch($this->uri->segment(3));
+
+		$total_punch2=$total_punch->punch - $process[0]->volume + $datos['volume'];
+
+		$total_seed_punch=$this->model_breakdown->get_total_seed($this->uri->segment(3),$breakdown[0]->variety);
+		$volume_seed_punch=$total_seed_punch[0]->punch_total - $process[0]->volume + $datos['volume'];
+		$this->model_breakdown->update_punch_seed($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_seed_punch);
+		$this->model_order->update_total_punch($this->uri->segment(3), $total_punch2);
+		$this->model_breakdown->update_process($id_process,$datos);
 
 		redirect("breakdown/process/".$this->uri->segment(3)."#pinchado", "refresh");
 	}
@@ -513,6 +620,37 @@ class Breakdown extends CI_Controller {
 
 		redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");	
 	}
+	public function edit_transplant(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_process=$this->input->post("id_processTransplant");
+		$datos['id_breakdown']=$this->input->post("breakdownTransplant".$id_process);
+		$datos['volume']=$this->input->post("volumeTransplant".$id_process);
+		$fecha=$this->input->post('datepickerTransplant'.$id_process);
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['comment']=$this->input->post('commentTransplant'.$id_process);
+
+		$process=$this->model_breakdown->get_process_id_process($id_process);
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+
+		$sum_breakdown=$this->model_order->get_total_transplant2($datos['id_breakdown']);
+		$sum_breakdown2=$sum_breakdown[0]->volume - $process[0]->volume;
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$datos['scope']=((($sum_breakdown2 + $datos['volume'])/ $total_breackdown[0]->volume) - 1) * 100;
+		
+		$total_transplant=$this->model_order->get_total_transplant($this->uri->segment(3));
+
+		$total_transplant2=$total_transplant->transplant - $process[0]->volume + $datos['volume'];
+
+		$total_seed_transplant=$this->model_breakdown->get_total_seed($this->uri->segment(3),$breakdown[0]->variety);
+		$volume_seed_transplant=$total_seed_transplant[0]->transplant_total - $process[0]->volume + $datos['volume'];
+		$this->model_breakdown->update_transplant_seed($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_seed_transplant);
+		$this->model_order->update_total_transplant($this->uri->segment(3), $total_transplant2);
+		$this->model_breakdown->update_process($id_process,$datos);
+
+		redirect("breakdown/process/".$this->uri->segment(3)."#transplante", "refresh");
+	}
 
 	public function insert_tutoring()
 	{
@@ -548,6 +686,39 @@ class Breakdown extends CI_Controller {
 
 		redirect("breakdown/process/".$this->uri->segment(3)."#tutoreo", "refresh");	
 	}
+
+	public function edit_tutoring(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_process=$this->input->post("id_processTutoring");
+		$datos['id_breakdown']=$this->input->post("breakdownTutoring".$id_process);
+		$datos['volume']=$this->input->post("volumeTutoring".$id_process);
+		$fecha=$this->input->post('datepickerTutoring'.$id_process);
+		$datos['process_date']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['comment']=$this->input->post('commentTutoring'.$id_process);
+
+		$process=$this->model_breakdown->get_process_id_process($id_process);
+		$breakdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+
+		$sum_breakdown=$this->model_order->get_total_tutoring2($datos['id_breakdown']);
+		$sum_breakdown2=$sum_breakdown[0]->volume - $process[0]->volume;
+		$total_breackdown=$this->model_breakdown->get_breakdown($datos['id_breakdown']);
+		$datos['scope']=((($sum_breakdown2 + $datos['volume'])/ $total_breackdown[0]->volume) - 1) * 100;
+		
+		$total_tutoring=$this->model_order->get_total_tutoring($this->uri->segment(3));
+
+		$total_tutoring2=$total_tutoring->tutoring - $process[0]->volume + $datos['volume'];
+
+		$total_seed_tutoring=$this->model_breakdown->get_total_seed($this->uri->segment(3),$breakdown[0]->variety);
+		$volume_seed_tutoring=$total_seed_tutoring[0]->tutoring_total - $process[0]->volume + $datos['volume'];
+		$this->model_breakdown->update_tutoring_seed($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_seed_tutoring);
+		$this->model_order->update_total_tutoring($this->uri->segment(3), $total_tutoring2);
+		$this->model_breakdown->update_process($id_process,$datos);
+
+		redirect("breakdown/process/".$this->uri->segment(3)."#tutoreo", "refresh");
+	}
+
 	
 	public function delete_germination()
     {
@@ -637,6 +808,8 @@ class Breakdown extends CI_Controller {
 		if($this->model_breakdown->get_process_id_breakdown($process[0]->id_breakdown)){
 			$volume_punch=$this->model_breakdown->get_volume_punch($process[0]->id_breakdown);
 			$volume_transplant=$this->model_breakdown->get_volume_transplant($process[0]->id_breakdown);
+			$volume_tutoring=$this->model_breakdown->get_volume_tutoring($process[0]->id_breakdown);
+
 			if($volume_punch[0]->volume > 0){
 				$this->model_breakdown->update_total_punch($volume_punch[0]->volume,$this->uri->segment(3));
 				$this->model_breakdown->update_punch2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_punch[0]->volume);
@@ -647,6 +820,11 @@ class Breakdown extends CI_Controller {
 				$this->model_breakdown->update_total_transplant($volume_transplant[0]->volume,$this->uri->segment(3));
 				$this->model_breakdown->update_transplant2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_transplant[0]->volume);
 				$this->model_breakdown->delete_process_id_breakdown_transplant($process[0]->id_breakdown);
+			}
+			if($volume_tutoring[0]->volume > 0){
+				$this->model_breakdown->update_total_tutoring($volume_tutoring[0]->volume,$this->uri->segment(3));
+				$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_tutoring[0]->volume);
+				$this->model_breakdown->delete_process_id_breakdown_tutoring($process[0]->id_breakdown);
 			}
 			
 		}
@@ -934,9 +1112,74 @@ class Breakdown extends CI_Controller {
 	    $resta=$seed[0]->volume - $suma_volumen_sowing[0]->volume;
 	    
 	    if( $seed_volume > $seed[0]->volume || $seed_volume > $resta) {
-	        echo "11";//false
+	      echo "11";//false
 	    } else {
-	        echo "1";//true
+	      echo "1";//true
+	      
+	    }
+	}
+	public function edit_sowing(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_sowing=$this->input->post('id_sowing');
+		$volume=$this->input->post('editVolume'.$id_sowing);
+		$date=date("Y-m-d", strtotime($this->input->post('datepicker'.$id_sowing)));
+		$comment=$this->input->post('editComment'.$id_sowing);
+
+		$sowing=$this->model_breakdown->get_sowing_id_sowing($id_sowing);
+		$t_total=$this->model_breakdown->get_total($this->uri->segment(3));
+		$total= $t_total[0]->sowing - $sowing[0]->volume + $volume;
+
+		$t_total_seed=$this->model_breakdown->get_total_seed($this->uri->segment(3),$sowing[0]->seed);
+		$total2=$t_total_seed[0]->total - $sowing[0]->volume + $volume; 
+		
+		$this->model_breakdown->update_sowing_total($total,$this->uri->segment(3));
+		$this->model_breakdown->update_sowing_total_seed($total2,$this->uri->segment(3),$sowing[0]->seed);
+		$this->model_breakdown->update_sowing($id_sowing,$volume,$date,$comment);
+
+		//reajustar germinacion si es que existe
+		$germination=$this->model_breakdown->get_germination_id_sowing($id_sowing);
+		if(is_array($germination)){
+			$germination=$this->model_breakdown->get_germination_id_sowing($id_sowing);
+			$datos["volume"] = $volume * ($germination[0]->viability/100);
+			$total_germination=$t_total[0]->germination - $germination[0]->volume + $datos["volume"];
+			$t_total_germination=$t_total_seed[0]->viability_total- $germination[0]->volume + $datos["volume"];
+			
+
+			$order_volume=$this->model_order->get_order_volume($this->uri->segment(3),$sowing[0]->seed);
+			$total_vial=$this->model_order->get_vial_total($this->uri->segment(3),$sowing[0]->seed);
+			$new_vol=$total_vial->viability_total-$germination[0]->volume + $datos['volume'];
+			$scope=($new_vol/$order_volume->order_volume-1)*100;
+
+			$this->model_order->update_total_germination($this->uri->segment(3), $total_germination);
+			$this->model_order->update_total_vial($this->uri->segment(3),$t_total_germination,$sowing[0]->seed,$scope);
+			$this->model_breakdown->update_germination($datos,$germination[0]->id_germination);
+		}
+
+		redirect("breakdown/process/".$this->uri->segment(3), "refresh");
+	}
+
+	public function max_edit_volume_sowing(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_seed = $this->input->post('seeds');
+		$seed_volume = $this->input->post('volume');
+		$sowing = $this->input->post('sowing');
+		$seed=$this->model_breakdown->get_seed_id_seed($id_seed);
+		$suma_volumen_sowing=$this->model_breakdown->get_sum_sowing($id_seed);
+	    $sowing_seed=$this->model_breakdown->get_sowing_id_sowing($sowing);
+	    
+	    $resta=$suma_volumen_sowing[0]->volume -  $sowing_seed[0]->volume;
+	    $suma=$resta + $seed_volume;
+	    
+	    if( $seed_volume > $seed[0]->volume || $suma > $seed[0]->volume) {
+	      echo "11";//false
+	    	//echo $seed[0]->volume ."-". $suma_volumen_sowing[0]->volume."|".$seed_volume.">".$resta;
+	    } else {
+	      echo "1";//true
+	      
 	    }
 	}
 
@@ -946,7 +1189,7 @@ class Breakdown extends CI_Controller {
 		}
 		$id_breakdown = $this->input->post('breakdown_graft');
 		$graft_volume = $this->input->post('volume_graft');
-		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		$breakdown = $this->model_breakdown->get_breakdown($id_breakdown);
 		
 		
 		$variedad=$breakdown[0]->variety;
@@ -984,8 +1227,62 @@ class Breakdown extends CI_Controller {
 
 		if($maximo < $graft_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
+	        //echo $id_breakdown."|".$graft_volume;
 	    } else {
 	        echo "1";//true
+	        //echo $id_breakdown."|".$graft_volume;
+	    }
+	}
+
+	public function max_volume_edit_graft(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_breakdown = $this->input->post('breakdown_graft');
+		$graft_volume = $this->input->post('volume_graft');
+		$actual_volume= $this->input->post('actual_volume');
+		$breakdown = $this->model_breakdown->get_breakdown($id_breakdown);
+		
+		
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
+
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
+
+
+		if($total_semillas1[0]->viability_total < $total_semillas2[0]->viability_total){
+			$maximo=$total_semillas1[0]->viability_total;
+
+			/*if($total_semillas1[0]->punch_total != 0 && $total_semillas1[0]->punch_total < $maximo){
+				$maximo=$total_semillas1[0]->punch_total;
+			}
+			if($total_semillas1[0]->transplant_total != 0 && $total_semillas1[0]->transplant_total < $maximo ){
+				$maximo=$total_semillas1[0]->transplant_total;
+			}*/
+			$maximo2=$total_semillas1[0]->graft_total - $actual_volume + $graft_volume;
+		}else{
+			$maximo=$total_semillas2[0]->viability_total;
+
+			/*if($total_semillas2[0]->punch_total != 0 && $total_semillas2[0]->punch_total < $maximo)
+			{
+				$maximo=$total_semillas2[0]->punch_total;
+			}
+			if($total_semillas2[0]->transplant_total != 0 && $total_semillas2[0]->transplant_total < $maximo)
+			{
+				$maximo=$total_semillas2[0]->transplant_total;
+			}*/
+			$maximo2=$total_semillas2[0]->graft_total - $actual_volume + $graft_volume;
+		}
+
+		$maximo2=$total_semillas1[0]->graft_total - $actual_volume + $graft_volume;
+
+		if($maximo >= $graft_volume && $maximo2 <= $maximo ) {
+	        echo "1";//true
+	        //echo $maximo.">=".$graft_volume."|".$maximo2."<=".$maximo;
+	    } else {
+	        echo "11";//false
+	        //echo $maximo.">=".$graft_volume."|".$maximo2."<=".$maximo;
 	    }
 	}
 
@@ -1033,6 +1330,52 @@ class Breakdown extends CI_Controller {
 	    }
 	}
 
+	public function max_volume_edit_punch(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_breakdown = $this->input->post('breakdown_punch');
+		$punch_volume = $this->input->post('volume_punch');
+		$actual_volume= $this->input->post('actual_volume');
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+	
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
+
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
+
+
+		if($total_semillas1[0]->viability_total < $total_semillas2[0]->viability_total){
+			$maximo=$total_semillas1[0]->viability_total;
+
+			/*if($total_semillas1[0]->graft_total != 0 && $total_semillas1[0]->graft_total < $maximo){
+				$maximo=$total_semillas1[0]->graft_total;
+			}
+			if($total_semillas1[0]->transplant_total != 0 && $total_semillas1[0]->transplant_total < $maximo ){
+				$maximo=$total_semillas1[0]->transplant_total;
+			}*/
+			$maximo2=$total_semillas1[0]->punch_total - $actual_volume + $punch_volume;
+		}else{
+			$maximo=$total_semillas2[0]->viability_total;
+
+			/*if($total_semillas2[0]->graft_total != 0 && $total_semillas2[0]->graft_total < $maximo){
+				$maximo=$total_semillas2[0]->graft_total;
+			}
+			if($total_semillas2[0]->transplant_total != 0 && $total_semillas2[0]->transplant_total < $maximo){
+				$maximo=$total_semillas2[0]->transplant_total;
+			}*/
+			$maximo2=$total_semillas2[0]->punch_total - $actual_volume + $punch_volume;
+		}
+
+		if($maximo >= $punch_volume && $maximo2 <= $maximo ) {
+	        echo "1";//true
+	    } else {
+	        echo "11";//false
+	    }
+
+	}
+
 	public function max_volume_transplant(){
 		if($this->session->userdata('id_rol')!=1){
 			redirect('client/index');
@@ -1070,12 +1413,61 @@ class Breakdown extends CI_Controller {
 			$maximo2=$total_semillas2[0]->transplant_total + $transplant_volume;
 		}
 
-		if($maximo < $transplant_volume || $maximo2 > $maximo ) {
+		if($maximo < $transplant_volume && $maximo2 > $maximo ) {
 	        echo "11";//false
 	    } else {
 	        echo "1";//true
 	    }
 	}
+
+	public function max_volume_edit_transplant(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_breakdown = $this->input->post('breakdown_transplant');
+		$transplant_volume = $this->input->post('volume_transplant');
+		$actual_volume= $this->input->post('actual_volume');
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
+
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
+
+
+		if($total_semillas1[0]->viability_total < $total_semillas2[0]->viability_total){
+			$maximo=$total_semillas1[0]->viability_total;
+
+			/*if($total_semillas1[0]->graft_total != 0 && $total_semillas1[0]->graft_total < $maximo){
+				$maximo=$total_semillas1[0]->graft_total;
+			}
+			if($total_semillas1[0]->punch_total != 0 && $total_semillas1[0]->punch_total < $maximo ){
+				$maximo=$total_semillas1[0]->punch_total;
+			}*/
+			$maximo2=$total_semillas1[0]->transplant_total - $actual_volume + $transplant_volume;
+		}else{
+			$maximo=$total_semillas2[0]->viability_total;
+
+			/*if($total_semillas2[0]->graft_total != 0 && $total_semillas2[0]->graft_total < $maximo){
+				$maximo=$total_semillas2[0]->graft_total;
+			}
+			if($total_semillas2[0]->punch_total != 0 && $total_semillas2[0]->punch_total < $maximo){
+				$maximo=$total_semillas2[0]->punch_total;
+			}*/
+			$maximo2=$total_semillas2[0]->transplant_total - $actual_volume + $transplant_volume;
+		}
+
+
+		if($maximo >= $transplant_volume && $maximo2 <= $maximo ) {
+	        echo "1";//true
+	       // echo $maximo .">=". $transplant_volume ."||". $maximo2 ."<=". $maximo;
+	    } else {
+	        echo "11";//false
+	        //echo $maximo .">=". $transplant_volume ."||". $maximo2 ."<=". $maximo;
+	    }
+	}
+
 
 	public function max_volume_tutoring(){
 		if($this->session->userdata('id_rol')!=1){
@@ -1093,6 +1485,32 @@ class Breakdown extends CI_Controller {
 
 		$maximo=$total_semillas1[0]->transplant_total;
 		$maximo2=$total_semillas1[0]->tutoring_total + $tutoring_volume;
+		if($maximo < $tutoring_volume || $maximo2 > $maximo ) {
+	        echo "11";//false
+	    } else {
+	        echo "1";//true
+	    }
+	}
+
+	public function max_volume_edit_tutoring(){
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_breakdown = $this->input->post('breakdown_tutoring');
+		$tutoring_volume = $this->input->post('volume_tutoring');
+		$actual_volume= $this->input->post('actual_volume');
+
+
+		$breakdown=$this->model_breakdown->get_breakdown($id_breakdown);
+		
+		$variedad=$breakdown[0]->variety;
+		$portainjerto=$breakdown[0]->rootstock;
+
+		$total_semillas1=$this->model_breakdown->get_total_seed($this->uri->segment(3),$variedad);
+		//$total_semillas2=$this->model_breakdown->get_total_seed($this->uri->segment(3),$portainjerto);
+
+		$maximo=$total_semillas1[0]->transplant_total;
+		$maximo2=$total_semillas1[0]->tutoring_total - $actual_volume + $tutoring_volume;
 		if($maximo < $tutoring_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
 	    } else {

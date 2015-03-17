@@ -111,6 +111,43 @@ class Embark extends CI_Controller {
 		redirect("embark/index/".$this->uri->segment(3), "refresh");
 	}
 
+	public function edit_embark()
+	{
+		if($this->session->userdata('id_rol')!=1){
+			redirect('client/index');
+		}
+		$id_embark=$this->input->post("id_embark");
+		$datos['id_order']=$this->uri->segment(3);
+		$fecha=$this->input->post('datepicker'.$id_embark);
+		$datos['date_delivery']=date("Y-m-d H:i:s", strtotime($fecha));
+		$datos['volume']=$this->input->post('final_volume'.$id_embark);
+		$datos['transport']=$this->input->post('transporter'.$id_embark);
+		$datos['freight']=$this->input->post('fletera'.$id_embark);
+		$datos['driver']=$this->input->post('chofer'.$id_embark);
+		$datos['driver_cel']=$this->input->post('cel'.$id_embark);
+		$fecha2=$this->input->post('butondates'.$id_embark);
+		$datos['date_arrival']=date("Y-m-d H:i:s", strtotime($fecha2));
+		$datos['destiny']=$this->input->post('destino'.$id_embark);
+		
+		$datos['arrival_contact']=$this->input->post('contacto'.$id_embark);	
+		
+		$datos['chep']=$this->input->post('chep'.$id_embark);
+		$datos['ensenada']=$this->input->post('ensenada'.$id_embark);
+		$tipo=$this->input->post('radio');
+		$datos['tipo_ensenada']=$tipo[0];
+		$datos['no_aplica']=$this->input->post('no_aplica'.$id_embark);
+		$datos['transport_box']=$this->input->post('transport_box'.$id_embark);
+		$datos['racks']=$this->input->post('racks'.$id_embark);
+		$datos['comment']=$this->input->post('comment'.$id_embark);
+		$datos['address']=$this->input->post('address'.$id_embark);
+		$datos['id_state']=$this->input->post('state'.$id_embark);
+		$datos['id_town']=$this->input->post('town'.$id_embark);
+
+		$this->model_embark->edit_embark($id_embark,$datos);
+
+		redirect("embark/index/".$this->uri->segment(3), "refresh");
+	}
+
 	public function update_embark()
 	{
 		if($this->session->userdata('id_rol')!=1){
