@@ -192,6 +192,25 @@
 			</div>
 
 			<script type="text/javascript">
+				
+			$(function() {
+				$( "#datepicker<?php echo $key->id_embark; ?>" ).datepicker();
+			});
+			$(function() {    
+		       $('#butondate<?php echo $key->id_embark; ?>').click(function() {
+		          $('#datepicker<?php echo $key->id_embark; ?>').datepicker('show');
+		       });
+		    });
+			$(function() {
+				$( "#butondates<?php echo $key->id_embark; ?>" ).datepicker();
+			});
+			$(function() {    
+			    $('#butondatz<?php echo $key->id_embark; ?>').click(function() {
+				    $('#butondates<?php echo $key->id_embark; ?>').datepicker('show');
+			    });
+		    });
+
+
 				if (document.getElementById("racks<?php echo $key->id_embark; ?>").value != 0){
 					document.getElementById("racks<?php echo $key->id_embark; ?>").style.display = "block";
 					document.getElementById("checkRacks<?php echo $key->id_embark; ?>").checked = true;
@@ -446,23 +465,6 @@
 					}
 				});
 			}
-
-			$(function() {
-				$( "#datepicker<?php echo $key->id_embark; ?>" ).datepicker();
-			});
-			$(function() {    
-		       $('#butondate<?php echo $key->id_embark; ?>').click(function() {
-		          $('#datepicker<?php echo $key->id_embark; ?>').datepicker('show');
-		       });
-		    });
-			$(function() {
-				$( "#butondates<?php echo $key->id_embark; ?>" ).datepicker();
-			});
-			$(function() {    
-			    $('#butondatz<?php echo $key->id_embark; ?>').click(function() {
-				    $('#butondates<?php echo $key->id_embark; ?>').datepicker('show');
-			    });
-		    });
 
 			</script>
 
