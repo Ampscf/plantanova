@@ -78,7 +78,7 @@
 								<input type="hidden" id="breakdownGraft<?php echo $key->id_process?>" name="breakdownGraft<?php echo $key->id_process?>" value="<?php echo $key->id_breakdown;?>" >
 							</div><!-- End breakdown_graft -->
 							<div>
-								<input type="text" id="inputvalgraft<?php echo $key->id_process; ?>" name="inputvalgraft<?php echo $key->id_process; ?>" value="1">
+								<input type="hidden" id="inputvalgraft<?php echo $key->id_process; ?>" name="inputvalgraft<?php echo $key->id_process; ?>" value="1">
 							</div>
 							<div class="input-group">
 								<p>Cantidad</p>
