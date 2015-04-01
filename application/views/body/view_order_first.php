@@ -40,7 +40,7 @@
 								<div class="input-group input-group-lg">									
 
 									<h3>Tipo de Cultivo</h3>
-									<select class="form-control" name="plant" id="plant">
+									<select class="form-control" name="plant" id="plant" tabindex="1"> 
 										<option value="-1" selected>---Selecciona un cultivo---</option>
 										<?php 
 										foreach($plants as $key)
@@ -55,14 +55,14 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Fecha de entrega</h3>
-									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:92%; float:right" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate"><i class="fa fa-calendar"></i></a><input type="text" class="form-control" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:92%; float:right" readonly tabindex="3"></p>
 								</div><!-- End Date -->
 								<?php echo form_error('datepicker'); ?>
 								
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Brazos</h3>
-									<select class="form-control" name="arms" id="arms">
+									<select class="form-control" name="arms" id="arms" tabindex="5">
 										<option value="2" selected>2</option>
 										<option value="1">1</option>
 									</select>	
@@ -71,7 +71,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Agricultor</h3>
-									<input type="text" class="form-control" placeholder="Agricultor" name="farmer" id="farmer" value="" >
+									<input type="text" class="form-control" placeholder="Agricultor" name="farmer" id="farmer" value="" tabindex="7">
 								</div><!-- End Volume -->						
 							
 							</div>						
@@ -81,7 +81,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Categoría</h3>
-									<select class="form-control" name="category" id="category">
+									<select class="form-control" name="category" id="category" tabindex="2">
 										<option value="-1" selected>---Selecciona una categoría---</option>
 										<?php 
 										foreach($categories as $key)
@@ -95,13 +95,13 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Volumen</h3>
-									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="" >
+									<input type="text" class="form-control" placeholder="Volumen" name="volume" id="volume" value="" tabindex="4">
 								</div><!-- End Volume -->
 								<?php echo form_error('volume'); ?>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Tutoreo</h3>
-										<select class="form-control" name="tutoring" id="tutoring">
+										<select class="form-control" name="tutoring" id="tutoring" tabindex="6">
 											<option value="No" selected>No</option>
 											<option value="Si" >Si</option>
 										</select>
@@ -113,7 +113,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Comentarios</h3>
-									<textarea class="form-control" rows="4" style="height: auto !important;" id="comment" name="comment"></textarea>								
+									<textarea class="form-control" rows="4" style="height: auto !important;" id="comment" name="comment" tabindex="8"></textarea>								
 								</div><!-- End Comments -->
 							</div>					
 

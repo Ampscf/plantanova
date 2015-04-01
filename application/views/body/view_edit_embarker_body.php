@@ -342,67 +342,67 @@
 					    	<div class="col-md-6">
 								<h3>Fecha de Entrega</h3>							
 								<div class="input-group">
-									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90% !important; float: right;" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate" ><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker" name="datepicker" style="width:90% !important; float: right;" readonly tabindex="1"></p>
 								</div>	
 
 					    		<div class="clear">&nbsp</div>
 								<h3>Fecha de Arribo</h3>
 								<div class="input-group">
-									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:90% !important; float: right;" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondatz"><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates" name="butondates" style="width:90% !important; float: right;" readonly tabindex="3"></p>
 								</div><!-- End fecha -->
 
 					    		<div class="clear">&nbsp</div>
 								<h3>Volumen a Entregar</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume">
+									<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume" id="final_volume" tabindex="5">
 								</div><!-- End volumen a entregar -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Transporte</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name='transporter' id='transporter'>
+									<select class="form-control" name='transporter' id='transporter' tabindex="7">
 										<option value='-1' selected>--Selecciona un Transporte--</option>
-										<option value='Trailer 53' >Trailer 53</option>
-										<option value='Trailer 48'>Trailer 48</option>
-										<option value='Torton' >Torton</option>
 										<option value='Camioneta de tres y media' >Camioneta de tres y media</option>
-										<option value='Pickup' >Pickup</option>									
+										<option value='Pickup' >Pickup</option>	
+										<option value='Torton' >Torton</option>
+										<option value='Trailer 48'>Trailer 48</option>
+										<option value='Trailer 53' >Trailer 53</option>								
 									</select>	
 								</div><!-- End Cajas --><!-- End transporte -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Fletera</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Fletera" name="fletera" id="fletera">
+									<input type="text" class="form-control" placeholder="Fletera" name="fletera" id="fletera" tabindex="9">
 								</div><!-- End fletera -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Chofer</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Chofer" name="chofer" id="chofer">
+									<input type="text" class="form-control" placeholder="Chofer" name="chofer" id="chofer" tabindex="11">
 								</div><!-- End Chofer -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Cel Chofer</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel">
+									<input type="text" class="form-control" placeholder="Cel Chofer" name="cel" id="cel" tabindex="13">
 								</div><!-- End Cel chofer -->
 								<div class="clear">&nbsp</div>
 								<h3>Destino</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino">
+									<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino" tabindex="15">
 								</div><!-- End Destino -->
 								<div class="clear">&nbsp</div>	
 								<h3>Direccion</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Direccion" name="address" id="address">
+									<input type="text" class="form-control" placeholder="Direccion" name="address" id="address" tabindex="17">
 								</div><!-- End Destino -->							
 					    	</div>
 
 					    	<div class="col-md-6">
 								<h3>Estado</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
+									<select class="form-control" name="state" id="state" onchange="get_towns(this.value);" tabindex="2">
 										<option value="-1" selected>---Selecciona un estado---</option>
 										<?php 
 											foreach($states as $key)
@@ -415,7 +415,7 @@
 								<div class="clear">&nbsp</div>
 								<h3>Ciudad</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="town" id="town">
+									<select class="form-control" name="town" id="town" tabindex="4">
 										<option selected value="-1">---Selecciona una ciudad---</option>
 										<?php 
 											foreach($towns as $key)
@@ -428,7 +428,7 @@
 								<div class="clear">&nbsp</div>
 								<h3>Contacto Entrega</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto">
+									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto" id="contacto" tabindex="6">
 								</div><!-- End Contacto Entrega -->			
 								
 								<div class="clear">&nbsp</div>
@@ -436,7 +436,7 @@
 								<hr size="10" />
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkChep" id="checkChep">Chep (Retornable)</h4>
-									<input type="text" class="form-control" placeholder="# Chep" name="chep" id="chep" style="display:none">	
+									<input type="text" class="form-control" placeholder="# Chep" name="chep" id="chep" style="display:none" tabindex="8">	
 								</div>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
@@ -445,17 +445,17 @@
 										<h4><input type="radio"  name="radio[]" id="1" value="Retornable" >Retornable</h4>
 										<h4><input type="radio"  name="radio[]" id="2" value="No Retornable">No Retornable</h4>
 									</div>
-									<input type="text" class="form-control" placeholder="# Ensenada" name="ensenada" id="ensenada" style="display:none">	
+									<input type="text" class="form-control" placeholder="# Ensenada" name="ensenada" id="ensenada" style="display:none" tabindex="10">	
 								</div>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkNoAplica" id="checkNoAplica">No Aplica</h4>
-									<input type="text" class="form-control" placeholder="# No Aplica" name="no_aplica" id="no_aplica" style="display:none">
+									<input type="text" class="form-control" placeholder="# No Aplica" name="no_aplica" id="no_aplica" style="display:none" tabindex="12">
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
 								<h3>Caja del Transporte</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="transport_box" id="transport_box">
+									<select class="form-control" name="transport_box" id="transport_box" tabindex="14">
 										<option value="Seca" selected>Seca</option>
 										<option value="Thermo">Thermo</option>												
 									</select>	
@@ -463,7 +463,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkRacks" id="checkRacks">Racks</h4>
-									<input type="text" class="form-control" placeholder="# Racks" name="racks" id="racks" style="display:none">
+									<input type="text" class="form-control" placeholder="# Racks" name="racks" id="racks" style="display:none" tabindex="16">
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
 																

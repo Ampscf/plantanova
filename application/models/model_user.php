@@ -29,6 +29,7 @@ Class model_user extends CI_Model	{
 		$this -> db -> from('t_user');
 		$this -> db -> where('id_rol', 2);
 		$this -> db -> where('active', 0);
+		$this->db->order_by('farm_name','asc');
 		
 		$query = $this -> db -> get();
 		

@@ -60,28 +60,28 @@
 						<div class="col-md-6">
 							<h3>Empresa</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Empresa" name="farm_name" id="farm_name" value="<?php echo $farm_name; ?>">
+								<input type="text" class="form-control" placeholder="Empresa" name="farm_name" id="farm_name" value="<?php echo $farm_name; ?>" tabindex="1">
 							</div><!-- End farm name -->
 							<?php echo form_error('farm_name'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Número</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" onkeyup="this.value=add_commas(this.value);" value="<?php echo $addr_number; ?>">
+								<input type="text" class="form-control" placeholder="Número" name="addr_number" id="addr_number" onkeyup="this.value=add_commas(this.value);" value="<?php echo $addr_number; ?>" tabindex="3">
 							</div><!-- End address number -->
 							<?php echo form_error('addr_number'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>CP</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo $cp; ?>">
+								<input type="text" class="form-control" placeholder="CP" name="cp" id="cp" value="<?php echo $cp; ?>" tabindex="5">
 							</div><!-- End cp -->
 							<?php echo form_error('cp'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Estado</h3>
 							<div class="input-group input-group-lg">
-								<select class="form-control" name="state" id="state" onchange="get_towns(this.value);">
+								<select class="form-control" name="state" id="state" onchange="get_towns(this.value);" tabindex="7">
 									<option value="<?php echo $id_state;?>" selected><?php echo $state_name; ?></option>
 									<?php 
 										foreach($states as $key)
@@ -96,7 +96,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>Razón Social</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Razón Social" name="social_reason" id="social_reason" value="<?php echo $social_reason; ?>">
+								<input type="text" class="form-control" placeholder="Razón Social" name="social_reason" id="social_reason" value="<?php echo $social_reason; ?>" tabindex="9">
 							</div><!-- End social reason -->
 							<?php echo form_error('social_reason'); ?>
 						</div>						
@@ -104,28 +104,28 @@
 						<div class="col-md-6">
 							<h3>Calle</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo $street; ?>">
+								<input type="text" class="form-control" placeholder="Calle" name="street" id="street" value="<?php echo $street; ?>" tabindex="2">
 							</div><!-- End street -->
 							<?php echo form_error('street'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Colonia</h3>				
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo $colony; ?>">
+								<input type="text" class="form-control" placeholder="Colonia" name="colony" id="colony" value="<?php echo $colony; ?>" tabindex="4">
 							</div><!-- End colony -->
 							<?php echo form_error('colony'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Teléfono Empresa</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Teléfono Empresa" name="company_phone" id="company_phone" value="<?php echo $company_phone; ?>">
+								<input type="text" class="form-control" placeholder="Teléfono Empresa" name="company_phone" id="company_phone" value="<?php echo $company_phone; ?>" tabindex="6">
 							</div><!-- End company_phone -->
 							<?php echo form_error('company_phone'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Ciudad</h3>
 							<div class="input-group input-group-lg">
-								<select class="form-control" name="town" id="town">
+								<select class="form-control" name="town" id="town" tabindex="8">
 									<option value="<?php echo $id_town?>" selected><?php echo $town_name;?></option>
 									<?php 
 										foreach($towns_id as $key)
@@ -139,7 +139,7 @@
 							<div class="clear">&nbsp</div>
 							<h3>RFC</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo $rfc; ?>">
+								<input type="text" class="form-control" placeholder="RFC" name="rfc" id="rfc" value="<?php echo $rfc; ?>" tabindex="10">
 							</div><!-- End rfc -->
 							<?php echo form_error('rfc'); ?>
 						</div>					
@@ -160,7 +160,7 @@
 						<div class="col-md-6">
 							<div class="input-group input-group-lg">
 								<h3>Nombre(s)</h3>
-								<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo $first_name; ?>">
+								<input type="text" class="form-control" placeholder="Nombre(s)" name="first_name" id="first_name" value="<?php echo $first_name; ?>" tabindex="11">
 							</div><!-- End first name -->
 							<?php echo form_error('first_name'); ?>
 
@@ -168,14 +168,14 @@
 
 							<div class="input-group input-group-lg">
 								<h3>Teléfono</h3>
-								<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo $phone; ?>">
+								<input type="text" class="form-control" placeholder="Teléfono" name="phone" id="phone" value="<?php echo $phone; ?>" tabindex="13">
 							</div><!-- End phone -->
 							<?php echo form_error('phone'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Correo Electrónico</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Correo Electrónico" name="email" id="email" value="<?php echo $email; ?>">
+								<input type="text" class="form-control" placeholder="Correo Electrónico" name="email" id="email" value="<?php echo $email; ?>" tabindex="15">
 							</div><!-- End email -->
 							<?php echo form_error('email'); ?>	
 
@@ -184,19 +184,19 @@
 						<div class="col-md-6">
 							<h3>Apellido(s)</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo $last_name; ?>">
+								<input type="text" class="form-control" placeholder="Apellido(s)" name="last_name" id="last_name" value="<?php echo $last_name; ?>" tabindex="12">
 							</div><!-- End last name -->
 							<?php echo form_error('last_name'); ?>
 
 							<div class="clear">&nbsp</div>
 							<h3>Celular</h3>
 							<div class="input-group input-group-lg">
-								<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo $cellphone; ?>">
+								<input type="text" class="form-control" placeholder="Celular" name="cellphone" id="cellphone" value="<?php echo $cellphone; ?>" tabindex="14">
 							</div><!-- End cellphone -->
 							<?php echo form_error('cellphone'); ?>
 							<div class="clear">&nbsp</div>
 							<div class="input-group input-group-lg" >
-								<a href="#myModal" class="btn btn-pas" data-toggle="modal" style="width: 100%;">Cambiar Contraseña</a>
+								<a href="#myModal" class="btn btn-pas" data-toggle="modal" style="width: 100%;" tabindex="16">Cambiar Contraseña</a>
 							</div>
 						</div>
 											

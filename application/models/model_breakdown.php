@@ -485,7 +485,7 @@ Class model_breakdown extends CI_Model
 	{
 		$result = $this->db->query('SELECT DISTINCT `variety`
 							FROM `t_breakdown` 
-							WHERE `id_order` ='.$id_order);
+							WHERE `id_order` ='.$id_order.' order by variety asc');
 		if($result->num_rows()>0)
 			{
 				return $result->result();
@@ -569,7 +569,7 @@ Class model_breakdown extends CI_Model
 								from t_sowing as t_s
 								left join t_germination as t_g
 								on t_s.id_sowing = t_g.id_sowing
-								where t_g.id_sowing is null and t_s.id_order='.$id_order);
+								where t_g.id_sowing is null and t_s.id_order='.$id_order.' order by t_s.seed');
 		
 		if($query->num_rows()>0)
 		{

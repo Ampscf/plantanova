@@ -47,67 +47,67 @@
 					    	<div class="col-md-6">
 								<h3>Fecha de Entrega</h3>							
 								<div class="input-group">
-									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate<?php echo $key->id_embark; ?>" ><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker<?php echo $key->id_embark; ?>" name="datepicker<?php echo $key->id_embark; ?>" style="width:90% !important; float: right;" value="<?php echo date("d-m-Y",strtotime($key->date_delivery)) ?>" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondate<?php echo $key->id_embark; ?>" ><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="datepicker<?php echo $key->id_embark; ?>" name="datepicker<?php echo $key->id_embark; ?>" style="width:90% !important; float: right;" value="<?php echo date("d-m-Y",strtotime($key->date_delivery)) ?>" readonly tabindex="1"></p>
 								</div>	
 
 					    		<div class="clear">&nbsp</div>
 								<h3>Fecha de Arribo</h3>
 								<div class="input-group">
-									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondatz<?php echo $key->id_embark; ?>"><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates<?php echo $key->id_embark; ?>" name="butondates<?php echo $key->id_embark; ?>" style="width:90% !important; float: right;" value="<?php echo date("d-m-Y",strtotime($key->date_arrival)) ?>" readonly></p>
+									<p><a class="btn btn-default" style="height: 31px; border-radius: 0px;" id="butondatz<?php echo $key->id_embark; ?>"><i class="fa fa-calendar"></i></a><input type="text" class="form-control oli" placeholder="--Selecciona una Fecha--" id="butondates<?php echo $key->id_embark; ?>" name="butondates<?php echo $key->id_embark; ?>" style="width:90% !important; float: right;" value="<?php echo date("d-m-Y",strtotime($key->date_arrival)) ?>" readonly tabindex="3"></p>
 								</div><!-- End fecha -->
 
 					    		<div class="clear">&nbsp</div>
 								<h3>Volumen a Entregar</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume<?php echo $key->id_embark; ?>" id="final_volume<?php echo $key->id_embark; ?>" value="<?php echo $key->volume; ?>">
+									<input type="text" class="form-control" placeholder="Volumen Final" name="final_volume<?php echo $key->id_embark; ?>" id="final_volume<?php echo $key->id_embark; ?>" value="<?php echo $key->volume; ?>" tabindex="5">
 								</div><!-- End volumen a entregar -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Transporte</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name='transporter<?php echo $key->id_embark; ?>' id='transporter<?php echo $key->id_embark; ?>'>
+									<select class="form-control" name='transporter<?php echo $key->id_embark; ?>' id='transporter<?php echo $key->id_embark; ?>' tabindex="7">
 										<option value='<?php echo $key->transport;?>' selected><?php echo $key->transport;?></option>
-										<option value='Trailer 53' >Trailer 53</option>
-										<option value='Trailer 48'>Trailer 48</option>
-										<option value='Torton' >Torton</option>
 										<option value='Camioneta de tres y media' >Camioneta de tres y media</option>
-										<option value='Pickup' >Pickup</option>									
+										<option value='Pickup' >Pickup</option>	
+										<option value='Torton' >Torton</option>
+										<option value='Trailer 48'>Trailer 48</option>
+										<option value='Trailer 53' >Trailer 53</option>								
 									</select>	
 								</div><!-- End Cajas --><!-- End transporte -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Fletera</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Fletera" name="fletera<?php echo $key->id_embark; ?>" id="fletera<?php echo $key->id_embark; ?>" value="<?php echo $key->freight; ?>">
+									<input type="text" class="form-control" placeholder="Fletera" name="fletera<?php echo $key->id_embark; ?>" id="fletera<?php echo $key->id_embark; ?>" value="<?php echo $key->freight; ?>" tabindex="9">
 								</div><!-- End fletera -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Chofer</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Chofer" name="chofer<?php echo $key->id_embark; ?>" id="chofer<?php echo $key->id_embark; ?>" value="<?php echo $key->driver; ?>">
+									<input type="text" class="form-control" placeholder="Chofer" name="chofer<?php echo $key->id_embark; ?>" id="chofer<?php echo $key->id_embark; ?>" value="<?php echo $key->driver; ?>" tabindex="11">
 								</div><!-- End Chofer -->
 
 								<div class="clear">&nbsp</div>
 								<h3>Cel Chofer</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Cel Chofer" name="cel<?php echo $key->id_embark; ?>" id="cel<?php echo $key->id_embark; ?>" value="<?php echo $key->driver_cel; ?>">
+									<input type="text" class="form-control" placeholder="Cel Chofer" name="cel<?php echo $key->id_embark; ?>" id="cel<?php echo $key->id_embark; ?>" value="<?php echo $key->driver_cel; ?>" tabindex="13">
 								</div><!-- End Cel chofer -->
 								<div class="clear">&nbsp</div>
 								<h3>Destino</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Destino" name="destino<?php echo $key->id_embark; ?>" id="destino<?php echo $key->id_embark; ?>" value="<?php echo $key->destiny; ?>">
+									<input type="text" class="form-control" placeholder="Destino" name="destino<?php echo $key->id_embark; ?>" id="destino<?php echo $key->id_embark; ?>" value="<?php echo $key->destiny; ?>" tabindex="15">
 								</div><!-- End Destino -->
 								<div class="clear">&nbsp</div>	
 								<h3>Direccion</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Direccion" name="address<?php echo $key->id_embark; ?>" id="address<?php echo $key->id_embark; ?>" value="<?php echo $key->address; ?>">
+									<input type="text" class="form-control" placeholder="Direccion" name="address<?php echo $key->id_embark; ?>" id="address<?php echo $key->id_embark; ?>" value="<?php echo $key->address; ?>" tabindex="17">
 								</div><!-- End Destino -->							
 					    	</div>
 
 					    	<div class="col-md-6">
 								<h3>Estado</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="state<?php echo $key->id_embark; ?>" id="state<?php echo $key->id_embark; ?>" onchange="get_towns<?php echo $key->id_embark; ?>(this.value);">
+									<select class="form-control" name="state<?php echo $key->id_embark; ?>" id="state<?php echo $key->id_embark; ?>" onchange="get_towns<?php echo $key->id_embark; ?>(this.value);" tabindex="2">
 										<?php $t_state = $this->model_embark->get_state($key->id_state); ?>
 										<option value="<?php echo $key->id_state; ?>" selected><?php echo $t_state[0]->state_name; ?></option>
 										<?php 
@@ -121,7 +121,7 @@
 								<div class="clear">&nbsp</div>
 								<h3>Ciudad</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="town<?php echo $key->id_embark; ?>" id="town<?php echo $key->id_embark; ?>">
+									<select class="form-control" name="town<?php echo $key->id_embark; ?>" id="town<?php echo $key->id_embark; ?>" tabindex="4">
 										<?php $t_town = $this->model_embark->get_town($key->id_town); ?>
 										<option selected value="<?php echo $key->id_town; ?>"><?php echo $t_town[0]->town_name; ?></option>
 										<?php 
@@ -135,7 +135,7 @@
 								<div class="clear">&nbsp</div>
 								<h3>Contacto Entrega</h3>
 								<div class="input-group input-group-lg">
-									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto<?php echo $key->id_embark; ?>" id="contacto<?php echo $key->id_embark; ?>" value="<?php echo $key->arrival_contact; ?>">
+									<input type="text" class="form-control" placeholder="Contacto Entrega" name="contacto<?php echo $key->id_embark; ?>" id="contacto<?php echo $key->id_embark; ?>" value="<?php echo $key->arrival_contact; ?>" tabindex="6">
 								</div><!-- End Contacto Entrega -->			
 								
 								<div class="clear">&nbsp</div>
@@ -143,7 +143,7 @@
 								<hr size="10" />
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkChep<?php echo $key->id_embark; ?>" id="checkChep<?php echo $key->id_embark; ?>">Chep (Retornable)</h4>
-									<input type="text" class="form-control" placeholder="# Chep" name="chep<?php echo $key->id_embark; ?>" id="chep<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->chep; ?>">	
+									<input type="text" class="form-control" placeholder="# Chep" name="chep<?php echo $key->id_embark; ?>" id="chep<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->chep; ?>" tabindex="8">	
 								</div>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
@@ -153,17 +153,17 @@
 										<h4><input type="radio"  name="radio[]" id="2<?php echo $key->id_embark; ?>" value="No Retornable">No Retornable</h4>
 									</div>
 									<input type="hidden" name="tipo_ensenada<?php echo $key->id_embark; ?>" id="tipo_ensenada<?php echo $key->id_embark; ?>" value="<?php echo $key->tipo_ensenada; ?>">	
-									<input type="text" class="form-control" placeholder="# Ensenada" name="ensenada<?php echo $key->id_embark; ?>" id="ensenada<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->ensenada; ?>">	
+									<input type="text" class="form-control" placeholder="# Ensenada" name="ensenada<?php echo $key->id_embark; ?>" id="ensenada<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->ensenada; ?>" tabindex="10">	
 								</div>
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkNoAplica<?php echo $key->id_embark; ?>" id="checkNoAplica<?php echo $key->id_embark; ?>">No Aplica</h4>
-									<input type="text" class="form-control" placeholder="# No Aplica" name="no_aplica<?php echo $key->id_embark; ?>" id="no_aplica<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->no_aplica; ?>">
+									<input type="text" class="form-control" placeholder="# No Aplica" name="no_aplica<?php echo $key->id_embark; ?>" id="no_aplica<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->no_aplica; ?>" tabindex="12">
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
 								<h3>Caja del Transporte</h3>
 								<div class="input-group input-group-lg">
-									<select class="form-control" name="transport_box<?php echo $key->id_embark; ?>" id="transport_box<?php echo $key->id_embark; ?>">
+									<select class="form-control" name="transport_box<?php echo $key->id_embark; ?>" id="transport_box<?php echo $key->id_embark; ?>" tabindex="14">
 										<option value="<?php echo $key->transport_box; ?>" selected><?php echo $key->transport_box; ?></option>
 										<option value="Seca" selected>Seca</option>
 										<option value="Thermo">Thermo</option>												
@@ -172,7 +172,7 @@
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h4><input type="checkbox"  name="checkRacks<?php echo $key->id_embark; ?>" id="checkRacks<?php echo $key->id_embark; ?>">Racks</h4>
-									<input type="text" class="form-control" placeholder="# Racks" name="racks<?php echo $key->id_embark; ?>" id="racks<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->racks; ?>">
+									<input type="text" class="form-control" placeholder="# Racks" name="racks<?php echo $key->id_embark; ?>" id="racks<?php echo $key->id_embark; ?>" style="display:none" value="<?php echo $key->racks; ?>" tabindex="16">
 								</div><!-- End Cajas -->
 								<div class="clear">&nbsp</div>
 																

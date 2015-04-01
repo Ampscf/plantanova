@@ -231,6 +231,7 @@ Class model_seeds extends CI_Model
 	}
 
 	function get_plant(){
+		$this->db->order_by('plant_name','asc');
 		$query=$this->db->get('t_plant');
 		if($query->num_rows()>0){
 			return $query->result();

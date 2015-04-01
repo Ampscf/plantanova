@@ -3,6 +3,7 @@
 	{
 		function get_publicity()
 		{
+			$this->db->order_by('p_name','asc');
 			$query=$this->db->get('t_publicity');
 			if($query->num_rows()>0)
 			{

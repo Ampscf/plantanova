@@ -906,9 +906,10 @@ class Breakdown extends CI_Controller {
 
 		$volume_tutoring=$this->model_order->get_total_tutoring($this->uri->segment(3));
 
-		$this->model_order->update_total_tutoring2($this->uri->segment(3),$volume_tutoring->tutoring);
-		$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_tutoring->tutoring);
-
+		if($volume_tutoring->tutoring>0){
+			$this->model_order->update_total_tutoring2($this->uri->segment(3),$volume_tutoring->tutoring);
+			$this->model_breakdown->update_tutoring2($this->uri->segment(3),$breakdown[0]->variety,$breakdown[0]->rootstock,$volume_tutoring->tutoring);
+		}
 		$volume_total=$this->model_breakdown->get_total($this->uri->segment(3));
 		$scope=(($volume_total[0]->transplant/$breakdown[0]->volume) - 1) * 100;
 		$this->model_breakdown->update_scope2($scope,$process[0]->id_breakdown,4);
@@ -1487,8 +1488,10 @@ class Breakdown extends CI_Controller {
 		$maximo2=$total_semillas1[0]->tutoring_total + $tutoring_volume;
 		if($maximo < $tutoring_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
+	        //echo $maximo."<".$tutoring_volume ."||". $maximo2 .">". $maximo; 
 	    } else {
 	        echo "1";//true
+	        //echo $maximo."<".$tutoring_volume ."||". $maximo2 .">". $maximo; 
 	    }
 	}
 

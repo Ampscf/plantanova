@@ -47,6 +47,7 @@ Class model_order extends CI_Model
 		$this -> db -> from('t_user');
 		$this -> db -> where('id_rol', 2);
 		$this -> db -> where('active', 0);
+		$this->db->order_by("farm_name", "asc");
 		
 		$query = $this -> db -> get();
 		
@@ -67,6 +68,7 @@ Class model_order extends CI_Model
 	
 		$this -> db -> select('id_plant,plant_name');
 		$this -> db -> from('t_plant');
+		$this->db->order_by("plant_name", "asc");
 
 		$query = $this -> db -> get();
 
@@ -93,6 +95,7 @@ Class model_order extends CI_Model
 	{
 		$this -> db -> select('id_sustratum,sustratum_name');
 		$this -> db -> from('t_sustratum');
+		$this->db->order_by("sustratum_name", "asc");
 
 		$query = $this -> db -> get();
 
@@ -220,6 +223,7 @@ Class model_order extends CI_Model
 	{
 		$this -> db -> select('*');
 		$this -> db -> from('t_subtype');
+		$this->db->order_by("subtype_name", "asc");
 
 		$query = $this -> db -> get();
 
@@ -258,6 +262,7 @@ Class model_order extends CI_Model
 	{
 		$this -> db -> select('id_category,category_name');
 		$this -> db -> from('t_category');
+		$this->db->order_by("category_name", "asc");
 
 		$query = $this -> db -> get();
 
@@ -425,6 +430,7 @@ Class model_order extends CI_Model
 	function get_breakdown($id)
 	{
 		$this->db->where('id_order',$id);
+		$this->db->order_by('variety', 'asc');
 		$query=$this->db->get('t_breakdown');
 		
 			if($query->num_rows()>0)
@@ -452,7 +458,9 @@ Class model_order extends CI_Model
 	{
 		
 		$this->db->where('id_plant',$id_plant);
+		$this->db->order_by("plant_name", "asc");
 		$query=$this->db->get('t_plant');
+		
 			
 			if($query->num_rows()>0)
 			{
@@ -466,7 +474,9 @@ Class model_order extends CI_Model
 	{
 		
 		$this->db->where('id_category',$id_category);
+		$this->db->order_by("category_name", "asc");
 		$query=$this->db->get('t_category');
+
 			
 			if($query->num_rows()>0)
 			{
@@ -549,7 +559,7 @@ Class model_order extends CI_Model
 
 	function get_seeds($id_order){
 		$this->db->where('id_order',$id_order);
-		$this->db->order_by("id_seed", "asc");
+		$this->db->order_by("seed_name", "asc");
 		$query=$this->db->get('t_seeds');
 		if($query->num_rows()>0)
 		{
