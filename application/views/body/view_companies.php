@@ -31,7 +31,7 @@
         		</div>
         		<div class="modal-body">
         			<div class="input-group input-group-lg">									
-						<h3>Tipo de Cultivo</h3>
+						<h3>Cliente</h3>
 						<select class="form-control" name="id_user" id="id_user" tabindex="1"> 
 							<option value="-1" selected>---Selecciona un cliente---</option>
 							<?php 
