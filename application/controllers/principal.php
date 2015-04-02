@@ -70,36 +70,72 @@ class Principal extends CI_Controller {
 	 	$mail = $this->input->post('email');
 	 	$pass = $this->input->post('password');
 	 	//Obtiene al usuario por su email
-	 	$user = $this->model_user->login($mail);
+	 	$sub_user=$this->model_user->get_sub_user($mail);
+	 	if($sub_user){
+	 		if($this->passwordhash->CheckPassword($pass,$sub_user[0]->password))
+		 		{
+		 		$client=$this->model_user->get_client($sub_user[0]->id_user);
+		 		$mail=$client[0]->mail;
+		 		$pass=$client[0]->password;
+		 		$user = $this->model_user->login($mail);
+			
+			 	//Verifica que exista el usuario
+			 	if($user)
+			 	{
+			 		//Establece los datos de sesión
+			 			$sessionData = array(
+			                "id" => $user->id_user,
+			                "mail" => $user->mail,
+			                "logged_in" => TRUE,
+			                "id_rol" => $user->id_rol,
+			                "login_time"=>time()
+			            );
+			            $this->session->set_userdata($sessionData);
+				 		return TRUE;
+			 		
+			 	}
+			 	else 
+			 	{
+			 		$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
+			 		return FALSE;
+			 	}
+			 }else 
+			 	{
+			 		$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
+			 		return FALSE;
+			 	}
+	 	}else{
+		 	$user = $this->model_user->login($mail);
 
-	 	//Verifica que exista el usuario
-	 	if($user)
-	 	{
-	 		//Verifica que el password dado y el de la base de datos sean iguales despues de la encripción
-	 		if($this->passwordhash->CheckPassword($pass,$user->password))
-	 		{
-	 			//Establece los datos de sesión
-	 			$sessionData = array(
-	                "id" => $user->id_user,
-	                "mail" => $user->mail,
-	                "logged_in" => TRUE,
-	                "id_rol" => $user->id_rol,
-	                "login_time"=>time()
-	            );
-	            $this->session->set_userdata($sessionData);
-		 		return TRUE;
-	 		}
-	 		else
-	 		{
-	 			$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
-	 			return FALSE;
-	 		}
-	 	}
-	 	else 
-	 	{
-	 		$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
-	 		return FALSE;
-	 	}
+		 	//Verifica que exista el usuario
+		 	if($user)
+		 	{
+		 		//Verifica que el password dado y el de la base de datos sean iguales despues de la encripción
+		 		if($this->passwordhash->CheckPassword($pass,$user->password))
+		 		{
+		 			//Establece los datos de sesión
+		 			$sessionData = array(
+		                "id" => $user->id_user,
+		                "mail" => $user->mail,
+		                "logged_in" => TRUE,
+		                "id_rol" => $user->id_rol,
+		                "login_time"=>time()
+		            );
+		            $this->session->set_userdata($sessionData);
+			 		return TRUE;
+		 		}
+		 		else
+		 		{
+		 			$this->form_validation->set_message('check_user', $user->password."|||".$pass.'El correo o la contraseña son incorrectos.');
+		 			return FALSE;
+		 		}
+		 	}
+		 	else 
+		 	{
+		 		$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
+		 		return FALSE;
+		 	}
+		}
 	 }
 
 	 //Destruye la sessión actual y regresa a página de login

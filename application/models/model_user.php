@@ -21,6 +21,16 @@ Class model_user extends CI_Model	{
 			return false;
 		}
 	}
+
+	function get_sub_user($mail){
+		$this->db->where('mail',$mail);
+		$query=$this->db->get('t_sub_user');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		} 
+		else return null;
+	}
 	
 	//Obtiene los datos de todos los usuarios de la base de datos que no son administradores, es decir, los clientes
 	function get_clients()
@@ -121,7 +131,11 @@ Class model_user extends CI_Model	{
 
 		return $query->row();
 	}
-	
+	function insert_sub_user($data)
+	{
+		$this->db->insert('t_sub_user',$data);
+		return $this->db->affected_rows();
+	}
 	
 	//Agrega a un usuario nuevo a la base de datos, $data es un arreglo que contiene todos los datos necesarios
 	function insert_client_user($data)

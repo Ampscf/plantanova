@@ -1131,4 +1131,43 @@ Class model_order extends CI_Model
 		}
 		else return false;
 	}
+
+	function upload_plant($plant_name)
+	{
+		$data = array('plant_name' =>$plant_name);
+		$this->db->insert('t_plant', $data);
+		return $this->db->affected_rows();
+	}
+
+	function delete_plant($id_plant){
+		$this->db->where('id_plant',$id_plant);
+		$this->db->delete('t_plant');
+		return $this->db->affected_rows();
+	}
+
+	function upload_sustratum($sustratum_name)
+	{
+		$data = array('sustratum_name' =>$sustratum_name);
+		$this->db->insert('t_sustratum', $data);
+		return $this->db->affected_rows();
+	}
+
+	function delete_sustratum($id_sustratum){
+		$this->db->where('id_sustratum',$id_sustratum);
+		$this->db->delete('t_sustratum');
+		return $this->db->affected_rows();
+	}
+
+	function upload_subtype($subtype_name,$id_sustratum)
+	{
+		$data = array('subtype_name' =>$subtype_name,'id_sustratum' =>$id_sustratum);
+		$this->db->insert('t_subtype', $data);
+		return $this->db->affected_rows();
+	}
+
+	function delete_subtype($id_subtype){
+		$this->db->where('id_subtype',$id_subtype);
+		$this->db->delete('t_subtype');
+		return $this->db->affected_rows();
+	}
 }

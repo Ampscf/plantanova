@@ -1004,4 +1004,54 @@ class Order extends CI_Controller {
 			redirect("breakdown/final","refresh");
 		}
 	}
+
+	public function plant(){
+		$template['plants'] = $this->model_order->get_plants();
+		$template['sustratum'] = $this->model_order->get_sustratum();
+		$template['subtype'] = $this->model_order->get_subtypes();
+		$template['header'] = 'header/view_admin_header.php';
+		$template['body'] = 'body/view_order_plant.php';
+		$template['footer'] = "footer/view_footer.php";
+
+		$this->load->view('main',$template);	
+	}
+
+	public function upload_plant(){
+		$plant_name=$this->input->post("plant_name");
+		$this->model_order->upload_plant($plant_name);
+		redirect("order/plant","refresh");
+	}
+
+	public function delete_plant(){
+		$id_plant=$this->input->post("id_plant");
+		$this->model_order->delete_plant($id_plant);
+		redirect("order/plant","refresh");
+	}
+
+	public function upload_sustratum(){
+		$sustratum_name=$this->input->post("sustratum_name");
+		$this->model_order->upload_sustratum($sustratum_name);
+		redirect("order/plant","refresh");
+	}
+
+	public function delete_sustratum(){
+		$id_sustratum=$this->input->post("id_sustratum");
+		$this->model_order->delete_sustratum($id_sustratum);
+		redirect("order/plant","refresh");
+	}
+
+	public function upload_subtype(){
+		$subtype_name=$this->input->post("subtype_name");
+		$id_sustratum=$this->input->post("id_sustratum");
+		$this->model_order->upload_subtype($subtype_name,$id_sustratum);
+		redirect("order/plant","refresh");
+	}
+
+	public function delete_subtype(){
+		$id_subtype=$this->input->post("subtype");
+		$this->model_order->delete_subtype($id_subtype);
+		redirect("order/plant","refresh");
+	}
+
+
 }

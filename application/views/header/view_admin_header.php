@@ -174,7 +174,17 @@ $user = $this->model_user->get_client($this->session->userdata('id'));
 						      			<li><?php echo anchor('breakdown/todos','Todos');?></li>
 						      		</ul>
 								</li>	
-								<li style="border-left: 1px solid #000;"><?php echo anchor('order/carga_ordenes','Hacer pedido','id="order" style="height:80px;padding-top: 28px;"'); ?></li>
+								<li class="dropdown" style="border-left: 1px solid #000;">
+									<a href="admin/list_clients" class="dropdown-toggle" data-toggle="dropdown" style="height:80px; padding-top: 28px;" id="order">
+										Pedidos
+						      			<span class="caret"></span>
+						      		</a>
+									<ul class="dropdown-menu" style="margin-top: 50px;">
+								   		<li><?php echo anchor('order/carga_ordenes','Hacer pedidos');?></li>
+						      			<li role="presentation" class="divider"></li>
+								   		<li><?php echo anchor('order/plant','Cultivos, Sustratos y Subtipos');?></li>
+								   	</ul>
+								</li>
 								<li style="border-left: 1px solid #000;"><?php echo anchor('files/index','Subir PDF','id="files" style="height:80px;padding-top: 28px;"'); ?></li>
 
 
