@@ -730,7 +730,7 @@ class Admin extends CI_Controller {
 														<h3><b>Teresa Ugalde</b></h3>
 														<p style='margin-top: -15px;'>Atención a clientes</p>
 														<p style='margin-top: -15px;'>t.ugalde@plantanova.com.mx</p>
-														<p style='margin-top: -15px;'>(442) 229 1861 ext. 802</p>
+														<p style='margin-top: -15px;'>(442) 229 1861 y (442) 229 1905 </p>
 													</div>
 													<div class='col-xs-6' style='background-color: #D0E3CA;'>
 												  		<h3 style='color:#6BBD44'>Pagos</h3>
