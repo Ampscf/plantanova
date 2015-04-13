@@ -1,17 +1,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				<div class="col-md-8">
+				<div class="col-md-11" style="padding: 0px;  margin-bottom: 10px;">
 					<div>
 						<?php 
-							echo '<img src="'. base_url() . '/img/bannerPrincipal/LOGO.jpg" style="width:100%; height:500px">';
+							echo '<img src="'. base_url() . '/img/bannerPrincipal/LOGO.jpg" style="width:100%; height:auto">';
 						?>
 					</div>
 				</div>
+				<div>&nbsp</div>
 				<?php
 					if(is_array($messages)){
 				?>
-				<div class="col-md-4 pad">
+				<div class="col-md-6 pad">
 					<div class="message-heading">
 						<h3 class="message-title"><i class="fa fa-clock-o"></i> Pagos</h3>
 					</div>
@@ -24,7 +25,7 @@
 				<?php
 				}else{
 					?>
-				<div class="col-md-4 pad">
+				<div class="col-md-6 pad">
 					<div class="message-heading">
 						<h3 class="message-title"><i class="fa fa-star-o"></i> Bienvenido</h3>
 					</div>
@@ -39,7 +40,7 @@
 				}
 				?>
 				<div>&nbsp</div>
-				<div class="col-md-4 gray">
+				<div class="col-md-5 gray">
 					<div class="container fill">
 					<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
 				    	<!-- Carousel indicators -->
@@ -77,6 +78,7 @@
 				    </div>
 				</div>
 				<div>&nbsp</div>
+				<div class="col-md-11" style="padding: 0px;">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> PEDIDOS </h3>
@@ -88,6 +90,7 @@
 					</div>
 						
 				</div>
+			</div>
 			</div>
 		</div> <!-- End row -->
 	</div> <!-- End container -->

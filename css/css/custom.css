@@ -433,7 +433,7 @@ a.btn.btn-success {
  @media (min-width: 1224px) {
  	.caru-img {
  		min-height: 240px;
- 		max-height: 240px;
+ 		max-height: 500px;
 	
 	}
 	
@@ -448,7 +448,7 @@ a.btn.btn-success {
 }
  @media (max-width: 889px) {
  	.caru-img {
- 		min-height: 500px;
+ 		min-height: 0px;
  		max-height: 500px;
 	
 	}
