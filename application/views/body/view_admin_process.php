@@ -104,7 +104,7 @@
 					</div>
 					
 					<div class="clear">&nbsp</div>
-					<div class="col-xs-12">
+					<div class="col-xs-12 germinacion">
 						<div class="col-xs-10" name="germinacion" id="germinacion">
 							<h4>Germinación</h4>
 						</div>
@@ -146,7 +146,7 @@
 					
 					<div class="clear">&nbsp</div>
 	
-					<div class="col-xs-12" name="divinjerto" id="divinjerto" style="display: none;" >
+					<div class="col-xs-12 injerto" name="divinjerto" id="divinjerto" style="display: none;" >
 						<div class="col-xs-10" id="injerto">
 							<h4>Injerto</h4>
 						</div>
@@ -173,7 +173,7 @@
 
 					<div class="clear">&nbsp</div>
 	
-					<div class="col-xs-12" name="divpinchado" id="divpinchado" style="display: none;" >
+					<div class="col-xs-12 pinchado" name="divpinchado" id="divpinchado" style="display: none;" >
 						<div class="col-xs-10" id="pinchado">
 							<h4>Pinchado</h4>
 						</div>
@@ -199,7 +199,7 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-					<div class="col-xs-12" name="divtransplante" id="divtransplante" style="display: none;">
+					<div class="col-xs-12 transplante" name="divtransplante" id="divtransplante" style="display: none;">
 						<div class="col-xs-10" id="transplante">	
 							<h4>Transplante</h4>
 						</div>
@@ -225,7 +225,7 @@
 					</div>
 
 					<div class="clear">&nbsp</div>
-					<div class="col-xs-12" name="divtutoreo" id="divtutoreo" style="display: none;">
+					<div class="col-xs-12 tutoreo" name="divtutoreo" id="divtutoreo" style="display: none;">
 						<div class="col-xs-10" id="tutoreo">	
 							<h4>Tutoreo</h4>
 						</div>

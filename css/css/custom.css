@@ -454,3 +454,22 @@ a.btn.btn-success {
 	}
 
 }
+
+/*firefox*/
+@-moz-document url-prefix() {
+    .germinacion .table{
+    	margin-top: 5%;
+    }
+    .injerto .table{
+    	margin-top: 5%;
+    }
+    .transplante .table{
+    	margin-top: 5%;
+    }
+    .pinchado .table{
+    	margin-top: 5%;
+    }
+    .tutoreo .table{
+    	margin-top: 5%;
+    }
+}

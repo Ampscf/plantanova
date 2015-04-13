@@ -126,7 +126,7 @@ class Principal extends CI_Controller {
 		 		}
 		 		else
 		 		{
-		 			$this->form_validation->set_message('check_user', $user->password."|||".$pass.'El correo o la contraseña son incorrectos.');
+		 			$this->form_validation->set_message('check_user', 'El correo o la contraseña son incorrectos.');
 		 			return FALSE;
 		 		}
 		 	}
