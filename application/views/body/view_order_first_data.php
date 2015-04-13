@@ -16,6 +16,7 @@
 					</ul>
 				</div>
 				<?php
+				$order_number=$order->result()[0]->order_number;
 				$id_plant=$order->result()[0]->id_plant;
 				$id_category=$order->result()[0]->id_category;
 				$datepicker=$order->result()[0]->order_date_delivery;
@@ -47,22 +48,15 @@
 							</div>							
 							<div class="clear">&nbsp</div>
 							<div class="col-md-6">
-							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">									
 
-									<h3>Tipo de Cultivo</h3>
-									<select class="form-control" name="plant" id="plant" tabindex="1">
-										<option value="<?php echo $id_plant;?>" selected><?php echo $plant_name=$plant_name->result()[0]->plant_name; ?></option>
-										<?php 
-										foreach($plants as $key)
-										{
-											echo "<option value='" . $key->id_plant . "' set_select('state','".$key->id_plant."')>" . $key->plant_name . "</option>";
-										}
-										?>
-									</select>
+									<h3>Número de Pedido</h3>
+									<input type="text" class="form-control" placeholder="Número de Pedido" name="order_number" id="order_number" value="<?php echo $order_number; ?>" onkeydown="valor(this.value)" tabindex="1">
+									<input type="hidden" class="form-control"  name="order_number_input" id="order_number_input">
 								</div><!-- End Plant -->
-								<?php echo form_error('plant'); ?>							
+								
+														
 							
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
@@ -96,7 +90,21 @@
 							</div>						
 
 							<div class="col-md-6">
-							
+								<div class="clear">&nbsp</div>
+								<div class="input-group input-group-lg">									
+
+									<h3>Tipo de Cultivo</h3>
+									<select class="form-control" name="plant" id="plant" tabindex="1">
+										<option value="<?php echo $id_plant;?>" selected><?php echo $plant_name=$plant_name->result()[0]->plant_name; ?></option>
+										<?php 
+										foreach($plants as $key)
+										{
+											echo "<option value='" . $key->id_plant . "' set_select('state','".$key->id_plant."')>" . $key->plant_name . "</option>";
+										}
+										?>
+									</select>
+								</div><!-- End Plant -->
+								<?php echo form_error('plant'); ?>	
 								<div class="clear">&nbsp</div>
 								<div class="input-group input-group-lg">
 									<h3>Categoría</h3>

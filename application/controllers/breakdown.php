@@ -119,6 +119,7 @@ class Breakdown extends CI_Controller {
 		$template['body'] = 'body/view_admin_process.php';
 		$template['footer'] = 'footer/view_footer.php';
 		$template['id_order']=$this->uri->segment(3);
+		$template['order_number']=$order->result()[0]->order_number;
 		$template['id_company']=$order->result()[0]->id_client;
 		$template['company']=$this->model_user->get_client($order->result()[0]->id_client);
 		$template['fecha']=$order->result()[0]->order_date_submit;

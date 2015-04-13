@@ -19,7 +19,7 @@
 							<div class="col-xs-12">					
 								<div class="col-xs-6">
 									<div class="input-group input-group-lg">
-										<h4><b>Pedido: <?php echo $id_order;?></b></h4>
+										<h4><b>Pedido: <?php echo $order_number;?></b></h4>
 									</div><!-- End nombre -->
 									<div class="input-group input-group-lg">
 										<p><b>Fecha: </b><?php echo date("d-m-Y",strtotime($fecha))?></p>

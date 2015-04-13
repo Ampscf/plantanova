@@ -9,7 +9,7 @@
 					
 					<div class="col-md-12">
 						<div class="input-group input-group-lg">
-							<p><b>Pedido: <?php echo $id_order;?></b></p>
+							<p><b>Pedido: <?php echo $order_number;?></b></p>
 						</div><!-- End nombre -->
 						
 						<div class="col-md-6">

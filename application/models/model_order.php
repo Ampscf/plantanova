@@ -541,6 +541,16 @@ Class model_order extends CI_Model
 			else return false;
 	}
 
+	function get_order_number($order_number){
+		$this->db->where('order_number',$order_number);
+		$query=$this->db->get('t_order');
+		if($query->num_rows()>0)
+			{
+				return $query;
+			} 
+			else return false;
+	}
+
 	function get_order_comment($id_order){
 		$this->db->where('id_order',$id_order);
 		$query=$this->db->get('t_order_comments');

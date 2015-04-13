@@ -18,6 +18,7 @@ class Embark extends CI_Controller {
 		}
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['order_number']=$order->result()[0]->order_number;
 		$template['fecha']=$order->result()[0]->order_date_submit;
 		$template['fecha_entrega']=$order->result()[0]->order_date_delivery;
 		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);
@@ -427,6 +428,7 @@ class Embark extends CI_Controller {
 		}
 		$template['id_order']=$this->uri->segment(3);
 		$order=$this->model_order->get_order_id_order($this->uri->segment(3));
+		$template['order_number']=$order->result()[0]->order_number;
 		$template['fecha']=$order->result()[0]->order_date_submit;
 		$template['fecha_entrega']=$order->result()[0]->order_date_delivery;
 		$template['planta']=$this->model_order->get_plant($order->result()[0]->id_plant);

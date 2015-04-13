@@ -14,7 +14,8 @@
 			foreach ($seeds as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->id_order . "</td>";
+				$order=$this->model_order->get_order_id_order($key->id_order);
+				echo "<td>" . $order->result()[0]->order_number . "</td>";
 				$farmer=$this->model_seeds->get_farmer($key->id_order);
 				echo "<td>" . $farmer->farmer . "</td>";
 				$volume=$this->model_seeds->suma_volumen_seeds($key->id_order);

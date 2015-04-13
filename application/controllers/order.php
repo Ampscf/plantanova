@@ -134,6 +134,7 @@ class Order extends CI_Controller {
 		$template['categ']=$categ;
 		$template['categoria']=$this->model_order->get_category($categ); 
 		$template['id_order']=$this->model_order->get_order_id_order($id_order);
+		$template['order_number']=$template['id_order']->result()[0]->order_number;
 		$template['breakdown']=$this->model_order->get_breakdown($template['id_order']->result()[0]->id_order);
 		$template['suma_volumen']=$this->model_order->suma_volumen($template['id_order']->result()[0]->id_order);
 
@@ -442,26 +443,8 @@ class Order extends CI_Controller {
 		}
 		$a=$this->input->post();
 		$id_client=$this->input->post('id_company');
-		/*$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-		
-		//Valida que los campos que se reciban esten llenos
-		$this->form_validation->set_rules('plant', 'cultivo', 'required|xss_clean|callback_sel_plant');
-		$this->form_validation->set_rules('datepicker', 'fecha', 'required|xss_clean|callback_sel_date');
-		$this->form_validation->set_rules('arms', 'brazos', 'required|xss_clean');
-		$this->form_validation->set_rules('category', 'categoria', 'required|xss_clean|callback_sel_category');
-		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
-		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
-		
-		*/if($this->input->post('next')){
-			/*if($this->form_validation->run() == FALSE) 
-			{
-				//vuelve a la pagina de registro e imprime los errores
-				$this->load_first_step($id_client);
-				
-
-			}
-			else{*/
+		if($this->input->post('next')){
+			
 				$data['id_status'] = 4;
 				$data['id_plant'] = $this->input->post('plant');
 				$data['id_category'] = $this->input->post('category');
@@ -474,7 +457,7 @@ class Order extends CI_Controller {
 				$data['tutoring'] = $this->input->post('tutoring');
 				$data['comment'] = $this->input->post('comment');
 				$data['farmer']=$this->input->post('farmer');
-
+				$data['order_number']=$this->input->post('order_number');
 				
 
 				$idplant=$data['id_plant'];
@@ -498,8 +481,7 @@ class Order extends CI_Controller {
 					$error['template'] = $this->load_first_step($id_client);
 				}
 			
-			//}
-			
+				
 			
 		}
 		else if($this->input->post('before')){
@@ -514,26 +496,9 @@ class Order extends CI_Controller {
 		}
 		$a=$this->input->post();
 		$id_client=$a['id_company'];
-		/*$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		
-		//Valida que los campos que se reciban esten llenos
-		$this->form_validation->set_rules('plant', 'cultivo', 'required|xss_clean|callback_sel_plant');
-		$this->form_validation->set_rules('datepicker', 'fecha', 'required|xss_clean|callback_sel_date');
-		$this->form_validation->set_rules('arms', 'brazos', 'required|xss_clean');
-		$this->form_validation->set_rules('category', 'categoria', 'required|xss_clean|callback_sel_category');
-		$this->form_validation->set_rules('volume', 'volumen', 'required|numeric|xss_clean');
-		$this->form_validation->set_rules('tutoring', 'tutoreo', 'required|xss_clean');
-		
-		*/if($this->input->post('next')){
-			/*if($this->form_validation->run() == FALSE) 
-			{
-				//vuelve a la pagina de registro e imprime los errores
-				$this->load_first_step($id_client);
-				
-
-			}
-			else{*/
+		if($this->input->post('next')){
+			
 				$data['id_status'] = 4;
 				$data['id_plant'] = $this->input->post('plant');
 				$data['id_category'] = $this->input->post('category');
@@ -545,7 +510,7 @@ class Order extends CI_Controller {
 				$data['branch_number'] = $this->input->post('arms');
 				$data['tutoring'] = $this->input->post('tutoring');
 				$data['farmer']=$this->input->post('farmer');
-
+				$data['order_number']=$this->input->post('order_number');
 				$data['comment']=$this->input->post('comment');
 
 				$idplant=$data['id_plant'];
@@ -562,15 +527,12 @@ class Order extends CI_Controller {
 				$data['template'] = $this->load_second_step($id_client, $fecha, $idplant, $voltot, $categ, $id_order);
 				
 		
+			}else if($this->input->post('before')){
+				$template['body']=$this->pending_order_two($id_client);
+			
 			}
-			
-			
-		//}
-		else if($this->input->post('before')){
-			$template['body']=$this->pending_order_two($id_client);
-			
-		}
 	}
+
 	function sel_plant()
 	{
 		if($this->session->userdata('id_rol')!=1){
@@ -1051,6 +1013,16 @@ class Order extends CI_Controller {
 		$id_subtype=$this->input->post("subtype");
 		$this->model_order->delete_subtype($id_subtype);
 		redirect("order/plant","refresh");
+	}
+
+	public function get_orders(){
+		$order_number=$this->input->post('order_number');
+		if($this->model_order->get_order_number($order_number)){
+			echo 1;//true
+		}else{
+			echo 2;//false
+		}
+
 	}
 
 

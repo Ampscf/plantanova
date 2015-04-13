@@ -538,7 +538,7 @@ class Admin extends CI_Controller {
 		$order=$this->model_user->get_order($id_user);
 		$result="";
 		foreach ($order as $key ) {
-			$result= $result."<option value='$key->id_order'>" ."#". $key->id_order." Agricultor: ".$key->farmer ."</option>";
+			$result= $result."<option value='$key->id_order'>" ."#". $key->order_number." Agricultor: ".$key->farmer ."</option>";
 		}
 		echo "<option value='-1'>---Selecciona una Orden---</option>";
 		echo $result;

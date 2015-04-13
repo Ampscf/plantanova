@@ -20,7 +20,7 @@
 			foreach ($pedidos_embarcados as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->id_order . "</td>";
+				echo "<td>" . $key->order_number . "</td>";
 				echo "<td>" . $key->farmer . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->order_date_submit)) . "</td>";
 				$cliente=$this->model_breakdown->get_user($key->id_client);

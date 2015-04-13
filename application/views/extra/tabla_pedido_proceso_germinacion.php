@@ -16,8 +16,9 @@
 			foreach ($pedidos_proceso_germination as $key) 
 			{
 				echo "<tr>";
-				echo "<td>".$key->id_order."</td>";
 				$farmer=$this->model_order->get_order_id_order($key->id_order);
+				echo "<td>".$farmer->result()[0]->order_number."</td>";
+				
 				echo "<td>" . $farmer->result()[0]->farmer . "</td>";
 				echo "<td>" . $key->volume . "</td>";
 				echo "<td>" . date("Y-m-d",strtotime($key->germ_date)) . "</td>";

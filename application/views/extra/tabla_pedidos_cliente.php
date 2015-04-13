@@ -14,7 +14,7 @@
 			if(is_array($orders)){
 				foreach ($orders as $key) {
 					echo "<tr>";
-					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>". $key->id_order ."</a></td>";
+					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>". $key->order_number ."</a></td>";
 					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>".$key->total_volume ."</td>";
 					echo "<td><a href='#myModal$key->id_order' data-toggle='modal'>".date("d-m-Y",strtotime($key->order_date_submit))."</td>";
 					$plant=$this->model_order->get_plant($key->id_plant);

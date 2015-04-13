@@ -14,9 +14,11 @@
 			foreach ($pedidos_proceso_sowing as $key) 
 			{
 				echo "<tr>";
-				echo "<td>" . $key->id_order . "</td>";
-				$farmer=$this->model_breakdown->get_process_orders($key->id_order);
-				echo "<td>" . $farmer[0]->farmer . "</td>";
+				$farmer=$this->model_order->get_order_id_order($key->id_order);
+						
+				echo "<td>" . $farmer->result()[0]->order_number . "</td>";
+				
+				echo "<td>" . $farmer->result()[0]->farmer . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->sowing_date)) . "</td>";
 				echo "<td>" . $key->seed . "</td>";
 				echo "<td>" . number_format($key->volume) . "</td>";

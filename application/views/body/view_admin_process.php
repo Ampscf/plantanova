@@ -22,7 +22,7 @@
 						
 						<div class="col-xs-6">
 							<div class="input-group input-group-lg">
-								<p><b>Pedido: <?php echo $id_order;?></b></p>
+								<p><b>Pedido: <?php echo $order_number;?></b></p>
 							</div><!-- End nombre -->
 							<div class="input-group input-group-lg">
 								<p><b>Fecha: </b><?php echo date("d-m-Y",strtotime($fecha))?></p>

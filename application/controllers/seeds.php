@@ -53,6 +53,7 @@ class Seeds extends CI_Controller {
 		$template['farmer']=$order->result()[0]->farmer;
 		$template['seeds']=$this->model_seeds->get_client_seeds($this->uri->segment(3));
 		$template['crop']=$this->model_seeds->get_plant();
+		$template['order_number']=$order->result()[0]->order_number;
 		
 		$this->load->view('main',$template);
 	}
@@ -255,6 +256,7 @@ class Seeds extends CI_Controller {
 		$template['body'] = "body/view_seeds_resume.php";
 		$template['footer'] = "footer/view_footer.php";
 		$template['id_company']=$order->result()[0]->id_client;
+		$template['order_number']=$order->result()[0]->order_number;
 		$template['company']=$this->model_user->get_client($order->result()[0]->id_client);
 		$template['fecha']=$order->result()[0]->order_date_submit;
 		$template['id_plant']=$order->result()[0]->id_plant;

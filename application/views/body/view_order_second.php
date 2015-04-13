@@ -38,7 +38,7 @@
 						
 						<div class="col-md-6" style="width: 32%;">
 								<div class="input-group input-group-lg">
-									<p># de orden: <?php echo $id_order->result()[0]->id_order;?></p>
+									<p># de orden: <?php echo $id_order->result()[0]->order_number;?></p>
 								</div><!-- End Plant -->
 								
 								<div class="input-group input-group-lg">

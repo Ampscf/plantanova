@@ -16,8 +16,8 @@
 			{
 				echo "<tr>";
 				$order=$this->model_breakdown->get_order_id_breakdown($key->id_breakdown);
-				echo "<td>" . $order[0]->id_order . "</td>";
 				$farmer=$this->model_order->get_order_id_order($order[0]->id_order);
+				echo "<td>" . $farmer->result()[0]->order_number . "</td>";
 				echo "<td>" . $farmer->result()[0]->farmer . "</td>";
 				echo "<td>" . number_format($key->volume) . "</td>";
 				echo "<td>" . date("d-m-Y",strtotime($key->process_date)) . "</td>";
