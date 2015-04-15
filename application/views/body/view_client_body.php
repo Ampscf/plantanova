@@ -1,5 +1,6 @@
 	<div class="container">
 		<div class="row">
+			
 			<div class="col-md-10 col-md-offset-1">
 				<div class="col-md-11" style="padding: 0px;  margin-bottom: 10px;">
 					<div>
@@ -8,7 +9,76 @@
 						?>
 					</div>
 				</div>
+				<div class="col-md-11" style="display:table;  padding: 0;">
+				<?php
+					if(is_array($messages)){
+				?>
+				<div style="display:table-cell;vertical-align: top;  background: #D0E3CA;  width: 50%;">
+					<div class="message-heading">
+						<h3 class="message-title"><i class="fa fa-clock-o"></i> Pagos</h3>
+					</div>
+					<div class="">
+						<?php
+							echo "<h4>". $messages[0]->message."</h4>";
+						?>
+					</div>
+				</div>
+				<?php
+				}else{
+					?>
+				<div style="display:table-cell;vertical-align: top;  background: #D0E3CA;  width: 50%;">
+					<div class="message-heading">
+						<h3 class="message-title"><i class="fa fa-star-o"></i> Bienvenido</h3>
+					</div>
+					<div class="">
+						<?php
+							echo "<h4>Bienvenido a PlantaNova</h4>";
+						
+						?>
+					</div>
+				</div>
+				<?php
+				}
+				?>
+				<div style="display:table-cell;padding-left: 1%;">
+					<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+				    	<!-- Carousel indicators -->
+				          
+				       <!-- Carousel items -->
+				        <div class="carousel-inner">
+				        	<?php
+				        	if(is_array($publicity)){
+								$i=1;
+				        		foreach ($publicity as $key) {
+				        			echo '<div class="item" id="'.$i.'">';
+				        			echo '<a href="/plantanova/index.php/client/colaboradores/'.$i.'" ><img src="'.base_url().'img/Publicidad/'.$key->p_thum.'" class="caru-img"></a>';
+				        			echo '</div>'; 
+				        			$i++;				        		
+				        		}
+				        	}else{
+			        			echo '<img src="'.base_url().'img/plantanovaicongrand.png" class="caru-img">';
+
+				        	}
+				        		
+				        	?>
+				           
+				        </div>
+				        <script>
+				            document.getElementById('1').className="active item";
+				        </script>
+				        <!-- Carousel nav -->
+				        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				            <span class="glyphicon glyphicon-chevron-left"></span>
+				        </a>
+				        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+				            <span class="glyphicon glyphicon-chevron-right"></span>
+				        </a>
+				    </div>
+				 
+				</div>
+			</div>
 				<div>&nbsp</div>
+			<!--<div>
 				<?php
 					if(is_array($messages)){
 				?>
@@ -43,9 +113,9 @@
 				<div class="col-md-5 gray">
 					<div class="container fill">
 					<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-				    	<!-- Carousel indicators -->
+				    	<!-- Carousel indicators
 				          
-				       <!-- Carousel items -->
+				       <!-- Carousel items
 				        <div class="carousel-inner">
 				        	<?php
 				        	if(is_array($publicity)){
@@ -67,7 +137,7 @@
 				        <script>
 				            document.getElementById('1').className="active item";
 				        </script>
-				        <!-- Carousel nav -->
+				        <!-- Carousel nav 
 				        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
 				            <span class="glyphicon glyphicon-chevron-left"></span>
 				        </a>
@@ -77,6 +147,7 @@
 				    </div>
 				    </div>
 				</div>
+			</div>-->
 				<div>&nbsp</div>
 				<div class="col-md-11" style="padding: 0px;">
 				<div class="panel panel-default">
