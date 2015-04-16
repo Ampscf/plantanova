@@ -45,7 +45,7 @@
                 	<h3>Correo</h3>
 					<input type="text" class="form-control" placeholder="Correo" name="mail" id="mail">
 					<h3>Contraseña</h3>
-					<input type="text" class="form-control" placeholder="Contraseña" name="password" id="password">
+					<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
 				
 				</div>
 

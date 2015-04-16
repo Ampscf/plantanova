@@ -88,7 +88,7 @@
                     				<h4 class="modal-title">Confirmación</h4>
                 				</div>
                 				<div class="modal-body">
-                    				<p>¿Estás seguro de querer editar el pedido<?php echo $key->id_order?>?</p>
+                    				<p>¿Estás seguro de querer editar el pedido?</p>
                 				</div>
                 				<div class="modal-footer">
 									<?php echo form_open('order/load_second_step_two/'.$key->id_order); ?>
