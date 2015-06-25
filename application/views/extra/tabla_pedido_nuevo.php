@@ -75,7 +75,7 @@
 				echo "<td>";
 				?>
 					<a href="#myModalEditarNuevo<?php echo $key->id_order; ?>" class="btn btn-default"
-	                    title="Modificat"
+	                    title="Modificar"
 	                    data-toggle="modal">
 						<i class="fa fa-edit"></i>
 	                </a>

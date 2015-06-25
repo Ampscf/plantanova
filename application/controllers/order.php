@@ -302,10 +302,13 @@ class Order extends CI_Controller {
 		}
 		$id_order=$this->input->post('id_order');
 		if($this->input->post('next')){
+			$order=$this->model_order->get_order_id_order($id_order);
+			if($order->result()[0]->id_status != 1 && $order->result()[0]->id_status != 2 && $order->result()[0]->id_status != 3 && $order->result()[0]->id_status != 5 && $order->result()[0]->id_status != 6){
+				$this->model_order->submit_order($id_order);
+				$this->model_breakdown->fill_sowing($id_order);
+				$this->model_breakdown->insert_image_process($id_order);
+			}			
 			
-			$this->model_order->submit_order($id_order);
-			$this->model_breakdown->fill_sowing($id_order);
-			$this->model_breakdown->insert_image_process($id_order);
 			redirect("breakdown/index");
 
 		}

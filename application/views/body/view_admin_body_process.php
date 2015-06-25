@@ -67,6 +67,7 @@
 							<?php echo "<h4 style='text-align:center;'>TUTOREO</h4>";?>
 							<?php include('application/views/extra/tabla_pedido_proceso_tutoreo.php'); ?>
 						</div>
+					
 					</div>
 				</div>
 			</div>
