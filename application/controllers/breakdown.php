@@ -1225,7 +1225,7 @@ class Breakdown extends CI_Controller {
 			$maximo2=$total_semillas2[0]->graft_total + $graft_volume;
 		}
 
-		$maximo2=$total_semillas1[0]->graft_total + $graft_volume;
+		//$maximo2=$total_semillas1[0]->graft_total + $graft_volume;
 
 		if($maximo < $graft_volume || $maximo2 > $maximo ) {
 	        echo "11";//false
