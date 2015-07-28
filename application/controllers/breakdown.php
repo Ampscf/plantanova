@@ -42,12 +42,12 @@ class Breakdown extends CI_Controller {
 		$template['body'] = 'body/view_admin_body_process.php';
 		$template['footer'] = "footer/view_footer.php";
 		$template['pedidos_proceso'] = $this->model_breakdown->get_process_orders();
-		/*$template['pedidos_proceso_germination'] = $this->model_breakdown->get_process_germination();
+		$template['pedidos_proceso_germination'] = $this->model_breakdown->get_process_germination();
 		$template['pedidos_proceso_graft'] = $this->model_breakdown->get_process_graft();
 		$template['pedidos_proceso_punch'] = $this->model_breakdown->get_process_punch();
 		$template['pedidos_proceso_transplant'] = $this->model_breakdown->get_process_transplant();
 		$template['pedidos_proceso_tutoring'] = $this->model_breakdown->get_process_tutoring();
-		$template['pedidos_proceso_sowing'] = $this->model_breakdown->get_process_sowing();*/
+		$template['pedidos_proceso_sowing'] = $this->model_breakdown->get_process_sowing();
 		$this->load->view("main",$template);
 	}
 
