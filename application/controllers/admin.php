@@ -926,13 +926,13 @@ class Admin extends CI_Controller {
 							                			<div id='pinchado".$key->id_breakdown."' style='display: none;'>
 							                				<h3 style='color:#6BBD44'>Pinchado</h3>
 								                			<p><b>Fecha:</b></p>
-																<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate6".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker6".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='punch_date".$key->id_breakdown."' name='punch_date".$key->id_breakdown."' style='width:90%; float: right;' value='".$transplant_date."' readonly></p>
+																<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate6".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker6".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='punch_date".$key->id_breakdown."' name='punch_date".$key->id_breakdown."' style='width:90%; float: right;' value='".$punch_date."' readonly></p>
 							                			</div>
 							                			<div >&nbsp</div>
 							                			<div id='transplante".$key->id_breakdown."' style='display: none;'>
 							                				<h3 style='color:#6BBD44'>Transplante</h3>
 								                			<p><b>Fecha:</b></p>
-																<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate5".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker5".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='transplant_date".$key->id_breakdown."' name='transplant_date".$key->id_breakdown."' style='width:90%; float: right;' value='".$punch_date."' readonly></p>
+																<p><a class='btn btn-default' style='height: 31px; border-radius: 0px;' id='butondate5".$key->id_breakdown."'><i class='fa fa-calendar'></i></a><input type='text' class='datepicker5".$key->id_breakdown."' placeholder='--Selecciona una Fecha--' id='transplant_date".$key->id_breakdown."' name='transplant_date".$key->id_breakdown."' style='width:90%; float: right;' value='".$transplant_date."' readonly></p>
 							                			</div>
 							                			<div >&nbsp</div>
 							                			<div id='empaque".$key->id_breakdown."' style='display: none;'>
