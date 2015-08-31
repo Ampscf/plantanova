@@ -118,18 +118,18 @@
 												if($value->transplant_date!=null){
 													$img='<img src="'. base_url() . 'img/infomrme_cliente/trasnplante.jpg" style="height: 500px;">';
 													?>
-												<div id='pinchado<?php echo $value->id_breakdown; ?>' >
-													<h4 class="green-margin">Pinchado</h4>
-													<b>Fecha:</b><?php echo $value->punch_date; ?>
+												<div id='transplante<?php echo $value->id_breakdown; ?>' >
+													<h4 class="green-margin">Transplante</h4>
+													<b>Fecha:</b><?php echo $value->transplant_date; ?>
 												</div>
 												<div >&nbsp</div>
 												<?php } 
 												if($value->punch_date!=null){
 													$img='<img src="'. base_url() . 'img/infomrme_cliente/pinchado.jpg" style="height: 500px;">';
 													?>
-												<div id='transplante<?php echo $value->id_breakdown; ?>' >
-													<h4 class="green-margin">Transplante</h4>
-													<b>Fecha:</b><?php echo $value->transplant_date; ?>
+												<div id='pinchado<?php echo $value->id_breakdown; ?>' >
+													<h4 class="green-margin">Pinchado</h4>
+													<b>Fecha:</b><?php echo $value->punch_date; ?>
 												</div>
 												<div >&nbsp</div>
 												<?php } 
